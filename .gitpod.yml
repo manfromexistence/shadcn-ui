@@ -1,0 +1,4 @@
+tasks:
+  - name: www
+    init: cd apps/www && pnpm install
+    command: pnpm run dev
