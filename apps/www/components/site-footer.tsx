@@ -12,6 +12,15 @@ export function SiteFooter() {
             rel="noreferrer"
             className="font-medium underline underline-offset-4"
           >
+            manfromexistence
+          </a>
+          , Inspired by{" "}
+          <a
+            href={siteConfig.links.shadcn}
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium underline underline-offset-4"
+          >
             shadcn
           </a>
           . The source code is available on{" "}
