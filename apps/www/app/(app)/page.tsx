@@ -9,6 +9,13 @@ import {
   MessageCircleCode,
   MessageSquareText,
 } from "lucide-react"
+
+import Background from "@/components/background"
+import Component from "@/components/component"
+import Hero from "@/components/hero"
+import LandingPage from "@/components/landing-page"
+import Text from "@/components/text"
+import Visulization from "@/components/visulization"
 import { Button } from "@/registry/default/ui/button"
 import {
   Popover,
@@ -23,7 +30,14 @@ export default function IndexPage() {
 
   return (
     <div className="container relative flex max-w-[1200px] flex-col gap-4 py-4 md:flex-row md:py-8">
-      <div className="flex flex-col gap-2 md:w-[300px]">
+      <Hero />
+      <Component />
+      <Visulization />
+      <Text />
+      <Background />
+      <LandingPage />
+
+      {/* <div className="flex flex-col gap-2 md:w-[300px]">
         <h1 className="text-xl font-bold">Two Step Popover</h1>
         <span className="text-sm text-muted-foreground">
           This comopnents is inspired from uilabs&apos;s aweosome animated
@@ -83,7 +97,7 @@ export default function IndexPage() {
                 </span>
               </div>
             </div>
-            {/* <div className="min-w-full rounded-md p-2">
+            <div className="min-w-full rounded-md p-2">
               <div className="flex flex-col space-y-2">
                 <div className="flex">
                   <span className="flex-1 text-sm text-primary">
@@ -145,10 +159,10 @@ export default function IndexPage() {
                   </Button>
                 </div>
               </div>
-            </div> */}
+            </div>
           </PopoverContent>
         </Popover>
-      </div>
+      </div> */}
     </div>
   )
 }
