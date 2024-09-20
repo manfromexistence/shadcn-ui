@@ -1,3 +1,10 @@
+# manfromexistence
+1. auth
+2. ux
+3. media
+4. ui
+5. blockchain
+
 # UI libraries
 1. Shadcnui -> https://github.com/shadcn-ui/ui
 2. Nextui -> https://github.com/nextui-org/nextui.git
