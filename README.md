@@ -4,6 +4,11 @@
 3. media
 4. ui
 5. blockchain
+6. design-pattern
+7. test
+8. documentation
+9. tool
+10. intregation
 
 # UI libraries
 1. Shadcnui -> https://github.com/shadcn-ui/ui
