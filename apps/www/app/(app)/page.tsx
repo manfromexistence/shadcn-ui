@@ -21,7 +21,6 @@ import { Textarea } from "@/registry/default/ui/textarea"
 export default function IndexPage() {
   const [TWO_POPOVER_MARGIN_LEFT, setTWO_POPOVER_MARGIN_LEFT] = useState(0)
   const [TWO_POPOVER_DISPLAY, setTWO_POPOVER_DISPLAY] = useState(false)
-
   return (
     <div className="container relative flex max-w-[1200px] flex-col gap-4 py-4 md:flex-row md:py-8">
       <Hero />
