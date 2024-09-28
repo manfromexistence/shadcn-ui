@@ -52,15 +52,15 @@ export function MainNav() {
           Animations
         </Link>
         <Link
-          href="/tools"
+          href="/canvases"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/tools")
+            pathname?.startsWith("/canvases")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
-          Tools
+          Canvases
         </Link>
         <Link
           href="/templates"

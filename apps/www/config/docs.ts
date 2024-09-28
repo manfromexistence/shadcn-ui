@@ -21,8 +21,8 @@ export const docsConfig: DocsConfig = {
       href: "/animations",
     },
     {
-      title: "Tools",
-      href: "/tools",
+      title: "Canvases",
+      href: "/canvases",
     },
     {
       title: "Templates",
