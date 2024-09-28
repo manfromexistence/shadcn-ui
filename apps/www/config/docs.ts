@@ -17,8 +17,8 @@ export const docsConfig: DocsConfig = {
       href: "/themes",
     },
     {
-      title: "Renderers",
-      href: "/renderers",
+      title: "Animations",
+      href: "/animations",
     },
     {
       title: "Tools",
