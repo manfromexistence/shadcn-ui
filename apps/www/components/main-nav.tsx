@@ -42,26 +42,37 @@ export function MainNav() {
           Themes
         </Link>
         <Link
-          href="/animations"
+          href="/fluids"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/animations")
+            pathname?.startsWith("/fluids")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
-          Animations
+          Fluids
         </Link>
         <Link
-          href="/canvases"
+          href="/swithcers"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/canvases")
+            pathname?.startsWith("/swithcers")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
-          Canvases
+          Swithcers
+        </Link>
+        <Link
+          href="/visualizers"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/visualizers")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          Visualizers
         </Link>
         <Link
           href="/templates"

@@ -17,12 +17,16 @@ export const docsConfig: DocsConfig = {
       href: "/themes",
     },
     {
-      title: "Animations",
-      href: "/animations",
+      title: "Fluids",
+      href: "/fluids",
     },
     {
-      title: "Canvases",
-      href: "/canvases",
+      title: "Switchers",
+      href: "/switchers",
+    },
+    {
+      title: "Visualizers",
+      href: "/visualizers",
     },
     {
       title: "Templates",
