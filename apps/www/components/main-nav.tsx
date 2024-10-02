@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -12,9 +13,9 @@ export function MainNav() {
 
   return (
     <div className="mr-4 hidden md:flex">
-      <Link href="/" className="mr-4 flex items-center space-x-2 lg:mr-6">
+      <Link href="/" className="mr-4 flex items-center lg:mr-6">
         {/* <Icons.logo className="h-6 w-6" /> */}
-        <image src="/ui.png" alt="ui" />
+        <Image className="invert dark:invert-0" src="/ui.png" height={40} width={40} alt="ui" />
         <span className="hidden font-bold lg:inline-block">
           {siteConfig.name}
         </span>
