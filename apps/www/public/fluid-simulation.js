@@ -1,43 +1,6 @@
-"use client"
-import React, { useRef, useEffect } from 'react';
+'use strict';
 
-export default function FluidSimulation() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    // const gl = canvas.getContext('webgl2');
-
-// Mobile promo section
-
-// const promoPopup = document.getElementsByClassName('promo')[0];
-// const promoPopupClose = document.getElementsByClassName('promo-close')[0];
-
-// if (isMobile()) {
-//     setTimeout(() => {
-//         promoPopup.style.display = 'table';
-//     }, 20000);
-// }
-
-// promoPopupClose.addEventListener('click', e => {
-//     promoPopup.style.display = 'none';
-// });
-
-// const appleLink = document.getElementById('apple_link');
-// appleLink.addEventListener('click', e => {
-//     ga('send', 'event', 'link promo', 'app');
-//     window.open('https://apps.apple.com/us/app/fluid-simulation/id1443124993');
-// });
-
-// const googleLink = document.getElementById('google_link');
-// googleLink.addEventListener('click', e => {
-//     ga('send', 'event', 'link promo', 'app');
-//     window.open('https://play.google.com/store/apps/details?id=games.paveldogreat.fluidsimfree');
-// });
-
-// Simulation section
-
-// const canvas = document.getElementsByTagName('canvas')[0];
+const canvas = document.getElementsByTagName('canvas')[0];
 resizeCanvas();
 
 let config = {
@@ -137,7 +100,7 @@ function getWebGLContext (canvas) {
         formatR = getSupportedFormat(gl, gl.RGBA, gl.RGBA, halfFloatTexType);
     }
 
-    // ga('send', 'event', isWebGL2 ? 'webgl2' : 'webgl', formatRGBA == null ? 'not supported' : 'supported');
+    ga('send', 'event', isWebGL2 ? 'webgl2' : 'webgl', formatRGBA == null ? 'not supported' : 'supported');
 
     return {
         gl,
@@ -1628,14 +1591,3 @@ function hashCode (s) {
     }
     return hash;
 };
-
-    function render() {
-      requestAnimationFrame(render);
-    }
-    render();
-  }, []);
-
-  return (
-    <canvas ref={canvasRef} width={500} height={300} />
-  );
-}

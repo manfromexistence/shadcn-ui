@@ -32,6 +32,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
-, "components/fluid-simulation.jsx"  ],
+, "components/fluid-simulation.tsx"  ],
   "exclude": ["node_modules", "./scripts/build-registry.mts", "__registry__"]
 }

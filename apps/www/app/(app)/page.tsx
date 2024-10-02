@@ -17,13 +17,13 @@ import {
   PopoverTrigger,
 } from "@/registry/default/ui/popover"
 import { Textarea } from "@/registry/default/ui/textarea"
-import FluidSimulation from "@/components/fluid-simulation.jsx"
+import FluidSimulation from "@/components/fluid-simulation"
 
 export default function IndexPage() {
   const [TWO_POPOVER_MARGIN_LEFT, setTWO_POPOVER_MARGIN_LEFT] = useState(0)
   const [TWO_POPOVER_DISPLAY, setTWO_POPOVER_DISPLAY] = useState(false)
   return (
-    <div className="container relative flex max-w-[1200px] flex-col gap-4 py-4 md:flex-row md:py-8">
+    <div className="container relative flex max-w-[1200px] flex-col gap-4 py-4 md:py-8">
       <FluidSimulation />
       <Hero />
       <Component />
