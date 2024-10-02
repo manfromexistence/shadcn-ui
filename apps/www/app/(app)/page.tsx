@@ -17,7 +17,7 @@ import {
   PopoverTrigger,
 } from "@/registry/default/ui/popover"
 import { Textarea } from "@/registry/default/ui/textarea"
-import FluidSimulation from "@/components/fluid-simulation"
+import FluidSimulation from "@/components/fluid-simulation.jsx"
 
 export default function IndexPage() {
   const [TWO_POPOVER_MARGIN_LEFT, setTWO_POPOVER_MARGIN_LEFT] = useState(0)
