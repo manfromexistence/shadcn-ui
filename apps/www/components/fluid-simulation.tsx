@@ -1,12 +1,71 @@
-"use client"
+import Image from "next/image"
+import Link from "next/link"
 import Script from 'next/script'
+import { Announcement } from "@/components/announcement"
+import { ExamplesNav } from "@/components/examples-nav"
+import {
+    PageActions,
+    PageHeader,
+    PageHeaderDescription,
+    PageHeaderHeading,
+} from "@/components/page-header"
+// import MailPage from "@/app/(app)/examples/mail/page"
+import { siteConfig } from "@/config/site"
+import { Button } from "@/registry/default/ui/button"
 
 export default function MyApp() {
     return (
         <>
-            <canvas className='h-screen w-full' />
+            <div className="relative flex h-screen w-full items-center justify-center px-6 pt-12">
+                <canvas className='absolute left-0 top-0 z-50 h-screen w-full' />
+                
+                {/* <PageHeader>
+                    <Announcement />
+                    <PageHeaderHeading>Build your component library</PageHeaderHeading>
+                    <PageHeaderDescription>
+                        Beautifully designed components that you can copy and paste into your
+                        apps.
+                    </PageHeaderDescription>
+                    <PageActions>
+                        <Button asChild size="sm">
+                            <Link href="/docs">Get Started</Link>
+                        </Button>
+                        <Button asChild size="sm" variant="ghost">
+                            <Link
+                                target="_blank"
+                                rel="noreferrer"
+                                href={siteConfig.links.github}
+                            >
+                                GitHub
+                            </Link>
+                        </Button>
+                    </PageActions>
+                </PageHeader> */}
+                {/* <ExamplesNav className="[&>a:first-child]:text-primary" />
+                <section className="overflow-hidden rounded-lg border bg-background shadow-md md:hidden md:shadow-xl">
+                    <Image
+                        src="/examples/mail-dark.png"
+                        width={1280}
+                        height={727}
+                        alt="Mail"
+                        className="hidden dark:block"
+                    />
+                    <Image
+                        src="/examples/mail-light.png"
+                        width={1280}
+                        height={727}
+                        alt="Mail"
+                        className="block dark:hidden"
+                    />
+                </section>
+                <section className="hidden md:block">
+                    <div className="overflow-hidden rounded-lg border bg-background shadow">
+                        <MailPage />
+                    </div>
+                </section> */}
+            </div>
             <Script id="idk">
-            {`
+                {`
                 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
                 ga('create', 'UA-105392568-1', 'auto');
                 ga('send', 'pageview');
