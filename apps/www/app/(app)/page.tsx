@@ -23,14 +23,17 @@ export default function IndexPage() {
   const [TWO_POPOVER_MARGIN_LEFT, setTWO_POPOVER_MARGIN_LEFT] = useState(0)
   const [TWO_POPOVER_DISPLAY, setTWO_POPOVER_DISPLAY] = useState(false)
   return (
-    <div className="container relative flex max-w-[1200px] flex-col gap-4 py-4 md:py-8">
+    <div>
       <FluidSimulation />
-      <Hero />
-      <Component />
-      <Visulization />
-      <Text />
-      <Background />
-      <LandingPage />
+      <div className="container relative flex max-w-[1200px] flex-col gap-4 py-4 md:py-8">
+        <Hero />
+        <Component />
+        <Visulization />
+        <Text />
+        <Background />
+        <LandingPage />
+      </div>
+
       {/* <div>
         <div className="flex flex-col gap-2 md:w-[300px]">
           <h1 className="text-xl font-bold">Two Step Popover</h1>
