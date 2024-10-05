@@ -48,7 +48,7 @@ export async function SiteHeader() {
         <MainNav />
         <MobileNav />
         <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
-          <Link
+          {/* <Link
             className={cn(
               buttonVariants({
                 variant: "rainbow",
@@ -70,13 +70,13 @@ export async function SiteHeader() {
                 className="font-display font-medium text-white dark:text-black"
               />
             </div>
-          </Link>
+          </Link> */}
 
           <div className="w-full flex-1 md:w-auto md:flex-none">
             <CommandMenu />
           </div>
           <nav className="flex items-center gap-1">
-            <Link
+            {/* <Link
               href={siteConfig.links.discord}
               target="_blank"
               rel="noreferrer"
@@ -126,7 +126,7 @@ export async function SiteHeader() {
                 <Icons.twitter className="size-4 fill-current" />
                 <span className="sr-only">Twitter</span>
               </div>
-            </Link>
+            </Link> */}
             <ModeToggle />
           </nav>
         </div>
