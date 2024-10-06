@@ -23,12 +23,11 @@ export default async function Hero() {
     })[0];
 
   return (
-    <section className="relative h-screen w-full" id="hero">
+    <section id="hero" className="relative h-screen select-none">
       <FluidSimulation />
-
-      <div className="relative h-full overflow-hidden py-5 md:py-14">
-        <div className="z-10 flex flex-col">
-          <div className="mt-10 grid grid-cols-1 md:mt-20">
+      <div className="relative flex h-full items-center justify-center overflow-hidden">
+        <div className="z-10 flex w-auto flex-col">
+          <div className="grid grid-cols-1">
             <div className="flex flex-col items-start gap-6 px-7 pb-8 text-center md:items-center md:px-10">
               <Link
                 href={post.slug}
@@ -98,10 +97,9 @@ export default async function Hero() {
               </div>
             </div>
           </div>
-
           <div className="relative mx-auto flex w-full max-w-56 items-center justify-center">
             <TechStack
-              className="mx-auto flex w-full items-center justify-between"
+              className="mx-auto flex w-full items-center justify-between pt-4"
               technologies={[
                 "react",
                 "typescript",
