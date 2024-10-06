@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import * as React from "react";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
@@ -61,7 +62,7 @@ export function MobileNav() {
           className="flex items-center"
           onOpenChange={setOpen}
         >
-          <Icons.logo className="mr-2 size-4" />
+          <Image className="invert dark:invert-0" src="/ui.png" height={40} width={40} alt="ui" />
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
