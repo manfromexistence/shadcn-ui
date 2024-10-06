@@ -7,6 +7,7 @@ import TechStack from "@/components/tech-stack";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import FluidSimulation from "../fluid-simulation";
 
 export default async function Hero() {
   const post = allDocs
@@ -22,7 +23,9 @@ export default async function Hero() {
     })[0];
 
   return (
-    <section id="hero">
+    <section className="relative h-screen w-full" id="hero">
+      <FluidSimulation />
+
       <div className="relative h-full overflow-hidden py-5 md:py-14">
         <div className="z-10 flex flex-col">
           <div className="mt-10 grid grid-cols-1 md:mt-20">
