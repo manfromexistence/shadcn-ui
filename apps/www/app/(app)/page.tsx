@@ -27,7 +27,7 @@ export default function IndexPage() {
       <FluidSimulation />
       <div className="container relative flex max-w-[1200px] flex-col gap-4 py-4 md:py-8">
         <div>
-          <div className="flex flex-col gap-2 md:w-[300px]">
+          <div className="flex flex-col gap-1 pb-4 md:w-[300px]">
             <h1 className="text-xl font-bold">Two Step Popover</h1>
             <span className="text-sm text-muted-foreground">
               This comopnents is inspired from uilabs&apos;s aweosome animated

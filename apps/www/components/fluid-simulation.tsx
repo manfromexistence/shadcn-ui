@@ -17,7 +17,7 @@ export default function MyApp() {
     return (
         <>
             <div className="relative flex h-screen w-full items-center justify-center px-6 pt-12">
-                <canvas className='absolute left-0 top-0 z-50 h-screen w-full' />
+                <canvas className='absolute left-0 top-0 h-screen w-full !bg-transparent' />
                 
                 {/* <PageHeader>
                     <Announcement />
