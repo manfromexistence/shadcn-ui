@@ -28,11 +28,21 @@ export function ModeToggle() {
         <DropdownMenuItem onClick={() => setTheme("light")}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          Material Color Utilites
+        </DropdownMenuItem>
+        {/* 
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          Gradients - Linear + Radial
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
+          Audio + Image + Video
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          Design Systems
+        </DropdownMenuItem> */}
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
