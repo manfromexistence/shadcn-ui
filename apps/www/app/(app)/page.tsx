@@ -34,7 +34,7 @@ export default function IndexPage() {
               components
             </span>
           </div>
-          <div className="flex min-h-[250px] w-full items-center justify-center rounded-md border sm:min-h-[500px] md:min-w-[350px]">
+          <div className="flex min-h-[250px] w-full items-center justify-center rounded-md border sm:min-h-[500px] md:h-[75vh] md:min-w-[350px]">
             <Popover>
               <PopoverTrigger asChild>
                 <div className="group flex h-10 w-10 items-center justify-center rounded-md bg-primary-foreground">

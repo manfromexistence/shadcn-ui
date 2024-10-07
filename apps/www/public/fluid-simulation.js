@@ -5,20 +5,15 @@ resizeCanvas();
 
 
 function isDarkModeEnabled() {
-    const darkClassName = 'dark'; // Replace with your actual Tailwind CSS dark class name
-
-    // Check if the dark class name is present on the document's root element
+    const darkClassName = 'dark';
     return document.documentElement.classList.contains(darkClassName);
 }
 
-// Usage example:
-if (isDarkModeEnabled()) {
-    alert('Dark mode is enabled.');
-} else {
-    alert('Dark mode is not enabled.');
-}
-
-alert("hello");
+// if (isDarkModeEnabled()) {
+//     alert('Dark mode is enabled. edited3');
+// } else {
+//     alert('Dark mode is not enabled. edited3');
+// }
 
 let config = {
     SIM_RESOLUTION: 256,
@@ -37,7 +32,7 @@ let config = {
     PAUSED: false,
     BACK_COLOR: { r: 0, g: 0, b: 0, a: 0 },
     TRANSPARENT: false,
-    BLOOM: true,
+    BLOOM: false,
     BLOOM_ITERATIONS: 8,
     BLOOM_RESOLUTION: 256,
     BLOOM_INTENSITY: 0.8,
