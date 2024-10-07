@@ -26,7 +26,7 @@ export default async function Hero() {
     <section id="hero" className="relative h-screen select-none">
       <FluidSimulation />
       <div className="relative flex h-full items-center justify-center overflow-hidden">
-        <div className="z-10 flex w-auto flex-col">
+        <div className="z-10 flex w-auto flex-col md:w-[675px]">
           <div className="grid grid-cols-1">
             <div className="flex flex-col items-start gap-6 px-7 pb-8 text-center md:items-center md:px-10">
               <Link
