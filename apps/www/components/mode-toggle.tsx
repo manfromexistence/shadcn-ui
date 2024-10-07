@@ -32,6 +32,7 @@ export function ModeToggle() {
           Material Color Utilites
         </DropdownMenuItem>
         {/* 
+        Will put icons and then icons clicked then will show more details
         <DropdownMenuItem onClick={() => setTheme("system")}>
           Gradients - Linear + Radial
         </DropdownMenuItem>
