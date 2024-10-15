@@ -4,24 +4,23 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prefix:cli": "pnpm --prefix ./packages/cli/ -- ",
-    "install:cli": "pnpm prefix:cli install",
-    "dev:cli": "pnpm prefix:cli dev",
-    "build:cli": "pnpm prefix:cli build",
-    "release:cli": "pnpm prefix:cli release",
-    "preinstall": "npx only-allow pnpm",
+    "prefix:cli": "bun --prefix ./packages/cli/ -- ",
+    "install:cli": "bun prefix:cli install",
+    "dev:cli": "bun prefix:cli dev",
+    "build:cli": "bun prefix:cli build",
+    "release:cli": "bun prefix:cli release",
+    "preinstall": "npx only-allow bun",
     "dev": "concurrently \"content-collections watch\" \"next dev\"",
-    "prebuild": "pnpm build:docs && pnpm build:registry",
+    "prebuild": "bun build:docs && bun build:registry",
     "build": "next build",
     "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
     "build:docs": "content-collections build",
-    "typecheck": "pnpm build:docs && tsc --noEmit",
+    "typecheck": "bun build:docs && tsc --noEmit",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "prepare": "husky"
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.3",
@@ -119,7 +118,6 @@
     "unist-util-visit": "^5.0.0"
   },
   "engines": {
-    "node": ">=20.6.1",
-    "pnpm": ">=9"
+    "node": ">=20.6.1"
   }
 }
