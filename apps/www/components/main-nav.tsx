@@ -31,15 +31,15 @@ export function MainNav() {
         </Link>
 
         <Link
-          href="/appearances"
+          href="/themes"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/appearances")
+            pathname?.startsWith("/themes")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
-          Appearances
+          Themes
         </Link>
         <Link
           href="/fluids"
@@ -52,7 +52,7 @@ export function MainNav() {
         >
           Fluids
         </Link>
-        {/* <Link
+        <Link
           href="/swithcers"
           className={cn(
             "transition-colors hover:text-foreground/80",
@@ -62,7 +62,7 @@ export function MainNav() {
           )}
         >
           Swithcers
-        </Link> */}
+        </Link>
         <Link
           href="/visualizers"
           className={cn(
@@ -75,15 +75,15 @@ export function MainNav() {
           Visualizers
         </Link>
         <Link
-          href="/templates"
+          href="/blocks"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/templates")
+            pathname?.startsWith("/blocks")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
-          Templates
+          Blocks
         </Link>
       </nav>
     </div>

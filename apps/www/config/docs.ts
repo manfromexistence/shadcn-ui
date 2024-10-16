@@ -29,8 +29,8 @@ export const docsConfig: DocsConfig = {
       href: "/visualizers",
     },
     {
-      title: "Templates",
-      href: "/templates",
+      title: "Blocks",
+      href: "/blocks",
     },
   ],
   sidebarNav: [

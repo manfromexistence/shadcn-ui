@@ -29,7 +29,7 @@ export function ModeToggle() {
           Light
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          Material Color Utilites
+          Custom
         </DropdownMenuItem>
         {/* 
         Will put icons and then icons clicked then will show more details
