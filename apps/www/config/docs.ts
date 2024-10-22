@@ -65,7 +65,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "CLI",
           href: "/docs/cli",
-          label: "Updated",
           items: [],
         },
         {
@@ -77,7 +76,6 @@ export const docsConfig: DocsConfig = {
           title: "Open in v0",
           href: "/docs/v0",
           items: [],
-          label: "New",
         },
         {
           title: "Figma",
@@ -134,6 +132,12 @@ export const docsConfig: DocsConfig = {
     {
       title: "Components",
       items: [
+        {
+          title: "Sidebar",
+          href: "/docs/components/sidebar",
+          items: [],
+          label: "New",
+        },
         {
           title: "Accordion",
           href: "/docs/components/accordion",
