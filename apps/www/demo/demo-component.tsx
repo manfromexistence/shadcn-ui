@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import CopyButton from "./copy-button";
 import { readComponentSource } from "./read-component-source";
+import { CopyButton } from "@/components/copy-button";
 
 export default async function DemoComponent({
   directory,
@@ -15,9 +15,10 @@ export default async function DemoComponent({
   const source = await readComponentSource(directory, componentName);
 
   return (
-    <div className={cn("group/item relative", className)}>
+    <div className={cn("relative w-full rounded-md border", className)}>
+      <CopyButton className="absolute right-2 top-2 transition-opacity" value={source || ""} />
       <Component />
-      <CopyButton componentSource={source || ""} />
+      {/* <CopyButton componentSource={source || ""} /> */}
     </div>
   );
 }

@@ -11,6 +11,96 @@ import { ThemesSwitcher } from "@/components/themes-selector"
 import { ThemesStyle } from "@/components/themes-styles"
 import { Separator } from "@/registry/new-york/ui/separator"
 import * as Charts from "@/app/(app)/charts/charts"
+import { VarientsNav } from "@/components/varients-nav";
+import Cta from "@/demo/cta";
+import DemoComponent from "@/demo/demo-component";
+// import PageHeader from "@/demo/page-header";
+
+const inputDir = "inputs";
+const inputFiles = [
+  "input-01",
+  "input-02",
+  "input-03",
+  "input-04",
+  "input-05",
+  "input-06",
+  "input-07",
+  "input-08",
+  "input-09",
+  "input-10",
+  "input-11",
+  "input-12",
+  "input-13",
+  "input-14",
+  "input-15",
+  // "input-16",
+  // "input-17",
+  // "input-18",
+  // "input-19",
+  // "input-20",
+  // "input-21",
+  // "input-22",
+  // "input-23",
+  // "input-24",
+  // "input-25",
+  // "input-26",
+  // "input-27",
+  // "input-28",
+  // "input-29",
+  // "input-30",
+  // "input-31",
+  // "input-32",
+  // "input-33",
+  // "input-34",
+  // "input-35",
+  // "input-36",
+  // "input-37",
+  // "input-38",
+  // "input-39",
+  // "input-40",
+  // "input-41",
+  // "input-42",
+  // "input-43",
+  // "input-44",
+  // "input-45",
+  // "input-46",
+  // "input-47",
+  // "input-48",
+  // "input-49",
+  // "input-50",
+  // "input-51",
+  // "input-52",
+  // "input-53",
+  // "input-54",
+  // "input-55",
+  // "input-56",
+  // "input-57",
+];
+
+const textareaDir = "textareas";
+const textareaFiles = [
+  "textarea-01",
+  "textarea-02",
+  "textarea-03",
+  "textarea-04",
+  "textarea-05",
+  // "textarea-06",
+  // "textarea-07",
+  // "textarea-08",
+  // "textarea-09",
+  // "textarea-10",
+  // "textarea-11",
+  // "textarea-12",
+  // "textarea-13",
+  // "textarea-14",
+  // "textarea-15",
+  // "textarea-16",
+  // "textarea-17",
+  // "textarea-18",
+  // "textarea-19",
+];
+
+const files = [...inputFiles, ...textareaFiles];
 
 export default function IndexPage() {
   return (
@@ -33,8 +123,35 @@ export default function IndexPage() {
       <div className="container py-6">
         <section id="charts" className="scroll-mt-20">
           <div className="grid gap-4">
-            <ChartsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
-            <ThemesStyle />
+            <VarientsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
+            <div className="px-1">
+              <div className="w-full">
+                <div className="grid w-full grid-cols-1 gap-2 overflow-hidden pb-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {inputFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        key={componentName}
+                        directory={inputDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                  {textareaFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        key={componentName}
+                        directory={textareaDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+                {/* <Link className="absolute bottom-2 left-1/2 translate-x-[-50%] rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/inputs">See more Input Varients</Link> */}
+              </div>
+              <Separator />
+
+            </div>
+            {/* <ThemesStyle />
             <div className="gap-6 md:flex md:flex-row-reverse md:items-start">
               <ThemesSwitcher
                 themes={THEMES}
@@ -318,7 +435,7 @@ export default function IndexPage() {
                   </ChartDisplay>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
       </div>
