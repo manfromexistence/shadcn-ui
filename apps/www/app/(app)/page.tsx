@@ -30,51 +30,6 @@ const inputFiles = [
   "input-10",
   "input-11",
   "input-12",
-  "input-13",
-  "input-14",
-  "input-15",
-  // "input-16",
-  // "input-17",
-  // "input-18",
-  // "input-19",
-  // "input-20",
-  // "input-21",
-  // "input-22",
-  // "input-23",
-  // "input-24",
-  // "input-25",
-  // "input-26",
-  // "input-27",
-  // "input-28",
-  // "input-29",
-  // "input-30",
-  // "input-31",
-  // "input-32",
-  // "input-33",
-  // "input-34",
-  // "input-35",
-  // "input-36",
-  // "input-37",
-  // "input-38",
-  // "input-39",
-  // "input-40",
-  // "input-41",
-  // "input-42",
-  // "input-43",
-  // "input-44",
-  // "input-45",
-  // "input-46",
-  // "input-47",
-  // "input-48",
-  // "input-49",
-  // "input-50",
-  // "input-51",
-  // "input-52",
-  // "input-53",
-  // "input-54",
-  // "input-55",
-  // "input-56",
-  // "input-57",
 ];
 
 const textareaDir = "textareas";
@@ -83,24 +38,106 @@ const textareaFiles = [
   "textarea-02",
   "textarea-03",
   "textarea-04",
-  "textarea-05",
-  // "textarea-06",
-  // "textarea-07",
-  // "textarea-08",
-  // "textarea-09",
-  // "textarea-10",
-  // "textarea-11",
-  // "textarea-12",
-  // "textarea-13",
-  // "textarea-14",
-  // "textarea-15",
-  // "textarea-16",
-  // "textarea-17",
-  // "textarea-18",
-  // "textarea-19",
+];
+const buttonDir = "buttons";
+const buttonFiles = [
+  "button-01",
+  "button-02",
+  "button-03",
+  "button-04",
+  "button-05",
+  "button-06",
+  "button-07",
+  "button-08",
+  "button-09",
+  "button-10",
+  "button-11",
+  "button-12",
+  "button-13",
+  "button-14",
+  "button-15",
+  "button-16",
 ];
 
-const files = [...inputFiles, ...textareaFiles];
+const selectDir = "selects";
+const selectFiles = [
+  "select-01",
+  "select-02",
+  "select-03",
+  "select-04",
+  "select-05",
+  "select-06",
+  "select-07",
+  "select-08",
+  "select-09",
+  "select-10",
+  "select-11",
+  "select-12",
+  "select-13",
+  "select-14",
+  "select-15",
+  "select-16",
+];
+
+const checboxDir = "checkboxes";
+const checboxFiles = [
+  "checkbox-01",
+  "checkbox-02",
+  "checkbox-03",
+  "checkbox-04",
+  "checkbox-05",
+  "checkbox-06",
+  "checkbox-07",
+  "checkbox-08",
+  "checkbox-09",
+  "checkbox-10",
+  "checkbox-11",
+  "checkbox-12",
+  "checkbox-13",
+  "checkbox-14",
+  "checkbox-15",
+  "checkbox-16",
+];
+
+const radioDir = "radios";
+const radioFiles = [
+  "radio-01",
+  "radio-02",
+  "radio-03",
+  "radio-04",
+  "radio-05",
+  "radio-06",
+  "radio-07",
+  "radio-08",
+  "radio-09",
+  "radio-10",
+  "radio-11",
+  "radio-12",
+  "radio-13",
+  "radio-14",
+  "radio-15",
+  "radio-16",
+];
+
+const switchDir = "switches";
+const switchFiles = [
+  "switch-01",
+  "switch-02",
+  "switch-03",
+  "switch-04",
+  "switch-05",
+  "switch-06",
+  "switch-07",
+  "switch-08",
+  "switch-09",
+  "switch-10",
+  "switch-11",
+  "switch-12",
+  "switch-13",
+  "switch-14",
+  "switch-15",
+  "switch-16",
+];
 
 export default function IndexPage() {
   return (
@@ -113,42 +150,137 @@ export default function IndexPage() {
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
-            <a href="#charts">Browse Varients</a>
+            <a href="#varients">Browse Varients</a>
           </Button>
           <Button asChild variant="ghost" size="sm">
             <Link href="/docs/components/chart">Documentation</Link>
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container py-6">
-        <section id="charts" className="scroll-mt-20">
+      <div className="container pt-6">
+        <section id="varients" className="scroll-mt-20">
           <div className="grid gap-4">
             <VarientsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
             <div className="px-1">
-              <div className="w-full">
-                <div className="grid w-full grid-cols-1 gap-2 overflow-hidden pb-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                  {inputFiles.map((componentName) => {
-                    return (
-                      <DemoComponent
-                        key={componentName}
-                        directory={inputDir}
-                        componentName={componentName}
-                      />
-                    );
-                  })}
-                  {textareaFiles.map((componentName) => {
-                    return (
-                      <DemoComponent
-                        key={componentName}
-                        directory={textareaDir}
-                        componentName={componentName}
-                      />
-                    );
-                  })}
-                </div>
-                {/* <Link className="absolute bottom-2 left-1/2 translate-x-[-50%] rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/inputs">See more Input Varients</Link> */}
+              <div id="buttons" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {buttonFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      className="flex items-center justify-center"
+                      key={componentName}
+                      directory={buttonDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
               </div>
+
+              <div className="flex w-full items-center justify-center py-2">
+                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/buttons">See more Button Varients</Link>
+              </div>
+
               <Separator />
+
+              <div id="inputs" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {inputFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      key={componentName}
+                      directory={inputDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
+                {textareaFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      key={componentName}
+                      directory={textareaDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
+              </div>
+
+              <div className="flex w-full items-center justify-center py-2">
+                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/inputs">See more Inputs Varients</Link>
+              </div>
+
+              <Separator />
+
+              <div id="selects" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {selectFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      className="flex items-center justify-center"
+                      key={componentName}
+                      directory={selectDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
+              </div>
+              
+              <div className="flex w-full items-center justify-center py-2">
+                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/selects">See more Select Varients</Link>
+              </div>
+
+              <Separator />
+
+              <div id="checkboxes" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {checboxFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      className="flex items-center justify-center"
+                      key={componentName}
+                      directory={checboxDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
+              </div>
+              
+              <div className="flex w-full items-center justify-center py-2">
+                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-switches">See more Checkbox Varients</Link>
+              </div>
+
+              <Separator />
+
+              <div id="radios" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {radioFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      className="flex items-center justify-center"
+                      key={componentName}
+                      directory={radioDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
+              </div>
+              
+              <div className="flex w-full items-center justify-center py-2">
+                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-switches">See more Radio Varients</Link>
+              </div>
+
+              <Separator />
+
+              <div id="switches" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {switchFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      className="flex items-center justify-center"
+                      key={componentName}
+                      directory={switchDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
+              </div>
+              
+              <div className="flex w-full items-center justify-center py-2">
+                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-switches">See more Switch Varients</Link>
+              </div>
 
             </div>
             {/* <ThemesStyle />

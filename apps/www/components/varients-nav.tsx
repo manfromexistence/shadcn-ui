@@ -8,24 +8,28 @@ import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 
 const links = [
   {
-    name: "Inputs",
-    href: "/charts#inputs",
-  },
-  {
     name: "Buttons",
-    href: "/charts#buttons",
+    href: "/varients#buttons",
   },
   {
-    name: "Checks Radios Switcher",
-    href: "/charts#checks-radios-switches",
+    name: "Inputs",
+    href: "/varients#inputs",
   },
   {
     name: "Selects",
-    href: "/charts#selects",
+    href: "/varients#selects",
   },
   {
-    name: "Easings",
-    href: "/charts#easings",
+    name: "Checkboxes",
+    href: "/varients#checkboxes",
+  },
+  {
+    name: "Radios",
+    href: "/varients#radios",
+  },
+  {
+    name: "Switches",
+    href: "/varients#switches",
   },
 ]
 
