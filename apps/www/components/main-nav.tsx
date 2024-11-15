@@ -29,16 +29,19 @@ export function MainNav() {
           Docs
         </Link>
         <Link
-          href="/docs/components"
+          href="/varients"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/components") &&
-              !pathname?.startsWith("/docs/component/chart")
+            pathname?.startsWith("/variants") &&
+              (!pathname?.startsWith("/variants/buttons") ||
+                pathname?.startsWith("/variants/inputs") ||
+                pathname?.startsWith("/variants/checkboxes-radios-switches") ||
+                pathname?.startsWith("/variants/selects"))
               ? "text-foreground"
               : "text-foreground/80"
           )}
         >
-          Components
+          Varients
         </Link>
         <Link
           href="/blocks"
@@ -52,16 +55,16 @@ export function MainNav() {
           Blocks
         </Link>
         <Link
-          href="/charts"
+          href="/canvases"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/component/chart") ||
-              pathname?.startsWith("/charts")
+            pathname?.startsWith("/docs/component/canvas") ||
+              pathname?.startsWith("/canvases")
               ? "text-foreground"
               : "text-foreground/80"
           )}
         >
-          Charts
+          Canvases
         </Link>
         <Link
           href="/themes"
@@ -75,15 +78,15 @@ export function MainNav() {
           Themes
         </Link>
         <Link
-          href="/colors"
+          href="/renderers"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/colors")
+            pathname?.startsWith("/renderers")
               ? "text-foreground"
               : "text-foreground/80"
           )}
         >
-          Colors
+          Renderers
         </Link>
       </nav>
     </div>

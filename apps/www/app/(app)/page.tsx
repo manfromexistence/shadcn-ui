@@ -1,20 +1,10 @@
 import { Announcement } from "@/components/announcement";
-import { ExamplesNav } from "@/components/examples-nav";
 import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "@/components/page-header";
-import { siteConfig } from "@/config/site";
 import { Button } from "@/registry/default/ui/button";
 import Link from "next/link";
-import { THEMES } from "@/lib/themes"
-import { ChartDisplay } from "@/components/chart-display"
-import { ChartsNav } from "@/components/charts-nav"
-import { ThemesSwitcher } from "@/components/themes-selector"
-import { ThemesStyle } from "@/components/themes-styles"
 import { Separator } from "@/registry/new-york/ui/separator"
-import * as Charts from "@/app/(app)/charts/charts"
 import { VarientsNav } from "@/components/varients-nav";
-import Cta from "@/demo/cta";
 import DemoComponent from "@/demo/demo-component";
-// import PageHeader from "@/demo/page-header";
 
 const inputDir = "inputs";
 const inputFiles = [

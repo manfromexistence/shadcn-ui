@@ -1,10 +1,11 @@
-import Cta from "@/demo/cta";
 import DemoComponent from "@/demo/demo-component";
-import PageHeader from "@/demo/page-header";
 import type { Metadata } from "next";
+import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "@/components/page-header";
+import { Button } from "@/registry/default/ui/button";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Checkbox, Radio, and Switch Components - Origin UI",
+  title: "Checkbox, Radio, and Switch Components",
   description:
     "A collection of beautiful and accessible checkbox, radio and switch components built with Tailwind CSS and Next.js.",
 };
@@ -83,20 +84,32 @@ const totalComponents = totalCheckboxes + totalRadios + totalSwitches;
 export default function Page() {
   return (
     <main>
-      <div className="px-4 sm:px-6">
-        <div className="mx-auto w-full max-w-6xl">
-          <PageHeader title="Checkbox, Radio, and Switch">
-            A growing collection of {totalComponents} button components built with Next.js and
-            TailwindCSS.
+      <div className="pt-8">
+        <div className="mx-auto w-full">
+          <PageHeader>
+            <PageHeaderHeading>Checkbox, Radio and Switch Varients</PageHeaderHeading>
+            <PageHeaderDescription>
+              A growing collection of {totalComponents} Checkbox, Radio and Switch components built with Next.js and
+              TailwindCSS.
+            </PageHeaderDescription>
+            <PageActions>
+              <Button asChild size="sm">
+                <Link href="/varients">Browse Varients</Link>
+              </Button>
+              <Button asChild variant="ghost" size="sm">
+                <Link href="/docs">Documentation</Link>
+              </Button>
+            </PageActions>
           </PageHeader>
 
-          <div className="grid max-w-6xl grid-cols-1 overflow-hidden sm:grid-cols-2 lg:grid-cols-3 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:bg-border/70 [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:bg-border/70 [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+          <div className="grid w-full grid-cols-1 gap-2 overflow-hidden px-4 py-6 sm:grid-cols-3 sm:px-6 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
             {checboxFiles.map((componentName) => {
               return (
                 <DemoComponent
                   key={componentName}
                   directory={checboxDir}
                   componentName={componentName}
+                  className="flex items-center justify-center"
                 />
               );
             })}
@@ -106,6 +119,7 @@ export default function Page() {
                   key={componentName}
                   directory={radioDir}
                   componentName={componentName}
+                  className="flex items-center justify-center"
                 />
               );
             })}
@@ -115,13 +129,11 @@ export default function Page() {
                   key={componentName}
                   directory={switchDir}
                   componentName={componentName}
-                  className="flex justify-center"
+                  className="flex items-center justify-center"
                 />
               );
             })}
           </div>
-
-          <Cta />
         </div>
       </div>
     </main>
