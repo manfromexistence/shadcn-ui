@@ -88,7 +88,7 @@ export function MainNav() {
         >
           Renderers
         </Link>
-        <Link
+        {/* <Link
           href="/more"
           className={cn(
             "transition-colors hover:text-foreground/80",
@@ -96,7 +96,7 @@ export function MainNav() {
           )}
         >
           More
-        </Link>
+        </Link> */}
       </nav>
     </div>
   )

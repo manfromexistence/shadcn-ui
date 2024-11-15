@@ -32,10 +32,10 @@ export const docsConfig: DocsConfig = {
       title: "Themes",
       href: "/themes",
     },
-    {
-      title: "Renderers",
-      href: "/renderers",
-    },
+    // {
+    //   title: "Renderers",
+    //   href: "/renderers",
+    // },
   ],
   sidebarNav: [
     {
