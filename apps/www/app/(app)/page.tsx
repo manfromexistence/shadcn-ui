@@ -143,7 +143,7 @@ export default function IndexPage() {
             <a href="#varients">Browse Varients</a>
           </Button>
           <Button asChild variant="ghost" size="sm">
-            <Link href="/docs/components/chart">Documentation</Link>
+            <Link href="/docs">Documentation</Link>
           </Button>
         </PageActions>
       </PageHeader>

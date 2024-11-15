@@ -89,7 +89,7 @@ export default function Page() {
           <PageHeader>
             <PageHeaderHeading>Checkbox, Radio and Switch Varients</PageHeaderHeading>
             <PageHeaderDescription>
-              A growing collection of {totalComponents} Checkbox, Radio and Switch components built with Next.js and
+              A growing collection of {totalComponents} checkbox, radio and switch components built with Next.js and
               TailwindCSS.
             </PageHeaderDescription>
             <PageActions>

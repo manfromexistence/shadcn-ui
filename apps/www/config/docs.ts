@@ -17,24 +17,24 @@ export const docsConfig: DocsConfig = {
       href: "/docs",
     },
     {
-      title: "Components",
-      href: "/docs/components/accordion",
+      title: "varients",
+      href: "/varients",
     },
     {
       title: "Blocks",
       href: "/blocks",
     },
     {
-      title: "Charts",
-      href: "/charts",
+      title: "Canvases",
+      href: "/canvases",
     },
     {
       title: "Themes",
       href: "/themes",
     },
     {
-      title: "Colors",
-      href: "/colors",
+      title: "Renderers",
+      href: "/renderers",
     },
   ],
   sidebarNav: [

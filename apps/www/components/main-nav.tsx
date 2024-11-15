@@ -88,6 +88,15 @@ export function MainNav() {
         >
           Renderers
         </Link>
+        <Link
+          href="/more"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname === "/more" ? "text-foreground" : "text-foreground/80"
+          )}
+        >
+          More
+        </Link>
       </nav>
     </div>
   )
