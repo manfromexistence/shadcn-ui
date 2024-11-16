@@ -12,7 +12,7 @@ export interface Option {
   value: string;
   label: string;
   disable?: boolean;
-  /** fixed option that can't be removed. */
+  /** fixed option that can&apos;t be removed. */
   fixed?: boolean;
   /** Group the options by providing key. */
   [key: string]: string | boolean | undefined;
@@ -419,7 +419,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
           return value.toLowerCase().includes(search.toLowerCase()) ? 1 : -1;
         };
       }
-      // Using default filter in `cmdk`. We don't have to provide it.
+      // Using default filter in `cmdk`. We don&apos;t have to provide it.
       return undefined;
     }, [creatable, commandProps?.filter]);
 
@@ -434,7 +434,7 @@ const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorP
         className={cn("h-auto overflow-visible bg-transparent", commandProps?.className)}
         shouldFilter={
           commandProps?.shouldFilter !== undefined ? commandProps.shouldFilter : !onSearch
-        } // When onSearch is provided, we don't want to filter the options. You can still override it.
+        } // When onSearch is provided, we don&apos;t want to filter the options. You can still override it.
         filter={commandFilter()}
       >
         <div
