@@ -1,21 +1,69 @@
-"use client"
-import React from 'react';
-import { Tooltip } from 'antd';
-// import { ShowMore } from 'geist/components';
-import { useState, type JSX } from 'react';
+import { Metadata } from "next"
 
-export default function Component(): JSX.Element {
-  const [expanded, setExpanded] = useState(false);
+import { Announcement } from "@/components/announcement"
+import {
+  PageActions,
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "@/components/page-header"
+import { ThemeCustomizer } from "@/components/theme-customizer"
+import { ThemeWrapper } from "@/components/theme-wrapper"
+import CardsNewYork from "@/registry/new-york/example/cards"
 
+
+import "public/registry/themes.css"
+
+export default function ThemesPage() {
   return (
-    <div>
-      <Tooltip title="prompt text">
-        <span>Tooltip will show on mouse enter.</span>
-      </Tooltip>
-      {/* <ShowMore expanded={expanded} onClick={() => setExpanded(!expanded)} /> */}
+    <div className="relative">
+      <ThemeWrapper
+        defaultTheme="zinc"
+        className="relative flex w-full flex-col items-start md:flex-row"
+      >
+        <PageHeader>
+          <Announcement />
+          <PageHeaderHeading className="hidden md:block">
+            Add colors. Make it yours.
+          </PageHeaderHeading>
+          <PageHeaderHeading className="md:hidden">
+            Make it yours
+          </PageHeaderHeading>
+          <PageHeaderDescription>
+            Hand-picked themes that you can copy and paste into your apps.
+          </PageHeaderDescription>
+          <PageActions>
+            <ThemeCustomizer />
+          </PageActions>
+        </PageHeader>
+      </ThemeWrapper>
+      <div className="container py-6">
+        <section id="themes" className="scroll-mt-20">
+        <div className="space-y-8">
+      <ThemeWrapper>
+        <CardsNewYork />
+      </ThemeWrapper>
     </div>
-  );
+        </section>
+      </div>
+    </div>
+  )
 }
+
+
+// "use client"
+// import React from 'react';
+// import { Tooltip } from 'antd';
+
+// export default function Component(): JSX.Element {
+//   return (
+//     <div>
+//       <Tooltip title="prompt text">
+//         <span>Tooltip will show on mouse enter.</span>
+//       </Tooltip>
+//     </div>
+//   );
+// }
 
 
 // import { ChevronRight } from "lucide-react";
