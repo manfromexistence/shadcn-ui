@@ -1,5 +1,3 @@
-import { Metadata } from "next"
-
 import { Announcement } from "@/components/announcement"
 import {
   PageActions,
@@ -10,7 +8,6 @@ import {
 import { ThemeCustomizer } from "@/components/theme-customizer"
 import { ThemeWrapper } from "@/components/theme-wrapper"
 import CardsNewYork from "@/registry/new-york/example/cards"
-
 
 import "public/registry/themes.css"
 
