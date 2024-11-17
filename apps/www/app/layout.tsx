@@ -12,6 +12,8 @@ import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
 import { Toaster as NewYorkSonner } from "@/registry/new-york/ui/sonner"
 import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
 
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -105,7 +107,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           >
             <div vaul-drawer-wrapper="">
               <div className="relative flex min-h-screen flex-col bg-background">
-                {children}
+              <AntdRegistry>{children}</AntdRegistry>
               </div>
             </div>
             <TailwindIndicator />
