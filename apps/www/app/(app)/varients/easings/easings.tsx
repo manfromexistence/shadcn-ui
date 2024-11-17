@@ -454,7 +454,7 @@ export default function Easings({ easings }: EasingsProps) {
             <code className="font-mono text-[13px] text-foreground">
               ease-&#91;cubic-bezier(...)&#93;
             </code>{" "}
-            as recommended in the Tailwind CSS documentation, because the latter won't work with the
+            as recommended in the Tailwind CSS documentation, because the latter won&apos;t work with the
             tailwindcss-animate plugin. See{" "}
             <a
               href="https://github.com/jamiebuilds/tailwindcss-animate/pull/46"
