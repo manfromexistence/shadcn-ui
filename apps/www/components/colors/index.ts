@@ -53,112 +53,7 @@ export * from './utils/string_utils.js';
 export * from './utils/image_utils.js';
 export * from './utils/theme_utils.js';
 
-const theme = themeFromSourceColor(argbFromHex('#f82506'), [
-  {
-    name: "custom-1",
-    value: argbFromHex("#ff0000"),
-    blend: true,
-  },
-]);
-
-// console.log(JSON.stringify(theme, null, 2));
-// Assuming the JSON object is stored in a variable named 'theme'
-const formattedTheme = JSON.parse(JSON.stringify(theme));
-
-// Recursively iterate through the object and convert ARGB numbers to hex codes
-function formatColors(obj: any) {
-  for (const key in obj) {
-    if (typeof obj[key] === 'number') {
-      obj[key] = hexFromArgb(obj[key]);
-    } else if (typeof obj[key] === 'object') {
-      formatColors(obj[key]);
-    }
-  }
-}
-
-formatColors(formattedTheme);
-
-// console.log(JSON.stringify(formattedTheme, null, 2));
-
-// // HEX to RGB
-// function hexToRgb (hex: any) {
-
-//   if (hex.charAt && hex.charAt(0) === '#') {
-//     hex = removeHash(hex)
-//   }
-
-//   if (hex.length === 3) {
-//     hex = expand(hex)
-//   }
-
-//   var bigint = parseInt(hex, 16)
-//   var r = (bigint >> 16) & 255
-//   var g = (bigint >> 8) & 255
-//   var b = bigint & 255
-
-//   return [r, g, b]
-// }
-
-// function removeHash (hex: any) {
-
-//   var arr = hex.split('')
-//   arr.shift()
-//   return arr.join('')
-// }
-
-// function expand (hex: any) {
-
-//   return hex
-//     .split('')
-//     .reduce(function (accum: any[], value: any) {
-
-//       return accum.concat([value, value])
-//     }, [])
-//     .join('')
-// }
-
-// // RBG to HSL
-// function rgbToHsl(r: any, g: any, b: any) {
-//   var d, h, l, max, min, s;
-//   r /= 255;
-//   g /= 255;
-//   b /= 255;
-//   max = Math.max(r, g, b);
-//   min = Math.min(r, g, b);
-//   h = 0;
-//   s = 0;
-//   l = (max + min) / 2;
-//   if (max === min) {
-//     h = s = 0;
-//   } else {
-//     d = max - min;
-//     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-//     switch (max) {
-//       case r:
-//         h = (g - b) / d + (g < b ? 6 : 0);
-//         break;
-//       case g:
-//         h = (b - r) / d + 2;
-//         break;
-//       case b:
-//         h = (r - g) / d + 4;
-//     }
-//     h /= 6;
-//   }
-//   h = h * 360;
-//   s = (s * 100) + "%";
-//   l = (l * 100) + "%";
-//   return [h, s, l];
-// };
-
-// // HEX to HSL
-// function hexToHsl(hex: string): [number, number, number] {
-//   const [r, g, b] = hexToRgb(hex);
-//   const [h, s, l] = rgbToHsl(r, g, b);
-//   // const h: number = hslValue1 as number;
-//   return [Math.round(h), s, l];
-// }
-
+// HEX to HSL
 function hexToRgb(hex: string): [number, number, number] {
   if (hex.charAt(0) === '#') {
     hex = hex.slice(1);
@@ -209,10 +104,31 @@ function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
   return [h * 360, s * 100, l * 100];
 }
 
-function hexToHsl(hex: string): [number, number, number] {
+function hexToHsl(hex: string): any {
   const [r, g, b] = hexToRgb(hex);
   const [h, s, l] = rgbToHsl(r, g, b);
-  return [Math.round(h), s, l];
+  return `${Math.round(h)} ${s.toFixed(1)}% ${l.toFixed(1)}%`;
 }
 
-console.log(hexToHsl("#0062ff"))
+// const hslColor = hexToHsl("#3c00ff");
+// console.log(hslColor);
+// End
+
+
+const theme = themeFromSourceColor(argbFromHex('#f82506'));
+
+const formattedTheme = JSON.parse(JSON.stringify(theme));
+
+function formatColors(obj: any) {
+  for (const key in obj) {
+    if (typeof obj[key] === 'number') {
+      obj[key] = hexToHsl(hexFromArgb(obj[key]));
+    } else if (typeof obj[key] === 'object') {
+      formatColors(obj[key]);
+    }
+  }
+}
+
+formatColors(formattedTheme);
+
+console.log(JSON.stringify(formattedTheme, null, 2));
