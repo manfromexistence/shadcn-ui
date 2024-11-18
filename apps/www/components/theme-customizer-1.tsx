@@ -38,6 +38,7 @@ import {
 import { BaseColor, baseColors } from "@/registry/registry-base-colors"
 
 import "@/styles/mdx.css"
+import Image from "next/image"
 
 export function ThemeCustomizer() {
     const [config, setConfig] = useConfig()
@@ -50,7 +51,12 @@ export function ThemeCustomizer() {
 
     return (
         <div className="flex items-center gap-2">
-            <Drawer>
+            <div
+                className="z-40 w-[340px] rounded-[12px] bg-white p-6 dark:bg-zinc-950"
+            >
+                <Customizer />
+            </div>
+            {/* <Drawer>
                 <DrawerTrigger asChild>
                     <Button size="sm" className="md:hidden">
                         Customize
@@ -72,8 +78,8 @@ export function ThemeCustomizer() {
                         <Customizer />
                     </PopoverContent>
                 </Popover>
-            </div>
-            <CopyCodeButton variant="ghost" size="sm" className="[&_svg]:hidden" />
+            </div> */}
+            {/* <CopyCodeButton variant="ghost" size="sm" className="[&_svg]:hidden" /> */}
         </div>
     )
 }
@@ -121,19 +127,33 @@ function Customizer() {
                 <div className="space-y-1.5">
                     <Label className="text-xs">Color</Label>
                     <div className="grid grid-cols-3 gap-2">
-                        <Button
-                            variant={"outline"}
-                            size="sm"
-                            className="justify-start">
+                        <div
+                            className="flex h-8 w-24 items-center justify-center rounded-md border text-center text-sm font-medium">
                             <span
-                                className={cn(
-                                    "flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-500"
-                                )}
+                                className="relative mr-1 flex h-7 w-7 items-center justify-center rounded-full bg-cover bg-center bg-no-repeat"
+                                style={{
+                                    backgroundImage: `url(/color-wheel.png)`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    backgroundRepeat: 'no-repeat',
+                                }}
                             >
-                                <Check className="h-4 w-4 text-white" />
+                                <Check className="z-10 h-4 w-4 text-white" />
                             </span>
+                            {/* <Image alt="color" width={25} height={25} src={"/color-wheel.png"} className="" /> */}
+                            {/* <span
+                                className={cn(
+                                    "relative flex h-5 w-5 items-center justify-center bg-cover bg-center bg-no-repeat"
+                                )}
+                                style={{ backgroundImage: "url('/public/color-wheel.png')" }}
+                            >
+                                <Check className="z-10 h-4 w-4 text-white" />
+                            </span> */}
+                            {/* <Image alt="color" width={50} height={50} src={"/color-wheel.png"} className="absolute left-1/2 top-1/2 h-5 w-5 translate-x-[-50%] translate-y-[-50%]" /> */}
+                            {/* <div className="bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/public/color-wheel.png')" }}>
+                            </div> */}
                             Choose
-                        </Button>
+                        </div>
                         {baseColors
                             .filter(
                                 (theme) =>
