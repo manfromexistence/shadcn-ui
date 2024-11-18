@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import { argbFromHex } from './utils/string_utils.js';
+import { argbFromHex, hexFromArgb } from './utils/string_utils.js';
 import { themeFromSourceColor, applyTheme } from './utils/theme_utils.js';
 
 export * from './blend/blend.js';
@@ -61,4 +61,21 @@ const theme = themeFromSourceColor(argbFromHex('#f82506'), [
   },
 ]);
 
-console.log(JSON.stringify(theme, null, 2));
+// console.log(JSON.stringify(theme, null, 2));
+// Assuming the JSON object is stored in a variable named 'theme'
+const formattedTheme = JSON.parse(JSON.stringify(theme));
+
+// Recursively iterate through the object and convert ARGB numbers to hex codes
+function formatColors(obj:any) {
+  for (const key in obj) {
+    if (typeof obj[key] === 'number') {
+      obj[key] = hexFromArgb(obj[key]);
+    } else if (typeof obj[key] === 'object') {
+      formatColors(obj[key]);
+    }
+  }
+}
+
+formatColors(formattedTheme);
+
+console.log(JSON.stringify(formattedTheme, null, 2));
