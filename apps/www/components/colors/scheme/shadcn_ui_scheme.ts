@@ -218,35 +218,48 @@ export class Scheme {
    */
   static darkFromCorePalette(core: CorePalette): Scheme {
     return new Scheme({
-      primary: core.a1.tone(80),
-      onPrimary: core.a1.tone(20),
-      primaryContainer: core.a1.tone(30),
-      onPrimaryContainer: core.a1.tone(90),
-      secondary: core.a2.tone(80),
-      onSecondary: core.a2.tone(20),
-      secondaryContainer: core.a2.tone(30),
-      onSecondaryContainer: core.a2.tone(90),
-      tertiary: core.a3.tone(80),
-      onTertiary: core.a3.tone(20),
-      tertiaryContainer: core.a3.tone(30),
-      onTertiaryContainer: core.a3.tone(90),
-      error: core.error.tone(80),
-      onError: core.error.tone(20),
-      errorContainer: core.error.tone(30),
-      onErrorContainer: core.error.tone(80),
       background: core.n1.tone(10),
       onBackground: core.n1.tone(90),
+
+      primaryContainer: core.a1.tone(30),
+      onPrimaryContainer: core.a1.tone(90),
+
+      secondaryContainer: core.a2.tone(30),
+      onSecondaryContainer: core.a2.tone(90),
+
+      primary: core.a1.tone(80),
+      onPrimary: core.a1.tone(20),
+
+      secondary: core.a2.tone(80),
+      onSecondary: core.a2.tone(20),
+
       surface: core.n1.tone(10),
       onSurface: core.n1.tone(90),
-      surfaceVariant: core.n2.tone(30),
-      onSurfaceVariant: core.n2.tone(80),
+
+      tertiary: core.a3.tone(80),
+      onTertiary: core.a3.tone(20),
+
+      error: core.error.tone(80),
+      onError: core.error.tone(20),
+
       outline: core.n2.tone(60),
       outlineVariant: core.n2.tone(30),
-      shadow: core.n1.tone(0),
       scrim: core.n1.tone(0),
-      inverseSurface: core.n1.tone(90),
+
       inverseOnSurface: core.n1.tone(20),
-      inversePrimary: core.a1.tone(40)
+      inverseOnSurface: core.n1.tone(20),
+      inverseOnSurface: core.n1.tone(20),
+      inverseOnSurface: core.n1.tone(20),
+      inversePrimary: core.a1.tone(40),
+
+      tertiaryContainer: core.a3.tone(30),
+      onTertiaryContainer: core.a3.tone(90),
+      errorContainer: core.error.tone(30),
+      onErrorContainer: core.error.tone(80),
+      surfaceVariant: core.n2.tone(30),
+      onSurfaceVariant: core.n2.tone(80),
+      shadow: core.n1.tone(0),
+      inverseSurface: core.n1.tone(90)
     });
   }
 
@@ -288,3 +301,4 @@ export class Scheme {
     };
   }
 }
+
