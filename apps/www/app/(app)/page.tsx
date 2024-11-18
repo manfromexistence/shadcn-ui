@@ -5,7 +5,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { ThemeCustomizer } from "@/components/theme-customizer"
+import { ThemeCustomizer } from "@/components/theme-customizer-1"
 import { ThemeWrapper } from "@/components/theme-wrapper"
 import CardsNewYork from "@/registry/new-york/example/cards"
 
