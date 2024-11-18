@@ -16,7 +16,7 @@
  */
 
 import { argbFromHex, hexFromArgb } from './utils/string_utils.js';
-import { themeFromSourceColor, applyTheme } from './utils/theme_utils.js';
+import { themeFromSourceColor } from './utils/theme_utils.js';
 
 export * from './blend/blend.js';
 export * from './contrast/contrast.js';

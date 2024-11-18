@@ -58,13 +58,13 @@ export interface CustomColorGroup {
 export interface Theme {
   source: number;
   schemes: {light: Scheme; dark: Scheme;};
-  palettes: {
-    primary: TonalPalette; secondary: TonalPalette; tertiary: TonalPalette;
-    neutral: TonalPalette;
-    neutralVariant: TonalPalette;
-    error: TonalPalette;
-  };
-  customColors: CustomColorGroup[];
+  // palettes: {
+  //   primary: TonalPalette; secondary: TonalPalette; tertiary: TonalPalette;
+  //   neutral: TonalPalette;
+  //   neutralVariant: TonalPalette;
+  //   error: TonalPalette;
+  // };
+  // customColors: CustomColorGroup[];
 }
 
 /**
@@ -83,15 +83,15 @@ export function themeFromSourceColor(
       light: Scheme.light(source),
       dark: Scheme.dark(source),
     },
-    palettes: {
-      primary: palette.a1,
-      secondary: palette.a2,
-      tertiary: palette.a3,
-      neutral: palette.n1,
-      neutralVariant: palette.n2,
-      error: palette.error,
-    },
-    customColors: customColors.map((c) => customColor(source, c)),
+    // palettes: {
+    //   primary: palette.a1,
+    //   secondary: palette.a2,
+    //   tertiary: palette.a3,
+    //   neutral: palette.n1,
+    //   neutralVariant: palette.n2,
+    //   error: palette.error,
+    // },
+    // customColors: customColors.map((c) => customColor(source, c)),
   };
 }
 
@@ -151,41 +151,41 @@ export function customColor(
  * @param theme Theme object
  * @param options Options
  */
-export function applyTheme(theme: Theme, options?: {
-  dark?: boolean,
-  target?: HTMLElement,
-  brightnessSuffix?: boolean,
-  paletteTones?: number[],
-}) {
-  const target = options?.target || document.body;
-  const isDark = options?.dark ?? false;
-  const scheme = isDark ? theme.schemes.dark : theme.schemes.light;
-  setSchemeProperties(target, scheme);
-  if (options?.brightnessSuffix) {
-    setSchemeProperties(target, theme.schemes.dark, '-dark');
-    setSchemeProperties(target, theme.schemes.light, '-light');
-  }
-  if (options?.paletteTones) {
-    const tones = options?.paletteTones ?? [];
-    for (const [key, palette] of Object.entries(theme.palettes)) {
-      const paletteKey = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-      for (const tone of tones) {
-        const token = `--md-ref-palette-${paletteKey}-${paletteKey}${tone}`;
-        const color = hexFromArgb(palette.tone(tone));
-        target.style.setProperty(token, color);
-      }
-    }
-  }
-}
+// export function applyTheme(theme: Theme, options?: {
+//   dark?: boolean,
+//   target?: HTMLElement,
+//   brightnessSuffix?: boolean,
+//   paletteTones?: number[],
+// }) {
+//   const target = options?.target || document.body;
+//   const isDark = options?.dark ?? false;
+//   const scheme = isDark ? theme.schemes.dark : theme.schemes.light;
+//   setSchemeProperties(target, scheme);
+//   if (options?.brightnessSuffix) {
+//     setSchemeProperties(target, theme.schemes.dark, '-dark');
+//     setSchemeProperties(target, theme.schemes.light, '-light');
+//   }
+//   if (options?.paletteTones) {
+//     const tones = options?.paletteTones ?? [];
+//     for (const [key, palette] of Object.entries(theme.palettes)) {
+//       const paletteKey = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+//       for (const tone of tones) {
+//         const token = `--md-ref-palette-${paletteKey}-${paletteKey}${tone}`;
+//         const color = hexFromArgb(palette.tone(tone));
+//         target.style.setProperty(token, color);
+//       }
+//     }
+//   }
+// }
 
-function setSchemeProperties(
-    target: HTMLElement,
-    scheme: Scheme,
-    suffix: string = '',
-) {
-  for (const [key, value] of Object.entries(scheme.toJSON())) {
-    const token = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-    const color = hexFromArgb(value);
-    target.style.setProperty(`--md-sys-color-${token}${suffix}`, color);
-  }
-}
+// function setSchemeProperties(
+//     target: HTMLElement,
+//     scheme: Scheme,
+//     suffix: string = '',
+// ) {
+//   for (const [key, value] of Object.entries(scheme.toJSON())) {
+//     const token = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+//     const color = hexFromArgb(value);
+//     target.style.setProperty(`--md-sys-color-${token}${suffix}`, color);
+//   }
+// }
