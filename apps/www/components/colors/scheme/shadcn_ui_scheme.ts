@@ -246,11 +246,11 @@ export class Scheme {
       outlineVariant: core.n2.tone(30),
       scrim: core.n1.tone(0),
 
-      inverseOnSurface: core.n1.tone(20),
-      inverseOnSurface: core.n1.tone(20),
-      inverseOnSurface: core.n1.tone(20),
-      inverseOnSurface: core.n1.tone(20),
-      inversePrimary: core.a1.tone(40),
+      inverseOnSurface: core.a1.tone(99),
+      inverseOnSurface: core.a2.tone(99),
+      inverseOnSurface: core.a3.tone(99),
+      inverseOnSurface: core.n1.tone(99),
+      inversePrimary: core.n2.tone(99),
 
       tertiaryContainer: core.a3.tone(30),
       onTertiaryContainer: core.a3.tone(90),
