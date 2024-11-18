@@ -32,116 +32,128 @@ export class Scheme {
     return this.props.primary;
   }
 
-  get onPrimary(): number {
-    return this.props.onPrimary;
+  get primaryForeground(): number {
+    return this.props.primaryForeground;
   }
 
-  get primaryContainer(): number {
-    return this.props.primaryContainer;
+  get card(): number {
+    return this.props.card;
   }
 
-  get onPrimaryContainer(): number {
-    return this.props.onPrimaryContainer;
+  get cardForeground(): number {
+    return this.props.cardForeground;
   }
 
   get secondary(): number {
     return this.props.secondary;
   }
 
-  get onSecondary(): number {
-    return this.props.onSecondary;
+  get secondaryForeground(): number {
+    return this.props.secondaryForeground;
   }
 
-  get secondaryContainer(): number {
-    return this.props.secondaryContainer;
+  get popover(): number {
+    return this.props.popover;
   }
 
-  get onSecondaryContainer(): number {
-    return this.props.onSecondaryContainer;
+  get popoverForeground(): number {
+    return this.props.popoverForeground;
   }
 
-  get tertiary(): number {
-    return this.props.tertiary;
+  get accent(): number {
+    return this.props.accent;
   }
 
-  get onTertiary(): number {
-    return this.props.onTertiary;
+  get accentForeground(): number {
+    return this.props.accentForeground;
   }
 
-  get tertiaryContainer(): number {
-    return this.props.tertiaryContainer;
+  get sidebarPrimary(): number {
+    return this.props.sidebarPrimary;
   }
 
-  get onTertiaryContainer(): number {
-    return this.props.onTertiaryContainer;
+  get sidebarPrimaryForeground(): number {
+    return this.props.sidebarPrimaryForeground;
   }
 
-  get error(): number {
-    return this.props.error;
+  get destructive(): number {
+    return this.props.destructive;
   }
 
-  get onError(): number {
-    return this.props.onError;
+  get destructiveForeground(): number {
+    return this.props.destructiveForeground;
   }
 
-  get errorContainer(): number {
-    return this.props.errorContainer;
+  get chart1(): number {
+    return this.props.chart1;
   }
 
-  get onErrorContainer(): number {
-    return this.props.onErrorContainer;
+  get chart2(): number {
+    return this.props.chart2;
+  }
+
+  get chart3(): number {
+    return this.props.chart3;
+  }
+
+  get chart4(): number {
+    return this.props.chart4;
+  }
+
+  get chart5(): number {
+    return this.props.chart5;
   }
 
   get background(): number {
     return this.props.background;
   }
 
-  get onBackground(): number {
-    return this.props.onBackground;
+  get foreground(): number {
+    return this.props.foreground;
   }
 
-  get surface(): number {
-    return this.props.surface;
+  get sidebarAccent(): number {
+    return this.props.sidebarAccent;
   }
 
-  get onSurface(): number {
-    return this.props.onSurface;
+  get sidebarAccentForeground(): number {
+    return this.props.sidebarAccentForeground;
   }
 
-  get surfaceVariant(): number {
-    return this.props.surfaceVariant;
+  get sidebarBackground(): number {
+    return this.props.sidebarBackground;
   }
 
-  get onSurfaceVariant(): number {
-    return this.props.onSurfaceVariant;
+  get sidebarForeground(): number {
+    return this.props.sidebarForeground;
   }
 
-  get outline(): number {
-    return this.props.outline;
+  get border(): number {
+    return this.props.border;
   }
 
-  get outlineVariant(): number {
-    return this.props.outlineVariant;
+  get input(): number {
+    return this.props.input;
   }
 
-  get shadow(): number {
-    return this.props.shadow;
+  get sidebarBorder(): number {
+    return this.props.sidebarBorder;
   }
 
-  get scrim(): number {
-    return this.props.scrim;
+  get ring(): number {
+    return this.props.ring;
   }
 
-  get inverseSurface(): number {
-    return this.props.inverseSurface;
+  get muted(): number {
+    return this.props.muted;
   }
 
-  get inverseOnSurface(): number {
-    return this.props.inverseOnSurface;
+  get mutedForeground(): number {
+    return this.props.mutedForeground;
   }
 
-  get inversePrimary(): number {
-    return this.props.inversePrimary;
+  get sidebarRing(): number {
+    return this.props.sidebarRing;
   }
 
   /**
@@ -181,35 +193,48 @@ export class Scheme {
    */
   static lightFromCorePalette(core: CorePalette): Scheme {
     return new Scheme({
-      primary: core.a1.tone(40),
-      onPrimary: core.a1.tone(100),
-      primaryContainer: core.a1.tone(90),
-      onPrimaryContainer: core.a1.tone(10),
-      secondary: core.a2.tone(40),
-      onSecondary: core.a2.tone(100),
-      secondaryContainer: core.a2.tone(90),
-      onSecondaryContainer: core.a2.tone(10),
-      tertiary: core.a3.tone(40),
-      onTertiary: core.a3.tone(100),
-      tertiaryContainer: core.a3.tone(90),
-      onTertiaryContainer: core.a3.tone(10),
-      error: core.error.tone(40),
-      onError: core.error.tone(100),
-      errorContainer: core.error.tone(90),
-      onErrorContainer: core.error.tone(10),
       background: core.n1.tone(99),
-      onBackground: core.n1.tone(10),
-      surface: core.n1.tone(99),
-      onSurface: core.n1.tone(10),
-      surfaceVariant: core.n2.tone(90),
-      onSurfaceVariant: core.n2.tone(30),
-      outline: core.n2.tone(50),
-      outlineVariant: core.n2.tone(80),
-      shadow: core.n1.tone(0),
-      scrim: core.n1.tone(0),
-      inverseSurface: core.n1.tone(20),
-      inverseOnSurface: core.n1.tone(95),
-      inversePrimary: core.a1.tone(80)
+      foreground: core.n1.tone(10),
+
+      card: core.a1.tone(90),
+      cardForeground: core.a1.tone(10),
+
+      popover: core.a2.tone(90),
+      popoverForeground: core.a2.tone(10),
+
+      primary: core.a1.tone(40),
+      primaryForeground: core.a1.tone(100),
+
+      secondary: core.a2.tone(40),
+      secondaryForeground: core.a2.tone(100),
+
+      muted: core.n1.tone(20),
+      mutedForeground: core.n1.tone(95),
+
+      accent: core.a3.tone(40),
+      accentForeground: core.a3.tone(100),
+
+      destructive: core.error.tone(40),
+      destructiveForeground: core.error.tone(100),
+
+      border: core.n2.tone(50),
+      input: core.n2.tone(80),
+      ring: core.n1.tone(0),
+
+      chart1: core.a1.tone(50),
+      chart2: core.a2.tone(50),
+      chart3: core.a3.tone(50),
+      chart4: core.n1.tone(50),
+      chart5: core.n2.tone(50),
+
+      sidebarBackground: core.n2.tone(90),
+      sidebarForeground: core.n2.tone(30),
+      sidebarPrimary: core.a3.tone(90),
+      sidebarPrimaryForeground: core.a3.tone(10),
+      sidebarAccent: core.n1.tone(99),
+      sidebarAccentForeground: core.n1.tone(10),
+      sidebarBorder: core.n1.tone(0),
+      sidebarRing: core.a1.tone(80)
     });
   }
 
@@ -219,87 +244,93 @@ export class Scheme {
   static darkFromCorePalette(core: CorePalette): Scheme {
     return new Scheme({
       background: core.n1.tone(10),
-      onBackground: core.n1.tone(90),
+      foreground: core.n1.tone(90),
 
-      primaryContainer: core.a1.tone(30),
-      onPrimaryContainer: core.a1.tone(90),
+      card: core.a1.tone(30),
+      cardForeground: core.a1.tone(90),
 
-      secondaryContainer: core.a2.tone(30),
-      onSecondaryContainer: core.a2.tone(90),
+      popover: core.a2.tone(30),
+      popoverForeground: core.a2.tone(90),
 
       primary: core.a1.tone(80),
-      onPrimary: core.a1.tone(20),
+      primaryForeground: core.a1.tone(20),
 
       secondary: core.a2.tone(80),
-      onSecondary: core.a2.tone(20),
+      secondaryForeground: core.a2.tone(20),
 
-      surface: core.n1.tone(10),
-      onSurface: core.n1.tone(90),
+      muted: core.n1.tone(90),
+      mutedForeground: core.a1.tone(99),
 
-      tertiary: core.a3.tone(80),
-      onTertiary: core.a3.tone(20),
+      accent: core.a3.tone(80),
+      accentForeground: core.a3.tone(20),
 
-      error: core.error.tone(80),
-      onError: core.error.tone(20),
+      destructive: core.error.tone(80),
+      destructiveForeground: core.error.tone(20),
 
-      outline: core.n2.tone(60),
-      outlineVariant: core.n2.tone(30),
-      scrim: core.n1.tone(0),
+      border: core.n2.tone(60),
+      input: core.n2.tone(30),
+      ring: core.n1.tone(0),
 
-      errorContainer: core.error.tone(30),
-      onErrorContainer: core.error.tone(80),
+      chart1: core.a1.tone(70),
+      chart2: core.a2.tone(70),
+      chart3: core.a3.tone(70),
+      chart4: core.n1.tone(70),
+      chart5: core.n2.tone(70),
 
-      tertiaryContainer: core.a3.tone(30),
-      onTertiaryContainer: core.a3.tone(90),
-      surfaceVariant: core.n2.tone(30),
-      onSurfaceVariant: core.n2.tone(80),
-      inverseSurface: core.n1.tone(90),
-      inverseOnSurface: core.a1.tone(99),
-      shadow: core.n1.tone(0),
-      inversePrimary: core.n2.tone(99)
+      sidebarPrimary: core.a3.tone(30),
+      sidebarPrimaryForeground: core.a3.tone(90),
+      sidebarBackground: core.n2.tone(30),
+      sidebarForeground: core.n2.tone(80),
+      sidebarAccent: core.n1.tone(10),
+      sidebarAccentForeground: core.n1.tone(90),
+      sidebarBorder: core.n1.tone(0),
+      sidebarRing: core.n2.tone(99)
     });
   }
 
   private constructor(private readonly props: {
     background: number,
-    onBackground: number,
+    foreground: number,
 
-    primaryContainer: number,
-    onPrimaryContainer: number,
+    card: number,
+    cardForeground: number,
 
-    secondaryContainer: number,
-    onSecondaryContainer: number,
+    popover: number,
+    popoverForeground: number,
 
     primary: number,
-    onPrimary: number,
+    primaryForeground: number,
 
     secondary: number,
-    onSecondary: number,
+    secondaryForeground: number,
 
-    surface: number,
-    onSurface: number,
+    muted: number,
+    mutedForeground: number,
 
-    tertiary: number,
-    onTertiary: number,
+    accent: number,
+    accentForeground: number,
 
-    error: number,
-    onError: number,
+    destructive: number,
+    destructiveForeground: number,
 
-    outline: number,
-    outlineVariant: number,
-    scrim: number,
+    border: number,
+    input: number,
+    ring: number,
 
-    errorContainer: number,
-    onErrorContainer: number,
+    chart1: number,
+    chart2: number,
+    chart3: number,
+    chart4: number,
+    chart5: number,
 
-    surfaceVariant: number,
-    onSurfaceVariant: number,
-    tertiaryContainer: number,
-    onTertiaryContainer: number,
-    inverseSurface: number,
-    inverseOnSurface: number,
-    shadow: number,
-    inversePrimary: number
+    sidebarBackground: number,
+    sidebarForeground: number,
+    sidebarPrimary: number,
+    sidebarPrimaryForeground: number,
+    sidebarAccent: number,
+    sidebarAccentForeground: number,
+    sidebarBorder: number,
+    sidebarRing: number
   }) {}
 
   toJSON() {

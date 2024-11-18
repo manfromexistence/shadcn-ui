@@ -18,7 +18,7 @@
 import {Blend} from '../blend/blend.js';
 import {CorePalette} from '../palettes/core_palette.js';
 import {TonalPalette} from '../palettes/tonal_palette.js';
-import {Scheme} from '../scheme/scheme.js';
+import {Scheme} from '../scheme/shadcn_ui_scheme.js';
 
 import {sourceColorFromImage} from './image_utils.js';
 import {hexFromArgb} from './string_utils.js';
