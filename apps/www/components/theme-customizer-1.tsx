@@ -39,6 +39,11 @@ import { BaseColor, baseColors } from "@/registry/registry-base-colors"
 
 import "@/styles/mdx.css"
 import Image from "next/image"
+import { useMemo, useState } from 'react';
+import { ColorPicker, ConfigProvider, theme } from 'antd';
+import type { ColorPickerProps, GetProp } from 'antd';
+
+type Color = Extract<GetProp<ColorPickerProps, 'value'>, string | { cleared: any }>;
 
 export function ThemeCustomizer() {
     const [config, setConfig] = useConfig()
@@ -85,6 +90,17 @@ export function ThemeCustomizer() {
 }
 
 function Customizer() {
+    const [color, setColor] = useState<Color>('#1677ff');
+
+    const bgColor = useMemo<string>(
+        () => (typeof color === 'string' ? color : color!.toHexString()),
+        [color],
+    );
+
+    const btnStyle: React.CSSProperties = {
+        backgroundColor: bgColor,
+    };
+
     const [mounted, setMounted] = React.useState(false)
     const { setTheme: setMode, resolvedTheme: mode } = useTheme()
     const [config, setConfig] = useConfig()
@@ -128,9 +144,9 @@ function Customizer() {
                     <Label className="text-xs">Color</Label>
                     <div className="grid grid-cols-3 gap-2">
                         <div
-                            className="flex h-8 w-24 items-center justify-center rounded-md border text-center text-sm font-medium">
+                            className="flex h-8 w-24 items-center justify-start rounded-md border px-2 text-center text-xs hover:bg-primary-foreground hover:text-primary">
                             <span
-                                className="relative mr-1 flex h-7 w-7 items-center justify-center rounded-full bg-cover bg-center bg-no-repeat"
+                                className="relative mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-cover bg-center bg-no-repeat"
                                 style={{
                                     backgroundImage: `url(/color-wheel.png)`,
                                     backgroundSize: 'cover',
@@ -140,19 +156,15 @@ function Customizer() {
                             >
                                 <Check className="z-10 h-4 w-4 text-white" />
                             </span>
-                            {/* <Image alt="color" width={25} height={25} src={"/color-wheel.png"} className="" /> */}
-                            {/* <span
-                                className={cn(
-                                    "relative flex h-5 w-5 items-center justify-center bg-cover bg-center bg-no-repeat"
-                                )}
-                                style={{ backgroundImage: "url('/public/color-wheel.png')" }}
+                            <ConfigProvider
+                                theme={{
+                                    algorithm: theme.darkAlgorithm,
+                                }}
                             >
-                                <Check className="z-10 h-4 w-4 text-white" />
-                            </span> */}
-                            {/* <Image alt="color" width={50} height={50} src={"/color-wheel.png"} className="absolute left-1/2 top-1/2 h-5 w-5 translate-x-[-50%] translate-y-[-50%]" /> */}
-                            {/* <div className="bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/public/color-wheel.png')" }}>
-                            </div> */}
-                            Choose
+                                <ColorPicker value={color} onChange={setColor}>
+                                    Choose
+                                </ColorPicker>
+                            </ConfigProvider>
                         </div>
                         {baseColors
                             .filter(
