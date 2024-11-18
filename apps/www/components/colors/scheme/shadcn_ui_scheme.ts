@@ -246,52 +246,59 @@ export class Scheme {
       outlineVariant: core.n2.tone(30),
       scrim: core.n1.tone(0),
 
-      inverseOnSurface: core.a1.tone(99),
-      inverseOnSurface: core.a2.tone(99),
-      inverseOnSurface: core.a3.tone(99),
-      inverseOnSurface: core.n1.tone(99),
-      inversePrimary: core.n2.tone(99),
+      errorContainer: core.error.tone(30),
+      onErrorContainer: core.error.tone(80),
 
       tertiaryContainer: core.a3.tone(30),
       onTertiaryContainer: core.a3.tone(90),
-      errorContainer: core.error.tone(30),
-      onErrorContainer: core.error.tone(80),
       surfaceVariant: core.n2.tone(30),
       onSurfaceVariant: core.n2.tone(80),
+      inverseSurface: core.n1.tone(90),
+      inverseOnSurface: core.a1.tone(99),
       shadow: core.n1.tone(0),
-      inverseSurface: core.n1.tone(90)
+      inversePrimary: core.n2.tone(99)
     });
   }
 
   private constructor(private readonly props: {
-    primary: number,
-    onPrimary: number,
-    primaryContainer: number,
-    onPrimaryContainer: number,
-    secondary: number,
-    onSecondary: number,
-    secondaryContainer: number,
-    onSecondaryContainer: number,
-    tertiary: number,
-    onTertiary: number,
-    tertiaryContainer: number,
-    onTertiaryContainer: number,
-    error: number,
-    onError: number,
-    errorContainer: number,
-    onErrorContainer: number,
     background: number,
     onBackground: number,
+
+    primaryContainer: number,
+    onPrimaryContainer: number,
+
+    secondaryContainer: number,
+    onSecondaryContainer: number,
+
+    primary: number,
+    onPrimary: number,
+
+    secondary: number,
+    onSecondary: number,
+
     surface: number,
     onSurface: number,
-    surfaceVariant: number,
-    onSurfaceVariant: number,
+
+    tertiary: number,
+    onTertiary: number,
+
+    error: number,
+    onError: number,
+
     outline: number,
     outlineVariant: number,
-    shadow: number,
     scrim: number,
+
+    errorContainer: number,
+    onErrorContainer: number,
+
+    surfaceVariant: number,
+    onSurfaceVariant: number,
+    tertiaryContainer: number,
+    onTertiaryContainer: number,
     inverseSurface: number,
     inverseOnSurface: number,
+    shadow: number,
     inversePrimary: number
   }) {}
 
