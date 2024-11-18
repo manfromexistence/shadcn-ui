@@ -43,6 +43,7 @@
     }
   },
   "scripts": {
+    "dev": "bun run --hot index.ts",
     "build": "wireit",
     "build:ts": "wireit",
     "prepublishOnly": "npm run build"
