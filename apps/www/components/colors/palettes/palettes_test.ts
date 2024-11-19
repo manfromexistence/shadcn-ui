@@ -17,10 +17,10 @@
 
 import 'jasmine';
 
-import {Hct} from '../hct/hct.js';
+import {Hct} from '../hct/hct';
 
-import {CorePalette} from './core_palette.js';
-import {TonalPalette} from './tonal_palette.js';
+import {CorePalette} from './core_palette';
+import {TonalPalette} from './tonal_palette';
 
 describe('TonalPalette', () => {
   it('ofBlue', () => {

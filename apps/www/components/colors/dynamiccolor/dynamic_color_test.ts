@@ -17,20 +17,20 @@
 
 import 'jasmine';
 
-import {Contrast} from '../contrast/contrast.js';
-import {ContrastCurve} from './contrast_curve.js';
-import {MaterialDynamicColors} from './material_dynamic_colors.js';
-import {Hct} from '../hct/hct.js';
-import {SchemeContent} from '../scheme/scheme_content.js';
-import {SchemeExpressive} from '../scheme/scheme_expressive.js';
-import {SchemeFidelity} from '../scheme/scheme_fidelity.js';
-import {SchemeMonochrome} from '../scheme/scheme_monochrome.js';
-import {SchemeNeutral} from '../scheme/scheme_neutral.js';
-import {SchemeTonalSpot} from '../scheme/scheme_tonal_spot.js';
-import {SchemeVibrant} from '../scheme/scheme_vibrant.js';
-import * as colorUtils from '../utils/color_utils.js';
+import {Contrast} from '../contrast/contrast';
+import {ContrastCurve} from './contrast_curve';
+import {MaterialDynamicColors} from './material_dynamic_colors';
+import {Hct} from '../hct/hct';
+import {SchemeContent} from '../scheme/scheme_content';
+import {SchemeExpressive} from '../scheme/scheme_expressive';
+import {SchemeFidelity} from '../scheme/scheme_fidelity';
+import {SchemeMonochrome} from '../scheme/scheme_monochrome';
+import {SchemeNeutral} from '../scheme/scheme_neutral';
+import {SchemeTonalSpot} from '../scheme/scheme_tonal_spot';
+import {SchemeVibrant} from '../scheme/scheme_vibrant';
+import * as colorUtils from '../utils/color_utils';
 
-import {DynamicScheme} from './dynamic_scheme.js';
+import {DynamicScheme} from './dynamic_scheme';
 
 const seedColors = [
   Hct.fromInt(0xFFFF0000),

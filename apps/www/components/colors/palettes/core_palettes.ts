@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import {TonalPalette} from './tonal_palette.js';
+import {TonalPalette} from './tonal_palette';
 
 /**
  * Comprises foundational palettes to build a color scheme. Generated from a

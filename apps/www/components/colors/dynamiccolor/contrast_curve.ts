@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import * as math from '../utils/math_utils.js';
+import * as math from '../utils/math_utils';
 
 /**
  * A class containing a value that changes with the contrast level.

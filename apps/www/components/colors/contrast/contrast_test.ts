@@ -17,7 +17,7 @@
 
 import 'jasmine';
 
-import {Contrast} from './contrast.js';
+import {Contrast} from './contrast';
 
 describe('contrast', () => {
   it('ratioOfTones_outOfBoundsInput', () => {

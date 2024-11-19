@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-import {DislikeAnalyzer} from '../dislike/dislike_analyzer.js';
-import {DynamicScheme} from '../dynamiccolor/dynamic_scheme.js';
-import {Variant} from '../dynamiccolor/variant.js';
-import {Hct} from '../hct/hct.js';
-import {TonalPalette} from '../palettes/tonal_palette.js';
-import {TemperatureCache} from '../temperature/temperature_cache.js';
+import {DislikeAnalyzer} from '../dislike/dislike_analyzer';
+import {DynamicScheme} from '../dynamiccolor/dynamic_scheme';
+import {Variant} from '../dynamiccolor/variant';
+import {Hct} from '../hct/hct';
+import {TonalPalette} from '../palettes/tonal_palette';
+import {TemperatureCache} from '../temperature/temperature_cache';
 
 /**
  * A scheme that places the source color in `Scheme.primaryContainer`.

@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-import {Contrast} from '../contrast/contrast.js';
-import {Hct} from '../hct/hct.js';
-import {TonalPalette} from '../palettes/tonal_palette.js';
-import * as math from '../utils/math_utils.js';
+import {Contrast} from '../contrast/contrast';
+import {Hct} from '../hct/hct';
+import {TonalPalette} from '../palettes/tonal_palette';
+import * as math from '../utils/math_utils';
 
-import {ContrastCurve} from './contrast_curve.js';
-import {DynamicScheme} from './dynamic_scheme.js';
-import {ToneDeltaPair} from './tone_delta_pair.js';
+import {ContrastCurve} from './contrast_curve';
+import {DynamicScheme} from './dynamic_scheme';
+import {ToneDeltaPair} from './tone_delta_pair';
 
 /**
  * @param name The name of the dynamic color. Defaults to empty.

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import {Hct} from '../hct/hct.js';
+import {Hct} from '../hct/hct';
 
 /**
  *  A convenience class for retrieving colors that are constant in hue and

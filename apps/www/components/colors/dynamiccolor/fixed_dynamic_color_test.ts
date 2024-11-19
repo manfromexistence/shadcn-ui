@@ -17,11 +17,11 @@
 
 import 'jasmine';
 
-import {Hct} from '../hct/hct.js';
-import {SchemeMonochrome} from '../scheme/scheme_monochrome.js';
-import {SchemeTonalSpot} from '../scheme/scheme_tonal_spot.js';
+import {Hct} from '../hct/hct';
+import {SchemeMonochrome} from '../scheme/scheme_monochrome';
+import {SchemeTonalSpot} from '../scheme/scheme_tonal_spot';
 
-import {MaterialDynamicColors} from './material_dynamic_colors.js';
+import {MaterialDynamicColors} from './material_dynamic_colors';
 
 describe('fixed colors', () => {
   it('fixed colors in non-monochrome schemes', () => {

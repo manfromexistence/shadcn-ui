@@ -17,8 +17,8 @@
 
 import 'jasmine';
 
-import * as colorUtils from './color_utils.js';
-import * as mathUtils from './math_utils.js';
+import * as colorUtils from './color_utils';
+import * as mathUtils from './math_utils';
 
 describe('argbFromRgb', () => {
   it('returns correct value for black', () => {

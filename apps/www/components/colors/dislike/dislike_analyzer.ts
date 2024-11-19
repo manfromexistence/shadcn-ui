@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import {Hct} from '../hct/hct.js';
+import {Hct} from '../hct/hct';
 
 // material_color_utilities is designed to have a consistent API across
 // platforms and modular components that can be moved around easily. Using a

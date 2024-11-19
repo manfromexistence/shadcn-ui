@@ -17,9 +17,9 @@
 
 import 'jasmine';
 
-import {Hct} from '../hct/hct.js';
+import {Hct} from '../hct/hct';
 
-import {DislikeAnalyzer} from './dislike_analyzer.js';
+import {DislikeAnalyzer} from './dislike_analyzer';
 
 describe('dislike analyzer', () => {
   it('likes Monk Skin Tone Scale colors', () => {

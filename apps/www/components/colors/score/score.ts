@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-import {Hct} from '../hct/hct.js';
-import * as math from '../utils/math_utils.js';
+import {Hct} from '../hct/hct';
+import * as math from '../utils/math_utils';
 
 /**
  * Default options for ranking colors based on usage counts.

@@ -17,9 +17,9 @@
 
 import 'jasmine';
 
-import {Hct} from '../hct/hct.js';
+import {Hct} from '../hct/hct';
 
-import {TemperatureCache} from './temperature_cache.js';
+import {TemperatureCache} from './temperature_cache';
 
 describe('TemperatureCache', () => {
   it('computes raw temperatures correctly', () => {
