@@ -43,7 +43,9 @@ import { useMemo, useState } from 'react';
 import { ColorPicker, ConfigProvider, theme } from 'antd';
 import type { ColorPickerProps, GetProp } from 'antd';
 import { argbFromHex, hexFromArgb, hexToHsl, themeFromSourceColor } from "@/components/colors"
+
 type Color = Extract<GetProp<ColorPickerProps, 'value'>, string | { cleared: any }>;
+type Format = GetProp<ColorPickerProps, 'format'>
 
 export function ThemeCustomizer() {
     const [config, setConfig] = useConfig()
@@ -90,7 +92,28 @@ export function ThemeCustomizer() {
 }
 
 function Customizer() {
-    const materialTheme = themeFromSourceColor(argbFromHex('#f82506'));
+    
+    const [color, setColor] = useState<any>('#1677ff');
+    const [formatHex, setFormatHex] = useState<Format | undefined>('hex');
+
+    const bgColor = useMemo<string>(
+        () => (typeof color === 'string' ? color : color!.toHexString()),
+        [color],
+    );
+
+    const btnStyle: React.CSSProperties = {
+        backgroundColor: bgColor,
+    };
+
+    const [mounted, setMounted] = React.useState(false)
+    const { setTheme: setMode, resolvedTheme: mode } = useTheme()
+    const [config, setConfig] = useConfig()
+
+    React.useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    const materialTheme = themeFromSourceColor(argbFromHex(color));
     type ThemeObject = {
       [key: string]: ThemeObject | string | any;
     };
@@ -113,28 +136,28 @@ function Customizer() {
         }
       }
     }
-    const formattedTheme = formatKeys(materialTheme);
+    const formattedTheme:any = formatKeys(materialTheme);
     formatColors(formattedTheme);
     console.log(JSON.stringify(formattedTheme, null, 2));
 
-    const [color, setColor] = useState<Color>('#1677ff');
-
-    const bgColor = useMemo<string>(
-        () => (typeof color === 'string' ? color : color!.toHexString()),
+    const hexString = React.useMemo<string>(
+        () => (typeof color === 'string' ? color : color?.toHexString()),
         [color],
-    );
-
-    const btnStyle: React.CSSProperties = {
-        backgroundColor: bgColor,
-    };
-
-    const [mounted, setMounted] = React.useState(false)
-    const { setTheme: setMode, resolvedTheme: mode } = useTheme()
-    const [config, setConfig] = useConfig()
+      );
 
     React.useEffect(() => {
-        setMounted(true)
-    }, [])
+        const root = document.documentElement;
+    
+        // Loop through light and dark schemes
+        for (const scheme in formattedTheme.schemes) {
+          const schemeProps = formattedTheme.schemes[scheme].props;
+    
+          // Directly set CSS variables using the prop names
+          for (const prop in schemeProps) {
+            root.style.setProperty(`--${prop}`, schemeProps[prop]);
+          }
+        }
+      }, [formattedTheme]);
 
     return (
         <ThemeWrapper
@@ -188,7 +211,8 @@ function Customizer() {
                                     algorithm: theme.darkAlgorithm,
                                 }}
                             >
-                                <ColorPicker value={color} onChange={setColor}>
+                                <ColorPicker         format={formatHex}
+        onFormatChange={setFormatHex} value={color} onChange={setColor}>
                                     Choose
                                 </ColorPicker>
                             </ConfigProvider>
