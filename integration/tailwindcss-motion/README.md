@@ -1,19 +1,19 @@
-# ✨ [tailwindcss-motion β](https://rombo.co/tailwind/) ✨
+# ✨ [shadcn-animation β](https://manfromexistence-ui.vercel.app/animation/) ✨
 
-[![NPM Version](https://img.shields.io/npm/v/tailwindcss-motion?color=F3FC6F)](https://www.npmjs.com/package/tailwindcss-motion)
-[![NPM Downloads](https://img.shields.io/npm/dw/tailwindcss-motion?color=F3FC6F)](https://www.npmjs.com/package/tailwindcss-motion)
+[![NPM Version](https://img.shields.io/npm/v/shadcn-animation?color=F3FC6F)](https://www.npmjs.com/package/shadcn-animation)
+[![NPM Downloads](https://img.shields.io/npm/dw/shadcn-animation?color=F3FC6F)](https://www.npmjs.com/package/shadcn-animation)
 
-tailwindcss-motion is a Tailwind CSS Plugin made at [RomboHQ](https://rombo.co/).
-It’s a simple, yet powerful, animation library with a simple syntax.
+shadcn-animation is a Tailwind CSS Plugin made at [manfromexistence-ui](https://manfromexistence.vercel.app/).
+It’s a simple, yet powerful, animation library with a simple syntax inspired from tailwind-motion.
 
-_Motion, without commotion._
+_Motion, without commotion specially for working with shadcn/ui._
 
 ## ⚒️ Installation
 
 **1. Install npm package**
 
 ```bash
-npm i -D tailwindcss-motion
+npm i -D shadcn-animation
 ```
 
 **2. Add into your tailwind.config.js**
@@ -26,14 +26,14 @@ export default {
      theme: {
         extend: {...},
      },
-     plugins: [require('tailwindcss-motion')],
+     plugins: [require('shadcn-animation')],
 };
 ```
 
 **or,** to use ESM:
 
 ```js
-import tailwindcssMotion from "tailwindcss-motion";
+import tailwindcssMotion from "shadcn-animation";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -268,10 +268,6 @@ a few examples are:
 
 ## Examples
 
-Landing page - https://play.tailwindcss.com/uAuVF8F1vC
-
-![example-1](https://github.com/user-attachments/assets/c847e7ee-f5b6-4620-afdc-2f8b037c36fd)
-
 Chat dialog - https://play.tailwindcss.com/gjGqEKswjQ
 
 ![example-2](https://github.com/user-attachments/assets/f11fbe59-7902-4d73-ab13-0e20ca7cc21b)
@@ -284,22 +280,6 @@ Apple Color Swatches - https://play.tailwindcss.com/cvQ3Nk3v8j
 
 ![example-4](https://github.com/user-attachments/assets/887fba04-9642-4a4f-8ace-7375a4aa65b6)
 
-Rombo Loop - https://play.tailwindcss.com/MLdegkb9Wq
-
-![example-5](https://github.com/user-attachments/assets/7138fb7a-d622-4590-92b5-6682806797e0)
-
 Emoji Animations - https://play.tailwindcss.com/86s55I4wmC
 
 ![example-6](https://github.com/user-attachments/assets/3143dc8c-99c1-4df7-8709-a52b67d2824a)
-
-
-## What's Rombo?
-
-Rombo is an early-stage company, building tools to help companies build beautiful interactive interfaces. We're starting out with a toolkit for engineers, designers and creative marketers to animate natively inside common Workflows — like Tailwind, Figma, Webflow, Shopify & more to come!
-Sign up for our waitlist at https://rombo.co/tailwind/#waitlist
-
-## More Resources
-
-- [Bringing Motion to Tailwind CSS: Building an animation plugin at Rombo](https://www.kvin.me/posts/tailwind-motion) - Blog post about the creation of this library
-- [Animator Builder](https://rombo.co/tailwind/#animator) - Create animations intuitively and export them to Tailwind classes
-- [UnoCSS port](https://github.com/whatnickcodes/unocss-preset-tailwindcss-motion) - Port created by [@whatnickcodes](https://github.com/whatnickcodes)
