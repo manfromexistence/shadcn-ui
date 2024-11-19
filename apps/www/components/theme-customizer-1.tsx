@@ -143,7 +143,7 @@ function Customizer() {
     }
     const formattedTheme: any = formatKeys(materialTheme);
     formatColors(formattedTheme);
-    console.log(JSON.stringify(formattedTheme, null, 2));
+    // console.log(JSON.stringify(formattedTheme, null, 2));
 
     // React.useEffect(() => {
     //     const root = document.documentElement;
@@ -159,19 +159,34 @@ function Customizer() {
     //     }
     // }, [formattedTheme]);
 
+    // useEffect(() => {
+    //     const root = document.documentElement;
+    //     const darkRoot:any = document.querySelector("html .dark");
+      
+    //     // Set light theme CSS variables for the root element
+    //     const lightScheme = formattedTheme.schemes.light.props;
+    //     for (const prop in lightScheme) {
+    //       root.style.setProperty(`--${prop}`, lightScheme[prop]);
+    //     }
+      
+    //     // Set dark theme CSS variables only if the .dark class exists
+    //     if (darkRoot) {
+    //       const darkScheme = formattedTheme.schemes.dark.props;
+    //       for (const prop in darkScheme) {
+    //         darkRoot.style.setProperty(`--${prop}`, darkScheme[prop]);
+    //       }
+    //     }
+    //   }, [formattedTheme]);
+
     useEffect(() => {
         const root = document.documentElement;
     
-        // Set light theme CSS variables for the root element
-        const lightScheme = formattedTheme.schemes.light.props;
-        for (const prop in lightScheme) {
-          root.style.setProperty(`--${prop}`, lightScheme[prop]);
-        }
+        const isDarkTheme = root.classList.contains('dark');
     
-        // Set dark theme CSS variables for the .dark class
-        const darkScheme = formattedTheme.schemes.dark.props;
-        for (const prop in darkScheme) {
-          root.style.setProperty(`.dark --${prop}`, darkScheme[prop]);
+        const currentScheme = isDarkTheme ? formattedTheme.schemes.dark.props : formattedTheme.schemes.light.props;
+    
+        for (const prop in currentScheme) {
+          root.style.setProperty(`--${prop}`, currentScheme[prop]);
         }
       }, [formattedTheme]);
 
@@ -205,7 +220,7 @@ function Customizer() {
     return (
         <ThemeWrapper
             defaultTheme="zinc"
-            className="flex w-screen flex-col space-y-4 md:space-y-6"
+            className="flex w-full flex-col space-y-4 md:space-y-6"
         >
             <div className="flex items-start pt-4 md:pt-0">
                 <div className="space-y-1 pr-2">

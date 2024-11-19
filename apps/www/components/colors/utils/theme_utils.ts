@@ -56,7 +56,7 @@ export interface CustomColorGroup {
  * Theme
  */
 export interface Theme {
-  source: number;
+  source?: number;
   schemes: {light: Scheme; dark: Scheme;};
   // palettes: {
   //   primary: TonalPalette; secondary: TonalPalette; tertiary: TonalPalette;
@@ -78,7 +78,7 @@ export function themeFromSourceColor(
     source: number, customColors: CustomColor[] = []): Theme {
   const palette = CorePalette.of(source);
   return {
-    source,
+    // source,
     schemes: {
       light: Scheme.light(source),
       dark: Scheme.dark(source),
