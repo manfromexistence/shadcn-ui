@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import template from "lodash.template"
 import { Check, Copy, Moon, Repeat, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
@@ -39,10 +38,11 @@ import { BaseColor, baseColors } from "@/registry/registry-base-colors"
 
 import "@/styles/mdx.css"
 import Image from "next/image"
-import { useMemo, useState } from 'react';
+import { CSSProperties, useEffect, useMemo, useState } from 'react';
 import { ColorPicker, ConfigProvider, theme } from 'antd';
 import type { ColorPickerProps, GetProp } from 'antd';
 import { argbFromHex, hexFromArgb, hexToHsl, themeFromSourceColor } from "@/components/colors"
+import React from "react"
 
 type Color = Extract<GetProp<ColorPickerProps, 'value'>, string | { cleared: any }>;
 type Format = GetProp<ColorPickerProps, 'format'>
@@ -96,24 +96,29 @@ function Customizer() {
     const [color, setColor] = useState<any>('#1677ff');
     const [formatHex, setFormatHex] = useState<Format | undefined>('hex');
 
+    const hexString = useMemo<string>(
+        () => (typeof color === 'string' ? color : color?.toHexString()),
+        [color],
+    );
+
     const bgColor = useMemo<string>(
         () => (typeof color === 'string' ? color : color!.toHexString()),
         [color],
     );
 
-    const btnStyle: React.CSSProperties = {
+    const btnStyle: CSSProperties = {
         backgroundColor: bgColor,
     };
 
-    const [mounted, setMounted] = React.useState(false)
+    const [mounted, setMounted] = useState(false)
     const { setTheme: setMode, resolvedTheme: mode } = useTheme()
     const [config, setConfig] = useConfig()
 
-    React.useEffect(() => {
+    useEffect(() => {
         setMounted(true)
     }, [])
 
-    const materialTheme = themeFromSourceColor(argbFromHex("#ffffff"));
+    const materialTheme = themeFromSourceColor(argbFromHex(hexString));
     type ThemeObject = {
         [key: string]: ThemeObject | string | any;
     };
@@ -140,11 +145,6 @@ function Customizer() {
     formatColors(formattedTheme);
     console.log(JSON.stringify(formattedTheme, null, 2));
 
-    const hexString = React.useMemo<string>(
-        () => (typeof color === 'string' ? color : color?.toHexString()),
-        [color],
-    );
-
     // React.useEffect(() => {
     //     const root = document.documentElement;
 
@@ -159,10 +159,53 @@ function Customizer() {
     //     }
     // }, [formattedTheme]);
 
+    useEffect(() => {
+        const root = document.documentElement;
+    
+        // Set light theme CSS variables for the root element
+        const lightScheme = formattedTheme.schemes.light.props;
+        for (const prop in lightScheme) {
+          root.style.setProperty(`--${prop}`, lightScheme[prop]);
+        }
+    
+        // Set dark theme CSS variables for the .dark class
+        const darkScheme = formattedTheme.schemes.dark.props;
+        for (const prop in darkScheme) {
+          root.style.setProperty(`.dark --${prop}`, darkScheme[prop]);
+        }
+      }, [formattedTheme]);
+
+    const renderColorDivs = (scheme: 'light' | 'dark') => {
+        const schemeProps = formattedTheme.schemes[scheme].props;
+
+        return (
+            <div>
+                <h2 className="text-red-500">{scheme === 'light' ? 'Light Theme Colors' : 'Dark Theme Colors'}</h2>
+                <div className="grid grid-cols-6">
+                    {Object.keys(schemeProps).map((key) => {
+                        return (
+                            <div
+                                key={key}
+                                style={{
+                                    backgroundColor: `hsl(${schemeProps[key]})`,
+                                    height: '100px',
+                                    width: '100px',
+                                }}
+                                className="flex items-center justify-center rounded-md border text-green-500"
+                            >
+                                {key}
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        );
+    };
+
     return (
         <ThemeWrapper
             defaultTheme="zinc"
-            className="flex flex-col space-y-4 md:space-y-6"
+            className="flex w-screen flex-col space-y-4 md:space-y-6"
         >
             <div className="flex items-start pt-4 md:pt-0">
                 <div className="space-y-1 pr-2">
@@ -213,7 +256,7 @@ function Customizer() {
                             >
                                 <ColorPicker format={formatHex}
                                     onFormatChange={setFormatHex} value={color} onChange={setColor}>
-                                    {JSON.stringify(color)}
+                                    {hexString}
                                 </ColorPicker>
                             </ConfigProvider>
                         </div>
@@ -319,6 +362,10 @@ function Customizer() {
                             </>
                         )}
                     </div>
+                </div>
+                <div>
+                    {renderColorDivs('light')}
+                    {renderColorDivs('dark')}
                 </div>
             </div>
         </ThemeWrapper>
