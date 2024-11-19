@@ -39,7 +39,7 @@ import { BaseColor, baseColors } from "@/registry/registry-base-colors"
 import "@/styles/mdx.css"
 import Image from "next/image"
 import { CSSProperties, useEffect, useMemo, useState } from 'react';
-import { ColorPicker, ConfigProvider, theme } from 'antd';
+import { ColorPicker, ConfigProvider, theme as antdThemes } from 'antd';
 import type { ColorPickerProps, GetProp } from 'antd';
 import { argbFromHex, hexFromArgb, hexToHsl, themeFromSourceColor } from "@/components/colors"
 import React from "react"
@@ -95,6 +95,8 @@ function Customizer() {
 
     const [color, setColor] = useState<any>('#00e1ff');
     const [formatHex, setFormatHex] = useState<Format | undefined>('hex');
+    const { theme } = useTheme();
+
 
     const hexString = useMemo<string>(
         () => (typeof color === 'string' ? color : color?.toHexString()),
@@ -251,35 +253,9 @@ function Customizer() {
                 <div className="space-y-1.5">
                     <Label className="text-xs">Color</Label>
                     <div className="grid grid-cols-3 gap-2">
-                        {/* <div
-                            className="flex h-8 w-24 items-center justify-start rounded-md border px-2 text-center text-xs hover:bg-primary-foreground hover:text-primary">
-                            <span
-                                className={`relative mr-1 flex h-5 w-5 items-center justify-center rounded-full border`}
-                                // style={{
-                                //     backgroundImage: `url(/color-wheel.png)`,
-                                //     backgroundSize: 'cover',
-                                //     backgroundPosition: 'center',
-                                //     backgroundRepeat: 'no-repeat',
-                                // }}
-                                style={{ backgroundColor: hexString }}
-                            >
-                                <Check className="z-10 h-4 w-4 text-white" />
-                            </span>
-                            <ConfigProvider
-                                theme={{
-                                    algorithm: theme.darkAlgorithm,
-                                }}
-                            >
-                                <ColorPicker format={formatHex}
-                                    onFormatChange={setFormatHex} value={color} onChange={setColor}>
-                                    {hexString}
-                                </ColorPicker>
-                            </ConfigProvider>
-                        </div> */}
-
                         <ConfigProvider
                             theme={{
-                                algorithm: theme.darkAlgorithm,
+                                algorithm: theme === "dark" ? antdThemes.darkAlgorithm : antdThemes.defaultAlgorithm,
                             }}
                         >
                             <ColorPicker format={formatHex}
@@ -295,7 +271,7 @@ function Customizer() {
                                     <span
                                         style={{ backgroundColor: hexString }}
                                         className={cn(
-                                            "flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[--theme-primary]"
+                                            "flex h-5 w-5 shrink-0 items-center justify-center rounded-full border bg-[--theme-primary]"
                                         )}
                                     >
                                         <Check className="h-4 w-4 text-white" />
@@ -304,8 +280,6 @@ function Customizer() {
                                 </Button>
                             </ColorPicker>
                         </ConfigProvider>
-
-
 
                         {baseColors
                             .filter(
