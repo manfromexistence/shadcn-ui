@@ -92,7 +92,7 @@ export function ThemeCustomizer() {
 }
 
 function Customizer() {
-    
+
     const [color, setColor] = useState<any>('#1677ff');
     const [formatHex, setFormatHex] = useState<Format | undefined>('hex');
 
@@ -113,51 +113,51 @@ function Customizer() {
         setMounted(true)
     }, [])
 
-    const materialTheme = themeFromSourceColor(argbFromHex(color));
+    const materialTheme = themeFromSourceColor(argbFromHex("#ffffff"));
     type ThemeObject = {
-      [key: string]: ThemeObject | string | any;
+        [key: string]: ThemeObject | string | any;
     };
     function formatKeys<T extends ThemeObject>(obj: T): T {
-      const result: T = {} as T;
-      for (const key in obj) {
-        const newKey = key.replace(/([A-Z])/g, (g) => `-${g.toLowerCase()}`);
-        (result as any)[newKey] = typeof obj[key] === 'object'
-          ? formatKeys(obj[key]) as T[typeof newKey]
-          : obj[key];
-      }
-      return result;
+        const result: T = {} as T;
+        for (const key in obj) {
+            const newKey = key.replace(/([A-Z])/g, (g) => `-${g.toLowerCase()}`);
+            (result as any)[newKey] = typeof obj[key] === 'object'
+                ? formatKeys(obj[key]) as T[typeof newKey]
+                : obj[key];
+        }
+        return result;
     }
     function formatColors(obj: any) {
-      for (const key in obj) {
-        if (typeof obj[key] === 'number') {
-          obj[key] = hexToHsl(hexFromArgb(obj[key]));
-        } else if (typeof obj[key] === 'object') {
-          formatColors(obj[key]);
+        for (const key in obj) {
+            if (typeof obj[key] === 'number') {
+                obj[key] = hexToHsl(hexFromArgb(obj[key]));
+            } else if (typeof obj[key] === 'object') {
+                formatColors(obj[key]);
+            }
         }
-      }
     }
-    const formattedTheme:any = formatKeys(materialTheme);
+    const formattedTheme: any = formatKeys(materialTheme);
     formatColors(formattedTheme);
     console.log(JSON.stringify(formattedTheme, null, 2));
 
     const hexString = React.useMemo<string>(
         () => (typeof color === 'string' ? color : color?.toHexString()),
         [color],
-      );
+    );
 
-    React.useEffect(() => {
-        const root = document.documentElement;
-    
-        // Loop through light and dark schemes
-        for (const scheme in formattedTheme.schemes) {
-          const schemeProps = formattedTheme.schemes[scheme].props;
-    
-          // Directly set CSS variables using the prop names
-          for (const prop in schemeProps) {
-            root.style.setProperty(`--${prop}`, schemeProps[prop]);
-          }
-        }
-      }, [formattedTheme]);
+    // React.useEffect(() => {
+    //     const root = document.documentElement;
+
+    //     // Loop through light and dark schemes
+    //     for (const scheme in formattedTheme.schemes) {
+    //         const schemeProps = formattedTheme.schemes[scheme].props;
+
+    //         // Directly set CSS variables using the prop names
+    //         for (const prop in schemeProps) {
+    //             root.style.setProperty(`--${prop}`, schemeProps[prop]);
+    //         }
+    //     }
+    // }, [formattedTheme]);
 
     return (
         <ThemeWrapper
@@ -211,9 +211,9 @@ function Customizer() {
                                     algorithm: theme.darkAlgorithm,
                                 }}
                             >
-                                <ColorPicker         format={formatHex}
-        onFormatChange={setFormatHex} value={color} onChange={setColor}>
-                                    Choose
+                                <ColorPicker format={formatHex}
+                                    onFormatChange={setFormatHex} value={color} onChange={setColor}>
+                                    {JSON.stringify(color)}
                                 </ColorPicker>
                             </ConfigProvider>
                         </div>
