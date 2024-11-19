@@ -93,7 +93,7 @@ export function ThemeCustomizer() {
 
 function Customizer() {
 
-    const [color, setColor] = useState<any>('#1677ff');
+    const [color, setColor] = useState<any>('#00e1ff');
     const [formatHex, setFormatHex] = useState<Format | undefined>('hex');
 
     const hexString = useMemo<string>(
@@ -162,13 +162,13 @@ function Customizer() {
     // useEffect(() => {
     //     const root = document.documentElement;
     //     const darkRoot:any = document.querySelector("html .dark");
-      
+
     //     // Set light theme CSS variables for the root element
     //     const lightScheme = formattedTheme.schemes.light.props;
     //     for (const prop in lightScheme) {
     //       root.style.setProperty(`--${prop}`, lightScheme[prop]);
     //     }
-      
+
     //     // Set dark theme CSS variables only if the .dark class exists
     //     if (darkRoot) {
     //       const darkScheme = formattedTheme.schemes.dark.props;
@@ -178,44 +178,44 @@ function Customizer() {
     //     }
     //   }, [formattedTheme]);
 
-    useEffect(() => {
-        const root = document.documentElement;
-    
-        const isDarkTheme = root.classList.contains('dark');
-    
-        const currentScheme = isDarkTheme ? formattedTheme.schemes.dark.props : formattedTheme.schemes.light.props;
-    
-        for (const prop in currentScheme) {
-          root.style.setProperty(`--${prop}`, currentScheme[prop]);
-        }
-      }, [formattedTheme]);
+    // useEffect(() => {
+    //     const root = document.documentElement;
 
-    const renderColorDivs = (scheme: 'light' | 'dark') => {
-        const schemeProps = formattedTheme.schemes[scheme].props;
+    //     const isDarkTheme = root.classList.contains('dark');
 
-        return (
-            <div>
-                <h2 className="text-red-500">{scheme === 'light' ? 'Light Theme Colors' : 'Dark Theme Colors'}</h2>
-                <div className="grid grid-cols-6">
-                    {Object.keys(schemeProps).map((key) => {
-                        return (
-                            <div
-                                key={key}
-                                style={{
-                                    backgroundColor: `hsl(${schemeProps[key]})`,
-                                    height: '100px',
-                                    width: '100px',
-                                }}
-                                className="flex items-center justify-center rounded-md border text-green-500"
-                            >
-                                {key}
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
-        );
-    };
+    //     const currentScheme = isDarkTheme ? formattedTheme.schemes.dark.props : formattedTheme.schemes.light.props;
+
+    //     for (const prop in currentScheme) {
+    //       root.style.setProperty(`--${prop}`, currentScheme[prop]);
+    //     }
+    //   }, [formattedTheme]);
+
+    // const renderColorDivs = (scheme: 'light' | 'dark') => {
+    //     const schemeProps = formattedTheme.schemes[scheme].props;
+
+    //     return (
+    //         <div>
+    //             <h2 className="text-red-500">{scheme === 'light' ? 'Light Theme Colors' : 'Dark Theme Colors'}</h2>
+    //             <div className="grid grid-cols-6">
+    //                 {Object.keys(schemeProps).map((key) => {
+    //                     return (
+    //                         <div
+    //                             key={key}
+    //                             style={{
+    //                                 backgroundColor: `hsl(${schemeProps[key]})`,
+    //                                 height: '100px',
+    //                                 width: '100px',
+    //                             }}
+    //                             className="flex items-center justify-center rounded-md border text-green-500"
+    //                         >
+    //                             {key}
+    //                         </div>
+    //                     );
+    //                 })}
+    //             </div>
+    //         </div>
+    //     );
+    // };
 
     return (
         <ThemeWrapper
@@ -251,16 +251,17 @@ function Customizer() {
                 <div className="space-y-1.5">
                     <Label className="text-xs">Color</Label>
                     <div className="grid grid-cols-3 gap-2">
-                        <div
+                        {/* <div
                             className="flex h-8 w-24 items-center justify-start rounded-md border px-2 text-center text-xs hover:bg-primary-foreground hover:text-primary">
                             <span
-                                className="relative mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-cover bg-center bg-no-repeat"
-                                style={{
-                                    backgroundImage: `url(/color-wheel.png)`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    backgroundRepeat: 'no-repeat',
-                                }}
+                                className={`relative mr-1 flex h-5 w-5 items-center justify-center rounded-full border`}
+                                // style={{
+                                //     backgroundImage: `url(/color-wheel.png)`,
+                                //     backgroundSize: 'cover',
+                                //     backgroundPosition: 'center',
+                                //     backgroundRepeat: 'no-repeat',
+                                // }}
+                                style={{ backgroundColor: hexString }}
                             >
                                 <Check className="z-10 h-4 w-4 text-white" />
                             </span>
@@ -274,7 +275,38 @@ function Customizer() {
                                     {hexString}
                                 </ColorPicker>
                             </ConfigProvider>
-                        </div>
+                        </div> */}
+
+                        <ConfigProvider
+                            theme={{
+                                algorithm: theme.darkAlgorithm,
+                            }}
+                        >
+                            <ColorPicker format={formatHex}
+                                onFormatChange={setFormatHex} value={color} onChange={setColor}>
+                                <Button
+                                    variant={"outline"}
+                                    size="sm"
+                                    className={cn(
+                                        "justify-start",
+                                        "border-2 border-primary"
+                                    )}
+                                >
+                                    <span
+                                        style={{ backgroundColor: hexString }}
+                                        className={cn(
+                                            "flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[--theme-primary]"
+                                        )}
+                                    >
+                                        <Check className="h-4 w-4 text-white" />
+                                    </span>
+                                    Choose
+                                </Button>
+                            </ColorPicker>
+                        </ConfigProvider>
+
+
+
                         {baseColors
                             .filter(
                                 (theme) =>
@@ -378,10 +410,10 @@ function Customizer() {
                         )}
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     {renderColorDivs('light')}
                     {renderColorDivs('dark')}
-                </div>
+                </div> */}
             </div>
         </ThemeWrapper>
     )
