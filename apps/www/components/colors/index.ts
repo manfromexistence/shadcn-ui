@@ -104,20 +104,34 @@ function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
   return [h * 360, s * 100, l * 100];
 }
 
-function hexToHsl(hex: string): any {
+export function hexToHsl(hex: string): any {
   const [r, g, b] = hexToRgb(hex);
   const [h, s, l] = rgbToHsl(r, g, b);
   return `${Math.round(h)} ${s.toFixed(1)}% ${l.toFixed(1)}%`;
 }
 
-// const hslColor = hexToHsl("#3c00ff");
-// console.log(hslColor);
 // End
-
 
 const theme = themeFromSourceColor(argbFromHex('#f82506'));
 
-const formattedTheme = JSON.parse(JSON.stringify(theme));
+type ThemeObject = {
+  [key: string]: ThemeObject | string | any;
+};
+
+function formatKeys<T extends ThemeObject>(obj: T): T {
+  const result: T = {} as T;
+
+  for (const key in obj) {
+    const newKey = key.replace(/([A-Z])/g, (g) => `-${g.toLowerCase()}`);
+
+    // Ensure type safety when assigning to the result object
+    (result as any)[newKey] = typeof obj[key] === 'object' 
+      ? formatKeys(obj[key]) as T[typeof newKey]
+      : obj[key];
+  }
+
+  return result;
+}
 
 function formatColors(obj: any) {
   for (const key in obj) {
@@ -128,6 +142,8 @@ function formatColors(obj: any) {
     }
   }
 }
+
+const formattedTheme = formatKeys(theme);
 
 formatColors(formattedTheme);
 

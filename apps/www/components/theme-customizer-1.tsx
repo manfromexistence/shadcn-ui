@@ -42,7 +42,7 @@ import Image from "next/image"
 import { useMemo, useState } from 'react';
 import { ColorPicker, ConfigProvider, theme } from 'antd';
 import type { ColorPickerProps, GetProp } from 'antd';
-
+import { argbFromHex, hexFromArgb, hexToHsl, themeFromSourceColor } from "@/components/colors"
 type Color = Extract<GetProp<ColorPickerProps, 'value'>, string | { cleared: any }>;
 
 export function ThemeCustomizer() {
@@ -90,6 +90,33 @@ export function ThemeCustomizer() {
 }
 
 function Customizer() {
+    const materialTheme = themeFromSourceColor(argbFromHex('#f82506'));
+    type ThemeObject = {
+      [key: string]: ThemeObject | string | any;
+    };
+    function formatKeys<T extends ThemeObject>(obj: T): T {
+      const result: T = {} as T;
+      for (const key in obj) {
+        const newKey = key.replace(/([A-Z])/g, (g) => `-${g.toLowerCase()}`);
+        (result as any)[newKey] = typeof obj[key] === 'object'
+          ? formatKeys(obj[key]) as T[typeof newKey]
+          : obj[key];
+      }
+      return result;
+    }
+    function formatColors(obj: any) {
+      for (const key in obj) {
+        if (typeof obj[key] === 'number') {
+          obj[key] = hexToHsl(hexFromArgb(obj[key]));
+        } else if (typeof obj[key] === 'object') {
+          formatColors(obj[key]);
+        }
+      }
+    }
+    const formattedTheme = formatKeys(materialTheme);
+    formatColors(formattedTheme);
+    console.log(JSON.stringify(formattedTheme, null, 2));
+
     const [color, setColor] = useState<Color>('#1677ff');
 
     const bgColor = useMemo<string>(

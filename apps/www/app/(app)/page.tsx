@@ -12,6 +12,7 @@ import CardsNewYork from "@/registry/new-york/example/cards"
 import "public/registry/themes.css"
 
 export default function ThemesPage() {
+
   return (
     <div className="relative">
       <ThemeWrapper
@@ -36,11 +37,11 @@ export default function ThemesPage() {
       </ThemeWrapper>
       <div className="container py-6">
         <section id="themes" className="scroll-mt-20">
-        <div className="space-y-8">
-      <ThemeWrapper>
-        <CardsNewYork />
-      </ThemeWrapper>
-    </div>
+          <div className="space-y-8">
+            <ThemeWrapper>
+              <CardsNewYork />
+            </ThemeWrapper>
+          </div>
         </section>
       </div>
     </div>
