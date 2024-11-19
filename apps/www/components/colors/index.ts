@@ -15,52 +15,52 @@
  * limitations under the License.
  */
 
-import { argbFromHex, hexFromArgb } from './utils/string_utils.js';
-import { themeFromSourceColor } from './utils/theme_utils.js';
+// import { argbFromHex, hexFromArgb } from "./utils/string_utils";
+// import { themeFromSourceColor } from "./utils/theme_utils";
 
-export * from './blend/blend.js';
-export * from './contrast/contrast.js';
-export * from './dislike/dislike_analyzer.js';
-export * from './dynamiccolor/dynamic_color.js';
-export * from './dynamiccolor/dynamic_scheme.js';
-export * from './dynamiccolor/material_dynamic_colors.js';
-export * from './dynamiccolor/variant.js';
-export * from './hct/cam16.js';
-export * from './hct/hct.js';
-export * from './hct/viewing_conditions.js';
-export * from './palettes/core_palette.js';
-export * from './palettes/tonal_palette.js';
-export * from './quantize/quantizer_celebi.js';
-export * from './quantize/quantizer_map.js';
-export * from './quantize/quantizer_wsmeans.js';
-export * from './quantize/quantizer_wu.js';
-export * from './scheme/scheme.js';
-export * from './scheme/scheme_android.js';
-export * from './scheme/scheme_content.js';
-export * from './scheme/scheme_expressive.js';
-export * from './scheme/scheme_fidelity.js';
-export * from './scheme/scheme_fruit_salad.js';
-export * from './scheme/scheme_monochrome.js';
-export * from './scheme/scheme_neutral.js';
-export * from './scheme/scheme_rainbow.js';
-export * from './scheme/scheme_tonal_spot.js';
-export * from './scheme/scheme_vibrant.js';
-export * from './score/score.js';
-export * from './temperature/temperature_cache.js';
-export * from './utils/color_utils.js';
-export * from './utils/math_utils.js';
-export * from './utils/string_utils.js';
-export * from './utils/image_utils.js';
-export * from './utils/theme_utils.js';
+export * from "./blend/blend";
+export * from "./contrast/contrast";
+export * from "./dislike/dislike_analyzer";
+export * from "./dynamiccolor/dynamic_color";
+export * from "./dynamiccolor/dynamic_scheme";
+export * from "./dynamiccolor/material_dynamic_colors";
+export * from "./dynamiccolor/variant";
+export * from "./hct/cam16";
+export * from "./hct/hct";
+export * from "./hct/viewing_conditions";
+export * from "./palettes/core_palette";
+export * from "./palettes/tonal_palette";
+export * from "./quantize/quantizer_celebi";
+export * from "./quantize/quantizer_map";
+export * from "./quantize/quantizer_wsmeans";
+export * from "./quantize/quantizer_wu";
+export * from "./scheme/scheme";
+export * from "./scheme/scheme_android";
+export * from "./scheme/scheme_content";
+export * from "./scheme/scheme_expressive";
+export * from "./scheme/scheme_fidelity";
+export * from "./scheme/scheme_fruit_salad";
+export * from "./scheme/scheme_monochrome";
+export * from "./scheme/scheme_neutral";
+export * from "./scheme/scheme_rainbow";
+export * from "./scheme/scheme_tonal_spot";
+export * from "./scheme/scheme_vibrant";
+export * from "./score/score";
+export * from "./temperature/temperature_cache";
+export * from "./utils/color_utils";
+export * from "./utils/math_utils";
+export * from "./utils/string_utils";
+export * from "./utils/image_utils";
+export * from "./utils/theme_utils";
 
 // HEX to HSL
 function hexToRgb(hex: string): [number, number, number] {
-  if (hex.charAt(0) === '#') {
+  if (hex.charAt(0) === "#") {
     hex = hex.slice(1);
   }
 
   if (hex.length === 3) {
-    hex = hex.split('').map(char => char.repeat(2)).join('');
+    hex = hex.split("").map(char => char.repeat(2)).join("");
   }
 
   const bigint = parseInt(hex, 16);
@@ -112,39 +112,39 @@ export function hexToHsl(hex: string): any {
 
 // End
 
-const theme = themeFromSourceColor(argbFromHex('#f82506'));
+// const theme = themeFromSourceColor(argbFromHex("#f82506"));
 
-type ThemeObject = {
-  [key: string]: ThemeObject | string | any;
-};
+// type ThemeObject = {
+//   [key: string]: ThemeObject | string | any;
+// };
 
-function formatKeys<T extends ThemeObject>(obj: T): T {
-  const result: T = {} as T;
+// function formatKeys<T extends ThemeObject>(obj: T): T {
+//   const result: T = {} as T;
 
-  for (const key in obj) {
-    const newKey = key.replace(/([A-Z])/g, (g) => `-${g.toLowerCase()}`);
+//   for (const key in obj) {
+//     const newKey = key.replace(/([A-Z])/g, (g) => `-${g.toLowerCase()}`);
 
-    // Ensure type safety when assigning to the result object
-    (result as any)[newKey] = typeof obj[key] === 'object' 
-      ? formatKeys(obj[key]) as T[typeof newKey]
-      : obj[key];
-  }
+//     // Ensure type safety when assigning to the result object
+//     (result as any)[newKey] = typeof obj[key] === "object" 
+//       ? formatKeys(obj[key]) as T[typeof newKey]
+//       : obj[key];
+//   }
 
-  return result;
-}
+//   return result;
+// }
 
-function formatColors(obj: any) {
-  for (const key in obj) {
-    if (typeof obj[key] === 'number') {
-      obj[key] = hexToHsl(hexFromArgb(obj[key]));
-    } else if (typeof obj[key] === 'object') {
-      formatColors(obj[key]);
-    }
-  }
-}
+// function formatColors(obj: any) {
+//   for (const key in obj) {
+//     if (typeof obj[key] === "number") {
+//       obj[key] = hexToHsl(hexFromArgb(obj[key]));
+//     } else if (typeof obj[key] === "object") {
+//       formatColors(obj[key]);
+//     }
+//   }
+// }
 
-const formattedTheme = formatKeys(theme);
+// const formattedTheme = formatKeys(theme);
 
-formatColors(formattedTheme);
+// formatColors(formattedTheme);
 
-console.log(JSON.stringify(formattedTheme, null, 2));
+// console.log(JSON.stringify(formattedTheme, null, 2));
