@@ -1,0 +1,16 @@
+{
+  "name": "chart-01",
+  "type": "registry:block",
+  "description": "A collection of health charts.",
+  "registryDependencies": [
+    "chart"
+  ],
+  "files": [
+    {
+      "path": "block/chart-01/page.tsx",
+      "content": "import { Charts } from \"@/registry/new-york/block/chart-01/components/chart\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex h-screen w-full items-center justify-center px-4\">\n      <Charts />\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/dashboard/page.tsx"
+    }
+  ]
+}

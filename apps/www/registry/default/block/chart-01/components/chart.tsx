@@ -34,12 +34,6 @@ import {
 } from "@/registry/default/ui/chart"
 import { Separator } from "@/registry/default/ui/separator"
 
-// export const description = "A collection of health charts."
-
-// export const iframeHeight = "900px"
-
-// export const containerClassName = "min-h-screen py-12"
-
 export function Charts() {
   return (
     <div className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-6 p-6 sm:flex-row sm:p-8">

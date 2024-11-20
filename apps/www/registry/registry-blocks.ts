@@ -817,12 +817,12 @@ export const blocks: Registry = [
     subcategory: "Login",
   },
   {
-    name: "charts-01",
+    name: "chart-01",
     type: "registry:block",
     registryDependencies: ["chart"],
     files: [
       {
-        path: "block/charts-01/page.tsx",
+        path: "block/chart-01/page.tsx",
         target: "app/dashboard/page.tsx",
         type: "registry:page",
       },
