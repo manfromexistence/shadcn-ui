@@ -36,7 +36,7 @@ export default function Button49() {
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
-  }, []);
+  }, [previewUrl]);
 
   useEffect(() => {
     return () => {

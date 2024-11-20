@@ -34,18 +34,19 @@ import {
 } from "@/registry/default/ui/chart"
 import { Separator } from "@/registry/default/ui/separator"
 
-export const description = "A collection of health charts."
+// export const description = "A collection of health charts."
 
-export const iframeHeight = "900px"
+// export const iframeHeight = "900px"
 
-export const containerClassName = "min-h-screen py-12"
+// export const containerClassName = "min-h-screen py-12"
 
-export default function Charts() {
+export function Charts() {
   return (
     <div className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-6 p-6 sm:flex-row sm:p-8">
       <div className="grid w-full gap-6 sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[25rem]">
         <Card
-          className="lg:max-w-md" x-chunk="charts-01-chunk-0"
+          x-chunk="A bar chart showing the number of steps you have walked in the past 7 days."
+          className="lg:max-w-md"
         >
           <CardHeader className="space-y-0 pb-2">
             <CardDescription>Today</CardDescription>
@@ -173,7 +174,8 @@ export default function Charts() {
           </CardFooter>
         </Card>
         <Card
-          className="flex flex-col lg:max-w-md" x-chunk="charts-01-chunk-1"
+          x-chunk="A line chart showing the resting heart rate for the past 7 days."
+          className="flex flex-col lg:max-w-md"
         >
           <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2 [&>div]:flex-1">
             <div>
@@ -296,7 +298,8 @@ export default function Charts() {
       </div>
       <div className="grid w-full flex-1 gap-6 lg:max-w-[20rem]">
         <Card
-          className="max-w-xs" x-chunk="charts-01-chunk-2"
+          x-chunk="Two horizontal bar charts showing total steps taken during the current year and last year."
+          className="max-w-xs"
         >
           <CardHeader>
             <CardTitle>Progress</CardTitle>
@@ -410,7 +413,8 @@ export default function Charts() {
           </CardContent>
         </Card>
         <Card
-          className="max-w-xs" x-chunk="charts-01-chunk-3"
+          x-chunk="A bar chart showing the walking and running distance for the past 7 days."
+          className="max-w-xs"
         >
           <CardHeader className="p-4 pb-0">
             <CardTitle>Walking Distance</CardTitle>
@@ -494,7 +498,8 @@ export default function Charts() {
           </CardContent>
         </Card>
         <Card
-          className="max-w-xs" x-chunk="charts-01-chunk-4"
+          x-chunk="A bar chart showing move, exercise, and stand progress."
+          className="max-w-xs"
         >
           <CardContent className="flex gap-4 p-4 pb-2">
             <ChartContainer
@@ -603,7 +608,8 @@ export default function Charts() {
       </div>
       <div className="grid w-full flex-1 gap-6">
         <Card
-          className="max-w-xs" x-chunk="charts-01-chunk-5"
+          x-chunk="A radial bar chart showing the percentage of time spent moving, exercising, and standing."
+          className="max-w-xs"
         >
           <CardContent className="flex gap-4 p-4">
             <div className="grid items-center gap-2">
@@ -693,7 +699,8 @@ export default function Charts() {
           </CardContent>
         </Card>
         <Card
-          className="max-w-xs" x-chunk="charts-01-chunk-6"
+          x-chunk="A bar chart showing active energy in the past 7 days."
+          className="max-w-xs"
         >
           <CardHeader className="p-4 pb-0">
             <CardTitle>Active Energy</CardTitle>
@@ -776,7 +783,8 @@ export default function Charts() {
           </CardContent>
         </Card>
         <Card
-          className="max-w-xs" x-chunk="charts-01-chunk-7"
+          x-chunk="An area chart showing the time spent in bed for the past 7 days."
+          className="max-w-xs"
         >
           <CardHeader className="space-y-0 pb-0">
             <CardDescription>Time in Bed</CardDescription>
