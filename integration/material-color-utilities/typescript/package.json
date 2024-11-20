@@ -1,10 +1,10 @@
 {
-  "name": "@material/material-color-utilities",
-  "version": "0.3.1",
+  "name": "tailwind-color",
+  "version": "0.0.3-beta",
   "publishConfig": {
     "access": "public"
   },
-  "description": "Algorithms and utilities that power the Material Design 3 (M3) color system, including choosing theme colors from images and creating tones of colors; all in a new color space.",
+  "description": "A fork of ui to add the support of tailwind and much more.",
   "keywords": [
     "material",
     "material design",
@@ -15,15 +15,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/material-foundation/material-color-utilities.git",
+    "url": "https://github.com/manfromexistence/ui.git",
     "directory": "typescript"
   },
   "author": "Material Eng",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/material-foundation/material-color-utilities/issues"
+    "url": "https://github.com/manfromexistence/ui/ui/issues"
   },
-  "homepage": "https://github.com/material-foundation/material-color-utilities/tree/main/typescript",
+  "homepage": "https://github.com/manfromexistence/ui/tree/main/typescript",
   "type": "module",
   "files": [
     "**/*.js",

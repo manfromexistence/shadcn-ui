@@ -49,3 +49,59 @@ export * from './utils/math_utils.js';
 export * from './utils/string_utils.js';
 export * from './utils/image_utils.js';
 export * from './utils/theme_utils.js';
+
+function hexToRgb(hex: string): [number, number, number] {
+    if (hex.charAt(0) === "#") {
+        hex = hex.slice(1);
+    }
+
+    if (hex.length === 3) {
+        hex = hex.split("").map(char => char.repeat(2)).join("");
+    }
+
+    const bigint = parseInt(hex, 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+
+    return [r, g, b];
+}
+
+function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const l = (max + min) / 2;
+
+    if (max === min) {
+        return [0, 0, l * 100];
+    }
+
+    const d = max - min;
+    const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+    let h: any;
+    switch (max) {
+        case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+        case g:
+            h = (b - r) / d + 2;
+            break;
+        case b:
+            h = (r - g) / d + 4;
+            break;
+    }
+    h /= 6;
+
+    return [h * 360, s * 100, l * 100];
+}
+
+export function hexToHsl(hex: string): any {
+    const [r, g, b] = hexToRgb(hex);
+    const [h, s, l] = rgbToHsl(r, g, b);
+    return `${Math.round(h)} ${s.toFixed(1)}% ${l.toFixed(1)}%`;
+}
