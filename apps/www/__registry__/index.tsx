@@ -4077,11 +4077,15 @@ export const Index: Record<string, any> = {
       name: "chart-01",
       description: "A collection of health charts.",
       type: "registry:block",
-      registryDependencies: ["chart"],
+      registryDependencies: ["separator","card","recharts","chart"],
       files: [{
         path: "registry/new-york/block/chart-01/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
+      },{
+        path: "registry/new-york/block/chart-01/components/chart.tsx",
+        type: "registry:component",
+        target: ""
       }],
       component: React.lazy(() => import("@/registry/new-york/block/chart-01/page.tsx")),
       source: "__registry__/new-york/block/chart-01/page.tsx",
@@ -9586,11 +9590,15 @@ export const Index: Record<string, any> = {
       name: "chart-01",
       description: "A collection of health charts.",
       type: "registry:block",
-      registryDependencies: ["chart"],
+      registryDependencies: ["separator","card","recharts","chart"],
       files: [{
         path: "registry/default/block/chart-01/page.tsx",
         type: "registry:page",
         target: "app/dashboard/page.tsx"
+      },{
+        path: "registry/default/block/chart-01/components/chart.tsx",
+        type: "registry:component",
+        target: ""
       }],
       component: React.lazy(() => import("@/registry/default/block/chart-01/page.tsx")),
       source: "__registry__/default/block/chart-01/page.tsx",

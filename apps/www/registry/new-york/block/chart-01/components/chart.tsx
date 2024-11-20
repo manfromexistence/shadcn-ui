@@ -26,13 +26,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/new-york/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/registry/default/ui/chart"
-import { Separator } from "@/registry/default/ui/separator"
+} from "@/registry/new-york/ui/chart"
+import { Separator } from "@/registry/new-york/ui/separator"
 
 export function Charts() {
   return (
