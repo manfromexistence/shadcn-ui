@@ -1,6 +1,6 @@
 import { Announcement } from "@/components/announcement";
 import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "@/components/page-header";
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/new-york/ui/button"
 import Link from "next/link";
 import { Separator } from "@/registry/new-york/ui/separator"
 import { VarientsNav } from "@/components/varients-nav";
