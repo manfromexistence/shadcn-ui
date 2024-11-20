@@ -41,7 +41,7 @@ import Image from "next/image"
 import { CSSProperties, useEffect, useMemo, useState } from 'react';
 import { ColorPicker, ConfigProvider, theme as antdThemes } from 'antd';
 import type { ColorPickerProps, GetProp } from 'antd';
-import { argbFromHex, hexFromArgb, hexToHsl, themeFromSourceColor } from "@/components/colors"
+import { argbFromHex, hexFromArgb, hexToHsl, themeFromSourceColor } from "tailwind-color"
 import React from "react"
 
 type Color = Extract<GetProp<ColorPickerProps, 'value'>, string | { cleared: any }>;

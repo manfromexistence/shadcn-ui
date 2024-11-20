@@ -330,6 +330,9 @@ importers:
       swr:
         specifier: 2.2.6-beta.3
         version: 2.2.6-beta.3(react@18.2.0)
+      tailwind-color:
+        specifier: 0.0.3-beta
+        version: 0.0.3-beta
       tailwind-merge:
         specifier: ^1.12.0
         version: 1.13.2
@@ -8008,6 +8011,9 @@ packages:
     resolution: {integrity: sha512-m6Ms7v9QYEoqIaW+5QFBXscNHNa+eVxynrW+WBzJQ3veFxoPdYvAXHKlgRTq5mJkL4Q3JKH/10V6iPvmv9g00Q==}
     peerDependencies:
       react: ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-0
+
+  tailwind-color@0.0.3-beta:
+    resolution: {integrity: sha512-KfcxZpa4dpeBs4H7ExppvmuC0FZdCX3ho7S0jdxWtrpgVm2lqo07MOIhz08jJ39sfr/DZlZV6CkKnzJn1cSpcA==}
 
   tailwind-merge@1.13.2:
     resolution: {integrity: sha512-R2/nULkdg1VR/EL4RXg4dEohdoxNUJGLMnWIQnPKL+O9Twu7Cn3Rxi4dlXkDzZrEGtR+G+psSXFouWlpTyLhCQ==}
@@ -18004,6 +18010,8 @@ snapshots:
     dependencies:
       react: 18.2.0
       use-sync-external-store: 1.2.2(react@18.2.0)
+
+  tailwind-color@0.0.3-beta: {}
 
   tailwind-merge@1.13.2: {}
 
