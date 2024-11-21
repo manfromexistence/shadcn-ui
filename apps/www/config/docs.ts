@@ -201,11 +201,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/password-input",
           items: [],
         },
-        {
-          title: "Number Input",
-          href: "/docs/components/number-input",
-          items: [],
-        },
+        // {
+        //   title: "Number Input",
+        //   href: "/docs/components/number-input",
+        //   items: [],
+        // },
         {
           title: "Tags Input",
           href: "/docs/components/tags-input",
