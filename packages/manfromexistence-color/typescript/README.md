@@ -1,8 +1,8 @@
-# tailwind-color
+# manfromexistence-color
 
-[![npm package](https://badgen.net/npm/v/manfromexistence/tailwind-color)](https://npmjs.com/package/manfromexistence/tailwind-color)
+[![npm package](https://badgen.net/npm/v/manfromexistence/manfromexistence-color)](https://npmjs.com/package/manfromexistence/manfromexistence-color)
 
-A fork of material-color-utilities for algorithms and utilities that power the Material Design 3 (M3) color system,
+A fork of manfromexistence-color-utilities for algorithms and utilities that power the Material Design 3 (M3) color system,
 including choosing theme colors from images and creating tones of colors; all in
 a new color space.
 Mostly about adding this color power to tailwind and much more.
@@ -13,10 +13,10 @@ for more information.
 
 ## Getting started
 
-`npm i tailwind-color` or `yarn add tailwind-color`
+`npm i manfromexistence-color` or `yarn add manfromexistence-color`
 
 ```typescript
-import { Hct } from "tailwind-color";
+import { Hct } from "manfromexistence-color";
 
 // Simple demonstration of HCT.
 const color = Hct.fromInt(0xff4285f4);
@@ -29,7 +29,7 @@ console.log(`Tone: ${color.tone}`);
 ### Theming
 
 ```typescript
-import { argbFromHex, themeFromSourceColor, applyTheme } from "tailwind-color";
+import { argbFromHex, themeFromSourceColor, applyTheme } from "manfromexistence-color";
 
 // Get the theme from a hex color
 const theme = themeFromSourceColor(argbFromHex('#f82506'), [
@@ -55,4 +55,4 @@ applyTheme(theme, {target: document.body, dark: systemDark});
 
 This repo is not accepting external contributions, but feature requests and bug
 reports are welcome on
-[GitHub](https://github.com/manfromexistence/tailwind-color/issues).
+[GitHub](https://github.com/manfromexistence/manfromexistence-color/issues).
