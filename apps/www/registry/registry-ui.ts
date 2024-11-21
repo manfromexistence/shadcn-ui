@@ -1,6 +1,5 @@
 import { Registry } from "@/registry/schema"
 
-
 export const ui: Registry = [
   {
     name: "buttons",
@@ -463,7 +462,7 @@ export const ui: Registry = [
       },
     ],
   },
-  
+
   {
     name: "accordion",
     type: "registry:ui",
@@ -787,17 +786,6 @@ export const ui: Registry = [
     files: [
       {
         path: "ui/pagination.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "popover",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-popover"],
-    files: [
-      {
-        path: "ui/popover.tsx",
         type: "registry:ui",
       },
     ],

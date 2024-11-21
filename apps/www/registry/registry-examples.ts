@@ -770,7 +770,7 @@ export const examples: Registry = [
       },
     ],
   },
-  
+
   {
     name: "accordion-demo",
     type: "registry:example",
@@ -1640,17 +1640,6 @@ export const examples: Registry = [
     files: [
       {
         path: "example/pagination-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "popover-demo",
-    type: "registry:example",
-    registryDependencies: ["popover"],
-    files: [
-      {
-        path: "example/popover-demo.tsx",
         type: "registry:example",
       },
     ],
