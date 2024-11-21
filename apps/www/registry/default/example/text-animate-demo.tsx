@@ -13,14 +13,14 @@ const AnimationDemo = ({ type, children }) => {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="flex flex-col relative" ref={ref}>
+    <div className="relative flex flex-col" ref={ref}>
       <div className="mt-8">
         <FadeIn key={count}>{children}</FadeIn>
       </div>
-      <div className="absolute top-0 -right-5 md:right-5">
+      <div className="absolute -right-5 top-0 md:right-5">
         <Refresh onClick={() => setCount(count + 1)} />
       </div>
-      <div className="absolute bottom-0 -left-5 md:hidden">
+      <div className="absolute -left-5 bottom-0 md:hidden">
         <Refresh onClick={() => setCount(count + 1)} />
       </div>
     </div>
@@ -41,7 +41,7 @@ const arrow = {
 const Refresh = ({ onClick }) => {
   return (
     <motion.div
-      className="p-1 border border-dotted rounded w-7 h-7  flex justify-center items-center cursor-pointer"
+      className="flex h-7 w-7 cursor-pointer items-center justify-center  rounded border border-dotted p-1"
       onClick={onClick}
       variants={button}
       initial="rest"
