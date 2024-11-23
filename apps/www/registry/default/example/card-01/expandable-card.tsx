@@ -1,7 +1,6 @@
 import { ExpandableCard } from '@/registry/default/ui/cards/expandable-card';
 
-
-export function CardWithCircleEllipsis_Demo() {
+export function ExpandableCard_Demo() {
     return (
         <div className="flex items-center space-x-2">
             <ExpandableCard height="10rem" wide>
