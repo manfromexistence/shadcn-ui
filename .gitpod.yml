@@ -7,5 +7,3 @@
 tasks:
   - init: npm install -g npm@10.9.0 && npm install -g bun && pnpm self-update && pnpm install && pnpm run build
     command: pnpm run dev
-
-
