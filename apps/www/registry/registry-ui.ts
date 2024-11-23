@@ -1,6 +1,96 @@
 import { Registry } from "@/registry/schema"
 
 export const ui: Registry = [
+
+  {
+    name: "card-expandable",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/buttons/stateful/varient-1.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "button-stateful-varient-1",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/buttons/stateful/varient-1.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "button-stateful-varient-2",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/buttons/stateful/varient-2.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "button-varients",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/buttons/button-varients.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "button-eye-cathcing-buttons",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/buttons/eye-cathcing-buttons.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bento-4",
+    type: "registry:ui",
+    registryDependencies: [""],
+    files: [
+      {
+        path: "ui/bentos/bento-4.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bento-5",
+    type: "registry:ui",
+    registryDependencies: [""],
+    files: [
+      {
+        path: "ui/bentos/bento-5.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bento-6",
+    type: "registry:ui",
+    registryDependencies: [""],
+    files: [
+      {
+        path: "ui/bentos/bento-6.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
   {
     name: "buttons",
     type: "registry:ui",
