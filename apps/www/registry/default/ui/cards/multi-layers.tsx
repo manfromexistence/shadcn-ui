@@ -18,7 +18,7 @@ const cardContent = {
   description:
     'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, hic ipsum! Qui dicta debitis aliquid quo molestias explicabo iure!',
 };
-const CardBody = ({ className = '' }) => (
+export const CardBody = ({ className = '' }) => (
   <div className={cn(className)}>
     <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">
       {cardContent.title}

@@ -52,24 +52,24 @@ export const Separator = ({
 }: SeparatorProps) => {
   if (label) {
     return (
-      <div className="flex items-center w-full">
+      <div className="flex w-full items-center">
         <div
           className={cn(
-            'rounded-full w-full h-[1px]',
+            'h-[1px] w-full rounded-full',
             gradient
-              ? 'bg-gradient-to-r from-transparent dark:from-zinc-800 dark:to-zinc-400 to-zinc-500'
+              ? 'bg-gradient-to-r from-transparent to-zinc-500 dark:from-zinc-800 dark:to-zinc-400'
               : 'bg-zinc-300 dark:bg-zinc-800',
             className,
           )}
         ></div>
-        <div className="text-gray-600 uppercase w-fit dark:text-gray-300 text-nowrap">
+        <div className="w-fit text-nowrap uppercase text-gray-600 dark:text-gray-300">
           {label}
         </div>
         <div
           className={cn(
-            'rounded-full w-full h-[1px]',
+            'h-[1px] w-full rounded-full',
             gradient
-              ? 'bg-gradient-to-r from-zinc-500 dark:from-zinc-200 to-transparent dark:to-zinc-700'
+              ? 'bg-gradient-to-r from-zinc-500 to-transparent dark:from-zinc-200 dark:to-zinc-700'
               : 'bg-zinc-300 dark:bg-zinc-800',
             className,
           )}
@@ -80,9 +80,9 @@ export const Separator = ({
   return (
     <div
       className={cn(
-        'rounded-full w-full h-[1px]',
+        'h-[1px] w-full rounded-full',
         gradient
-          ? 'bg-gradient-to-r from-transparent via-zinc-500 dark:via-zinc-200 to-transparent dark:from-zinc-800 dark:to-zinc-700'
+          ? 'bg-gradient-to-r from-transparent via-zinc-500 to-transparent dark:from-zinc-800 dark:via-zinc-200 dark:to-zinc-700'
           : 'bg-zinc-300 dark:bg-zinc-800',
         className,
       )}

@@ -4,30 +4,30 @@ import { motion } from 'framer-motion';
 //======================================
 export const Dots_v1 = () => (
   <div className="w-fit">
-    <div className="relative size-full flex items-center justify-start">
+    <div className="relative flex size-full items-center justify-start">
       <motion.span
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.7, repeat: Infinity }}
-        className="absolute top-0 size-3.5 rounded-full bg-current left-2"
+        className="absolute left-2 top-0 size-3.5 rounded-full bg-current"
       ></motion.span>
       <motion.span
         initial={{ x: 0 }}
         animate={{ x: 24 }}
         transition={{ duration: 0.7, repeat: Infinity }}
-        className="absolute top-0 size-3.5 rounded-full bg-current left-2"
+        className="absolute left-2 top-0 size-3.5 rounded-full bg-current"
       ></motion.span>
       <motion.span
         initial={{ x: 0 }}
         animate={{ x: 24 }}
         transition={{ duration: 0.7, repeat: Infinity }}
-        className="absolute top-0 size-3.5 rounded-full bg-current left-8"
+        className="absolute left-8 top-0 size-3.5 rounded-full bg-current"
       ></motion.span>
       <motion.span
         initial={{ scale: 1 }}
         animate={{ scale: 0 }}
         transition={{ duration: 0.7, repeat: Infinity }}
-        className="absolute top-0 size-3.5 rounded-full bg-current left-14"
+        className="absolute left-14 top-0 size-3.5 rounded-full bg-current"
       ></motion.span>
     </div>
   </div>
