@@ -35,7 +35,7 @@ export function ExpandableCard({
 return (
   <div
     className={cn(
-      'bg-white dark:bg-zinc-950 dark:from-zinc-950 from-white w-full border px-4 pt-8 pb-3 rounded-lg shadow',
+      'w-full rounded-lg border bg-white from-white px-4 pb-3 pt-8 shadow dark:bg-zinc-950 dark:from-zinc-950',
       className,
     )}
   >
@@ -50,19 +50,19 @@ return (
       </div>
       <div
         data-expanded={isExpanded}
-        className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-inherit dark:from-inherit/50 to-transparent pointer-events-none data-[expanded=true]:opacity-0 transition-opacity duration-300 ease-in-out"
+        className="dark:from-inherit/50 pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-inherit to-transparent transition-opacity duration-300 ease-in-out data-[expanded=true]:opacity-0"
         aria-hidden={isExpanded ? 'true' : 'false'}
       />
       <div
         className={cn(
           'mx-auto bg-inherit dark:bg-inherit',
           wide ? 'w-full' : 'w-fit',
-          isExpanded ? 'pt-2' : 'absolute bottom-4 inset-x-0',
+          isExpanded ? 'pt-2' : 'absolute inset-x-0 bottom-4',
         )}
       >
         <Button
           variant="outline"
-          className="w-full bg-inherit dark:bg-inherit rounded-lg"
+          className="w-full rounded-lg bg-inherit dark:bg-inherit"
           onClick={() => setIsExpanded(!isExpanded)}
           aria-expanded={isExpanded}
           aria-controls="expandable-content"

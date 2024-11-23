@@ -1,58 +1,92 @@
 import {
-  Card_with_image_v1,
-  Card_with_image_v2,
-  Card_with_image_v3,
-  Card_with_image_v4,
-  Card_with_image_v5,
-  Card_with_image_v6,
-} from "@/registry/default/ui/cards/with-image-bg"
+  CardBody,
+  CardWithCircleEllipsis,
+  CardWithEllipsis,
+  CardWithGrid,
+  CardWithGridEllipsis,
+  CardWithLines,
+  CardWithPlus,
+  CardWithSquareX,
+  CardWithNoise,
+} from "@/registry/default/ui/cards/with-pattern"
 
-export function Card_with_image_v1_Demo() {
+export function CardWithCircleEllipsis_Demo() {
   return (
     <div className="flex items-center space-x-2">
-      <Card_with_image_v1 />
+      <CardWithCircleEllipsis>
+        <CardBody className="relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90" />
+      </CardWithCircleEllipsis>
     </div>
   )
 }
 
-export function Card_with_image_v2_Demo() {
+export function CardWithEllipsis_Demo() {
   return (
     <div className="flex items-center space-x-2">
-      <Card_with_image_v2 />
+      <CardWithEllipsis>
+        <CardBody className="relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90" />
+      </CardWithEllipsis>
     </div>
   )
 }
 
-export function Card_with_image_v3_Demo() {
+export function CardWithGrid_Demo() {
   return (
     <div className="flex items-center space-x-2">
-      <Card_with_image_v3 />
+      <CardWithGrid>
+        <CardBody className="relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90" />
+      </CardWithGrid>
     </div>
   )
 }
 
-export function Card_with_image_v4_Demo() {
+export function CardWithGridEllipsis_Demo() {
   return (
     <div className="flex items-center space-x-2">
-      <Card_with_image_v4 />
+      <CardWithGridEllipsis>
+        <CardBody className="relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90" />
+      </CardWithGridEllipsis>
     </div>
   )
 }
 
-export function Card_with_image_v5_Demo() {
+export function CardWithLines_Demo() {
   return (
     <div className="flex items-center space-x-2">
-      <Card_with_image_v5 />
+      <CardWithLines>
+        <CardBody className="relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90" />
+      </CardWithLines>
     </div>
   )
 }
 
-export function Card_with_image_v6_Demo() {
+export function CardWithPlus_Demo() {
   return (
     <div className="flex items-center space-x-2">
-      <Card_with_image_v6 />
+      <CardWithPlus>
+        <CardBody className="relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90" />
+      </CardWithPlus>
     </div>
   )
 }
 
+export function CardWithSquareX_Demo() {
+  return (
+    <div className="flex items-center space-x-2">
+      <CardWithSquareX>
+        <CardBody className="relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90" />
+      </CardWithSquareX>
+    </div>
+  )
+}
+
+export function CardWithNoise_Demo() {
+  return (
+    <div className="flex items-center space-x-2">
+      <CardWithNoise>
+        <CardBody className="relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90" />
+      </CardWithNoise>
+    </div>
+  )
+}
 
