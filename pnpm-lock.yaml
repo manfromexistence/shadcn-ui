@@ -333,6 +333,9 @@ importers:
       react-hook-form:
         specifier: ^7.44.2
         version: 7.44.2(react@18.2.0)
+      react-icons:
+        specifier: ^5.3.0
+        version: 5.3.0(react@18.2.0)
       react-payment-inputs:
         specifier: ^1.2.0
         version: 1.2.0(react@18.2.0)(styled-components@6.1.13(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
@@ -7703,6 +7706,11 @@ packages:
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
+
+  react-icons@5.3.0:
+    resolution: {integrity: sha512-DnUk8aFbTyQPSkCfF8dbX6kQjXA9DktMeJqfjrg6cK9vwQVMxmcA3BfP4QoiztVmEHtwlTgLFsPuH2NskKT6eg==}
+    peerDependencies:
+      react: '*'
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -18179,6 +18187,10 @@ snapshots:
   react-fast-compare@3.2.2: {}
 
   react-hook-form@7.44.2(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+
+  react-icons@5.3.0(react@18.2.0):
     dependencies:
       react: 18.2.0
 
