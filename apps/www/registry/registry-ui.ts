@@ -2,6 +2,150 @@ import { Registry } from "@/registry/schema"
 
 export const ui: Registry = [
   {
+    name: "dots",
+    type: "registry:ui",
+    registryDependencies: ["framer-motion"],
+    files: [
+      {
+        path: "ui/dots.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-expandable",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/card-expandable.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-multi-layers",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/card-multi-layers.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-simple",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/card-simple.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-with-image-bg",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/card-with-image-bg.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-with-pattern",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/card-with-pattern.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  // {
+  //   name: "button-stateful-varient-1",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button"],
+  //   files: [
+  //     {
+  //       path: "ui/button-stateful-varient-1-1.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-stateful-varient-2",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button"],
+  //   files: [
+  //     {
+  //       path: "ui/button-stateful-varient-2-2.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-varients",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button"],
+  //   files: [
+  //     {
+  //       path: "ui/button-varients-3.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-eye-cathcing-buttons",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button"],
+  //   files: [
+  //     {
+  //       path: "ui/button-eye-cathcing-4.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  {
+    name: "bento-4",
+    type: "registry:ui",
+    registryDependencies: [""],
+    files: [
+      {
+        path: "ui/bento-4.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bento-5",
+    type: "registry:ui",
+    registryDependencies: [""],
+    files: [
+      {
+        path: "ui/bento-5.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bento-6",
+    type: "registry:ui",
+    registryDependencies: [""],
+    files: [
+      {
+        path: "ui/bento-6.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
     name: "buttons",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slot"],

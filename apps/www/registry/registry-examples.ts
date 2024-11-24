@@ -2,7 +2,151 @@ import { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
   {
-    name: "animated-beam-multiple-outputs",
+    name: "dots-demo",
+    type: "registry:ui",
+    registryDependencies: ["dots"],
+    files: [
+      {
+        path: "ui/dots.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-expandable-demo",
+    type: "registry:ui",
+    registryDependencies: ["card-expandable"],
+    files: [
+      {
+        path: "example/cards/expandable-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-multi-layers-demo",
+    type: "registry:ui",
+    registryDependencies: ["card-multi-layers"],
+    files: [
+      {
+        path: "example/cards/multi-layers.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-simple-demo",
+    type: "registry:ui",
+    registryDependencies: ["card-simple"],
+    files: [
+      {
+        path: "example/cards/simple-cards.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-with-image-bg-demo",
+    type: "registry:ui",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "example/cards/with-image-bg.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-with-pattern-demo",
+    type: "registry:ui",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "example/cards/with-pattern.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  // {
+  //   name: "button-stateful-varient-1-demo",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button-stateful-varient-1"],
+  //   files: [
+  //     {
+  //       path: "example/buttons/stateful/varient-1.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-stateful-varient-2-demo",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button-stateful-varient-2"],
+  //   files: [
+  //     {
+  //       path: "example/buttons/stateful/varient-2.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-varients-demo",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button-varients"],
+  //   files: [
+  //     {
+  //       path: "example/buttons/button-varients.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-eye-cathcing-buttons-demo",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button-eye-cathcing-buttons"],
+  //   files: [
+  //     {
+  //       path: "example/buttons/eye-cathcing-buttons.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  {
+    name: "bento-4-demo",
+    type: "registry:ui",
+    registryDependencies: ["bento-4"],
+    files: [
+      {
+        path: "example/bentos/bento-4.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bento-5-demo",
+    type: "registry:ui",
+    registryDependencies: ["bento-5"],
+    files: [
+      {
+        path: "example/bentos/bento-5.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bento-6-demo",
+    type: "registry:ui",
+    registryDependencies: ["bento-6"],
+    files: [
+      {
+        path: "example/bentos/bento-6.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
+    name: "animated-beam-multiple-outputs-demo",
     type: "registry:example",
     registryDependencies: ["animated-beam"],
     files: [
