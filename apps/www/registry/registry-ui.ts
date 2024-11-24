@@ -18,7 +18,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/cards/expandable-card.tsx",
+        path: "ui/card-expandable.tsx",
         type: "registry:ui",
       },
     ],
@@ -29,7 +29,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/cards/multi-layer.tsx",
+        path: "ui/card-multi-layer.tsx",
         type: "registry:ui",
       },
     ],
@@ -40,7 +40,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/cards/simple-cards.tsx",
+        path: "ui/cards/card-simple.tsx",
         type: "registry:ui",
       },
     ],
@@ -51,7 +51,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/cards/with-image-bg.tsx",
+        path: "ui/cards/card-with-image-bg.tsx",
         type: "registry:ui",
       },
     ],
@@ -62,7 +62,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/cards/with-pattern.tsx",
+        path: "ui/cards/card-with-pattern.tsx",
         type: "registry:ui",
       },
     ],
@@ -73,7 +73,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/buttons/stateful/varient-1.tsx",
+        path: "ui/button-stateful-varient-1.tsx",
         type: "registry:ui",
       },
     ],
@@ -84,7 +84,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/buttons/stateful/varient-2.tsx",
+        path: "ui/buttons-stateful-varient-2.tsx",
         type: "registry:ui",
       },
     ],
@@ -95,7 +95,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/buttons/button-varients.tsx",
+        path: "ui/button-varients.tsx",
         type: "registry:ui",
       },
     ],
@@ -106,7 +106,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/buttons/eye-cathcing-buttons.tsx",
+        path: "ui/button-eye-cathcing.tsx",
         type: "registry:ui",
       },
     ],
@@ -117,7 +117,7 @@ export const ui: Registry = [
     registryDependencies: [""],
     files: [
       {
-        path: "ui/bentos/bento-4.tsx",
+        path: "ui/bento-4.tsx",
         type: "registry:ui",
       },
     ],
@@ -128,7 +128,7 @@ export const ui: Registry = [
     registryDependencies: [""],
     files: [
       {
-        path: "ui/bentos/bento-5.tsx",
+        path: "ui/bento-5.tsx",
         type: "registry:ui",
       },
     ],
@@ -139,7 +139,7 @@ export const ui: Registry = [
     registryDependencies: [""],
     files: [
       {
-        path: "ui/bentos/bento-6.tsx",
+        path: "ui/bento-6.tsx",
         type: "registry:ui",
       },
     ],
