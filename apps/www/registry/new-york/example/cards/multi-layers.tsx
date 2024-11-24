@@ -1,10 +1,10 @@
 import {
+  CardBody,
   MultilayerCardV_1,
   MultilayerCardV_2,
   MultilayerCardV_3,
   MultilayerCardV_4,
-  CardBody
-} from "@/registry/default/ui/cards/multi-layers"
+} from "@/registry/default/ui/card-multi-layers"
 
 export function MultilayerCardV_1_Demo() {
   return (

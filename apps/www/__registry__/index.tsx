@@ -5,6 +5,214 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "new-york": {
+    "dots": {
+      name: "dots",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["framer-motion"],
+      files: [{
+        path: "registry/new-york/ui/dots.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/dots.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-expandable": {
+      name: "card-expandable",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/card-expandable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/card-expandable.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layer": {
+      name: "card-multi-layer",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/card-multi-layer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/card-multi-layer.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-simple": {
+      name: "card-simple",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/cards/card-simple.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/cards/card-simple.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-image-bg": {
+      name: "card-with-image-bg",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/cards/card-with-image-bg.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/cards/card-with-image-bg.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-pattern": {
+      name: "card-with-pattern",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/cards/card-with-pattern.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/cards/card-with-pattern.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-stateful-varient-1": {
+      name: "button-stateful-varient-1",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/button-stateful-varient-1.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/button-stateful-varient-1.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-stateful-varient-2": {
+      name: "button-stateful-varient-2",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/buttons-stateful-varient-2.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/buttons-stateful-varient-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-varients": {
+      name: "button-varients",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/button-varients.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/button-varients.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-eye-cathcing-buttons": {
+      name: "button-eye-cathcing-buttons",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/button-eye-cathcing.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/button-eye-cathcing.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-4": {
+      name: "bento-4",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/new-york/ui/bento-4.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/bento-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-5": {
+      name: "bento-5",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/new-york/ui/bento-5.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/bento-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-6": {
+      name: "bento-6",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/new-york/ui/bento-6.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/bento-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "buttons": {
       name: "buttons",
       description: "",
@@ -1373,8 +1581,216 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "animated-beam-multiple-outputs": {
-      name: "animated-beam-multiple-outputs",
+    "dots-demo": {
+      name: "dots-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dots"],
+      files: [{
+        path: "registry/new-york/ui/dots.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/dots.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-expandable-demo": {
+      name: "card-expandable-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-expandable"],
+      files: [{
+        path: "registry/new-york/example/cards/expandable-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/expandable-card.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layer-demo": {
+      name: "card-multi-layer-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-multi-layer"],
+      files: [{
+        path: "registry/new-york/example/cards/multi-layer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/multi-layer.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-simple-demo": {
+      name: "card-simple-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/new-york/example/cards/simple-cards.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/simple-cards.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-image-bg-demo": {
+      name: "card-with-image-bg-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/new-york/example/cards/with-image-bg.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-image-bg.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-pattern-demo": {
+      name: "card-with-pattern-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/new-york/example/cards/with-pattern.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-stateful-varient-1-demo": {
+      name: "button-stateful-varient-1-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button-stateful-varient-1"],
+      files: [{
+        path: "registry/new-york/example/buttons/stateful/varient-1.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/buttons/stateful/varient-1.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-stateful-varient-2-demo": {
+      name: "button-stateful-varient-2-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button-stateful-varient-2"],
+      files: [{
+        path: "registry/new-york/example/buttons/stateful/varient-2.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/buttons/stateful/varient-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-varients-demo": {
+      name: "button-varients-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button-varients"],
+      files: [{
+        path: "registry/new-york/example/buttons/button-varients.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/buttons/button-varients.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-eye-cathcing-buttons-demo": {
+      name: "button-eye-cathcing-buttons-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button-eye-cathcing-buttons"],
+      files: [{
+        path: "registry/new-york/example/buttons/eye-cathcing-buttons.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/buttons/eye-cathcing-buttons.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-4-demo": {
+      name: "bento-4-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-4"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-4.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-5-demo": {
+      name: "bento-5-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-5"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-5.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-6-demo": {
+      name: "bento-6-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-6"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-6.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "animated-beam-multiple-outputs-demo": {
+      name: "animated-beam-multiple-outputs-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["animated-beam"],
@@ -7310,6 +7726,214 @@ export const Index: Record<string, any> = {
       chunks: []
     },
   },  "default": {
+    "dots": {
+      name: "dots",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["framer-motion"],
+      files: [{
+        path: "registry/default/ui/dots.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/dots.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-expandable": {
+      name: "card-expandable",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/card-expandable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/card-expandable.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layer": {
+      name: "card-multi-layer",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/card-multi-layer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/card-multi-layer.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-simple": {
+      name: "card-simple",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/cards/card-simple.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/cards/card-simple.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-image-bg": {
+      name: "card-with-image-bg",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/cards/card-with-image-bg.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/cards/card-with-image-bg.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-pattern": {
+      name: "card-with-pattern",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/cards/card-with-pattern.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/cards/card-with-pattern.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-stateful-varient-1": {
+      name: "button-stateful-varient-1",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/button-stateful-varient-1.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/button-stateful-varient-1.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-stateful-varient-2": {
+      name: "button-stateful-varient-2",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/buttons-stateful-varient-2.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/buttons-stateful-varient-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-varients": {
+      name: "button-varients",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/button-varients.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/button-varients.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-eye-cathcing-buttons": {
+      name: "button-eye-cathcing-buttons",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/button-eye-cathcing.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/button-eye-cathcing.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-4": {
+      name: "bento-4",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/default/ui/bento-4.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/bento-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-5": {
+      name: "bento-5",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/default/ui/bento-5.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/bento-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-6": {
+      name: "bento-6",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/default/ui/bento-6.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/bento-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "buttons": {
       name: "buttons",
       description: "",
@@ -8678,8 +9302,216 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "animated-beam-multiple-outputs": {
-      name: "animated-beam-multiple-outputs",
+    "dots-demo": {
+      name: "dots-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dots"],
+      files: [{
+        path: "registry/default/ui/dots.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/dots.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-expandable-demo": {
+      name: "card-expandable-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-expandable"],
+      files: [{
+        path: "registry/default/example/cards/expandable-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/expandable-card.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layer-demo": {
+      name: "card-multi-layer-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-multi-layer"],
+      files: [{
+        path: "registry/default/example/cards/multi-layer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/multi-layer.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-simple-demo": {
+      name: "card-simple-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/default/example/cards/simple-cards.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/simple-cards.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-image-bg-demo": {
+      name: "card-with-image-bg-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/default/example/cards/with-image-bg.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-pattern-demo": {
+      name: "card-with-pattern-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/default/example/cards/with-pattern.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-stateful-varient-1-demo": {
+      name: "button-stateful-varient-1-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button-stateful-varient-1"],
+      files: [{
+        path: "registry/default/example/buttons/stateful/varient-1.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/buttons/stateful/varient-1.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-stateful-varient-2-demo": {
+      name: "button-stateful-varient-2-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button-stateful-varient-2"],
+      files: [{
+        path: "registry/default/example/buttons/stateful/varient-2.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/buttons/stateful/varient-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-varients-demo": {
+      name: "button-varients-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button-varients"],
+      files: [{
+        path: "registry/default/example/buttons/button-varients.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/buttons/button-varients.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "button-eye-cathcing-buttons-demo": {
+      name: "button-eye-cathcing-buttons-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button-eye-cathcing-buttons"],
+      files: [{
+        path: "registry/default/example/buttons/eye-cathcing-buttons.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/buttons/eye-cathcing-buttons.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-4-demo": {
+      name: "bento-4-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-4"],
+      files: [{
+        path: "registry/default/example/bentos/bento-4.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-5-demo": {
+      name: "bento-5-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-5"],
+      files: [{
+        path: "registry/default/example/bentos/bento-5.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-6-demo": {
+      name: "bento-6-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-6"],
+      files: [{
+        path: "registry/default/example/bentos/bento-6.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "animated-beam-multiple-outputs-demo": {
+      name: "animated-beam-multiple-outputs-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["animated-beam"],

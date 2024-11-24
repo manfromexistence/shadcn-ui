@@ -3,7 +3,7 @@ import {
   Bento_5_v2,
   Bento_5_v3,
   Bento_5_v4,
-} from '@/registry/default/ui/bentos/bento-5';
+} from "@/registry/default/ui/bentos/bento-5"
 
 export function Bento_4_v1_Demo() {
   return (
@@ -36,5 +36,3 @@ export function Bento_4_v4_Demo() {
     </div>
   )
 }
-
-

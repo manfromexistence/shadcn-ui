@@ -63,4 +63,3 @@ export function SimpleCard_V7_Demo() {
     </div>
   )
 }
-

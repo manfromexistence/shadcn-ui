@@ -1,5 +1,6 @@
-'use client';
-import { motion } from 'framer-motion';
+"use client"
+
+import { motion } from "framer-motion"
 
 //======================================
 export const Dots_v1 = () => (
@@ -31,7 +32,7 @@ export const Dots_v1 = () => (
       ></motion.span>
     </div>
   </div>
-);
+)
 
 export const Dots_v2 = () => (
   <div className="flex items-center justify-center ">
@@ -44,7 +45,7 @@ export const Dots_v2 = () => (
         }}
         transition={{
           duration: 1.1,
-          ease: 'easeInOut',
+          ease: "easeInOut",
           repeat: Infinity,
         }}
       />
@@ -56,7 +57,7 @@ export const Dots_v2 = () => (
         }}
         transition={{
           duration: 1.1,
-          ease: 'easeInOut',
+          ease: "easeInOut",
           repeat: Infinity,
           delay: 0.3,
         }}
@@ -69,14 +70,14 @@ export const Dots_v2 = () => (
         }}
         transition={{
           duration: 1.1,
-          ease: 'easeInOut',
+          ease: "easeInOut",
           repeat: Infinity,
           delay: 0.6,
         }}
       />
     </div>
   </div>
-);
+)
 
 export const Dots_v3 = () => {
   return (
@@ -85,8 +86,8 @@ export const Dots_v3 = () => {
       <div className="size-3.5 animate-bounce rounded-full bg-current [animation-delay:-0.13s]"></div>
       <div className="size-3.5 animate-bounce rounded-full bg-current"></div>
     </div>
-  );
-};
+  )
+}
 
 //======================================
 export const Dots_v4 = () => (
@@ -105,18 +106,18 @@ export const Dots_v4 = () => (
       ></motion.span>
     ))}
   </div>
-);
+)
 
 export const Dots_v5 = () => {
-  const dots = 8;
-  const radius = 24;
+  const dots = 8
+  const radius = 24
 
   return (
     <div className="relative size-20 border">
       {[...Array(dots)].map((_, i) => {
-        const angle = (i / dots) * (2 * Math.PI);
-        const x = radius * Math.cos(angle);
-        const y = radius * Math.sin(angle);
+        const angle = (i / dots) * (2 * Math.PI)
+        const x = radius * Math.cos(angle)
+        const y = radius * Math.sin(angle)
 
         return (
           <motion.div
@@ -134,11 +135,11 @@ export const Dots_v5 = () => {
               duration: 4.5,
               repeat: Infinity,
               delay: (i / dots) * 1.7,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             }}
           />
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}

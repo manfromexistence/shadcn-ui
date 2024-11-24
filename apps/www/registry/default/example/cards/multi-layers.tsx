@@ -1,9 +1,9 @@
 import {
+  CardBody,
   MultilayerCardV_1,
   MultilayerCardV_2,
   MultilayerCardV_3,
   MultilayerCardV_4,
-  CardBody
 } from "@/registry/default/ui/cards/multi-layers"
 
 export function MultilayerCardV_1_Demo() {

@@ -5,7 +5,7 @@ import {
   Card_with_image_v4,
   Card_with_image_v5,
   Card_with_image_v6,
-} from "@/registry/default/ui/cards/with-image-bg"
+} from "@/registry/default/ui/card-with-image-bg"
 
 export function Card_with_image_v1_Demo() {
   return (
@@ -54,5 +54,3 @@ export function Card_with_image_v6_Demo() {
     </div>
   )
 }
-
-

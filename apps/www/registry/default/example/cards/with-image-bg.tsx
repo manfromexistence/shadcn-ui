@@ -54,5 +54,3 @@ export function Card_with_image_v6_Demo() {
     </div>
   )
 }
-
-

@@ -12,14 +12,14 @@
  *
  */
 
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils"
 
 const cardContent = {
-  title: 'Lorem ipsum dolor',
+  title: "Lorem ipsum dolor",
   description:
-    'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, hic ipsum! Qui dicta debitis aliquid quo molestias explicabo iure!',
-};
-const CardBody = ({ className = '' }) => (
+    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, hic ipsum! Qui dicta debitis aliquid quo molestias explicabo iure!",
+}
+const CardBody = ({ className = "" }) => (
   <div className={cn(className)}>
     <h3 className="mb-1 text-xl font-bold text-gray-900 dark:text-gray-100">
       {cardContent.title}
@@ -28,11 +28,11 @@ const CardBody = ({ className = '' }) => (
       {cardContent.description}
     </p>
   </div>
-);
+)
 
 type CardProps = {
-  children?: React.ReactNode;
-};
+  children?: React.ReactNode
+}
 
 //======================================
 export const MultilayerCardV_1 = ({
@@ -47,8 +47,8 @@ export const MultilayerCardV_1 = ({
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
 //======================================
 export const MultilayerCardV_2 = ({
   children = <CardBody className="p-3" />,
@@ -59,21 +59,21 @@ export const MultilayerCardV_2 = ({
         <div
           className="absolute -top-4 size-full scale-x-90 scale-y-[1.15] rounded-3xl border border-neutral-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900"
           style={{
-            transformOrigin: 'top center',
+            transformOrigin: "top center",
           }}
         ></div>
         <div
           className="center absolute size-full rounded-3xl border border-neutral-200 bg-white p-2 shadow-[0px_0px_16px_#D4D4D8] dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-[0px_0px_64px_rgba(39,39,42,0.6)] md:p-4"
           style={{
-            transformOrigin: 'top center',
+            transformOrigin: "top center",
           }}
         >
           {children}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 //======================================
 export const MultilayerCardV_3 = ({
   children = <CardBody className="p-3" />,
@@ -84,21 +84,21 @@ export const MultilayerCardV_3 = ({
         <div
           className="absolute top-6 size-full scale-x-[1.01] scale-y-[.75] rounded-3xl border border-neutral-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900"
           style={{
-            transformOrigin: 'top center',
+            transformOrigin: "top center",
           }}
         ></div>
         <div
           className="center absolute size-full scale-95 rounded-3xl border border-neutral-200 bg-white p-2 shadow-[0px_0px_16px_#D4D4D8] dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-[0px_0px_64px_rgba(39,39,42,0.6)] md:p-4"
           style={{
-            transformOrigin: 'top center',
+            transformOrigin: "top center",
           }}
         >
           {children}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 //======================================
 export const MultilayerCardV_4 = ({
   children = <CardBody className="p-3" />,
@@ -109,24 +109,24 @@ export const MultilayerCardV_4 = ({
         <div
           className="absolute -top-6 size-full scale-[0.95] rounded-3xl border border-neutral-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/30"
           style={{
-            transformOrigin: 'top center',
+            transformOrigin: "top center",
           }}
         ></div>
         <div
           className="absolute -top-3 size-full scale-[0.97] rounded-3xl border border-neutral-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/40"
           style={{
-            transformOrigin: 'top center',
+            transformOrigin: "top center",
           }}
         ></div>
         <div
           className="center absolute size-full rounded-3xl border border-neutral-200 bg-white p-2 shadow-xl shadow-black/[0.1] dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-white/[0.02] md:p-4"
           style={{
-            transformOrigin: 'top center',
+            transformOrigin: "top center",
           }}
         >
           {children}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

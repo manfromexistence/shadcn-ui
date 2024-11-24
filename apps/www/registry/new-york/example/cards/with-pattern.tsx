@@ -5,10 +5,10 @@ import {
   CardWithGrid,
   CardWithGridEllipsis,
   CardWithLines,
+  CardWithNoise,
   CardWithPlus,
   CardWithSquareX,
-  CardWithNoise,
-} from "@/registry/default/ui/cards/with-pattern"
+} from "@/registry/default/ui/card-with-pattern"
 
 export function CardWithCircleEllipsis_Demo() {
   return (
@@ -89,4 +89,3 @@ export function CardWithNoise_Demo() {
     </div>
   )
 }
-

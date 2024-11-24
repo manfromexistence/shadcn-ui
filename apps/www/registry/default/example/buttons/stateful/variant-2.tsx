@@ -1,4 +1,4 @@
-import { StatefulButton_2 } from '@/registry/default/ui/buttons/stateful/variant-2';
+import { StatefulButton_2 } from "@/registry/default/ui/buttons/stateful/variant-2"
 
 export function StatefulButton_2_Demo() {
   return (

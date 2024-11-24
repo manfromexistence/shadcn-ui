@@ -1,4 +1,4 @@
-import { Dots_v1, Dots_v2, Dots_v3, Dots_v4 } from '@/registry/default/ui/dots';
+import { Dots_v1, Dots_v2, Dots_v3, Dots_v4 } from "@/registry/default/ui/dots"
 
 export function Dots_v1_Demo() {
   return (
@@ -31,4 +31,3 @@ export function Dots_v4_Demo() {
     </div>
   )
 }
-

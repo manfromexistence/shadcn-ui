@@ -4,7 +4,7 @@ import {
   EyeCatchingButton_v3,
   EyeCatchingButton_v4,
   EyeCatchingButton_v5,
-} from '@/registry/default/ui/buttons/eye-catching-buttons';
+} from "@/registry/default/ui/button-eye-catching"
 
 export function EyeCatchingButton_v1_Demo() {
   return (
@@ -45,4 +45,3 @@ export function EyeCatchingButton_v5_Demo() {
     </div>
   )
 }
-

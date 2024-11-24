@@ -1,3 +1,5 @@
+import { X } from "lucide-react"
+
 import {
   Button_v1,
   Button_v2,
@@ -7,8 +9,7 @@ import {
   Button_v6,
   Button_v7,
   Button_v8,
-} from '@/registry/default/ui/buttons/button-variants';
-import { X } from 'lucide-react';
+} from "@/registry/default/ui/button-variants"
 
 export function Button_v1_Demo() {
   return (
@@ -45,9 +46,7 @@ export function Button_v4_Demo() {
 export function Button_v5_Demo() {
   return (
     <div className="flex items-center space-x-2">
-      <Button_v5 Icon={<X />}>
-        Icon
-      </Button_v5>
+      <Button_v5 Icon={<X />}>Icon</Button_v5>
     </div>
   )
 }
@@ -75,4 +74,3 @@ export function Button_v8_Demo() {
     </div>
   )
 }
-

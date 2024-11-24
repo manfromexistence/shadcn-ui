@@ -1,56 +1,58 @@
-'use client';
-import * as React from 'react';
-import { Button, ButtonProps } from '@/registry/new-york/ui/button';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaCircleCheck, FaCircleXmark } from 'react-icons/fa6';
-import { cn } from '@/lib/utils';
-import { ImSpinner2 } from 'react-icons/im';
-import { LuSend } from 'react-icons/lu';
+"use client"
+
+import * as React from "react"
+import { AnimatePresence, motion } from "framer-motion"
+import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6"
+import { ImSpinner2 } from "react-icons/im"
+import { LuSend } from "react-icons/lu"
+
+import { cn } from "@/lib/utils"
+import { Button, ButtonProps } from "@/registry/new-york/ui/button"
 
 // mock async code
-const useStatus = ({ resloveTo }: { resloveTo: 'success' | 'error' }) => {
-  const [status, setStatus] = React.useState('idle');
+const useStatus = ({ resloveTo }: { resloveTo: "success" | "error" }) => {
+  const [status, setStatus] = React.useState("idle")
   // mock async request
   const onSubmit = () => {
-    setStatus('loading');
+    setStatus("loading")
     setTimeout(() => {
-      setStatus(resloveTo);
-    }, 3500);
-  };
+      setStatus(resloveTo)
+    }, 3500)
+  }
 
   return {
     onSubmit,
     status,
-  };
-};
+  }
+}
 
 //======================================
 export function StatefulButton_1({ ...rest }: ButtonProps) {
-  const { status, onSubmit } = useStatus({ resloveTo: 'success' });
+  const { status, onSubmit } = useStatus({ resloveTo: "success" })
   return (
     <Button
-      disabled={status == 'loading'}
+      disabled={status == "loading"}
       onClick={onSubmit}
       {...rest}
-      variant={status === 'error' ? 'destructive' : rest.variant}
-      className={cn('w-36 overflow-hidden rounded-lg', rest.className)}
+      variant={status === "error" ? "destructive" : rest.variant}
+      className={cn("w-36 overflow-hidden rounded-lg", rest.className)}
     >
       <AnimatePresence mode="wait">
         {/* //------------------------------IDLE */}
-        {status === 'idle' && (
+        {status === "idle" && (
           <motion.span
             key={status}
             exit={{
               opacity: 0,
               y: -15,
-              transition: { duration: 0.3, type: 'spring' },
+              transition: { duration: 0.3, type: "spring" },
             }}
           >
             Click me
           </motion.span>
         )}
         {/* //------------------------------LOADING */}
-        {status === 'loading' && (
+        {status === "loading" && (
           <motion.span
             key={status}
             initial={{ opacity: 0, y: 15 }}
@@ -62,7 +64,7 @@ export function StatefulButton_1({ ...rest }: ButtonProps) {
         )}
 
         {/* //------------------------------RESOLVED */}
-        {['success', 'error'].includes(status) && (
+        {["success", "error"].includes(status) && (
           <motion.span
             key={status}
             initial={{ opacity: 0, y: 15, scale: 0 }}
@@ -74,11 +76,11 @@ export function StatefulButton_1({ ...rest }: ButtonProps) {
             }}
             exit={{ opacity: 0, y: -15, transition: { duration: 0.3 } }}
           >
-            {status === 'success' && <FaCircleCheck size="20" />}
-            {status === 'error' && <FaCircleXmark size="20" />}
+            {status === "success" && <FaCircleCheck size="20" />}
+            {status === "error" && <FaCircleXmark size="20" />}
           </motion.span>
         )}
       </AnimatePresence>
     </Button>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils';
-import { Button, ButtonProps } from '@/registry/new-york/ui/button';
+import { cn } from "@/lib/utils"
+import { Button, ButtonProps } from "@/registry/new-york/ui/button"
 
 //======================================
 export const EyeCatchingButton_v1 = ({ ...props }: ButtonProps) => {
@@ -9,13 +9,13 @@ export const EyeCatchingButton_v1 = ({ ...props }: ButtonProps) => {
       <Button
         {...props}
         className={cn(
-          'h-10 w-full rounded-full bg-zinc-50 px-8 font-semibold text-zinc-800 backdrop-blur-xl dark:bg-zinc-900 dark:text-zinc-200',
+          "h-10 w-full rounded-full bg-zinc-50 px-8 font-semibold text-zinc-800 backdrop-blur-xl dark:bg-zinc-900 dark:text-zinc-200",
           props.className
         )}
       />
     </div>
-  );
-};
+  )
+}
 
 //======================================Shiny Background
 export const EyeCatchingButton_v2 = ({ ...props }: ButtonProps) => {
@@ -23,14 +23,14 @@ export const EyeCatchingButton_v2 = ({ ...props }: ButtonProps) => {
     <Button
       {...props}
       className={cn(
-        'animate-bg-shine rounded-lg border-[1px] bg-[length:200%_100%] tracking-wide shadow',
-        'dark:border-zinc-800 dark:bg-[linear-gradient(110deg,#09090B,45%,#27272A,55%,#09090B)] dark:text-zinc-200',
-        'border-zinc-300 bg-[linear-gradient(110deg,#FFF,45%,#E4E4E7,55%,#FFF)] text-zinc-800',
+        "animate-bg-shine rounded-lg border-[1px] bg-[length:200%_100%] tracking-wide shadow",
+        "dark:border-zinc-800 dark:bg-[linear-gradient(110deg,#09090B,45%,#27272A,55%,#09090B)] dark:text-zinc-200",
+        "border-zinc-300 bg-[linear-gradient(110deg,#FFF,45%,#E4E4E7,55%,#FFF)] text-zinc-800",
         props.className
       )}
     />
-  );
-};
+  )
+}
 
 //======================================Shiny Text
 export const EyeCatchingButton_v3 = ({ ...props }: ButtonProps) => {
@@ -38,14 +38,14 @@ export const EyeCatchingButton_v3 = ({ ...props }: ButtonProps) => {
     <Button
       {...props}
       className={cn(
-        'animate-bg-shine rounded-lg border-[1px] bg-[length:250%_100%] bg-clip-text font-bold tracking-wide text-transparent shadow dark:text-transparent',
-        'dark:border-zinc-800 dark:bg-[linear-gradient(110deg,#D4D4D8,45%,#27272A,55%,#D4D4D8)]',
-        'border-zinc-300 bg-[linear-gradient(110deg,#09090B,45%,#fff,55%,#09090B)]',
+        "animate-bg-shine rounded-lg border-[1px] bg-[length:250%_100%] bg-clip-text font-bold tracking-wide text-transparent shadow dark:text-transparent",
+        "dark:border-zinc-800 dark:bg-[linear-gradient(110deg,#D4D4D8,45%,#27272A,55%,#D4D4D8)]",
+        "border-zinc-300 bg-[linear-gradient(110deg,#09090B,45%,#fff,55%,#09090B)]",
         props.className
       )}
     />
-  );
-};
+  )
+}
 
 //======================================Animated Gradient border
 export const EyeCatchingButton_v4 = ({ ...props }: ButtonProps) => {
@@ -55,13 +55,13 @@ export const EyeCatchingButton_v4 = ({ ...props }: ButtonProps) => {
       <Button
         {...props}
         className={cn(
-          'rounded-xl bg-white text-lg font-medium text-zinc-800 backdrop-blur-2xl group-hover:scale-100 dark:bg-zinc-950 dark:text-zinc-400',
+          "rounded-xl bg-white text-lg font-medium text-zinc-800 backdrop-blur-2xl group-hover:scale-100 dark:bg-zinc-950 dark:text-zinc-400",
           props.className
         )}
       />
     </div>
-  );
-};
+  )
+}
 
 //======================================Animated Text Gradient
 export const EyeCatchingButton_v5 = ({ ...props }: ButtonProps) => {
@@ -70,11 +70,11 @@ export const EyeCatchingButton_v5 = ({ ...props }: ButtonProps) => {
       {...props}
       variant="outline"
       className={cn(
-        'animate-text-gradient rounded-xl bg-gradient-to-l bg-[length:300%] bg-clip-text text-lg font-bold tracking-wide text-transparent dark:bg-zinc-50 dark:text-transparent',
-        'from-zinc-500 via-zinc-950 to-zinc-600',
-        'dark:from-zinc-600 dark:via-zinc-100 dark:to-zinc-600',
+        "animate-text-gradient rounded-xl bg-gradient-to-l bg-[length:300%] bg-clip-text text-lg font-bold tracking-wide text-transparent dark:bg-zinc-50 dark:text-transparent",
+        "from-zinc-500 via-zinc-950 to-zinc-600",
+        "dark:from-zinc-600 dark:via-zinc-100 dark:to-zinc-600",
         props.className
       )}
     />
-  );
-};
+  )
+}

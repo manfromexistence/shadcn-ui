@@ -1,13 +1,13 @@
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils"
 
 export const Cell = ({ i = 0 }) => {
   return (
     <div className="center size-full rounded-lg bg-zinc-200 text-xl dark:bg-zinc-900">
       {i}
     </div>
-  );
-};
-const cells = [1, 2, 3, 4];
+  )
+}
+const cells = [1, 2, 3, 4]
 //======================================
 export const Bento_4_v1 = () => {
   return (
@@ -16,18 +16,18 @@ export const Bento_4_v1 = () => {
         <div
           key={n}
           className={cn(
-            'h-32 rounded-lg p-1',
-            i == 0 && 'md:col-span-3',
-            i == 2 && 'md:col-start-1',
-            i == 3 && 'md:col-span-3 md:col-start-2',
+            "h-32 rounded-lg p-1",
+            i == 0 && "md:col-span-3",
+            i == 2 && "md:col-start-1",
+            i == 3 && "md:col-span-3 md:col-start-2"
           )}
         >
           <Cell i={i + 1} />
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
 //======================================
 export const Bento_4_v2 = () => {
@@ -38,9 +38,9 @@ export const Bento_4_v2 = () => {
           <div
             key={n}
             className={cn(
-              'h-32 rounded-lg p-1',
-              i == 0 && 'md:col-span-3',
-              i > 1 && 'md:col-span-2'
+              "h-32 rounded-lg p-1",
+              i == 0 && "md:col-span-3",
+              i > 1 && "md:col-span-2"
             )}
           >
             <Cell i={i + 1} />
@@ -48,8 +48,8 @@ export const Bento_4_v2 = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
 //======================================
 export const Bento_4_v3 = () => {
@@ -59,19 +59,19 @@ export const Bento_4_v3 = () => {
         <div
           key={n}
           className={cn(
-            'h-32 rounded-lg p-1',
-            i == 0 && 'md:col-start-1 ',
-            i == 1 && 'md:col-span-2',
-            i == 2 && 'md:col-start-4',
-            i == 3 && 'md:col-span-4',
+            "h-32 rounded-lg p-1",
+            i == 0 && "md:col-start-1 ",
+            i == 1 && "md:col-span-2",
+            i == 2 && "md:col-start-4",
+            i == 3 && "md:col-span-4"
           )}
         >
           <Cell i={i + 1} />
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
 //======================================
 export const Bento_4_v4 = () => {
@@ -81,16 +81,16 @@ export const Bento_4_v4 = () => {
         <div
           key={n}
           className={cn(
-            'h-32 rounded-lg p-1',
-            i == 0 && 'md:col-span-4 md:row-span-4 md:h-full',
-            i == 1 && 'md:col-span-2',
-            i == 2 && 'md:col-span-2 md:row-span-3',
-            i == 3 && 'md:col-span-6'
+            "h-32 rounded-lg p-1",
+            i == 0 && "md:col-span-4 md:row-span-4 md:h-full",
+            i == 1 && "md:col-span-2",
+            i == 2 && "md:col-span-2 md:row-span-3",
+            i == 3 && "md:col-span-6"
           )}
         >
           <Cell i={i + 1} />
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
