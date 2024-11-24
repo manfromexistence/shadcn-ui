@@ -4,7 +4,7 @@ import {
   EyeCatchingButton_v3,
   EyeCatchingButton_v4,
   EyeCatchingButton_v5,
-} from "@/registry/new-york/ui/button-eye-catching-4"
+} from "@/registry/new-york/ui/button-eye-catching"
 
 export function EyeCatchingButton_v1_Demo() {
   return (
