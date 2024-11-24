@@ -1,5 +1,122 @@
 [
   {
+    "name": "dots",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      {
+        "path": "ui/dots.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card-expandable",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "ui/card-expandable.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card-multi-layers",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "ui/card-multi-layers.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card-simple",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "ui/card-simple.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card-with-image-bg",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "ui/card-with-image-bg.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card-with-pattern",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "ui/card-with-pattern.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "bento-4",
+    "type": "registry:ui",
+    "registryDependencies": [
+      ""
+    ],
+    "files": [
+      {
+        "path": "ui/bento-4.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "bento-5",
+    "type": "registry:ui",
+    "registryDependencies": [
+      ""
+    ],
+    "files": [
+      {
+        "path": "ui/bento-5.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "bento-6",
+    "type": "registry:ui",
+    "registryDependencies": [
+      ""
+    ],
+    "files": [
+      {
+        "path": "ui/bento-6.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "buttons",
     "type": "registry:ui",
     "dependencies": [
@@ -1244,6 +1361,123 @@
     "files": [
       {
         "path": "ui/tooltip.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "dots-demo",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "dots"
+    ],
+    "files": [
+      {
+        "path": "ui/dots.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card-expandable-demo",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "card-expandable"
+    ],
+    "files": [
+      {
+        "path": "example/cards/expandable-card.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card-multi-layers-demo",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "card-multi-layers"
+    ],
+    "files": [
+      {
+        "path": "example/cards/multi-layers.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card-simple-demo",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "card-simple"
+    ],
+    "files": [
+      {
+        "path": "example/cards/simple-cards.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card-with-image-bg-demo",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "card-with-image-bg"
+    ],
+    "files": [
+      {
+        "path": "example/cards/with-image-bg.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card-with-pattern-demo",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "card-with-pattern"
+    ],
+    "files": [
+      {
+        "path": "example/cards/with-pattern.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "bento-4-demo",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "bento-4"
+    ],
+    "files": [
+      {
+        "path": "example/bentos/bento-4.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "bento-5-demo",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "bento-5"
+    ],
+    "files": [
+      {
+        "path": "example/bentos/bento-5.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "bento-6-demo",
+    "type": "registry:ui",
+    "registryDependencies": [
+      "bento-6"
+    ],
+    "files": [
+      {
+        "path": "example/bentos/bento-6.tsx",
         "type": "registry:ui"
       }
     ]

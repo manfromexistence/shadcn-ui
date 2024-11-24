@@ -5,6 +5,150 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "new-york": {
+    "dots": {
+      name: "dots",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["framer-motion"],
+      files: [{
+        path: "registry/new-york/ui/dots.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/dots.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-expandable": {
+      name: "card-expandable",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/card-expandable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/card-expandable.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layers": {
+      name: "card-multi-layers",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/card-multi-layers.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/card-multi-layers.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-simple": {
+      name: "card-simple",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/card-simple.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/card-simple.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-image-bg": {
+      name: "card-with-image-bg",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/card-with-image-bg.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/card-with-image-bg.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-pattern": {
+      name: "card-with-pattern",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/card-with-pattern.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/card-with-pattern.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-4": {
+      name: "bento-4",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/new-york/ui/bento-4.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/bento-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-5": {
+      name: "bento-5",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/new-york/ui/bento-5.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/bento-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-6": {
+      name: "bento-6",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/new-york/ui/bento-6.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/bento-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "buttons": {
       name: "buttons",
       description: "",
@@ -1373,8 +1517,152 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "animated-beam-multiple-outputs": {
-      name: "animated-beam-multiple-outputs",
+    "dots-demo": {
+      name: "dots-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dots"],
+      files: [{
+        path: "registry/new-york/ui/dots.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/dots.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-expandable-demo": {
+      name: "card-expandable-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-expandable"],
+      files: [{
+        path: "registry/new-york/example/cards/expandable-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/expandable-card.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layers-demo": {
+      name: "card-multi-layers-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-multi-layers"],
+      files: [{
+        path: "registry/new-york/example/cards/multi-layers.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/multi-layers.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-simple-demo": {
+      name: "card-simple-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/new-york/example/cards/simple-cards.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/simple-cards.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-image-bg-demo": {
+      name: "card-with-image-bg-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/new-york/example/cards/with-image-bg.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-image-bg.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-pattern-demo": {
+      name: "card-with-pattern-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/new-york/example/cards/with-pattern.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-4-demo": {
+      name: "bento-4-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-4"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-4.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-5-demo": {
+      name: "bento-5-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-5"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-5.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-6-demo": {
+      name: "bento-6-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-6"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-6.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "animated-beam-multiple-outputs-demo": {
+      name: "animated-beam-multiple-outputs-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["animated-beam"],
@@ -7310,6 +7598,150 @@ export const Index: Record<string, any> = {
       chunks: []
     },
   },  "default": {
+    "dots": {
+      name: "dots",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["framer-motion"],
+      files: [{
+        path: "registry/default/ui/dots.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/dots.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-expandable": {
+      name: "card-expandable",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/card-expandable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/card-expandable.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layers": {
+      name: "card-multi-layers",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/card-multi-layers.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/card-multi-layers.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-simple": {
+      name: "card-simple",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/card-simple.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/card-simple.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-image-bg": {
+      name: "card-with-image-bg",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/card-with-image-bg.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/card-with-image-bg.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-pattern": {
+      name: "card-with-pattern",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/card-with-pattern.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/card-with-pattern.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-4": {
+      name: "bento-4",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/default/ui/bento-4.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/bento-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-5": {
+      name: "bento-5",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/default/ui/bento-5.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/bento-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-6": {
+      name: "bento-6",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/default/ui/bento-6.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/bento-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "buttons": {
       name: "buttons",
       description: "",
@@ -8678,8 +9110,152 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "animated-beam-multiple-outputs": {
-      name: "animated-beam-multiple-outputs",
+    "dots-demo": {
+      name: "dots-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dots"],
+      files: [{
+        path: "registry/default/ui/dots.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/dots.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-expandable-demo": {
+      name: "card-expandable-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-expandable"],
+      files: [{
+        path: "registry/default/example/cards/expandable-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/expandable-card.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layers-demo": {
+      name: "card-multi-layers-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-multi-layers"],
+      files: [{
+        path: "registry/default/example/cards/multi-layers.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/multi-layers.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-simple-demo": {
+      name: "card-simple-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/default/example/cards/simple-cards.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/simple-cards.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-image-bg-demo": {
+      name: "card-with-image-bg-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/default/example/cards/with-image-bg.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-with-pattern-demo": {
+      name: "card-with-pattern-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/default/example/cards/with-pattern.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-4-demo": {
+      name: "bento-4-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-4"],
+      files: [{
+        path: "registry/default/example/bentos/bento-4.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-5-demo": {
+      name: "bento-5-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-5"],
+      files: [{
+        path: "registry/default/example/bentos/bento-5.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-6-demo": {
+      name: "bento-6-demo",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["bento-6"],
+      files: [{
+        path: "registry/default/example/bentos/bento-6.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "animated-beam-multiple-outputs-demo": {
+      name: "animated-beam-multiple-outputs-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["animated-beam"],

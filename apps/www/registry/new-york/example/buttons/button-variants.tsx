@@ -9,7 +9,7 @@ import {
   Button_v6,
   Button_v7,
   Button_v8,
-} from "@/registry/new-york/ui/button-variants-3"
+} from "@/registry/new-york/ui/button-variants"
 
 export function Button_v1_Demo() {
   return (
