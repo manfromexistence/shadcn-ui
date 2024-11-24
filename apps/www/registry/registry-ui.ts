@@ -67,50 +67,50 @@ export const ui: Registry = [
       },
     ],
   },
-  {
-    name: "button-stateful-varient-1",
-    type: "registry:ui",
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "ui/button-stateful-varient-1-1.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "button-stateful-varient-2",
-    type: "registry:ui",
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "ui/button-stateful-varient-2-2.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "button-varients",
-    type: "registry:ui",
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "ui/button-varients-3.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "button-eye-cathcing-buttons",
-    type: "registry:ui",
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "ui/button-eye-cathcing-4.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
+  // {
+  //   name: "button-stateful-varient-1",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button"],
+  //   files: [
+  //     {
+  //       path: "ui/button-stateful-varient-1-1.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-stateful-varient-2",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button"],
+  //   files: [
+  //     {
+  //       path: "ui/button-stateful-varient-2-2.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-varients",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button"],
+  //   files: [
+  //     {
+  //       path: "ui/button-varients-3.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-eye-cathcing-buttons",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button"],
+  //   files: [
+  //     {
+  //       path: "ui/button-eye-cathcing-4.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
   {
     name: "bento-4",
     type: "registry:ui",

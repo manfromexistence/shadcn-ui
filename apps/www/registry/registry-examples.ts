@@ -67,50 +67,50 @@ export const examples: Registry = [
       },
     ],
   },
-  {
-    name: "button-stateful-varient-1-demo",
-    type: "registry:ui",
-    registryDependencies: ["button-stateful-varient-1"],
-    files: [
-      {
-        path: "example/buttons/stateful/varient-1.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "button-stateful-varient-2-demo",
-    type: "registry:ui",
-    registryDependencies: ["button-stateful-varient-2"],
-    files: [
-      {
-        path: "example/buttons/stateful/varient-2.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "button-varients-demo",
-    type: "registry:ui",
-    registryDependencies: ["button-varients"],
-    files: [
-      {
-        path: "example/buttons/button-varients.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "button-eye-cathcing-buttons-demo",
-    type: "registry:ui",
-    registryDependencies: ["button-eye-cathcing-buttons"],
-    files: [
-      {
-        path: "example/buttons/eye-cathcing-buttons.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
+  // {
+  //   name: "button-stateful-varient-1-demo",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button-stateful-varient-1"],
+  //   files: [
+  //     {
+  //       path: "example/buttons/stateful/varient-1.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-stateful-varient-2-demo",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button-stateful-varient-2"],
+  //   files: [
+  //     {
+  //       path: "example/buttons/stateful/varient-2.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-varients-demo",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button-varients"],
+  //   files: [
+  //     {
+  //       path: "example/buttons/button-varients.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-eye-cathcing-buttons-demo",
+  //   type: "registry:ui",
+  //   registryDependencies: ["button-eye-cathcing-buttons"],
+  //   files: [
+  //     {
+  //       path: "example/buttons/eye-cathcing-buttons.tsx",
+  //       type: "registry:ui",
+  //     },
+  //   ],
+  // },
   {
     name: "bento-4-demo",
     type: "registry:ui",
