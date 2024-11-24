@@ -24,12 +24,12 @@ export const examples: Registry = [
     ],
   },
   {
-    name: "card-multi-layer-demo",
+    name: "card-multi-layers-demo",
     type: "registry:ui",
-    registryDependencies: ["card-multi-layer"],
+    registryDependencies: ["card-multi-layers"],
     files: [
       {
-        path: "example/cards/multi-layer.tsx",
+        path: "example/cards/multi-layers.tsx",
         type: "registry:ui",
       },
     ],

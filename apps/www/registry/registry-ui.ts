@@ -24,12 +24,12 @@ export const ui: Registry = [
     ],
   },
   {
-    name: "card-multi-layer",
+    name: "card-multi-layers",
     type: "registry:ui",
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/card-multi-layer.tsx",
+        path: "ui/card-multi-layers.tsx",
         type: "registry:ui",
       },
     ],
@@ -40,7 +40,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/cards/card-simple.tsx",
+        path: "ui/card-simple.tsx",
         type: "registry:ui",
       },
     ],
@@ -51,7 +51,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/cards/card-with-image-bg.tsx",
+        path: "ui/card-with-image-bg.tsx",
         type: "registry:ui",
       },
     ],
@@ -62,7 +62,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/cards/card-with-pattern.tsx",
+        path: "ui/card-with-pattern.tsx",
         type: "registry:ui",
       },
     ],
@@ -84,7 +84,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/buttons-stateful-varient-2.tsx",
+        path: "ui/button-stateful-varient-2.tsx",
         type: "registry:ui",
       },
     ],

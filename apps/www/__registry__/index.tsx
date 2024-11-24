@@ -37,17 +37,17 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "card-multi-layer": {
-      name: "card-multi-layer",
+    "card-multi-layers": {
+      name: "card-multi-layers",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york/ui/card-multi-layer.tsx",
+        path: "registry/new-york/ui/card-multi-layers.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/ui/card-multi-layer.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/ui/card-multi-layers.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -59,11 +59,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york/ui/cards/card-simple.tsx",
+        path: "registry/new-york/ui/card-simple.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/ui/cards/card-simple.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/ui/card-simple.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -75,11 +75,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york/ui/cards/card-with-image-bg.tsx",
+        path: "registry/new-york/ui/card-with-image-bg.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/ui/cards/card-with-image-bg.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/ui/card-with-image-bg.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -91,11 +91,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york/ui/cards/card-with-pattern.tsx",
+        path: "registry/new-york/ui/card-with-pattern.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/ui/cards/card-with-pattern.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/ui/card-with-pattern.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -123,11 +123,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york/ui/buttons-stateful-varient-2.tsx",
+        path: "registry/new-york/ui/button-stateful-varient-2.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/ui/buttons-stateful-varient-2.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/ui/button-stateful-varient-2.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -1613,17 +1613,17 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "card-multi-layer-demo": {
-      name: "card-multi-layer-demo",
+    "card-multi-layers-demo": {
+      name: "card-multi-layers-demo",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["card-multi-layer"],
+      registryDependencies: ["card-multi-layers"],
       files: [{
-        path: "registry/new-york/example/cards/multi-layer.tsx",
+        path: "registry/new-york/example/cards/multi-layers.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/example/cards/multi-layer.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/example/cards/multi-layers.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -7758,17 +7758,17 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "card-multi-layer": {
-      name: "card-multi-layer",
+    "card-multi-layers": {
+      name: "card-multi-layers",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/default/ui/card-multi-layer.tsx",
+        path: "registry/default/ui/card-multi-layers.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/ui/card-multi-layer.tsx")),
+      component: React.lazy(() => import("@/registry/default/ui/card-multi-layers.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -7780,11 +7780,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/default/ui/cards/card-simple.tsx",
+        path: "registry/default/ui/card-simple.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/ui/cards/card-simple.tsx")),
+      component: React.lazy(() => import("@/registry/default/ui/card-simple.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -7796,11 +7796,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/default/ui/cards/card-with-image-bg.tsx",
+        path: "registry/default/ui/card-with-image-bg.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/ui/cards/card-with-image-bg.tsx")),
+      component: React.lazy(() => import("@/registry/default/ui/card-with-image-bg.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -7812,11 +7812,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/default/ui/cards/card-with-pattern.tsx",
+        path: "registry/default/ui/card-with-pattern.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/ui/cards/card-with-pattern.tsx")),
+      component: React.lazy(() => import("@/registry/default/ui/card-with-pattern.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -7844,11 +7844,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/default/ui/buttons-stateful-varient-2.tsx",
+        path: "registry/default/ui/button-stateful-varient-2.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/ui/buttons-stateful-varient-2.tsx")),
+      component: React.lazy(() => import("@/registry/default/ui/button-stateful-varient-2.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -9334,17 +9334,17 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "card-multi-layer-demo": {
-      name: "card-multi-layer-demo",
+    "card-multi-layers-demo": {
+      name: "card-multi-layers-demo",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["card-multi-layer"],
+      registryDependencies: ["card-multi-layers"],
       files: [{
-        path: "registry/default/example/cards/multi-layer.tsx",
+        path: "registry/default/example/cards/multi-layers.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/cards/multi-layer.tsx")),
+      component: React.lazy(() => import("@/registry/default/example/cards/multi-layers.tsx")),
       source: "",
       category: "",
       subcategory: "",

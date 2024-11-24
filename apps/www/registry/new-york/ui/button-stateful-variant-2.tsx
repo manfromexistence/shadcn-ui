@@ -40,7 +40,7 @@ export function StatefulButton_2({ ...rest }: ButtonProps) {
       onClick={onSubmit}
       {...rest}
       variant={status === "error" ? "destructive" : rest.variant}
-      className={cn("w-40 rounded-lg overflow-hidden gap-2", rest.className)}
+      className={cn("w-40 gap-2 overflow-hidden rounded-lg", rest.className)}
     >
       <span key="label">
         {status == "idle"
@@ -68,7 +68,7 @@ export function StatefulButton_2({ ...rest }: ButtonProps) {
             animate={"show"}
             exit={"hidden"}
           >
-            <ImSpinner2 className="animate-spin size-4" />
+            <ImSpinner2 className="size-4 animate-spin" />
           </motion.span>
         ) : (
           <motion.span

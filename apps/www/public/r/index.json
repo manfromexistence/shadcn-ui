@@ -26,14 +26,14 @@
     ]
   },
   {
-    "name": "card-multi-layer",
+    "name": "card-multi-layers",
     "type": "registry:ui",
     "registryDependencies": [
       "button"
     ],
     "files": [
       {
-        "path": "ui/card-multi-layer.tsx",
+        "path": "ui/card-multi-layers.tsx",
         "type": "registry:ui"
       }
     ]
@@ -46,7 +46,7 @@
     ],
     "files": [
       {
-        "path": "ui/cards/card-simple.tsx",
+        "path": "ui/card-simple.tsx",
         "type": "registry:ui"
       }
     ]
@@ -59,7 +59,7 @@
     ],
     "files": [
       {
-        "path": "ui/cards/card-with-image-bg.tsx",
+        "path": "ui/card-with-image-bg.tsx",
         "type": "registry:ui"
       }
     ]
@@ -72,7 +72,7 @@
     ],
     "files": [
       {
-        "path": "ui/cards/card-with-pattern.tsx",
+        "path": "ui/card-with-pattern.tsx",
         "type": "registry:ui"
       }
     ]
@@ -98,7 +98,7 @@
     ],
     "files": [
       {
-        "path": "ui/buttons-stateful-varient-2.tsx",
+        "path": "ui/button-stateful-varient-2.tsx",
         "type": "registry:ui"
       }
     ]
@@ -1444,14 +1444,14 @@
     ]
   },
   {
-    "name": "card-multi-layer-demo",
+    "name": "card-multi-layers-demo",
     "type": "registry:ui",
     "registryDependencies": [
-      "card-multi-layer"
+      "card-multi-layers"
     ],
     "files": [
       {
-        "path": "example/cards/multi-layer.tsx",
+        "path": "example/cards/multi-layers.tsx",
         "type": "registry:ui"
       }
     ]
