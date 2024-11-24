@@ -1,14 +1,68 @@
 import { Registry } from "@/registry/schema"
 
 export const ui: Registry = [
-
+  {
+    name: "dots",
+    type: "registry:ui",
+    registryDependencies: ["framer-motion"],
+    files: [
+      {
+        path: "ui/dots.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
   {
     name: "card-expandable",
     type: "registry:ui",
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/buttons/stateful/varient-1.tsx",
+        path: "ui/cards/expandable-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-multi-layer",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/cards/multi-layer.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-simple",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/cards/simple-cards.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-with-image-bg",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/cards/with-image-bg.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "card-with-pattern",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/cards/with-pattern.tsx",
         type: "registry:ui",
       },
     ],
