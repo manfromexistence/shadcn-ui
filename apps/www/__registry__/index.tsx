@@ -107,11 +107,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york/ui/button-stateful-varient-1.tsx",
+        path: "registry/new-york/ui/button-stateful-varient-1-1.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/ui/button-stateful-varient-1.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/ui/button-stateful-varient-1-1.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -123,11 +123,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york/ui/button-stateful-varient-2.tsx",
+        path: "registry/new-york/ui/button-stateful-varient-2-2.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/ui/button-stateful-varient-2.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/ui/button-stateful-varient-2-2.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -139,11 +139,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york/ui/button-varients.tsx",
+        path: "registry/new-york/ui/button-varients-3.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/ui/button-varients.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/ui/button-varients-3.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -155,11 +155,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/new-york/ui/button-eye-cathcing.tsx",
+        path: "registry/new-york/ui/button-eye-cathcing-4.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/ui/button-eye-cathcing.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/ui/button-eye-cathcing-4.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -7828,11 +7828,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/default/ui/button-stateful-varient-1.tsx",
+        path: "registry/default/ui/button-stateful-varient-1-1.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/ui/button-stateful-varient-1.tsx")),
+      component: React.lazy(() => import("@/registry/default/ui/button-stateful-varient-1-1.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -7844,11 +7844,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/default/ui/button-stateful-varient-2.tsx",
+        path: "registry/default/ui/button-stateful-varient-2-2.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/ui/button-stateful-varient-2.tsx")),
+      component: React.lazy(() => import("@/registry/default/ui/button-stateful-varient-2-2.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -7860,11 +7860,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/default/ui/button-varients.tsx",
+        path: "registry/default/ui/button-varients-3.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/ui/button-varients.tsx")),
+      component: React.lazy(() => import("@/registry/default/ui/button-varients-3.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -7876,11 +7876,11 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/default/ui/button-eye-cathcing.tsx",
+        path: "registry/default/ui/button-eye-cathcing-4.tsx",
         type: "registry:ui",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/ui/button-eye-cathcing.tsx")),
+      component: React.lazy(() => import("@/registry/default/ui/button-eye-cathcing-4.tsx")),
       source: "",
       category: "",
       subcategory: "",

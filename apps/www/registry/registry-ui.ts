@@ -73,7 +73,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/button-stateful-varient-1.tsx",
+        path: "ui/button-stateful-varient-1-1.tsx",
         type: "registry:ui",
       },
     ],
@@ -84,7 +84,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/button-stateful-varient-2.tsx",
+        path: "ui/button-stateful-varient-2-2.tsx",
         type: "registry:ui",
       },
     ],
@@ -95,7 +95,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/button-varients.tsx",
+        path: "ui/button-varients-3.tsx",
         type: "registry:ui",
       },
     ],
@@ -106,7 +106,7 @@ export const ui: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "ui/button-eye-cathcing.tsx",
+        path: "ui/button-eye-cathcing-4.tsx",
         type: "registry:ui",
       },
     ],
