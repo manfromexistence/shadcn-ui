@@ -6,6 +6,7 @@
     "roadmap-ui": "scripts/init.js"
   },
   "files": ["scripts/init.js"],
+  
   "scripts": {
     "build": "next build",
     "dev": "next dev --turbo",
