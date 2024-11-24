@@ -147,8 +147,8 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Bento Grid",
-          href: "/docs/components/bento-grid",
+          title: "Bento",
+          href: "/docs/components/bento",
           items: [],
         },
         {
@@ -224,6 +224,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Buttons",
           href: "/docs/components/buttons",
+          items: [],
+        },
+        {
+          title: "Cards",
+          href: "/docs/components/cards",
           items: [],
         },
         // {

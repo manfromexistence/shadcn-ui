@@ -8,7 +8,7 @@ import {
   CardWithNoise,
   CardWithPlus,
   CardWithSquareX,
-} from "@/registry/default/ui/cards/with-pattern"
+} from "@/registry/default/ui/card-with-pattern"
 
 export function CardWithCircleEllipsis_Demo() {
   return (

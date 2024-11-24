@@ -1,4 +1,4 @@
-import { ExpandableCard } from "@/registry/default/ui/cards/expandable-card"
+import { ExpandableCard } from "@/registry/default/ui/card-expandable"
 
 export function ExpandableCard_Demo() {
   return (

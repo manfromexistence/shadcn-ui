@@ -9,7 +9,7 @@ import {
   Button_v6,
   Button_v7,
   Button_v8,
-} from "@/registry/default/ui/buttons/button-variants"
+} from "@/registry/default/ui/button-variants"
 
 export function Button_v1_Demo() {
   return (

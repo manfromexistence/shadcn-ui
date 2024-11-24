@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { cn } from "@/lib/utils"
-import { toast } from "@/registry/default/hooks/use-toast"
+import { toast } from "@/registry/new-york/hooks/use-toast"
 import { Button } from "@/registry/new-york/ui/button"
 import { Calendar } from "@/registry/new-york/ui/calendar"
 import {

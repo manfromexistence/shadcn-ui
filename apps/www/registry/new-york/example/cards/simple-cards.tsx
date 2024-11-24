@@ -6,7 +6,7 @@ import {
   SimpleCard_V5,
   SimpleCard_V6,
   SimpleCard_V7,
-} from "@/registry/default/ui/card-simple"
+} from "@/registry/new-york/ui/card-simple"
 
 export function SimpleCard_V1_Demo() {
   return (

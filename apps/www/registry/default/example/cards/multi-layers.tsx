@@ -4,7 +4,7 @@ import {
   MultilayerCardV_2,
   MultilayerCardV_3,
   MultilayerCardV_4,
-} from "@/registry/default/ui/cards/multi-layers"
+} from "@/registry/default/ui/card-multi-layers"
 
 export function MultilayerCardV_1_Demo() {
   return (
