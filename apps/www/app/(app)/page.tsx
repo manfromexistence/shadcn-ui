@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -12,6 +13,7 @@ import {
 } from "@/components/page-header"
 import CardsNewYork from "@/registry/new-york/example/cards"
 import { Button } from "@/registry/new-york/ui/button"
+import { ConfigProvider, FloatButton, theme } from "antd"
 
 export default function IndexPage() {
   return (
@@ -39,7 +41,18 @@ export default function IndexPage() {
         </PageActions>
       </PageHeader>
       <div className="container py-6">
-        <ExamplesNav className="[&>a:first-child]:text-primary" />
+        <ConfigProvider
+          theme={{
+            // 1. Use dark algorithm
+            algorithm: theme.darkAlgorithm,
+
+            // 2. Combine dark algorithm and compact algorithm
+            // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
+          }}>
+          <FloatButton />
+        </ConfigProvider>
+
+        {/* <ExamplesNav className="[&>a:first-child]:text-primary" />
         <section className="overflow-hidden rounded-lg border bg-background shadow-md md:hidden md:shadow-xl">
           <Image
             src="/examples/cards-light.png"
@@ -58,7 +71,7 @@ export default function IndexPage() {
         </section>
         <section className="hidden md:block [&>div]:p-0">
           <CardsNewYork />
-        </section>
+        </section> */}
       </div>
     </div>
   )
