@@ -25,8 +25,8 @@ export const docsConfig: DocsConfig = {
       href: "/blocks",
     },
     {
-      title: "Canvases",
-      href: "/canvases",
+      title: "Visualizations",
+      href: "/visualizations",
     },
     {
       title: "Themes",

@@ -55,16 +55,16 @@ export function MainNav() {
           Blocks
         </Link>
         <Link
-          href="/canvases"
+          href="/visualizations"
           className={cn(
             "transition-colors hover:text-foreground/80",
             pathname?.startsWith("/docs/component/canvas") ||
-              pathname?.startsWith("/canvases")
+              pathname?.startsWith("/visualizations")
               ? "text-foreground"
               : "text-foreground/80"
           )}
         >
-          Canvases
+          Visualizations
         </Link>
         <Link
           href="/themes"
@@ -88,15 +88,6 @@ export function MainNav() {
         >
           Renderers
         </Link>
-        {/* <Link
-          href="/more"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname === "/more" ? "text-foreground" : "text-foreground/80"
-          )}
-        >
-          More
-        </Link> */}
       </nav>
     </div>
   )
