@@ -2,6 +2,17 @@ import { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
   {
+    name: "signature-input-demo",
+    type: "registry:example",
+    registryDependencies: ["signature-input", "button", "form"],
+    files: [
+      {
+        path: "example/signature-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "dots-demo",
     type: "registry:example",
     registryDependencies: ["dots"],

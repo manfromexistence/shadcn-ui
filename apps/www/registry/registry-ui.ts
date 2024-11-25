@@ -2,6 +2,17 @@ import { Registry } from "@/registry/schema"
 
 export const ui: Registry = [
   {
+    name: "signature-input",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/signature-input.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "dots",
     type: "registry:ui",
     registryDependencies: ["framer-motion"],

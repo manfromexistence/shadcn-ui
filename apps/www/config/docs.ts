@@ -142,6 +142,11 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Sintature Input",
+          href: "/docs/components/signature-input",
+          items: [],
+        },
+        {
           title: "Tooltip",
           href: "/docs/components/tooltip",
           items: [],
@@ -473,7 +478,7 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
 
-                // {
+        // {
         //   title: "Video",
         //   href: "/docs/components/video",
         //   items: [],
