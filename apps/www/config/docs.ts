@@ -142,6 +142,102 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Tooltip",
+          href: "/docs/components/tooltip",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Color Picker",
+          href: "/docs/components/color-picker",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Cascader",
+          href: "/docs/components/cascader",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Description",
+          href: "/docs/components/description",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Float Button",
+          href: "/docs/components/float-button",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Input Number",
+          href: "/docs/components/input-number",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Qr Code",
+          href: "/docs/components/qr-code",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Rate",
+          href: "/docs/components/rate",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Steps",
+          href: "/docs/components/steps",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Timeline",
+          href: "/docs/components/timeline",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Time Picker",
+          href: "/docs/components/time-picker",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Tour",
+          href: "/docs/components/tour",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Transfer",
+          href: "/docs/components/transfer",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Tree",
+          href: "/docs/components/tree",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Transfer",
+          href: "/docs/components/transfer",
+          items: [],
+          label: "new",
+        },
+        {
+          title: "Tree Select",
+          href: "/docs/components/tree-select",
+          items: [],
+          label: "new",
+        },
+        {
           title: "Dock",
           href: "/docs/components/dock",
           items: [],
@@ -201,11 +297,6 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/password-input",
           items: [],
         },
-        // {
-        //   title: "Number Input",
-        //   href: "/docs/components/number-input",
-        //   items: [],
-        // },
         {
           title: "Tags Input",
           href: "/docs/components/tags-input",
@@ -329,11 +420,6 @@ export const docsConfig: DocsConfig = {
         // {
         //   title: "Two Step Popover",
         //   href: "/docs/components/two-step-popover",
-        //   items: [],
-        // },
-        // {
-        //   title: "Tooltip",
-        //   href: "/docs/components/tooltip",
         //   items: [],
         // },
         // {
@@ -570,7 +656,6 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/typewriter",
           items: [],
         },
-
         {
           title: "Sidebar",
           href: "/docs/components/sidebar",
