@@ -17,6 +17,16 @@ Please read the [contributing guide](/CONTRIBUTING.md).
 Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
 
 ```
+git clone https://github.com/antvis/G2 && cd G2 && rm -rf .git && cd ..
+git clone https://github.com/antvis/G6 && cd G6 && rm -rf .git && cd ..
+git clone https://github.com/antvis/F2 && cd F2 && rm -rf .git && cd ..
+git clone https://github.com/antvis/X6 && cd X6 && rm -rf .git && cd ..
+git clone https://github.com/antvis/L7 && cd L7 && rm -rf .git && cd ..
+git clone https://github.com/antvis/S2 && cd S2 && rm -rf .git && cd ..
+git clone https://github.com/antvis/G && cd G && rm -rf .git && cd ..
+```
+
+```
 GitHub: https://github.com/manfromexistence
 Hey, bro. So, I am 100% sure that I can do this project.
 I am an experienced full-stack software engineer who loves learning new techs and making something useful. My skills list:
