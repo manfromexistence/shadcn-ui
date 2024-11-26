@@ -52,6 +52,7 @@ export default function IndexPage() {
           <FloatButton />
         </ConfigProvider>
       </div>
+      
     </div>
   )
 }
