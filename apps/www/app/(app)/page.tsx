@@ -15,52 +15,52 @@ import CardsNewYork from "@/registry/new-york/example/cards"
 import { Button } from "@/registry/new-york/ui/button"
 import { ConfigProvider, FloatButton, theme } from "antd"
 
-import FormBuilder from '@/screens/form-builder'
-import React from 'react'
+export default function IndexPage() {
+  return (
+    <div className="relative">
+      <PageHeader>
+        <Announcement />
+        <PageHeaderHeading>Build your component library</PageHeaderHeading>
+        <PageHeaderDescription>
+          Beautifully designed components that you can copy and paste into your
+          apps. Made with Tailwind CSS. Open source.
+        </PageHeaderDescription>
+        <PageActions>
+          <Button asChild size="sm">
+            <Link href="/docs">Get Started</Link>
+          </Button>
+          <Button asChild size="sm" variant="ghost">
+            <Link
+              target="_blank"
+              rel="noreferrer"
+              href={siteConfig.links.github}
+            >
+              GitHub
+            </Link>
+          </Button>
+        </PageActions>
+      </PageHeader>
+      <div className="container py-6">
+        <ConfigProvider
+          theme={{
+            // 1. Use dark algorithm
+            algorithm: theme.darkAlgorithm,
 
-export default function Renderers() {
-  return <FormBuilder />
+            // 2. Combine dark algorithm and compact algorithm
+            // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
+          }}>
+          <FloatButton />
+        </ConfigProvider>
+      </div>
+    </div>
+  )
 }
 
-// export default function IndexPage() {
-//   return (
-//     <div className="relative">
-//       <PageHeader>
-//         <Announcement />
-//         <PageHeaderHeading>Build your component library</PageHeaderHeading>
-//         <PageHeaderDescription>
-//           Beautifully designed components that you can copy and paste into your
-//           apps. Made with Tailwind CSS. Open source.
-//         </PageHeaderDescription>
-//         <PageActions>
-//           <Button asChild size="sm">
-//             <Link href="/docs">Get Started</Link>
-//           </Button>
-//           <Button asChild size="sm" variant="ghost">
-//             <Link
-//               target="_blank"
-//               rel="noreferrer"
-//               href={siteConfig.links.github}
-//             >
-//               GitHub
-//             </Link>
-//           </Button>
-//         </PageActions>
-//       </PageHeader>
-//       <div className="container py-6">
-//         <ConfigProvider
-//           theme={{
-//             // 1. Use dark algorithm
-//             algorithm: theme.darkAlgorithm,
+// import FormBuilder from '@/screens/form-builder'
+// import React from 'react'
 
-//             // 2. Combine dark algorithm and compact algorithm
-//             // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
-//           }}>
-//           <FloatButton />
-//         </ConfigProvider>
-//       </div>
-//     </div>
-//   )
+// export default function Renderers() {
+//   return <FormBuilder />
 // }
 
 // import { Announcement } from "@/components/announcement"
