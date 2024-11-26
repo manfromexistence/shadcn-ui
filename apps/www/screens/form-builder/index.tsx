@@ -109,22 +109,22 @@ export default function FormBuilder() {
   }: {
     addFormField: (variant: string, index?: number) => void
   }) => (
-    <div className="flex flex-col md:flex-row gap-3">
+    <div className="flex flex-col gap-3 md:flex-row">
       <FieldSelector addFormField={addFormField} />
       <Separator orientation={isDesktop ? 'vertical' : 'horizontal'} />
     </div>
   )
 
   return (
-    <section className="md:max-h-screen space-y-8">
-      <div className="max-w-5xl mx-auto space-y-4">
+    <section className="space-y-8 md:max-h-screen">
+      <div className="mx-auto max-w-5xl space-y-4">
         <h1 className="text-2xl font-semibold">Playground</h1>
         <p className="text-sm text-muted-foreground">
           After successfully installing Shadcn, you can simply copy and paste
           the generated form components to get started. Some components may have
           additional dependencies, so make sure to review their documentation in
           the{' '}
-          <Link href="/readme" className="underline text-slate-800">
+          <Link href="/readme" className="text-slate-800 underline">
             README
           </Link>{' '}
           for further instructions.
@@ -133,14 +133,14 @@ export default function FormBuilder() {
       <If
         condition={formFields.length > 0}
         render={() => (
-          <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-8 md:px-5 h-full">
-            <div className="w-full h-full col-span-1 md:space-x-3 md:max-h-[75vh] flex flex-col md:flex-row ">
+          <div className="grid h-full grid-cols-1 items-start gap-8 md:grid-cols-2 md:px-5">
+            <div className="col-span-1 flex h-full w-full flex-col md:max-h-[75vh] md:flex-row md:space-x-3 ">
               <FieldSelectorWithSeparator
                 addFormField={(variant: string, index: number = 0) =>
                   addFormField(variant, index)
                 }
               />
-              <div className="overflow-y-auto flex-1 ">
+              <div className="flex-1 overflow-y-auto ">
                 <FormFieldList
                   formFields={formFields}
                   setFormFields={setFormFields}
@@ -149,14 +149,14 @@ export default function FormBuilder() {
                 />
               </div>
             </div>
-            <div className="col-span-1 w-full h-full space-y-3">
+            <div className="col-span-1 h-full w-full space-y-3">
               <SpecialComponentsNotice formFields={formFields} />
               <FormPreview formFields={formFields} />
             </div>
           </div>
         )}
         otherwise={() => (
-          <div className="flex flex-col md:flex-row items-center gap-3 md:px-5">
+          <div className="flex flex-col items-center gap-3 md:flex-row md:px-5">
             <FieldSelectorWithSeparator
               addFormField={(variant: string, index: number = 0) =>
                 addFormField(variant, index)
@@ -167,7 +167,7 @@ export default function FormBuilder() {
               width={585}
               height={502}
               alt="Empty Image"
-              className="object-contain mx-auto p-5 md:p-20"
+              className="mx-auto object-contain p-5 md:p-20"
             />
           </div>
         )}
