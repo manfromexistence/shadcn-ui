@@ -14,7 +14,7 @@ export const FieldSelector: React.FC<FieldSelectorProps> = ({
   addFormField,
 }) => {
   return (
-    <div className="flex md:flex-col items-start flex-wrap md:flex-nowrap gap-3 h-[70vh] overflow-y-auto">
+    <div className="flex h-[70vh] flex-wrap items-start gap-3 overflow-y-auto md:flex-col md:flex-nowrap">
       {fieldTypes.map((variant) => (
         <div className="flex items-center gap-1" key={variant.name}>
           <Button
@@ -28,7 +28,7 @@ export const FieldSelector: React.FC<FieldSelectorProps> = ({
             <If
               condition={variant.isNew}
               render={() => (
-                <Badge variant={'new'} className='md:hidden ml-1 p-1 text-[10px]'>
+                <Badge variant={'new'} className='ml-1 p-1 text-[10px] md:hidden'>
                   New
                 </Badge>
               )}
@@ -37,7 +37,7 @@ export const FieldSelector: React.FC<FieldSelectorProps> = ({
           <If
             condition={variant.isNew}
             render={() => (
-              <Badge variant={'new'} className='hidden md:block ml-1 p-1 text-[10px]'>
+              <Badge variant={'new'} className='ml-1 hidden p-1 text-[10px] md:block'>
                 New
               </Badge>
             )}

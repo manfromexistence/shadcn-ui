@@ -116,31 +116,18 @@ export default function FormBuilder() {
   )
 
   return (
-    <section className="space-y-8 md:max-h-screen">
-      <div className="mx-auto max-w-5xl space-y-4">
-        <h1 className="text-2xl font-semibold">Playground</h1>
-        <p className="text-sm text-muted-foreground">
-          After successfully installing Shadcn, you can simply copy and paste
-          the generated form components to get started. Some components may have
-          additional dependencies, so make sure to review their documentation in
-          the{' '}
-          <Link href="/readme" className="text-slate-800 underline">
-            README
-          </Link>{' '}
-          for further instructions.
-        </p>
-      </div>
+    <section className="space-y-8 pt-4 md:max-h-screen">
       <If
         condition={formFields.length > 0}
         render={() => (
           <div className="grid h-full grid-cols-1 items-start gap-8 md:grid-cols-2 md:px-5">
-            <div className="col-span-1 flex h-full w-full flex-col md:max-h-[75vh] md:flex-row md:space-x-3 ">
+            <div className="flex flex-col">
               <FieldSelectorWithSeparator
                 addFormField={(variant: string, index: number = 0) =>
                   addFormField(variant, index)
                 }
               />
-              <div className="flex-1 overflow-y-auto ">
+              <div className="flex-1 overflow-y-auto">
                 <FormFieldList
                   formFields={formFields}
                   setFormFields={setFormFields}
@@ -149,10 +136,10 @@ export default function FormBuilder() {
                 />
               </div>
             </div>
-            <div className="col-span-1 h-full w-full space-y-3">
+            {/* <div className="col-span-1 h-full w-full space-y-3">
               <SpecialComponentsNotice formFields={formFields} />
               <FormPreview formFields={formFields} />
-            </div>
+            </div> */}
           </div>
         )}
         otherwise={() => (
@@ -162,22 +149,22 @@ export default function FormBuilder() {
                 addFormField(variant, index)
               }
             />
-            <Image
+            {/* <Image
               src={EmptyListImage}
               width={585}
               height={502}
               alt="Empty Image"
               className="mx-auto object-contain p-5 md:p-20"
-            />
+            /> */}
           </div>
         )}
       />
-      <EditFieldDialog
+      {/* <EditFieldDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
         field={selectedField}
         onSave={handleSaveField}
-      />
+      /> */}
     </section>
   )
 }

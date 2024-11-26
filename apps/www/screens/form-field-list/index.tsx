@@ -40,7 +40,7 @@ export const FormFieldList: React.FC<FormFieldListProps> = ({
   )
 
   return (
-    <div className="mt-3 lg:mt-0">
+    <div className="mt-3 !bg-red-500 lg:mt-0">
       
       <Reorder.Group
         axis="y"
@@ -59,7 +59,7 @@ export const FormFieldList: React.FC<FormFieldListProps> = ({
             className="flex items-center gap-1"
             whileDrag={{ backgroundColor: '#e5e7eb', borderRadius: '12px' }}
           >
-            <LuRows className="cursor-grab w-4 h-4" />
+            <LuRows className="h-4 w-4 cursor-grab" />
             {Array.isArray(item) ? (
               <Reorder.Group
                 as="ul"
@@ -68,7 +68,7 @@ export const FormFieldList: React.FC<FormFieldListProps> = ({
                   handleHorizontalReorder(index, newOrder)
                 }
                 values={rowTabs[index] || item}
-                className="w-full grid grid-cols-12 gap-1"
+                className="grid w-full grid-cols-12 gap-1"
               >
                 <AnimatePresence initial={false}>
                   {(rowTabs[index] || item).map((field, fieldIndex) => (

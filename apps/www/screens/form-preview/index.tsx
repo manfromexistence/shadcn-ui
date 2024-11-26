@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { useRef } from 'react'
 import { Highlight, themes } from 'prism-react-renderer'
 import { z } from 'zod'
@@ -117,16 +118,16 @@ export const FormPreview: React.FC<FormPreviewProps> = ({ formFields }) => {
   const formattedCode = formatJSXCode(generatedCode)
 
   return (
-    <div className="w-full h-full col-span-1 rounded-xl flex justify-center">
+    <div className="col-span-1 flex h-full w-full justify-center rounded-xl">
       <Tabs defaultValue="preview" className="w-full">
-        <TabsList className="flex justify-center w-fit mx-auto">
+        <TabsList className="mx-auto flex w-fit justify-center">
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="json">JSON</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
         <TabsContent
           value="preview"
-          className="space-y-4 h-full md:max-h-[70vh] overflow-auto"
+          className="h-full space-y-4 overflow-auto md:max-h-[70vh]"
         >
           <If
             condition={formFields.length > 0}
@@ -134,7 +135,7 @@ export const FormPreview: React.FC<FormPreviewProps> = ({ formFields }) => {
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-4 py-5 max-w-lg mx-auto"
+                  className="mx-auto max-w-lg space-y-4 py-5"
                 >
                   {renderFormFields(formFields, form)}
                   <Button type="submit">Submit</Button>
@@ -142,7 +143,7 @@ export const FormPreview: React.FC<FormPreviewProps> = ({ formFields }) => {
               </Form>
             )}
             otherwise={() => (
-              <div className="h-[50vh] flex justify-center items-center">
+              <div className="flex h-[50vh] items-center justify-center">
                 <p>No form element selected yet.</p>
               </div>
             )}
@@ -152,12 +153,12 @@ export const FormPreview: React.FC<FormPreviewProps> = ({ formFields }) => {
           <If
             condition={formFields.length > 0}
             render={() => (
-              <pre className="p-4 text-sm bg-secondary rounded-lg h-full md:max-h-[70vh] overflow-auto">
+              <pre className="h-full overflow-auto rounded-lg bg-secondary p-4 text-sm md:max-h-[70vh]">
                 {JSON.stringify(formFields, null, 2)}
               </pre>
             )}
             otherwise={() => (
-              <div className="h-[50vh] flex justify-center items-center">
+              <div className="flex h-[50vh] items-center justify-center">
                 <p>No form element selected yet.</p>
               </div>
             )}
@@ -192,8 +193,8 @@ export const FormPreview: React.FC<FormPreviewProps> = ({ formFields }) => {
                     getTokenProps,
                   }: any) => (
                     <pre
-                      className={`${className} p-4 text-sm bg-gray-100 rounded-lg 
-                      h-full md:max-h-[70vh] overflow-auto`}
+                      className={`${className} h-full overflow-auto rounded-lg bg-gray-100 
+                      p-4 text-sm md:max-h-[70vh]`}
                       style={style}
                     >
                       {tokens.map((line: any, i: number) => (
@@ -209,7 +210,7 @@ export const FormPreview: React.FC<FormPreviewProps> = ({ formFields }) => {
               </div>
             )}
             otherwise={() => (
-              <div className="h-[50vh] flex justify-center items-center">
+              <div className="flex h-[50vh] items-center justify-center">
                 <p>No form element selected yet.</p>
               </div>
             )}

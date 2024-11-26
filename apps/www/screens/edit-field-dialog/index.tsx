@@ -57,7 +57,7 @@ export const EditFieldDialog: React.FC<EditFieldDialogProps> = ({
         <DialogHeader>
           <DialogTitle>Edit {editedField.variant} Field</DialogTitle>
         </DialogHeader>
-        <div className="py-4 space-y-4">
+        <div className="space-y-4 py-4">
           <div>
             <Label htmlFor="label">Label</Label>
             <Input
@@ -247,7 +247,7 @@ export const EditFieldDialog: React.FC<EditFieldDialogProps> = ({
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="col-span-1 flex items-end gap-1 p-3 rounded">
+                <div className="col-span-1 flex items-end gap-1 rounded p-3">
                   <Checkbox
                     // id="hour12"
                     checked={editedField.hour12}
@@ -264,7 +264,7 @@ export const EditFieldDialog: React.FC<EditFieldDialogProps> = ({
             )}
           />
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1 border p-3 rounded">
+            <div className="flex items-center gap-1 rounded border p-3">
               <Checkbox
                 checked={editedField.required}
                 onCheckedChange={(checked) =>
@@ -276,7 +276,7 @@ export const EditFieldDialog: React.FC<EditFieldDialogProps> = ({
               />
               <Label>Required</Label>
             </div>
-            <div className="flex items-center gap-1 border p-3 rounded">
+            <div className="flex items-center gap-1 rounded border p-3">
               <Checkbox
                 checked={editedField.disabled}
                 onCheckedChange={(checked) =>
