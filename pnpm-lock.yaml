@@ -110,7 +110,7 @@ importers:
     dependencies:
       '@ant-design/nextjs-registry':
         specifier: ^1.0.1
-        version: 1.0.1(@ant-design/cssinjs@1.22.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.22.1(date-fns@2.30.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(next@14.3.0-canary.43(@babel/core@7.26.0)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 1.0.1(@ant-design/cssinjs@1.22.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.22.1(date-fns@3.6.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(next@14.3.0-canary.43(@babel/core@7.26.0)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@dnd-kit/core':
         specifier: ^6.1.0
         version: 6.2.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -260,7 +260,7 @@ importers:
         version: 0.0.21
       antd:
         specifier: ^5.22.1
-        version: 5.22.1(date-fns@2.30.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 5.22.1(date-fns@3.6.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       canvas-confetti:
         specifier: ^1.9.3
         version: 1.9.3
@@ -289,8 +289,8 @@ importers:
         specifier: ^0.4.6
         version: 0.4.6(esbuild@0.17.19)(markdown-wasm@1.2.0)
       date-fns:
-        specifier: ^2.30.0
-        version: 2.30.0
+        specifier: ^3.6.0
+        version: 3.6.0
       embla-carousel-autoplay:
         specifier: 8.0.0-rc15
         version: 8.0.0-rc15(embla-carousel@8.0.0-rc15)
@@ -377,7 +377,7 @@ importers:
         version: 1.4.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-day-picker:
         specifier: ^8.7.1
-        version: 8.7.1(date-fns@2.30.0)(react@18.2.0)
+        version: 8.7.1(date-fns@3.6.0)(react@18.2.0)
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
@@ -6225,6 +6225,9 @@ packages:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
 
+  date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
+
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
 
@@ -11323,10 +11326,10 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@ant-design/nextjs-registry@1.0.1(@ant-design/cssinjs@1.22.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.22.1(date-fns@2.30.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(next@14.3.0-canary.43(@babel/core@7.26.0)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@ant-design/nextjs-registry@1.0.1(@ant-design/cssinjs@1.22.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(antd@5.22.1(date-fns@3.6.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(next@14.3.0-canary.43(@babel/core@7.26.0)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@ant-design/cssinjs': 1.22.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      antd: 5.22.1(date-fns@2.30.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      antd: 5.22.1(date-fns@3.6.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next: 14.3.0-canary.43(@babel/core@7.26.0)(@opentelemetry/api@1.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -17125,7 +17128,7 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  antd@5.22.1(date-fns@2.30.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  antd@5.22.1(date-fns@3.6.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@ant-design/colors': 7.1.0
       '@ant-design/cssinjs': 1.22.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -17157,7 +17160,7 @@ snapshots:
       rc-motion: 2.9.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-notification: 5.6.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-pagination: 4.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      rc-picker: 4.8.1(date-fns@2.30.0)(dayjs@1.11.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      rc-picker: 4.8.1(date-fns@3.6.0)(dayjs@1.11.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-progress: 4.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-rate: 2.13.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       rc-resize-observer: 1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -18025,7 +18028,9 @@ snapshots:
 
   date-fns@2.30.0:
     dependencies:
-      '@babel/runtime': 7.24.6
+      '@babel/runtime': 7.26.0
+
+  date-fns@3.6.0: {}
 
   dayjs@1.11.13: {}
 
@@ -18504,7 +18509,7 @@ snapshots:
       eslint: 8.44.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint@8.44.0))(eslint@8.44.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.44.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint@8.44.0))(eslint@8.44.0))(eslint@8.44.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.44.0)
       eslint-plugin-react: 7.37.2(eslint@8.44.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.44.0)
@@ -18554,7 +18559,7 @@ snapshots:
       enhanced-resolve: 5.16.1
       eslint: 8.44.0
       eslint-module-utils: 2.8.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint@8.44.0))(eslint@8.44.0))(eslint@8.44.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.44.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint@8.44.0))(eslint@8.44.0))(eslint@8.44.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.5
       is-core-module: 2.13.1
@@ -18614,7 +18619,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.44.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.15.0(eslint@8.44.0)(typescript@5.5.3))(eslint@8.44.0))(eslint@8.44.0))(eslint@8.44.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.5
@@ -22101,7 +22106,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  rc-picker@4.8.1(date-fns@2.30.0)(dayjs@1.11.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  rc-picker@4.8.1(date-fns@3.6.0)(dayjs@1.11.13)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.26.0
       '@rc-component/trigger': 2.2.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -22112,7 +22117,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     optionalDependencies:
-      date-fns: 2.30.0
+      date-fns: 3.6.0
       dayjs: 1.11.13
 
   rc-progress@4.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
@@ -22357,9 +22362,9 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  react-day-picker@8.7.1(date-fns@2.30.0)(react@18.2.0):
+  react-day-picker@8.7.1(date-fns@3.6.0)(react@18.2.0):
     dependencies:
-      date-fns: 2.30.0
+      date-fns: 3.6.0
       react: 18.2.0
 
   react-dom@18.2.0(react@18.2.0):
