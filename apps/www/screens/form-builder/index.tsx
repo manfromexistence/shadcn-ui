@@ -190,6 +190,9 @@ export default function FormBuilder() {
               </PageActions>
             </PageHeader>
             <PageHeaderHeading className='mx-auto mt-2'>Supported Items</PageHeaderHeading>
+            <PageHeaderDescription className='mx-auto mt-2'>
+                Click on any of this items to get started!
+              </PageHeaderDescription>
             <div className="mb-10">
               <FieldSelector addFormField={(variant: string, index: number = 0) =>
                 addFormField(variant, index)

@@ -24,9 +24,9 @@ export default function ColorsLayout({
     <div className="relative">
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>Tailwind Colors</PageHeaderHeading>
+        <PageHeaderHeading>Manfromexistence Colors</PageHeaderHeading>
         <PageHeaderDescription>
-          Tailwind CSS colors in HSL, RGB, and HEX formats.
+          Beautiful colors in HSL, RGB, HEEX, and OKLCH formats.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
