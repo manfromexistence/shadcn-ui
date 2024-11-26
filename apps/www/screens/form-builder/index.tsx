@@ -19,8 +19,15 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/registry/default/ui/resizable"
-
+import {
+  PageActions,
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "@/components/page-header"
 import EmptyListImage from '@/assets/oc-thinking.png'
+import { Button } from '@/components/ui/button'
+import { siteConfig } from '@/config/site'
 
 export type FormFieldOrGroup = FormFieldType | FormFieldType[]
 
@@ -114,23 +121,22 @@ export default function FormBuilder() {
   }: {
     addFormField: (variant: string, index?: number) => void
   }) => (
-    <div className="flex flex-col gap-3 md:flex-row">
+    <div className="flex-1">
       <FieldSelector addFormField={addFormField} />
-      <Separator orientation={isDesktop ? 'vertical' : 'horizontal'} />
     </div>
   )
 
   return (
-    <section className="space-y-8 md:max-h-screen">
+    <section className="w-full">
       <If
         condition={formFields.length > 0}
         render={() => (
           <ResizablePanelGroup
             direction="horizontal"
-            className="min-h-screen w-full"
+            className="min-h-[99vh] w-full"
           >
-            <ResizablePanel defaultSize={33}>
-              <div className="flex h-full items-center justify-center p-6">
+            <ResizablePanel defaultSize={17.5}>
+              <div className="h-full">
                 <FieldSelectorWithSeparator
                   addFormField={(variant: string, index: number = 0) =>
                     addFormField(variant, index)
@@ -139,8 +145,8 @@ export default function FormBuilder() {
               </div>
             </ResizablePanel>
             <ResizableHandle />
-            <ResizablePanel defaultSize={33}>
-              <div className="flex h-full items-center justify-center p-6">
+            <ResizablePanel defaultSize={37.5}>
+              <div className="flex h-full p-4">
                 <FormFieldList
                   formFields={formFields}
                   setFormFields={setFormFields}
@@ -150,53 +156,57 @@ export default function FormBuilder() {
               </div>
             </ResizablePanel>
             <ResizableHandle />
-            <ResizablePanel defaultSize={33}>
-              <div className="flex h-full items-center justify-center p-6">
+            <ResizablePanel defaultSize={45}>
+              <div className="flex h-full items-center p-4">
                 <div className="col-span-1 h-full w-full space-y-3">
-                  <SpecialComponentsNotice formFields={formFields} />
+                  {/* <SpecialComponentsNotice formFields={formFields} /> */}
                   <FormPreview formFields={formFields} />
                 </div>
               </div>
             </ResizablePanel>
-            <ResizableHandle />
-
           </ResizablePanelGroup>
-          // <div className="grid h-screen grid-cols-1 items-start gap-4 bg-pink-500 md:grid-cols-3 ">
-          //   <div className="flex min-h-full flex-col">
-          //     <FieldSelectorWithSeparator
-          //       addFormField={(variant: string, index: number = 0) =>
-          //         addFormField(variant, index)
-          //       }
-          //     />
-          //   </div>
-          //   <div className="min-h-screen flex-1 overflow-y-auto bg-indigo-500 px-4 py-2">
-          //     <FormFieldList
-          //       formFields={formFields}
-          //       setFormFields={setFormFields}
-          //       updateFormField={updateFormField}
-          //       openEditDialog={openEditDialog}
-          //     />
-          //   </div>
-          //   <div className="col-span-1 h-full w-full space-y-3">
-          //     <SpecialComponentsNotice formFields={formFields} />
-          //     <FormPreview formFields={formFields} />
-          //   </div>
-          // </div>
         )}
         otherwise={() => (
-          <div className="flex flex-col items-center gap-3 md:flex-row md:px-5">
-            <FieldSelectorWithSeparator
+          <div className="flex w-full flex-col gap-3 pb-4">
+            <PageHeader>
+              <PageHeaderHeading>Renderers</PageHeaderHeading>
+              <PageHeaderDescription>
+                Quickly built your desired design that you can copy and paste into your
+                apps. Made with Tailwind CSS. Open source.
+              </PageHeaderDescription>
+              <PageActions>
+                <Button asChild size="sm">
+                  <Link href="/docs">Documentations</Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link
+                    target="_blank"
+                    rel="noreferrer"
+                    href="/docs/components"
+                  >
+                    Components
+                  </Link>
+                </Button>
+              </PageActions>
+            </PageHeader>
+            <PageHeaderHeading className='mx-auto mt-2'>Supported Items</PageHeaderHeading>
+            <div className="mb-10">
+              <FieldSelector addFormField={(variant: string, index: number = 0) =>
+                addFormField(variant, index)
+              } />
+            </div>
+            {/* <FieldSelectorWithSeparator
               addFormField={(variant: string, index: number = 0) =>
                 addFormField(variant, index)
               }
-            />
-            <Image
+            /> */}
+            {/* <Image
               src={EmptyListImage}
               width={585}
               height={502}
               alt="Empty Image"
-              className="mx-auto object-contain p-5 md:p-20"
-            />
+              className="mx-auto object-contain p-5 mix-blend-screen md:p-20"
+            /> */}
           </div>
         )}
       />

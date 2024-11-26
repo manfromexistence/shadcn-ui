@@ -5,6 +5,7 @@ import { FieldItem } from '@/screens/field-item'
 
 import { LuRows } from 'react-icons/lu'
 import { Badge } from '@/components/ui/badge'
+import { GripVertical } from 'lucide-react'
 
 export type FormFieldOrGroup = FormFieldType | FormFieldType[]
 
@@ -40,8 +41,7 @@ export const FormFieldList: React.FC<FormFieldListProps> = ({
   )
 
   return (
-    <div className="mt-3 lg:mt-0">
-      
+    <div className="w-full">
       <Reorder.Group
         axis="y"
         onReorder={setFormFields}
@@ -57,9 +57,9 @@ export const FormFieldList: React.FC<FormFieldListProps> = ({
             }
             value={item}
             className="flex items-center gap-1"
-            whileDrag={{ backgroundColor: '#e5e7eb', borderRadius: '12px' }}
+            whileDrag={{ borderRadius: '12px', padding: "12px" }}
           >
-            <LuRows className="h-4 w-4 cursor-grab" />
+            <GripVertical className="h-4 w-4 cursor-grab" />
             {Array.isArray(item) ? (
               <Reorder.Group
                 as="ul"

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import If from '@/components/ui/if'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
+import { ScrollArea } from "@/registry/default/ui/scroll-area"
 
 type FieldSelectorProps = {
   addFormField: (variant: string, index?: number) => void
@@ -14,9 +15,9 @@ export const FieldSelector: React.FC<FieldSelectorProps> = ({
   addFormField,
 }) => {
   return (
-    <div className="flex h-[70vh] flex-wrap items-start gap-3 overflow-y-auto md:flex-col md:flex-nowrap">
+    <ScrollArea className="flex min-w-full flex-col p-2">
       {fieldTypes.map((variant) => (
-        <div className="flex items-center gap-1" key={variant.name}>
+        <div className="mt-2 flex items-center justify-center" key={variant.name}>
           <Button
             key={variant.name}
             variant="outline"
@@ -34,21 +35,21 @@ export const FieldSelector: React.FC<FieldSelectorProps> = ({
               )}
             />
           </Button>
-          <If
+          {/* <If
             condition={variant.isNew}
             render={() => (
               <Badge variant={'new'} className='ml-1 hidden p-1 text-[10px] md:block'>
                 New
               </Badge>
             )}
-          />
+          /> */}
         </div>
       ))}
-      <Link href="https://shadcnform.featurebase.app/" target="_blank">
-        <Button className="rounded-full" size="sm">
+      <Link className='flex items-center justify-center' href="https://shadcnform.featurebase.app/" target="_blank">
+        <Button className="mx-auto mt-2 rounded-full" size="sm">
           Request
         </Button>
       </Link>
-    </div>
+    </ScrollArea >
   )
 }

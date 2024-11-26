@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
+import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { renderFormField } from '@/screens/render-form-field'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -178,7 +179,7 @@ export const FormPreview: React.FC<FormPreviewProps> = ({ formFields }) => {
                     toast.success('Code copied to clipboard!')
                   }}
                 >
-                  <Files />
+                  <ClipboardIcon className="h-3 w-3" />
                 </Button>
                 <Highlight
                   code={formattedCode}
@@ -193,7 +194,7 @@ export const FormPreview: React.FC<FormPreviewProps> = ({ formFields }) => {
                     getTokenProps,
                   }: any) => (
                     <pre
-                      className={`${className} h-full overflow-auto rounded-lg bg-gray-100 
+                      className={`${className} h-full overflow-auto rounded-lg bg-gray-100
                       p-4 text-sm md:max-h-[70vh]`}
                       style={style}
                     >

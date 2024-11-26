@@ -16,6 +16,7 @@ import {
 import If from '@/components/ui/if'
 
 import { LuColumns, LuPencil, LuTrash2 } from 'react-icons/lu'
+import { Plus } from 'lucide-react'
 
 export type FormFieldOrGroup = FormFieldType | FormFieldType[]
 
@@ -147,14 +148,14 @@ export const FieldItem = ({
     <Reorder.Item
       value={field}
       id={field.name}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 0 }}
       animate={{
         opacity: 1,
         y: 0,
         transition: { duration: 0.15 },
       }}
       exit={{ opacity: 0, y: 20, transition: { duration: 0.3 } }}
-      whileDrag={{ backgroundColor: '#9ca3af', borderRadius: '12px' }}
+      whileDrag={{ backgroundColor: 'hsl(primary)', borderRadius: '12px' }}
       className={cn('w-full', {
         'col-span-12': columnCount === 1,
         'col-span-6': columnCount === 2,
@@ -168,12 +169,12 @@ export const FieldItem = ({
         className="flex items-center gap-3"
         key={`${field.name}-${columnCount}`}
       >
-        <div className="flex items-center gap-1 border rounded-xl px-3 py-1.5 w-full">
-          <If
+        <div className="flex w-full items-center gap-1 rounded-xl border px-3 py-1.5">
+          {/* <If
             condition={Array.isArray(formFields[index])}
-            render={() => <LuColumns className="cursor-grab w-4 h-4" />}
-          />
-          <div className="flex items-center w-full">
+            render={() => <LuColumns className="h-4 w-4 cursor-grab" />}
+          /> */}
+          <div className="flex w-full items-center">
             <div className="w-full text-sm">{field.variant}</div>
             <Button
               variant="ghost"
@@ -195,9 +196,9 @@ export const FieldItem = ({
                 <Button
                   variant="outline"
                   size="icon"
-                  className="min-w-9 w-9 h-9 rounded-full"
+                  className="h-9 w-9 min-w-9 rounded-full"
                 >
-                  +
+                 <Plus className='h-4 w-4'/>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
