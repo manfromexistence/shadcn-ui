@@ -5,6 +5,22 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "new-york": {
+    "signature-input": {
+      name: "signature-input",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/new-york/ui/signature-input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/signature-input.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "dots": {
       name: "dots",
       description: "",
@@ -1512,6 +1528,22 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/new-york/ui/tooltip.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "signature-input-demo": {
+      name: "signature-input-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["signature-input","button","form"],
+      files: [{
+        path: "registry/new-york/example/signature-input-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/signature-input-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -7598,6 +7630,22 @@ export const Index: Record<string, any> = {
       chunks: []
     },
   },  "default": {
+    "signature-input": {
+      name: "signature-input",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/default/ui/signature-input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/signature-input.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "dots": {
       name: "dots",
       description: "",
@@ -9105,6 +9153,22 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/default/ui/tooltip.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "signature-input-demo": {
+      name: "signature-input-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["signature-input","button","form"],
+      files: [{
+        path: "registry/default/example/signature-input-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/signature-input-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",

@@ -1,8 +1,9 @@
-'use client'
+"use client"
 
-import { useEffect, useState } from 'react'
-import { Button } from '@/registry/default/ui/button'
-import { Eraser } from 'lucide-react'
+import { useEffect, useState } from "react"
+import { Eraser } from "lucide-react"
+
+import { Button } from "@/registry/default/ui/button"
 
 type SignatureInputProps = {
   canvasRef: React.RefObject<HTMLCanvasElement>
@@ -18,19 +19,17 @@ export default function SignatureInput({
   useEffect(() => {
     const canvas = canvasRef.current
     if (canvas) {
-      const ctx = canvas.getContext('2d')
+      const ctx = canvas.getContext("2d")
       if (ctx) {
         ctx.lineWidth = 2
-        ctx.lineCap = 'round'
-        ctx.strokeStyle = 'black'
+        ctx.lineCap = "round"
+        ctx.strokeStyle = "black"
       }
     }
   }, [canvasRef])
 
   const startDrawing = (
-    e:
-      | React.MouseEvent<HTMLCanvasElement>
-      | React.TouchEvent<HTMLCanvasElement>,
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
   ) => {
     setIsDrawing(true)
     draw(e)
@@ -46,18 +45,16 @@ export default function SignatureInput({
   }
 
   const draw = (
-    e:
-      | React.MouseEvent<HTMLCanvasElement>
-      | React.TouchEvent<HTMLCanvasElement>,
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
   ) => {
     if (!isDrawing) return
 
     const canvas = canvasRef.current
-    const ctx = canvas?.getContext('2d')
+    const ctx = canvas?.getContext("2d")
     if (canvas && ctx) {
       const rect = canvas.getBoundingClientRect()
-      const x = ('touches' in e ? e.touches[0].clientX : e.clientX) - rect.left
-      const y = ('touches' in e ? e.touches[0].clientY : e.clientY) - rect.top
+      const x = ("touches" in e ? e.touches[0].clientX : e.clientX) - rect.left
+      const y = ("touches" in e ? e.touches[0].clientY : e.clientY) - rect.top
 
       ctx.lineTo(x, y)
       ctx.stroke()
@@ -68,7 +65,7 @@ export default function SignatureInput({
 
   const clearSignature = () => {
     const canvas = canvasRef.current
-    const ctx = canvas?.getContext('2d')
+    const ctx = canvas?.getContext("2d")
     if (canvas && ctx) {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       onSignatureChange(null) // Clear signature in the form as well

@@ -256,7 +256,7 @@ export const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
           ref={ref}
           dir={dir}
           className={cn(
-            'flex items-center flex-wrap gap-1 p-1 rounded-lg bg-background overflow-hidden   ring-1 ring-muted  ',
+            'flex flex-wrap items-center gap-1 overflow-hidden rounded-lg bg-background p-1   ring-1 ring-muted  ',
             {
               'focus-within:ring-ring': activeIndex === -1,
             },
@@ -270,7 +270,7 @@ export const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
               aria-disabled={disableButton}
               data-active={activeIndex === index}
               className={cn(
-                "relative px-1 rounded flex items-center gap-1 data-[active='true']:ring-2 data-[active='true']:ring-muted-foreground truncate aria-disabled:opacity-50 aria-disabled:cursor-not-allowed",
+                "relative flex items-center gap-1 truncate rounded px-1 aria-disabled:cursor-not-allowed aria-disabled:opacity-50 data-[active='true']:ring-2 data-[active='true']:ring-muted-foreground",
               )}
               variant={'secondary'}
             >
@@ -301,7 +301,7 @@ export const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
             placeholder={placeholder}
             onClick={() => setActiveIndex(-1)}
             className={cn(
-              'outline-0 border-none h-7 min-w-fit flex-1 focus-visible:outline-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-0 placeholder:text-muted-foreground px-1',
+              'h-7 min-w-fit flex-1 border-none px-1 outline-0 placeholder:text-muted-foreground focus-visible:border-0 focus-visible:outline-0 focus-visible:ring-0 focus-visible:ring-offset-0',
               activeIndex !== -1 && 'caret-transparent',
             )}
           />

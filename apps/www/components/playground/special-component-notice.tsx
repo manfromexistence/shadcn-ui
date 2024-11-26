@@ -24,7 +24,7 @@ const SpecialComponentsNotice = ({
         This form includes special components, add the component in your
         directory.
       </p>
-      <ul className="list-disc text-sm text-muted-foreground pl-3">
+      <ul className="list-disc pl-3 text-sm text-muted-foreground">
         {usedSpecialComponents.map((component) => (
           <li key={component.variant}>
             <Link

@@ -1,11 +1,13 @@
-'use client'
-import { useState } from 'react'
-import { toast } from 'sonner'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
-import { cn } from '@/lib/utils'
-import { Button } from '@/registry/default/ui/button'
+"use client"
+
+import { useRef, useState } from "react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { toast } from "sonner"
+import * as z from "zod"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/default/ui/button"
 import {
   Form,
   FormControl,
@@ -14,9 +16,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/registry/default/ui/form'
-import { useRef } from 'react'
-import SignatureInput from '@/registry/default/ui/signature-input'
+} from "@/registry/default/ui/form"
+import SignatureInput from "@/registry/default/ui/signature-input"
 
 const formSchema = z.object({
   name_0589855761: z.string(),
@@ -34,11 +35,11 @@ export function SignatureInputDemo() {
       toast(
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>,
+        </pre>
       )
     } catch (error) {
-      console.error('Form submission error', error)
-      toast.error('Failed to submit the form. Please try again.')
+      console.error("Form submission error", error)
+      toast.error("Failed to submit the form. Please try again.")
     }
   }
 

@@ -126,7 +126,7 @@ export default function SignatureInput({
   }
 
   return (
-    <div className="border border-gray-300 rounded-md overflow-hidden relative w-[400px] h-[200px]">
+    <div className="relative h-[200px] w-[400px] overflow-hidden rounded-md border border-gray-300">
       <canvas
         ref={canvasRef}
         width={400}
@@ -144,10 +144,10 @@ export default function SignatureInput({
         type="button"
         size="icon"
         variant="outline"
-        className="absolute left-1 bottom-1 z-10 rounded-full"
+        className="absolute bottom-1 left-1 z-10 rounded-full"
         onClick={clearSignature}
       >
-        <Eraser className="w-4 h-4 text-muted-foreground hover:text-primary" />
+        <Eraser className="h-4 w-4 text-muted-foreground hover:text-primary" />
       </Button>
     </div>
   )

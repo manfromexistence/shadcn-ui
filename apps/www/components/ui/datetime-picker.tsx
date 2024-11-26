@@ -66,9 +66,9 @@ const DatetimeGrid = forwardRef<
     return (
       <div
         className={cn(
-          'flex items-center w-fit p-1 border',
+          'flex w-fit items-center border p-1',
           className,
-          'border-input rounded-md gap-1 selection:bg-transparent selection:text-foreground',
+          'gap-1 rounded-md border-input selection:bg-transparent selection:text-foreground',
         )}
         {...timescape.getRootProps()}
         ref={ref}
@@ -104,7 +104,7 @@ const DatetimeGrid = forwardRef<
                   <span
                     className={cn(
                       timePickerSeparatorBase,
-                      'opacity-30 text-xl',
+                      'text-xl opacity-30',
                     )}
                   >
                     |
