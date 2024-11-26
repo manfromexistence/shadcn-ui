@@ -126,31 +126,41 @@ export default function FormBuilder() {
         condition={formFields.length > 0}
         render={() => (
           <ResizablePanelGroup
-          direction="horizontal"
-          className="max-w-md rounded-lg border md:min-w-[450px]"
-        >
-          <ResizablePanel defaultSize={50}>
-            <div className="flex h-[200px] items-center justify-center p-6">
-              <span className="font-semibold">One</span>
-            </div>
-          </ResizablePanel>
-          <ResizableHandle />
-          <ResizablePanel defaultSize={50}>
-            <ResizablePanelGroup direction="vertical">
-              <ResizablePanel defaultSize={25}>
-                <div className="flex h-full items-center justify-center p-6">
-                  <span className="font-semibold">Two</span>
+            direction="horizontal"
+            className="min-h-screen w-full"
+          >
+            <ResizablePanel defaultSize={33}>
+              <div className="flex h-full items-center justify-center p-6">
+                <FieldSelectorWithSeparator
+                  addFormField={(variant: string, index: number = 0) =>
+                    addFormField(variant, index)
+                  }
+                />
+              </div>
+            </ResizablePanel>
+            <ResizableHandle />
+            <ResizablePanel defaultSize={33}>
+              <div className="flex h-full items-center justify-center p-6">
+                <FormFieldList
+                  formFields={formFields}
+                  setFormFields={setFormFields}
+                  updateFormField={updateFormField}
+                  openEditDialog={openEditDialog}
+                />
+              </div>
+            </ResizablePanel>
+            <ResizableHandle />
+            <ResizablePanel defaultSize={33}>
+              <div className="flex h-full items-center justify-center p-6">
+                <div className="col-span-1 h-full w-full space-y-3">
+                  <SpecialComponentsNotice formFields={formFields} />
+                  <FormPreview formFields={formFields} />
                 </div>
-              </ResizablePanel>
-              <ResizableHandle />
-              <ResizablePanel defaultSize={75}>
-                <div className="flex h-full items-center justify-center p-6">
-                  <span className="font-semibold">Three</span>
-                </div>
-              </ResizablePanel>
-            </ResizablePanelGroup>
-          </ResizablePanel>
-        </ResizablePanelGroup>
+              </div>
+            </ResizablePanel>
+            <ResizableHandle />
+
+          </ResizablePanelGroup>
           // <div className="grid h-screen grid-cols-1 items-start gap-4 bg-pink-500 md:grid-cols-3 ">
           //   <div className="flex min-h-full flex-col">
           //     <FieldSelectorWithSeparator
