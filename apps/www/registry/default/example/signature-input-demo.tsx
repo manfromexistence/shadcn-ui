@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import * as z from "zod"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/default/ui/button"
 import {
   Form,
@@ -23,7 +22,7 @@ const formSchema = z.object({
   name_0589855761: z.string(),
 })
 
-export function SignatureInputDemo() {
+export default function SignatureInputDemo() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,7 +46,7 @@ export function SignatureInputDemo() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 max-w-3xl mx-auto py-10"
+        className="mx-auto max-w-3xl space-y-8 py-10"
       >
         <FormField
           control={form.control}
