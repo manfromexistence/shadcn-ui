@@ -40,7 +40,7 @@ export const FormFieldList: React.FC<FormFieldListProps> = ({
   )
 
   return (
-    <div className="mt-3 !bg-red-500 lg:mt-0">
+    <div className="mt-3 lg:mt-0">
       
       <Reorder.Group
         axis="y"

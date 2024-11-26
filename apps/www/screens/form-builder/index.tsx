@@ -14,6 +14,11 @@ import { FieldSelector } from '@/screens/field-selector'
 import { FormFieldList } from '@/screens/form-field-list'
 import { FormPreview } from '@/screens/form-preview'
 import { EditFieldDialog } from '@/screens/edit-field-dialog'
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/registry/default/ui/resizable"
 
 import EmptyListImage from '@/assets/oc-thinking.png'
 
@@ -116,31 +121,57 @@ export default function FormBuilder() {
   )
 
   return (
-    <section className="space-y-8 pt-4 md:max-h-screen">
+    <section className="space-y-8 md:max-h-screen">
       <If
         condition={formFields.length > 0}
         render={() => (
-          <div className="grid h-full grid-cols-1 items-start gap-8 md:grid-cols-2 md:px-5">
-            <div className="flex flex-col">
-              <FieldSelectorWithSeparator
-                addFormField={(variant: string, index: number = 0) =>
-                  addFormField(variant, index)
-                }
-              />
-              <div className="flex-1 overflow-y-auto">
-                <FormFieldList
-                  formFields={formFields}
-                  setFormFields={setFormFields}
-                  updateFormField={updateFormField}
-                  openEditDialog={openEditDialog}
-                />
-              </div>
+          <ResizablePanelGroup
+          direction="horizontal"
+          className="max-w-md rounded-lg border md:min-w-[450px]"
+        >
+          <ResizablePanel defaultSize={50}>
+            <div className="flex h-[200px] items-center justify-center p-6">
+              <span className="font-semibold">One</span>
             </div>
-            {/* <div className="col-span-1 h-full w-full space-y-3">
-              <SpecialComponentsNotice formFields={formFields} />
-              <FormPreview formFields={formFields} />
-            </div> */}
-          </div>
+          </ResizablePanel>
+          <ResizableHandle />
+          <ResizablePanel defaultSize={50}>
+            <ResizablePanelGroup direction="vertical">
+              <ResizablePanel defaultSize={25}>
+                <div className="flex h-full items-center justify-center p-6">
+                  <span className="font-semibold">Two</span>
+                </div>
+              </ResizablePanel>
+              <ResizableHandle />
+              <ResizablePanel defaultSize={75}>
+                <div className="flex h-full items-center justify-center p-6">
+                  <span className="font-semibold">Three</span>
+                </div>
+              </ResizablePanel>
+            </ResizablePanelGroup>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+          // <div className="grid h-screen grid-cols-1 items-start gap-4 bg-pink-500 md:grid-cols-3 ">
+          //   <div className="flex min-h-full flex-col">
+          //     <FieldSelectorWithSeparator
+          //       addFormField={(variant: string, index: number = 0) =>
+          //         addFormField(variant, index)
+          //       }
+          //     />
+          //   </div>
+          //   <div className="min-h-screen flex-1 overflow-y-auto bg-indigo-500 px-4 py-2">
+          //     <FormFieldList
+          //       formFields={formFields}
+          //       setFormFields={setFormFields}
+          //       updateFormField={updateFormField}
+          //       openEditDialog={openEditDialog}
+          //     />
+          //   </div>
+          //   <div className="col-span-1 h-full w-full space-y-3">
+          //     <SpecialComponentsNotice formFields={formFields} />
+          //     <FormPreview formFields={formFields} />
+          //   </div>
+          // </div>
         )}
         otherwise={() => (
           <div className="flex flex-col items-center gap-3 md:flex-row md:px-5">
@@ -149,22 +180,22 @@ export default function FormBuilder() {
                 addFormField(variant, index)
               }
             />
-            {/* <Image
+            <Image
               src={EmptyListImage}
               width={585}
               height={502}
               alt="Empty Image"
               className="mx-auto object-contain p-5 md:p-20"
-            /> */}
+            />
           </div>
         )}
       />
-      {/* <EditFieldDialog
+      <EditFieldDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
         field={selectedField}
         onSave={handleSaveField}
-      /> */}
+      />
     </section>
   )
 }
