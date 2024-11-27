@@ -1,0 +1,56 @@
+---
+title: Calendars
+description: The calendar view displays features on a grid calendar. Specifically it shows the end date of each feature, and groups features by day.
+component: true
+links:
+  api: https://www.roadmap-ui.com/calendar
+---
+
+<ComponentPreview
+  name="calendars-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="A calendar component"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://manfromexistence-ui.vercel.app/r/calendars"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="calendars" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Calenders } from "@/components/ui/calendars"
+```
+
+```tsx
+<Calenders />
+```

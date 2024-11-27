@@ -1,0 +1,56 @@
+---
+title: Tables
+description: Table views are used to display data in a tabular format. They are useful for displaying large amounts of data in a structured way.
+component: true
+links:
+  api: https://www.roadmap-ui.com/table
+---
+
+<ComponentPreview
+  name="tables-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="A table component"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://manfromexistence-ui.vercel.app/r/tables"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tables" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Tables } from "@/components/ui/tables"
+```
+
+```tsx
+<Tables />
+```
