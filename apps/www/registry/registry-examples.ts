@@ -2,6 +2,61 @@ import { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
   {
+    name: "calendars-demo",
+    type: "registry:example",
+    registryDependencies: ["calendars"],
+    files: [
+      {
+        path: "example/calendars-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "gantts-demo",
+    type: "registry:example",
+    registryDependencies: ["gantts"],
+    files: [
+      {
+        path: "example/gantts-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "kanbans-demo",
+    type: "registry:example",
+    registryDependencies: ["kanbans"],
+    files: [
+      {
+        path: "example/kanbans-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "lists-demo",
+    type: "registry:example",
+    registryDependencies: ["lists"],
+    files: [
+      {
+        path: "example/lists-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tables-demo",
+    type: "registry:example",
+    registryDependencies: ["tables"],
+    files: [
+      {
+        path: "example/tables-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "signature-input-demo",
     type: "registry:example",
     registryDependencies: ["signature-input", "button", "form"],

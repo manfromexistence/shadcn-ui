@@ -1613,6 +1613,86 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "calendars-demo": {
+      name: "calendars-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["calendars"],
+      files: [{
+        path: "registry/new-york/example/calendars-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/calendars-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "gantts-demo": {
+      name: "gantts-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["gantts"],
+      files: [{
+        path: "registry/new-york/example/gantts-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/gantts-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "kanbans-demo": {
+      name: "kanbans-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["kanbans"],
+      files: [{
+        path: "registry/new-york/example/kanbans-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/kanbans-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "lists-demo": {
+      name: "lists-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["lists"],
+      files: [{
+        path: "registry/new-york/example/lists-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/lists-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "tables-demo": {
+      name: "tables-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tables"],
+      files: [{
+        path: "registry/new-york/example/tables-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/tables-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "signature-input-demo": {
       name: "signature-input-demo",
       description: "",
@@ -9841,6 +9921,86 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/default/ui/tooltip.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "calendars-demo": {
+      name: "calendars-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["calendars"],
+      files: [{
+        path: "registry/default/example/calendars-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/calendars-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "gantts-demo": {
+      name: "gantts-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["gantts"],
+      files: [{
+        path: "registry/default/example/gantts-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/gantts-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "kanbans-demo": {
+      name: "kanbans-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["kanbans"],
+      files: [{
+        path: "registry/default/example/kanbans-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/kanbans-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "lists-demo": {
+      name: "lists-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["lists"],
+      files: [{
+        path: "registry/default/example/lists-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/lists-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "tables-demo": {
+      name: "tables-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tables"],
+      files: [{
+        path: "registry/default/example/tables-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/tables-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",

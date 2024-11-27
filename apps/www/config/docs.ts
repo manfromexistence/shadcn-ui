@@ -142,6 +142,31 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Calendars",
+          href: "/docs/components/calendars",
+          items: [],
+        },
+        {
+          title: "Gantts",
+          href: "/docs/components/gantts",
+          items: [],
+        },
+        {
+          title: "Kanbans",
+          href: "/docs/components/kanbans",
+          items: [],
+        },
+        {
+          title: "Lists",
+          href: "/docs/components/lists",
+          items: [],
+        },
+        {
+          title: "Tables",
+          href: "/docs/components/Tables",
+          items: [],
+        },
+        {
           title: "Cards",
           href: "/docs/components/cards",
           items: [],
