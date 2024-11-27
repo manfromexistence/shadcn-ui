@@ -4,7 +4,7 @@ import { Separators } from "@/registry/default/ui/separators"
 
 export default function SeparatorsDemo() {
   return (
-    <div className="flex-col-center gap-12 pt-6">
+    <div className="flex-col-center min-w-full gap-12 pt-6">
       <Separators gradient />
       <Separators />
       <Separators label={<span className="px-2">Section</span>} gradient />

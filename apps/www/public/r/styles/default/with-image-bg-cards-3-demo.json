@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "example/cards/with-image-bg-cards-3.tsx",
-      "content": "import { Card_with_image_v3 } from \"@/registry/default/ui/card-with-image-bg\"\n\nexport default function Card_with_image_v3_Demo() {\n  return (\n    <div className=\"\">\n      <Card_with_image_v3 />\n    </div>\n  )\n}\n",
+      "content": "import { Card_with_image_v3 } from \"@/registry/default/ui/card-with-image-bg\"\n\nexport default function Card_with_image_v3_Demo() {\n  return (\n    <div className=\"min-w-full\">\n      <Card_with_image_v3 />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }

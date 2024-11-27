@@ -2,7 +2,7 @@ import { ExpandableCard } from "@/registry/default/ui/card-expandable"
 
 export default function ExpandableCard_Demo() {
   return (
-    <div className="">
+    <div className="min-w-full">
       <ExpandableCard height="10rem" wide>
         <div className="prose-p:mt-0 text-sm/relaxed">
           <h4 className="my-2 text-lg font-bold">Default expandable card</h4>
