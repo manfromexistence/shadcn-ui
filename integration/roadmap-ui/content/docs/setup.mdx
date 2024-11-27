@@ -3,6 +3,8 @@ title: Setup
 description: How to install and set up Roadmap UI in your project
 ---
 
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
 ## Prerequisites
 
 Before installing Roadmap UI, make sure you have the following prerequisites:
@@ -13,17 +15,20 @@ Before installing Roadmap UI, make sure you have the following prerequisites:
 
 ## Installation
 
-You can install Roadmap UI components using the `roadmap-ui` CLI, for example:
+You can install Roadmap UI components using the `roadmap-ui` or `shadcn` CLI e.g.
 
-```sh title="Terminal"
-npx roadmap-ui add gantt
-```
-
-Alternatively, you can use the `shadcn` CLI and target the component JSON file, like so:
-
-```sh title="Terminal"
-npx shadcn@latest add https://www.roadmap-ui.com/gantt.json
-```
+<Tabs groupId="language" items={['roadmap-ui', 'shadcn']} persist>
+  <Tab value="roadmap-ui">
+    ```sh
+    npx roadmap-ui add gantt
+    ```
+  </Tab>
+  <Tab value="shadcn">
+    ```sh
+    npx shadcn@latest add https://www.roadmap-ui.com/gantt.json
+    ```
+  </Tab>
+</Tabs>
 
 This will install the Roadmap UI components into your project at `@/components/roadmap-ui` (or the relevant folder you specified in the `components.json` file).
 

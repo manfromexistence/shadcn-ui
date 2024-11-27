@@ -5,6 +5,7 @@ icon: TableProperties
 ---
 
 import { AutoTypeTable } from 'fumadocs-typescript/ui';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
 <div className="not-prose w-full bg-white dark:bg-neutral-950 border rounded-xl overflow-auto" style={{ height: '32rem' }}>
   <Table />
@@ -12,9 +13,18 @@ import { AutoTypeTable } from 'fumadocs-typescript/ui';
 
 ## Installation
 
-```sh title="Terminal"
-npx roadmap-ui add table
-```
+<Tabs groupId="language" items={['roadmap-ui', 'shadcn']} persist>
+  <Tab value="roadmap-ui">
+    ```sh
+    npx roadmap-ui add table
+    ```
+  </Tab>
+  <Tab value="shadcn">
+    ```sh
+    npx shadcn@latest add https://www.roadmap-ui.com/table.json
+    ```
+  </Tab>
+</Tabs>
 
 ## Features
 

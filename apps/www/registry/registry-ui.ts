@@ -2,6 +2,79 @@ import { Registry } from "@/registry/schema"
 
 export const ui: Registry = [
   {
+    name: "calendars",
+    type: "registry:ui",
+    registryDependencies: ["button", "command", "popover"],
+    dependencies: ["date-fns", "lucide-react", "zustand"],
+    devDependencies: [],
+    files: [
+      {
+        path: "ui/calendars.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "gantts",
+    type: "registry:ui",
+    registryDependencies: ["card", "context-menu"],
+    dependencies: [
+      "@dnd-kit/core",
+      "@dnd-kit/modifiers",
+      "@uidotdev/usehooks",
+      "date-fns",
+      "lodash.throttle",
+      "lucide-react",
+      "zustand",
+    ],
+    devDependencies: ["@types/lodash.throttle"],
+    files: [
+      {
+        path: "ui/gantts.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "kanbans",
+    type: "registry:ui",
+    registryDependencies: ["card"],
+    dependencies: ["@dnd-kit/core"],
+    devDependencies: [],
+    files: [
+      {
+        path: "ui/kanbans.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "lists",
+    type: "registry:ui",
+    registryDependencies: [],
+    dependencies: ["@dnd-kit/core", "@dnd-kit/modifiers", "lucide-react"],
+    devDependencies: [],
+    files: [
+      {
+        path: "ui/lists.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "tables",
+    type: "registry:ui",
+    registryDependencies: ["button", "dropdown-menu", "table"],
+    dependencies: ["@tanstack/react-table", "lucide-react", "zustand"],
+    devDependencies: [],
+    files: [
+      {
+        path: "ui/tables.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "signature-input",
     type: "registry:ui",
     registryDependencies: ["button"],

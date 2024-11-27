@@ -5,6 +5,86 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "new-york": {
+    "calendars": {
+      name: "calendars",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","command","popover"],
+      files: [{
+        path: "registry/new-york/ui/calendars.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/calendars.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "gantts": {
+      name: "gantts",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card","context-menu"],
+      files: [{
+        path: "registry/new-york/ui/gantts.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/gantts.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "kanbans": {
+      name: "kanbans",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card"],
+      files: [{
+        path: "registry/new-york/ui/kanbans.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/kanbans.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "lists": {
+      name: "lists",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [],
+      files: [{
+        path: "registry/new-york/ui/lists.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/lists.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "tables": {
+      name: "tables",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","dropdown-menu","table"],
+      files: [{
+        path: "registry/new-york/ui/tables.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/tables.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "signature-input": {
       name: "signature-input",
       description: "",
@@ -8158,6 +8238,86 @@ export const Index: Record<string, any> = {
       chunks: []
     },
   },  "default": {
+    "calendars": {
+      name: "calendars",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","command","popover"],
+      files: [{
+        path: "registry/default/ui/calendars.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/calendars.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "gantts": {
+      name: "gantts",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card","context-menu"],
+      files: [{
+        path: "registry/default/ui/gantts.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/gantts.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "kanbans": {
+      name: "kanbans",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card"],
+      files: [{
+        path: "registry/default/ui/kanbans.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/kanbans.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "lists": {
+      name: "lists",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [],
+      files: [{
+        path: "registry/default/ui/lists.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/lists.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "tables": {
+      name: "tables",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","dropdown-menu","table"],
+      files: [{
+        path: "registry/default/ui/tables.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/tables.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "signature-input": {
       name: "signature-input",
       description: "",

@@ -5,6 +5,7 @@ icon: SquareKanban
 ---
 
 import { AutoTypeTable } from 'fumadocs-typescript/ui';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
 <div className="not-prose w-full">
   <Kanban />
@@ -12,9 +13,18 @@ import { AutoTypeTable } from 'fumadocs-typescript/ui';
 
 ## Installation
 
-```sh title="Terminal"
-npx roadmap-ui add kanban
-```
+<Tabs groupId="language" items={['roadmap-ui', 'shadcn']} persist>
+  <Tab value="roadmap-ui">
+    ```sh
+    npx roadmap-ui add kanban
+    ```
+  </Tab>
+  <Tab value="shadcn">
+    ```sh
+    npx shadcn@latest add https://www.roadmap-ui.com/kanban.json
+    ```
+  </Tab>
+</Tabs>
 
 ## Features
 

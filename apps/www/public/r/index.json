@@ -1,5 +1,107 @@
 [
   {
+    "name": "calendars",
+    "type": "registry:ui",
+    "dependencies": [
+      "date-fns",
+      "lucide-react",
+      "zustand"
+    ],
+    "devDependencies": [],
+    "registryDependencies": [
+      "button",
+      "command",
+      "popover"
+    ],
+    "files": [
+      {
+        "path": "ui/calendars.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "gantts",
+    "type": "registry:ui",
+    "dependencies": [
+      "@dnd-kit/core",
+      "@dnd-kit/modifiers",
+      "@uidotdev/usehooks",
+      "date-fns",
+      "lodash.throttle",
+      "lucide-react",
+      "zustand"
+    ],
+    "devDependencies": [
+      "@types/lodash.throttle"
+    ],
+    "registryDependencies": [
+      "card",
+      "context-menu"
+    ],
+    "files": [
+      {
+        "path": "ui/gantts.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "kanbans",
+    "type": "registry:ui",
+    "dependencies": [
+      "@dnd-kit/core"
+    ],
+    "devDependencies": [],
+    "registryDependencies": [
+      "card"
+    ],
+    "files": [
+      {
+        "path": "ui/kanbans.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "lists",
+    "type": "registry:ui",
+    "dependencies": [
+      "@dnd-kit/core",
+      "@dnd-kit/modifiers",
+      "lucide-react"
+    ],
+    "devDependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "ui/lists.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tables",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tanstack/react-table",
+      "lucide-react",
+      "zustand"
+    ],
+    "devDependencies": [],
+    "registryDependencies": [
+      "button",
+      "dropdown-menu",
+      "table"
+    ],
+    "files": [
+      {
+        "path": "ui/tables.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "signature-input",
     "type": "registry:ui",
     "registryDependencies": [
