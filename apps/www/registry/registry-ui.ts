@@ -2,6 +2,19 @@ import { Registry } from "@/registry/schema"
 
 export const ui: Registry = [
   {
+    name: "separators",
+    type: "registry:ui",
+    registryDependencies: [""],
+    dependencies: [""],
+    devDependencies: [],
+    files: [
+      {
+        path: "ui/separators.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "calendars",
     type: "registry:ui",
     registryDependencies: ["button", "command", "popover"],

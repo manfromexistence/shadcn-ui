@@ -1,5 +1,22 @@
 [
   {
+    "name": "separators",
+    "type": "registry:ui",
+    "dependencies": [
+      ""
+    ],
+    "devDependencies": [],
+    "registryDependencies": [
+      ""
+    ],
+    "files": [
+      {
+        "path": "ui/separators.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "calendars",
     "type": "registry:ui",
     "dependencies": [

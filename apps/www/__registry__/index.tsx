@@ -5,6 +5,22 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "new-york": {
+    "separators": {
+      name: "separators",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/new-york/ui/separators.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/separators.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "calendars": {
       name: "calendars",
       description: "",
@@ -1608,6 +1624,22 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/new-york/ui/tooltip.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "separators-demo": {
+      name: "separators-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["separators"],
+      files: [{
+        path: "registry/new-york/example/separators-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/separators-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -8318,6 +8350,22 @@ export const Index: Record<string, any> = {
       chunks: []
     },
   },  "default": {
+    "separators": {
+      name: "separators",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/default/ui/separators.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/separators.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "calendars": {
       name: "calendars",
       description: "",
@@ -9921,6 +9969,22 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/default/ui/tooltip.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "separators-demo": {
+      name: "separators-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["separators"],
+      files: [{
+        path: "registry/default/example/separators-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/separators-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",

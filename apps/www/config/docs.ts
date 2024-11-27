@@ -167,6 +167,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Separators",
+          href: "/docs/components/separators",
+          items: [],
+        },
+        {
           title: "Cards",
           href: "/docs/components/cards",
           items: [],
