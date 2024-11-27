@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "example/cards/with-image-bg-cards-5.tsx",
-      "content": "import { Card_with_image_v5 } from \"@/registry/new-york/ui/card-with-image-bg\"\n\nexport default function Card_with_image_v5_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Card_with_image_v5 />\n    </div>\n  )\n}\n",
+      "content": "import { Card_with_image_v5 } from \"@/registry/new-york/ui/card-with-image-bg\"\n\nexport default function Card_with_image_v5_Demo() {\n  return (\n    <div className=\"\">\n      <Card_with_image_v5 />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }

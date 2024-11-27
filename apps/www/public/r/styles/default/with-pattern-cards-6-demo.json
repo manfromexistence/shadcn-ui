@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "example/cards/with-pattern-cards-6.tsx",
-      "content": "import {\n  CardBody,\n  CardWithNoise,\n} from \"@/registry/default/ui/card-with-pattern\"\n\nexport default function CardWithNoise_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <CardWithNoise>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithNoise>\n    </div>\n  )\n}\n",
+      "content": "import {\n  CardBody,\n  CardWithNoise,\n} from \"@/registry/default/ui/card-with-pattern\"\n\nexport default function CardWithNoise_Demo() {\n  return (\n    <div className=\"\">\n      <CardWithNoise>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithNoise>\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }
