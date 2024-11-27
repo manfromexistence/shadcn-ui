@@ -388,34 +388,133 @@ export const examples: Registry = [
   //   ],
   // },
   {
-    name: "bento-4-demo",
+    name: "bento-four-1-demo",
     type: "registry:example",
     registryDependencies: ["bento-4"],
     files: [
       {
-        path: "example/bentos/bento-4.tsx",
+        path: "example/bentos/bento-four-1-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "bento-5-demo",
+    name: "bento-four-2-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-4"],
+    files: [
+      {
+        path: "example/bentos/bento-four-2-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-four-3-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-4"],
+    files: [
+      {
+        path: "example/bentos/bento-four-3-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-four-4-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-4"],
+    files: [
+      {
+        path: "example/bentos/bento-four-4-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-five-1-demo",
     type: "registry:example",
     registryDependencies: ["bento-5"],
     files: [
       {
-        path: "example/bentos/bento-5.tsx",
+        path: "example/bentos/bento-five-1-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "bento-6-demo",
+    name: "bento-five-2-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-5"],
+    files: [
+      {
+        path: "example/bentos/bento-five-2-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-five-3-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-5"],
+    files: [
+      {
+        path: "example/bentos/bento-five-3-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-five-4-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-5"],
+    files: [
+      {
+        path: "example/bentos/bento-five-4-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-six-1-demo",
     type: "registry:example",
     registryDependencies: ["bento-6"],
     files: [
       {
-        path: "example/bentos/bento-6.tsx",
+        path: "example/bentos/bento-six-1-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-six-2-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-6"],
+    files: [
+      {
+        path: "example/bentos/bento-six-2-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-six-3-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-6"],
+    files: [
+      {
+        path: "example/bentos/bento-six-3-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-six-4-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-6"],
+    files: [
+      {
+        path: "example/bentos/bento-six-4-demo.tsx",
         type: "registry:example",
       },
     ],

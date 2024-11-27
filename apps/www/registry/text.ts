@@ -1,88 +1,44 @@
 ;[
   {
-    name: "with-pattern-cards-1-demo",
+    name: "bento-six-1-demo",
     type: "registry:example",
-    registryDependencies: ["card-with-pattern"],
+    registryDependencies: ["bento-4"],
     files: [
       {
-        path: "example/cards/with-pattern-cards-1.tsx",
+        path: "example/bentos/bento-six-1-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "with-pattern-cards-2-demo",
+    name: "bento-six-2-demo",
     type: "registry:example",
-    registryDependencies: ["card-with-pattern"],
+    registryDependencies: ["bento-4"],
     files: [
       {
-        path: "example/cards/with-pattern-cards-2.tsx",
+        path: "example/bentos/bento-six-2-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "with-pattern-cards-3-demo",
+    name: "bento-six-3-demo",
     type: "registry:example",
-    registryDependencies: ["card-with-pattern"],
+    registryDependencies: ["bento-4"],
     files: [
       {
-        path: "example/cards/with-pattern-cards-3.tsx",
+        path: "example/bentos/bento-six-3-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "with-pattern-cards-4-demo",
+    name: "bento-six-4-demo",
     type: "registry:example",
-    registryDependencies: ["card-with-pattern"],
+    registryDependencies: ["bento-4"],
     files: [
       {
-        path: "example/cards/with-pattern-cards-4.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "with-pattern-cards-5-demo",
-    type: "registry:example",
-    registryDependencies: ["card-with-pattern"],
-    files: [
-      {
-        path: "example/cards/with-pattern-cards-5.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "with-pattern-cards-6-demo",
-    type: "registry:example",
-    registryDependencies: ["card-with-pattern"],
-    files: [
-      {
-        path: "example/cards/with-pattern-cards-6.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "with-pattern-cards-7-demo",
-    type: "registry:example",
-    registryDependencies: ["card-with-pattern"],
-    files: [
-      {
-        path: "example/cards/with-pattern-cards-7.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "with-pattern-cards-8-demo",
-    type: "registry:example",
-    registryDependencies: ["card-with-pattern"],
-    files: [
-      {
-        path: "example/cards/with-pattern-cards-8.tsx",
+        path: "example/bentos/bento-six-4-demo.tsx",
         type: "registry:example",
       },
     ],

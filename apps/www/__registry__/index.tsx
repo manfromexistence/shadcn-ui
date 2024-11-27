@@ -2029,49 +2029,193 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "bento-4-demo": {
-      name: "bento-4-demo",
+    "bento-four-1-demo": {
+      name: "bento-four-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["bento-4"],
       files: [{
-        path: "registry/new-york/example/bentos/bento-4.tsx",
+        path: "registry/new-york/example/bentos/bento-four-1-demo.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-4.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-four-1-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",
       chunks: []
     },
-    "bento-5-demo": {
-      name: "bento-5-demo",
+    "bento-four-2-demo": {
+      name: "bento-four-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-4"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-four-2-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-four-2-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-four-3-demo": {
+      name: "bento-four-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-4"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-four-3-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-four-3-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-four-4-demo": {
+      name: "bento-four-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-4"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-four-4-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-four-4-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-five-1-demo": {
+      name: "bento-five-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["bento-5"],
       files: [{
-        path: "registry/new-york/example/bentos/bento-5.tsx",
+        path: "registry/new-york/example/bentos/bento-five-1-demo.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-5.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-five-1-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",
       chunks: []
     },
-    "bento-6-demo": {
-      name: "bento-6-demo",
+    "bento-five-2-demo": {
+      name: "bento-five-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-5"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-five-2-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-five-2-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-five-3-demo": {
+      name: "bento-five-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-5"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-five-3-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-five-3-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-five-4-demo": {
+      name: "bento-five-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-5"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-five-4-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-five-4-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-six-1-demo": {
+      name: "bento-six-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["bento-6"],
       files: [{
-        path: "registry/new-york/example/bentos/bento-6.tsx",
+        path: "registry/new-york/example/bentos/bento-six-1-demo.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-6.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-six-1-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-six-2-demo": {
+      name: "bento-six-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-6"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-six-2-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-six-2-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-six-3-demo": {
+      name: "bento-six-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-6"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-six-3-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-six-3-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-six-4-demo": {
+      name: "bento-six-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-6"],
+      files: [{
+        path: "registry/new-york/example/bentos/bento-six-4-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/bentos/bento-six-4-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -10038,49 +10182,193 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "bento-4-demo": {
-      name: "bento-4-demo",
+    "bento-four-1-demo": {
+      name: "bento-four-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["bento-4"],
       files: [{
-        path: "registry/default/example/bentos/bento-4.tsx",
+        path: "registry/default/example/bentos/bento-four-1-demo.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/bentos/bento-4.tsx")),
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-four-1-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",
       chunks: []
     },
-    "bento-5-demo": {
-      name: "bento-5-demo",
+    "bento-four-2-demo": {
+      name: "bento-four-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-4"],
+      files: [{
+        path: "registry/default/example/bentos/bento-four-2-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-four-2-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-four-3-demo": {
+      name: "bento-four-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-4"],
+      files: [{
+        path: "registry/default/example/bentos/bento-four-3-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-four-3-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-four-4-demo": {
+      name: "bento-four-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-4"],
+      files: [{
+        path: "registry/default/example/bentos/bento-four-4-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-four-4-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-five-1-demo": {
+      name: "bento-five-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["bento-5"],
       files: [{
-        path: "registry/default/example/bentos/bento-5.tsx",
+        path: "registry/default/example/bentos/bento-five-1-demo.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/bentos/bento-5.tsx")),
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-five-1-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",
       chunks: []
     },
-    "bento-6-demo": {
-      name: "bento-6-demo",
+    "bento-five-2-demo": {
+      name: "bento-five-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-5"],
+      files: [{
+        path: "registry/default/example/bentos/bento-five-2-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-five-2-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-five-3-demo": {
+      name: "bento-five-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-5"],
+      files: [{
+        path: "registry/default/example/bentos/bento-five-3-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-five-3-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-five-4-demo": {
+      name: "bento-five-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-5"],
+      files: [{
+        path: "registry/default/example/bentos/bento-five-4-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-five-4-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-six-1-demo": {
+      name: "bento-six-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["bento-6"],
       files: [{
-        path: "registry/default/example/bentos/bento-6.tsx",
+        path: "registry/default/example/bentos/bento-six-1-demo.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/bentos/bento-6.tsx")),
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-six-1-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-six-2-demo": {
+      name: "bento-six-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-6"],
+      files: [{
+        path: "registry/default/example/bentos/bento-six-2-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-six-2-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-six-3-demo": {
+      name: "bento-six-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-6"],
+      files: [{
+        path: "registry/default/example/bentos/bento-six-3-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-six-3-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "bento-six-4-demo": {
+      name: "bento-six-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bento-6"],
+      files: [{
+        path: "registry/default/example/bentos/bento-six-4-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/bentos/bento-six-4-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",
