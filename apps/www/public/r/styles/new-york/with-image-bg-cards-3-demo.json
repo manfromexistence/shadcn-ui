@@ -1,0 +1,15 @@
+{
+  "name": "with-image-bg-cards-3-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "card-with-image-bg"
+  ],
+  "files": [
+    {
+      "path": "example/cards/with-image-bg-cards-3.tsx",
+      "content": "import {\n    Card_with_image_v3,\n} from \"@/registry/new-york/ui/card-with-image-bg\"\n\nexport default function Card_with_image_v3_Demo() {\n    return (\n        <div className=\"flex items-center space-x-2\">\n            <Card_with_image_v3 />\n        </div>\n    )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

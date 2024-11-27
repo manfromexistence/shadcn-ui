@@ -37,9 +37,7 @@ export const examples: Registry = [
   {
     name: "card-multi-layers-1-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-multi-layers"
-    ],
+    registryDependencies: ["card-multi-layers"],
     files: [
       {
         path: "example/cards/multi-layers-1.tsx",
@@ -50,9 +48,7 @@ export const examples: Registry = [
   {
     name: "card-multi-layers-2-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-multi-layers"
-    ],
+    registryDependencies: ["card-multi-layers"],
     files: [
       {
         path: "example/cards/multi-layers-2.tsx",
@@ -63,9 +59,7 @@ export const examples: Registry = [
   {
     name: "card-multi-layers-3-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-multi-layers"
-    ],
+    registryDependencies: ["card-multi-layers"],
     files: [
       {
         path: "example/cards/multi-layers-3.tsx",
@@ -76,9 +70,7 @@ export const examples: Registry = [
   {
     name: "card-multi-layers-4-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-multi-layers"
-    ],
+    registryDependencies: ["card-multi-layers"],
     files: [
       {
         path: "example/cards/multi-layers-4.tsx",
@@ -89,9 +81,7 @@ export const examples: Registry = [
   {
     name: "simple-cards-1-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-simple"
-    ],
+    registryDependencies: ["card-simple"],
     files: [
       {
         path: "example/cards/simple-cards-1.tsx",
@@ -102,9 +92,7 @@ export const examples: Registry = [
   {
     name: "simple-cards-2-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-simple"
-    ],
+    registryDependencies: ["card-simple"],
     files: [
       {
         path: "example/cards/simple-cards-2.tsx",
@@ -115,9 +103,7 @@ export const examples: Registry = [
   {
     name: "simple-cards-3-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-simple"
-    ],
+    registryDependencies: ["card-simple"],
     files: [
       {
         path: "example/cards/simple-cards-3.tsx",
@@ -128,9 +114,7 @@ export const examples: Registry = [
   {
     name: "simple-cards-4-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-simple"
-    ],
+    registryDependencies: ["card-simple"],
     files: [
       {
         path: "example/cards/simple-cards-4.tsx",
@@ -141,9 +125,7 @@ export const examples: Registry = [
   {
     name: "simple-cards-5-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-simple"
-    ],
+    registryDependencies: ["card-simple"],
     files: [
       {
         path: "example/cards/simple-cards-5.tsx",
@@ -154,9 +136,7 @@ export const examples: Registry = [
   {
     name: "simple-cards-6-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-simple"
-    ],
+    registryDependencies: ["card-simple"],
     files: [
       {
         path: "example/cards/simple-cards-6.tsx",
@@ -167,9 +147,7 @@ export const examples: Registry = [
   {
     name: "simple-cards-7-demo",
     type: "registry:example",
-    registryDependencies: [
-      "card-simple"
-    ],
+    registryDependencies: ["card-simple"],
     files: [
       {
         path: "example/cards/simple-cards-7.tsx",

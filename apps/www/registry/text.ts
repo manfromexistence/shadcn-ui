@@ -1,4 +1,4 @@
-[
+;[
   {
     name: "with-pattern-cards-1-demo",
     type: "registry:example",

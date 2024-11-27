@@ -1581,65 +1581,401 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "card-multi-layers-demo": {
-      name: "card-multi-layers-demo",
+    "card-multi-layers-1-demo": {
+      name: "card-multi-layers-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["card-multi-layers"],
       files: [{
-        path: "registry/new-york/example/cards/multi-layers.tsx",
+        path: "registry/new-york/example/cards/multi-layers-1.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/example/cards/multi-layers.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/example/cards/multi-layers-1.tsx")),
       source: "",
       category: "",
       subcategory: "",
       chunks: []
     },
-    "card-simple-demo": {
-      name: "card-simple-demo",
+    "card-multi-layers-2-demo": {
+      name: "card-multi-layers-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-multi-layers"],
+      files: [{
+        path: "registry/new-york/example/cards/multi-layers-2.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/multi-layers-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layers-3-demo": {
+      name: "card-multi-layers-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-multi-layers"],
+      files: [{
+        path: "registry/new-york/example/cards/multi-layers-3.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/multi-layers-3.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layers-4-demo": {
+      name: "card-multi-layers-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-multi-layers"],
+      files: [{
+        path: "registry/new-york/example/cards/multi-layers-4.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/multi-layers-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-1-demo": {
+      name: "simple-cards-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["card-simple"],
       files: [{
-        path: "registry/new-york/example/cards/simple-cards.tsx",
+        path: "registry/new-york/example/cards/simple-cards-1.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/example/cards/simple-cards.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/example/cards/simple-cards-1.tsx")),
       source: "",
       category: "",
       subcategory: "",
       chunks: []
     },
-    "card-with-image-bg-demo": {
-      name: "card-with-image-bg-demo",
+    "simple-cards-2-demo": {
+      name: "simple-cards-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/new-york/example/cards/simple-cards-2.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/simple-cards-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-3-demo": {
+      name: "simple-cards-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/new-york/example/cards/simple-cards-3.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/simple-cards-3.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-4-demo": {
+      name: "simple-cards-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/new-york/example/cards/simple-cards-4.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/simple-cards-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-5-demo": {
+      name: "simple-cards-5-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/new-york/example/cards/simple-cards-5.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/simple-cards-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-6-demo": {
+      name: "simple-cards-6-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/new-york/example/cards/simple-cards-6.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/simple-cards-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-7-demo": {
+      name: "simple-cards-7-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/new-york/example/cards/simple-cards-7.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/simple-cards-7.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-image-bg-cards-1-demo": {
+      name: "with-image-bg-cards-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["card-with-image-bg"],
       files: [{
-        path: "registry/new-york/example/cards/with-image-bg.tsx",
+        path: "registry/new-york/example/cards/with-image-bg-cards-1.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/example/cards/with-image-bg.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-image-bg-cards-1.tsx")),
       source: "",
       category: "",
       subcategory: "",
       chunks: []
     },
-    "card-with-pattern-demo": {
-      name: "card-with-pattern-demo",
+    "with-image-bg-cards-2-demo": {
+      name: "with-image-bg-cards-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/new-york/example/cards/with-image-bg-cards-2.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-image-bg-cards-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-image-bg-cards-3-demo": {
+      name: "with-image-bg-cards-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/new-york/example/cards/with-image-bg-cards-3.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-image-bg-cards-3.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-image-bg-cards-4-demo": {
+      name: "with-image-bg-cards-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/new-york/example/cards/with-image-bg-cards-4.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-image-bg-cards-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-image-bg-cards-5-demo": {
+      name: "with-image-bg-cards-5-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/new-york/example/cards/with-image-bg-cards-5.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-image-bg-cards-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-image-bg-cards-6-demo": {
+      name: "with-image-bg-cards-6-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/new-york/example/cards/with-image-bg-cards-6.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-image-bg-cards-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-1-demo": {
+      name: "with-pattern-cards-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["card-with-pattern"],
       files: [{
-        path: "registry/new-york/example/cards/with-pattern.tsx",
+        path: "registry/new-york/example/cards/with-pattern-cards-1.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern-cards-1.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-2-demo": {
+      name: "with-pattern-cards-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/new-york/example/cards/with-pattern-cards-2.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern-cards-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-3-demo": {
+      name: "with-pattern-cards-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/new-york/example/cards/with-pattern-cards-3.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern-cards-3.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-4-demo": {
+      name: "with-pattern-cards-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/new-york/example/cards/with-pattern-cards-4.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern-cards-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-5-demo": {
+      name: "with-pattern-cards-5-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/new-york/example/cards/with-pattern-cards-5.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern-cards-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-6-demo": {
+      name: "with-pattern-cards-6-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/new-york/example/cards/with-pattern-cards-6.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern-cards-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-7-demo": {
+      name: "with-pattern-cards-7-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/new-york/example/cards/with-pattern-cards-7.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern-cards-7.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-8-demo": {
+      name: "with-pattern-cards-8-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/new-york/example/cards/with-pattern-cards-8.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/cards/with-pattern-cards-8.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -9206,65 +9542,401 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "card-multi-layers-demo": {
-      name: "card-multi-layers-demo",
+    "card-multi-layers-1-demo": {
+      name: "card-multi-layers-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["card-multi-layers"],
       files: [{
-        path: "registry/default/example/cards/multi-layers.tsx",
+        path: "registry/default/example/cards/multi-layers-1.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/cards/multi-layers.tsx")),
+      component: React.lazy(() => import("@/registry/default/example/cards/multi-layers-1.tsx")),
       source: "",
       category: "",
       subcategory: "",
       chunks: []
     },
-    "card-simple-demo": {
-      name: "card-simple-demo",
+    "card-multi-layers-2-demo": {
+      name: "card-multi-layers-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-multi-layers"],
+      files: [{
+        path: "registry/default/example/cards/multi-layers-2.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/multi-layers-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layers-3-demo": {
+      name: "card-multi-layers-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-multi-layers"],
+      files: [{
+        path: "registry/default/example/cards/multi-layers-3.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/multi-layers-3.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "card-multi-layers-4-demo": {
+      name: "card-multi-layers-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-multi-layers"],
+      files: [{
+        path: "registry/default/example/cards/multi-layers-4.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/multi-layers-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-1-demo": {
+      name: "simple-cards-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["card-simple"],
       files: [{
-        path: "registry/default/example/cards/simple-cards.tsx",
+        path: "registry/default/example/cards/simple-cards-1.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/cards/simple-cards.tsx")),
+      component: React.lazy(() => import("@/registry/default/example/cards/simple-cards-1.tsx")),
       source: "",
       category: "",
       subcategory: "",
       chunks: []
     },
-    "card-with-image-bg-demo": {
-      name: "card-with-image-bg-demo",
+    "simple-cards-2-demo": {
+      name: "simple-cards-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/default/example/cards/simple-cards-2.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/simple-cards-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-3-demo": {
+      name: "simple-cards-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/default/example/cards/simple-cards-3.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/simple-cards-3.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-4-demo": {
+      name: "simple-cards-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/default/example/cards/simple-cards-4.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/simple-cards-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-5-demo": {
+      name: "simple-cards-5-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/default/example/cards/simple-cards-5.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/simple-cards-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-6-demo": {
+      name: "simple-cards-6-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/default/example/cards/simple-cards-6.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/simple-cards-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "simple-cards-7-demo": {
+      name: "simple-cards-7-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-simple"],
+      files: [{
+        path: "registry/default/example/cards/simple-cards-7.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/simple-cards-7.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-image-bg-cards-1-demo": {
+      name: "with-image-bg-cards-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["card-with-image-bg"],
       files: [{
-        path: "registry/default/example/cards/with-image-bg.tsx",
+        path: "registry/default/example/cards/with-image-bg-cards-1.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg-cards")),
+      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg-cards-1.tsx")),
       source: "",
       category: "",
       subcategory: "",
       chunks: []
     },
-    "card-with-pattern-demo": {
-      name: "card-with-pattern-demo",
+    "with-image-bg-cards-2-demo": {
+      name: "with-image-bg-cards-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/default/example/cards/with-image-bg-cards-2.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg-cards-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-image-bg-cards-3-demo": {
+      name: "with-image-bg-cards-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/default/example/cards/with-image-bg-cards-3.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg-cards-3.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-image-bg-cards-4-demo": {
+      name: "with-image-bg-cards-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/default/example/cards/with-image-bg-cards-4.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg-cards-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-image-bg-cards-5-demo": {
+      name: "with-image-bg-cards-5-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/default/example/cards/with-image-bg-cards-5.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg-cards-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-image-bg-cards-6-demo": {
+      name: "with-image-bg-cards-6-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-image-bg"],
+      files: [{
+        path: "registry/default/example/cards/with-image-bg-cards-6.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg-cards-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-1-demo": {
+      name: "with-pattern-cards-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["card-with-pattern"],
       files: [{
-        path: "registry/default/example/cards/with-pattern.tsx",
+        path: "registry/default/example/cards/with-pattern-cards-1.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern-cards")),
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern-cards-1.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-2-demo": {
+      name: "with-pattern-cards-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/default/example/cards/with-pattern-cards-2.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern-cards-2.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-3-demo": {
+      name: "with-pattern-cards-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/default/example/cards/with-pattern-cards-3.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern-cards-3.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-4-demo": {
+      name: "with-pattern-cards-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/default/example/cards/with-pattern-cards-4.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern-cards-4.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-5-demo": {
+      name: "with-pattern-cards-5-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/default/example/cards/with-pattern-cards-5.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern-cards-5.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-6-demo": {
+      name: "with-pattern-cards-6-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/default/example/cards/with-pattern-cards-6.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern-cards-6.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-7-demo": {
+      name: "with-pattern-cards-7-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/default/example/cards/with-pattern-cards-7.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern-cards-7.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "with-pattern-cards-8-demo": {
+      name: "with-pattern-cards-8-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card-with-pattern"],
+      files: [{
+        path: "registry/default/example/cards/with-pattern-cards-8.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern-cards-8.tsx")),
       source: "",
       category: "",
       subcategory: "",
