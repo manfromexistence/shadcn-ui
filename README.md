@@ -57,33 +57,201 @@ This is --> MD MAHABUB HOSEN || ManFromExistence(Peace out + Signing OUT + Sayon
 7. Ai: I personally don't like this Ai madness cause. For this, my programming skills are at risk but I cannot deny the fact that it is more useful than the Blockchain madness that occurred sometime earlier. So, I somehow managed to learn this new AI tech and am currently learning...
 ```
 
-### Bento Six 1
+
+## Usage
+
+```tsx
+import { ExpandableCard } from '@/components/expandable-card';
+```
+
+```tsx
+<ExpandableCard height="10rem" wide>
+    <div className="prose-p:mt-0 text-sm/relaxed">
+        <h4 className="my-2 text-lg font-bold">Default expandable card</h4>
+        Lorem ipsum, consectetur adipiscing elit. Nullam pulvinar risus non risus
+        endrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
+    </div>
+</ExpandableCard>
+```
+
+## Examples
+
+### Simple 1
 
 <ComponentPreview
-  name="bento-Six-1-demo"
-  description="Bento Six 1"
+  name="simple-cards-1-demo"
+  description="A simple card 1"
 />
 
-### Bento Six 2
+### Simple 2
 
 <ComponentPreview
-  name="bento-Six-1-demo"
-  description="Bento Six 1"
+  name="simple-cards-2-demo"
+  description="A simple card 2"
 />
 
 
-### Bento Six 3
+### Simple 3
 
 <ComponentPreview
-  name="bento-Six-3-demo"
-  description="Bento Six 3"
+  name="simple-cards-3-demo"
+  description="A simple card 3"
 />
 
-
-### Bento Six 4
+### Simple 4
 
 <ComponentPreview
-  name="bento-Six-4-demo"
-  description="Bento Six 4"
+  name="simple-cards-4-demo"
+  description="A simple card 4"
 />
+
+
+### Simple 5
+
+<ComponentPreview
+  name="simple-cards-5-demo"
+  description="A simple card 5"
+/>
+
+### Simple 6
+
+<ComponentPreview
+  name="simple-cards-6-demo"
+  description="A simple card 6"
+/>
+
+### Simple 7
+
+<ComponentPreview
+  name="simple-cards-7-demo"
+  description="A simple card 7"
+/>
+
+
+### Multi Layers 1
+
+<ComponentPreview
+  name="card-multi-layers-1-demo"
+  description="A multi-layers card 1"
+/>
+
+### Multi Layers 2
+
+<ComponentPreview
+  name="card-multi-layers-2-demo"
+  description="A multi-layers card 2"
+/>
+
+### Multi Layers 3
+
+<ComponentPreview
+  name="card-multi-layers-3-demo"
+  description="A multi-layers card 3"
+/>
+
+### Multi Layers 4
+
+<ComponentPreview
+  name="card-multi-layers-4-demo"
+  description="A multi-layers card 4"
+/>
+
+### With Image Bg 1
+
+<ComponentPreview
+  name="with-image-bg-cards-1-demo"
+  description="A card with image bg 1"
+/>
+
+### With Image Bg 2
+
+<ComponentPreview
+  name="with-image-bg-cards-2-demo"
+  description="A card with image bg 2"
+/>
+
+### With Image Bg 3
+
+<ComponentPreview
+  name="with-image-bg-cards-3-demo"
+  description="A card with image bg 3"
+/>
+
+### With Image Bg 4
+
+<ComponentPreview
+  name="with-image-bg-cards-4-demo"
+  description="A card with image bg 4"
+/>
+
+### With Image Bg 5
+
+<ComponentPreview
+  name="with-image-bg-cards-5-demo"
+  description="A card with image bg 5"
+/>
+
+### With Image Bg 6
+
+<ComponentPreview
+  name="with-image-bg-cards-6-demo"
+  description="A card with image bg 6"
+/>
+
+### With Pattern 1
+
+<ComponentPreview
+  name="with-pattern-cards-1-demo"
+  description="A card with pattern 1"
+/>
+
+### With Pattern 2
+
+<ComponentPreview
+  name="with-pattern-cards-2-demo"
+  description="A card with pattern 2"
+/>
+
+### With Pattern 3
+
+<ComponentPreview
+  name="with-pattern-cards-3-demo"
+  description="A card with pattern 3"
+/>
+
+### With Pattern 4
+
+<ComponentPreview
+  name="with-pattern-cards-4-demo"
+  description="A card with pattern 4"
+/>
+
+### With Pattern 5
+
+<ComponentPreview
+  name="with-pattern-cards-5-demo"
+  description="A card with pattern 5"
+/>
+
+### With Pattern 6
+
+<ComponentPreview
+  name="with-pattern-cards-6-demo"
+  description="A card with pattern 6"
+/>
+
+### With Pattern 7
+
+<ComponentPreview
+  name="with-pattern-cards-7-demo"
+  description="A card with pattern 7"
+/>
+
+### With Pattern 8
+
+<ComponentPreview
+  name="with-pattern-cards-8-demo"
+  description="A card with pattern 8"
+/>
+
 
