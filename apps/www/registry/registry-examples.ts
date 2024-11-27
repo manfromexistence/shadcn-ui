@@ -13,16 +13,50 @@ export const examples: Registry = [
     ],
   },
   {
-    name: "dots-demo",
+    name: "dots-1-demo",
     type: "registry:example",
     registryDependencies: ["dots"],
     files: [
       {
-        path: "example/dots-demo.tsx",
+        path: "example/dots-1-demo.tsx",
         type: "registry:example",
       },
     ],
   },
+  {
+    name: "dots-2-demo",
+    type: "registry:example",
+    registryDependencies: ["dots"],
+    files: [
+      {
+        path: "example/dots-2-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dots-3-demo",
+    type: "registry:example",
+    registryDependencies: ["dots"],
+    files: [
+      {
+        path: "example/dots-3-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dots-4-demo",
+    type: "registry:example",
+    registryDependencies: ["dots"],
+    files: [
+      {
+        path: "example/dots-4-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
   {
     name: "card-expandable-demo",
     type: "registry:example",

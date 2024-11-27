@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "example/cards/simple-cards-4.tsx",
-      "content": "import {\n    SimpleCard_V4,\n  } from \"@/registry/default/ui/card-simple\"\n  \n  export function SimpleCard_V4_Demo() {\n    return (\n      <div className=\"flex items-center space-x-2\">\n        <SimpleCard_V4 />\n      </div>\n    )\n  }",
+      "content": "import { SimpleCard_V4 } from \"@/registry/default/ui/card-simple\"\n\nexport function SimpleCard_V4_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <SimpleCard_V4 />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }

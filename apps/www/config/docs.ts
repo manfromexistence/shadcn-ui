@@ -142,6 +142,26 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Cards",
+          href: "/docs/components/cards",
+          items: [],
+        },
+        {
+          title: "Bento",
+          href: "/docs/components/bento",
+          items: [],
+        },
+        {
+          title: "Spinner",
+          href: "/docs/components/spinner",
+          items: [],
+        },
+        {
+          title: "Buttons",
+          href: "/docs/components/buttons",
+          items: [],
+        },
+        {
           title: "Sintature Input",
           href: "/docs/components/signature-input",
           items: [],
@@ -248,11 +268,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Bento",
-          href: "/docs/components/bento",
-          items: [],
-        },
-        {
           title: "Confetti",
           href: "/docs/components/confetti",
           items: [],
@@ -315,16 +330,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Texts",
           href: "/docs/components/texts",
-          items: [],
-        },
-        {
-          title: "Buttons",
-          href: "/docs/components/buttons",
-          items: [],
-        },
-        {
-          title: "Cards",
-          href: "/docs/components/cards",
           items: [],
         },
         {

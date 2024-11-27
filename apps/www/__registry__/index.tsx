@@ -1549,17 +1549,65 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "dots-demo": {
-      name: "dots-demo",
+    "dots-1-demo": {
+      name: "dots-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["dots"],
       files: [{
-        path: "registry/new-york/example/dots-demo.tsx",
+        path: "registry/new-york/example/dots-1-demo.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/new-york/example/dots-demo.tsx")),
+      component: React.lazy(() => import("@/registry/new-york/example/dots-1-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "dots-2-demo": {
+      name: "dots-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dots"],
+      files: [{
+        path: "registry/new-york/example/dots-2-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/dots-2-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "dots-3-demo": {
+      name: "dots-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dots"],
+      files: [{
+        path: "registry/new-york/example/dots-3-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/dots-3-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "dots-4-demo": {
+      name: "dots-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dots"],
+      files: [{
+        path: "registry/new-york/example/dots-4-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/dots-4-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",
@@ -9510,17 +9558,65 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
-    "dots-demo": {
-      name: "dots-demo",
+    "dots-1-demo": {
+      name: "dots-1-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["dots"],
       files: [{
-        path: "registry/default/example/dots-demo.tsx",
+        path: "registry/default/example/dots-1-demo.tsx",
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/dots-demo.tsx")),
+      component: React.lazy(() => import("@/registry/default/example/dots-1-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "dots-2-demo": {
+      name: "dots-2-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dots"],
+      files: [{
+        path: "registry/default/example/dots-2-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/dots-2-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "dots-3-demo": {
+      name: "dots-3-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dots"],
+      files: [{
+        path: "registry/default/example/dots-3-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/dots-3-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "dots-4-demo": {
+      name: "dots-4-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dots"],
+      files: [{
+        path: "registry/default/example/dots-4-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/dots-4-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",

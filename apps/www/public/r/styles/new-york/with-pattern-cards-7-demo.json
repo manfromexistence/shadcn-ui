@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "example/cards/with-pattern-cards-7.tsx",
-      "content": "import {\n    CardBody,\n    CardWithPlus,\n} from \"@/registry/new-york/ui/card-with-pattern\"\n\nexport default function CardWithPlus_Demo() {\n    return (\n        <div className=\"flex items-center space-x-2\">\n            <CardWithPlus>\n                <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n            </CardWithPlus>\n        </div>\n    )\n}",
+      "content": "import {\n  CardBody,\n  CardWithPlus,\n} from \"@/registry/new-york/ui/card-with-pattern\"\n\nexport default function CardWithPlus_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <CardWithPlus>\n        <CardBody className=\"relative mx-auto rounded-lg px-6 py-10 shadow backdrop-blur-xl dark:bg-zinc-900/90\" />\n      </CardWithPlus>\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }
