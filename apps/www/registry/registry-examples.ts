@@ -35,45 +35,298 @@ export const examples: Registry = [
     ],
   },
   {
-    name: "card-multi-layers-demo",
+    name: "card-multi-layers-1-demo",
     type: "registry:example",
-    registryDependencies: ["card-multi-layers"],
+    registryDependencies: [
+      "card-multi-layers"
+    ],
     files: [
       {
-        path: "example/cards/multi-layers.tsx",
+        path: "example/cards/multi-layers-1.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "card-simple-demo",
+    name: "card-multi-layers-2-demo",
     type: "registry:example",
-    registryDependencies: ["card-simple"],
+    registryDependencies: [
+      "card-multi-layers"
+    ],
     files: [
       {
-        path: "example/cards/simple-cards.tsx",
+        path: "example/cards/multi-layers-2.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "card-with-image-bg-demo",
+    name: "card-multi-layers-3-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "card-multi-layers"
+    ],
+    files: [
+      {
+        path: "example/cards/multi-layers-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "card-multi-layers-4-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "card-multi-layers"
+    ],
+    files: [
+      {
+        path: "example/cards/multi-layers-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-1-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "card-simple"
+    ],
+    files: [
+      {
+        path: "example/cards/simple-cards-1.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-2-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "card-simple"
+    ],
+    files: [
+      {
+        path: "example/cards/simple-cards-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-3-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "card-simple"
+    ],
+    files: [
+      {
+        path: "example/cards/simple-cards-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-4-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "card-simple"
+    ],
+    files: [
+      {
+        path: "example/cards/simple-cards-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-5-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "card-simple"
+    ],
+    files: [
+      {
+        path: "example/cards/simple-cards-5.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-6-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "card-simple"
+    ],
+    files: [
+      {
+        path: "example/cards/simple-cards-6.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-7-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "card-simple"
+    ],
+    files: [
+      {
+        path: "example/cards/simple-cards-7.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-1-demo",
     type: "registry:example",
     registryDependencies: ["card-with-image-bg"],
     files: [
       {
-        path: "example/cards/with-image-bg.tsx",
+        path: "example/cards/with-image-bg-cards-1.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "card-with-pattern-demo",
+    name: "with-image-bg-cards-2-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "example/cards/with-image-bg-cards-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-3-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "example/cards/with-image-bg-cards-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-4-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "example/cards/with-image-bg-cards-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-5-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "example/cards/with-image-bg-cards-5.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-6-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "example/cards/with-image-bg-cards-6.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-1-demo",
     type: "registry:example",
     registryDependencies: ["card-with-pattern"],
     files: [
       {
-        path: "example/cards/with-pattern.tsx",
+        path: "example/cards/with-pattern-cards-1.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-2-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "example/cards/with-pattern-cards-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-3-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "example/cards/with-pattern-cards-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-4-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "example/cards/with-pattern-cards-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-5-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "example/cards/with-pattern-cards-5.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-6-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "example/cards/with-pattern-cards-6.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-7-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "example/cards/with-pattern-cards-7.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-8-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "example/cards/with-pattern-cards-8.tsx",
         type: "registry:example",
       },
     ],

@@ -9248,7 +9248,7 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg.tsx")),
+      component: React.lazy(() => import("@/registry/default/example/cards/with-image-bg-cards")),
       source: "",
       category: "",
       subcategory: "",
@@ -9264,7 +9264,7 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: ""
       }],
-      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern.tsx")),
+      component: React.lazy(() => import("@/registry/default/example/cards/with-pattern-cards")),
       source: "",
       category: "",
       subcategory: "",

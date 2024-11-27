@@ -1,6 +1,6 @@
 import { ExpandableCard } from "@/registry/default/ui/card-expandable"
 
-export function ExpandableCard_Demo() {
+export default function ExpandableCard_Demo() {
   return (
     <div className="flex items-center space-x-2">
       <ExpandableCard height="10rem" wide>
