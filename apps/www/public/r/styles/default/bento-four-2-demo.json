@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "example/bentos/bento-four-2-demo.tsx",
-      "content": "import {\n    Bento_4_v2,\n} from \"@/registry/default/ui/bento-4\"\n\nexport default function Bento_4_v2_Demo() {\n    return (\n        <div className=\"flex items-center space-x-2\">\n            <Bento_4_v2 />\n        </div>\n    )\n}",
+      "content": "import { Bento_4_v2 } from \"@/registry/default/ui/bento-4\"\n\nexport default function Bento_4_v2_Demo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Bento_4_v2 />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
     }
