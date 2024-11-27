@@ -38,7 +38,7 @@ New Online Study Website: https://ustudy-mahabub.vercel.app/
 1. https://manofexistence.vercel.app/
 2. https://manofexistence-professional-portfolio.vercel.app/
 3. https://manofexistence-brainwave.vercel.app/
-4. https://fiverr-rocket-krypt.vercel.app/
+4. https://Sixrr-rocket-krypt.vercel.app/
 5. https://aladdin.vercel.app/
 6. https://lolgamer-xstream.vercel.app/
 
@@ -56,3 +56,34 @@ This is --> MD MAHABUB HOSEN || ManFromExistence(Peace out + Signing OUT + Sayon
 6. Blockchain: Solidity + Rust + currently exploring the new kinds of stuff in the blockchain space. I already know web3.js, ethers.js, Viem -> just like ehters.js but better. And I can also handle the smart contracts part.
 7. Ai: I personally don't like this Ai madness cause. For this, my programming skills are at risk but I cannot deny the fact that it is more useful than the Blockchain madness that occurred sometime earlier. So, I somehow managed to learn this new AI tech and am currently learning...
 ```
+
+### Bento Six 1
+
+<ComponentPreview
+  name="bento-Six-1-demo"
+  description="Bento Six 1"
+/>
+
+### Bento Six 2
+
+<ComponentPreview
+  name="bento-Six-1-demo"
+  description="Bento Six 1"
+/>
+
+
+### Bento Six 3
+
+<ComponentPreview
+  name="bento-Six-3-demo"
+  description="Bento Six 3"
+/>
+
+
+### Bento Six 4
+
+<ComponentPreview
+  name="bento-Six-4-demo"
+  description="Bento Six 4"
+/>
+
