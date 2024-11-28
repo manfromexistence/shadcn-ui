@@ -14,8 +14,31 @@ import {
 import CardsNewYork from "@/registry/new-york/example/cards"
 import { Button } from "@/registry/new-york/ui/button"
 import { ConfigProvider, FloatButton, theme } from "antd"
+import { Tooltip } from 'antd';
+import { AutoComplete } from 'antd';
+import type { AutoCompleteProps } from 'antd';
+import { Anchor, Col, Row } from 'antd';
+import React, { useState } from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader, Flex, Switch } from 'antd';
+import CascaderDemo from "@/antd/cascader"
+import InputNumberDemo from "@/antd/input-number"
+import ColorPickerDemo from "@/antd/color-picker"
+import RateDemo from "@/antd/rate"
+import TranferDemo from "@/antd/transfer"
+import MentionsDemo from "@/antd/mentions"
+import TreeSelectDemo from "@/antd/treeselect"
+import BadgeDemo from "@/antd/badge"
+import QRCodeDemo from "@/antd/qr-code"
+import SegmentedDemo from "@/antd/segmented"
+import TimelineDemo from "@/antd/timeline"
+import TourDemo from "@/antd/tour"
+import TabsDemo from "@/antd/tabs"
+import TreeDemo from "@/antd/tree"
+import FloatButtonDemo from "@/antd/float-button"
 
 export default function IndexPage() {
+
   return (
     <div className="relative">
       <PageHeader>
@@ -49,13 +72,31 @@ export default function IndexPage() {
             // 2. Combine dark algorithm and compact algorithm
             // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
           }}>
-          <FloatButton />
+          <Tooltip title="prompt text">
+            <Button variant="outline">Hover</Button>
+          </Tooltip>
+          <BadgeDemo />
+          <SegmentedDemo />
+          <QRCodeDemo />
+          <InputNumberDemo />
+          <TreeSelectDemo />
+          <MentionsDemo />
+          <RateDemo />
+          <ColorPickerDemo />
+          <TranferDemo />
+          <CascaderDemo />
+          <TimelineDemo />
+          <TourDemo />
+          <TabsDemo />
+          <TreeDemo />
+          <FloatButtonDemo />
         </ConfigProvider>
       </div>
-      
+
     </div>
   )
 }
+
 
 // import FormBuilder from '@/screens/form-builder'
 // import React from 'react'
