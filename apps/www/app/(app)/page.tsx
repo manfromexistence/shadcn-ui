@@ -36,6 +36,7 @@ import TourDemo from "@/antd/tour"
 import TabsDemo from "@/antd/tabs"
 import TreeDemo from "@/antd/tree"
 import FloatButtonDemo from "@/antd/float-button"
+import chart from "@/visualizations/charts/area/area/demo/with-negative"
 
 export default function IndexPage() {
 
@@ -72,24 +73,7 @@ export default function IndexPage() {
             // 2. Combine dark algorithm and compact algorithm
             // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
           }}>
-          <Tooltip title="prompt text">
-            <Button variant="outline">Hover</Button>
-          </Tooltip>
-          <BadgeDemo />
-          <SegmentedDemo />
-          <QRCodeDemo />
-          <InputNumberDemo />
-          <TreeSelectDemo />
-          <MentionsDemo />
-          <RateDemo />
-          <ColorPickerDemo />
-          <TranferDemo />
-          <CascaderDemo />
-          <TimelineDemo />
-          <TourDemo />
-          <TabsDemo />
-          <TreeDemo />
-          <FloatButtonDemo />
+          <chart />
         </ConfigProvider>
       </div>
 

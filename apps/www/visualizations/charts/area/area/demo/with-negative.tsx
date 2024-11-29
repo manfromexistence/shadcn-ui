@@ -64,3 +64,4 @@ const { props } = (
 
 const chart = new Canvas(props);
 chart.render();
+export default chart;
