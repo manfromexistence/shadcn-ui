@@ -1,7 +1,12 @@
 /** @jsx jsx */
 import { jsx, Canvas, Chart, Interval, Axis } from '@antv/f2';
 
-const data = [
+interface DataPoint {
+  year: string;
+  sales: number;
+}
+
+const data: DataPoint[] = [
   {
     year: '1951 年',
     sales: 38,
@@ -36,7 +41,7 @@ const data = [
   },
 ];
 
-const context = document.getElementById('container').getContext('2d');
+const context = (document.getElementById('container') as HTMLCanvasElement).getContext('2d');
 const { props } = (
   <Canvas context={context} pixelRatio={window.devicePixelRatio}>
     <Chart
@@ -59,3 +64,4 @@ const { props } = (
 
 const chart = new Canvas(props);
 chart.render();
+

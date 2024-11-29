@@ -36,7 +36,7 @@ const data = [
   },
 ];
 
-const context = document.getElementById('container').getContext('2d');
+const context = (document.getElementById('container') as HTMLCanvasElement).getContext('2d');
 const { props } = (
   <Canvas context={context} pixelRatio={window.devicePixelRatio}>
     <Chart
