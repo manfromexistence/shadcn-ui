@@ -6,12 +6,12 @@
   "demos": [
     {
       "filename": "funnel.jsx",
-      "title": "基础漏斗图",
+      "title": "Basic Funnel Chart",
       "screenshot": "https://gw.alipayobjects.com/zos/finxbff/compress-tinypng/de13d1df-dd50-4637-be20-0b89b483b977.jpg"
     },
     {
       "filename": "stroke.jsx",
-      "title": "有间距",
+      "title": "There Is Spacing",
       "screenshot": "https://gw.alipayobjects.com/zos/finxbff/compress-tinypng/4f420a5d-6a81-4ef8-9cba-62106bbdb593.jpg"
     }
   ]

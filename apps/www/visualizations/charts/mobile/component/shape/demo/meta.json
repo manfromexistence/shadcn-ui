@@ -6,12 +6,12 @@
   "demos": [
     {
       "filename": "shape.jsx",
-      "title": "图形标签",
+      "title": "Graphic Label",
       "screenshot": "https://gw.alipayobjects.com/zos/finxbff/compress-tinypng/dc931299-e23e-40b1-b392-ffada104cd50.png"
     },
     {
       "filename": "event.jsx",
-      "title": "图形标签交互",
+      "title": "Graphic Label Interaction",
       "screenshot": "https://gw.alipayobjects.com/zos/finxbff/compress-tinypng/dc931299-e23e-40b1-b392-ffada104cd50.png"
     }
   ]

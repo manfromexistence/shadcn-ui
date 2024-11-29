@@ -6,12 +6,12 @@
   "demos": [
     {
       "filename": "null.jsx",
-      "title": "存在空值",
+      "title": "Null Value Exists",
       "screenshot": "https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*hHrSSp5Kkk8AAAAAAAAAAABkARQnAQ"
     },
     {
       "filename": "connect-null.jsx",
-      "title": "连接空值数据",
+      "title": "Join Null Data",
       "screenshot": "https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*GmD8Q4j3jtoAAAAAAAAAAABkARQnAQ"
     }
   ]
