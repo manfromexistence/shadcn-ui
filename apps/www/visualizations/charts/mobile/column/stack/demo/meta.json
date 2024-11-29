@@ -6,12 +6,12 @@
   "demos": [
     {
       "filename": "stack.jsx",
-      "title": "层叠柱状图",
+      "title": "Stacked Column Chart",
       "screenshot": "https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*4wicQ6b0U2cAAAAAAAAAAABkARQnAQ"
     },
     {
       "filename": "percent.jsx",
-      "title": "百分比层叠柱状图",
+      "title": "Percent Stacked Column Chart",
       "screenshot": "https://gw.alipayobjects.com/mdn/rms_4f0ff1/afts/img/A*WZ5jQqzGVSwAAAAAAAAAAABkARQnAQ"
     }
   ]
