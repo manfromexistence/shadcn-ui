@@ -19,7 +19,7 @@ import Stats from 'stats.js';
 
 runtime.enableCSSParsing = false;
 
-// create a renderer
+// create a renderer 
 const renderer = new Renderer();
 renderer.registerPlugin(new Plugin3D());
 renderer.registerPlugin(new PluginControl());
