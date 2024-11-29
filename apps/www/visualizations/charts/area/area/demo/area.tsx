@@ -1,4 +1,4 @@
-/** @jsx jsx */
+// /** @jsx jsx */
 import { jsx, Canvas, Chart, Area, Line, Axis, Tooltip } from '@antv/f2';
 
 const context = (document.getElementById('container') as HTMLCanvasElement).getContext('2d');
@@ -61,5 +61,14 @@ const { props } = (
   </Canvas>
 );
 
-const chart = new Canvas(props);
-chart.render();
+
+
+export default function Charts() {
+  const chart = new Canvas(props);
+  chart.render();
+  return (
+    <div>
+      <canvas id="myId"></canvas>
+    </div>
+  )
+}

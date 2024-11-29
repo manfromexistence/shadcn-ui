@@ -36,7 +36,7 @@ import TourDemo from "@/antd/tour"
 import TabsDemo from "@/antd/tabs"
 import TreeDemo from "@/antd/tree"
 import FloatButtonDemo from "@/antd/float-button"
-import chart from "@/visualizations/charts/area/area/demo/with-negative"
+import Charts from "@/visualizations/charts/area/area/demo/area"
 
 export default function IndexPage() {
 
@@ -73,7 +73,7 @@ export default function IndexPage() {
             // 2. Combine dark algorithm and compact algorithm
             // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
           }}>
-          <chart />
+          {/* <Charts /> */}
         </ConfigProvider>
       </div>
 
