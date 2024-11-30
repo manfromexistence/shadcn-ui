@@ -23,7 +23,7 @@ function StatusDot({ className }: { className?: string }) {
   );
 }
 
-export default function Select32() {
+export default function SelectDemo() {
   return (
     <div className="space-y-2">
       <Label htmlFor="select-32">Status select</Label>
@@ -37,7 +37,7 @@ export default function Select32() {
         <SelectContent className="[&_*[role=option]>span>svg]:shrink-0 [&_*[role=option]>span>svg]:text-muted-foreground/80 [&_*[role=option]>span]:end-2 [&_*[role=option]>span]:start-auto [&_*[role=option]>span]:flex [&_*[role=option]>span]:items-center [&_*[role=option]>span]:gap-2 [&_*[role=option]]:pe-8 [&_*[role=option]]:ps-2">
           <SelectItem value="s1">
             <span className="flex items-center gap-2">
-              <StatusDot className="text-green-600" />
+              <StatusDot className="text-emerald-600" />
               <span className="truncate">Completed</span>
             </span>
           </SelectItem>
@@ -49,7 +49,7 @@ export default function Select32() {
           </SelectItem>
           <SelectItem value="s3">
             <span className="flex items-center gap-2">
-              <StatusDot className="text-yellow-500" />
+              <StatusDot className="text-amber-500" />
               <span className="truncate">Pending</span>
             </span>
           </SelectItem>

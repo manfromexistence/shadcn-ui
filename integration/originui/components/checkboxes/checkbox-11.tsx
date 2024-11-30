@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useEffect, useRef, useState } from "react";
 
-export default function Checkbox11() {
+export default function CheckboxDemo() {
   const [checked, setChecked] = useState<boolean | "indeterminate">(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -39,8 +39,8 @@ export default function Checkbox11() {
             className="grid transition-all ease-in-out data-[state=collapsed]:grid-rows-[0fr] data-[state=expanded]:grid-rows-[1fr] data-[state=collapsed]:opacity-0 data-[state=expanded]:opacity-100"
             data-state={checked ? "expanded" : "collapsed"}
           >
-            <div className="-m-2 overflow-hidden p-2">
-              <div className="mt-3">
+            <div className="pointer-events-none -m-2 overflow-hidden p-2">
+              <div className="pointer-events-auto mt-3">
                 <Input
                   ref={inputRef}
                   type="text"

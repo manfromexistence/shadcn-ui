@@ -38,7 +38,8 @@ export default function Page() {
               </h1>
               <p className="text-lg text-muted-foreground">
                 Origin UI is an extensive collection of copy-and-paste components for quickly
-                building app UIs. It's free, open-source, and ready to drop into your projects.
+                building app UIs. It&lsquo;s free, open-source, and ready to drop into your
+                projects.
               </p>
             </div>
 
@@ -49,9 +50,9 @@ export default function Page() {
                   <li>
                     <Link
                       href="/inputs"
-                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/70 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
+                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 outline-offset-2 transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
                     >
-                      <span className="truncate">Input</span>
+                      <span className="truncate">Input and Textarea</span>
                       <ArrowRight
                         size={16}
                         strokeWidth={2}
@@ -62,7 +63,7 @@ export default function Page() {
                   <li>
                     <Link
                       href="/buttons"
-                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/70 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
+                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 outline-offset-2 transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
                     >
                       <span className="truncate">Button</span>
                       <ArrowRight
@@ -75,7 +76,7 @@ export default function Page() {
                   <li>
                     <Link
                       href="/checks-radios-switches"
-                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/70 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
+                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 outline-offset-2 transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
                     >
                       <span className="truncate">Checkbox, Radio, and Switch</span>
                       <ArrowRight
@@ -88,7 +89,7 @@ export default function Page() {
                   <li>
                     <Link
                       href="/selects"
-                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/70 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
+                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 outline-offset-2 transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
                     >
                       <span className="truncate">Select</span>
                       <ArrowRight
@@ -99,8 +100,34 @@ export default function Page() {
                     </Link>
                   </li>
                   <li>
+                    <Link
+                      href="/sliders"
+                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 outline-offset-2 transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
+                    >
+                      <span className="truncate">Slider</span>
+                      <ArrowRight
+                        size={16}
+                        strokeWidth={2}
+                        className="-mr-1 ml-2 shrink-0 opacity-60"
+                      />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/alerts-notifications-banners"
+                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 outline-offset-2 transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
+                    >
+                      <span className="truncate">Alert, Notification, and Banner</span>
+                      <ArrowRight
+                        size={16}
+                        strokeWidth={2}
+                        className="-mr-1 ml-2 shrink-0 opacity-60"
+                      />
+                    </Link>
+                  </li>
+                  <li>
                     <span className="inline-flex w-full flex-col justify-between gap-2 whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 sm:h-14 sm:flex-row sm:items-center">
-                      Slider
+                      Dialog
                       <span className="text-xs font-medium uppercase text-zinc-400 dark:text-zinc-600">
                         Available soon!
                       </span>
@@ -117,7 +144,7 @@ export default function Page() {
                   <li>
                     <Link
                       href="/easings"
-                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/70 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
+                      className="inline-flex w-full items-center justify-between whitespace-nowrap rounded-lg border border-border bg-background p-4 font-bold shadow-sm shadow-black/5 outline-offset-2 transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 sm:h-14"
                     >
                       <span className="truncate">Tailwind CSS easing classes</span>
                       <ArrowRight
