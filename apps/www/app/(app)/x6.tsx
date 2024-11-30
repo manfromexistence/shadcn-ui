@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Graph } from '@antv/x6';
 
-const X6Chart = () => {
+const X6 = () => {
   const containerRef = useRef<any>(null);
 
   useEffect(() => {
@@ -94,4 +94,4 @@ const X6Chart = () => {
   </>;
 };
 
-export default X6Chart;
+export default X6;

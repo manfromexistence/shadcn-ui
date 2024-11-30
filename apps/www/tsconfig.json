@@ -32,6 +32,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
-, "visualizations/canvases/3d/3d-basic/demo/billboard.js", "app/(app)/g2.tsx", "app/(app)/g6.jsx"  ],
+, "visualizations/canvases/3d/3d-basic/demo/billboard.js", "app/(app)/g2.tsx", "app/(app)/g6.jsx", "app/(app)/s2.tsx"  ],
   "exclude": ["node_modules", "./scripts/build-registry.mts", "__registry__"]
 }

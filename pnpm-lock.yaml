@@ -246,6 +246,12 @@ importers:
       '@antv/react-g':
         specifier: latest
         version: 2.0.30(react@18.2.0)
+      '@antv/s2':
+        specifier: ^2.1.0
+        version: 2.1.0(@antv/g2@5.2.7)
+      '@antv/s2-react':
+        specifier: ^2.1.0
+        version: 2.1.0(@antv/s2@2.1.0(@antv/g2@5.2.7))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@antv/util':
         specifier: ^3.3.5
         version: 3.3.10
@@ -1936,6 +1942,21 @@ packages:
     resolution: {integrity: sha512-T7Yu0dUiDQrkyKVsOmrPMOr2d4OfARzXhF0oJXqZBlQgxHcQRbdzMnpQr+Nt6KmYxs2wGeGnKiY8yy70lbGAdg==}
     peerDependencies:
       react: ^16.13.1
+
+  '@antv/s2-react@2.1.0':
+    resolution: {integrity: sha512-uuf7V69WiZTeUPR/6jKEetUydGe2/cewZ+QkIcmppeVj195N8PO5uj1jsMZncTJrpl0n61vr0vuhIK18UKgm7A==}
+    peerDependencies:
+      '@antv/s2': ^2.0.0
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+
+  '@antv/s2@2.1.0':
+    resolution: {integrity: sha512-eWwUC3x5gkBCIs1WYdxXHjGlgwVGUwlLv8K9je6liZY49INZealAMqC3LvXPSdofd3Zc/RXNpq/9nWvgGBNhOA==}
+    peerDependencies:
+      '@antv/g2': '>=5.1.21'
+    peerDependenciesMeta:
+      '@antv/g2':
+        optional: true
 
   '@antv/scale@0.3.18':
     resolution: {integrity: sha512-GHwE6Lo7S/Q5fgaLPaCsW+CH+3zl4aXpnN1skOiEY0Ue9/u+s2EySv6aDXYkAqs//i0uilMDD/0/4n8caX9U9w==}
@@ -10062,6 +10083,12 @@ packages:
     resolution: {integrity: sha512-4I7Td01quW/RpocfNayFdFVk1qSuoh0E7JrbRJ16nH01HhKFQ88INq9Sd+nd72zqRySlr9BmDA8xlEJ6vJMrYA==}
     engines: {node: '>=8'}
 
+  ahooks@3.8.1:
+    resolution: {integrity: sha512-JoP9+/RWO7MnI/uSKdvQ8WB10Y3oo1PjLv+4Sv4Vpm19Z86VUMdXh+RhWvMGxZZs06sq2p0xVtFk8Oh5ZObsoA==}
+    engines: {node: '>=8.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
   airbnb-js-shims@2.2.1:
     resolution: {integrity: sha512-wJNXPH66U2xjgo1Zwyjf9EydvJ2Si94+vSdk6EERcBfB2VZkeltpqIats0cqIZMLCXP3zcyaUKGYQeIBT6XjsQ==}
 
@@ -16306,6 +16333,9 @@ packages:
   interpret@2.2.0:
     resolution: {integrity: sha512-Ju0Bz/cEia55xDwUWEa8+olFpCiQoypjnQySseKtmjNrnps3P+xfpUmGr90T7yjlVJmOtybRvPXhKMbHr+fWnw==}
     engines: {node: '>= 0.10'}
+
+  intersection-observer@0.12.2:
+    resolution: {integrity: sha512-7m1vEcPCxXYI8HqnL8CKI6siDyD+eIWSwgB3DZA+ZTogxk9I4CDnj4wilt9x/+/QbHI4YG5YZNmC6458/e9Ktg==}
 
   intersection-observer@0.7.0:
     resolution: {integrity: sha512-Id0Fij0HsB/vKWGeBe9PxeY45ttRiBmhFyyt/geBdDHBYNctMRTE3dC1U3ujzz3lap+hVXlEcVaB56kZP/eEUg==}
@@ -28399,6 +28429,30 @@ snapshots:
       scheduler: 0.20.2
       tslib: 2.8.1
 
+  '@antv/s2-react@2.1.0(@antv/s2@2.1.0(@antv/g2@5.2.7))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@antv/s2': 2.1.0(@antv/g2@5.2.7)
+      ahooks: 3.8.1(react@18.2.0)
+      classnames: 2.5.1
+      lodash: 4.17.21
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
+  '@antv/s2@2.1.0(@antv/g2@5.2.7)':
+    dependencies:
+      '@antv/event-emitter': 0.1.3
+      '@antv/g': 6.1.14
+      '@antv/g-canvas': 2.0.32
+      '@antv/g-lite': 2.2.9
+      d3-ease: 3.0.1
+      d3-interpolate: 1.4.0
+      d3-timer: 1.0.10
+      decimal.js: 10.4.3
+      lodash: 4.17.21
+      tinycolor2: 1.6.0
+    optionalDependencies:
+      '@antv/g2': 5.2.7
+
   '@antv/scale@0.3.18':
     dependencies:
       '@antv/util': 2.0.17
@@ -34739,9 +34793,7 @@ snapshots:
       jest-runner: 24.9.0
       jest-runtime: 24.9.0
     transitivePeerDependencies:
-      - bufferutil
       - supports-color
-      - utf-8-validate
 
   '@jest/test-sequencer@29.7.0':
     dependencies:
@@ -42007,6 +42059,19 @@ snapshots:
     dependencies:
       clean-stack: 2.2.0
       indent-string: 4.0.0
+
+  ahooks@3.8.1(react@18.2.0):
+    dependencies:
+      '@babel/runtime': 7.26.0
+      dayjs: 1.11.13
+      intersection-observer: 0.12.2
+      js-cookie: 3.0.5
+      lodash: 4.17.21
+      react: 18.2.0
+      react-fast-compare: 3.2.2
+      resize-observer-polyfill: 1.5.1
+      screenfull: 5.2.0
+      tslib: 2.8.1
 
   airbnb-js-shims@2.2.1:
     dependencies:
@@ -51082,6 +51147,8 @@ snapshots:
 
   interpret@2.2.0: {}
 
+  intersection-observer@0.12.2: {}
+
   intersection-observer@0.7.0: {}
 
   interval-tree-1d@1.0.4:
@@ -51994,9 +52061,7 @@ snapshots:
       throat: 5.0.0
       tslib: 1.14.1
     transitivePeerDependencies:
-      - bufferutil
       - supports-color
-      - utf-8-validate
 
   jest-environment-jsdom@24.9.0:
     dependencies:

@@ -65,6 +65,8 @@
     "@antv/layout-gpu": "^1.1.7",
     "@antv/layout-wasm": "^1.4.2",
     "@antv/react-g": "latest",
+    "@antv/s2": "^2.1.0",
+    "@antv/s2-react": "^2.1.0",
     "@antv/util": "^3.3.5",
     "@antv/webgpu-graph": "latest",
     "@antv/x6": "^2.18.1",

@@ -5,7 +5,7 @@ interface ChartProps {
   data: { genre: string; sold: number }[];
 }
 
-const MyChart: React.FC<ChartProps> = ({ data }) => {
+const G2: React.FC<ChartProps> = ({ data }) => {
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,4 +31,4 @@ const MyChart: React.FC<ChartProps> = ({ data }) => {
   return <div ref={chartRef} style={{ width: 500, height: 300 }} />;
 };
 
-export default MyChart;
+export default G2;
