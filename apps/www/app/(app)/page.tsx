@@ -36,8 +36,18 @@ import TourDemo from "@/antd/tour"
 import TabsDemo from "@/antd/tabs"
 import TreeDemo from "@/antd/tree"
 import FloatButtonDemo from "@/antd/float-button"
+import MyChart from "./g2"
+import G6Chart from "./g6"
 
 export default function IndexPage() {
+  const chartData = [
+    { genre: 'Sports', sold: 275 },
+    { genre: 'Strategy', sold: 115 },
+    { genre: 'Action', sold: 120 },
+    { genre: 'Shooter', sold: 350 },
+    { genre: 'Other', sold: 150 },
+  ];
+
 
   return (
     <div className="relative">
@@ -75,6 +85,11 @@ export default function IndexPage() {
           {/* <Charts /> */}
 
         </ConfigProvider>
+        <div>
+          <h1>My G2 Chart</h1>
+          <MyChart data={chartData} />
+        </div>
+        <G6Chart />
       </div>
 
     </div>
