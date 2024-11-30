@@ -36,8 +36,6 @@ import TourDemo from "@/antd/tour"
 import TabsDemo from "@/antd/tabs"
 import TreeDemo from "@/antd/tree"
 import FloatButtonDemo from "@/antd/float-button"
-import Charts from "@/visualizations/charts/area/area/demo/area"
-import Diagrams from "@/visualizations/diagrams/edge/connector/demo/diagrams"
 
 export default function IndexPage() {
 
@@ -75,32 +73,7 @@ export default function IndexPage() {
             // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
           }}>
           {/* <Charts /> */}
-          <Diagrams
-            options={{
-              container: 'your-container-id', // Or a DOM element reference
-              width: 500,
-              height: 500,
-              data: {
-                nodes: [
-                  {
-                    id: 'node-1',
-                    style: { x: 50, y: 100 },
-                  },
-                  {
-                    id: 'node-2',
-                    style: { x: 150, y: 100 },
-                  },
-                ],
-                edges: [{ id: 'edge-1', source: 'node-1', target: 'node-2' }],
-              },
-            }}
-            onRender={() => {
-              // Do something after the graph is rendered
-            }}
-            onDestroy={() => {
-              // Do something before the graph is destroyed
-            }}
-          />
+
         </ConfigProvider>
       </div>
 
