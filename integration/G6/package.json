@@ -29,6 +29,7 @@
       "prettier --write"
     ]
   },
+  
   "devDependencies": {
     "@antv/g-canvas": "^2.0.24",
     "@antv/g-plugin-rough-canvas-renderer": "^2.0.24",

@@ -61,6 +61,7 @@
     "stats.js": "^0.17.0",
     "styled-components": "^6.1.13"
   },
+  
   "devDependencies": {
     "@manypkg/get-packages": "^2.2.2",
     "@microsoft/api-documenter": "^7.25.21",
