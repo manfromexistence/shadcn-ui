@@ -38,6 +38,7 @@ import TreeDemo from "@/antd/tree"
 import FloatButtonDemo from "@/antd/float-button"
 import MyChart from "./g2"
 import G6Chart from "./g6"
+import X6Chart from "./x6"
 
 export default function IndexPage() {
   const chartData = [
@@ -86,10 +87,11 @@ export default function IndexPage() {
 
         </ConfigProvider>
         <div>
-          <h1>My G2 Chart</h1>
+          <h1>G2</h1>
           <MyChart data={chartData} />
         </div>
-        <G6Chart />
+        {/* <G6Chart /> */}
+        <X6Chart />
       </div>
 
     </div>
