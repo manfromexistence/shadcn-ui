@@ -25,7 +25,10 @@ const G6Chart = () => {
     graph.render();
   }, []); // Empty dependency array to run only once
 
-  return <div ref={containerRef} />;
+  return <>
+    <span>G6</span>
+    <div ref={containerRef} />
+  </>;
 };
 
 export default G6Chart;
