@@ -248,6 +248,8 @@ function CopyCodeButton({
     <>
       {activeTheme && (
         <Button
+          variant="ghost"
+          size="icon"
           onClick={() => {
             copyToClipboardWithMeta(getThemeCode(activeTheme, config.radius), {
               name: "copy_theme_code",
@@ -258,7 +260,7 @@ function CopyCodeButton({
             })
             setHasCopied(true)
           }}
-          className={cn("md:hidden", className)}
+          className={cn("ml-auto rounded-[0.5rem] md:hidden", className)}
           {...props}
         >
           {hasCopied ? <Check /> : <Copy />}
@@ -267,7 +269,10 @@ function CopyCodeButton({
       )}
       <Dialog>
         <DialogTrigger asChild>
-          <Button className={cn("hidden md:flex", className)} {...props}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn("ml-auto hidden h-9 w-9 rounded-[0.5rem] md:flex", className)} {...props}>
             {/* Copy code */}
             {hasCopied ? <Check /> : <Copy />}
           </Button>

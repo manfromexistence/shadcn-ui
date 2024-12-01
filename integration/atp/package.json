@@ -35,8 +35,7 @@
     "prepublishOnly": "npm run compile && np --yolo --no-publish && npm run docs:deploy",
     "lint": "eslint src/ --ext .ts,.tsx,.jsx,.js,.md",
     "test": "umi-test",
-    "coverage": "umi-test --coverage",
-    "prepare": "husky install"
+    "coverage": "umi-test --coverage"
   },
   "dependencies": {
     "@ant-design/colors": "^6",
