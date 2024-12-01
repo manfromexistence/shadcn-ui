@@ -268,7 +268,8 @@ function CopyCodeButton({
       <Dialog>
         <DialogTrigger asChild>
           <Button className={cn("hidden md:flex", className)} {...props}>
-            Copy code
+            {/* Copy code */}
+            {hasCopied ? <Check /> : <Copy />}
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-2xl outline-none">
@@ -534,3 +535,4 @@ const BASE_STYLES_WITH_VARIABLES = `
   }
 }
 `
+
