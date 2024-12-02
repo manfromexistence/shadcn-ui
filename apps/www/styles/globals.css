@@ -165,3 +165,9 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
+.CodeMirror-scroll:nth-child(2) {
+  display: none;
+  max-width: 100%;
+  border-radius: var(--radius);
+}

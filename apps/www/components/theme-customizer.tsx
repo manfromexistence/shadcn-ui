@@ -36,8 +36,13 @@ import {
   TooltipTrigger,
 } from "@/registry/new-york/ui/tooltip"
 import { BaseColor, baseColors } from "@/registry/registry-base-colors"
-
 import "@/styles/mdx.css"
+import { UnControlled as CodeMirror } from 'react-codemirror2'
+// import 'codemirror/lib/codemirror.css';
+// import 'codemirror/theme/material.css';
+// import 'codemirror/theme/neat.css';
+// import 'codemirror/mode/xml/xml.js';
+// import 'codemirror/mode/javascript/javascript.js';
 
 export function ThemeCustomizer() {
   const [config, setConfig] = useConfig()
@@ -121,7 +126,7 @@ function Customizer() {
             Theme Customizer
           </div>
           <div className="text-xs text-muted-foreground">
-            Customize your components.
+            Customize your components colors.
           </div>
         </div>
         <Button
@@ -257,6 +262,36 @@ function Config() {
   const [mounted, setMounted] = React.useState(false)
   const { setTheme: setMode, resolvedTheme: mode } = useTheme()
   const [config, setConfig] = useConfig()
+
+  const handleChange = () => {
+    setCode(code);
+    console.log('New code:', code);
+  };
+  const [code, setCode] = React.useState(`<header class="site-header">
+  <div class="container">
+    <h1>Example #2</h1>
+    <nav role="navigation" class="site-navigation">
+      <ul>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<section role="main" class="container"><img src="http://placehold.it/1400x400/ff694d/f6f2eb" class="banner-image" />
+  <div class="grid-row col-3">
+    <div class="grid-unit"><img src="http://placehold.it/650x300/ff694d/f6f2eb" />
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor.</p>
+    </div>
+    <div class="grid-unit"><img src="http://placehold.it/650x300/ff694d/f6f2eb" />
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor.</p>
+    </div>
+    <div class="grid-unit"><img src="http://placehold.it/650x300/ff694d/f6f2eb" />
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor.</p>
+    </div>
+  </div>
+</section>`);
 
   React.useEffect(() => {
     setMounted(true)
@@ -401,7 +436,17 @@ function Config() {
           </div>
         </div>
       </div> */}
-      
+
+      {/* <CodeMirror
+        className="rounded-md"
+        value='<h1>I ♥ react-codemirror2</h1>'
+        options={{
+          mode: 'css',
+          theme: 'material',
+          lineNumbers: true
+        }}
+        onChange={handleChange}
+      /> */}
     </ThemeWrapper>
   )
 }
