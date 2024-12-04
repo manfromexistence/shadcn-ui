@@ -798,42 +798,42 @@ export const blocks: Registry = [
     category: "Application",
     subcategory: "Sidebars",
   },
-  {
-    name: "login-01",
-    type: "registry:block",
-    registryDependencies: ["button", "card", "input", "label"],
-    files: [
-      {
-        path: "block/login-01/page.tsx",
-        target: "app/login/page.tsx",
-        type: "registry:page",
-      },
-      {
-        path: "block/login-01/components/login-form.tsx",
-        type: "registry:component",
-      },
-    ],
-    category: "Authentication",
-    subcategory: "Login",
-  },
-  {
-    name: "chart-01",
-    type: "registry:block",
-    registryDependencies: ["separator", "card", "recharts", "chart"],
-    files: [
-      {
-        path: "block/chart-01/page.tsx",
-        target: "app/dashboard/page.tsx",
-        type: "registry:page",
-      },
-      {
-        path: "block/chart-01/components/chart.tsx",
-        type: "registry:component",
-      },
-    ],
-    category: "Application",
-    subcategory: "Charts",
-  },
+  // {
+  //   name: "login-01",
+  //   type: "registry:block",
+  //   registryDependencies: ["button", "card", "input", "label"],
+  //   files: [
+  //     {
+  //       path: "block/login-01/page.tsx",
+  //       target: "app/login/page.tsx",
+  //       type: "registry:page",
+  //     },
+  //     {
+  //       path: "block/login-01/components/login-form.tsx",
+  //       type: "registry:component",
+  //     },
+  //   ],
+  //   category: "Authentication",
+  //   subcategory: "Login",
+  // },
+  // {
+  //   name: "chart-01",
+  //   type: "registry:block",
+  //   registryDependencies: ["separator", "card", "recharts", "chart"],
+  //   files: [
+  //     {
+  //       path: "block/chart-01/page.tsx",
+  //       target: "app/dashboard/page.tsx",
+  //       type: "registry:page",
+  //     },
+  //     {
+  //       path: "block/chart-01/components/chart.tsx",
+  //       type: "registry:component",
+  //     },
+  //   ],
+  //   category: "Application",
+  //   subcategory: "Charts",
+  // },
   // {
   //   name: "dashboard-05",
   //   type: "registry:block",
