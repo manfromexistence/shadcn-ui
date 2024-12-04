@@ -44,8 +44,8 @@ const links = [
     href: "/varients#banners",
   },
   {
-    name: "Dialogues",
-    href: "/varients#dialogues",
+    name: "Dialogs",
+    href: "/varients#dialogs",
   },
 ]
 
