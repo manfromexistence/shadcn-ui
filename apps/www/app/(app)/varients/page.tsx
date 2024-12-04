@@ -129,6 +129,86 @@ const switchFiles = [
   "switch-16",
 ];
 
+const alertDir = "alerts";
+const alertFiles = [
+  "alert-01",
+  "alert-02",
+  "alert-03",
+  "alert-04",
+  "alert-05",
+  "alert-06",
+  "alert-07",
+  "alert-08",
+  "alert-09",
+  "alert-10",
+  "alert-11",
+  "alert-12",
+  "alert-13",
+  "alert-14",
+  "alert-15",
+  "alert-16",
+];
+
+const notificationDir = "notifications";
+const notificationFiles = [
+  "notification-01",
+  "notification-02",
+  "notification-03",
+  "notification-04",
+  "notification-05",
+  "notification-06",
+  "notification-07",
+  "notification-08",
+  "notification-09",
+  "notification-10",
+  "notification-11",
+  "notification-12",
+  "notification-13",
+  "notification-14",
+  "notification-15",
+  "notification-16",
+];
+
+const bannerDir = "banners";
+const bannerFiles = [
+  "banner-01",
+  "banner-02",
+  "banner-03",
+  "banner-04",
+  "banner-05",
+  "banner-06",
+  "banner-07",
+  "banner-08",
+  "banner-09",
+  "banner-10",
+  "banner-11",
+  "banner-12",
+  "banner-13",
+  "banner-14",
+  "banner-15",
+  "banner-16",
+];
+
+const dialogDir = "dialogs";
+const dialogFiles = [
+  "dialog-01",
+  "dialog-02",
+  "dialog-03",
+  "dialog-04",
+  "dialog-05",
+  "dialog-06",
+  "dialog-07",
+  "dialog-08",
+  "dialog-09",
+  "dialog-10",
+  "dialog-11",
+  "dialog-12",
+  "dialog-13",
+  "dialog-14",
+  "dialog-15",
+  "dialog-16",
+];
+
 export default function IndexPage() {
   return (
     <div className="relative">
@@ -270,6 +350,82 @@ export default function IndexPage() {
 
               <div className="flex w-full items-center justify-center py-2">
                 <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-switches">See more Switch Varients</Link>
+              </div>
+
+              <Separator />
+
+              <div id="alerts" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {alertFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      className="flex items-center justify-center"
+                      key={componentName}
+                      directory={alertDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
+              </div>
+
+              <div className="flex w-full items-center justify-center py-2">
+                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-alerts">See more Alert Varients</Link>
+              </div>
+
+              <Separator />
+
+              <div id="notifications" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {notificationFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      className="flex items-center justify-center"
+                      key={componentName}
+                      directory={notificationDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
+              </div>
+
+              <div className="flex w-full items-center justify-center py-2">
+                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-notifications">See more notification Varients</Link>
+              </div>
+
+              <Separator />
+
+              <div id="banners" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {bannerFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      className="flex items-center justify-center"
+                      key={componentName}
+                      directory={bannerDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
+              </div>
+
+              <div className="flex w-full items-center justify-center py-2">
+                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-banners">See more banner Varients</Link>
+              </div>
+
+              <Separator />
+
+              <div id="dialogs" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {dialogFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      className="flex items-center justify-center"
+                      key={componentName}
+                      directory={dialogDir}
+                      componentName={componentName}
+                    />
+                  );
+                })}
+              </div>
+
+              <div className="flex w-full items-center justify-center py-2">
+                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-dialogs">See more dialog Varients</Link>
               </div>
 
             </div>
