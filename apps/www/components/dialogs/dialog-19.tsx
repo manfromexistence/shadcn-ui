@@ -2,7 +2,7 @@
 
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/varients/button";
 import {
   Dialog,
   DialogClose,
@@ -12,14 +12,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+} from "@/components/varients/dialog";
+import { Input } from "@/components/varients/input";
+import { Label } from "@/components/varients/label";
+import { Textarea } from "@/components/varients/textarea";
 import { useCharacterLimit } from "@/hooks/use-character-limit";
 import { useImageUpload } from "@/hooks/use-image-upload";
-import AvatarImg from "@/public/avatar-72-01.jpg";
-import ProfileBgImg from "@/public/profile-bg.jpg";
+import AvatarImg from "@/public/varients/avatar-72-01.jpg";
+import ProfileBgImg from "@/public/varients/profile-bg.jpg";
 import { Check, ImagePlus, X } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";

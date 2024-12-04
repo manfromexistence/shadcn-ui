@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import Image from "next/image";
 
-import AvatarImg from "@/public/avatar-32-01.jpg";
+import AvatarImg from "@/public/varients/avatar-32-01.jpg";
 
 export default function NotificationDemo() {
   return (

@@ -10,8 +10,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+} from "@/components/varients/alert-dialog";
+import { Button } from "@/components/varients/button";
 import { CircleAlert } from "lucide-react";
 
 export default function AlertDialogDemo() {

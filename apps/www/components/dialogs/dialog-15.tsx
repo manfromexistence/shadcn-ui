@@ -2,7 +2,7 @@
 
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/varients/button";
 import {
   Dialog,
   DialogContent,
@@ -10,10 +10,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+} from "@/components/varients/dialog";
+import { Input } from "@/components/varients/input";
+import { Label } from "@/components/varients/label";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/varients/tooltip";
 import { cn } from "@/lib/utils";
 import { Check, Copy, UserRoundPlus } from "lucide-react";
 import { useRef, useState } from "react";

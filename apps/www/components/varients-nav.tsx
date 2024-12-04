@@ -31,6 +31,22 @@ const links = [
     name: "Switches",
     href: "/varients#switches",
   },
+  {
+    name: "Alerts",
+    href: "/varients#alerts",
+  },
+  {
+    name: "Notifications",
+    href: "/varients#notifications",
+  },
+  {
+    name: "Banners",
+    href: "/varients#banners",
+  },
+  {
+    name: "Dialogues",
+    href: "/varients#dialogues",
+  },
 ]
 
 export function VarientsNav({

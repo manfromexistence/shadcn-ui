@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "@/components/page-header";
 import { Button } from "@/registry/default/ui/button";
 import Link from "next/link";
+import { Separator } from "@/registry/default/ui/separator";
 
 export const metadata: Metadata = {
   title: "Checkbox, Radio, and Switch Components",
@@ -113,6 +114,9 @@ export default function Page() {
                 />
               );
             })}
+
+            <Separator />
+
             {radioFiles.map((componentName) => {
               return (
                 <DemoComponent
@@ -123,6 +127,9 @@ export default function Page() {
                 />
               );
             })}
+
+            <Separator />
+
             {switchFiles.map((componentName) => {
               return (
                 <DemoComponent
