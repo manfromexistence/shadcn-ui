@@ -159,6 +159,10 @@ const bannerFiles = [
   "banner-02",
   "banner-03",
   "banner-04",
+  "banner-05",
+  "banner-06",
+  "banner-07",
+  "banner-08",
 ];
 
 const dialogDir = "dialogs";
@@ -356,7 +360,7 @@ export default function IndexPage() {
 
               <Separator />
 
-              <div id="banners" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+              <div id="banners" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
                 {bannerFiles.map((componentName) => {
                   return (
                     <DemoComponent
