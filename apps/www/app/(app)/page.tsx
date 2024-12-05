@@ -93,7 +93,7 @@ export default function IndexPage() {
           <G2 data={chartData} />
         </div>
         <X6 />
-        <G6 />
+        {/* <G6 /> */}
 
 
 

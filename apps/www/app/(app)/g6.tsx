@@ -1,61 +1,58 @@
-import { useEffect } from 'react';
-import { Graph, treeToGraphData } from '@antv/g6';
+import { useEffect, useRef } from 'react';
+import { Graph as G6Graph, treeToGraphData } from '@antv/g6';
 
-const getNodeSide = (graph: Graph, datum: any): string => {
-  const parentData = graph.getParent(datum.id, 'tree');
-  if (!parentData) return 'center';
-  return datum.style.x > parentData.style.x ? 'right' : 'left';
-};
+const fetchDataAndRenderGraph = async (container: HTMLDivElement | null, graphRef: React.MutableRefObject<G6Graph | undefined>) => {
+  if (!container) return;
 
-const fetchDataAndRenderGraph = async () => {
   const response = await fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/algorithm-category.json');
   const data = await response.json();
-  const graph = new Graph({
-    container: 'container',
+
+  if (graphRef.current) {
+    graphRef.current.destroy();
+  }
+
+  const graph = new G6Graph({
+    container: container,
     autoFit: true,
     data: treeToGraphData(data),
+    behaviors: ['drag-canvas', 'zoom-canvas', 'drag-element'],
     defaultNode: {
       style: {
         labelText: (d: any) => d.id,
         labelBackground: true,
-        labelPlacement: (d: any) => {
-          const side = getNodeSide(graph, d);
-          return side === 'center' ? 'right' : side;
-        },
-        ports: [{ placement: 'right' }, { placement: 'left' }],
       },
-      animation: {
-        enter: false,
-      },
-    },
-    defaultEdge: {
-      type: 'cubic-horizontal',
       animation: {
         enter: false,
       },
     },
     layout: {
-      type: 'mindmap',
-      direction: 'H',
-      getHeight: () => 32,
-      getWidth: () => 32,
-      getVGap: () => 4,
-      getHGap: () => 64,
-    },
-    modes: {
-      default: ['collapse-expand', 'drag-canvas', 'zoom-canvas'],
+      type: 'dendrogram',
+      radial: true,
+      nodeSep: 40,
+      rankSep: 140,
     },
   });
 
-  graph.render();
+  await graph.render();
+  graphRef.current = graph;
 };
 
-const MindMap = () => {
+const DendrogramGraph = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const graphRef = useRef<G6Graph>();
+
   useEffect(() => {
-    fetchDataAndRenderGraph();
+    fetchDataAndRenderGraph(containerRef.current, graphRef);
+
+    return () => {
+      if (graphRef.current) {
+        graphRef.current.destroy();
+        graphRef.current = undefined;
+      }
+    };
   }, []);
 
-  return <div id="container" style={{ width: '100%', height: '500px' }} />;
+  return <div ref={containerRef} style={{ width: '100%', height: '500px' }} />;
 };
 
-export default MindMap;
+export default DendrogramGraph;

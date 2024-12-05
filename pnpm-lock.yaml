@@ -229,11 +229,11 @@ importers:
         specifier: ^5.2.7
         version: 5.2.7
       '@antv/g6':
-        specifier: ^4.5.2
-        version: 4.8.24
+        specifier: 5.0.35
+        version: 5.0.35(workerize-loader@2.0.2(webpack@4.47.0))
       '@antv/g6-extension-3d':
         specifier: ^0.1.7
-        version: 0.1.7(@antv/g-canvas@2.0.32)(@antv/g6@4.8.24)(@antv/g@6.1.14)(workerize-loader@2.0.2(webpack@4.47.0))
+        version: 0.1.7(@antv/g-canvas@2.0.32)(@antv/g6@5.0.35(workerize-loader@2.0.2(webpack@4.47.0)))(@antv/g@6.1.14)(workerize-loader@2.0.2(webpack@4.47.0))
       '@antv/layout':
         specifier: 1.2.14-beta.8
         version: 1.2.14-beta.8(workerize-loader@2.0.2(webpack@4.47.0))
@@ -1454,9 +1454,6 @@ packages:
   '@ant-design/colors@3.2.2':
     resolution: {integrity: sha512-YKgNbG2dlzqMhA9NtI3/pbY16m3Yl/EeWBRa+lB1X1YaYxHrxNexiQYCLTWO/uDvAjLFMEDU+zR901waBtMtjQ==}
 
-  '@ant-design/colors@4.0.5':
-    resolution: {integrity: sha512-3mnuX2prnWOWvpFTS2WH2LoouWlOgtnIpc6IarWN6GOzzLF8dW/U8UctuvIPhoboETehZfJ61XP+CGakBEPJ3Q==}
-
   '@ant-design/colors@6.0.0':
     resolution: {integrity: sha512-qAZRvPzfdWHtfameEGP2Qvuf838NhergR35o+EuVyB5XvSA98xod5r4utvi4TJ3ywmevm290g9nsCG5MryrdWQ==}
 
@@ -1552,9 +1549,6 @@ packages:
   '@antv/coord@0.4.7':
     resolution: {integrity: sha512-UTbrMLhwJUkKzqJx5KFnSRpU3BqrdLORJbwUbHK2zHSCT3q3bjcFA//ZYLVfIlwqFDXp/hzfMyRtp0c77A9ZVA==}
 
-  '@antv/dom-util@2.0.4':
-    resolution: {integrity: sha512-2shXUl504fKwt82T3GkuT4Uoc6p9qjCKnJ8gXGLSW4T1W37dqf9AV28aCfoVPHp2BUXpSsB+PAJX2rG/jLHsLQ==}
-
   '@antv/dumi-theme-antv@0.5.3':
     resolution: {integrity: sha512-RVxHIKjjmGRfQm7zcbTueqP8SzWLq/uuBwSliOkhNTRnbgmzRpAMf8WfpmnIR+5wmoxBxTXDGxTBYN3ik9wW+w==}
     peerDependencies:
@@ -1586,17 +1580,11 @@ packages:
   '@antv/f2@5.7.4':
     resolution: {integrity: sha512-5wLvGigPm93pft8U29Ws2FKW+TTaT7YGmVHWdz6Iz8GHjeAiGkDhhhH+w12U05qmjCaYsLdSRMwQ8FD2lVW1og==}
 
-  '@antv/g-base@0.5.16':
-    resolution: {integrity: sha512-jP06wggTubDPHXoKwFg3/f1lyxBX9ywwN3E/HG74Nd7DXqOXQis8tsIWW+O6dS/h9vyuXLd1/wDWkMMm3ZzXdg==}
-
   '@antv/g-camera-api@1.2.25':
     resolution: {integrity: sha512-h0ckza5y9YpMgj58VdMhKry0iEBTHVQtapM0XraLQr/XSr3GiP9WTSusjWaVLqN7WxtA94O1dd/AKOOqjDIrPA==}
 
   '@antv/g-camera-api@2.0.28':
     resolution: {integrity: sha512-1CYMOUy6PWp+iJoSEPFSEniJaokcRurz1i0Jz2ev/6X7ZdrQfoauTTsHjFFvpnyxM4HbcR7/09vP4vWExzii3A==}
-
-  '@antv/g-canvas@0.5.17':
-    resolution: {integrity: sha512-sXYJMWTOlb/Ycb6sTKu00LcJqInXJY4t99+kSM40u2OfqrXYmaXDjHR7D2V0roMkbK/QWiWS9UnEidCR1VtMOA==}
 
   '@antv/g-canvas@1.11.29':
     resolution: {integrity: sha512-CEAAqMgGlqOY2pCXpD+peOfhcpdSCKt9HQpmxPN2crsoDHk7wD1yiYVSpc0+iX1S8SNCa9TrnjZX+oQyMkFY0A==}
@@ -1647,9 +1635,6 @@ packages:
 
   '@antv/g-lottie-player@1.0.25':
     resolution: {integrity: sha512-iSEjzQymNvKEmIMNuHeekkkWNwsp0Fs0Z1EpFIPblPp3fUhwuSld/eWfewGfS+5JwbGnO+DYzEO2EtuPPvaFtQ==}
-
-  '@antv/g-math@0.1.9':
-    resolution: {integrity: sha512-KHMSfPfZ5XHM1PZnG42Q2gxXfOitYveNTA7L61lR6mhZ8Y/aExsYmHqaKBsSarU0z+6WLrl9C07PQJZaw0uljQ==}
 
   '@antv/g-math@1.7.49':
     resolution: {integrity: sha512-6eVtmtkmPAjqQrg1TZ6MICtHmBUv2jCDbgRpHl3VmX48KPPOaBlbkZlhh0ZEAEMN1ex075W8kYr/+xDHnhCvKg==}
@@ -1841,9 +1826,6 @@ packages:
   '@antv/g-shader-components@2.0.0':
     resolution: {integrity: sha512-qdUAz0ZZSrAFrBKxne7kUMWt2v+kncnpWwdDD7SGa7OCtcnWADl6lUUiL0r29gBMcoDtPXJijsjS/e/w9cVWuQ==}
 
-  '@antv/g-svg@0.5.7':
-    resolution: {integrity: sha512-jUbWoPgr4YNsOat2Y/rGAouNQYGpw4R0cvlN0YafwOyacFFYy2zC8RslNd6KkPhhR3XHNSqJOuCYZj/YmLUwYw==}
-
   '@antv/g-svg@2.0.27':
     resolution: {integrity: sha512-y1bZ4taGoMiNWM+GGPx6GFjq5cdVP6ajC4vlF5NfWIvQ9uS2V93ksQYEYV2Cmhnin2fC5ZVlZg6F26g0LAHg0Q==}
 
@@ -1885,14 +1867,6 @@ packages:
   '@antv/g2@5.2.7':
     resolution: {integrity: sha512-bOU7ZJfa735KCqIsWWwlFtn3pc8TwJIckBhy7X8PFcxTuMIXzgqOt7vbMMdF4psBHMyIIOCDAo8zf9rGhgjEzA==}
 
-  '@antv/g6-core@0.8.24':
-    resolution: {integrity: sha512-rgI3dArAD8uoSz2+skS4ctN4x/Of33ivTIKaEYYvClxgkLZWVz9zvocy+5AWcVPBHZsAXkZcdh9zndIoWY/33A==}
-
-  '@antv/g6-element@0.8.24':
-    resolution: {integrity: sha512-61FXkt9LY+6EOUtSam1iFTOW2AM59sPVcV1BuPj4dXiD0dluLE+R7d8B/94g1tKDw9tsjhfUQGC7hTXscJRJFw==}
-    peerDependencies:
-      '@antv/g6': 4.8.24
-
   '@antv/g6-extension-3d@0.1.7':
     resolution: {integrity: sha512-kjBK1qk9+dKofbkvBYDOyDKFB+XDeZsXcRzkRKd9KHJDngRrYmPWUKprlCaT8TSjaLJukW1ORpt1FkgjtKHRQA==}
     peerDependencies:
@@ -1900,25 +1874,14 @@ packages:
       '@antv/g-canvas': ^2.0.18
       '@antv/g6': ^5.0.33
 
-  '@antv/g6-pc@0.8.24':
-    resolution: {integrity: sha512-nf0y1lrp8J5DotqRryXd2S/J30COW8spVcLF9gUqywGqQAHfE00Ywkqr+PZBnsfCZXsXCi9o0+CE9NrkWs4SBQ==}
-
-  '@antv/g6-plugin@0.8.24':
-    resolution: {integrity: sha512-ZIOnwLTC7SM2bFiJZ3vYFWnkyOCWKqnU96i/fBh1qAoY5slDS3hatenZWEXUtOcqaKw1h+5A5f72MRXqBBVn0g==}
-    peerDependencies:
-      '@antv/g6': 4.8.24
-
-  '@antv/g6@4.8.24':
-    resolution: {integrity: sha512-bgj7sZ+z45JmOngIpYpwmSIg7SboMLZBoAlX0+RoAETZB3/xvZO0MXT3lCSyAhIgm5Sb68pekKi7OStuo04NyQ==}
+  '@antv/g6@5.0.35':
+    resolution: {integrity: sha512-0A35HFAOshsUHG75GNu3N8Q2vIkOPBU6h8GxSu/fZmmIuPNx9EtswH1Nl71RUJtE2cJv5sZlbGSl/R4F+1/JqQ==}
 
   '@antv/g@5.18.27':
     resolution: {integrity: sha512-SgJ3l7kNfJp0df7g8UItuNk5K7ctzik4z4ZmrXvz9f4cD/s7zfpvRWcIIyBaJQtJCaXtKVqP4wapeqhL7c95zQ==}
 
   '@antv/g@6.1.14':
     resolution: {integrity: sha512-57kCuT5gutH4aSaBahaJ6OE9ZSkC02L+gdSFMRU+nWWDrFwXsEEgsJ2Mtg08L+zlhoiQCLu12HND65iPe53nKQ==}
-
-  '@antv/graphlib@1.2.0':
-    resolution: {integrity: sha512-hhJOMThec51nU4Fe5p/viLlNIL71uDEgYFzKPajWjr2715SFG1HAgiP6AVylIeqBcAZ04u3Lw7usjl/TuI5RuQ==}
 
   '@antv/graphlib@2.0.4':
     resolution: {integrity: sha512-zc/5oQlsdk42Z0ib1mGklwzhJ5vczLFiPa1v7DgJkTbgJ2YxRh9xdarf86zI49sKVJmgbweRpJs7Nu5bIiwv4w==}
@@ -1932,23 +1895,14 @@ packages:
   '@antv/layout-wasm@1.4.2':
     resolution: {integrity: sha512-ZKwONzH4HzHcAZ2VR49PCGTutxcFVVGNPzXUtQ763CCLT/yYcGsIYP/PB49NhvTGUgE+ko1JnchqdUtzjNPE7A==}
 
-  '@antv/layout@0.3.25':
-    resolution: {integrity: sha512-d29Aw1PXoAavMRZy7iTB9L5rMBeChFEX0BJ9ELP4TI35ySdCu07YbmPo9ju9OH/6sG2/NB3o85Ayxrre3iwX/g==}
-
   '@antv/layout@1.2.14-beta.7':
     resolution: {integrity: sha512-jY0vedxASz2PT1+fLIM5UJHL39ll8tih2zxrTTCzV+Flo2Pnv1K1Aia6rJnIkGpfY5NQ+YlEzI0SQnHoQHvvAg==}
 
   '@antv/layout@1.2.14-beta.8':
     resolution: {integrity: sha512-/zP8pRz28ahYSVk4fsfhl3T1X3FvCAi7Q3YQ8H2LZEvTojYYrJtO2AXFsojehU6HGVnIAq+QIjd3He6ot8+gvA==}
 
-  '@antv/matrix-util@3.0.4':
-    resolution: {integrity: sha512-BAPyu6dUliHcQ7fm9hZSGKqkwcjEDVLVAstlHULLvcMZvANHeLXgHEgV7JqcAV/GIhIz8aZChIlzM1ZboiXpYQ==}
-
-  '@antv/matrix-util@3.1.0-beta.3':
-    resolution: {integrity: sha512-W2R6Za3A6CmG51Y/4jZUM/tFgYSq7vTqJL1VD9dKrvwxS4sE0ZcXINtkp55CdyBwJ6Cwm8pfoRpnD4FnHahN0A==}
-
-  '@antv/path-util@2.0.15':
-    resolution: {integrity: sha512-R2VLZ5C8PLPtr3VciNyxtjKqJ0XlANzpFb5sE9GE61UQqSRuSVSzIakMxjEPrpqbgc+s+y8i+fmc89Snu7qbNw==}
+  '@antv/layout@1.2.14-beta.9':
+    resolution: {integrity: sha512-wPlwBFMtq2lWZFc89/7Lzb8fjHnyKVZZ9zBb2h+zZIP0YWmVmHRE8+dqCiPKOyOGUXEdDtn813f1g107dCHZlg==}
 
   '@antv/react-g@2.0.30':
     resolution: {integrity: sha512-T7Yu0dUiDQrkyKVsOmrPMOr2d4OfARzXhF0oJXqZBlQgxHcQRbdzMnpQr+Nt6KmYxs2wGeGnKiY8yy70lbGAdg==}
@@ -1969,9 +1923,6 @@ packages:
     peerDependenciesMeta:
       '@antv/g2':
         optional: true
-
-  '@antv/scale@0.3.18':
-    resolution: {integrity: sha512-GHwE6Lo7S/Q5fgaLPaCsW+CH+3zl4aXpnN1skOiEY0Ue9/u+s2EySv6aDXYkAqs//i0uilMDD/0/4n8caX9U9w==}
 
   '@antv/scale@0.4.16':
     resolution: {integrity: sha512-5wg/zB5kXHxpTV5OYwJD3ja6R8yTiqIOkjOhmpEJiowkzRlbEC/BOyMvNUq5fqFIHnMCE9woO7+c3zxEQCKPjw==}
@@ -9049,9 +9000,6 @@ packages:
   '@types/d3-time@3.0.3':
     resolution: {integrity: sha512-2p6olUZ4w3s+07q3Tm2dbiMZy5pCDfYwtLXXHUnVzXgQlZ/OyPtUz6OL382BkOuGlLXqfT+wqv8Fw2v8/0geBw==}
 
-  '@types/d3-timer@2.0.3':
-    resolution: {integrity: sha512-jhAJzaanK5LqyLQ50jJNIrB8fjL9gwWZTgYjevPvkDLMU+kTAZkYsobI59nYoeSrH1PucuyJEi247Pb90t6XUg==}
-
   '@types/d3-timer@3.0.2':
     resolution: {integrity: sha512-Ps3T8E8dZDam6fUyNiMkekK3XUsaUEik+idO9/YjPtfj2qruF8tFBXS7XhtE4iIXBLxhmLjP3SXpLhVf21I9Lw==}
 
@@ -11221,6 +11169,9 @@ packages:
   bser@2.1.1:
     resolution: {integrity: sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==}
 
+  bubblesets-js@2.3.4:
+    resolution: {integrity: sha512-DyMjHmpkS2+xcFNtyN00apJYL3ESdp9fTrkDr5+9Qg/GPqFmcWgGsK1akZnttE1XFxJ/VMy4DNNGMGYtmFp1Sg==}
+
   buble@0.19.8:
     resolution: {integrity: sha512-IoGZzrUTY5fKXVkgGHw3QeXFMUNBFv+9l8a4QJKG1JhG3nCMHTdEX1DCOg8568E2Q9qvAQIiSokv6Jsgx8p2cA==}
     hasBin: true
@@ -12659,9 +12610,6 @@ packages:
     resolution: {integrity: sha512-tdwhAhoTYZY/a6eo9nR7HP3xSW/C6XvJTbeRpR92nlPzH6OiE+4MliN9feuSFd0tPtEUo+191qOhCTWx3NYifg==}
     engines: {node: '>=12'}
 
-  d3-force@2.1.1:
-    resolution: {integrity: sha512-nAuHEzBqMvpFVMf9OX75d00OxvOXdxY+xECIXjW6Gv8BRrXu6gAWbv/9XKrvfJ5i5DCokDW7RYE50LRoK092ew==}
-
   d3-force@3.0.0:
     resolution: {integrity: sha512-zxV/SsA+U4yte8051P4ECydjD/S+qeYtnaIyAs9tgHCqfguma/aAQDjo85A9Z6EKhBirHRJHXIgJUlffT4wdLg==}
     engines: {node: '>=12'}
@@ -12698,9 +12646,6 @@ packages:
   d3-polygon@3.0.1:
     resolution: {integrity: sha512-3vbA7vXYwfe1SYhED++fPUQlWSYTTGmFmQiany/gdbiWgU/iEyQzyymwL9SkJjFFuCS4902BSzewVGsHHmHtXg==}
     engines: {node: '>=12'}
-
-  d3-quadtree@2.0.0:
-    resolution: {integrity: sha512-b0Ed2t1UUalJpc3qXzKi+cPGxeXRr4KU9YSlocN74aTzp6R/Ud43t79yLLqxHRWZfsvWXmbDWPpoENK1K539xw==}
 
   d3-quadtree@3.0.1:
     resolution: {integrity: sha512-04xDrxQTDTCFwP5H6hRhsRcb9xxv2RzkcsygFzmkSIOJy3PeRJP7sNk3VRIbKXcog561P9oU0/rVH6vDROAgUw==}
@@ -12746,9 +12691,6 @@ packages:
   d3-timer@1.0.10:
     resolution: {integrity: sha512-B1JDm0XDaQC+uvo4DT79H0XmBskgS3l6Ve+1SBCfxgmtIb1AVrPIoqd+nPSv+loMX8szQ0sVUhGngL7D5QPiXw==}
 
-  d3-timer@2.0.0:
-    resolution: {integrity: sha512-TO4VLh0/420Y/9dO3+f9abDEFYeCUr2WZRlxJvbp4HPTQcSylXNiL6yZa9FIUvV1yRiFufl1bszTCLDqv9PWNA==}
-
   d3-timer@3.0.1:
     resolution: {integrity: sha512-ndfJ/JxxMd3nw31uyKoY2naivF+r29V+Lc0svZxe1JvvIRmi8hUsrMvdOwgS1o6uBHmiz91geQ0ylPP0aj1VUA==}
     engines: {node: '>=12'}
@@ -12773,12 +12715,6 @@ packages:
   d@1.0.2:
     resolution: {integrity: sha512-MOqHvMWF9/9MX6nza0KgvFH4HpMU0EF5uUDXqX/BtxtU8NfB0QzRtJ8Oe/6SuS4kbhyzVJwjd97EA4PKrzJ8bw==}
     engines: {node: '>=0.12'}
-
-  dagre-compound@0.0.11:
-    resolution: {integrity: sha512-UrSgRP9LtOZCYb9e5doolZXpc7xayyszgyOs7uakTK4n4KsLegLVTRRtq01GpQd/iZjYw5fWMapx9ed+c80MAQ==}
-    engines: {node: '>=6.0.0'}
-    peerDependencies:
-      dagre: ^0.8.5
 
   dagre@0.8.5:
     resolution: {integrity: sha512-/aTqmnRta7x7MCCpExk7HQL2O4owCT2h8NT//9I1OQ9vt29Pa0BzSAkR5lwFUcQ7491yVi/3CXU9jQ5o0Mn2Sw==}
@@ -13108,9 +13044,6 @@ packages:
 
   detab@2.0.4:
     resolution: {integrity: sha512-8zdsQA5bIkoRECvCrNKPla84lyoR7DSAyf7p0YgXzBO9PDJx8KntPUay7NS6yp+KdxdVtiE5SpHKtbp2ZQyA9g==}
-
-  detect-browser@5.3.0:
-    resolution: {integrity: sha512-53rsFbGdwMwlF7qvCt0ypLM5V5/Mbl0szB7GPN8y9NCcbknYOeVVXdrXEq+90IwAfrrzt6Hd+u2E2ntakICU8w==}
 
   detect-indent@5.0.0:
     resolution: {integrity: sha512-rlpvsxUtM0PQvy9iZe640/IWwWYyBsTApREbA1pHOpmOUIl9MkP/U4z7vTtg4Oaojvqhxt7sdufnT0EzGaR31g==}
@@ -16061,6 +15994,10 @@ packages:
   https-proxy-agent@7.0.5:
     resolution: {integrity: sha512-1e4Wqeblerz+tMKPIq2EMGiiWW1dIjZOksyHWSUm1rmuvw/how9hBHZ38lAGj5ID4Ik6EdkOw7NmWPy6LAwalw==}
     engines: {node: '>= 14'}
+
+  hull.js@1.0.6:
+    resolution: {integrity: sha512-TC7e9sHYOaCVms0sn2hN7buxnaGfcl9h5EPVoVX9DTPoMpqQiS9bf3tmGDgiNaMVHBD91RAvWjCxrJ5Jx8BI5A==}
+    deprecated: 'This package is no longer published on npmjs.com, you are using a deprecated and vulnerable version. Do not use it! Check project homepage on GitHub to see how to fetch the latest version: https://github.com/andriiheonia/hull?tab=readme-ov-file#npm-package'
 
   human-id@1.0.2:
     resolution: {integrity: sha512-UNopramDEhHJD+VR+ehk8rOslwSfByxPIZyJRfV739NDhN5LF1fa1MqnzKm2lGTQRjNrjK19Q5fhkgIfjlVUKw==}
@@ -19203,9 +19140,6 @@ packages:
 
   ml-matrix@6.12.0:
     resolution: {integrity: sha512-AGfR+pWaC0GmzjUnB6BfwhndPEUGz0i7QUYdqNuw1zhTov/vSRJ9pP2hs6BoGpaSbtXgrKjZz2zjD1M0xuur6A==}
-
-  ml-matrix@6.5.0:
-    resolution: {integrity: sha512-sms732Dge+rs5dU4mnjE0oqLWm1WujvR2fr38LgUHRG2cjXjWlO3WJupLYaSz3++2iYr0UrGDK72OAivr3J8dg==}
 
   mock-property@1.0.3:
     resolution: {integrity: sha512-2emPTb1reeLLYwHxyVx993iYyCHEiRRO+y8NFXFPL5kl5q14sgTK76cXyEKkeKCHeRw35SfdkUJ10Q1KfHuiIQ==}
@@ -27292,10 +27226,6 @@ snapshots:
     dependencies:
       tinycolor2: 1.6.0
 
-  '@ant-design/colors@4.0.5':
-    dependencies:
-      tinycolor2: 1.6.0
-
   '@ant-design/colors@6.0.0':
     dependencies:
       '@ctrl/tinycolor': 3.6.1
@@ -27422,10 +27352,6 @@ snapshots:
       '@antv/util': 2.0.17
       gl-matrix: 3.4.3
 
-  '@antv/dom-util@2.0.4':
-    dependencies:
-      tslib: 2.8.1
-
   '@antv/dumi-theme-antv@0.5.3(@algolia/client-search@5.15.0)(@babel/core@7.26.0)(@types/react@18.2.67)(dumi@2.4.14(@babel/core@7.26.0)(@swc/helpers@0.5.11)(@types/node@17.0.45)(@types/react@18.2.67)(@types/webpack@4.41.40)(eslint@8.44.0)(jest@29.7.0(@types/node@17.0.45)(ts-node@10.9.2(@swc/core@1.9.2(@swc/helpers@0.5.11))(@types/node@17.0.45)(typescript@5.5.3)))(lightningcss@1.22.1)(prettier@3.3.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(sockjs-client@1.6.1)(stylelint@13.13.1)(stylus@0.54.8)(sugarss@2.0.0)(terser@5.36.0)(type-fest@4.21.0)(typescript@5.5.3)(webpack-dev-server@3.11.3(webpack@4.47.0))(webpack-hot-middleware@2.26.1)(webpack@4.47.0))(jquery@3.7.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(search-insights@2.17.3)':
     dependencies:
       '@ant-design/icons': 4.8.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -27545,20 +27471,6 @@ snapshots:
       tslib: 2.8.1
       type-fest: 3.13.1
 
-  '@antv/g-base@0.5.16':
-    dependencies:
-      '@antv/event-emitter': 0.1.3
-      '@antv/g-math': 0.1.9
-      '@antv/matrix-util': 3.1.0-beta.3
-      '@antv/path-util': 2.0.15
-      '@antv/util': 2.0.17
-      '@types/d3-timer': 2.0.3
-      d3-ease: 1.0.7
-      d3-interpolate: 3.0.1
-      d3-timer: 1.0.10
-      detect-browser: 5.3.0
-      tslib: 2.8.1
-
   '@antv/g-camera-api@1.2.25':
     dependencies:
       '@antv/g-lite': 1.2.24
@@ -27571,16 +27483,6 @@ snapshots:
       '@antv/g-lite': 2.2.9
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
-      gl-matrix: 3.4.3
-      tslib: 2.8.1
-
-  '@antv/g-canvas@0.5.17':
-    dependencies:
-      '@antv/g-base': 0.5.16
-      '@antv/g-math': 0.1.9
-      '@antv/matrix-util': 3.1.0-beta.3
-      '@antv/path-util': 2.0.15
-      '@antv/util': 2.0.17
       gl-matrix: 3.4.3
       tslib: 2.8.1
 
@@ -27720,11 +27622,6 @@ snapshots:
       '@antv/util': 3.3.10
       '@babel/runtime': 7.26.0
       tslib: 2.8.1
-
-  '@antv/g-math@0.1.9':
-    dependencies:
-      '@antv/util': 2.0.17
-      gl-matrix: 3.4.3
 
   '@antv/g-math@1.7.49':
     dependencies:
@@ -28194,14 +28091,6 @@ snapshots:
 
   '@antv/g-shader-components@2.0.0': {}
 
-  '@antv/g-svg@0.5.7':
-    dependencies:
-      '@antv/g-base': 0.5.16
-      '@antv/g-math': 0.1.9
-      '@antv/util': 2.0.17
-      detect-browser: 5.3.0
-      tslib: 2.8.1
-
   '@antv/g-svg@2.0.27':
     dependencies:
       '@antv/g-lite': 2.2.9
@@ -28333,28 +28222,7 @@ snapshots:
       fmin: 0.0.2
       pdfast: 0.2.0
 
-  '@antv/g6-core@0.8.24':
-    dependencies:
-      '@antv/algorithm': 0.1.26
-      '@antv/dom-util': 2.0.4
-      '@antv/event-emitter': 0.1.3
-      '@antv/g-base': 0.5.16
-      '@antv/g-math': 0.1.9
-      '@antv/matrix-util': 3.1.0-beta.3
-      '@antv/path-util': 2.0.15
-      '@antv/util': 2.0.17
-      ml-matrix: 6.12.0
-      tslib: 2.8.1
-
-  '@antv/g6-element@0.8.24(@antv/g6@4.8.24)':
-    dependencies:
-      '@antv/g-base': 0.5.16
-      '@antv/g6': 4.8.24
-      '@antv/g6-core': 0.8.24
-      '@antv/util': 2.0.17
-      tslib: 2.8.1
-
-  '@antv/g6-extension-3d@0.1.7(@antv/g-canvas@2.0.32)(@antv/g6@4.8.24)(@antv/g@6.1.14)(workerize-loader@2.0.2(webpack@4.47.0))':
+  '@antv/g6-extension-3d@0.1.7(@antv/g-canvas@2.0.32)(@antv/g6@5.0.35(workerize-loader@2.0.2(webpack@4.47.0)))(@antv/g@6.1.14)(workerize-loader@2.0.2(webpack@4.47.0))':
     dependencies:
       '@antv/g': 6.1.14
       '@antv/g-canvas': 2.0.32
@@ -28363,57 +28231,28 @@ snapshots:
       '@antv/g-plugin-device-renderer': 2.2.11
       '@antv/g-plugin-dragndrop': 2.0.25
       '@antv/g-webgl': 2.0.36
-      '@antv/g6': 4.8.24
+      '@antv/g6': 5.0.35(workerize-loader@2.0.2(webpack@4.47.0))
       '@antv/layout': 1.2.14-beta.8(workerize-loader@2.0.2(webpack@4.47.0))
       '@antv/util': 3.3.10
     transitivePeerDependencies:
       - workerize-loader
 
-  '@antv/g6-pc@0.8.24(@antv/g6@4.8.24)':
+  '@antv/g6@5.0.35(workerize-loader@2.0.2(webpack@4.47.0))':
     dependencies:
-      '@ant-design/colors': 4.0.5
       '@antv/algorithm': 0.1.26
-      '@antv/dom-util': 2.0.4
+      '@antv/component': 2.1.2
       '@antv/event-emitter': 0.1.3
-      '@antv/g-base': 0.5.16
-      '@antv/g-canvas': 0.5.17
-      '@antv/g-math': 0.1.9
-      '@antv/g-svg': 0.5.7
-      '@antv/g6-core': 0.8.24
-      '@antv/g6-element': 0.8.24(@antv/g6@4.8.24)
-      '@antv/g6-plugin': 0.8.24(@antv/g6@4.8.24)
+      '@antv/g': 6.1.14
+      '@antv/g-canvas': 2.0.32
+      '@antv/g-plugin-dragndrop': 2.0.25
+      '@antv/graphlib': 2.0.4
       '@antv/hierarchy': 0.6.14
-      '@antv/layout': 0.3.25(dagre@0.8.5)
-      '@antv/matrix-util': 3.1.0-beta.3
-      '@antv/path-util': 2.0.15
-      '@antv/util': 2.0.17
-      color: 3.2.1
-      d3-force: 2.1.1
-      dagre: 0.8.5
-      insert-css: 2.0.0
-      ml-matrix: 6.12.0
-      tslib: 2.8.1
+      '@antv/layout': 1.2.14-beta.9(workerize-loader@2.0.2(webpack@4.47.0))
+      '@antv/util': 3.3.10
+      bubblesets-js: 2.3.4
+      hull.js: 1.0.6
     transitivePeerDependencies:
-      - '@antv/g6'
-
-  '@antv/g6-plugin@0.8.24(@antv/g6@4.8.24)':
-    dependencies:
-      '@antv/dom-util': 2.0.4
-      '@antv/g-base': 0.5.16
-      '@antv/g-canvas': 0.5.17
-      '@antv/g-svg': 0.5.7
-      '@antv/g6': 4.8.24
-      '@antv/g6-core': 0.8.24
-      '@antv/g6-element': 0.8.24(@antv/g6@4.8.24)
-      '@antv/matrix-util': 3.1.0-beta.3
-      '@antv/path-util': 2.0.15
-      '@antv/scale': 0.3.18
-      '@antv/util': 2.0.17
-      insert-css: 2.0.0
-
-  '@antv/g6@4.8.24':
-    dependencies:
-      '@antv/g6-pc': 0.8.24(@antv/g6@4.8.24)
+      - workerize-loader
 
   '@antv/g@5.18.27':
     dependencies:
@@ -28429,8 +28268,6 @@ snapshots:
       '@antv/g-lite': 2.2.9
       '@antv/g-web-animations-api': 2.1.14
       '@babel/runtime': 7.26.0
-
-  '@antv/graphlib@1.2.0': {}
 
   '@antv/graphlib@2.0.4':
     dependencies:
@@ -28456,18 +28293,6 @@ snapshots:
       wasm-feature-detect: 1.8.0
     transitivePeerDependencies:
       - workerize-loader
-
-  '@antv/layout@0.3.25(dagre@0.8.5)':
-    dependencies:
-      '@antv/g-webgpu': 0.7.2
-      '@antv/graphlib': 1.2.0
-      '@antv/util': 3.3.10
-      d3-force: 2.1.1
-      d3-quadtree: 2.0.0
-      dagre-compound: 0.0.11(dagre@0.8.5)
-      ml-matrix: 6.5.0
-    transitivePeerDependencies:
-      - dagre
 
   '@antv/layout@1.2.14-beta.7(workerize-loader@2.0.2(webpack@4.47.0))':
     dependencies:
@@ -28503,23 +28328,22 @@ snapshots:
     transitivePeerDependencies:
       - workerize-loader
 
-  '@antv/matrix-util@3.0.4':
+  '@antv/layout@1.2.14-beta.9(workerize-loader@2.0.2(webpack@4.47.0))':
     dependencies:
-      '@antv/util': 2.0.17
-      gl-matrix: 3.4.3
+      '@antv/event-emitter': 0.1.3
+      '@antv/graphlib': 2.0.4
+      '@antv/util': 3.3.10
+      '@naoak/workerize-transferable': 0.1.0(workerize-loader@2.0.2(webpack@4.47.0))
+      comlink: 4.4.2
+      d3-force: 3.0.0
+      d3-force-3d: 3.0.5
+      d3-octree: 1.0.2
+      d3-quadtree: 3.0.1
+      dagre: 0.8.5
+      ml-matrix: 6.12.0
       tslib: 2.8.1
-
-  '@antv/matrix-util@3.1.0-beta.3':
-    dependencies:
-      '@antv/util': 2.0.17
-      gl-matrix: 3.4.3
-      tslib: 2.8.1
-
-  '@antv/path-util@2.0.15':
-    dependencies:
-      '@antv/matrix-util': 3.0.4
-      '@antv/util': 2.0.17
-      tslib: 2.8.1
+    transitivePeerDependencies:
+      - workerize-loader
 
   '@antv/react-g@2.0.30(react@18.2.0)':
     dependencies:
@@ -28555,12 +28379,6 @@ snapshots:
       tinycolor2: 1.6.0
     optionalDependencies:
       '@antv/g2': 5.2.7
-
-  '@antv/scale@0.3.18':
-    dependencies:
-      '@antv/util': 2.0.17
-      fecha: 4.2.3
-      tslib: 2.8.1
 
   '@antv/scale@0.4.16':
     dependencies:
@@ -40096,7 +39914,7 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@stylelint/postcss-css-in-js@0.37.3(postcss-syntax@0.36.2(postcss@8.4.24))(postcss@7.0.39)':
+  '@stylelint/postcss-css-in-js@0.37.3(postcss-syntax@0.36.2(postcss@8.4.49))(postcss@7.0.39)':
     dependencies:
       '@babel/core': 7.26.0
       postcss: 7.0.39
@@ -40112,7 +39930,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@stylelint/postcss-markdown@0.36.2(postcss-syntax@0.36.2(postcss@8.4.24))(postcss@7.0.39)':
+  '@stylelint/postcss-markdown@0.36.2(postcss-syntax@0.36.2(postcss@8.4.49))(postcss@7.0.39)':
     dependencies:
       postcss: 7.0.39
       postcss-syntax: 0.36.2(postcss@8.4.24)
@@ -40663,8 +40481,6 @@ snapshots:
       '@types/d3-path': 3.1.0
 
   '@types/d3-time@3.0.3': {}
-
-  '@types/d3-timer@2.0.3': {}
 
   '@types/d3-timer@3.0.2': {}
 
@@ -43887,6 +43703,8 @@ snapshots:
     dependencies:
       node-int64: 0.4.0
 
+  bubblesets-js@2.3.4: {}
+
   buble@0.19.8:
     dependencies:
       acorn: 6.4.2
@@ -45789,12 +45607,6 @@ snapshots:
       d3-quadtree: 3.0.1
       d3-timer: 3.0.1
 
-  d3-force@2.1.1:
-    dependencies:
-      d3-dispatch: 1.0.6
-      d3-quadtree: 2.0.0
-      d3-timer: 2.0.0
-
   d3-force@3.0.0:
     dependencies:
       d3-dispatch: 3.0.1
@@ -45824,8 +45636,6 @@ snapshots:
   d3-path@3.1.0: {}
 
   d3-polygon@3.0.1: {}
-
-  d3-quadtree@2.0.0: {}
 
   d3-quadtree@3.0.1: {}
 
@@ -45873,8 +45683,6 @@ snapshots:
       d3-array: 3.2.4
 
   d3-timer@1.0.10: {}
-
-  d3-timer@2.0.0: {}
 
   d3-timer@3.0.1: {}
 
@@ -45941,10 +45749,6 @@ snapshots:
     dependencies:
       es5-ext: 0.10.64
       type: 2.7.3
-
-  dagre-compound@0.0.11(dagre@0.8.5):
-    dependencies:
-      dagre: 0.8.5
 
   dagre@0.8.5:
     dependencies:
@@ -46280,8 +46084,6 @@ snapshots:
   detab@2.0.4:
     dependencies:
       repeat-string: 1.6.1
-
-  detect-browser@5.3.0: {}
 
   detect-indent@5.0.0: {}
 
@@ -50971,6 +50773,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  hull.js@1.0.6: {}
+
   human-id@1.0.2: {}
 
   human-signals@1.1.1: {}
@@ -55580,10 +55384,6 @@ snapshots:
       is-any-array: 2.0.1
       ml-array-rescale: 1.3.7
 
-  ml-matrix@6.5.0:
-    dependencies:
-      ml-array-rescale: 1.3.7
-
   mock-property@1.0.3:
     dependencies:
       define-data-property: 1.1.4
@@ -57413,7 +57213,7 @@ snapshots:
     dependencies:
       postcss: 8.4.49
 
-  postcss-html@0.36.0(postcss-syntax@0.36.2(postcss@8.4.24))(postcss@7.0.39):
+  postcss-html@0.36.0(postcss-syntax@0.36.2(postcss@8.4.49))(postcss@7.0.39):
     dependencies:
       htmlparser2: 3.10.1
       postcss: 7.0.39
@@ -57880,11 +57680,11 @@ snapshots:
       postcss-value-parser: 3.3.1
       svgo: 1.3.2
 
-  postcss-syntax@0.36.2(postcss-html@0.36.0(postcss-syntax@0.36.2(postcss@8.4.24))(postcss@7.0.39))(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39):
+  postcss-syntax@0.36.2(postcss-html@0.36.0(postcss-syntax@0.36.2(postcss@8.4.49))(postcss@7.0.39))(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39):
     dependencies:
       postcss: 7.0.39
     optionalDependencies:
-      postcss-html: 0.36.0(postcss-syntax@0.36.2(postcss@8.4.24))(postcss@7.0.39)
+      postcss-html: 0.36.0(postcss-syntax@0.36.2(postcss@8.4.49))(postcss@7.0.39)
       postcss-less: 3.1.4
       postcss-scss: 2.1.1
 
@@ -63121,8 +62921,8 @@ snapshots:
 
   stylelint@13.13.1:
     dependencies:
-      '@stylelint/postcss-css-in-js': 0.37.3(postcss-syntax@0.36.2(postcss@8.4.24))(postcss@7.0.39)
-      '@stylelint/postcss-markdown': 0.36.2(postcss-syntax@0.36.2(postcss@8.4.24))(postcss@7.0.39)
+      '@stylelint/postcss-css-in-js': 0.37.3(postcss-syntax@0.36.2(postcss@8.4.49))(postcss@7.0.39)
+      '@stylelint/postcss-markdown': 0.36.2(postcss-syntax@0.36.2(postcss@8.4.49))(postcss@7.0.39)
       autoprefixer: 9.8.8
       balanced-match: 2.0.0
       chalk: 4.1.2
@@ -63148,7 +62948,7 @@ snapshots:
       micromatch: 4.0.8
       normalize-selector: 0.2.0
       postcss: 7.0.39
-      postcss-html: 0.36.0(postcss-syntax@0.36.2(postcss@8.4.24))(postcss@7.0.39)
+      postcss-html: 0.36.0(postcss-syntax@0.36.2(postcss@8.4.49))(postcss@7.0.39)
       postcss-less: 3.1.4
       postcss-media-query-parser: 0.2.3
       postcss-resolve-nested-selector: 0.1.6
@@ -63156,7 +62956,7 @@ snapshots:
       postcss-sass: 0.4.4
       postcss-scss: 2.1.1
       postcss-selector-parser: 6.1.2
-      postcss-syntax: 0.36.2(postcss-html@0.36.0(postcss-syntax@0.36.2(postcss@8.4.24))(postcss@7.0.39))(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39)
+      postcss-syntax: 0.36.2(postcss-html@0.36.0(postcss-syntax@0.36.2(postcss@8.4.49))(postcss@7.0.39))(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39)
       postcss-value-parser: 4.2.0
       resolve-from: 5.0.0
       slash: 3.0.0
