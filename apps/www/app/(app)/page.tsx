@@ -39,6 +39,9 @@ import FloatButtonDemo from "@/antd/float-button"
 import G2 from "./g2"
 import X6 from "./x6"
 
+import dynamic from 'next/dynamic';
+import G6 from "./g6"
+
 export default function IndexPage() {
   const chartData = [
     { genre: 'Sports', sold: 275 },
@@ -89,11 +92,13 @@ export default function IndexPage() {
           <h1>G2</h1>
           <G2 data={chartData} />
         </div>
-        {/* <G6Chart /> */}
         <X6 />
-        {/* <S2 /> */}
-      </div>
+        <G6 />
 
+
+
+
+      </div>
     </div>
   )
 }
