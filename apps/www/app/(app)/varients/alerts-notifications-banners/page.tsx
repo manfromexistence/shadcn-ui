@@ -125,8 +125,6 @@ export default function Page() {
               );
             })}
           </div>
-
-          <Cta />
         </div>
       </div>
     </main>

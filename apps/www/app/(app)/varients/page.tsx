@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Separator } from "@/registry/new-york/ui/separator"
 import { VarientsNav } from "@/components/varients-nav";
 import DemoComponent from "@/demo/demo-component";
+import { ShowMore } from "@/components/show-more";
 
 const inputDir = "inputs";
 const inputFiles = [
@@ -213,13 +214,9 @@ export default function IndexPage() {
                 })}
               </div>
 
-              <div className="flex w-full items-center justify-center py-2">
-                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/buttons">See more Button Varients</Link>
-              </div>
+              <ShowMore componentName="Button" componentHref="buttons" />
 
-              <Separator />
-
-              <div id="inputs" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+              <div id="inputs" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
                 {inputFiles.map((componentName) => {
                   return (
                     <DemoComponent
@@ -240,13 +237,9 @@ export default function IndexPage() {
                 })}
               </div>
 
-              <div className="flex w-full items-center justify-center py-2">
-                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/inputs">See more Inputs Varients</Link>
-              </div>
+              <ShowMore componentName="Input" componentHref="inputs" />
 
-              <Separator />
-
-              <div id="selects" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+              <div id="selects" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
                 {selectFiles.map((componentName) => {
                   return (
                     <DemoComponent
@@ -259,13 +252,9 @@ export default function IndexPage() {
                 })}
               </div>
 
-              <div className="flex w-full items-center justify-center py-2">
-                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/selects">See more Select Varients</Link>
-              </div>
+              <ShowMore componentName="Select" componentHref="selects" />
 
-              <Separator />
-
-              <div id="checkboxes" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+              <div id="checkboxes" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
                 {checboxFiles.map((componentName) => {
                   return (
                     <DemoComponent
@@ -278,13 +267,9 @@ export default function IndexPage() {
                 })}
               </div>
 
-              <div className="flex w-full items-center justify-center py-2">
-                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-switches">See more Checkbox Varients</Link>
-              </div>
+              <ShowMore componentName="Checkbox" componentHref="checkboxes-radios-switches" />
 
-              <Separator />
-
-              <div id="radios" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+              <div id="radios" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
                 {radioFiles.map((componentName) => {
                   return (
                     <DemoComponent
@@ -297,13 +282,10 @@ export default function IndexPage() {
                 })}
               </div>
 
-              <div className="flex w-full items-center justify-center py-2">
-                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-switches">See more Radio Varients</Link>
-              </div>
+              <ShowMore componentName="Radio" componentHref="checkboxes-radios-switches" />
 
-              <Separator />
 
-              <div id="switches" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+              <div id="switches" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
                 {switchFiles.map((componentName) => {
                   return (
                     <DemoComponent
@@ -316,13 +298,9 @@ export default function IndexPage() {
                 })}
               </div>
 
-              <div className="flex w-full items-center justify-center py-2">
-                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/checkboxes-radios-switches">See more Switch Varients</Link>
-              </div>
+              <ShowMore componentName="Switch" componentHref="checkboxes-radios-switches" />
 
-              <Separator />
-
-              <div id="alerts" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+              <div id="alerts" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
                 {alertFiles.map((componentName) => {
                   return (
                     <DemoComponent
@@ -335,13 +313,9 @@ export default function IndexPage() {
                 })}
               </div>
 
-              <div className="flex w-full items-center justify-center py-2">
-                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/alerts-notifications-banners">See more Alert Varients</Link>
-              </div>
+              <ShowMore componentName="Alert" componentHref="alerts-notifications-banners" />
 
-              <Separator />
-
-              <div id="notifications" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+              <div id="notifications" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
                 {notificationFiles.map((componentName) => {
                   return (
                     <DemoComponent
@@ -354,13 +328,9 @@ export default function IndexPage() {
                 })}
               </div>
 
-              <div className="flex w-full items-center justify-center py-2">
-                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/alerts-notifications-banners">See more Notification Varients</Link>
-              </div>
+              <ShowMore componentName="Notification" componentHref="alerts-notifications-banners" />
 
-              <Separator />
-
-              <div id="banners" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+              <div id="banners" className="grid w-full grid-cols-1 gap-2 overflow-hidden [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
                 {bannerFiles.map((componentName) => {
                   return (
                     <DemoComponent
@@ -373,13 +343,9 @@ export default function IndexPage() {
                 })}
               </div>
 
-              <div className="flex w-full items-center justify-center py-2">
-                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/alerts-notifications-banners">See more Banner Varients</Link>
-              </div>
+              <ShowMore componentName="Banner" componentHref="alerts-notifications-banners" />
 
-              <Separator />
-
-              <div id="dialogs" className="grid w-full grid-cols-1 gap-2 overflow-hidden pt-4 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+              <div id="dialogs" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
                 {dialogFiles.map((componentName) => {
                   return (
                     <DemoComponent
@@ -391,10 +357,8 @@ export default function IndexPage() {
                   );
                 })}
               </div>
-
-              <div className="flex w-full items-center justify-center py-2">
-                <Link className="rounded-full border px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href="/varients/dialogs">See more Dialog Varients</Link>
-              </div>
+              
+              <ShowMore componentName="Dialog" componentHref="dialogs" />
 
             </div>
           </div>
