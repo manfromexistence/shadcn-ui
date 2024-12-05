@@ -1,62 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import { Graph } from './G6Graph';
-import type { GraphOptions } from '@antv/g6';
+import { useEffect } from 'react';
+import { Graph, treeToGraphData } from '@antv/g6';
 
-export default function G6() {
-  const [graphData, setGraphData] = useState<GraphOptions | null>(null);
+const getNodeSide = (graph: Graph, datum: any): string => {
+  const parentData = graph.getParent(datum.id, 'tree');
+  if (!parentData) return 'center';
+  return datum.style.x > parentData.style.x ? 'right' : 'left';
+};
 
+const fetchDataAndRenderGraph = async () => {
+  const response = await fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/algorithm-category.json');
+  const data = await response.json();
+  const graph = new Graph({
+    container: 'container',
+    autoFit: true,
+    data: treeToGraphData(data),
+    defaultNode: {
+      style: {
+        labelText: (d: any) => d.id,
+        labelBackground: true,
+        labelPlacement: (d: any) => {
+          const side = getNodeSide(graph, d);
+          return side === 'center' ? 'right' : side;
+        },
+        ports: [{ placement: 'right' }, { placement: 'left' }],
+      },
+      animation: {
+        enter: false,
+      },
+    },
+    defaultEdge: {
+      type: 'cubic-horizontal',
+      animation: {
+        enter: false,
+      },
+    },
+    layout: {
+      type: 'mindmap',
+      direction: 'H',
+      getHeight: () => 32,
+      getWidth: () => 32,
+      getVGap: () => 4,
+      getHGap: () => 64,
+    },
+    modes: {
+      default: ['collapse-expand', 'drag-canvas', 'zoom-canvas'],
+    },
+  });
+
+  graph.render();
+};
+
+const MindMap = () => {
   useEffect(() => {
-    const fetchGraphData = async () => {
-      try {
-        const response = await fetch('https://assets.antv.antgroup.com/g6/cluster.json');
-        const data = await response.json();
-
-        setGraphData({
-          width: 800,
-          height: 600,
-          data,
-          node: {
-            style: {
-              labelText: (d) => d.id,
-              ports: [],
-            },
-            palette: {
-              type: 'group',
-              field: 'cluster',
-            },
-          },
-          layout: {
-            type: 'force',
-            linkDistance: 50,
-            clustering: true,
-            nodeClusterBy: 'cluster',
-            clusterNodeStrength: 70,
-          },
-          modes: {
-            default: ['zoom-canvas', 'drag-canvas']
-          }
-        });
-      } catch (error) {
-        console.error('Graph data fetch error:', error);
-      }
-    };
-
-    fetchGraphData();
+    fetchDataAndRenderGraph();
   }, []);
 
-  const handleRender = () => {
-    console.log('Graph rendered successfully');
-  };
+  return <div id="container" style={{ width: '100%', height: '500px' }} />;
+};
 
-  return (
-    <div>
-      <h1>G6 Graph</h1>
-      {graphData && (
-        <Graph 
-          options={graphData}
-          onRender={handleRender}
-        />
-      )}
-    </div>
-  );
-}
+export default MindMap;
