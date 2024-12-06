@@ -42,6 +42,7 @@ import X6 from "./x6"
 import dynamic from 'next/dynamic';
 import G6 from "./g6"
 import { cn } from "@/lib/utils"
+import { Copy, ShieldEllipsis, UserPlus } from "lucide-react"
 
 
 const cardContent = {
@@ -165,9 +166,22 @@ export default function IndexPage() {
       </div> */}
       <div className="grid h-[500px] w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div className="flex h-full w-full flex-col items-start justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
-          <div className="">
-            
-
+          <div className="h-24 w-full">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center justify-center space-x-2 rounded-md border p-4">
+                <span className="text-sm">$ bunx manfromeixtence-ui init</span>
+                <Copy className="h-4 w-4" />
+              </div>
+              <div className="flex rounded-md border p-4">
+                <UserPlus className="mr-2 h-5 w-5" />
+                Collabrators
+              </div>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex rounded-md border p-4">
+                <ShieldEllipsis className="mr-2 h-5 w-5" />
+              </div>
+            </div>
           </div>
           <div>
             <h1 className="text-primary">Components</h1>
