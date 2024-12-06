@@ -107,7 +107,7 @@ export default function IndexPage() {
                 </div>
               </div>
               <div className="flex h-12 w-full rounded-md border bg-primary-foreground text-sm">
-                <span className="flex h-full items-center justify-center rounded-l-md bg-background px-3">
+                <span className="flex h-full items-center justify-center rounded-l-md bg-secondary px-3">
                   Label
                 </span>
                 <span className="flex h-full w-full flex-1 items-center border-l p-3">
