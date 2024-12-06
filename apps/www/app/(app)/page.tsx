@@ -43,7 +43,7 @@ import dynamic from 'next/dynamic';
 import G6 from "./g6"
 
 export default function IndexPage() {
-  
+
   const [bgBackground, setBgBackground] = useState<string>('');
   const [bgForeground, setBgForeground] = useState<string>('');
 
@@ -59,16 +59,16 @@ export default function IndexPage() {
   useEffect(() => {
     // Get the computed style of the root element
     const rootStyles = getComputedStyle(document.documentElement);
-    
+
     // Extract the bg-background CSS variable value
     const bgBackgroundValue = rootStyles.getPropertyValue('--bg-background').trim();
     const bgForegroundValue = rootStyles.getPropertyValue('--bg-foreground').trim();
-    
+
     // Set the value in state
     setBgBackground(bgBackgroundValue);
     setBgForeground(bgForegroundValue);
   }, []);
-  
+
   return (
     <div className="relative">
       <PageHeader>
@@ -93,7 +93,7 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container py-6">
+      {/* <div className="container py-6">
         <ConfigProvider
           theme={{
             "token": {
@@ -122,19 +122,40 @@ export default function IndexPage() {
           <TabsDemo />
           <TreeDemo />
           <FloatButtonDemo />
-
         </ConfigProvider>
         <div>
-          <h1>G2</h1>
+          <h1 className="text-primary">G2</h1>
           <G2 data={chartData} />
         </div>
         <X6 />
-        {/* <G6 /> */}
-
-
-
-
+      </div> */}
+      <div className="grid h-[500px] w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="h-full w-full border-b border-r p-8 text-muted-foreground hover:text-primary ">
+          <h1 className="text-primary">Components</h1>
+          <span>Building Blocks for your software</span>
+        </div>
+        <div className="h-full w-full border-b border-r p-8 text-muted-foreground hover:text-primary ">
+          <h1 className="text-primary">Icons</h1>
+          <span>Building Blocks for your software</span>
+        </div>
+        <div className="h-full w-full border-b p-8 text-muted-foreground hover:text-primary ">
+          <h1 className="text-primary">Animations</h1>
+          <span>Building Blocks for your software</span>
+        </div>
+        <div className="h-full w-full border-b border-r p-8 text-muted-foreground hover:text-primary ">
+          <h1 className="text-primary">Systems</h1>
+          <span>Building Blocks for your software</span>
+        </div>
+        <div className="h-full w-full border-b border-r p-8 text-muted-foreground hover:text-primary ">
+          <h1 className="text-primary">Fonts</h1>
+          <span>Building Blocks for your software</span>
+        </div>
+        <div className="h-full w-full border-b p-8 text-muted-foreground hover:text-primary ">
+          <h1 className="text-primary">Colors</h1>
+          <span>Building Blocks for your software</span>
+        </div>
       </div>
+
     </div>
   )
 }
