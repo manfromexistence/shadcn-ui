@@ -41,9 +41,43 @@ import X6 from "./x6"
 
 import dynamic from 'next/dynamic';
 import G6 from "./g6"
+import { cn } from "@/lib/utils"
+
+
+const cardContent = {
+  title: "Lorem ipsum dolor",
+  description:
+    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, hic ipsum! Qui dicta debitis aliquid quo molestias explicabo iure!",
+}
+const CardBody = ({ className = "p-4" }) => (
+  <div className={cn("text-left", className)}>
+    <h3 className="mb-1 text-lg font-bold text-gray-900 dark:text-gray-100">
+      {cardContent.title}
+    </h3>
+    <p className="text-gray-700 dark:text-gray-300">
+      {cardContent.description}
+    </p>
+  </div>
+)
 
 export default function IndexPage() {
-
+  const Icon = ({ className, ...rest }: any) => {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        width={24}
+        height={24}
+        strokeWidth="1"
+        stroke="currentColor"
+        {...rest}
+        className={cn("absolute size-6 text-black dark:text-white", className)}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+      </svg>
+    )
+  }
   const [bgBackground, setBgBackground] = useState<string>('');
   const [bgForeground, setBgForeground] = useState<string>('');
 
@@ -130,27 +164,59 @@ export default function IndexPage() {
         <X6 />
       </div> */}
       <div className="grid h-[500px] w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div className="h-full w-full border-b  border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
-          <h1 className="text-primary">Components</h1>
-          <span className="text-muted-foreground">Building Blocks for your software.</span>
+        <div className="flex h-full w-full flex-col items-start justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+          <div className="">
+            
+
+          </div>
+          <div>
+            <h1 className="text-primary">Components</h1>
+            <span className="text-muted-foreground">Building Blocks for your software.</span>
+          </div>
         </div>
-        <div className="h-full w-full border-b  border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
+        <div className="h-full w-full border-b  border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Icons</h1>
           <span className="text-muted-foreground">Icons for everyone.</span>
         </div>
-        <div className="h-full w-full border-b  p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
+        <div className="h-full w-full border-b  p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Animations</h1>
           <span className="text-muted-foreground">Animations for everyone.</span>
         </div>
-        <div className="h-full w-full border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
-          <h1 className="text-primary">Systems</h1>
-          <span className="text-muted-foreground">Make it yours.</span>
+        <div className="flex h-full w-full flex-col items-start justify-between border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+          <div className="relative grid h-24 w-full grid-cols-9 border">
+            <Icon className="absolute -left-5 -top-5 h-10 w-10" />
+            <Icon className="absolute -bottom-5 -right-5 h-10 w-10" />
+
+            <span className="h-full w-full border-b border-r"></span>
+            <span className="h-full w-full border-b border-r"></span>
+            <span className="h-full w-full border-b border-r"></span>
+            <span className="h-full w-full border-b border-r"></span>
+            <span className="h-full w-full border-b border-r"></span>
+            <span className="h-full w-full border-b border-r"></span>
+            <span className="h-full w-full border-b border-r"></span>
+            <span className="h-full w-full border-b border-r"></span>
+            <span className="h-full w-full border-b"></span>
+
+            <span className="h-full w-full border-r"></span>
+            <span className="h-full w-full border-r"></span>
+            <span className="h-full w-full border-r"></span>
+            <span className="h-full w-full border-r"></span>
+            <span className="h-full w-full border-r"></span>
+            <span className="h-full w-full border-r"></span>
+            <span className="h-full w-full border-r"></span>
+            <span className="h-full w-full border-r"></span>
+            <span className="h-full w-full"></span>
+          </div>
+          <div>
+            <h1 className="text-primary">Systems</h1>
+            <span className="text-muted-foreground">Make it yours.</span>
+          </div>
         </div>
-        <div className="h-full w-full border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
+        <div className="h-full w-full border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Fonts</h1>
           <span className="text-muted-foreground">Fonts for everyone.</span>
         </div>
-        <div className="h-full w-full p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
+        <div className="h-full w-full p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Colors</h1>
           <span className="text-muted-foreground">Colors for everyone.</span>
         </div>
