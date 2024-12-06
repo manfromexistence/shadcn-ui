@@ -18,7 +18,7 @@ import { Tooltip } from 'antd';
 import { AutoComplete } from 'antd';
 import type { AutoCompleteProps } from 'antd';
 import { Anchor, Col, Row } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader, Flex, Switch } from 'antd';
 import CascaderDemo from "@/antd/cascader"
@@ -43,6 +43,10 @@ import dynamic from 'next/dynamic';
 import G6 from "./g6"
 
 export default function IndexPage() {
+  
+  const [bgBackground, setBgBackground] = useState<string>('');
+  const [bgForeground, setBgForeground] = useState<string>('');
+
   const chartData = [
     { genre: 'Sports', sold: 275 },
     { genre: 'Strategy', sold: 115 },
@@ -52,6 +56,19 @@ export default function IndexPage() {
   ];
 
 
+  useEffect(() => {
+    // Get the computed style of the root element
+    const rootStyles = getComputedStyle(document.documentElement);
+    
+    // Extract the bg-background CSS variable value
+    const bgBackgroundValue = rootStyles.getPropertyValue('--bg-background').trim();
+    const bgForegroundValue = rootStyles.getPropertyValue('--bg-foreground').trim();
+    
+    // Set the value in state
+    setBgBackground(bgBackgroundValue);
+    setBgForeground(bgForegroundValue);
+  }, []);
+  
   return (
     <div className="relative">
       <PageHeader>
@@ -79,11 +96,13 @@ export default function IndexPage() {
       <div className="container py-6">
         <ConfigProvider
           theme={{
-            // 1. Use dark algorithm
-            algorithm: theme.darkAlgorithm,
-
-            // 2. Combine dark algorithm and compact algorithm
-            // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
+            "token": {
+              "colorBgBase": `"hsl(240 10% 3.9%)"`,
+              "colorBgSpotlight": `"hsl(240 3.7% 15.9%)"`,
+              "colorTextBase": `"hsl(0 0% 98%)"`,
+              "colorPrimary": "0 0% 98%",
+              "borderRadius": 11
+            }
           }}>
           <Tooltip title="prompt text">
             <Button variant="outline">Hover</Button>
