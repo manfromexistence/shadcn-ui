@@ -108,10 +108,10 @@ export default function IndexPage() {
     <div className="relative">
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>Build your component library</PageHeaderHeading>
+        <PageHeaderHeading>A Ui space for everyone.</PageHeaderHeading>
         <PageHeaderDescription>
-          Beautifully designed components that you can copy and paste into your
-          apps. Made with Tailwind CSS. Open source.
+          Beautifully designed Ui blocks that you can copy and paste into your
+          apps. Made with Ant Design, Shadcn Ui, Tailwind CSS and Framer Motion. Open source.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
@@ -290,8 +290,31 @@ export default function IndexPage() {
 
         </div>
         <div className="flex h-full w-full flex-col justify-between p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
-          <div className="h-24 w-full">
-
+          <div className="flex h-24 w-full justify-between">
+            <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
+              <div className="h-full w-2 rounded-full bg-red-500" />
+            </div>
+            <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
+              <div className="h-full w-2 rounded-full bg-green-500" />
+            </div>
+            <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
+              <div className="h-full w-2 rounded-full bg-yellow-500" />
+            </div>
+            <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
+              <div className="h-full w-2 rounded-full bg-teal-500" />
+            </div>
+            <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
+              <div className="h-full w-2 rounded-full bg-purple-500" />
+            </div>
+            <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
+              <div className="h-full w-2 rounded-full bg-fuchsia-500" />
+            </div>
+            <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
+              <div className="h-full w-2 rounded-full bg-blue-500" />
+            </div>
+            <div className="flex h-full w-8 items-center justify-center rounded-full border p-3">
+              <div className="h-full w-2 rounded-full bg-orange-500" />
+            </div>
           </div>
           <div>
             <h1 className="text-primary">Colors</h1>
