@@ -90,12 +90,18 @@ module.exports = {
           "0%": { "background-position": "0%" },
           "100%": { "background-position": "200%" },
         },
+        "text-gradient": {
+          to: {
+            backgroundPosition: "200% center",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
+        "text-gradient": "text-gradient 1.3s linear infinite",
       },
     },
   },
