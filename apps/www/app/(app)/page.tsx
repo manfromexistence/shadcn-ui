@@ -130,29 +130,29 @@ export default function IndexPage() {
         <X6 />
       </div> */}
       <div className="grid h-[500px] w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div className="h-full w-full border-b border-r p-8 text-muted-foreground hover:text-primary ">
+        <div className="h-full w-full border-b  border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Components</h1>
-          <span>Building Blocks for your software</span>
+          <span className="text-muted-foreground">Building Blocks for your software</span>
         </div>
-        <div className="h-full w-full border-b border-r p-8 text-muted-foreground hover:text-primary ">
+        <div className="h-full w-full border-b  border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Icons</h1>
-          <span>Building Blocks for your software</span>
+          <span className="text-muted-foreground">Building Blocks for your software</span>
         </div>
-        <div className="h-full w-full border-b p-8 text-muted-foreground hover:text-primary ">
+        <div className="h-full w-full border-b  p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Animations</h1>
-          <span>Building Blocks for your software</span>
+          <span className="text-muted-foreground">Building Blocks for your software</span>
         </div>
-        <div className="h-full w-full border-b border-r p-8 text-muted-foreground hover:text-primary ">
+        <div className="h-full w-full border-b  border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Systems</h1>
-          <span>Building Blocks for your software</span>
+          <span className="text-muted-foreground">Building Blocks for your software</span>
         </div>
-        <div className="h-full w-full border-b border-r p-8 text-muted-foreground hover:text-primary ">
+        <div className="h-full w-full border-b  border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Fonts</h1>
-          <span>Building Blocks for your software</span>
+          <span className="text-muted-foreground">Building Blocks for your software</span>
         </div>
-        <div className="h-full w-full border-b p-8 text-muted-foreground hover:text-primary ">
+        <div className="h-full w-full border-b  p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Colors</h1>
-          <span>Building Blocks for your software</span>
+          <span className="text-muted-foreground">Building Blocks for your software</span>
         </div>
       </div>
 
