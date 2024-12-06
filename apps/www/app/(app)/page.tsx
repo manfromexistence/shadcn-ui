@@ -42,7 +42,7 @@ import X6 from "./x6"
 import dynamic from 'next/dynamic';
 import G6 from "./g6"
 import { cn } from "@/lib/utils"
-import { Copy, List, ShieldEllipsis, UserPlus } from "lucide-react"
+import { AlarmClock, Apple, Axe, Ban, Beer, Bell, Bluetooth, Bookmark, BookMarked, BookOpenText, Box, Braces, Brain, Brush, Bug, Cable, Calendar, Carrot, CircleDashed, CircleSlash2, Citrus, Clapperboard, CloudSnow, CodeXml, Cog, Command, Copy, LayoutGrid, List, PartyPopper, PawPrint, ShieldEllipsis, UserPlus } from "lucide-react"
 
 
 const cardContent = {
@@ -183,7 +183,7 @@ export default function IndexPage() {
               </div>
               <div className="flex rounded-md border p-1.5">
                 <div className="flex items-center justify-center rounded-md border bg-secondary p-1.5">
-                  <List className="h-5 w-5" />
+                  <LayoutGrid className="h-5 w-5" />
                 </div>
                 <div className="flex items-center justify-center rounded-md p-1.5">
                   <List className="h-5 w-5" />
@@ -204,13 +204,49 @@ export default function IndexPage() {
             <span className="text-muted-foreground">Building Blocks for your software.</span>
           </div>
         </div>
-        <div className="h-full w-full border-b  border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
-          <h1 className="text-primary">Icons</h1>
-          <span className="text-muted-foreground">Icons for everyone.</span>
+        <div className="flex h-full w-full flex-col justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+          <div className="grid h-24 w-full grid-cols-8 grid-rows-3 place-content-center items-center justify-center gap-8">
+            <PartyPopper />
+            <PawPrint />
+            <AlarmClock />
+            <Apple />
+            <Axe />
+            <Bell />
+            <Beer />
+            <BookOpenText />
+            <Braces />
+            <Box />
+            <BookMarked />
+            <Brush />
+            <Bug />
+            <Calendar />
+            <Cable />
+            <Carrot />
+            <CircleDashed />
+            <Citrus />
+            <Clapperboard />
+            <CircleSlash2 />
+            <CloudSnow />
+            <Cog />
+            <Command />
+            <CodeXml />
+          </div>
+          <div>
+            <h1 className="text-primary">Icons</h1>
+            <span className="text-muted-foreground">Icons for everyone.</span>
+          </div>
         </div>
-        <div className="h-full w-full border-b  p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
-          <h1 className="text-primary">Animations</h1>
-          <span className="text-muted-foreground">Animations for everyone.</span>
+        <div className="flex h-full w-full  flex-col justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+          <div className="flex h-24 w-full justify-between">
+            <div className="h-24 w-24 rounded-full border bg-secondary"></div>
+            <div className="h-24 w-24 rounded-full border bg-secondary"></div>
+            <div className="h-24 w-24 rounded-full border bg-secondary"></div>
+            <div className="h-24 w-24 rounded-full border bg-secondary"></div>
+          </div>
+          <div>
+            <h1 className="text-primary">Animations</h1>
+            <span className="text-muted-foreground">Animations for everyone.</span>
+          </div>
         </div>
         <div className="flex h-full w-full flex-col items-start justify-between border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
           <div className="relative grid h-24 w-full grid-cols-9 border">
@@ -242,13 +278,26 @@ export default function IndexPage() {
             <span className="text-muted-foreground">Make it yours.</span>
           </div>
         </div>
-        <div className="h-full w-full border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
-          <h1 className="text-primary">Fonts</h1>
-          <span className="text-muted-foreground">Fonts for everyone.</span>
+        <div className="flex h-full w-full flex-col justify-between border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+          <div className="flex h-24 w-full rounded-md border border-dashed">
+            <span className="flex h-full w-full items-center justify-center border-r border-dashed text-2xl font-bold italic">Fonts Sans</span>
+            <span className="flex h-full w-full items-center justify-center text-2xl font-bold">Fonts Mono</span>
+          </div>
+          <div>
+            <h1 className="text-primary">Fonts</h1>
+            <span className="text-muted-foreground">Fonts for everyone.</span>
+          </div>
+
         </div>
-        <div className="h-full w-full p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
-          <h1 className="text-primary">Colors</h1>
-          <span className="text-muted-foreground">Colors for everyone.</span>
+        <div className="flex h-full w-full flex-col justify-between p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+          <div className="h-24 w-full">
+
+          </div>
+          <div>
+            <h1 className="text-primary">Colors</h1>
+            <span className="text-muted-foreground">Colors for everyone.</span>
+          </div>
+
         </div>
       </div>
 
