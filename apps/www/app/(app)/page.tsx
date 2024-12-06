@@ -85,7 +85,24 @@ export default function IndexPage() {
             // 2. Combine dark algorithm and compact algorithm
             // algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
           }}>
-          {/* <Charts /> */}
+          <Tooltip title="prompt text">
+            <Button variant="outline">Hover</Button>
+          </Tooltip>
+          <BadgeDemo />
+          <SegmentedDemo />
+          <QRCodeDemo />
+          <InputNumberDemo />
+          <TreeSelectDemo />
+          <MentionsDemo />
+          <RateDemo />
+          <ColorPickerDemo />
+          <TranferDemo />
+          <CascaderDemo />
+          <TimelineDemo />
+          <TourDemo />
+          <TabsDemo />
+          <TreeDemo />
+          <FloatButtonDemo />
 
         </ConfigProvider>
         <div>
