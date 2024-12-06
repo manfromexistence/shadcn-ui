@@ -142,15 +142,15 @@ export default function IndexPage() {
           <h1 className="text-primary">Animations</h1>
           <span className="text-muted-foreground">Animations for everyone.</span>
         </div>
-        <div className="h-full w-full border-b  border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
+        <div className="h-full w-full border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Systems</h1>
           <span className="text-muted-foreground">Make it yours.</span>
         </div>
-        <div className="h-full w-full border-b  border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
+        <div className="h-full w-full border-r p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Fonts</h1>
           <span className="text-muted-foreground">Fonts for everyone.</span>
         </div>
-        <div className="h-full w-full border-b  p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
+        <div className="h-full w-full p-8 text-muted-foreground hover:bg-primary-foreground hover:text-primary ">
           <h1 className="text-primary">Colors</h1>
           <span className="text-muted-foreground">Colors for everyone.</span>
         </div>
