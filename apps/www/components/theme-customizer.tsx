@@ -30,19 +30,9 @@ import {
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
 import { Skeleton } from "@/registry/new-york/ui/skeleton"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york/ui/tooltip"
 import { BaseColor, baseColors } from "@/registry/registry-base-colors"
 import "@/styles/mdx.css"
-import { UnControlled as CodeMirror } from 'react-codemirror2'
-// import 'codemirror/lib/codemirror.css';
-// import 'codemirror/theme/material.css';
-// import 'codemirror/theme/neat.css';
-// import 'codemirror/mode/xml/xml.js';
-// import 'codemirror/mode/javascript/javascript.js';
+import { InfoCircledIcon } from "@radix-ui/react-icons"
 
 export function ThemeCustomizer() {
   const [config, setConfig] = useConfig()
@@ -243,6 +233,62 @@ function Customizer() {
         {/* <CopyCodeButton variant="ghost" size="sm" /> */}
       </div>
       <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
+        <div className="space-y-1.5">
+          <div className="flex w-full items-center">
+            <Label className="text-xs">Designs</Label>
+            <Popover>
+              <PopoverTrigger>
+                <InfoCircledIcon className="ml-1 h-3 w-3" />
+                <span className="sr-only">About designs</span>
+              </PopoverTrigger>
+              <PopoverContent
+                className="space-y-3 rounded-[0.5rem] text-sm"
+                side="right"
+                align="start"
+                alignOffset={-20}
+              >
+                <p className="font-medium">
+                  What is the difference between the Science and Magic designs?
+                </p>
+                <p>
+                  A design that you see in everyday software.
+                </p>
+                <p>
+                  The <span className="font-medium">Science</span> design has
+                  larger inputs, uses lucide-react for icons and
+                  tailwindcss-animate for animations.
+                </p>
+                <p>
+                  The <span className="font-medium">New York</span> style ships
+                  with smaller buttons and cards with shadows. It uses icons
+                  from Radix Icons.
+                </p>
+              </PopoverContent>
+            </Popover>
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            <Button
+              variant={"outline"}
+              size="sm"
+              onClick={() => setConfig({ ...config, style: "default" })}
+              className={cn(
+                config.style === "default" && "border-2 border-primary"
+              )}
+            >
+              Default
+            </Button>
+            <Button
+              variant={"outline"}
+              size="sm"
+              onClick={() => setConfig({ ...config, style: "new-york" })}
+              className={cn(
+                config.style === "new-york" && "border-2 border-primary"
+              )}
+            >
+              New York
+            </Button>
+          </div>
+        </div>
         <div className="space-y-1.5">
           <Label className="text-xs">Color</Label>
           <div className="grid grid-cols-3 gap-2">
