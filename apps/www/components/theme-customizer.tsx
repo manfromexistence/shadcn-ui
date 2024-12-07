@@ -66,7 +66,7 @@ export function ThemeCustomizer() {
       </Drawer>
       <Drawer>
         <DrawerTrigger asChild>
-          <Button variant={"outline"} size="sm" className="md:hidden">
+          <Button variant={"outline"} className="md:hidden">
             Config
           </Button>
         </DrawerTrigger>
@@ -74,7 +74,7 @@ export function ThemeCustomizer() {
           <DialogHeader>
             <DialogTitle>Configure</DialogTitle>
             <DialogDescription>
-              Import or Export your Themes. (Soon)
+              Import or Export your Themes. (Coming Soon...)
             </DialogDescription>
           </DialogHeader>
           <ThemeWrapper defaultTheme="zinc" className="relative">
@@ -118,7 +118,7 @@ export function ThemeCustomizer() {
         </Popover>
         <Drawer>
           <DrawerTrigger asChild>
-            <Button variant={"outline"} size="sm" className="">
+            <Button variant={"outline"} className="">
               Config
             </Button>
           </DrawerTrigger>
@@ -126,7 +126,7 @@ export function ThemeCustomizer() {
             <DialogHeader>
               <DialogTitle>Configure</DialogTitle>
               <DialogDescription>
-                Import or Export your Themes. (Soon)
+                Import or Export your Themes. (Coming Soon...)
               </DialogDescription>
             </DialogHeader>
             <ThemeWrapper defaultTheme="zinc" className="relative">
@@ -254,14 +254,12 @@ function Customizer() {
                   A design that you see in everyday software.
                 </p>
                 <p>
-                  The <span className="font-medium">Science</span> design has
-                  larger inputs, uses lucide-react for icons and
-                  tailwindcss-animate for animations.
+                  The <span className="font-medium">Science</span> design all
+                  the things that you see usually.
                 </p>
                 <p>
-                  The <span className="font-medium">New York</span> style ships
-                  with smaller buttons and cards with shadows. It uses icons
-                  from Radix Icons.
+                  The <span className="font-medium">Magic</span> design is a something
+                  that is not same old software ui Design.
                 </p>
               </PopoverContent>
             </Popover>
@@ -275,17 +273,18 @@ function Customizer() {
                 config.style === "default" && "border-2 border-primary"
               )}
             >
-              Default
+              Science
             </Button>
             <Button
               variant={"outline"}
+              disabled={true}
               size="sm"
               onClick={() => setConfig({ ...config, style: "new-york" })}
               className={cn(
                 config.style === "new-york" && "border-2 border-primary"
               )}
             >
-              New York
+              Magic
             </Button>
           </div>
         </div>
