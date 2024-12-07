@@ -32,7 +32,7 @@ export default function Cursors() {
         ref={textareaRef}
         onChange={handleInput}
         rows={defaultRows}
-        className="min-h-10 w-[300px] resize-none"
+        className="min-h-10 w-[275px] resize-none"
       />
     </div>
   );
