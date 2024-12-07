@@ -8,6 +8,18 @@ import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 
 const links = [
   {
+    name: "Switchers",
+    href: "/varients#switchers",
+  },
+  {
+    name: "Fluids",
+    href: "/varients#fluids",
+  },
+  {
+    name: "Cursors",
+    href: "/varients#cursors",
+  },
+  {
     name: "Buttons",
     href: "/varients#buttons",
   },

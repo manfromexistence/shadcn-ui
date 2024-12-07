@@ -23,7 +23,7 @@ const ShowMore = React.forwardRef<any, any>(
             {...props}
         >
             <div className="absolute left-1/2 top-1/2 flex w-full translate-x-[-50%] translate-y-[-50%] items-center justify-center py-2">
-                <Link className="rounded-full border bg-background px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href={`/varients/${componentHref}`}>See more {componentName} Varients</Link>
+                <Link className="rounded-full border bg-background px-4 py-2 text-sm hover:bg-primary-foreground hover:text-primary" href={`/varients/${componentHref}`}>Show more {componentName} Varients</Link>
             </div>
         </SeparatorPrimitive.Root>
     )
