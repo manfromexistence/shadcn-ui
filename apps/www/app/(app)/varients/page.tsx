@@ -7,6 +7,8 @@ import { VarientsNav } from "@/components/varients-nav";
 import DemoComponent from "@/demo/demo-component";
 import { ShowMore } from "@/components/show-more";
 import Switchers from "@/components/switchers";
+import Cursors from "@/components/cursors";
+import Fluids from "@/components/fluids";
 
 const inputDir = "inputs";
 const inputFiles = [
@@ -202,10 +204,20 @@ export default function IndexPage() {
         <section id="varients" className="scroll-mt-20">
           <div className="grid">
             <VarientsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
-            <div className="mt-3 flex h-[500px] w-full items-center justify-center rounded-md border">
+            <div id="switchers" className="mt-3 flex h-[500px] w-full items-center justify-center rounded-md border">
               <Switchers />
             </div>
             <ShowMore componentName="Switchers" componentHref="switchers" />
+
+            <div id="fluids" className="flex h-[500px] w-full items-center justify-center rounded-md border">
+              <Fluids />
+            </div>
+            <ShowMore componentName="Fluids" componentHref="fluids" />
+
+            <div id="cursors" className="flex h-[500px] w-full items-center justify-center rounded-md border">
+              <Cursors />
+            </div>
+            <ShowMore componentName="Cursors" componentHref="cursors" />
 
             <div className="px-1">
               <div id="buttons" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
