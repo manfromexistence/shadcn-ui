@@ -1,14 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Moon, Sun } from "lucide-react";
 import { useState } from "react";
+// import Image from "next/image"
 
 export default function Switchers() {
   const [checked, setChecked] = useState<boolean>(true);
   return (
-    <div>
+    <div className="">
+      {/* <img className="absolute left-0 top-0 h-full w-full rounded-md mix-blend-multiply" alt="Thunder" src={"/thunder.gif"} /> */}
       <div className="relative inline-grid h-9 grid-cols-[1fr_1fr] items-center text-sm font-medium">
         <Switch
           id="switch-12"

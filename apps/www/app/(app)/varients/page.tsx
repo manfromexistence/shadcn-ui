@@ -204,7 +204,7 @@ export default function IndexPage() {
         <section id="varients" className="scroll-mt-20">
           <div className="grid">
             <VarientsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
-            <div id="switchers" className="mt-3 flex h-[500px] w-full items-center justify-center rounded-md border">
+            <div id="switchers" className="relative mt-3 flex h-[500px] w-full items-center justify-center rounded-md border">
               <Switchers />
             </div>
             <ShowMore componentName="Switchers" componentHref="switchers" />
