@@ -209,7 +209,7 @@ export default function IndexPage() {
             </div>
             <ShowMore componentName="Switchers" componentHref="switchers" />
 
-            <div id="fluids" className="flex h-[500px] w-full items-center justify-center rounded-md border">
+            <div id="fluids" className="relative h-[500px] w-full rounded-md border">
               <Fluids />
             </div>
             <ShowMore componentName="Fluids" componentHref="fluids" />
