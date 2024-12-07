@@ -48,6 +48,15 @@ export function ThemeCustomizer() {
   const [config, setConfig] = useConfig()
   const { resolvedTheme: mode } = useTheme()
   const [mounted, setMounted] = React.useState(false)
+  const [config1] = useConfig()
+  const activeTheme = baseColors.find((theme) => theme.name === config.theme)
+  const [hasCopied, setHasCopied] = React.useState(false)
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setHasCopied(false)
+    }, 2000)
+  }, [hasCopied])
 
   React.useEffect(() => {
     setMounted(true)
@@ -65,7 +74,47 @@ export function ThemeCustomizer() {
           <Customizer />
         </DrawerContent>
       </Drawer>
-      <div className="hidden items-center md:flex">
+      <Drawer>
+        <DrawerTrigger asChild>
+          <Button variant={"outline"} size="sm" className="md:hidden">
+            Config
+          </Button>
+        </DrawerTrigger>
+        <DialogContent className="max-w-2xl outline-none">
+          <DialogHeader>
+            <DialogTitle>Configure</DialogTitle>
+            <DialogDescription>
+              Import or Export your Themes. (Soon)
+            </DialogDescription>
+          </DialogHeader>
+          <ThemeWrapper defaultTheme="zinc" className="relative">
+            <CustomizerCode />
+            {activeTheme && (
+              <Button
+                size="sm"
+                onClick={() => {
+                  copyToClipboardWithMeta(
+                    getThemeCode(activeTheme, config1.radius),
+                    {
+                      name: "copy_theme_code",
+                      properties: {
+                        theme: activeTheme.name,
+                        radius: config1.radius,
+                      },
+                    }
+                  )
+                  setHasCopied(true)
+                }}
+                className="absolute right-4 top-4 bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground"
+              >
+                {hasCopied ? <Check /> : <Copy />}
+                Copy
+              </Button>
+            )}
+          </ThemeWrapper>
+        </DialogContent>
+      </Drawer>
+      <div className="hidden items-center space-x-2 md:flex">
         <Popover>
           <PopoverTrigger asChild>
             <Button size="sm">Customize</Button>
@@ -77,30 +126,46 @@ export function ThemeCustomizer() {
             <Customizer />
           </PopoverContent>
         </Popover>
-      </div>
-      {/* <CopyCodeButton variant="ghost" size="sm" className="[&_svg]:hidden" /> */}
-      <Drawer>
-        <DrawerTrigger asChild>
-          <Button variant={"outline"} size="sm" className="md:hidden">
-            Config
-          </Button>
-        </DrawerTrigger>
-        <DrawerContent className="p-6 pt-0">
-          <Config />
-        </DrawerContent>
-      </Drawer>
-      <div className="hidden items-center md:flex">
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant={"outline"} size="sm">Config</Button>
-          </PopoverTrigger>
-          <PopoverContent
-            align="start"
-            className="z-40 w-[340px] rounded-[12px] bg-white p-6 dark:bg-zinc-950"
-          >
-            <Config />
-          </PopoverContent>
-        </Popover>
+        <Drawer>
+          <DrawerTrigger asChild>
+            <Button variant={"outline"} size="sm" className="">
+              Config
+            </Button>
+          </DrawerTrigger>
+          <DialogContent className="max-w-2xl outline-none">
+            <DialogHeader>
+              <DialogTitle>Configure</DialogTitle>
+              <DialogDescription>
+                Import or Export your Themes. (Soon)
+              </DialogDescription>
+            </DialogHeader>
+            <ThemeWrapper defaultTheme="zinc" className="relative">
+              <CustomizerCode />
+              {activeTheme && (
+                <Button
+                  size="sm"
+                  onClick={() => {
+                    copyToClipboardWithMeta(
+                      getThemeCode(activeTheme, config1.radius),
+                      {
+                        name: "copy_theme_code",
+                        properties: {
+                          theme: activeTheme.name,
+                          radius: config1.radius,
+                        },
+                      }
+                    )
+                    setHasCopied(true)
+                  }}
+                  className="absolute right-4 top-4 bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground"
+                >
+                  {hasCopied ? <Check /> : <Copy />}
+                  Copy
+                </Button>
+              )}
+            </ThemeWrapper>
+          </DialogContent>
+        </Drawer>
       </div>
     </div>
   )
@@ -110,6 +175,15 @@ function Customizer() {
   const [mounted, setMounted] = React.useState(false)
   const { setTheme: setMode, resolvedTheme: mode } = useTheme()
   const [config, setConfig] = useConfig()
+  const [config1] = useConfig()
+  const activeTheme = baseColors.find((theme) => theme.name === config.theme)
+  const [hasCopied, setHasCopied] = React.useState(false)
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setHasCopied(false)
+    }, 2000)
+  }, [hasCopied])
 
   React.useEffect(() => {
     setMounted(true)
@@ -144,7 +218,29 @@ function Customizer() {
           <Repeat />
           <span className="sr-only">Reset</span>
         </Button>
-        <CopyCodeButton variant="ghost" size="sm" />
+        {activeTheme && (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => {
+              copyToClipboardWithMeta(
+                getThemeCode(activeTheme, config1.radius),
+                {
+                  name: "copy_theme_code",
+                  properties: {
+                    theme: activeTheme.name,
+                    radius: config1.radius,
+                  },
+                }
+              )
+              setHasCopied(true)
+            }}
+            className="ml-auto hidden h-9 w-9 rounded-[0.5rem] md:flex"
+          >
+            {hasCopied ? <Check /> : <Copy />}
+          </Button>
+        )}
+        {/* <CopyCodeButton variant="ghost" size="sm" /> */}
       </div>
       <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
         <div className="space-y-1.5">
@@ -258,196 +354,281 @@ function Customizer() {
   )
 }
 
-function Config() {
-  const [mounted, setMounted] = React.useState(false)
-  const { setTheme: setMode, resolvedTheme: mode } = useTheme()
-  const [config, setConfig] = useConfig()
+// function Config() {
+//   const [mounted, setMounted] = React.useState(false)
+//   const { setTheme: setMode, resolvedTheme: mode } = useTheme()
+//   const [config, setConfig] = useConfig()
 
-  const handleChange = () => {
-    setCode(code);
-    console.log('New code:', code);
-  };
-  const [code, setCode] = React.useState(`<header class="site-header">
-  <div class="container">
-    <h1>Example #2</h1>
-    <nav role="navigation" class="site-navigation">
-      <ul>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-<section role="main" class="container"><img src="http://placehold.it/1400x400/ff694d/f6f2eb" class="banner-image" />
-  <div class="grid-row col-3">
-    <div class="grid-unit"><img src="http://placehold.it/650x300/ff694d/f6f2eb" />
-      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor.</p>
-    </div>
-    <div class="grid-unit"><img src="http://placehold.it/650x300/ff694d/f6f2eb" />
-      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor.</p>
-    </div>
-    <div class="grid-unit"><img src="http://placehold.it/650x300/ff694d/f6f2eb" />
-      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor.</p>
-    </div>
-  </div>
-</section>`);
+//   const handleChange = () => {
+//     setCode(code);
+//     console.log('New code:', code);
+//   };
+//   const [code, setCode] = React.useState(`<header class="site-header">
+//   <div class="container">
+//     <h1>Example #2</h1>
+//     <nav role="navigation" class="site-navigation">
+//       <ul>
+//         <li><a href="#">Link</a></li>
+//         <li><a href="#">Link</a></li>
+//         <li><a href="#">Link</a></li>
+//       </ul>
+//     </nav>
+//   </div>
+// </header>
+// <section role="main" class="container"><img src="http://placehold.it/1400x400/ff694d/f6f2eb" class="banner-image" />
+//   <div class="grid-row col-3">
+//     <div class="grid-unit"><img src="http://placehold.it/650x300/ff694d/f6f2eb" />
+//       <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor.</p>
+//     </div>
+//     <div class="grid-unit"><img src="http://placehold.it/650x300/ff694d/f6f2eb" />
+//       <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor.</p>
+//     </div>
+//     <div class="grid-unit"><img src="http://placehold.it/650x300/ff694d/f6f2eb" />
+//       <p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor.</p>
+//     </div>
+//   </div>
+// </section>`);
+
+//   React.useEffect(() => {
+//     setMounted(true)
+//   }, [])
+
+//   return (
+//     <ThemeWrapper
+//       defaultTheme="zinc"
+//       className="flex flex-col space-y-4 md:space-y-6"
+//     >
+//       <div className="flex items-start pt-4 md:pt-0">
+//         <div className="space-y-1 pr-2">
+//           <div className="font-semibold leading-none tracking-tight">
+//             Config
+//           </div>
+//           <div className="text-xs text-muted-foreground">
+//             Import of Export your config.
+//           </div>
+//         </div>
+//         <Button
+//           variant="ghost"
+//           size="icon"
+//           className="ml-auto rounded-[0.5rem]"
+//           onClick={() => {
+//             setConfig({
+//               ...config,
+//               theme: "zinc",
+//               radius: 0.5,
+//             })
+//           }}
+//         >
+//           <Repeat />
+//           <span className="sr-only">Reset</span>
+//         </Button>
+//         {/* <CopyCodeButton variant="ghost" size="sm" /> */}
+//       </div>
+//       {/* <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
+//         <div className="space-y-1.5">
+//           <Label className="text-xs">Color</Label>
+//           <div className="grid grid-cols-3 gap-2">
+//             {baseColors
+//               .filter(
+//                 (theme) =>
+//                   !["slate", "stone", "gray", "neutral"].includes(theme.name)
+//               )
+//               .map((theme) => {
+//                 const isActive = config.theme === theme.name
+
+//                 return mounted ? (
+//                   <Button
+//                     variant={"outline"}
+//                     size="sm"
+//                     key={theme.name}
+//                     onClick={() => {
+//                       setConfig({
+//                         ...config,
+//                         theme: theme.name,
+//                       })
+//                     }}
+//                     className={cn(
+//                       "justify-start",
+//                       isActive && "border-2 border-primary"
+//                     )}
+//                     style={
+//                       {
+//                         "--theme-primary": `hsl(${theme?.activeColor[mode === "dark" ? "dark" : "light"]
+//                           })`,
+//                       } as React.CSSProperties
+//                     }
+//                   >
+//                     <span
+//                       className={cn(
+//                         "mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-[--theme-primary]"
+//                       )}
+//                     >
+//                       {isActive && <Check className="h-4 w-4 text-white" />}
+//                     </span>
+//                     {theme.label}
+//                   </Button>
+//                 ) : (
+//                   <Skeleton className="h-8 w-full" key={theme.name} />
+//                 )
+//               })}
+//           </div>
+//         </div>
+//         <div className="space-y-1.5">
+//           <Label className="text-xs">Radius</Label>
+//           <div className="grid grid-cols-5 gap-2">
+//             {["0", "0.3", "0.5", "0.75", "1.0"].map((value) => {
+//               return (
+//                 <Button
+//                   variant={"outline"}
+//                   size="sm"
+//                   key={value}
+//                   onClick={() => {
+//                     setConfig({
+//                       ...config,
+//                       radius: parseFloat(value),
+//                     })
+//                   }}
+//                   className={cn(
+//                     config.radius === parseFloat(value) &&
+//                     "border-2 border-primary"
+//                   )}
+//                 >
+//                   {value}
+//                 </Button>
+//               )
+//             })}
+//           </div>
+//         </div>
+//         <div className="space-y-1.5">
+//           <Label className="text-xs">Mode</Label>
+//           <div className="grid grid-cols-3 gap-2">
+//             {mounted ? (
+//               <>
+//                 <Button
+//                   variant={"outline"}
+//                   size="sm"
+//                   onClick={() => setMode("light")}
+//                   className={cn(mode === "light" && "border-2 border-primary")}
+//                 >
+//                   <Sun className="mr-1 -translate-x-1" />
+//                   Light
+//                 </Button>
+//                 <Button
+//                   variant={"outline"}
+//                   size="sm"
+//                   onClick={() => setMode("dark")}
+//                   className={cn(mode === "dark" && "border-2 border-primary")}
+//                 >
+//                   <Moon className="mr-1 -translate-x-1" />
+//                   Dark
+//                 </Button>
+//               </>
+//             ) : (
+//               <>
+//                 <Skeleton className="h-8 w-full" />
+//                 <Skeleton className="h-8 w-full" />
+//               </>
+//             )}
+//           </div>
+//         </div>
+//       </div> */}
+
+//       {/* <CodeMirror
+//         className="rounded-md"
+//         value='<h1>I ♥ react-codemirror2</h1>'
+//         options={{
+//           mode: 'css',
+//           theme: 'material',
+//           lineNumbers: true
+//         }}
+//         onChange={handleChange}
+//       /> */}
+//     </ThemeWrapper>
+//   )
+// }
+
+function Config({
+  className,
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  const [config] = useConfig()
+  const activeTheme = baseColors.find((theme) => theme.name === config.theme)
+  const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    setTimeout(() => {
+      setHasCopied(false)
+    }, 2000)
+  }, [hasCopied])
 
   return (
-    <ThemeWrapper
-      defaultTheme="zinc"
-      className="flex flex-col space-y-4 md:space-y-6"
-    >
-      <div className="flex items-start pt-4 md:pt-0">
-        <div className="space-y-1 pr-2">
-          <div className="font-semibold leading-none tracking-tight">
-            Config
-          </div>
-          <div className="text-xs text-muted-foreground">
-            Import of Export your config.
-          </div>
-        </div>
+    <>
+      {/* {activeTheme && (
         <Button
           variant="ghost"
           size="icon"
-          className="ml-auto rounded-[0.5rem]"
           onClick={() => {
-            setConfig({
-              ...config,
-              theme: "zinc",
-              radius: 0.5,
+            copyToClipboardWithMeta(getThemeCode(activeTheme, config.radius), {
+              name: "copy_theme_code",
+              properties: {
+                theme: activeTheme.name,
+                radius: config.radius,
+              },
             })
+            setHasCopied(true)
           }}
+          className={cn("ml-auto rounded-[0.5rem] md:hidden", className)}
+          {...props}
         >
-          <Repeat />
-          <span className="sr-only">Reset</span>
+          {hasCopied ? <Check /> : <Copy />}
+          Copy code
         </Button>
-        {/* <CopyCodeButton variant="ghost" size="sm" /> */}
-      </div>
-      {/* <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
-        <div className="space-y-1.5">
-          <Label className="text-xs">Color</Label>
-          <div className="grid grid-cols-3 gap-2">
-            {baseColors
-              .filter(
-                (theme) =>
-                  !["slate", "stone", "gray", "neutral"].includes(theme.name)
-              )
-              .map((theme) => {
-                const isActive = config.theme === theme.name
-
-                return mounted ? (
-                  <Button
-                    variant={"outline"}
-                    size="sm"
-                    key={theme.name}
-                    onClick={() => {
-                      setConfig({
-                        ...config,
-                        theme: theme.name,
-                      })
-                    }}
-                    className={cn(
-                      "justify-start",
-                      isActive && "border-2 border-primary"
-                    )}
-                    style={
-                      {
-                        "--theme-primary": `hsl(${theme?.activeColor[mode === "dark" ? "dark" : "light"]
-                          })`,
-                      } as React.CSSProperties
+      )} */}
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn("ml-auto hidden h-9 w-9 rounded-[0.5rem] md:flex", className)} {...props}>
+            {/* Copy code */}
+            {hasCopied ? <Check /> : <Copy />}
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-2xl outline-none">
+          <DialogHeader>
+            <DialogTitle>Theme</DialogTitle>
+            <DialogDescription>
+              Copy and paste the following code into your CSS file.
+            </DialogDescription>
+          </DialogHeader>
+          <ThemeWrapper defaultTheme="zinc" className="relative">
+            <CustomizerCode />
+            {activeTheme && (
+              <Button
+                size="sm"
+                onClick={() => {
+                  copyToClipboardWithMeta(
+                    getThemeCode(activeTheme, config.radius),
+                    {
+                      name: "copy_theme_code",
+                      properties: {
+                        theme: activeTheme.name,
+                        radius: config.radius,
+                      },
                     }
-                  >
-                    <span
-                      className={cn(
-                        "mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-[--theme-primary]"
-                      )}
-                    >
-                      {isActive && <Check className="h-4 w-4 text-white" />}
-                    </span>
-                    {theme.label}
-                  </Button>
-                ) : (
-                  <Skeleton className="h-8 w-full" key={theme.name} />
-                )
-              })}
-          </div>
-        </div>
-        <div className="space-y-1.5">
-          <Label className="text-xs">Radius</Label>
-          <div className="grid grid-cols-5 gap-2">
-            {["0", "0.3", "0.5", "0.75", "1.0"].map((value) => {
-              return (
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  key={value}
-                  onClick={() => {
-                    setConfig({
-                      ...config,
-                      radius: parseFloat(value),
-                    })
-                  }}
-                  className={cn(
-                    config.radius === parseFloat(value) &&
-                    "border-2 border-primary"
-                  )}
-                >
-                  {value}
-                </Button>
-              )
-            })}
-          </div>
-        </div>
-        <div className="space-y-1.5">
-          <Label className="text-xs">Mode</Label>
-          <div className="grid grid-cols-3 gap-2">
-            {mounted ? (
-              <>
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  onClick={() => setMode("light")}
-                  className={cn(mode === "light" && "border-2 border-primary")}
-                >
-                  <Sun className="mr-1 -translate-x-1" />
-                  Light
-                </Button>
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  onClick={() => setMode("dark")}
-                  className={cn(mode === "dark" && "border-2 border-primary")}
-                >
-                  <Moon className="mr-1 -translate-x-1" />
-                  Dark
-                </Button>
-              </>
-            ) : (
-              <>
-                <Skeleton className="h-8 w-full" />
-                <Skeleton className="h-8 w-full" />
-              </>
+                  )
+                  setHasCopied(true)
+                }}
+                className="absolute right-4 top-4 bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground"
+              >
+                {hasCopied ? <Check /> : <Copy />}
+                Copy
+              </Button>
             )}
-          </div>
-        </div>
-      </div> */}
-
-      {/* <CodeMirror
-        className="rounded-md"
-        value='<h1>I ♥ react-codemirror2</h1>'
-        options={{
-          mode: 'css',
-          theme: 'material',
-          lineNumbers: true
-        }}
-        onChange={handleChange}
-      /> */}
-    </ThemeWrapper>
+          </ThemeWrapper>
+        </DialogContent>
+      </Dialog>
+    </>
   )
 }
 
@@ -535,6 +716,7 @@ function CopyCodeButton({
     </>
   )
 }
+
 
 function CustomizerCode() {
   const [config] = useConfig()

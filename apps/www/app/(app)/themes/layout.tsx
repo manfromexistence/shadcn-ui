@@ -12,7 +12,7 @@ import { ThemeWrapper } from "@/components/theme-wrapper"
 
 export const metadata: Metadata = {
   title: "Themes",
-  description: "Hand-picked themes that you can copy and paste into your apps.",
+  description: "Themes that you can copy and paste into your apps.",
 }
 
 export default function ThemesLayout({
@@ -35,7 +35,7 @@ export default function ThemesLayout({
             Make it yours
           </PageHeaderHeading>
           <PageHeaderDescription>
-            Hand-picked themes that you can copy and paste into your apps.
+            Themes that you can copy and paste into your apps.
           </PageHeaderDescription>
           <PageActions>
             <ThemeCustomizer />
