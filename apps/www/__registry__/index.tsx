@@ -6455,26 +6455,6 @@ export const Index: Record<string, any> = {
       type: "registry:block",
       registryDependencies: ["button","card","input","label"],
       files: [{
-        path: "registry/new-york/block/login-01/page.tsx",
-        type: "registry:page",
-        target: "app/login/page.tsx"
-      },{
-        path: "registry/new-york/block/login-01/components/login-form.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(() => import("@/registry/new-york/block/login-01/page.tsx")),
-      source: "__registry__/new-york/block/login-01/page.tsx",
-      category: "Authentication",
-      subcategory: "Login",
-      chunks: []
-    },
-    "login-01": {
-      name: "login-01",
-      description: "A collection of health charts.",
-      type: "registry:block",
-      registryDependencies: ["button","card","input","label"],
-      files: [{
         path: "registry/new-york/block/chart-01/page.tsx",
         type: "registry:page",
         target: "app/chart/page.tsx"
@@ -14356,26 +14336,6 @@ export const Index: Record<string, any> = {
       source: "__registry__/default/block/_sink/page.tsx",
       category: "",
       subcategory: "",
-      chunks: []
-    },
-    "login-01": {
-      name: "login-01",
-      description: "A simple login form.",
-      type: "registry:block",
-      registryDependencies: ["button","card","input","label"],
-      files: [{
-        path: "registry/default/block/login-01/page.tsx",
-        type: "registry:page",
-        target: "app/login/page.tsx"
-      },{
-        path: "registry/default/block/login-01/components/login-form.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(() => import("@/registry/default/block/login-01/page.tsx")),
-      source: "__registry__/default/block/login-01/page.tsx",
-      category: "Authentication",
-      subcategory: "Login",
       chunks: []
     },
     "login-01": {
