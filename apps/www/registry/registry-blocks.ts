@@ -809,7 +809,7 @@ export const blocks: Registry = [
         type: "registry:page",
       },
       {
-        path: "block/login-01/components/login-form.tsx",
+        path: "block/chart-01/components/chart.tsx",
         type: "registry:component",
       },
     ],
