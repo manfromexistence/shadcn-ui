@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "block/login-01/page.tsx",
-      "content": "import { LoginForm } from \"@/registry/new-york/block/login-01/components/login-form\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex h-screen w-full items-center justify-center px-4\">\n      <LoginForm />\n    </div>\n  )\n}\n",
+      "content": "import { Charts } from \"@/registry/new-york/block/chart-01/components/chart\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex h-screen w-full items-center justify-center px-4\">\n      <Charts />\n    </div>\n  )\n}\n",
       "type": "registry:page",
       "target": "app/login/page.tsx"
     },

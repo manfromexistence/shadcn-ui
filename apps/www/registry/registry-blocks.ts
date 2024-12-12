@@ -816,24 +816,24 @@ export const blocks: Registry = [
     category: "Authentication",
     subcategory: "Login",
   },
-  {
-    name: "chart-01",
-    type: "registry:block",
-    registryDependencies: ["separator", "card", "recharts", "chart"],
-    files: [
-      {
-        path: "block/chart-01/page.tsx",
-        target: "app/dashboard/page.tsx",
-        type: "registry:page",
-      },
-      {
-        path: "block/chart-01/components/chart.tsx",
-        type: "registry:component",
-      },
-    ],
-    category: "Application",
-    subcategory: "Charts",
-  },
+  // {
+  //   name: "chart-01",
+  //   type: "registry:block",
+  //   registryDependencies: ["separator", "card", "recharts", "chart"],
+  //   files: [
+  //     {
+  //       path: "block/chart-01/page.tsx",
+  //       target: "app/dashboard/page.tsx",
+  //       type: "registry:page",
+  //     },
+  //     {
+  //       path: "block/chart-01/components/chart.tsx",
+  //       type: "registry:component",
+  //     },
+  //   ],
+  //   category: "Application",
+  //   subcategory: "Charts",
+  // },
   // {
   //   name: "dashboard-05",
   //   type: "registry:block",
