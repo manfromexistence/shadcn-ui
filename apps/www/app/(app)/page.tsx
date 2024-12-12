@@ -159,7 +159,7 @@ export default function IndexPage() {
             <div className="h-24 w-24 rounded-full border bg-secondary"></div>
             <div className="h-24 w-24 rounded-full border bg-secondary"></div>
             <div className="h-24 w-24 rounded-full border bg-secondary md:hidden 2xl:block"></div>
-            <div className="h-24 w-24 rounded-full border bg-secondary lg:hidden 2xl:block"></div>
+            <div className="h-24 w-24 rounded-full border bg-secondary lg:hidden"></div>
           </div>
           <div className="mt-6 md:mt-4 lg:mt-0">
             <h1 className="text-primary">Animations</h1>
