@@ -809,13 +809,49 @@ export const blocks: Registry = [
         type: "registry:page",
       },
       {
-        path: "block/chart-01/components/chart.tsx",
+        path: "block/login-01/components/login-form.tsx",
         type: "registry:component",
       },
     ],
     category: "Authentication",
     subcategory: "Login",
   },
+  {
+    name: "login-01",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "block/chart-01/page.tsx",
+        target: "app/chart/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "block/chart-01/components/chart.tsx",
+        type: "registry:component",
+      },
+    ],
+    category: "Chart",
+    subcategory: "Health Chart",
+  },
+  // {
+  //   name: "chart-01",
+  //   type: "registry:block",
+  //   registryDependencies: ["button", "card", "input", "label"],
+  //   files: [
+  //     {
+  //       path: "block/chart-01/page.tsx",
+  //       target: "app/chart/page.tsx",
+  //       type: "registry:page",
+  //     },
+  //     {
+  //       path: "block/chart-01/components/chart.tsx",
+  //       type: "registry:component",
+  //     },
+  //   ],
+  //   category: "Authentication",
+  //   subcategory: "Login",
+  // },
   // {
   //   name: "chart-01",
   //   type: "registry:block",
