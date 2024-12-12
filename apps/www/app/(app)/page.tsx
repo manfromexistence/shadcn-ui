@@ -81,15 +81,15 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="grid h-[500px] w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid w-full sm:grid-cols-1 md:grid-cols-2 lg:h-[500px] lg:grid-cols-3">
         <Link href="/docs/components/dock" className="flex h-full w-full flex-col items-start justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
           <div className="h-24 w-full space-y-2">
             <div className="flex items-center space-x-2">
               <div className="flex w-full items-center justify-between rounded-md border bg-primary-foreground p-3">
-                <span className="text-sm">$ npx manfromeixtence-ui init</span>
+                <span className="truncate text-sm md:w-32 lg:w-24 xl:w-48 2xl:w-full">$ npx manfromexistence-ui init</span>
                 <Copy className="h-4 w-4" />
               </div>
-              <div className="flex items-center justify-center rounded-md border bg-primary-foreground p-3 text-sm">
+              <div className="flex w-32 flex-1 items-center justify-center rounded-md border bg-primary-foreground p-3 text-sm">
                 <UserPlus className="mr-2 h-4 w-4" />
                 Collabrators
               </div>
@@ -116,7 +116,7 @@ export default function IndexPage() {
               </div>
             </div>
           </div>
-          <div>
+          <div className="mt-6 md:mt-4 lg:mt-0">
             <h1 className="text-primary">Components</h1>
             <span className="text-muted-foreground">Building Blocks for your software.</span>
           </div>
@@ -148,24 +148,25 @@ export default function IndexPage() {
             <Command />
             <CodeXml />
           </div>
-          <div>
+          <div className="mt-6 md:mt-4 lg:mt-0">
             <h1 className="text-primary">Icons</h1>
             <span className="text-muted-foreground">Icons for everyone.</span>
           </div>
         </Link>
-        <Link href="/animations" className="flex h-full w-full  flex-col justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
-          <div className="flex h-24 w-full justify-between">
+        <Link href="/animations" className="flex h-full w-full  flex-col justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-r">
+          <div className="flex h-24 w-full justify-between space-x-1">
             <div className="h-24 w-24 rounded-full border bg-secondary"></div>
             <div className="h-24 w-24 rounded-full border bg-secondary"></div>
             <div className="h-24 w-24 rounded-full border bg-secondary"></div>
-            <div className="h-24 w-24 rounded-full border bg-secondary"></div>
+            <div className="h-24 w-24 rounded-full border bg-secondary md:hidden 2xl:block"></div>
+            <div className="h-24 w-24 rounded-full border bg-secondary lg:hidden 2xl:block"></div>
           </div>
-          <div>
+          <div className="mt-6 md:mt-4 lg:mt-0">
             <h1 className="text-primary">Animations</h1>
             <span className="text-muted-foreground">Animations for everyone.</span>
           </div>
         </Link>
-        <Link href="/systems" className="flex h-full w-full flex-col items-start justify-between border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+        <Link href="/systems" className="flex h-full w-full flex-col items-start justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-r-0 lg:border-b-0 lg:border-r">
           <div className="relative grid h-24 w-full grid-cols-9 border">
             <PlusIcon className="absolute -left-5 -top-5 h-10 w-10" />
             <PlusIcon className="absolute -bottom-5 -right-5 h-10 w-10" />
@@ -190,17 +191,17 @@ export default function IndexPage() {
             <span className="h-full w-full border-r"></span>
             <span className="h-full w-full"></span>
           </div>
-          <div>
+          <div className="mt-6 md:mt-4 lg:mt-0">
             <h1 className="text-primary">Systems</h1>
             <span className="text-muted-foreground">Make it yours.</span>
           </div>
         </Link>
-        <Link href="/fonts" className="flex h-full w-full flex-col justify-between border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
+        <Link href="/fonts" className="flex h-full w-full flex-col justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-b-0">
           <div className="flex h-24 w-full rounded-md border border-dashed">
             <span className="flex h-full w-full items-center justify-center border-r border-dashed text-2xl font-bold italic">Fonts Sans</span>
             <span className="flex h-full w-full items-center justify-center text-2xl font-bold">Fonts Mono</span>
           </div>
-          <div>
+          <div className="mt-6 md:mt-4 lg:mt-0">
             <h1 className="text-primary">Fonts</h1>
             <span className="text-muted-foreground">Fonts for everyone.</span>
           </div>
@@ -232,7 +233,7 @@ export default function IndexPage() {
               <div className="h-full w-2 rounded-full bg-orange-500" />
             </div>
           </div>
-          <div>
+          <div className="mt-6 md:mt-4 lg:mt-0">
             <h1 className="text-primary">Colors</h1>
             <span className="text-muted-foreground">Colors for everyone.</span>
           </div>
