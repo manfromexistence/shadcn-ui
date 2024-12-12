@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer"
 
 const BLOCKS = [
+  "chart-01",
   "login-01",
   "sidebar-01",
   "sidebar-02",

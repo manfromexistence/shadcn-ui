@@ -6469,6 +6469,26 @@ export const Index: Record<string, any> = {
       subcategory: "Health Chart",
       chunks: []
     },
+    "sidebar-01": {
+      name: "sidebar-01",
+      description: "A collection of health charts.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/new-york/block/chart-01/page.tsx",
+        type: "registry:page",
+        target: "app/chart/page.tsx"
+      },{
+        path: "registry/new-york/block/chart-01/components/chart.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/block/chart-01/page.tsx")),
+      source: "__registry__/new-york/block/chart-01/page.tsx",
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       description: "An area chart with axes",
@@ -14356,6 +14376,26 @@ export const Index: Record<string, any> = {
       source: "__registry__/default/block/chart-01/page.tsx",
       category: "Chart",
       subcategory: "Health Chart",
+      chunks: []
+    },
+    "sidebar-01": {
+      name: "sidebar-01",
+      description: "A collection of health charts.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/default/block/chart-01/page.tsx",
+        type: "registry:page",
+        target: "app/chart/page.tsx"
+      },{
+        path: "registry/default/block/chart-01/components/chart.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/block/chart-01/page.tsx")),
+      source: "__registry__/default/block/chart-01/page.tsx",
+      category: "Authentication",
+      subcategory: "Login",
       chunks: []
     },
     "chart-area-axes": {
