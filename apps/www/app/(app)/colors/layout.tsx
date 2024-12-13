@@ -26,7 +26,7 @@ export default function ColorsLayout({
         <Announcement />
         <PageHeaderHeading>Manfromexistence Colors</PageHeaderHeading>
         <PageHeaderDescription>
-          Beautiful colors in HSL, RGB, HEEX, and OKLCH formats.
+          Beautiful colors in HSL, RGB, HEX, and OKLCH formats.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">

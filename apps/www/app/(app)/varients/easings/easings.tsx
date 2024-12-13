@@ -408,7 +408,7 @@ export default function Easings({ easings }: EasingsProps) {
         {getFilteredEasings().map((easing) => (
           <div
             key={`${easing.name}-${easingFilter}`}
-            className="group relative flex aspect-square flex-col items-center justify-center gap-4 rounded-xl bg-muted/65"
+            className="group relative flex aspect-square flex-col items-center justify-center gap-4 rounded-xl border"
           >
             <div className="pt-6 text-center text-sm font-medium">{easing.name}</div>
 
@@ -441,7 +441,7 @@ export default function Easings({ easings }: EasingsProps) {
             </div>
           </div>
         ))}
-        <div className="relative rounded-xl bg-muted/65 p-6">
+        <div className="relative rounded-xl bg-primary-foreground p-6">
           <p className="mb-4">
             <strong className="block text-sm font-medium text-foreground">Note</strong>
           </p>
