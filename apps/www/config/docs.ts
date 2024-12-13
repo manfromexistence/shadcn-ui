@@ -20,10 +20,10 @@ export const docsConfig: DocsConfig = {
       title: "Varients",
       href: "/varients",
     },
-    // {
-    //   title: "Blocks",
-    //   href: "/blocks",
-    // },
+    {
+      title: "Blocks",
+      href: "/blocks",
+    },
     // {
     //   title: "Visualizations",
     //   href: "/visualizations",
