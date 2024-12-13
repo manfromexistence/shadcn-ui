@@ -139,6 +139,16 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Systems",
+      items: [
+        {
+          title: "Grid",
+          href: "/docs/systems/grid",
+          items: [],
+        },
+      ],
+    },
+    {
       title: "Components",
       items: [
         {

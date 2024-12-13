@@ -18,7 +18,7 @@ export default function IconPage() {
     return (
         <div className="flex h-screen w-full">
             <ResizablePanelGroup direction="horizontal">
-                <ResizablePanel defaultSize={25}>
+                <ResizablePanel defaultSize={20}>
                     <ScrollArea className="h-full w-full p-4">
                         <div className="flex w-full justify-between rounded-md p-3 hover:bg-primary-foreground">
                             <span className="font-mono text-sm">Lucide Icons</span>
@@ -27,7 +27,7 @@ export default function IconPage() {
                     </ScrollArea>
                 </ResizablePanel>
                 <ResizableHandle />
-                <ResizablePanel defaultSize={75}>
+                <ResizablePanel defaultSize={80}>
                     <div className="relative h-16 w-full border-b">
                         <Input type="text" placeholder="Search Icons" className="h-full w-full rounded-none border-0 ring-0 placeholder:text-primary focus-visible:ring-0" />
                         <div className="absolute right-3 top-1/2 flex translate-y-[-50%] space-x-2">
@@ -64,11 +64,11 @@ export default function IconPage() {
                         </div>
 
                     </div>
-                    <div className="m-2 grid grid-cols-12">
-                        <div className="flex items-center justify-center rounded-md border p-5">
+                    <ScrollArea className="h-full w-full p-4">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-md border">
                             <Plus className="h-5 w-5" />
                         </div>
-                    </div>
+                    </ScrollArea>
                 </ResizablePanel>
             </ResizablePanelGroup>
         </div>

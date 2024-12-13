@@ -1629,6 +1629,22 @@ export const Index: Record<string, any> = {
       subcategory: "",
       chunks: []
     },
+    "grid-demo": {
+      name: "grid-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/new-york/example/grid-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/grid-demo.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
     "separators-demo": {
       name: "separators-demo",
       description: "",
@@ -9533,6 +9549,22 @@ export const Index: Record<string, any> = {
         target: ""
       }],
       component: React.lazy(() => import("@/registry/default/ui/tooltip.tsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
+    "grid-demo": {
+      name: "grid-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [""],
+      files: [{
+        path: "registry/default/example/grid-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/grid-demo.tsx")),
       source: "",
       category: "",
       subcategory: "",

@@ -166,7 +166,7 @@ export default function IndexPage() {
             <span className="text-muted-foreground">Animations for everyone.</span>
           </div>
         </Link>
-        <Link href="/systems" className="flex h-full w-full flex-col items-start justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-r-0 lg:border-b-0 lg:border-r">
+        <Link href="/docs/systems/grid" className="flex h-full w-full flex-col items-start justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-r-0 lg:border-b-0 lg:border-r">
           <div className="relative grid h-24 w-full grid-cols-9 border">
             <PlusIcon className="absolute -left-5 -top-5 h-10 w-10" />
             <PlusIcon className="absolute -bottom-5 -right-5 h-10 w-10" />
