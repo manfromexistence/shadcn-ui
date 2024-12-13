@@ -11,7 +11,7 @@ import {
 import { Button } from "@/registry/new-york/ui/button"
 
 export const metadata: Metadata = {
-  title: "Tailwind Colors",
+  title: "Colors",
   description: "All colors in all formats.",
 }
 

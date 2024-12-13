@@ -22,7 +22,6 @@ export default function IconPage() {
                     <ScrollArea className="h-full w-full p-4">
                         <div className="flex w-full justify-between rounded-md p-3 hover:bg-primary-foreground">
                             <span className="font-mono text-sm">Lucide Icons</span>
-
                         </div>
                     </ScrollArea>
                 </ResizablePanel>
