@@ -2,8 +2,11 @@
 
 export default function IconPage(){
     return(
-        <div className="h-screen w-full">
-            Irons
+        <div className="flex h-screen w-full">
+            <div className="h-full w-[25%] border-r">
+
+            </div>
+            <div className="h-full w-[75%]">Icons</div>
         </div>
     )
 }
