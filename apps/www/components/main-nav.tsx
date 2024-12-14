@@ -54,7 +54,7 @@ export function MainNav() {
         >
           Blocks
         </Link>
-        {/* <Link
+        <Link
           href="/visualizations"
           className={cn(
             "transition-colors hover:text-foreground/80",
@@ -65,7 +65,7 @@ export function MainNav() {
           )}
         >
           Visualizations
-        </Link> */}
+        </Link>
         <Link
           href="/themes"
           className={cn(
