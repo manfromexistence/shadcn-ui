@@ -1,11 +1,9 @@
+"use client";
+
 import { Chart } from '@antv/g2';
 import { useEffect, useRef } from 'react';
 
-interface ChartProps {
-  data: { genre: string; sold: number }[];
-}
-
-const G2: React.FC<ChartProps> = ({ data }) => {
+const G2: React.FC = () => {
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -13,6 +11,13 @@ const G2: React.FC<ChartProps> = ({ data }) => {
       container: chartRef.current!,
       autoFit: true,
     });
+    const data = [
+      { genre: 'Sports', sold: 275 },
+      { genre: 'Strategy', sold: 115 },
+      { genre: 'Action', sold: 120 },
+      { genre: 'Shooter', sold: 350 },
+      { genre: 'Other', sold: 150 },
+    ];
 
     chart
       .interval()
@@ -26,9 +31,12 @@ const G2: React.FC<ChartProps> = ({ data }) => {
     return () => {
       chart.destroy();
     };
-  }, [data]);
+  }, []);
 
-  return <div ref={chartRef} style={{ width: 500, height: 300 }} />;
+  return (<>
+    <h1 className="text-primary">G2</h1>
+    <div ref={chartRef} style={{ width: 500, height: 300 }} />
+  </>)
 };
 
 export default G2;

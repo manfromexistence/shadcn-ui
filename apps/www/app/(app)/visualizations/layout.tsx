@@ -96,10 +96,10 @@ export default function VisualizationsLayout({
             <Link href="/docs/components/chart">Documentation</Link>
           </Button>
         </PageActions>
-        <div className="top-1/2 h-24 w-1/2 translate-y-[-50%] border md:absolute md:right-10">
+        {/* <div className="top-1/2 h-24 w-1/2 translate-y-[-50%] border md:absolute md:right-10">
           <span className="w-full text-xl">There are 500+ blokcs of visualizations blocks!</span>
           <pre className="w-min rounded-md bg-primary-foreground p-2 text-sm text-primary hover:bg-primary hover:text-primary-foreground">npx shadcn@latest add "https://manfromexistence-ui.vercel.app/r/spinner"</pre>
-        </div>
+        </div> */}
       </PageHeader>
       <div className="container py-6">
         <section id="Visualizations" className="scroll-mt-20">
