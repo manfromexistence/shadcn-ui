@@ -11,5 +11,6 @@
     "<node_internals>/**",
     "**/node_modules/**",
     "**/fixtures/**"
-  ]
+  ],
+  "git.ignoreLimitWarning": true
 }
