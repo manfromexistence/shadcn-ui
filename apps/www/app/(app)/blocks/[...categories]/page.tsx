@@ -13,20 +13,25 @@ export async function generateStaticParams() {
 export default async function BlocksPage({
   params,
 }: {
-  params: { categories?: any }
+  params: { categories?: string[] }
 }) {
-  const categories:any = params.categories ?? [];
-  const blocks = await getAllBlockIds(
-    ["registry:block"],
-    categories
-  )
+  // const blocks = await getAllBlockIds(
+  //   ["registry:block"],
+  //   params.categories ?? []
+  // )
 
-  return blocks.map((name) => (
-    <div
-      key={name}
-      className="border-grid container border-b py-8 first:pt-6 last:border-b-0 md:py-12"
-    >
-      <BlockDisplay name={name} />
-    </div>
-  ))
+  // return blocks.map((name) => (
+  //   <div
+  //     key={name}
+  //     className="border-grid container border-b py-8 first:pt-6 last:border-b-0 md:py-12"
+  //   >
+  //     <BlockDisplay name={name} />
+  //   </div>
+  // ))
+  return (<div
+    className="border-grid container border-b py-8 first:pt-6 last:border-b-0 md:py-12"
+  >
+    {/* <BlockDisplay name={name} /> */}
+  </div>)
+
 }
