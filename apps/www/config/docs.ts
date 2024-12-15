@@ -17,24 +17,24 @@ export const docsConfig: DocsConfig = {
       href: "/docs",
     },
     {
-      title: "Components",
-      href: "/docs/components/accordion",
+      title: "Varients",
+      href: "/varients",
     },
     {
       title: "Blocks",
       href: "/blocks",
     },
     {
-      title: "Charts",
-      href: "/charts",
+      title: "Visualizations",
+      href: "/visualizations",
     },
     {
       title: "Themes",
       href: "/themes",
     },
     {
-      title: "Colors",
-      href: "/colors",
+      title: "Renderers",
+      href: "/renderers",
     },
   ],
   sidebarNav: [
@@ -139,259 +139,618 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Systems",
+      items: [
+        {
+          title: "Grid",
+          href: "/docs/systems/grid",
+          items: [],
+        },
+      ],
+    },
+    {
       title: "Components",
       items: [
         {
-          title: "Sidebar",
-          href: "/docs/components/sidebar",
-          items: [],
-          label: "New",
-        },
-        {
-          title: "Accordion",
-          href: "/docs/components/accordion",
+          title: "Calendars",
+          href: "/docs/components/calendars",
           items: [],
         },
         {
-          title: "Alert",
-          href: "/docs/components/alert",
+          title: "Gantts",
+          href: "/docs/components/gantts",
           items: [],
         },
         {
-          title: "Alert Dialog",
-          href: "/docs/components/alert-dialog",
+          title: "Kanbans",
+          href: "/docs/components/kanbans",
           items: [],
         },
         {
-          title: "Aspect Ratio",
-          href: "/docs/components/aspect-ratio",
+          title: "Lists",
+          href: "/docs/components/lists",
           items: [],
         },
         {
-          title: "Avatar",
-          href: "/docs/components/avatar",
+          title: "Tables",
+          href: "/docs/components/Tables",
           items: [],
         },
         {
-          title: "Badge",
-          href: "/docs/components/badge",
+          title: "Separators",
+          href: "/docs/components/separators",
           items: [],
         },
         {
-          title: "Breadcrumb",
-          href: "/docs/components/breadcrumb",
+          title: "Cards",
+          href: "/docs/components/cards",
           items: [],
         },
         {
-          title: "Button",
-          href: "/docs/components/button",
+          title: "Bento",
+          href: "/docs/components/bento",
           items: [],
         },
         {
-          title: "Calendar",
-          href: "/docs/components/calendar",
+          title: "Spinner",
+          href: "/docs/components/spinner",
           items: [],
         },
         {
-          title: "Card",
-          href: "/docs/components/card",
+          title: "Buttons",
+          href: "/docs/components/buttons",
           items: [],
         },
         {
-          title: "Carousel",
-          href: "/docs/components/carousel",
+          title: "Sintature Input",
+          href: "/docs/components/signature-input",
           items: [],
-        },
-        {
-          title: "Chart",
-          href: "/docs/components/chart",
-          items: [],
-        },
-        {
-          title: "Checkbox",
-          href: "/docs/components/checkbox",
-          items: [],
-        },
-        {
-          title: "Collapsible",
-          href: "/docs/components/collapsible",
-          items: [],
-        },
-        {
-          title: "Combobox",
-          href: "/docs/components/combobox",
-          items: [],
-        },
-        {
-          title: "Command",
-          href: "/docs/components/command",
-          items: [],
-        },
-        {
-          title: "Context Menu",
-          href: "/docs/components/context-menu",
-          items: [],
-        },
-        {
-          title: "Data Table",
-          href: "/docs/components/data-table",
-          items: [],
-        },
-        {
-          title: "Date Picker",
-          href: "/docs/components/date-picker",
-          items: [],
-        },
-        {
-          title: "Dialog",
-          href: "/docs/components/dialog",
-          items: [],
-        },
-        {
-          title: "Drawer",
-          href: "/docs/components/drawer",
-          items: [],
-        },
-        {
-          title: "Dropdown Menu",
-          href: "/docs/components/dropdown-menu",
-          items: [],
-        },
-        {
-          title: "Form",
-          href: "/docs/components/form",
-          items: [],
-        },
-        {
-          title: "Hover Card",
-          href: "/docs/components/hover-card",
-          items: [],
-        },
-        {
-          title: "Input",
-          href: "/docs/components/input",
-          items: [],
-        },
-        {
-          title: "Input OTP",
-          href: "/docs/components/input-otp",
-          items: [],
-        },
-        {
-          title: "Label",
-          href: "/docs/components/label",
-          items: [],
-        },
-        {
-          title: "Menubar",
-          href: "/docs/components/menubar",
-          items: [],
-        },
-        {
-          title: "Navigation Menu",
-          href: "/docs/components/navigation-menu",
-          items: [],
-        },
-        {
-          title: "Pagination",
-          href: "/docs/components/pagination",
-          items: [],
-        },
-        {
-          title: "Popover",
-          href: "/docs/components/popover",
-          items: [],
-        },
-        {
-          title: "Progress",
-          href: "/docs/components/progress",
-          items: [],
-        },
-        {
-          title: "Radio Group",
-          href: "/docs/components/radio-group",
-          items: [],
-        },
-        {
-          title: "Resizable",
-          href: "/docs/components/resizable",
-          items: [],
-        },
-        {
-          title: "Scroll Area",
-          href: "/docs/components/scroll-area",
-          items: [],
-        },
-        {
-          title: "Select",
-          href: "/docs/components/select",
-          items: [],
-        },
-        {
-          title: "Separator",
-          href: "/docs/components/separator",
-          items: [],
-        },
-        {
-          title: "Sheet",
-          href: "/docs/components/sheet",
-          items: [],
-        },
-        {
-          title: "Skeleton",
-          href: "/docs/components/skeleton",
-          items: [],
-        },
-        {
-          title: "Slider",
-          href: "/docs/components/slider",
-          items: [],
-        },
-        {
-          title: "Sonner",
-          href: "/docs/components/sonner",
-          items: [],
-        },
-        {
-          title: "Switch",
-          href: "/docs/components/switch",
-          items: [],
-        },
-        {
-          title: "Table",
-          href: "/docs/components/table",
-          items: [],
-        },
-        {
-          title: "Tabs",
-          href: "/docs/components/tabs",
-          items: [],
-        },
-        {
-          title: "Textarea",
-          href: "/docs/components/textarea",
-          items: [],
-        },
-        {
-          title: "Toast",
-          href: "/docs/components/toast",
-          items: [],
-        },
-        {
-          title: "Toggle",
-          href: "/docs/components/toggle",
-          items: [],
-        },
-        {
-          title: "Toggle Group",
-          href: "/docs/components/toggle-group",
-          items: [],
+          label: "new",
         },
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
           items: [],
         },
+        {
+          title: "Color Picker",
+          href: "/docs/components/color-picker",
+          items: [],
+        },
+        {
+          title: "Mention",
+          href: "/docs/components/mention",
+          items: [],
+        },
+        {
+          title: "Autocomplete",
+          href: "/docs/components/autocomplete",
+          items: [],
+        },
+        {
+          title: "Anchor",
+          href: "/docs/components/Anchor",
+          items: [],
+        },
+        {
+          title: "Cascader",
+          href: "/docs/components/cascader",
+          items: [],
+        },
+        {
+          title: "Description",
+          href: "/docs/components/description",
+          items: [],
+        },
+        {
+          title: "Float Button",
+          href: "/docs/components/float-button",
+          items: [],
+        },
+        {
+          title: "Input Number",
+          href: "/docs/components/input-number",
+          items: [],
+        },
+        {
+          title: "Qr Code",
+          href: "/docs/components/qr-code",
+          items: [],
+        },
+        {
+          title: "Rate",
+          href: "/docs/components/rate",
+          items: [],
+        },
+        {
+          title: "Steps",
+          href: "/docs/components/steps",
+          items: [],
+        },
+        {
+          title: "Timeline",
+          href: "/docs/components/timeline",
+          items: [],
+        },
+        {
+          title: "Time Picker",
+          href: "/docs/components/time-picker",
+          items: [],
+        },
+        {
+          title: "Tour",
+          href: "/docs/components/tour",
+          items: [],
+        },
+        {
+          title: "Transfer",
+          href: "/docs/components/transfer",
+          items: [],
+        },
+        {
+          title: "Tree",
+          href: "/docs/components/tree",
+          items: [],
+        },
+        {
+          title: "Transfer",
+          href: "/docs/components/transfer",
+          items: [],
+        },
+        {
+          title: "Tree Select",
+          href: "/docs/components/tree-select",
+          items: [],
+        },
+        {
+          title: "Dock",
+          href: "/docs/components/dock",
+          items: [],
+        },
+        {
+          title: "Confetti",
+          href: "/docs/components/confetti",
+          items: [],
+        },
+        {
+          title: "Cool Mode",
+          href: "/docs/components/cool-mode",
+          items: [],
+        },
+        {
+          title: "Spinner",
+          href: "/docs/components/spinner",
+          items: [],
+        },
+        {
+          title: "Feedback",
+          href: "/docs/components/feedback",
+          items: [],
+        },
+        {
+          title: "Location Input",
+          href: "/docs/components/location-input",
+          items: [],
+        },
+        {
+          title: "Multi Select",
+          href: "/docs/components/multi-select",
+          items: [],
+        },
+        {
+          title: "Smart Date Time Picker",
+          href: "/docs/components/smart-date-time-picker",
+          items: [],
+        },
+        {
+          title: "Date Time Picker",
+          href: "/docs/components/date-time-picker",
+          items: [],
+        },
+        {
+          title: "Phone Input",
+          href: "/docs/components/phone-input",
+          items: [],
+        },
+        {
+          title: "Password Input",
+          href: "/docs/components/password-input",
+          items: [],
+        },
+        {
+          title: "Tags Input",
+          href: "/docs/components/tags-input",
+          items: [],
+        },
+        {
+          title: "File Upload",
+          href: "/docs/components/file-upload",
+          items: [],
+        },
+        {
+          title: "Texts",
+          href: "/docs/components/texts",
+          items: [],
+        },
+        {
+          title: "Backgrounds",
+          href: "/docs/components/backgrounds",
+          items: [],
+        },
+        {
+          title: "Tablist",
+          href: "/docs/components/tablist",
+          items: [],
+        },
+        {
+          title: "Animated Number",
+          href: "/docs/components/animated-number",
+          items: [],
+        },
+        {
+          title: "Bg Animate Button",
+          href: "/docs/components/bg-animate-button",
+          items: [],
+        },
+        {
+          title: "Bg Media Hero",
+          href: "/docs/components/bg-media",
+          items: [],
+        },
+        {
+          title: "Direction Aware Tabs",
+          href: "/docs/components/direction-aware-tabs",
+          items: [],
+        },
+        {
+          title: "Dynamic Island",
+          href: "/docs/components/dynamic-island",
+          items: [],
+        },
+
+        {
+          title: "Expandable",
+          href: "/docs/components/expandable",
+          items: [],
+        },
+        {
+          title: "Family Button",
+          href: "/docs/components/family-button",
+          items: [],
+        },
+        {
+          title: "Floating Panel",
+          href: "/docs/components/floating-panel",
+          items: [],
+        },
+        {
+          title: "Gradient Heading",
+          href: "/docs/components/gradient-heading",
+          items: [],
+        },
+        {
+          title: "Minimal Card",
+          href: "/docs/components/minimal-card",
+          items: [],
+        },
+        {
+          title: "Popover",
+          href: "/docs/components/popover",
+          items: [],
+          label: "",
+        },
+        {
+          title: "Popover Form",
+          href: "/docs/components/popover-form",
+          items: [],
+        },
+        {
+          title: "Shift Card",
+          href: "/docs/components/shift-card",
+          items: [],
+        },
+        {
+          title: "Side Panel",
+          href: "/docs/components/side-panel",
+          items: [],
+        },
+        {
+          title: "Sortable List",
+          href: "/docs/components/sortable-list",
+          items: [],
+        },
+        {
+          title: "Text Animate",
+          href: "/docs/components/text-animate",
+          items: [],
+        },
+        {
+          title: "Texture Button",
+          href: "/docs/components/texture-button",
+          items: [],
+        },
+        {
+          title: "Texture Card",
+          href: "/docs/components/texture-card",
+          items: [],
+        },
+        {
+          title: "3D Carousel",
+          href: "/docs/components/three-d-carousel",
+          items: [],
+        },
+        {
+          title: "LightBoard",
+          href: "/docs/components/lightboard",
+          items: [],
+        },
+        {
+          title: "Fractal Grid",
+          href: "/docs/components/bg-animated-fractal-grid",
+          items: [],
+        },
+        {
+          title: "Tweet Grid",
+          href: "/docs/components/tweet-grid",
+          items: [],
+        },
+        {
+          title: "Typewriter",
+          href: "/docs/components/typewriter",
+          items: [],
+        },
+
+        // {
+        //   title: "Sidebar",
+        //   href: "/docs/components/sidebar",
+        //   items: [],
+        //   label: "New",
+        // },
+        // {
+        //   title: "Accordion",
+        //   href: "/docs/components/accordion",
+        //   items: [],
+        // },
+        // {
+        //   title: "Alert",
+        //   href: "/docs/components/alert",
+        //   items: [],
+        // },
+        // {
+        //   title: "Alert Dialog",
+        //   href: "/docs/components/alert-dialog",
+        //   items: [],
+        // },
+        // {
+        //   title: "Aspect Ratio",
+        //   href: "/docs/components/aspect-ratio",
+        //   items: [],
+        // },
+        // {
+        //   title: "Avatar",
+        //   href: "/docs/components/avatar",
+        //   items: [],
+        // },
+        // {
+        //   title: "Badge",
+        //   href: "/docs/components/badge",
+        //   items: [],
+        // },
+        // {
+        //   title: "Breadcrumb",
+        //   href: "/docs/components/breadcrumb",
+        //   items: [],
+        // },
+        // {
+        //   title: "Button",
+        //   href: "/docs/components/button",
+        //   items: [],
+        // },
+        // {
+        //   title: "Calendar",
+        //   href: "/docs/components/calendar",
+        //   items: [],
+        // },
+        // {
+        //   title: "Card",
+        //   href: "/docs/components/card",
+        //   items: [],
+        // },
+        // {
+        //   title: "Carousel",
+        //   href: "/docs/components/carousel",
+        //   items: [],
+        // },
+        // {
+        //   title: "Chart",
+        //   href: "/docs/components/chart",
+        //   items: [],
+        // },
+        // {
+        //   title: "Checkbox",
+        //   href: "/docs/components/checkbox",
+        //   items: [],
+        // },
+        // {
+        //   title: "Collapsible",
+        //   href: "/docs/components/collapsible",
+        //   items: [],
+        // },
+        // {
+        //   title: "Combobox",
+        //   href: "/docs/components/combobox",
+        //   items: [],
+        // },
+        // {
+        //   title: "Command",
+        //   href: "/docs/components/command",
+        //   items: [],
+        // },
+        // {
+        //   title: "Context Menu",
+        //   href: "/docs/components/context-menu",
+        //   items: [],
+        // },
+        // {
+        //   title: "Data Table",
+        //   href: "/docs/components/data-table",
+        //   items: [],
+        // },
+        // {
+        //   title: "Date Picker",
+        //   href: "/docs/components/date-picker",
+        //   items: [],
+        // },
+        // {
+        //   title: "Dialog",
+        //   href: "/docs/components/dialog",
+        //   items: [],
+        // },
+        // {
+        //   title: "Drawer",
+        //   href: "/docs/components/drawer",
+        //   items: [],
+        // },
+        // {
+        //   title: "Dropdown Menu",
+        //   href: "/docs/components/dropdown-menu",
+        //   items: [],
+        // },
+        // {
+        //   title: "Form",
+        //   href: "/docs/components/form",
+        //   items: [],
+        // },
+        // {
+        //   title: "Hover Card",
+        //   href: "/docs/components/hover-card",
+        //   items: [],
+        // },
+        // {
+        //   title: "Input",
+        //   href: "/docs/components/input",
+        //   items: [],
+        // },
+        // {
+        //   title: "Input OTP",
+        //   href: "/docs/components/input-otp",
+        //   items: [],
+        // },
+        // {
+        //   title: "Label",
+        //   href: "/docs/components/label",
+        //   items: [],
+        // },
+        // {
+        //   title: "Menubar",
+        //   href: "/docs/components/menubar",
+        //   items: [],
+        // },
+        // {
+        //   title: "Navigation Menu",
+        //   href: "/docs/components/navigation-menu",
+        //   items: [],
+        // },
+        // {
+        //   title: "Pagination",
+        //   href: "/docs/components/pagination",
+        //   items: [],
+        // },
+        // {
+        //   title: "Popover",
+        //   href: "/docs/components/popover",
+        //   items: [],
+        // },
+        // {
+        //   title: "Progress",
+        //   href: "/docs/components/progress",
+        //   items: [],
+        // },
+        // {
+        //   title: "Radio Group",
+        //   href: "/docs/components/radio-group",
+        //   items: [],
+        // },
+        // {
+        //   title: "Resizable",
+        //   href: "/docs/components/resizable",
+        //   items: [],
+        // },
+        // {
+        //   title: "Scroll Area",
+        //   href: "/docs/components/scroll-area",
+        //   items: [],
+        // },
+        // {
+        //   title: "Select",
+        //   href: "/docs/components/select",
+        //   items: [],
+        // },
+        // {
+        //   title: "Separator",
+        //   href: "/docs/components/separator",
+        //   items: [],
+        // },
+        // {
+        //   title: "Sheet",
+        //   href: "/docs/components/sheet",
+        //   items: [],
+        // },
+        // {
+        //   title: "Skeleton",
+        //   href: "/docs/components/skeleton",
+        //   items: [],
+        // },
+        // {
+        //   title: "Slider",
+        //   href: "/docs/components/slider",
+        //   items: [],
+        // },
+        // {
+        //   title: "Sonner",
+        //   href: "/docs/components/sonner",
+        //   items: [],
+        // },
+        // {
+        //   title: "Switch",
+        //   href: "/docs/components/switch",
+        //   items: [],
+        // },
+        // {
+        //   title: "Table",
+        //   href: "/docs/components/table",
+        //   items: [],
+        // },
+        // {
+        //   title: "Tabs",
+        //   href: "/docs/components/tabs",
+        //   items: [],
+        // },
+        // {
+        //   title: "Textarea",
+        //   href: "/docs/components/textarea",
+        //   items: [],
+        // },
+        // {
+        //   title: "Toast",
+        //   href: "/docs/components/toast",
+        //   items: [],
+        // },
+        // {
+        //   title: "Toggle",
+        //   href: "/docs/components/toggle",
+        //   items: [],
+        // },
+        // {
+        //   title: "Toggle Group",
+        //   href: "/docs/components/toggle-group",
+        //   items: [],
+        // },
+        // {
+        //   title: "Tooltip",
+        //   href: "/docs/components/tooltip",
+        //   items: [],
+        // },
       ],
     },
   ],

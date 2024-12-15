@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import Image from "next/image";
 
 export function MainNav() {
   const pathname = usePathname()
@@ -13,7 +14,8 @@ export function MainNav() {
   return (
     <div className="mr-4 hidden md:flex">
       <Link href="/" className="mr-4 flex items-center gap-2 lg:mr-6">
-        <Icons.logo className="h-6 w-6" />
+        {/* <Icons.logo className="h-6 w-6" /> */}
+        <Image height={13} width={17} className="invert dark:invert-0" alt="Logo" src="/ui.png" />
         <span className="hidden font-bold lg:inline-block">
           {siteConfig.name}
         </span>
@@ -29,16 +31,19 @@ export function MainNav() {
           Docs
         </Link>
         <Link
-          href="/docs/components"
+          href="/varients"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/components") &&
-              !pathname?.startsWith("/docs/component/chart")
+            pathname?.startsWith("/variants") &&
+              (!pathname?.startsWith("/variants/buttons") ||
+                pathname?.startsWith("/variants/inputs") ||
+                pathname?.startsWith("/variants/checkboxes-radios-switches") ||
+                pathname?.startsWith("/variants/selects"))
               ? "text-foreground"
               : "text-foreground/80"
           )}
         >
-          Components
+          Varients
         </Link>
         <Link
           href="/blocks"
@@ -52,16 +57,16 @@ export function MainNav() {
           Blocks
         </Link>
         <Link
-          href="/charts"
+          href="/visualizations"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/component/chart") ||
-              pathname?.startsWith("/charts")
+            pathname?.startsWith("/docs/component/canvas") ||
+              pathname?.startsWith("/visualizations")
               ? "text-foreground"
               : "text-foreground/80"
           )}
         >
-          Charts
+          Visualizations
         </Link>
         <Link
           href="/themes"
@@ -75,15 +80,15 @@ export function MainNav() {
           Themes
         </Link>
         <Link
-          href="/colors"
+          href="/renderers"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/colors")
+            pathname?.startsWith("/renderers")
               ? "text-foreground"
               : "text-foreground/80"
           )}
         >
-          Colors
+          Renderers
         </Link>
       </nav>
     </div>
