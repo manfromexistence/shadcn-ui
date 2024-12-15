@@ -11,7 +11,7 @@ import {
 import { Button } from "@/registry/new-york/ui/button"
 
 export const metadata: Metadata = {
-  title: "Tailwind Colors",
+  title: "Colors",
   description: "All colors in all formats.",
 }
 
@@ -21,12 +21,12 @@ export default function ColorsLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
+    <div className="relative">
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>Tailwind Colors</PageHeaderHeading>
+        <PageHeaderHeading>Manfromexistence Colors</PageHeaderHeading>
         <PageHeaderDescription>
-          Tailwind CSS colors in HSL, RGB, and HEX formats.
+          Beautiful colors in HSL, RGB, HEX, and OKLCH formats.
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
@@ -37,13 +37,11 @@ export default function ColorsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container-wrapper">
-        <div className="container py-6">
-          <section id="colors" className="scroll-mt-20">
-            {children}
-          </section>
-        </div>
+      <div className="container py-6">
+        <section id="colors" className="scroll-mt-20">
+          {children}
+        </section>
       </div>
-    </>
+    </div>
   )
 }
