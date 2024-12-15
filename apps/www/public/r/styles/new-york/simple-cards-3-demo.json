@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/cards/simple-cards-3.tsx",
+      "path": "examples/cards/simple-cards-3.tsx",
       "content": "import { SimpleCard_V3 } from \"@/registry/new-york/ui/card-simple\"\n\nexport default function SimpleCard_V3_Demo() {\n  return (\n    <div className=\"min-w-full\">\n      <SimpleCard_V3 />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""

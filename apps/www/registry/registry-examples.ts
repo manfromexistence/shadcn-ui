@@ -2,6 +2,1372 @@ import { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
   {
+    name: "grid-demo",
+    type: "registry:example",
+    registryDependencies: [""],
+    files: [
+      {
+        path: "examples/grid-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "separators-demo",
+    type: "registry:example",
+    registryDependencies: ["separators"],
+    files: [
+      {
+        path: "examples/separators-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "calendars-demo",
+    type: "registry:example",
+    registryDependencies: ["calendars"],
+    files: [
+      {
+        path: "examples/calendars-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "gantts-demo",
+    type: "registry:example",
+    registryDependencies: ["gantts"],
+    files: [
+      {
+        path: "examples/gantts-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "kanbans-demo",
+    type: "registry:example",
+    registryDependencies: ["kanbans"],
+    files: [
+      {
+        path: "examples/kanbans-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "lists-demo",
+    type: "registry:example",
+    registryDependencies: ["lists"],
+    files: [
+      {
+        path: "examples/lists-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tables-demo",
+    type: "registry:example",
+    registryDependencies: ["tables"],
+    files: [
+      {
+        path: "examples/tables-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "signature-input-demo",
+    type: "registry:example",
+    registryDependencies: ["signature-input", "button", "form"],
+    files: [
+      {
+        path: "examples/signature-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dots-1-demo",
+    type: "registry:example",
+    registryDependencies: ["dots"],
+    files: [
+      {
+        path: "examples/dots-1-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dots-2-demo",
+    type: "registry:example",
+    registryDependencies: ["dots"],
+    files: [
+      {
+        path: "examples/dots-2-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dots-3-demo",
+    type: "registry:example",
+    registryDependencies: ["dots"],
+    files: [
+      {
+        path: "examples/dots-3-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dots-4-demo",
+    type: "registry:example",
+    registryDependencies: ["dots"],
+    files: [
+      {
+        path: "examples/dots-4-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "card-expandable-demo",
+    type: "registry:example",
+    registryDependencies: ["card-expandable"],
+    files: [
+      {
+        path: "examples/cards/expandable-card.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "card-multi-layers-1-demo",
+    type: "registry:example",
+    registryDependencies: ["card-multi-layers"],
+    files: [
+      {
+        path: "examples/cards/multi-layers-1.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "card-multi-layers-2-demo",
+    type: "registry:example",
+    registryDependencies: ["card-multi-layers"],
+    files: [
+      {
+        path: "examples/cards/multi-layers-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "card-multi-layers-3-demo",
+    type: "registry:example",
+    registryDependencies: ["card-multi-layers"],
+    files: [
+      {
+        path: "examples/cards/multi-layers-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "card-multi-layers-4-demo",
+    type: "registry:example",
+    registryDependencies: ["card-multi-layers"],
+    files: [
+      {
+        path: "examples/cards/multi-layers-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-1-demo",
+    type: "registry:example",
+    registryDependencies: ["card-simple"],
+    files: [
+      {
+        path: "examples/cards/simple-cards-1.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-2-demo",
+    type: "registry:example",
+    registryDependencies: ["card-simple"],
+    files: [
+      {
+        path: "examples/cards/simple-cards-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-3-demo",
+    type: "registry:example",
+    registryDependencies: ["card-simple"],
+    files: [
+      {
+        path: "examples/cards/simple-cards-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-4-demo",
+    type: "registry:example",
+    registryDependencies: ["card-simple"],
+    files: [
+      {
+        path: "examples/cards/simple-cards-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-5-demo",
+    type: "registry:example",
+    registryDependencies: ["card-simple"],
+    files: [
+      {
+        path: "examples/cards/simple-cards-5.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-6-demo",
+    type: "registry:example",
+    registryDependencies: ["card-simple"],
+    files: [
+      {
+        path: "examples/cards/simple-cards-6.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "simple-cards-7-demo",
+    type: "registry:example",
+    registryDependencies: ["card-simple"],
+    files: [
+      {
+        path: "examples/cards/simple-cards-7.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-1-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "examples/cards/with-image-bg-cards-1.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-2-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "examples/cards/with-image-bg-cards-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-3-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "examples/cards/with-image-bg-cards-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-4-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "examples/cards/with-image-bg-cards-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-5-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "examples/cards/with-image-bg-cards-5.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-image-bg-cards-6-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-image-bg"],
+    files: [
+      {
+        path: "examples/cards/with-image-bg-cards-6.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-1-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "examples/cards/with-pattern-cards-1.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-2-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "examples/cards/with-pattern-cards-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-3-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "examples/cards/with-pattern-cards-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-4-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "examples/cards/with-pattern-cards-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-5-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "examples/cards/with-pattern-cards-5.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-6-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "examples/cards/with-pattern-cards-6.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-7-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "examples/cards/with-pattern-cards-7.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "with-pattern-cards-8-demo",
+    type: "registry:example",
+    registryDependencies: ["card-with-pattern"],
+    files: [
+      {
+        path: "examples/cards/with-pattern-cards-8.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  // {
+  //   name: "button-stateful-varient-1-demo",
+  //   type: "registry:example",
+  //   registryDependencies: ["button-stateful-varient-1"],
+  //   files: [
+  //     {
+  //       path: "examples/buttons/stateful/varient-1.tsx",
+  //       type: "registry:example",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-stateful-varient-2-demo",
+  //   type: "registry:example",
+  //   registryDependencies: ["button-stateful-varient-2"],
+  //   files: [
+  //     {
+  //       path: "examples/buttons/stateful/varient-2.tsx",
+  //       type: "registry:example",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-varients-demo",
+  //   type: "registry:example",
+  //   registryDependencies: ["button-varients"],
+  //   files: [
+  //     {
+  //       path: "examples/buttons/button-varients.tsx",
+  //       type: "registry:example",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "button-eye-cathcing-buttons-demo",
+  //   type: "registry:example",
+  //   registryDependencies: ["button-eye-cathcing-buttons"],
+  //   files: [
+  //     {
+  //       path: "examples/buttons/eye-cathcing-buttons.tsx",
+  //       type: "registry:example",
+  //     },
+  //   ],
+  // },
+  {
+    name: "bento-four-1-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-4"],
+    files: [
+      {
+        path: "examples/bentos/bento-four-1-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-four-2-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-4"],
+    files: [
+      {
+        path: "examples/bentos/bento-four-2-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-four-3-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-4"],
+    files: [
+      {
+        path: "examples/bentos/bento-four-3-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-four-4-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-4"],
+    files: [
+      {
+        path: "examples/bentos/bento-four-4-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-five-1-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-5"],
+    files: [
+      {
+        path: "examples/bentos/bento-five-1-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-five-2-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-5"],
+    files: [
+      {
+        path: "examples/bentos/bento-five-2-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-five-3-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-5"],
+    files: [
+      {
+        path: "examples/bentos/bento-five-3-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-five-4-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-5"],
+    files: [
+      {
+        path: "examples/bentos/bento-five-4-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-six-1-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-6"],
+    files: [
+      {
+        path: "examples/bentos/bento-six-1-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-six-2-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-6"],
+    files: [
+      {
+        path: "examples/bentos/bento-six-2-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-six-3-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-6"],
+    files: [
+      {
+        path: "examples/bentos/bento-six-3-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-six-4-demo",
+    type: "registry:example",
+    registryDependencies: ["bento-6"],
+    files: [
+      {
+        path: "examples/bentos/bento-six-4-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "animated-beam-multiple-outputs-demo",
+    type: "registry:example",
+    registryDependencies: ["animated-beam"],
+    files: [
+      {
+        path: "examples/animated-beam-multiple-outputs.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "animated-list-demo",
+    type: "registry:example",
+    registryDependencies: ["animated-list"],
+    files: [
+      {
+        path: "examples/animated-list-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bento-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "bento-grid",
+      "marquee",
+      "animated-list-demo",
+      "animated-beam-multiple-outputs",
+      "shadcn:command",
+      "shadcn:calendar",
+    ],
+    dependencies: ["@radix-ui/react-icons"],
+    files: [{ path: "examples/bento-demo.tsx", type: "registry:example" }],
+  },
+  {
+    name: "confetti-demo",
+    type: "registry:example",
+    files: [{ path: "examples/confetti-demo.tsx", type: "registry:example" }],
+  },
+  {
+    name: "confetti-basic-cannon",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/confetti-basic-cannon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "confetti-random-direction",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/confetti-random-direction.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "confetti-fireworks",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/confetti-fireworks.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "confetti-stars",
+    type: "registry:example",
+    files: [{ path: "examples/confetti-stars.tsx", type: "registry:example" }],
+  },
+  {
+    name: "confetti-side-cannons",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/confetti-side-cannons.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "confetti-custom-shapes",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/confetti-custom-shapes.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "confetti-emoji",
+    type: "registry:example",
+    files: [{ path: "examples/confetti-emoji.tsx", type: "registry:example" }],
+  },
+  {
+    name: "cool-mode-demo",
+    type: "registry:example",
+    files: [{ path: "examples/cool-mode-demo.tsx", type: "registry:example" }],
+  },
+  {
+    name: "cool-mode-custom",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/cool-mode-custom.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "feedback-demo",
+    type: "registry:example",
+    registryDependencies: ["feedback"],
+    files: [{ path: "examples/feedback-demo.tsx", type: "registry:example" }],
+  },
+  {
+    name: "spinner-demo",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: [{ path: "examples/spinner-demo.tsx", type: "registry:example" }],
+  },
+  {
+    name: "spinner-round",
+    type: "registry:example",
+    registryDependencies: ["spinner"],
+    files: [{ path: "examples/spinner-round.tsx", type: "registry:example" }],
+  },
+  {
+    name: "button-icon-right",
+    type: "registry:example",
+    registryDependencies: ["buttons"],
+    files: [
+      {
+        path: "examples/buttons/icon-right.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-icon-left",
+    type: "registry:example",
+    registryDependencies: ["buttons"],
+    files: [
+      {
+        path: "examples/buttons/icon-left.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-gooey-right",
+    type: "registry:example",
+    registryDependencies: ["buttons"],
+    files: [
+      {
+        path: "examples/buttons/gooey-right.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-gooey-left",
+    type: "registry:example",
+    registryDependencies: ["buttons"],
+    files: [
+      {
+        path: "examples/buttons/gooey-left.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-shine",
+    type: "registry:example",
+    registryDependencies: ["buttons"],
+    files: [{ path: "examples/buttons/shine.tsx", type: "registry:example" }],
+  },
+  {
+    name: "button-ring-hover",
+    type: "registry:example",
+    registryDependencies: ["buttons"],
+    files: [
+      {
+        path: "examples/buttons/ring-hover.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-link-hover-1",
+    type: "registry:example",
+    registryDependencies: ["buttons"],
+    files: [
+      {
+        path: "examples/buttons/link-hover-1.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-link-hover-2",
+    type: "registry:example",
+    registryDependencies: ["buttons"],
+    files: [
+      {
+        path: "examples/buttons/link-hover-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "blur-in",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [{ path: "examples/texts/blur-in.tsx", type: "registry:example" }],
+  },
+  {
+    name: "rotate-text",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/rotate-text.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "fade-down-stagger",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/fade-down-stagger.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "fade-up-stagger",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/fade-up-stagger.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "letter-pull-up",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/letter-pull-up.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "multi-direction-slide",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/multi-direction-slide.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "staggered-fade-in",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/staggered-fade-in.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "typing-effect",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/typing-effect.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "velocity-scroll",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/velocity-scroll.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "word-pull-up",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/word-pull-up.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "separate-away",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/separate-away.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "gradual-spacing",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/gradual-spacing.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "slight-flip",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [
+      {
+        path: "examples/texts/slight-flip.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "wavy-text",
+    type: "registry:example",
+    registryDependencies: ["text"],
+    files: [{ path: "examples/texts/wavy-text.tsx", type: "registry:example" }],
+  },
+  {
+    name: "tags-input-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "form", "tags-input-demo"],
+    files: [{ path: "examples/tags-input-demo.tsx", type: "registry:example" }],
+  },
+  {
+    name: "password-input-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "form", "password-input-demo"],
+    files: [
+      {
+        path: "examples/password-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "file-upload-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "form", "file-upload-demo"],
+    files: [
+      {
+        path: "examples/file-upload-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "phone-input-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "form", "phone-input-demo"],
+    files: [
+      {
+        path: "examples/phone-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "smart-date-time-picker-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "form", "smart-date-time-picker-demo"],
+    files: [
+      {
+        path: "examples/smart-date-time-picker-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "date-time-picker-demo",
+    type: "registry:example",
+    registryDependencies: ["button", "form", "date-time-picker-demo"],
+    files: [
+      {
+        path: "examples/date-time-picker-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "multi-select-demo",
+    type: "registry:example",
+    registryDependencies: ["multi-select"],
+    files: [
+      {
+        path: "examples/multi-select-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "location-input-demo",
+    type: "registry:example",
+    registryDependencies: ["location-input"],
+    files: [
+      {
+        path: "examples/location-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "text-animate-demo",
+    type: "registry:example",
+    registryDependencies: ["text-animate"],
+    files: [
+      {
+        path: "examples/text-animate-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "texture-button-demo",
+    type: "registry:example",
+    registryDependencies: ["texture-button"],
+    files: [
+      {
+        path: "examples/texture-button-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "texture-card-demo",
+    type: "registry:example",
+    registryDependencies: ["texture-card", "texture-button"],
+    files: [
+      {
+        path: "examples/texture-card-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "shift-card-demo",
+    type: "registry:example",
+    registryDependencies: ["shift-card", "texture-button"],
+    files: [
+      {
+        path: "examples/shift-card-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "minimal-card-demo",
+    type: "registry:example",
+    registryDependencies: ["minimal-card"],
+    files: [
+      {
+        path: "examples/minimal-card-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dynamic-island-demo",
+    type: "registry:example",
+    registryDependencies: ["dynamic-island"],
+    files: [
+      {
+        path: "examples/dynamic-island-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "direction-aware-tabs-demo",
+    type: "registry:example",
+    registryDependencies: ["direction-aware-tabs"],
+    files: [
+      {
+        path: "examples/direction-aware-tabs-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bg-animate-button-demo",
+    type: "registry:example",
+    registryDependencies: ["bg-animate-button"],
+    files: [
+      {
+        path: "examples/bg-animate-button-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "family-button-demo",
+    type: "registry:example",
+    registryDependencies: ["family-button"],
+    files: [
+      {
+        path: "examples/family-button-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "side-panel-demo",
+    type: "registry:example",
+    registryDependencies: ["side-panel"],
+    files: [
+      {
+        path: "examples/side-panel-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bg-media-demo",
+    type: "registry:example",
+    registryDependencies: ["bg-media"],
+    files: [
+      {
+        path: "examples/bg-media-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "three-d-carousel-demo",
+    type: "registry:example",
+    registryDependencies: ["three-d-carousel"],
+    files: [
+      {
+        path: "examples/three-d-carousel-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tweet-grid-demo",
+    type: "registry:example",
+    registryDependencies: ["tweet-grid", "gradient-heading"],
+    files: [
+      {
+        path: "examples/tweet-grid-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "gradient-heading-demo",
+    type: "registry:example",
+    registryDependencies: ["gradient-heading"],
+    files: [
+      {
+        path: "examples/gradient-heading-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "typewriter-demo",
+    type: "registry:example",
+    registryDependencies: ["typewriter"],
+    files: [
+      {
+        path: "examples/typewriter-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "animated-number-demo",
+    type: "registry:example",
+    registryDependencies: ["animated-number"],
+    files: [
+      {
+        path: "examples/animated-number-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "sortable-list-demo",
+    type: "registry:example",
+    registryDependencies: ["sortable-list"],
+    files: [
+      {
+        path: "examples/sortable-list-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dock-demo",
+    type: "registry:example",
+    registryDependencies: ["dock"],
+    files: [
+      {
+        path: "examples/dock-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dock-rainbow-demo",
+    type: "registry:example",
+    registryDependencies: ["dock"],
+    files: [
+      {
+        path: "examples/dock-rainbow-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "lightboard-demo",
+    type: "registry:example",
+    registryDependencies: ["lightboard"],
+    files: [
+      {
+        path: "examples/lightboard-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "canvas-fractal-grid-demo",
+    type: "registry:example",
+    registryDependencies: ["canvas-fractal-grid"],
+    files: [
+      {
+        path: "examples/canvas-fractal-grid-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "bg-animated-fractal-dot-grid-demo",
+    type: "registry:example",
+    registryDependencies: ["bg-animated-fractal-dot-grid"],
+    files: [
+      {
+        path: "examples/bg-animated-fractal-dot-grid-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "bg-animated-gradient-demo",
+    type: "registry:example",
+    registryDependencies: ["bg-animated-gradient"],
+    files: [
+      {
+        path: "examples/bg-animated-gradient-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "popover-demo",
+    type: "registry:example",
+    registryDependencies: ["popover"],
+    files: [
+      {
+        path: "examples/popover-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "floating-panel-demo",
+    type: "registry:example",
+    registryDependencies: ["floating-panel"],
+    files: [
+      {
+        path: "examples/floating-panel-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "color-picker-demo",
+    type: "registry:example",
+    registryDependencies: ["color-picker"],
+    files: [
+      {
+        path: "examples/color-picker-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
+    name: "shader-lens-blur-demo",
+    type: "registry:example",
+    registryDependencies: ["shader-lens-blur", "color-picker"],
+    files: [
+      {
+        path: "examples/shader-lens-blur-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "popover-form-demo",
+    type: "registry:example",
+    registryDependencies: ["popover-form"],
+    files: [
+      {
+        path: "examples/popover-form-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "expandable-demo",
+    type: "registry:example",
+    registryDependencies: ["expandable"],
+    files: [
+      {
+        path: "examples/expandable-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
+  {
     name: "accordion-demo",
     type: "registry:example",
     registryDependencies: ["accordion"],
@@ -870,17 +2236,6 @@ export const examples: Registry = [
     files: [
       {
         path: "examples/pagination-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "popover-demo",
-    type: "registry:example",
-    registryDependencies: ["popover"],
-    files: [
-      {
-        path: "examples/popover-demo.tsx",
         type: "registry:example",
       },
     ],

@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/texts/rotate-text.tsx",
+      "path": "examples/texts/rotate-text.tsx",
       "content": "import { RotateText } from \"@/registry/default/ui/text\"\n\nexport default function RotateTextDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <RotateText />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""

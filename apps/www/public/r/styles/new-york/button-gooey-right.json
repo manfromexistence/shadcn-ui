@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/buttons/gooey-right.tsx",
+      "path": "examples/buttons/gooey-right.tsx",
       "content": "import { Button } from \"@/registry/new-york/ui/buttons\"\n\nexport default function ButtonGooeyRight() {\n  return <Button variant=\"gooeyRight\">Gooey Right</Button>\n}\n",
       "type": "registry:example",
       "target": ""

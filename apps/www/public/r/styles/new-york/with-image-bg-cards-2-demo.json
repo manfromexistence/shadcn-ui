@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/cards/with-image-bg-cards-2.tsx",
+      "path": "examples/cards/with-image-bg-cards-2.tsx",
       "content": "import { Card_with_image_v2 } from \"@/registry/new-york/ui/card-with-image-bg\"\n\nexport default function Card_with_image_v2_Demo() {\n  return (\n    <div className=\"min-w-full\">\n      <Card_with_image_v2 />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""

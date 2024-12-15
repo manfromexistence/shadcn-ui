@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/buttons/ring-hover.tsx",
+      "path": "examples/buttons/ring-hover.tsx",
       "content": "import { Button } from \"@/registry/default/ui/buttons\"\n\nexport default function ButtonRingHover() {\n  return <Button variant=\"ringHover\">Ring Hover</Button>\n}\n",
       "type": "registry:example",
       "target": ""

@@ -35,7 +35,7 @@ export async function editInV0({
     registryItem.name = registryItem.name.replace(/^v0-/, "")
 
     // Replace `@/registry/new-york/` in files.
-    registryItem.files = registryItem.files?.map((file) => {
+    registryItem.files = registryItem.files?.map((file:any) => {
       if (file.content?.includes("@/registry/new-york/ui")) {
         file.content = file.content?.replaceAll(
           "@/registry/new-york/ui",

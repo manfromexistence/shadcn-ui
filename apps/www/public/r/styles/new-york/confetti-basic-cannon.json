@@ -3,7 +3,7 @@
   "type": "registry:example",
   "files": [
     {
-      "path": "example/confetti-basic-cannon.tsx",
+      "path": "examples/confetti-basic-cannon.tsx",
       "content": "import { ConfettiButton } from \"@/registry/new-york/ui/confetti\"\n\nexport default function ConfettiButtonDemo() {\n  return (\n    <div className=\"relative\">\n      <ConfettiButton>Confetti 🎉</ConfettiButton>\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""

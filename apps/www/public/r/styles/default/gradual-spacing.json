@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/texts/gradual-spacing.tsx",
+      "path": "examples/texts/gradual-spacing.tsx",
       "content": "import { GradualSpacing } from \"@/registry/default/ui/text\"\n\nexport default function GradualSpacingDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <GradualSpacing />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""

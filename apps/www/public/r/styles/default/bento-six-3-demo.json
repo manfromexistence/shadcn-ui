@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/bentos/bento-six-3-demo.tsx",
+      "path": "examples/bentos/bento-six-3-demo.tsx",
       "content": "import { Bento_6_v3 } from \"@/registry/default/ui/bento-6\"\n\nexport default function Bento_6_v3_Demo() {\n  return (\n    <div className=\"min-w-full\">\n      <Bento_6_v3 />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""

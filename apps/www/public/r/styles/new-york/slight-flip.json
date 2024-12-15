@@ -6,7 +6,7 @@
   ],
   "files": [
     {
-      "path": "example/texts/slight-flip.tsx",
+      "path": "examples/texts/slight-flip.tsx",
       "content": "import { SlightFlip } from \"@/registry/new-york/ui/text\"\n\nexport default function SlightFlipDemo() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <SlightFlip />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": ""
