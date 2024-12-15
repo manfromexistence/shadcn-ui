@@ -200,189 +200,192 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container pt-6">
-        <section id="varients" className="scroll-mt-20">
-          <div className="grid">
-            <VarientsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
-            <div id="switchers" className="relative mt-3 flex h-[500px] w-full items-center justify-center rounded-md border">
-              <Switchers />
+      <div className="container-wrapper h-full w-full">
+        <div className="container">
+          <section id="varients" className="scroll-mt-20">
+            <div className="grid">
+              <VarientsNav className="[&>a:first-child]:bg-muted [&>a:first-child]:font-medium [&>a:first-child]:text-primary" />
+              <div id="switchers" className="relative mt-3 flex h-[500px] w-full items-center justify-center rounded-md border">
+                <Switchers />
+              </div>
+              <ShowMore componentName="Switchers" componentHref="switchers" />
+
+              <div id="fluids" className="relative h-[500px] w-full rounded-md border">
+                <Fluids />
+              </div>
+              <ShowMore componentName="Fluids" componentHref="fluids" />
+
+              <div id="cursors" className="flex h-[500px] w-full items-center justify-center rounded-md border">
+                <Cursors />
+              </div>
+              <ShowMore componentName="Cursors" componentHref="cursors" />
+
+              <div className="px-1">
+                <div id="buttons" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {buttonFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        className="flex items-center justify-center"
+                        key={componentName}
+                        directory={buttonDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+
+                <ShowMore componentName="Button" componentHref="buttons" />
+
+                <div id="inputs" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {inputFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        key={componentName}
+                        directory={inputDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                  {textareaFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        key={componentName}
+                        directory={textareaDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+
+                <ShowMore componentName="Input" componentHref="inputs" />
+
+                <div id="selects" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {selectFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        className="flex items-center justify-center"
+                        key={componentName}
+                        directory={selectDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+
+                <ShowMore componentName="Select" componentHref="selects" />
+
+                <div id="checkboxes" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {checboxFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        className="flex items-center justify-center"
+                        key={componentName}
+                        directory={checboxDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+
+                <ShowMore componentName="Checkbox" componentHref="checkboxes-radios-switches" />
+
+                <div id="radios" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {radioFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        className="flex items-center justify-center"
+                        key={componentName}
+                        directory={radioDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+
+                <ShowMore componentName="Radio" componentHref="checkboxes-radios-switches" />
+
+
+                <div id="switches" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {switchFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        className="flex items-center justify-center"
+                        key={componentName}
+                        directory={switchDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+
+                <ShowMore componentName="Switch" componentHref="checkboxes-radios-switches" />
+
+                <div id="alerts" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {alertFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        className="flex items-center justify-center"
+                        key={componentName}
+                        directory={alertDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+
+                <ShowMore componentName="Alert" componentHref="alerts-notifications-banners" />
+
+                <div id="notifications" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {notificationFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        className="flex items-center justify-center"
+                        key={componentName}
+                        directory={notificationDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+
+                <ShowMore componentName="Notification" componentHref="alerts-notifications-banners" />
+
+                <div id="banners" className="grid w-full grid-cols-1 gap-2 overflow-hidden [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {bannerFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        className="flex items-center justify-center"
+                        key={componentName}
+                        directory={bannerDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+
+                <ShowMore componentName="Banner" componentHref="alerts-notifications-banners" />
+
+                <div id="dialogs" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                  {dialogFiles.map((componentName) => {
+                    return (
+                      <DemoComponent
+                        className="flex items-center justify-center"
+                        key={componentName}
+                        directory={dialogDir}
+                        componentName={componentName}
+                      />
+                    );
+                  })}
+                </div>
+
+                <ShowMore componentName="Dialog" componentHref="dialogs" />
+
+              </div>
             </div>
-            <ShowMore componentName="Switchers" componentHref="switchers" />
-
-            <div id="fluids" className="relative h-[500px] w-full rounded-md border">
-              <Fluids />
-            </div>
-            <ShowMore componentName="Fluids" componentHref="fluids" />
-
-            <div id="cursors" className="flex h-[500px] w-full items-center justify-center rounded-md border">
-              <Cursors />
-            </div>
-            <ShowMore componentName="Cursors" componentHref="cursors" />
-
-            <div className="px-1">
-              <div id="buttons" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                {buttonFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      className="flex items-center justify-center"
-                      key={componentName}
-                      directory={buttonDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-              </div>
-
-              <ShowMore componentName="Button" componentHref="buttons" />
-
-              <div id="inputs" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                {inputFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      key={componentName}
-                      directory={inputDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-                {textareaFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      key={componentName}
-                      directory={textareaDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-              </div>
-
-              <ShowMore componentName="Input" componentHref="inputs" />
-
-              <div id="selects" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                {selectFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      className="flex items-center justify-center"
-                      key={componentName}
-                      directory={selectDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-              </div>
-
-              <ShowMore componentName="Select" componentHref="selects" />
-
-              <div id="checkboxes" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                {checboxFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      className="flex items-center justify-center"
-                      key={componentName}
-                      directory={checboxDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-              </div>
-
-              <ShowMore componentName="Checkbox" componentHref="checkboxes-radios-switches" />
-
-              <div id="radios" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                {radioFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      className="flex items-center justify-center"
-                      key={componentName}
-                      directory={radioDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-              </div>
-
-              <ShowMore componentName="Radio" componentHref="checkboxes-radios-switches" />
-
-
-              <div id="switches" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                {switchFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      className="flex items-center justify-center"
-                      key={componentName}
-                      directory={switchDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-              </div>
-
-              <ShowMore componentName="Switch" componentHref="checkboxes-radios-switches" />
-
-              <div id="alerts" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                {alertFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      className="flex items-center justify-center"
-                      key={componentName}
-                      directory={alertDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-              </div>
-
-              <ShowMore componentName="Alert" componentHref="alerts-notifications-banners" />
-
-              <div id="notifications" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                {notificationFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      className="flex items-center justify-center"
-                      key={componentName}
-                      directory={notificationDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-              </div>
-
-              <ShowMore componentName="Notification" componentHref="alerts-notifications-banners" />
-
-              <div id="banners" className="grid w-full grid-cols-1 gap-2 overflow-hidden [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                {bannerFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      className="flex items-center justify-center"
-                      key={componentName}
-                      directory={bannerDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-              </div>
-
-              <ShowMore componentName="Banner" componentHref="alerts-notifications-banners" />
-
-              <div id="dialogs" className="grid w-full grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-                {dialogFiles.map((componentName) => {
-                  return (
-                    <DemoComponent
-                      className="flex items-center justify-center"
-                      key={componentName}
-                      directory={dialogDir}
-                      componentName={componentName}
-                    />
-                  );
-                })}
-              </div>
-
-              <ShowMore componentName="Dialog" componentHref="dialogs" />
-
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
+
     </div>
   )
 }

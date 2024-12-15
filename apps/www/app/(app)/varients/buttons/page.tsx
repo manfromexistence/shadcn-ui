@@ -68,7 +68,7 @@ const files = [
 export default function Page() {
   return (
     <main>
-      <div className="pt-8">
+      <div className="">
         <div className="mx-auto w-full">
           <PageHeader>
             <PageHeaderHeading>Button Varients</PageHeaderHeading>
@@ -79,25 +79,27 @@ export default function Page() {
             <PageActions>
               <Button asChild size="sm">
                 <Link href="/varients">Browse Varients</Link>
-              </Button>
+              </Button> 
               <Button asChild variant="ghost" size="sm">
                 <Link href="/docs">Documentation</Link>
               </Button>
             </PageActions>
           </PageHeader>
-
-          <div className="grid w-full grid-cols-1 gap-2 overflow-hidden px-4 py-6 sm:grid-cols-3 sm:px-6 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-            {files.map((componentName) => {
-              return (
-                <DemoComponent
-
-                  key={componentName}
-                  directory={directory}
-                  componentName={componentName}
-                  className="flex items-center justify-center text-center"
-                />
-              );
-            })}
+          <div className="container-wrapper h-full w-full">
+            <div className="container">
+              <div className="grid w-full grid-cols-1 gap-2 overflow-hidden px-4 py-6 sm:grid-cols-3 sm:px-6 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {files.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      key={componentName}
+                      directory={directory}
+                      componentName={componentName}
+                      className="flex items-center justify-center text-center"
+                    />
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -58,9 +58,8 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container-wrapper w-full h-full">
+      <div className="container-wrapper h-full w-full">
         <div className="homepage-container grid w-full sm:grid-cols-1 md:grid-cols-2 lg:h-[500px] lg:grid-cols-3">
-
           <Link href="/docs/components/dock" className="flex h-full w-full flex-col items-start justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
             <div className="h-24 w-full space-y-2">
               <div className="flex items-center space-x-2">

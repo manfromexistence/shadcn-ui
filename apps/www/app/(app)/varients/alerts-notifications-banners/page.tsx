@@ -75,55 +75,58 @@ const totalComponents = totalAlerts + totalBanners + totalNotifications + 1;
 export default function Page() {
   return (
     <main>
-      <div className="px-4 pt-8">
+      <div className="px-4 ">
         <div className="mx-auto w-full">
           <PageHeader title="Alert, Notification, and Banner">
             A growing collection of {totalComponents} alert, notification, and banner components
             built with Next.js and TailwindCSS.
           </PageHeader>
+          <div className="container-wrapper h-full w-full">
+            <div className="container">
+              <div className="grid w-full grid-cols-1 gap-2 overflow-hidden py-6 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {alertFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      key={componentName}
+                      directory={alertDir}
+                      componentName={componentName}
+                      className="flex items-center justify-center text-center"
+                    />
+                  );
+                })}
+              </div>
 
-          <div className="grid w-full grid-cols-1 gap-2 overflow-hidden py-6 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-            {alertFiles.map((componentName) => {
-              return (
-                <DemoComponent
-                  key={componentName}
-                  directory={alertDir}
-                  componentName={componentName}
-                  className="flex items-center justify-center text-center"
-                />
-              );
-            })}
-          </div>
+              <Separator />
 
-          <Separator />
+              <div className="grid w-full grid-cols-1 gap-2 overflow-hidden py-6 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                {notificationFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      key={componentName}
+                      directory={notificationDir}
+                      componentName={componentName}
+                      className="flex items-center justify-center text-center"
+                    />
+                  );
+                })}
+              </div>
 
-          <div className="grid w-full grid-cols-1 gap-2 overflow-hidden py-6 sm:grid-cols-3 lg:grid-cols-4 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-            {notificationFiles.map((componentName) => {
-              return (
-                <DemoComponent
-                  key={componentName}
-                  directory={notificationDir}
-                  componentName={componentName}
-                  className="flex items-center justify-center text-center"
-                />
-              );
-            })}
-          </div>
+              <Separator />
 
-          <Separator />
-
-          <div className="grid w-full grid-cols-1 gap-2 overflow-hidden py-6 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
-            <DemoComponent directory="notifications" componentName="notification-23" />
-            {bannerFiles.map((componentName) => {
-              return (
-                <DemoComponent
-                  key={componentName}
-                  directory={bannerDir}
-                  componentName={componentName}
-                  className="flex items-center justify-center text-center"
-                />
-              );
-            })}
+              <div className="grid w-full grid-cols-1 gap-2 overflow-hidden py-6 [&>*]:relative [&>*]:px-1 [&>*]:py-12 [&>*]:before:absolute [&>*]:before:[block-size:100vh] [&>*]:before:[inline-size:1px] [&>*]:before:[inset-block-start:0] [&>*]:before:[inset-inline-start:-1px] [&>*]:after:absolute [&>*]:after:[block-size:1px] [&>*]:after:[inline-size:100vw] [&>*]:after:[inset-block-start:-1px] [&>*]:after:[inset-inline-start:0] sm:[&>*]:px-8 xl:[&>*]:px-12">
+                <DemoComponent directory="notifications" componentName="notification-23" />
+                {bannerFiles.map((componentName) => {
+                  return (
+                    <DemoComponent
+                      key={componentName}
+                      directory={bannerDir}
+                      componentName={componentName}
+                      className="flex items-center justify-center text-center"
+                    />
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

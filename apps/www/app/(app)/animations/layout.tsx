@@ -37,10 +37,12 @@ export default function AnimationsLayout({
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="container py-6">
-        <section id="animations" className="scroll-mt-20">
-          {children}
-        </section>
+      <div className="container-wrapper h-full w-full">
+        <div className="container py-6">
+          <section id="animations" className="scroll-mt-20">
+            {children}
+          </section>
+        </div>
       </div>
     </div>
   )

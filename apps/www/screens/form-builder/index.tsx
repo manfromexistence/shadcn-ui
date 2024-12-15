@@ -7,7 +7,6 @@ import { Link } from 'next-view-transitions'
 import { FormFieldType } from '@/types'
 import { defaultFieldConfig } from '@/constants'
 import { useMediaQuery } from '@/hooks/use-media-query'
-import { Separator } from '@/components/ui/separator'
 import If from '@/components/ui/if'
 import SpecialComponentsNotice from '@/components/playground/special-component-notice'
 import { FieldSelector } from '@/screens/field-selector'
@@ -167,7 +166,7 @@ export default function FormBuilder() {
           </ResizablePanelGroup>
         )}
         otherwise={() => (
-          <div className="flex w-full flex-col gap-3 pb-4">
+          <div className="flex w-full flex-col">
             <PageHeader>
               <PageHeaderHeading>Renderers</PageHeaderHeading>
               <PageHeaderDescription>
@@ -189,14 +188,18 @@ export default function FormBuilder() {
                 </Button>
               </PageActions>
             </PageHeader>
-            <PageHeaderHeading className='mx-auto mt-2'>Supported Items</PageHeaderHeading>
-            <PageHeaderDescription className='mx-auto mt-2'>
-                Click on any of this items to get started!
-              </PageHeaderDescription>
-            <div className="mb-10">
-              <FieldSelector addFormField={(variant: string, index: number = 0) =>
-                addFormField(variant, index)
-              } />
+            <div className="container-wrapper h-full w-full">
+              <div className="container py-4">
+                <PageHeaderHeading className='flex w-full items-center justify-center'>Supported Items</PageHeaderHeading>
+                {/* <PageHeaderDescription className='mt-2 flex min-w-full items-center justify-center'>
+                  Click on any of this items to get started!
+                </PageHeaderDescription> */}
+                <div className="mb-10">
+                  <FieldSelector addFormField={(variant: string, index: number = 0) =>
+                    addFormField(variant, index)
+                  } />
+                </div>
+              </div>
             </div>
             {/* <FieldSelectorWithSeparator
               addFormField={(variant: string, index: number = 0) =>

@@ -1,4 +1,4 @@
-import Easings from "@/app/(app)/varients/easings/easings";
+import Easings from "./easings";
 
 const easings = [
   {
