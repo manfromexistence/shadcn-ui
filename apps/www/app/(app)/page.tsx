@@ -58,8 +58,8 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div className="w-full">
-        <div className="mx-auto  grid      w-full    max-w-[1540px] border-x sm:grid-cols-1 md:grid-cols-2 lg:h-[500px] lg:grid-cols-3">
+      <div className="container-wrapper w-full h-full">
+        <div className="homepage-container grid w-full sm:grid-cols-1 md:grid-cols-2 lg:h-[500px] lg:grid-cols-3">
 
           <Link href="/docs/components/dock" className="flex h-full w-full flex-col items-start justify-between border-b border-r p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary">
             <div className="h-24 w-full space-y-2">
@@ -132,7 +132,7 @@ export default function IndexPage() {
               <span className="text-muted-foreground">Icons for everyone.</span>
             </div>
           </Link>
-          <Link href="/animations" className="flex h-full w-full  flex-col justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-r">
+          <Link href="/animations" className="flex h-full w-full  flex-col justify-between border-b p-9 text-muted-foreground hover:bg-primary-foreground hover:text-primary md:border-r lg:border-r-0">
             <div className="flex h-24 w-full justify-between space-x-1">
               <div className="h-24 w-24 rounded-full border bg-secondary"></div>
               <div className="h-24 w-24 rounded-full border bg-secondary"></div>
