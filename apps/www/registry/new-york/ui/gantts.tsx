@@ -28,7 +28,6 @@ import {
   endOfDay,
   endOfMonth,
   format,
-  formatDate,
   formatDistance,
   getDate,
   getDaysInMonth,
@@ -36,6 +35,7 @@ import {
   startOfDay,
   startOfMonth,
 } from "date-fns"
+import formatDate from "date-fns/format"
 import throttle from "lodash.throttle"
 import { PlusIcon, TrashIcon } from "lucide-react"
 import { create } from "zustand"

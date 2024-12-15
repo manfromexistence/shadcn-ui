@@ -44,7 +44,7 @@ export function ChartToolbar({
   )
 }
 
-function ChartTitle({ chart }: { chart: Chart }) {
+function ChartTitle({ chart }: { chart: any }) {
   const { subcategory } = chart
 
   if (!subcategory) {

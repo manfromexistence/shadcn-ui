@@ -16,7 +16,7 @@ import {
 } from "@/registry/new-york/ui/dropdown-menu"
 
 interface CopyButtonProps extends ButtonProps {
-  value: string
+  value: any
   src?: string
   event?: Event["name"]
 }

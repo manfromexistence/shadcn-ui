@@ -2,9 +2,41 @@
 
 import React from 'react'
 import * as chrono from 'chrono-node'
-import { enUS as localeEnUS, type Locale } from 'date-fns/locale'
+// import { type Locale } from 'date-fns'
+import {  enUS as localeEnUS } from 'date-fns/locale'
 import { Calendar as CalendarIcon } from 'lucide-react'
 import { ActiveModifiers } from 'react-day-picker'
+
+type Locale = {
+  code?: any
+  formatDistance?: (...args: Array<any>) => any
+  formatRelative?: (...args: Array<any>) => any
+  localize?: {
+    ordinalNumber: (...args: Array<any>) => any
+    era: (...args: Array<any>) => any
+    quarter: (...args: Array<any>) => any
+    month: (...args: Array<any>) => any
+    day: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any
+  }
+  formatLong?: {
+    date: (...args: Array<any>) => any
+    time: (...args: Array<any>) => any
+    dateTime: (...args: Array<any>) => any
+  }
+  match?: {
+    ordinalNumber: (...args: Array<any>) => any
+    era: (...args: Array<any>) => any
+    quarter: (...args: Array<any>) => any
+    month: (...args: Array<any>) => any
+    day: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any
+  }
+  options?: {
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+  }
+}
 
 import {
   Popover,
@@ -23,7 +55,7 @@ import { cn } from '@/lib/utils'
 /* ------------------https://dub.co/blog/smart-datetime-picker--------------- */
 /* -------------------------------------------------------------------------- */
 
-const localesUsings12HourTime = [
+const localesUsings12HourTime:any = [
   'en-US',
   'en-CA',
   'en-AU',
@@ -59,14 +91,6 @@ const chronoLocales = [
 ] as const
 type ChronoLocale = (typeof chronoLocales)[number]
 
-/**
- * Utility function that parses dates.
- * Parses a given date string using the `chrono-node` library.
- *
- * @param str - A string representation of a date and time.
- * @param locale - The locale to use for parsing the date and time.
- * @returns A `Date` object representing the parsed date and time, or `null` if the string could not be parsed.
- */
 export const parseDateTime = (str: Date | string, locale: Locale) => {
   if (str instanceof Date) return str
 

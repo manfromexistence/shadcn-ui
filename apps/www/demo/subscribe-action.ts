@@ -1,3 +1,4 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
 "use server";
 
 import { z } from "zod";
@@ -15,6 +16,7 @@ const subscribeSchema = z.object({
 type SubscribeResult = { success: true } | { success: false; error: string };
 
 export async function subscribe(email: string): Promise<SubscribeResult> {
+  // eslint-disable-next-line turbo/no-undeclared-env-vars
   if (!process.env.EMAIL_OCTOPUS_API_KEY || !process.env.EMAIL_OCTOPUS_LIST_ID) {
     throw new Error("Missing required environment variables");
   }

@@ -4,10 +4,10 @@ import * as React from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6"
 import { ImSpinner2 } from "react-icons/im"
-import { LuSendHorizonal } from "react-icons/lu"
+import { LuSendHorizontal } from "react-icons/lu"
 
 import { cn } from "@/lib/utils"
-import { Button, ButtonProps } from "@/registry/default/ui/button"
+import { Button, ButtonProps } from "@/registry/new-york/ui/button"
 
 // mock async code
 const useStatus = ({ resloveTo }: { resloveTo: "success" | "error" }) => {
@@ -58,7 +58,7 @@ export function StatefulButton_2({ ...rest }: ButtonProps) {
             animate={"show"}
             exit={"hidden"}
           >
-            <LuSendHorizonal className="size-4" />
+            <LuSendHorizontal className="size-4" />
           </motion.span>
         ) : status === "loading" ? (
           <motion.span

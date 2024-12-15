@@ -4,7 +4,7 @@ import * as React from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6"
 import { ImSpinner2 } from "react-icons/im"
-import { LuSendHorizonal } from "react-icons/lu"
+import { LuSendHorizontal } from "react-icons/lu"
 
 import { cn } from "@/lib/utils"
 import { Button, ButtonProps } from "@/registry/default/ui/button"
@@ -40,7 +40,7 @@ export function StatefulButton_2({ ...rest }: ButtonProps) {
       onClick={onSubmit}
       {...rest}
       variant={status === "error" ? "destructive" : rest.variant}
-      className={cn("w-40 rounded-lg overflow-hidden gap-2", rest.className)}
+      className={cn("w-40 gap-2 overflow-hidden rounded-lg", rest.className)}
     >
       <span key="label">
         {status == "idle"
@@ -58,7 +58,7 @@ export function StatefulButton_2({ ...rest }: ButtonProps) {
             animate={"show"}
             exit={"hidden"}
           >
-            <LuSendHorizonal className="size-4" />
+            <LuSendHorizontal className="size-4" />
           </motion.span>
         ) : status === "loading" ? (
           <motion.span
@@ -68,7 +68,7 @@ export function StatefulButton_2({ ...rest }: ButtonProps) {
             animate={"show"}
             exit={"hidden"}
           >
-            <ImSpinner2 className="animate-spin size-4" />
+            <ImSpinner2 className="size-4 animate-spin" />
           </motion.span>
         ) : (
           <motion.span
