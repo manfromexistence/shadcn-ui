@@ -3,7 +3,7 @@ import { Reorder, AnimatePresence } from 'framer-motion'
 import { FormFieldType } from '@/types'
 import { FieldItem } from '@/screens/field-item'
 
-import { LuRows } from 'react-icons/lu'
+import { LuRows2 } from 'react-icons/lu'
 import { Badge } from '@/components/ui/badge'
 import { GripVertical } from 'lucide-react'
 

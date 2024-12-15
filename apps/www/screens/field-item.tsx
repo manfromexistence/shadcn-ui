@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import If from '@/components/ui/if'
 
-import { LuColumns, LuPencil, LuTrash2 } from 'react-icons/lu'
+import { LuColumns2, LuPencil, LuTrash2 } from 'react-icons/lu'
 import { Plus } from 'lucide-react'
 
 export type FormFieldOrGroup = FormFieldType | FormFieldType[]
@@ -170,10 +170,10 @@ export const FieldItem = ({
         key={`${field.name}-${columnCount}`}
       >
         <div className="flex w-full items-center gap-1 rounded-xl border px-3 py-1.5">
-          {/* <If
+          <If
             condition={Array.isArray(formFields[index])}
-            render={() => <LuColumns className="h-4 w-4 cursor-grab" />}
-          /> */}
+            render={() => <LuColumns2 className="h-4 w-4 cursor-grab" />}
+          />
           <div className="flex w-full items-center">
             <div className="w-full text-sm">{field.variant}</div>
             <Button
