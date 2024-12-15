@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
 import { readComponentSource } from "./read-component-source";
 import { CopyButton } from "@/components/copy-button";
+import { Suspense, lazy } from 'react';
 
-export default async function DemoComponent({
+export default function DemoComponent({
   directory,
   componentName,
   className,
@@ -11,13 +12,18 @@ export default async function DemoComponent({
   componentName: string;
   className?: string;
 }) {
-  const Component = (await import(`@/components/${directory}/${componentName}`)).default;
-  const source = await readComponentSource(directory, componentName);
+  const source = readComponentSource(directory, componentName); // Removed await here
+
+  const DynamicComponent = lazy(() => 
+    import(`@/components/${directory}/${componentName}`) 
+  );
 
   return (
     <div className={cn("relative min-h-[200px] w-full rounded-md border", className)}>
       <CopyButton className="absolute right-2 top-2 transition-opacity" value={source || ""} />
-      <Component />
+      <Suspense fallback={<div>Loading...</div>}> 
+        <DynamicComponent /> 
+      </Suspense>
     </div>
   );
 }
