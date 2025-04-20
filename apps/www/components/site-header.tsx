@@ -7,6 +7,7 @@ import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { Button } from "@/registry/new-york/ui/button"
+import { PlatformFrameworkSelector } from "@/components/platform-framework-selector"
 
 export function SiteHeader() {
   return (
@@ -35,6 +36,7 @@ export function SiteHeader() {
                   <span className="sr-only">GitHub</span>
                 </Link>
               </Button>
+              <PlatformFrameworkSelector />
               <ModeSwitcher />
             </nav>
           </div>
