@@ -3,24 +3,24 @@
 import * as React from "react"
 import { Button } from "@/registry/new-york/ui/button"
 import { Popover, PopoverTrigger, PopoverContent } from "@/registry/new-york/ui/popover"
-import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
-import { Separator } from "@/registry/new-york/ui/separator"
-import { Icons } from "@/components/icons"
 import { Input } from "@/registry/new-york/ui/input"
+import { Icons } from "@/components/icons"
+import { Monitor, Smartphone, Laptop, Gamepad, Headset, Database } from 'lucide-react'
+import { Separator } from "@/registry/new-york/ui/separator"
 
 const PLATFORMS = [
-  { label: "Website", value: "website", icon: <Icons.logo className="h-4 w-4" /> },
-  { label: "Mobile App", value: "mobile", icon: <Icons.apple className="h-4 w-4" /> },
-  { label: "Desktop App", value: "desktop", icon: <Icons.gitHub className="h-4 w-4" /> },
-  { label: "Game", value: "game", icon: <Icons.react className="h-4 w-4" /> },
-  { label: "AR/VR App", value: "arvr", icon: <Icons.radix className="h-4 w-4" /> },
-  { label: "Data Science Tool", value: "datasci", icon: <Icons.npm className="h-4 w-4" /> },
+  { label: "Website", value: "website", icon: <Monitor className="h-4 w-4" /> },
+  { label: "Mobile App", value: "mobile", icon: <Smartphone className="h-4 w-4" /> },
+  { label: "Desktop App", value: "desktop", icon: <Laptop className="h-4 w-4" /> },
+  { label: "Game", value: "game", icon: <Gamepad className="h-4 w-4" /> },
+  { label: "AR/VR App", value: "arvr", icon: <Headset className="h-4 w-4" /> },
+  { label: "Data Science Tool", value: "datasci", icon: <Database className="h-4 w-4" /> },
 ]
 
 const FRAMEWORKS = [
   // Website (over 40 options)
-  { label: "React", value: "react", platform: "website" },
-  { label: "Next.js", value: "nextjs", platform: "website" },
+  { label: "React", value: "react", platform: "website", icon: <Icons.react className="h-4 w-4" /> },
+  { label: "Next.js", value: "nextjs", platform: "website", icon: <Icons.logo className="h-4 w-4" /> },
   { label: "Angular", value: "angular", platform: "website" },
   { label: "Vue.js", value: "vue", platform: "website" },
   { label: "Nuxt.js", value: "nuxtjs", platform: "website" },
@@ -72,8 +72,8 @@ const FRAMEWORKS = [
   { label: "LoopBack", value: "loopback", platform: "website" },
 
   // Mobile App
-  { label: "Flutter", value: "flutter", platform: "mobile" },
-  { label: "React Native", value: "reactnative", platform: "mobile" },
+  { label: "Flutter", value: "flutter", platform: "mobile", icon: <Icons.apple className="h-4 w-4" /> },
+  { label: "React Native", value: "reactnative", platform: "mobile", icon: <Icons.react className="h-4 w-4" /> },
   { label: "Ionic", value: "ionic", platform: "mobile" },
   { label: "Xamarin", value: "xamarin", platform: "mobile" },
   { label: "NativeScript", value: "nativescript", platform: "mobile" },
@@ -174,7 +174,8 @@ export function PlatformFrameworkSelector() {
               onClick={() => setPlatform(p.value)}
               className={`w-full text-start text-sm ${platform === p.value ? 'text-primary border-r-2 border-primary' : 'text-muted-foreground'}`}
             >
-              {p.label}
+              {p.icon}
+              <span>{p.label}</span>
             </button>
           ))}
         </div>
@@ -196,7 +197,8 @@ export function PlatformFrameworkSelector() {
                   onClick={() => setFramework(f.value)}
                   className={`p-0.5 text-start text-sm ${framework === f.value ? 'text-primary border-2 border-primary' : 'text-muted-foreground'}`}
                 >
-                  {f.label}
+                  {f.icon}
+                  <span>{f.label}</span>
                 </button>
               ))}
             </div>
