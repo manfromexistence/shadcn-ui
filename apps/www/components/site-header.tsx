@@ -21,7 +21,7 @@ export function SiteHeader() {
               <CommandMenu />
             </div>
             <nav className="flex items-center gap-0.5">
-              <Button
+              {/* <Button
                 asChild
                 variant="ghost"
                 size="icon"
@@ -35,7 +35,7 @@ export function SiteHeader() {
                   <Icons.gitHub className="h-4 w-4" />
                   <span className="sr-only">GitHub</span>
                 </Link>
-              </Button>
+              </Button> */}
               <PlatformFrameworkSelector />
               <ModeSwitcher />
             </nav>

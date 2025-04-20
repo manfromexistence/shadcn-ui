@@ -2,20 +2,14 @@
 
 import * as React from "react"
 import { Button } from "@/registry/new-york/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-} from "@/registry/new-york/ui/dropdown-menu"
+import { Popover, PopoverTrigger, PopoverContent } from "@/registry/new-york/ui/popover"
+import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
 import { Separator } from "@/registry/new-york/ui/separator"
 import { Icons } from "@/components/icons"
 import { Input } from "@/registry/new-york/ui/input"
 
 const PLATFORMS = [
-  { label: "Website / Web App", value: "website", icon: <Icons.logo className="h-4 w-4" /> },
+  { label: "Website", value: "website", icon: <Icons.logo className="h-4 w-4" /> },
   { label: "Mobile App", value: "mobile", icon: <Icons.apple className="h-4 w-4" /> },
   { label: "Desktop App", value: "desktop", icon: <Icons.gitHub className="h-4 w-4" /> },
   { label: "Game", value: "game", icon: <Icons.react className="h-4 w-4" /> },
@@ -45,67 +39,63 @@ export function PlatformFrameworkSelector() {
   )
 
   return (
-    <div className="flex items-center gap-2">
-      {/* Platform Dropdown */}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
+    <Popover>
+      <PopoverTrigger asChild>
+        <div className="flex items-center gap-2 cursor-pointer">
           <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
             {PLATFORMS.find(p => p.value === platform)?.icon}
             <span className="sr-only">Select platform</span>
           </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
-          <DropdownMenuLabel>Platform</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          {PLATFORMS.map(p => (
-            <DropdownMenuItem
-              key={p.value}
-              onClick={() => setPlatform(p.value)}
-              className={platform === p.value ? "font-semibold" : ""}
-            >
-              {p.icon}
-              {p.label}
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-      {/* Separator */}
-      <Separator orientation="vertical" className="mx-1 h-6" />
-      {/* Framework Dropdown */}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
             {FRAMEWORKS.find(f => f.value === framework)?.icon}
             <span className="sr-only">Select framework</span>
           </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="w-48">
-          <DropdownMenuLabel>Framework</DropdownMenuLabel>
-          <div className="px-2 py-1">
+        </div>
+      </PopoverTrigger>
+      <PopoverContent className="w-[450px] p-0">
+        <div className="flex">
+          {/* Platform Sidebar */}
+          <div className="w-1/2 border-r p-4 space-y-2">
+            {PLATFORMS.map(p => (
+              <button
+                key={p.value}
+                onClick={() => setPlatform(p.value)}
+                className={`flex items-center gap-2 w-full text-left ${platform === p.value ? 'font-semibold' : ''}`}
+              >
+                {p.icon}
+                <span className="text-sm">{p.label}</span>
+              </button>
+            ))}
+          </div>
+          {/* Framework List with Search and ScrollArea */}
+          <div className="w-1/2 p-4 flex flex-col">
             <Input
               placeholder="Search framework..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="h-7 text-xs"
+              className="mb-2 h-8 text-sm"
             />
+            <ScrollArea className="flex-1">
+              <div className="space-y-2">
+                {filteredFrameworks.length === 0 ? (
+                  <div className="text-xs text-muted-foreground">No results</div>
+                ) : (
+                  filteredFrameworks.map(f => (
+                    <button
+                      key={f.value}
+                      onClick={() => setFramework(f.value)}
+                      className={`flex items-center gap-2 w-full text-left ${framework === f.value ? 'font-semibold' : ''}`}
+                    >
+                      {f.icon}
+                      <span className="text-sm">{f.label}</span>
+                    </button>
+                  ))
+                )}
+              </div>
+            </ScrollArea>
           </div>
-          <DropdownMenuSeparator />
-          {filteredFrameworks.length === 0 ? (
-            <div className="px-2 py-2 text-xs text-muted-foreground">No results</div>
-          ) : (
-            filteredFrameworks.map(f => (
-              <DropdownMenuItem
-                key={f.value}
-                onClick={() => setFramework(f.value)}
-                className={framework === f.value ? "font-semibold" : ""}
-              >
-                {f.icon}
-                {f.label}
-              </DropdownMenuItem>
-            ))
-          )}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+        </div>
+      </PopoverContent>
+    </Popover>
   )
 }
