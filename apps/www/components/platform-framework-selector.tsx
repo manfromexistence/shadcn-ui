@@ -153,55 +153,54 @@ export function PlatformFrameworkSelector() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="flex items-center gap-2 cursor-pointer">
+        <div className="flex items-center gap-2 cursor-pointer border rounded-md">
           <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
             {PLATFORMS.find(p => p.value === platform)?.icon}
             <span className="sr-only">Select platform</span>
           </Button>
+          <Separator orientation="vertical" className="h-4" />
           <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
             <Icons.logo className="h-4 w-4" />
             <span className="sr-only">Select framework</span>
           </Button>
         </div>
       </PopoverTrigger>
-      <PopoverContent align="start" sideOffset={8} className="w-[360px] p-0">
+      <PopoverContent className="w-[360px] p-0 flex flex-row">
         {/* Platform Tabs */}
-        <div className="flex space-x-4 border-b px-4 pt-3">
+        <div className="flex border-r pl-4 py-3 flex-col w-[150px] space-y-1.5">
           {PLATFORMS.map(p => (
             <button
               key={p.value}
               onClick={() => setPlatform(p.value)}
-              className={`pb-2 text-sm ${platform === p.value ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground'}`}
+              className={`w-full text-start text-sm ${platform === p.value ? 'text-primary border-r-2 border-primary' : 'text-muted-foreground'}`}
             >
               {p.label}
             </button>
           ))}
         </div>
-        {/* Framework List */}
-        <div className="p-4 flex flex-col h-64">
+        {/* Framework Tabs */}
+        <div className="py-3 flex-1 px-3">
           <Input
             placeholder="Search framework..."
             value={search}
             onChange={e => setSearch(e.target.value)}
             className="mb-2 h-8 text-sm"
           />
-          <ScrollArea className="flex-1">
-            <div className="space-y-2">
-              {filteredFrameworks.length === 0 ? (
-                <div className="text-xs text-muted-foreground">No results</div>
-              ) : (
-                filteredFrameworks.map(f => (
-                  <button
-                    key={f.value}
-                    onClick={() => setFramework(f.value)}
-                    className={`flex items-center gap-2 w-full text-left ${framework === f.value ? 'font-semibold' : ''}`}
-                  >
-                    <span className="text-sm">{f.label}</span>
-                  </button>
-                ))
-              )}
+          {filteredFrameworks.length === 0 ? (
+            <div className="text-xs text-muted-foreground">No results</div>
+          ) : (
+            <div className="flex flex-col overflow-y-auto max-h-[175px] w-full overflow-x-hidden space-y-1.5">
+              {filteredFrameworks.map(f => (
+                <button
+                  key={f.value}
+                  onClick={() => setFramework(f.value)}
+                  className={`p-0.5 text-start text-sm ${framework === f.value ? 'text-primary border-2 border-primary' : 'text-muted-foreground'}`}
+                >
+                  {f.label}
+                </button>
+              ))}
             </div>
-          </ScrollArea>
+          )}
         </div>
       </PopoverContent>
     </Popover>
