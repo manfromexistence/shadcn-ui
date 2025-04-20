@@ -4,7 +4,6 @@ import * as React from "react"
 import { Button } from "@/registry/new-york/ui/button"
 import { Popover, PopoverTrigger, PopoverContent } from "@/registry/new-york/ui/popover"
 import { Input } from "@/registry/new-york/ui/input"
-import { Icons } from "@/components/icons"
 import { Monitor, Smartphone, Laptop, Gamepad, Headset, Database } from 'lucide-react'
 import { Separator } from "@/registry/new-york/ui/separator"
 
@@ -19,8 +18,8 @@ const PLATFORMS = [
 
 const FRAMEWORKS = [
   // Website (over 40 options)
-  { label: "React", value: "react", platform: "website", icon: <Icons.react className="h-4 w-4" /> },
-  { label: "Next.js", value: "nextjs", platform: "website", icon: <Icons.logo className="h-4 w-4" /> },
+  { label: "React", value: "react", platform: "website", icon: <img src={`/icons/react.svg`} className="h-4 w-4" alt="React" /> },
+  { label: "Next.js", value: "nextjs", platform: "website", icon: <img src={`/icons/nextjs.svg`} className="h-4 w-4" alt="Next.js" /> },
   { label: "Angular", value: "angular", platform: "website" },
   { label: "Vue.js", value: "vue", platform: "website" },
   { label: "Nuxt.js", value: "nuxtjs", platform: "website" },
@@ -72,8 +71,8 @@ const FRAMEWORKS = [
   { label: "LoopBack", value: "loopback", platform: "website" },
 
   // Mobile App
-  { label: "Flutter", value: "flutter", platform: "mobile", icon: <Icons.apple className="h-4 w-4" /> },
-  { label: "React Native", value: "reactnative", platform: "mobile", icon: <Icons.react className="h-4 w-4" /> },
+  { label: "Flutter", value: "flutter", platform: "mobile", icon: <img src={`/icons/flutter.svg`} className="h-4 w-4" alt="Flutter" /> },
+  { label: "React Native", value: "reactnative", platform: "mobile", icon: <img src={`/icons/reactnative.svg`} className="h-4 w-4" alt="React Native" /> },
   { label: "Ionic", value: "ionic", platform: "mobile" },
   { label: "Xamarin", value: "xamarin", platform: "mobile" },
   { label: "NativeScript", value: "nativescript", platform: "mobile" },
@@ -160,7 +159,7 @@ export function PlatformFrameworkSelector() {
           </Button>
           <Separator orientation="vertical" className="h-4" />
           <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
-            <Icons.logo className="h-4 w-4" />
+            <img src={`/icons/${framework}.svg`} className="h-4 w-4" alt={framework} />
             <span className="sr-only">Select framework</span>
           </Button>
         </div>
@@ -172,10 +171,10 @@ export function PlatformFrameworkSelector() {
             <button
               key={p.value}
               onClick={() => setPlatform(p.value)}
-              className={`w-full text-start text-sm ${platform === p.value ? 'text-primary border-r-2 border-primary' : 'text-muted-foreground'}`}
+              className={`w-full flex text-start text-sm ${platform === p.value ? 'text-primary border-r-2 border-primary' : 'text-muted-foreground'}`}
             >
               {p.icon}
-              <span>{p.label}</span>
+              <span className="ml-1">{p.label}</span>
             </button>
           ))}
         </div>
@@ -190,15 +189,15 @@ export function PlatformFrameworkSelector() {
           {filteredFrameworks.length === 0 ? (
             <div className="text-xs text-muted-foreground">No results</div>
           ) : (
-            <div className="flex flex-col overflow-y-auto max-h-[175px] w-full overflow-x-hidden space-y-1.5">
+            <div className="flex flex-col overflow-y-auto max-h-[200px] w-full overflow-x-hidden space-y-1.5">
               {filteredFrameworks.map(f => (
                 <button
                   key={f.value}
                   onClick={() => setFramework(f.value)}
-                  className={`p-0.5 text-start text-sm ${framework === f.value ? 'text-primary border-2 border-primary' : 'text-muted-foreground'}`}
+                  className={`p-0.5 text-start flex text-sm ${framework === f.value ? 'text-primary border-2 border-primary' : 'text-muted-foreground'}`}
                 >
-                  {f.icon}
-                  <span>{f.label}</span>
+                  <img src={`/icons/${f.value}.svg`} className="h-4 w-4" alt={f.label} />
+                  <span className="ml-1">{f.label}</span>
                 </button>
               ))}
             </div>
