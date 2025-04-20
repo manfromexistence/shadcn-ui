@@ -7,6 +7,117 @@ import { Input } from "@/registry/new-york/ui/input"
 import { Monitor, Smartphone, Laptop, Gamepad, Headset, Database } from 'lucide-react'
 import { Separator } from "@/registry/new-york/ui/separator"
 
+// Framework to domain mapping (kept for reference, not used for fetching)
+const FRAMEWORK_DOMAINS: { [key: string]: string } = {
+  react: "react.dev",
+  nextjs: "nextjs.org",
+  angular: "angular.dev", // Updated to match download_logos.py
+  vue: "vuejs.org",
+  nuxtjs: "nuxt.com",
+  svelte: "svelte.dev",
+  sveltekits: "kit.svelte.dev",
+  ember: "emberjs.com",
+  backbone: "backbonejs.org",
+  knockout: "knockoutjs.com",
+  alpine: "alpinejs.dev",
+  litelement: "lit.dev",
+  solid: "solidjs.com",
+  stencil: "stenciljs.com",
+  marko: "markojs.com",
+  mithril: "mithril.js.org",
+  hyperapp: "hyperapp.dev",
+  inferno: "infernojs.org",
+  aurelia: "aurelia.io",
+  polymer: "polymer-project.org",
+  dojo: "dojo.io",
+  sencha: "sencha.com",
+  qwik: "qwik.dev",
+  nue: "nuejs.org",
+  astro: "astro.build",
+  hono: "hono.dev",
+  express: "expressjs.com",
+  koa: "koajs.com",
+  nest: "nestjs.com",
+  fastify: "fastify.dev",
+  hapi: "hapi.dev",
+  django: "djangoproject.com",
+  flask: "flask.palletsprojects.com",
+  fastapi: "fastapi.tiangolo.com",
+  rails: "rubyonrails.org",
+  laravel: "laravel.com",
+  springboot: "spring.io",
+  aspnetcore: "dotnet.microsoft.com",
+  phoenix: "phoenixframework.org",
+  cakephp: "cakephp.org",
+  symfony: "symfony.com",
+  zend: "zend.com",
+  yii: "yiiframework.com",
+  codeigniter: "codeigniter.com",
+  slim: "slimframework.com",
+  lumen: "lumen.laravel.com",
+  meteor: "meteor.com",
+  adonisjs: "adonisjs.com",
+  feathersjs: "feathersjs.com",
+  strapi: "strapi.io",
+  loopback: "loopback.io",
+  flutter: "flutter.dev",
+  reactnative: "reactnative.dev",
+  ionic: "ionicframework.com",
+  xamarin: "dotnet.microsoft.com",
+  nativescript: "nativescript.org",
+  swiftui: "developer.apple.com",
+  jetpackcompose: "developer.android.com",
+  framework7: "framework7.io",
+  vuenative: "vue-native.io",
+  cordova: "cordova.apache.org",
+  jquerymobile: "jquerymobile.com",
+  mobileangularui: "mobileangularui.com",
+  coronasdk: "coronalabs.com",
+  swiftic: "swiftic.com",
+  onsenui: "onsen.io",
+  electron: "electronjs.org",
+  dotnetmaui: "dotnet.microsoft.com",
+  winui: "microsoft.com",
+  wpf: "dotnet.microsoft.com",
+  uwp: "microsoft.com",
+  qt: "qt.io",
+  gtk: "gtk.org",
+  javafx: "openjfx.io",
+  tauri: "tauri.app",
+  flutterdesktop: "flutter.dev",
+  reactnativewindows: "microsoft.github.io",
+  nwjs: "nwjs.io",
+  protonnative: "proton-native.js.org",
+  unity: "unity.com",
+  unreal: "unrealengine.com",
+  godot: "godotengine.org",
+  cocos2d: "cocos2d-x.org",
+  phaser: "phaser.io",
+  construct: "construct.net",
+  gamemaker: "yoyogames.com",
+  defold: "defold.com",
+  monogame: "monogame.net",
+  love2d: "love2d.org",
+  arkit: "developer.apple.com",
+  arcore: "developers.google.com",
+  vuforia: "vuforia.com",
+  aframe: "aframe.io",
+  threejs: "threejs.org",
+  babylonjs: "babylonjs.com",
+  sparkar: "sparkar.facebook.com",
+  lensstudio: "lensstudio.snapchat.com",
+  streamlit: "streamlit.io",
+  jupyter: "jupyter.org",
+  dash: "plotly.com",
+  gradio: "gradio.app",
+  panel: "panel.holoviz.org",
+  voila: "voila.readthedocs.io",
+  bokeh: "bokeh.org",
+  plotly: "plotly.com",
+  matplotlib: "matplotlib.org",
+  seaborn: "seaborn.pydata.org",
+}
+
 const PLATFORMS = [
   { label: "Website", value: "website", icon: <Monitor className="h-4 w-4" /> },
   { label: "Mobile App", value: "mobile", icon: <Smartphone className="h-4 w-4" /> },
@@ -15,6 +126,9 @@ const PLATFORMS = [
   { label: "AR/VR App", value: "arvr", icon: <Headset className="h-4 w-4" /> },
   { label: "Data Science Tool", value: "datasci", icon: <Database className="h-4 w-4" /> },
 ]
+
+// Fallback logo for frameworks without a local logo
+const FALLBACK_LOGO = "/icons/fallback.png"
 
 const FRAMEWORKS = [
   // Website (over 40 options)
@@ -69,7 +183,6 @@ const FRAMEWORKS = [
   { label: "FeathersJS", value: "feathersjs", platform: "website" },
   { label: "Strapi", value: "strapi", platform: "website" },
   { label: "LoopBack", value: "loopback", platform: "website" },
-
   // Mobile App
   { label: "Flutter", value: "flutter", platform: "mobile", icon: <img src={`/icons/flutter.svg`} className="h-4 w-4" alt="Flutter" /> },
   { label: "React Native", value: "reactnative", platform: "mobile", icon: <img src={`/icons/reactnative.svg`} className="h-4 w-4" alt="React Native" /> },
@@ -86,7 +199,6 @@ const FRAMEWORKS = [
   { label: "Corona SDK", value: "coronasdk", platform: "mobile" },
   { label: "Swiftic", value: "swiftic", platform: "mobile" },
   { label: "Onsen UI", value: "onsenui", platform: "mobile" },
-
   // Desktop App
   { label: "Electron", value: "electron", platform: "desktop" },
   { label: ".NET MAUI", value: "dotnetmaui", platform: "desktop" },
@@ -101,7 +213,6 @@ const FRAMEWORKS = [
   { label: "React Native for Windows", value: "reactnativewindows", platform: "desktop" },
   { label: "NW.js", value: "nwjs", platform: "desktop" },
   { label: "Proton Native", value: "protonnative", platform: "desktop" },
-
   // Game
   { label: "Unity", value: "unity", platform: "game" },
   { label: "Unreal Engine", value: "unreal", platform: "game" },
@@ -113,7 +224,6 @@ const FRAMEWORKS = [
   { label: "Defold", value: "defold", platform: "game" },
   { label: "MonoGame", value: "monogame", platform: "game" },
   { label: "Love2D", value: "love2d", platform: "game" },
-
   // AR/VR App
   { label: "Unity", value: "unity", platform: "arvr" },
   { label: "Unreal Engine", value: "unreal", platform: "arvr" },
@@ -125,7 +235,6 @@ const FRAMEWORKS = [
   { label: "Babylon.js", value: "babylonjs", platform: "arvr" },
   { label: "Spark AR", value: "sparkar", platform: "arvr" },
   { label: "Lens Studio", value: "lensstudio", platform: "arvr" },
-
   // Data Science Tool
   { label: "Streamlit", value: "streamlit", platform: "datasci" },
   { label: "Jupyter", value: "jupyter", platform: "datasci" },
@@ -137,7 +246,7 @@ const FRAMEWORKS = [
   { label: "Plotly", value: "plotly", platform: "datasci" },
   { label: "Matplotlib", value: "matplotlib", platform: "datasci" },
   { label: "Seaborn", value: "seaborn", platform: "datasci" },
-];
+]
 
 export function PlatformFrameworkSelector() {
   const [platform, setPlatform] = React.useState(PLATFORMS[0].value)
@@ -159,7 +268,17 @@ export function PlatformFrameworkSelector() {
           </Button>
           <Separator orientation="vertical" className="h-4" />
           <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
-            <img src={`/icons/${framework}.svg`} className="h-4 w-4" alt={framework} />
+            {FRAMEWORKS.find(f => f.value === framework)?.icon || (
+              <img
+                src={`/icons/${framework}.png`}
+                className="h-4 w-4"
+                alt={framework}
+                onError={(e) => {
+                  console.error(`Failed to load logo for ${framework}`)
+                  e.currentTarget.src = FALLBACK_LOGO
+                }}
+              />
+            )}
             <span className="sr-only">Select framework</span>
           </Button>
         </div>
@@ -196,7 +315,17 @@ export function PlatformFrameworkSelector() {
                   onClick={() => setFramework(f.value)}
                   className={`p-0.5 text-start flex text-sm ${framework === f.value ? 'text-primary border-2 border-primary' : 'text-muted-foreground'}`}
                 >
-                  <img src={`/icons/${f.value}.svg`} className="h-4 w-4" alt={f.label} />
+                  {f.icon || (
+                    <img
+                      src={`/icons/${f.value}.png`}
+                      className="h-4 w-4"
+                      alt={f.label}
+                      onError={(e) => {
+                        console.error(`Failed to load logo for ${f.value}`)
+                        e.currentTarget.src = FALLBACK_LOGO
+                      }}
+                    />
+                  )}
                   <span className="ml-1">{f.label}</span>
                 </button>
               ))}
