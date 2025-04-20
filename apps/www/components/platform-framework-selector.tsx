@@ -130,10 +130,17 @@ const PLATFORMS = [
 // Fallback logo for frameworks without a local logo
 const FALLBACK_LOGO = "/icons/fallback.png"
 
-const FRAMEWORKS = [
+interface Framework {
+  label: string;
+  value: string;
+  platform: string;
+  icon?: React.ReactNode;
+}
+
+const FRAMEWORKS: Framework[] = [
   // Website (over 40 options)
-  { label: "React", value: "react", platform: "website", icon: <img src={`/icons/react.svg`} className="h-4 w-4" alt="React" /> },
-  { label: "Next.js", value: "nextjs", platform: "website", icon: <img src={`/icons/nextjs.svg`} className="h-4 w-4" alt="Next.js" /> },
+  { label: "React", value: "react", platform: "website" },
+  { label: "Next.js", value: "nextjs", platform: "website" },
   { label: "Angular", value: "angular", platform: "website" },
   { label: "Vue.js", value: "vue", platform: "website" },
   { label: "Nuxt.js", value: "nuxtjs", platform: "website" },
@@ -184,8 +191,8 @@ const FRAMEWORKS = [
   { label: "Strapi", value: "strapi", platform: "website" },
   { label: "LoopBack", value: "loopback", platform: "website" },
   // Mobile App
-  { label: "Flutter", value: "flutter", platform: "mobile", icon: <img src={`/icons/flutter.svg`} className="h-4 w-4" alt="Flutter" /> },
-  { label: "React Native", value: "reactnative", platform: "mobile", icon: <img src={`/icons/reactnative.svg`} className="h-4 w-4" alt="React Native" /> },
+  { label: "Flutter", value: "flutter", platform: "mobile" },
+  { label: "React Native", value: "reactnative", platform: "mobile" },
   { label: "Ionic", value: "ionic", platform: "mobile" },
   { label: "Xamarin", value: "xamarin", platform: "mobile" },
   { label: "NativeScript", value: "nativescript", platform: "mobile" },

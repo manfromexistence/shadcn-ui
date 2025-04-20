@@ -21,9 +21,9 @@ export function SiteHeader() {
               <CommandMenu />
             </div>
             <nav className="flex items-center gap-0.5">
-            <img
-  src="https://img.logo.dev/microsoft.com?token=pk_FC8xRbfOToi3EkF0LHFuDQ&size=200&format=png"
-/>
+              {/* <img
+                src="https://img.logo.dev/nextjs.org?token=pk_FC8xRbfOToi3EkF0LHFuDQ&size=200&format=png"
+              /> */}
               {/* <Button
                 asChild
                 variant="ghost"

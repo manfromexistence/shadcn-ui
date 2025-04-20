@@ -2,6 +2,7 @@ import requests
 import os
 import shutil
 from PIL import Image
+import time
 
 # Logo.dev publishable key
 API_KEY = "pk_FC8xRbfOToi3EkF0LHFuDQ"
@@ -117,6 +118,15 @@ FRAMEWORK_DOMAINS = {
     "seaborn": "seaborn.pydata.org",
 }
 
+# Alternative domains to try for problematic frameworks
+ALTERNATIVE_DOMAINS = {
+    "react": ["reactjs.org", "facebook.github.io/react"],
+    "nextjs": ["next.js.org", "vercel.com"],
+    "angular": ["angular.io", "angularjs.org"],
+    "vue": ["vue.org"],
+    "nuxtjs": ["nuxtjs.org"],
+}
+
 # Output directory (relative to Next.js project)
 OUTPUT_DIR = "public/icons"
 FALLBACK_IMAGE = "public/icons/fallback.png"
@@ -132,43 +142,65 @@ if not os.path.exists(FALLBACK_IMAGE):
     img.save(FALLBACK_IMAGE)
     print(f"Created fallback image at {FALLBACK_IMAGE}")
 
-def download_logo(framework: str, domain: str):
-    """Fetch and save logo for a given framework and domain."""
+def download_logo(framework: str, domain: str, retries: int = 3, backoff: float = 1.0):
+    """Fetch and save logo for a given framework and domain with retries."""
     output_path = os.path.join(OUTPUT_DIR, f"{framework}.png")
     
     # Skip if logo already exists
     if os.path.exists(output_path):
         print(f"Logo already exists for {framework} ({domain}) at {output_path}")
-        return
+        return True
 
-    try:
-        # Fetch logo from Logo.dev API with size 300x300
-        api_url = f"https://img.logo.dev/{domain}?token={API_KEY}&size=300"
-        response = requests.get(api_url, stream=True, timeout=10)
-        response.raise_for_status()
+    for attempt in range(retries):
+        try:
+            # Fetch logo from Logo.dev API with size 300x300
+            api_url = f"https://img.logo.dev/{domain}?token={API_KEY}&size=300"
+            response = requests.get(api_url, stream=True, timeout=10)
+            response.raise_for_status()
 
-        # Save logo to public/icons/{framework}.png
-        with open(output_path, "wb") as f:
-            shutil.copyfileobj(response.raw, f)
+            # Save logo to public/icons/{framework}.png
+            with open(output_path, "wb") as f:
+                shutil.copyfileobj(response.raw, f)
 
-        print(f"Downloaded logo for {framework} ({domain}) to {output_path}")
+            print(f"Downloaded logo for {framework} ({domain}) to {output_path}")
+            return True
 
-    except requests.HTTPError as e:
-        if e.response.status_code == 404:
-            print(f"404 Error: No logo found for {framework} ({domain}), using fallback")
-            shutil.copyfile(FALLBACK_IMAGE, output_path)
-        else:
-            print(f"HTTP Error downloading logo for {framework} ({domain}): {e}")
-    except requests.RequestException as e:
-        print(f"Error downloading logo for {framework} ({domain}): {e}")
-        shutil.copyfile(FALLBACK_IMAGE, output_path)
+        except requests.HTTPError as e:
+            if e.response.status_code == 404:
+                print(f"404 Error: No logo found for {framework} ({domain})")
+                if framework in ALTERNATIVE_DOMAINS:
+                    print(f"Suggested alternative domains: {ALTERNATIVE_DOMAINS[framework]}")
+                shutil.copyfile(FALLBACK_IMAGE, output_path)
+                return False
+            else:
+                print(f"HTTP Error downloading logo for {framework} ({domain}, attempt {attempt + 1}/{retries}): {e}")
+        except requests.RequestException as e:
+            print(f"Error downloading logo for {framework} ({domain}, attempt {attempt + 1}/{retries}): {e}")
+
+        if attempt < retries - 1:
+            time.sleep(backoff * (2 ** attempt))  # Exponential backoff
+
+    print(f"Failed to download logo for {framework} ({domain}) after {retries} attempts, using fallback")
+    shutil.copyfile(FALLBACK_IMAGE, output_path)
+    return False
 
 def main():
     """Download logos for all frameworks."""
     print("Starting logo download...")
+    failed_downloads = []
     for framework, domain in FRAMEWORK_DOMAINS.items():
-        download_logo(framework, domain)
+        success = download_logo(framework, domain)
+        if not success:
+            failed_downloads.append((framework, domain))
+    
     print("Logo download complete.")
+    if failed_downloads:
+        print("\nFailed downloads (used fallback image):")
+        for framework, domain in failed_downloads:
+            print(f"- {framework} ({domain})")
+            if framework in ALTERNATIVE_DOMAINS:
+                print(f"  Try alternative domains: {ALTERNATIVE_DOMAINS[framework]}")
+        print("\nPlease manually download logos for the above frameworks or update FRAMEWORK_DOMAINS with working domains.")
 
 if __name__ == "__main__":
     main()
