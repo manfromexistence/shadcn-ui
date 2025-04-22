@@ -55,3 +55,6 @@ applyTheme(theme, {target: document.body, dark: systemDark});
 This repo is not accepting external contributions, but feature requests and bug
 reports are welcome on
 [GitHub](https://github.com/material-foundation/material-color-utilities/issues).
+
+#0A0A0A
+#1A1A1A
