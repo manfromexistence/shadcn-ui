@@ -114,29 +114,23 @@ export default function IndexPage() {
       const hct = Hct.fromInt(sourceColor);
       
       // For Shadcn theme
-      let generatedShadcnScheme;
-      try {
-        generatedShadcnScheme = new SchemeShadcn(hct, isDarkMode, 0);
+      if (activeGenerator === "shadcn" || activeGenerator === "material") {
+        let generatedShadcnScheme = new SchemeShadcn(hct, isDarkMode, 0);
         setShadcnScheme(generatedShadcnScheme);
-      } catch (error) {
-        console.error("Error creating Shadcn scheme:", error);
       }
       
       // For Material theme
-      const selectedScheme = SCHEMES.find(s => s.id === schemeType);
-      
-      if (!selectedScheme) {
-        console.error(`Scheme type '${schemeType}' not found`);
-        return;
-      }
+      if (activeGenerator === "material") {
+        const selectedScheme = SCHEMES.find(s => s.id === schemeType);
+        
+        if (!selectedScheme) {
+          console.error(`Scheme type '${schemeType}' not found`);
+          return;
+        }
 
-      // Create scheme instance with contrast level 0
-      let generatedScheme;
-      try {
-        generatedScheme = new selectedScheme.class(hct, isDarkMode, 0);
+        // Create scheme instance with contrast level 0
+        let generatedScheme = new selectedScheme.class(hct, isDarkMode, 0);
         setScheme(generatedScheme);
-      } catch (error) {
-        console.error(`Error creating ${selectedScheme.name} scheme:`, error);
       }
     } catch (error) {
       console.error("Error generating scheme:", error);
@@ -148,41 +142,59 @@ export default function IndexPage() {
     setIsLoading(true);
     setSchemeType(value);
     
-    // Use setTimeout to ensure state update has propagated
-    setTimeout(() => {
-      try {
-        const sourceColor = argbFromHex(settings.source);
-        generateSchemeFromSourceColor(sourceColor);
-      } catch (error) {
-        console.error("Error generating theme after scheme change:", error);
-      } finally {
-        setIsLoading(false);
+    try {
+      const sourceColor = argbFromHex(settings.source);
+      const hct = Hct.fromInt(sourceColor);
+      
+      const selectedScheme = SCHEMES.find(s => s.id === value);
+      if (selectedScheme) {
+        const generatedScheme = new selectedScheme.class(hct, isDarkMode, 0);
+        setScheme(generatedScheme);
       }
-    }, 0);
+    } catch (error) {
+      console.error("Error generating theme after scheme change:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // Handle dark mode change with immediate regeneration
+  // Handle dark mode change with immediate regeneration - improved version without setTimeout
   const handleDarkModeChange = (dark: boolean) => {
+    // Start loading state
     setIsLoading(true);
+    
+    // Update dark mode state
     setIsDarkMode(dark);
     
-    // Use setTimeout to ensure state update has propagated
-    setTimeout(() => {
-      try {
-        const sourceColor = argbFromHex(settings.source);
-        generateSchemeFromSourceColor(sourceColor);
-      } catch (error) {
-        console.error("Error generating theme after dark mode change:", error);
-      } finally {
-        setIsLoading(false);
+    try {
+      // Get the current source color
+      const sourceColor = argbFromHex(settings.source);
+      const hct = Hct.fromInt(sourceColor);
+      
+      // Generate Shadcn theme directly without waiting for state update
+      const generatedShadcnScheme = new SchemeShadcn(hct, dark, 0);
+      setShadcnScheme(generatedShadcnScheme);
+      
+      // Generate Material theme if needed
+      if (activeGenerator === "material") {
+        const selectedScheme = SCHEMES.find(s => s.id === schemeType);
+        if (selectedScheme) {
+          const generatedScheme = new selectedScheme.class(hct, dark, 0);
+          setScheme(generatedScheme);
+        }
       }
-    }, 0);
+    } catch (error) {
+      console.error("Error generating theme after dark mode change:", error);
+    } finally {
+      // End loading state
+      setIsLoading(false);
+    }
   };
 
   // Helper function for shorter name
   const generateScheme = () => generateThemeFromHex();
   
-  // Generate a theme from the current hex color
+  // Generate a theme from the current hex color - also improved for immediate feedback
   const generateThemeFromHex = () => {
     setIsLoading(true);
     try {
@@ -445,16 +457,18 @@ export default function IndexPage() {
                 size="sm"
                 onClick={() => handleDarkModeChange(false)}
                 disabled={isLoading}
+                className="min-w-16"
               >
-                Light
+                {isLoading && !isDarkMode ? "..." : "Light"}
               </Button>
               <Button 
                 variant={isDarkMode ? "default" : "outline"} 
                 size="sm"
                 onClick={() => handleDarkModeChange(true)}
                 disabled={isLoading}
+                className="min-w-16"
               >
-                Dark
+                {isLoading && isDarkMode ? "..." : "Dark"}
               </Button>
             </div>
           </div>
