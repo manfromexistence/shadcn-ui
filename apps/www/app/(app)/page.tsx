@@ -218,7 +218,7 @@ function ColorSwatch({ name, color }: { name: string, color: string }) {
         </p>
       </div>
       <span
-        className={`mt-2 text-xs font-mono ${dark ? "text-white" : "text-black"}`}
+        className={`mt-2 text-xs font-mono`}
         style={{
           background: dark ? "rgba(0,0,0,0.2)" : "rgba(255,255,255,0.4)",
           borderRadius: 4,
