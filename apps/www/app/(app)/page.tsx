@@ -218,6 +218,12 @@ export default function IndexPage() {
     return SchemeShadcn.toHslString(colorInt);
   };
 
+  // Helper: Convert ARGB int to HSL display string (for UI display)
+  const intToHslDisplay = (colorInt: number): string => {
+    const hslValue = SchemeShadcn.toHslString(colorInt);
+    return `hsl(${hslValue})`;
+  };
+
   // Copy Shadcn theme CSS to clipboard with both light and dark modes
   const copyShadcnThemeCSS = () => {
     if (!shadcnScheme) return;
@@ -500,6 +506,7 @@ export default function IndexPage() {
                   key={name}
                   name={name}
                   color={intToHex(shadcnScheme[key] as number)}
+                  displayValue={intToHslDisplay(shadcnScheme[key] as number)}
                 />
               )
             ))}
@@ -536,8 +543,8 @@ export default function IndexPage() {
   );
 }
 
-// ColorSwatch component remains unchanged
-function ColorSwatch({ name, color }: { name: string, color: string }) {
+// Updated ColorSwatch component to support displaying HSL values
+function ColorSwatch({ name, color, displayValue }: { name: string, color: string, displayValue?: string }) {
   // Simple luminance check for text color
   function isDark(hex: string) {
     const c = hex.replace('#', '');
@@ -577,7 +584,7 @@ function ColorSwatch({ name, color }: { name: string, color: string }) {
           padding: "0 6px"
         }}
       >
-        {color}
+        {displayValue || color}
       </span>
     </div>
   )
