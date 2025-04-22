@@ -219,7 +219,7 @@ export default function IndexPage() {
   ];
 
   return (
-    <div className="p-8">
+    <div className="p-8 container border-x border-dashed">
       <h1 className="text-3xl font-bold mb-6">Material Theme Generator</h1>
       <Card className="mb-8">
         <CardContent className="pt-6">
