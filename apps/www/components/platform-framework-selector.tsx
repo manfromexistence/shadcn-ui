@@ -268,7 +268,7 @@ export function PlatformFrameworkSelector() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="flex items-center gap-2 cursor-pointer border rounded-md">
+        <div className="flex cursor-pointer items-center gap-2 rounded-md border">
           <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
             {PLATFORMS.find(p => p.value === platform)?.icon}
             <span className="sr-only">Select platform</span>
@@ -290,14 +290,14 @@ export function PlatformFrameworkSelector() {
           </Button>
         </div>
       </PopoverTrigger>
-      <PopoverContent className="w-[360px] p-0 flex flex-row">
+      <PopoverContent className="flex w-[360px] flex-row p-0">
         {/* Platform Tabs */}
-        <div className="flex border-r pl-4 py-3 flex-col w-[150px] space-y-1.5">
+        <div className="flex w-[150px] flex-col space-y-1.5 border-r py-3 pl-4">
           {PLATFORMS.map(p => (
             <button
               key={p.value}
               onClick={() => setPlatform(p.value)}
-              className={`w-full flex text-start text-sm ${platform === p.value ? 'text-primary border-r-2 border-primary' : 'text-muted-foreground'}`}
+              className={`flex w-full text-start text-sm ${platform === p.value ? 'border-r-2 border-primary text-primary' : 'text-muted-foreground'}`}
             >
               {p.icon}
               <span className="ml-1">{p.label}</span>
@@ -305,7 +305,7 @@ export function PlatformFrameworkSelector() {
           ))}
         </div>
         {/* Framework Tabs */}
-        <div className="py-3 flex-1 px-3">
+        <div className="flex-1 p-3">
           <Input
             placeholder="Search framework..."
             value={search}
@@ -315,12 +315,12 @@ export function PlatformFrameworkSelector() {
           {filteredFrameworks.length === 0 ? (
             <div className="text-xs text-muted-foreground">No results</div>
           ) : (
-            <div className="flex flex-col overflow-y-auto max-h-[200px] w-full overflow-x-hidden space-y-1.5">
+            <div className="flex max-h-[200px] w-full flex-col space-y-1.5 overflow-y-auto overflow-x-hidden">
               {filteredFrameworks.map(f => (
                 <button
                   key={f.value}
                   onClick={() => setFramework(f.value)}
-                  className={`p-0.5 text-start flex text-sm ${framework === f.value ? 'text-primary border-2 border-primary' : 'text-muted-foreground'}`}
+                  className={`flex p-0.5 text-start text-sm ${framework === f.value ? 'border-2 border-primary text-primary' : 'text-muted-foreground'}`}
                 >
                   {f.icon || (
                     <img
