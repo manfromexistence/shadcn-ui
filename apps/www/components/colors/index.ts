@@ -42,6 +42,7 @@ export * from './scheme/scheme_neutral';
 export * from './scheme/scheme_rainbow';
 export * from './scheme/scheme_tonal_spot';
 export * from './scheme/scheme_vibrant';
+export * from './scheme/scheme_shadcn'; // Add the new scheme
 export * from './score/score';
 export * from './temperature/temperature_cache';
 export * from './utils/color_utils';
