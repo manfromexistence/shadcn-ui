@@ -11,6 +11,7 @@ import { ThemeSwitcher } from "@/components/theme-switcher"
 import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
 import { Toaster as NewYorkSonner } from "@/registry/new-york/ui/sonner"
 import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 export const metadata: Metadata = {
   title: {
@@ -103,9 +104,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
             disableTransitionOnChange
             enableColorScheme
           >
+
             <div vaul-drawer-wrapper="">
               <div className="relative flex min-h-svh flex-col bg-background">
-                {children}
+                <AntdRegistry>
+                  {children}
+                </AntdRegistry>
               </div>
             </div>
             <TailwindIndicator />
