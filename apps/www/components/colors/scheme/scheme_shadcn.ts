@@ -74,7 +74,7 @@ export class SchemeShadcn {
 
             // Make card distinct from popover
             this.props.card = core.n2.tone(98); // Very slightly tinted from neutral palette
-            this.props.cardForeground = core.n1.tone(7); // Same as foreground
+            this.props.cardForeground = core.n1.tone(9); // Same as foreground
 
             // Borders and inputs with subtle variation
             this.props.border = core.n2.tone(90); // Light border
