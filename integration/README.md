@@ -1,6 +1,6 @@
 # Remove old codebase
 ```
-rm -rf 21st material-color-utilities Prismui ui originui react-bits shadcn-builder fumadocs kibo blocks animate-ui tailwindcss-motion shadcn-table tweakcn cult-ui magicui svgl
+rm -rf 21st material-color-utilities Prismui ui originui react-bits shadcn-builder fumadocs kibo blocks animate-ui tailwindcss-motion shadcn-table tweakcn cult-ui magicui svgl themux
 ```
 
 # Add new codebase
@@ -21,6 +21,7 @@ git clone https://github.com/jnsahaj/tweakcn && cd tweakcn && rm -rf .git && cd 
 git clone https://github.com/nolly-studio/cult-ui && cd cult-ui && rm -rf .git && cd ..
 git clone https://github.com/magicuidesign/magicui.git && cd magicui && rm -rf .git && cd ..
 git clone https://github.com/pheralb/svgl.git && cd svgl && rm -rf .git && cd ..
+git clone https://github.com/llanesluis/themux.git && cd themux && rm -rf .git && cd ..
 ```
 
 ```
