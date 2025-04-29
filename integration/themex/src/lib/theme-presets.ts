@@ -1,613 +1,9 @@
-import { OtherPresets, ThemeObject } from "@/types/theme";
-import { monoFonts, sansFonts, serifFonts } from "@/utils/fonts";
+import { ThemePreset } from "@/types/theme1";
 
-
-export const otherPresets: Record<OtherPresets, ThemeObject> = {
-  claude: {
-    name: "claude",
-    label: "Claude",
-    radius: "0.5rem",
-    fonts: {
-      sans: serifFonts.Adamina.value,
-      serif: serifFonts.Adamina.value,
-      mono: monoFonts["Fira Code"].value,
-    },
-    light: {
-      background: "#faf9f5",
-      foreground: "#3d3929",
-      card: "#faf9f5",
-      "card-foreground": "#141413",
-      popover: "#ffffff",
-      "popover-foreground": "#28261b",
-      primary: "#c96442",
-      "primary-foreground": "#ffffff",
-      secondary: "#e9e6dc",
-      "secondary-foreground": "#535146",
-      muted: "#ede9de",
-      "muted-foreground": "#696762",
-      accent: "#e9e6dc",
-      "accent-foreground": "#28261b",
-      destructive: "#141413",
-      "destructive-foreground": "#ffffff",
-      border: "#dad9d4",
-      input: "#b4b2a7",
-      ring: "#fa6331",
-      "chart-1": "#b05730",
-      "chart-2": "#9c87f5",
-      "chart-3": "#ded8c4",
-      "chart-4": "#dbd3f0",
-      "chart-5": "#b4552d",
-      sidebar: "#f5f4ee",
-      "sidebar-foreground": "#3d3d3a",
-      "sidebar-primary": "#c96442",
-      "sidebar-primary-foreground": "#fbfbfb",
-      "sidebar-accent": "#e9e6dc",
-      "sidebar-accent-foreground": "#343434",
-      "sidebar-border": "#e7e7e7",
-      "sidebar-ring": "#fa6331",
-      radius: "0.5rem",
-    },
-    dark: {
-      background: "#262624",
-      foreground: "#c3c0b6",
-      card: "#262624",
-      "card-foreground": "#faf9f5",
-      popover: "#30302e",
-      "popover-foreground": "#e5e5e2",
-      primary: "#d97757",
-      "primary-foreground": "#ffffff",
-      secondary: "#faf9f5",
-      "secondary-foreground": "#30302e",
-      muted: "#1b1b19",
-      "muted-foreground": "#b7b5a9",
-      accent: "#1a1915",
-      "accent-foreground": "#f5f4ee",
-      destructive: "#d13d3d",
-      "destructive-foreground": "#ffffff",
-      border: "#3e3e38",
-      input: "#52514a",
-      ring: "#ff9b79",
-      "chart-1": "#b05730",
-      "chart-2": "#9c87f5",
-      "chart-3": "#1a1915",
-      "chart-4": "#2f2b48",
-      "chart-5": "#b4552d",
-      sidebar: "#1f1e1d",
-      "sidebar-foreground": "#c3c0b6",
-      "sidebar-primary": "#d97757",
-      "sidebar-primary-foreground": "#fbfbfb",
-      "sidebar-accent": "#0f0f0e",
-      "sidebar-accent-foreground": "#c3c0b6",
-      "sidebar-border": "#313131",
-      "sidebar-ring": "#ff9b79",
-    },
-  },
-  "t3-chat": {
-    label: "T3 Chat",
-    name: "t3-chat",
-    radius: "0.5rem",
-    fonts: {
-      sans: sansFonts.Figtree.value,
-      mono: monoFonts["JetBrains Mono"].value,
-    },
-    light: {
-      background: "hsl(300 56% 98%)", // --chat-backgound, actual --background = hsl(293.7 46.3% 92%)
-      foreground: "hsl(296 56% 21%)",
-      card: "hsl(291 54% 97%)",
-      "card-foreground": "hsl(240 10% 30%)",
-      popover: "hsl(0 0% 100%)",
-      "popover-foreground": "hsl(296 56% 21%)",
-      primary: "hsl(334.2 74.9% 56.9%)",
-      "primary-foreground": "hsl(0 0% 100%)",
-      secondary: "hsl(314.7 61.6% 85.7%)",
-      "secondary-foreground": "hsl(295.8 40.9% 34.5%)",
-      muted: "hsl(327.7 61.6% 78.7%)",
-      "muted-foreground": "hsl(325.846 39.877% 31.961%)",
-      accent: "hsl(314.7 61.6% 85.7%)",
-      "accent-foreground": "hsl(295.8 40.9% 34.5%)",
-      destructive: "hsl(335.025 100% 38.627%)",
-      "destructive-foreground": "hsl(0 0% 100%)",
-      border: "hsl(304.8 61% 83.9%)", // --chat-border
-      input: "hsl(317.4 44.2% 83.1%)",
-      ring: "hsl(333.3 71.4% 50.6%)",
-      "chart-1": "hsl(318.436 70.196% 50%)",
-      "chart-2": "hsl(272.335 82.266% 39.804%)",
-      "chart-3": "hsl(197 37% 24%)",
-      "chart-4": "hsl(43 74% 66%)",
-      "chart-5": "hsl(27 87% 67%)",
-      radius: "0.5rem",
-      sidebar: "hsl(293.7 46.3% 92%)",
-      "sidebar-foreground": "hsl(240 10% 30%)",
-      "sidebar-primary": "hsl(332.824 79.439% 41.961%)",
-      "sidebar-primary-foreground": "hsl(0 0% 98%)",
-      "sidebar-accent": "hsl(60 5% 97%)",
-      "sidebar-accent-foreground": "hsl(240 10% 30%)",
-      "sidebar-border": "hsl(304.8 61% 81.9%)",
-      "sidebar-ring": "hsl(332.824 79.439% 41.961%)",
-    },
-    dark: {
-      background: "hsl(270 16.13% 12.16% )", // --chat-backgound, actual --background = hsl(313.8 24.5% 10.4%)
-      foreground: "hsl(270 20% 97.8%)",
-      card: "hsl(320 23.08% 5.1%)",
-      "card-foreground": "hsl(326 33% 96%)",
-      popover: "hsl(320 23.08% 5.1%)",
-      "popover-foreground": "hsl(326 33% 96%)",
-      primary: "hsl(332 100% 32%)",
-      "primary-foreground": "hsl(326 85% 90%)",
-      secondary: "hsl(273.8 15.1% 20.8%)",
-      "secondary-foreground": "hsl(270 30% 83%)",
-      muted: "hsl(274, 15%, 18%)",
-      "muted-foreground": "hsl(326 33% 86%)",
-      accent: "hsl(272 20% 27%)",
-      "accent-foreground": "hsl(326 33% 96%)",
-      destructive: "hsl(335.82 74.44% 35.29%)",
-      "destructive-foreground": "hsl(0 0% 100%)",
-      border: "hsl(273.8 15.1% 20.8%)",
-      input: "hsl(312 8.772% 22.353%)",
-      ring: "hsl(333.3 71.4% 50.6%)",
-      "chart-1": "hsl(318.436 70.196% 50%)",
-      "chart-2": "hsl(272.335 82.266% 39.804%)",
-      "chart-3": "hsl(30 80% 55%)",
-      "chart-4": "hsl(280 65% 60%)",
-      "chart-5": "hsl(340 75% 55%)",
-      sidebar: "hsl(313 19% 9%)",
-      "sidebar-foreground": "hsl(240 4.8% 95.9%)",
-      "sidebar-primary": "hsl(332.055 100% 28.627%)",
-      "sidebar-primary-foreground": "hsl(0 0% 100%)",
-      "sidebar-accent": "hsl(318.5 20.6% 12.4%)",
-      "sidebar-accent-foreground": "hsl(240 4.8% 95.9%)",
-      "sidebar-border": "hsl(325 15.385% 15.294%)",
-      "sidebar-ring": "hsl(332.055 100% 28.627%)",
-    },
-  },
-  bubblegum: {
-    name: "bubblegum",
-    label: "Bubblegum",
-    radius: "1rem",
-    fonts: {
-      sans: sansFonts.Poppins.value,
-      serif: serifFonts.Lora.value,
-      mono: monoFonts["Fira Code"].value,
-    },
-    light: {
-      background: "#f6e6ee",
-      foreground: "#5b5b5b",
-      card: "#fdedc9",
-      "card-foreground": "#5b5b5b",
-      popover: "#ffffff",
-      "popover-foreground": "#5b5b5b",
-      primary: "#d04f99",
-      "primary-foreground": "#ffffff",
-      secondary: "#8acfd1",
-      "secondary-foreground": "#333333",
-      muted: "#b2e1eb",
-      "muted-foreground": "#5f5f5f",
-      accent: "#fbe2a7",
-      "accent-foreground": "#333333",
-      destructive: "#c34a4a",
-      "destructive-foreground": "#ffffff",
-      border: "#d04f99",
-      input: "#e4e4e4",
-      ring: "#e670ab",
-      "chart-1": "#e670ab",
-      "chart-2": "#84d2e2",
-      "chart-3": "#fbe2a7",
-      "chart-4": "#f3a0ca",
-      "chart-5": "#d7488e",
-      sidebar: "#f8d8ea",
-      "sidebar-foreground": "#333333",
-      "sidebar-primary": "#ec4899",
-      "sidebar-primary-foreground": "#ffffff",
-      "sidebar-accent": "#f9a8d4",
-      "sidebar-accent-foreground": "#333333",
-      "sidebar-border": "#f3e8ff",
-      "sidebar-ring": "#ec4899",
-      "font-sans": "Poppins, sans-serif",
-      "font-serif": "Lora, serif",
-      "font-mono": "Fira Code, monospace",
-      radius: "1rem",
-      "shadow-color": "hsl(325.78 58.18% 56.86% / 0.5)",
-      "shadow-opacity": "1.0",
-      "shadow-blur": "0px",
-      "shadow-spread": "0px",
-      "shadow-offset-x": "3px",
-      "shadow-offset-y": "3px",
-    },
-    dark: {
-      background: "#12242e",
-      foreground: "#f3e3ea",
-      card: "#1c2e38",
-      "card-foreground": "#f3e3ea",
-      popover: "#1c2e38",
-      "popover-foreground": "#f3e3ea",
-      primary: "#fbe2a7",
-      "primary-foreground": "#12242e",
-      secondary: "#e4a2b1",
-      "secondary-foreground": "#12242e",
-      muted: "#234254",
-      "muted-foreground": "#d8a8b5",
-      accent: "#894971",
-      "accent-foreground": "#fafafa",
-      destructive: "#e35ea4",
-      "destructive-foreground": "#12242e",
-      border: "#324859",
-      input: "#20333d",
-      ring: "#50afb6",
-      "chart-1": "#50afb6",
-      "chart-2": "#e4a2b1",
-      "chart-3": "#c67b96",
-      "chart-4": "#175c6c",
-      "chart-5": "#24272b",
-      sidebar: "#101f28",
-      "sidebar-foreground": "#f3f4f6",
-      "sidebar-primary": "#ec4899",
-      "sidebar-primary-foreground": "#ffffff",
-      "sidebar-accent": "#f9a8d4",
-      "sidebar-accent-foreground": "#1f2937",
-      "sidebar-border": "#374151",
-      "sidebar-ring": "#ec4899",
-      "font-sans": "Poppins, sans-serif",
-      "font-serif": "Lora, serif",
-      "font-mono": "Fira Code, monospace",
-      "shadow-color": "#324859",
-    },
-  },
-  "tokyo-night": {
-    name: "tokyo-night",
-    label: "Tokyo Night",
-    radius: "0.25rem",
-    fonts: {
-      sans: monoFonts["JetBrains Mono"].value,
-      serif: serifFonts["IBM Plex Serif"].value,
-      mono: monoFonts["JetBrains Mono"].value,
-    },
-    light: {
-      background: "#e6e7ed",
-      foreground: "#343b59",
-      card: "#d6d8df",
-      "card-foreground": "343b59",
-      popover: "#e6e7ed",
-      "popover-foreground": "343b59",
-      primary: "#6127cd",
-      "primary-foreground": "#e6e7ed",
-      secondary: "#d31a58",
-      "secondary-foreground": "#f5f5f5",
-      muted: "#a9bde7",
-      "muted-foreground": "#3d4968",
-      accent: "#f19e9e",
-      "accent-foreground": "#4f1717",
-      destructive: "#8c4351",
-      "destructive-foreground": "#e6e7ed",
-      border: "#bcc0cc",
-      input: "#abb2c5",
-      ring: "#6127cd",
-      "chart-1": "#2959aa",
-      "chart-2": "#9ece6a",
-      "chart-3": "#8f5e15",
-      "chart-4": "#006c86",
-      "chart-5": "#5a3e8e",
-      sidebar: "#d6d8df",
-      "sidebar-foreground": "#343b59",
-      "sidebar-primary": "#6127cd",
-      "sidebar-primary-foreground": "#e6e7ed",
-      "sidebar-accent": "#f19e9e",
-      "sidebar-accent-foreground": "#4f1717",
-      "sidebar-border": "#bcc0cc",
-      "sidebar-ring": "#6127cd",
-      "font-sans": "JetBrains Mono, monospace",
-      "font-serif": "IBM Plex Serif, serif",
-      "font-mono": "JetBrains Mono, monospace",
-      radius: "0.25rem",
-      "shadow-color": "#385f0d",
-      "shadow-opacity": "0.1",
-      "shadow-blur": "6px",
-      "shadow-spread": "0px",
-      "shadow-offset-x": "1px",
-      "shadow-offset-y": "1px",
-    },
-    dark: {
-      background: "#1a1b26",
-      foreground: "#c0caf5",
-      card: "#24283b",
-      "card-foreground": "#c0caf5",
-      popover: "#2c2c3e",
-      "popover-foreground": "#e0e0e0",
-      primary: "#d31a58",
-      "primary-foreground": "#f5f5f5",
-      secondary: "#bb9af7",
-      "secondary-foreground": "#1a1b26",
-      muted: "#30334a",
-      "muted-foreground": "#a9b1d6",
-      accent: "#5a3e8e",
-      "accent-foreground": "#c0caf5",
-      destructive: "#f7768e",
-      "destructive-foreground": "#1a1b26",
-      border: "#252a41",
-      input: "#4f3f61",
-      ring: "#ea284f",
-      "chart-1": "#9ece6a",
-      "chart-2": "#ff9e64",
-      "chart-3": "#e0af68",
-      "chart-4": "#7aa2f7",
-      "chart-5": "#2ac3de",
-      sidebar: "#24283b",
-      "sidebar-foreground": "#c0caf5",
-      "sidebar-primary": "#d31a58",
-      "sidebar-primary-foreground": "#f5f5f5",
-      "sidebar-accent": "#5a3e8e",
-      "sidebar-accent-foreground": "#c0caf5",
-      "sidebar-border": "#2d334d",
-      "sidebar-ring": "#ea284f",
-      "font-sans": "JetBrains Mono, monospace",
-      "font-serif": "IBM Plex Serif, serif",
-      "font-mono": "JetBrains Mono, monospace",
-
-      "shadow-color": "#cfc9c2",
-    },
-  },
-  mono: {
-    name: "mono",
-    label: "Mono",
-    radius: "0rem",
-    fonts: {
-      sans: monoFonts["Geist Mono"].value,
-      mono: monoFonts["Geist Mono"].value,
-    },
-    light: {
-      radius: "0rem",
-      background: "oklch(1 0 0)",
-      foreground: "oklch(.145 0 0)",
-      card: "oklch(1 0 0)",
-      "card-foreground": "oklch(.145 0 0)",
-      popover: "oklch(1 0 0)",
-      "popover-foreground": "oklch(.145 0 0)",
-      primary: "oklch(.556 0 0)",
-      "primary-foreground": "oklch(.985 0 0)",
-      secondary: "oklch(.97 0 0)",
-      "secondary-foreground": "oklch(.205 0 0)",
-      muted: "oklch(.97 0 0)",
-      "muted-foreground": "oklch(.439 0 0)",
-      accent: "oklch(.97 0 0)",
-      "accent-foreground": "oklch(.205 0 0)",
-      destructive: "oklch(.577 .245 27.325)",
-      "destructive-foreground": "oklch(1 0 0)",
-      border: "oklch(.922 0 0)",
-      input: "oklch(.922 0 0)",
-      ring: "oklch(.556 0 0)",
-      "chart-1": "oklch(.556 0 0)",
-      "chart-2": "oklch(.439 0 0)",
-      "chart-3": "oklch(.371 0 0)",
-      "chart-4": "oklch(.269 0 0)",
-      "chart-5": "oklch(.205 0 0)",
-      sidebar: "oklch(.985 0 0)",
-      "sidebar-foreground": "oklch(.145 0 0)",
-      "sidebar-primary": "oklch(.556 0 0)",
-      "sidebar-primary-foreground": "oklch(.985 0 0)",
-      "sidebar-accent": "oklch(.97 0 0)",
-      "sidebar-accent-foreground": "oklch(.205 0 0)",
-      "sidebar-border": "oklch(.922 0 0)",
-      "sidebar-ring": "oklch(.556 0 0)",
-    },
-    dark: {
-      background: "oklch(.145 0 0)",
-      foreground: "oklch(.985 0 0)",
-      card: "oklch(.205 0 0)",
-      "card-foreground": "oklch(.985 0 0)",
-      popover: "oklch(.269 0 0)",
-      "popover-foreground": "oklch(.985 0 0)",
-      primary: "oklch(.556 0 0)",
-      "primary-foreground": "oklch(.985 0 0)",
-      secondary: "oklch(.269 0 0)",
-      "secondary-foreground": "oklch(.985 0 0)",
-      muted: "oklch(.269 0 0)",
-      "muted-foreground": "oklch(.708 0 0)",
-      accent: "oklch(.371 0 0)",
-      "accent-foreground": "oklch(.985 0 0)",
-      destructive: "oklch(.704 .191 22.216)",
-      "destructive-foreground": "oklch(.145 0 0)",
-      border: "oklch(1 0 0 / 10%)",
-      input: "oklch(1 0 0 / 15%)",
-      ring: "oklch(.556 0 0)",
-      "chart-1": "oklch(.439 0 0)",
-      "chart-2": "oklch(.556 0 0)",
-      "chart-3": "oklch(.708 0 0)",
-      "chart-4": "oklch(.87 0 0)",
-      "chart-5": "oklch(.922 0 0)",
-      sidebar: "oklch(.205 0 0)",
-      "sidebar-foreground": "oklch(.985 0 0)",
-      "sidebar-primary": "oklch(.556 0 0)",
-      "sidebar-primary-foreground": "oklch(.985 0 0)",
-      "sidebar-accent": "oklch(.269 0 0)",
-      "sidebar-accent-foreground": "oklch(.985 0 0)",
-      "sidebar-border": "oklch(1 0 0 / 10%)",
-      "sidebar-ring": "oklch(.556 0 0)",
-    },
-  },
-  "ghibli-studio": {
-    name: "ghibli-studio",
-    label: "Ghibli Studio",
-    radius: "0.625rem",
-    fonts: {
-      sans: sansFonts.Nunito.value,
-      serif: serifFonts["PT Serif"].value,
-      mono: monoFonts["Geist Mono"].value,
-    },
-    light: {
-      radius: "0.625rem",
-      background: "oklch(.91 .048 83.6)",
-      foreground: "oklch(.41 .077 78.9)",
-      card: "oklch(.92 .042 83.6)",
-      "card-foreground": "oklch(.41 .077 74.3)",
-      popover: "oklch(.92 .042 83.6)",
-      "popover-foreground": "oklch(.41 .077 74.3)",
-      primary: "oklch(.71 .097 111.7)",
-      "primary-foreground": "oklch(0.985 0 0)",
-      secondary: "oklch(.88 .055 83.6)",
-      "secondary-foreground": "oklch(0.465 0.067 79.908)",
-      muted: "oklch(.86 .064 83.7)",
-      "muted-foreground": "oklch(0.465 0.067 79.908)",
-      accent: "oklch(.86 .055 83.6)",
-      "accent-foreground": "oklch(.26 .016 0)",
-      destructive: "oklch(0.572 0.184 27.387)",
-      "destructive-foreground": "oklch(0.985 0 0)",
-      border: "oklch(.74 .063 80.8)",
-      input: "oklch(.74 .063 80.8)",
-      ring: "oklch(.51 .077 74.3)",
-      "chart-1": "oklch(.71 .097 111.7)",
-      "chart-2": "oklch(.41 .077 78.9)",
-      "chart-3": "oklch(.66 .19 41.6)",
-      "chart-4": "oklch(.59 .096 111.8)",
-      "chart-5": "oklch(.74 .063 80.8)",
-      sidebar: "oklch(.87 .059 83.7)",
-      "sidebar-foreground": "oklch(.41 .077 78.9)",
-      "sidebar-primary": "oklch(.61 .097 111.7)",
-      "sidebar-primary-foreground": "oklch(0.985 0 0)",
-      "sidebar-accent": "oklch(.83 .058 83.6)",
-      "sidebar-accent-foreground": "oklch(.26 .016 0)",
-      "sidebar-border": "oklch(.70 .063 80.8)",
-      "sidebar-ring": "oklch(.61 .097 111.7)",
-
-      "shadow-color": "oklch(.74 .063 80.8)",
-      "shadow-opacity": "1.0",
-      "shadow-blur": "0px",
-      "shadow-spread": "0px",
-      "shadow-offset-x": "1px",
-      "shadow-offset-y": "2px",
-    },
-    dark: {
-      background: "oklch(0.33 0.02 88.07)",
-      foreground: "oklch(0.92 0.02 82.12)",
-      card: "oklch(0.36 0.02 82.33)",
-      "card-foreground": "oklch(0.92 0.02 82.12)",
-      popover: "oklch(0.36 0.02 82.33)",
-      "popover-foreground": "oklch(0.92 0.02 82.12)",
-      primary: "oklch(0.805 0.119 133.025)",
-      "primary-foreground": "oklch(0.27 0.01 61.02)",
-      secondary: "oklch(0.55 0.056 84.127)",
-      "secondary-foreground": "oklch(0.985 0 0)",
-      muted: "oklch(0.26 0.02 88.07)",
-      "muted-foreground": "oklch(0.71 0.02 73.62)",
-      accent: "oklch(0.42 0.036 81.417)",
-      "accent-foreground": "oklch(0.92 0.02 82.12)",
-      destructive: "oklch(0.555 0.084 31.68)",
-      "destructive-foreground": "oklch(0.94 0.02 84.59)",
-      border: "oklch(0.44 0.02 84.55)",
-      input: "oklch(0.44 0.02 84.55)",
-      ring: "oklch(0.68 0.06 132.45)",
-      "chart-1": "oklch(.71 .097 111.7)",
-      "chart-2": "oklch(.41 .077 78.9)",
-      "chart-3": "oklch(.66 .19 41.6)",
-      "chart-4": "oklch(0.472 0.092 111.816)",
-      "chart-5": "oklch(.74 .063 80.8)",
-      sidebar: "oklch(0.28 0.02 88.07)",
-      "sidebar-foreground": "oklch(0.92 0.02 82.12)",
-      "sidebar-primary": "oklch(0.805 0.119 133.025)",
-      "sidebar-primary-foreground": "oklch(0.27 0.01 61.02)",
-      "sidebar-accent": "oklch(0.42 0.036 81.417)",
-      "sidebar-accent-foreground": "oklch(0.92 0.02 82.12)",
-      "sidebar-border": "oklch(0.44 0.02 84.55)",
-      "sidebar-ring": "oklch(0.68 0.06 132.45)",
-
-      "shadow-color": "oklch(0.474 0.043 95.769)",
-    },
-  },
-  neutralist: {
-    name: "neutralist",
-    label: "Neutralist",
-    radius: "0rem",
-    fonts: {
-      sans: sansFonts["Space Grotesk"].value,
-      serif: sansFonts["Space Grotesk"].value,
-      mono: monoFonts["Space Mono"].value,
-    },
-    light: {
-      radius: "0rem",
-      background: "#e5e7eb", // Cool Gray 200
-      foreground: "#111827", // Gray 900
-      card: "#f9fafb", // Gray 50
-      "card-foreground": "#111827", // Gray 900
-      popover: "#ffffff",
-      "popover-foreground": "#111827", // Gray 900
-      primary: "#4b5563", // Gray 600
-      "primary-foreground": "#ffffff",
-      secondary: "#9ca3af", // Gray 400
-      "secondary-foreground": "#030712", // Gray 950
-      muted: "#9ca3af", // Gray 400
-      "muted-foreground": "#364153", // Gray 700
-      accent: "#9ca3af", // Gray 400
-      "accent-foreground": "#111827", // Gray 900
-      destructive: "#000000",
-      "destructive-foreground": "#ffffff",
-      border: "#111827", // Gray 900 (Black)
-      input: "#d1d5db", // Gray 300
-      ring: "#4b5563", // Gray 600
-      "chart-1": "#4b5563", // Gray 600
-      "chart-2": "#6b7280", // Gray 500
-      "chart-3": "#9ca3af", // Gray 400
-      "chart-4": "#d1d5db", // Gray 300
-      "chart-5": "#111827", // Gray 900
-      sidebar: "#d1d5db", // Gray 300
-      "sidebar-foreground": "#111827", // Gray 900
-      "sidebar-primary": "#4b5563", // Gray 600
-      "sidebar-primary-foreground": "#ffffff",
-      "sidebar-accent": "#9ca3af", // Gray 400
-      "sidebar-accent-foreground": "#111827", // Gray 900
-      "sidebar-border": "#111827", // Gray 900 (Black)
-      "sidebar-ring": "#4b5563", // Gray 600
-
-      "shadow-color": "#111111",
-      "shadow-opacity": "1",
-      "shadow-blur": "0px",
-      "shadow-spread": "0px",
-      "shadow-offset-x": "4px",
-      "shadow-offset-y": "4px",
-    },
-    dark: {
-      background: "#18181b", // Zinc 900
-      foreground: "#fafafa", // Zinc 50
-      card: "#27272a", // Zinc 800
-      "card-foreground": "#fafafa", // Zinc 50
-      popover: "#18181b", // Zinc 900
-      "popover-foreground": "#fafafa", // Zinc 50
-      primary: "#9f9fa9", // Zinc 400
-      "primary-foreground": "#09090b", // Zinc 950
-      secondary: "#52525c", // Zinc 600
-      "secondary-foreground": "#fafafa", // Zinc 50
-      muted: "#18181b", // Zinc 900
-      "muted-foreground": "#9f9fa9", // Zinc 400
-      accent: "#52525c", // Zinc 600
-      "accent-foreground": "#fafafa", // Zinc 50
-      destructive: "#882222",
-      "destructive-foreground": "#ffffff",
-      border: "#e4e4e7", // Zinc 200
-      input: "#52525c", // Zinc 600
-      ring: "#9f9fa9", // Zinc 400
-      "chart-1": "#9f9fa9", // Zinc 400
-      "chart-2": "#71717b", // Zinc 500
-      "chart-3": "#52525c", // Zinc 600
-      "chart-4": "#3f3f46", // Zinc 700
-      "chart-5": "#fafafa", // Zinc 50
-      sidebar: "#27272a", // Zinc 800
-      "sidebar-foreground": "#fafafa", // Zinc 50
-      "sidebar-primary": "#9f9fa9", // Zinc 400
-      "sidebar-primary-foreground": "#09090b", // Zinc 950
-      "sidebar-accent": "#52525c", // Zinc 600
-      "sidebar-accent-foreground": "#fafafa", // Zinc 50
-      "sidebar-border": "#e4e4e7", // Zinc 200
-      "sidebar-ring": "#9f9fa9", // Zinc 400
-
-      "shadow-color": "#c1c1c1",
-    },
-  },
-    "modern-minimal": {
-      name: "modern-minimal",
-      label: "Modern Minimal",
-      radius: "0.375rem",
-      fonts: {
-        sans: "Inter, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "JetBrains Mono, monospace"
-      },
+export const defaultPresets: Record<string, ThemePreset> = {
+  "modern-minimal": {
+    label: "Modern Minimal",
+    styles: {
       light: {
         background: "#ffffff",
         foreground: "#333333",
@@ -641,7 +37,10 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#e0f2fe",
         "sidebar-accent-foreground": "#1e3a8a",
         "sidebar-border": "#e5e7eb",
-        "sidebar-ring": "#3b82f6"
+        "sidebar-ring": "#3b82f6",
+        "font-sans": "Inter, sans-serif",
+        "font-serif": "Source Serif 4, serif",
+        "font-mono": "JetBrains Mono, monospace",
       },
       dark: {
         background: "#171717",
@@ -676,19 +75,91 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#1e3a8a",
         "sidebar-accent-foreground": "#bfdbfe",
         "sidebar-border": "#404040",
-        "sidebar-ring": "#3b82f6"
-      }
-    },
-
-    twitter: {
-      name: "twitter",
-      label: "Twitter",
-      radius: "1.3rem",
-      fonts: {
-        sans: "Open Sans, sans-serif",
-        serif: "Georgia, serif",
-        mono: "Menlo, monospace"
+        "sidebar-ring": "#3b82f6",
       },
+    },
+  },
+
+  "t3-chat": {
+    label: "T3 Chat",
+    createdAt: "2025-04-19",
+    styles: {
+      light: {
+        background: "#faf5fa",
+        foreground: "#501854",
+        card: "#faf5fa",
+        "card-foreground": "#501854",
+        popover: "#ffffff",
+        "popover-foreground": "#501854",
+        primary: "#a84370",
+        "primary-foreground": "#ffffff",
+        secondary: "#f1c4e6",
+        "secondary-foreground": "#77347c",
+        muted: "#f6e5f3",
+        "muted-foreground": "#834588",
+        accent: "#f1c4e6",
+        "accent-foreground": "#77347c",
+        destructive: "#ab4347",
+        "destructive-foreground": "#ffffff",
+        border: "#efbdeb",
+        input: "#e7c1dc",
+        ring: "#db2777",
+        "chart-1": "#d926a2",
+        "chart-2": "#6c12b9",
+        "chart-3": "#274754",
+        "chart-4": "#e8c468",
+        "chart-5": "#f4a462",
+        sidebar: "#f3e4f6",
+        "sidebar-foreground": "#ac1668",
+        "sidebar-primary": "#454554",
+        "sidebar-primary-foreground": "#faf1f7",
+        "sidebar-accent": "#f8f8f7",
+        "sidebar-accent-foreground": "#454554",
+        "sidebar-border": "#eceae9",
+        "sidebar-ring": "#db2777",
+        radius: "0.5rem",
+      },
+      dark: {
+        background: "#221d27",
+        foreground: "#d2c4de",
+        card: "#2c2632",
+        "card-foreground": "#dbc5d2",
+        popover: "#100a0e",
+        "popover-foreground": "#f8f1f5",
+        primary: "#a3004c",
+        "primary-foreground": "#efc0d8",
+        secondary: "#362d3d",
+        "secondary-foreground": "#d4c7e1",
+        muted: "#28222d",
+        "muted-foreground": "#c2b6cf",
+        accent: "#463753",
+        "accent-foreground": "#f8f1f5",
+        destructive: "#301015",
+        "destructive-foreground": "#ffffff",
+        border: "#3b3237",
+        input: "#3e343c",
+        ring: "#db2777",
+        "chart-1": "#a84370",
+        "chart-2": "#934dcb",
+        "chart-3": "#e88c30",
+        "chart-4": "#af57db",
+        "chart-5": "#e23670",
+        sidebar: "#181117",
+        "sidebar-foreground": "#e0cad6",
+        "sidebar-primary": "#1d4ed8",
+        "sidebar-primary-foreground": "#ffffff",
+        "sidebar-accent": "#261922",
+        "sidebar-accent-foreground": "#f4f4f5",
+        "sidebar-border": "#000000",
+        "sidebar-ring": "#db2777",
+      },
+    },
+  },
+
+  twitter: {
+    label: "Twitter",
+    createdAt: "2025-04-24",
+    styles: {
       light: {
         background: "#ffffff",
         foreground: "#0f1419",
@@ -722,13 +193,16 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#1e9df1",
         "sidebar-border": "#e1e8ed",
         "sidebar-ring": "#1da1f2",
+        "font-sans": "Open Sans, sans-serif",
+        "font-serif": "Georgia, serif",
+        "font-mono": "Menlo, monospace",
         radius: "1.3rem",
         "shadow-color": "rgba(29,161,242,0.15)",
         "shadow-opacity": "0",
         "shadow-blur": "0px",
         "shadow-spread": "0px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "2px"
+        "shadow-offset-y": "2px",
       },
       dark: {
         background: "#000000",
@@ -764,18 +238,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-border": "#38444d",
         "sidebar-ring": "#1da1f2",
         "shadow-color": "rgba(29,161,242,0.25)",
-        radius: "1.3rem"
-      }
-    },
-    "mocha-mousse": {
-      name: "mocha-mousse",
-      label: "Mocha Mousse",
-      radius: "0.5rem",
-      fonts: {
-        sans: "DM Sans, sans-serif",
-        serif: "Georgia, serif",
-        mono: "Menlo, monospace"
       },
+    },
+  },
+
+  "mocha-mousse": {
+    label: "Mocha Mousse",
+    createdAt: "2025-04-24",
+    styles: {
       light: {
         background: "#F1F0E5",
         foreground: "#56453F",
@@ -809,13 +279,16 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#ffffff",
         "sidebar-border": "#A28777",
         "sidebar-ring": "#A37764",
+        "font-sans": "DM Sans, sans-serif",
+        "font-serif": "Georgia, serif",
+        "font-mono": "Menlo, monospace",
         radius: "0.5rem",
         "shadow-color": "hsl(20 18% 51% / 0.4)",
         "shadow-opacity": "0.11",
         "shadow-blur": "0px",
         "shadow-spread": "0px",
         "shadow-offset-x": "2px",
-        "shadow-offset-y": "2px"
+        "shadow-offset-y": "2px",
       },
       dark: {
         background: "#2d2521",
@@ -851,18 +324,103 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-border": "#56453F",
         "sidebar-ring": "#C39E88",
         "shadow-color": "hsl(20 18% 30% / 0.5)",
-        radius: "0.5rem"
-      }
-    },
-    "doom-64": {
-      name: "doom-64",
-      label: "Doom 64",
-      radius: "0px",
-      fonts: {
-        sans: "Inter, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "JetBrains Mono, monospace"
       },
+    },
+  },
+
+  bubblegum: {
+    label: "Bubblegum",
+    createdAt: "2025-04-18",
+    styles: {
+      light: {
+        background: "#f6e6ee",
+        foreground: "#5b5b5b",
+        card: "#fdedc9",
+        "card-foreground": "#5b5b5b",
+        popover: "#ffffff",
+        "popover-foreground": "#5b5b5b",
+        primary: "#d04f99",
+        "primary-foreground": "#ffffff",
+        secondary: "#8acfd1",
+        "secondary-foreground": "#333333",
+        muted: "#b2e1eb",
+        "muted-foreground": "#7a7a7a",
+        accent: "#fbe2a7",
+        "accent-foreground": "#333333",
+        destructive: "#f96f70",
+        "destructive-foreground": "#ffffff",
+        border: "#d04f99",
+        input: "#e4e4e4",
+        ring: "#e670ab",
+        "chart-1": "#e670ab",
+        "chart-2": "#84d2e2",
+        "chart-3": "#fbe2a7",
+        "chart-4": "#f3a0ca",
+        "chart-5": "#d7488e",
+        sidebar: "#f8d8ea",
+        "sidebar-foreground": "#333333",
+        "sidebar-primary": "#ec4899",
+        "sidebar-primary-foreground": "#ffffff",
+        "sidebar-accent": "#f9a8d4",
+        "sidebar-accent-foreground": "#333333",
+        "sidebar-border": "#f3e8ff",
+        "sidebar-ring": "#ec4899",
+        "font-sans": "Poppins, sans-serif",
+        "font-serif": "Lora, serif",
+        "font-mono": "Fira Code, monospace",
+        radius: "0.4rem",
+        "shadow-color": "hsl(325.78 58.18% 56.86% / 0.5)",
+        "shadow-opacity": "1.0",
+        "shadow-blur": "0px",
+        "shadow-spread": "0px",
+        "shadow-offset-x": "3px",
+        "shadow-offset-y": "3px",
+      },
+      dark: {
+        background: "#12242e",
+        foreground: "#f3e3ea",
+        card: "#1c2e38",
+        "card-foreground": "#f3e3ea",
+        popover: "#1c2e38",
+        "popover-foreground": "#f3e3ea",
+        primary: "#fbe2a7",
+        "primary-foreground": "#12242e",
+        secondary: "#e4a2b1",
+        "secondary-foreground": "#12242e",
+        muted: "#24272b",
+        "muted-foreground": "#e4a2b1",
+        accent: "#c67b96",
+        "accent-foreground": "#f3e3ea",
+        destructive: "#e35ea4",
+        "destructive-foreground": "#12242e",
+        border: "#324859",
+        input: "#20333d",
+        ring: "#50afb6",
+        "chart-1": "#50afb6",
+        "chart-2": "#e4a2b1",
+        "chart-3": "#c67b96",
+        "chart-4": "#175c6c",
+        "chart-5": "#24272b",
+        sidebar: "#101f28",
+        "sidebar-foreground": "#f3f4f6",
+        "sidebar-primary": "#ec4899",
+        "sidebar-primary-foreground": "#ffffff",
+        "sidebar-accent": "#f9a8d4",
+        "sidebar-accent-foreground": "#1f2937",
+        "sidebar-border": "#374151",
+        "sidebar-ring": "#ec4899",
+        "font-sans": "Poppins, sans-serif",
+        "font-serif": "Lora, serif",
+        "font-mono": "Fira Code, monospace",
+        "shadow-color": "#324859",
+      },
+    },
+  },
+
+  "doom-64": {
+    label: "Doom 64",
+    createdAt: "2025-04-28",
+    styles: {
       light: {
         background: "#cccccc",
         foreground: "#1f1f1f",
@@ -896,6 +454,10 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#ffffff",
         "sidebar-border": "#505050",
         "sidebar-ring": "#b71c1c",
+        "font-sans": '"Oxanium", sans-serif',
+        "font-serif":
+          'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
+        "font-mono": '"Source Code Pro", monospace',
         radius: "0px",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.4",
@@ -904,7 +466,7 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "shadow-offset-x": "0px",
         "shadow-offset-y": "2px",
         "letter-spacing": "0em",
-        spacing: "0.25rem"
+        spacing: "0.25rem",
       },
       dark: {
         background: "#1a1a1a",
@@ -939,6 +501,10 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#000000",
         "sidebar-border": "#4a4a4a",
         "sidebar-ring": "#e53935",
+        "font-sans": '"Oxanium", sans-serif',
+        "font-serif":
+          'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
+        "font-mono": '"Source Code Pro", monospace',
         radius: "0px",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.6",
@@ -947,18 +513,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "shadow-offset-x": "0px",
         "shadow-offset-y": "2px",
         "letter-spacing": "0em",
-        spacing: "0.25rem"
-      }
-    },
-    catppuccin: {
-      name: "catppuccin",
-      label: "Catppuccin",
-      radius: "0.35rem",
-      fonts: {
-        sans: "Montserrat, sans-serif",
-        serif: "Georgia, serif",
-        mono: "Fira Code, monospace"
+        spacing: "0.25rem",
       },
+    },
+  },
+
+  catppuccin: {
+    label: "Catppuccin",
+    createdAt: "2025-04-18",
+    styles: {
       light: {
         background: "#eff1f5",
         foreground: "#4c4f69",
@@ -992,13 +555,16 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#ffffff",
         "sidebar-border": "#bcc0cc",
         "sidebar-ring": "#8839ef",
+        "font-sans": "Montserrat, sans-serif",
+        "font-serif": "Georgia, serif",
+        "font-mono": "Fira Code, monospace",
         radius: "0.35rem",
         "shadow-color": "hsl(240 30% 25%)",
         "shadow-opacity": "0.12",
         "shadow-blur": "6px",
         "shadow-spread": "0px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "4px"
+        "shadow-offset-y": "4px",
       },
       dark: {
         background: "#181825",
@@ -1033,18 +599,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#1e1e2e",
         "sidebar-border": "#45475a",
         "sidebar-ring": "#cba6f7",
-        radius: "0.35rem"
-      }
-    },
-    graphite: {
-      name: "graphite",
-      label: "Graphite",
-      radius: "0.35rem",
-      fonts: {
-        sans: "Montserrat, sans-serif",
-        serif: "Georgia, serif",
-        mono: "Fira Code, monospace"
       },
+    },
+  },
+
+  graphite: {
+    label: "Graphite",
+    createdAt: "2025-04-17",
+    styles: {
       light: {
         background: "#f0f0f0",
         foreground: "#333333",
@@ -1078,13 +640,16 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#333333",
         "sidebar-border": "#d0d0d0",
         "sidebar-ring": "#606060",
+        "font-sans": "Montserrat, sans-serif",
+        "font-serif": "Georgia, serif",
+        "font-mono": "Fira Code, monospace",
         radius: "0.35rem",
         "shadow-color": "hsl(0 0% 20% / 0.1)",
         "shadow-opacity": "0.15",
         "shadow-blur": "0px",
         "shadow-spread": "0px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "2px"
+        "shadow-offset-y": "2px",
       },
       dark: {
         background: "#1a1a1a",
@@ -1119,18 +684,17 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#d9d9d9",
         "sidebar-border": "#353535",
         "sidebar-ring": "#a0a0a0",
-        radius: "0.35rem"
-      }
-    },
-    perpetuity: {
-      name: "perpetuity",
-      label: "Perpetuity",
-      radius: "0.125rem",
-      fonts: {
-        sans: "Courier New, monospace",
-        serif: "Courier New, monospace",
-        mono: "Courier New, monospace"
+        "font-sans": "Inter, sans-serif",
+        "font-serif": "Georgia, serif",
+        "font-mono": "Fira Code, monospace",
       },
+    },
+  },
+
+  perpetuity: {
+    label: "Perpetuity",
+    createdAt: "2025-04-01",
+    styles: {
       light: {
         background: "#e8f0f0",
         foreground: "#0a4a55",
@@ -1164,13 +728,16 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#0a4a55",
         "sidebar-border": "#cde0e2",
         "sidebar-ring": "#06858e",
+        "font-sans": "Courier New, monospace",
+        "font-serif": "Courier New, monospace",
+        "font-mono": "Courier New, monospace",
         radius: "0.125rem",
         "shadow-color": "hsl(185 70% 30% / 0.15)",
         "shadow-opacity": "0.15",
         "shadow-blur": "2px",
         "shadow-spread": "0px",
         "shadow-offset-x": "1px",
-        "shadow-offset-y": "1px"
+        "shadow-offset-y": "1px",
       },
       dark: {
         background: "#0a1a20",
@@ -1205,24 +772,22 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#4de8e8",
         "sidebar-border": "#164955",
         "sidebar-ring": "#4de8e8",
+        "font-sans": "Source Code Pro, monospace",
+        "font-serif": "Source Code Pro, monospace",
+        "font-mono": "Source Code Pro, monospace",
         radius: "0.125rem",
         "shadow-color": "hsl(180 70% 60% / 0.2)",
         "shadow-opacity": "0.2",
         "shadow-blur": "2px",
         "shadow-spread": "0px",
         "shadow-offset-x": "1px",
-        "shadow-offset-y": "1px"
-      }
-    },
-    "kodama-grove": {
-      name: "kodama-grove",
-      label: "Kodama Grove",
-      radius: "0.425rem",
-      fonts: {
-        sans: "Merriweather, serif",
-        serif: "Source Serif 4, serif",
-        mono: "JetBrains Mono, monospace"
+        "shadow-offset-y": "1px",
       },
+    },
+  },
+  "kodama-grove": {
+    label: "Kodama Grove",
+    styles: {
       light: {
         background: "#e4d7b0",
         foreground: "#5c4b3e",
@@ -1256,13 +821,16 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#5c4b3e",
         "sidebar-border": "#e5e0d4",
         "sidebar-ring": "#9db18c",
+        "font-sans": "Merriweather, serif",
+        "font-serif": "Source Serif 4, serif",
+        "font-mono": "JetBrains Mono, monospace",
         radius: "0.425rem",
         "shadow-color": "hsl(88 22% 35% / 0.15)",
         "shadow-opacity": "0.15",
         "shadow-blur": "2px",
         "shadow-spread": "0px",
         "shadow-offset-x": "3px",
-        "shadow-offset-y": "3px"
+        "shadow-offset-y": "3px",
       },
       dark: {
         background: "#3a3529",
@@ -1297,18 +865,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#2a2521",
         "sidebar-border": "#5a5345",
         "sidebar-ring": "#8a9f7b",
-        radius: "0.425rem"
-      }
-    },
-    "cosmic-night": {
-      name: "cosmic-night",
-      label: "Cosmic Night",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Inter, sans-serif",
-        serif: "Georgia, serif",
-        mono: "JetBrains Mono, monospace"
       },
+    },
+  },
+
+  "cosmic-night": {
+    label: "Cosmic Night",
+    createdAt: "2025-04-04",
+    styles: {
       light: {
         background: "#f5f5ff",
         foreground: "#2a2a4a",
@@ -1343,12 +907,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#2a2a4a",
         "sidebar-border": "#e0e0f0",
         "sidebar-ring": "#6e56cf",
+        "font-sans": "Inter, sans-serif",
+        "font-serif": "Georgia, serif",
+        "font-mono": "JetBrains Mono, monospace",
         "shadow-color": "hsl(240 30% 25%)",
         "shadow-opacity": "0.12",
         "shadow-blur": "10px",
         "shadow-spread": "0px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "4px"
+        "shadow-offset-y": "4px",
       },
       dark: {
         background: "#0f0f1a",
@@ -1383,18 +950,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#303060",
         "sidebar-accent-foreground": "#e2e2f5",
         "sidebar-border": "#303052",
-        "sidebar-ring": "#a48fff"
-      }
-    },
-    tangerine: {
-      name: "tangerine",
-      label: "Tangerine",
-      radius: "0.75rem",
-      fonts: {
-        sans: "Inter, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "JetBrains Mono, monospace"
+        "sidebar-ring": "#a48fff",
       },
+    },
+  },
+
+  tangerine: {
+    label: "Tangerine",
+    createdAt: "2025-04-09",
+    styles: {
       light: {
         background: "#e8ebed",
         foreground: "#333333",
@@ -1428,13 +992,16 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#1e3a8a",
         "sidebar-border": "#e5e7eb",
         "sidebar-ring": "#e05d38",
+        "font-sans": "Inter, sans-serif",
+        "font-serif": "Source Serif 4, serif",
+        "font-mono": "JetBrains Mono, monospace",
         radius: "0.75rem",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.1",
         "shadow-blur": "3px",
         "shadow-spread": "0px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "1px"
+        "shadow-offset-y": "1px",
       },
       dark: {
         background: "#1c2433",
@@ -1469,18 +1036,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#bfdbfe",
         "sidebar-border": "#3d4354",
         "sidebar-ring": "#e05d38",
-        radius: "0.75rem"
-      }
-    },
-    "quantum-rose": {
-      name: "quantum-rose",
-      label: "Quantum Rose",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Poppins, sans-serif",
-        serif: "Playfair Display, serif",
-        mono: "Space Mono, monospace"
       },
+    },
+  },
+
+  "quantum-rose": {
+    label: "Quantum Rose",
+    createdAt: "2025-04-03",
+    styles: {
       light: {
         background: "#fff0f8",
         foreground: "#91185c",
@@ -1514,13 +1077,16 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#91185c",
         "sidebar-border": "#ffddf0",
         "sidebar-ring": "#e6067a",
+        "font-sans": "Poppins, sans-serif",
+        "font-serif": "Playfair Display, serif",
+        "font-mono": "Space Mono, monospace",
         radius: "0.5rem",
         "shadow-color": "hsl(330 70% 30% / 0.12)",
         "shadow-opacity": "0.18",
         "shadow-blur": "0px",
         "shadow-spread": "0px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "3px"
+        "shadow-offset-y": "3px",
       },
       dark: {
         background: "#1a0922",
@@ -1555,19 +1121,17 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#ffb3ff",
         "sidebar-border": "#4a1b5f",
         "sidebar-ring": "#ff6bef",
+        "font-sans": "Quicksand, sans-serif",
+        "font-serif": "Playfair Display, serif",
+        "font-mono": "Space Mono, monospace",
         "shadow-color": "hsl(300 80% 50% / 0.25)",
-        radius: "0.5rem"
-      }
-    },
-    nature: {
-      name: "nature",
-      label: "Nature",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Montserrat, sans-serif",
-        serif: "Merriweather, serif",
-        mono: "Source Code Pro, monospace"
       },
+    },
+  },
+
+  nature: {
+    label: "Nature",
+    styles: {
       light: {
         background: "#f8f5f0",
         foreground: "#3e2723",
@@ -1601,7 +1165,10 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#c8e6c9",
         "sidebar-accent-foreground": "#1b5e20",
         "sidebar-border": "#e0d6c9",
-        "sidebar-ring": "#2e7d32"
+        "sidebar-ring": "#2e7d32",
+        "font-sans": "Montserrat, sans-serif",
+        "font-serif": "Merriweather, serif",
+        "font-mono": "Source Code Pro, monospace",
       },
       dark: {
         background: "#1c2a1f",
@@ -1636,18 +1203,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#388e3c",
         "sidebar-accent-foreground": "#f0ebe5",
         "sidebar-border": "#3e4a3d",
-        "sidebar-ring": "#4caf50"
-      }
-    },
-    "bold-tech": {
-      name: "bold-tech",
-      label: "Bold Tech",
-      radius: "0.625rem",
-      fonts: {
-        sans: "Roboto, sans-serif",
-        serif: "Playfair Display, serif",
-        mono: "Fira Code, monospace"
+        "sidebar-ring": "#4caf50",
       },
+    },
+  },
+
+  "bold-tech": {
+    label: "Bold Tech",
+    styles: {
       light: {
         background: "#ffffff",
         foreground: "#312e81",
@@ -1682,12 +1245,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#1e40af",
         "sidebar-border": "#e0e7ff",
         "sidebar-ring": "#8b5cf6",
+        "font-sans": "Roboto, sans-serif",
+        "font-serif": "Playfair Display, serif",
+        "font-mono": "Fira Code, monospace",
         "shadow-color": "hsl(255 86% 66%)",
         "shadow-opacity": "0.2",
         "shadow-blur": "4px",
         "shadow-spread": "0px",
         "shadow-offset-x": "2px",
-        "shadow-offset-y": "2px"
+        "shadow-offset-y": "2px",
       },
       dark: {
         background: "#0f172a",
@@ -1722,18 +1288,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#4338ca",
         "sidebar-accent-foreground": "#e0e7ff",
         "sidebar-border": "#2e1065",
-        "sidebar-ring": "#8b5cf6"
-      }
-    },
-    "elegant-luxury": {
-      name: "elegant-luxury",
-      label: "Elegant Luxury",
-      radius: "0.375rem",
-      fonts: {
-        sans: "Poppins, sans-serif",
-        serif: "Libre Baskerville, serif",
-        mono: "IBM Plex Mono, monospace"
+        "sidebar-ring": "#8b5cf6",
       },
+    },
+  },
+
+  "elegant-luxury": {
+    label: "Elegant Luxury",
+    styles: {
       light: {
         background: "#faf7f5",
         foreground: "#1a1a1a",
@@ -1768,12 +1330,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#7f1d1d",
         "sidebar-border": "#f5e8d2",
         "sidebar-ring": "#9b2c2c",
+        "font-sans": "Poppins, sans-serif",
+        "font-serif": "Libre Baskerville, serif",
+        "font-mono": "IBM Plex Mono, monospace",
         "shadow-color": "hsl(0 63% 18%)",
         "shadow-opacity": "0.12",
         "shadow-blur": "16px",
         "shadow-spread": "-2px",
         "shadow-offset-x": "1px",
-        "shadow-offset-y": "1px"
+        "shadow-offset-y": "1px",
       },
       dark: {
         background: "#1c1917",
@@ -1808,18 +1373,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#b45309",
         "sidebar-accent-foreground": "#fef3c7",
         "sidebar-border": "#44403c",
-        "sidebar-ring": "#b91c1c"
-      }
-    },
-    "amber-minimal": {
-      name: "amber-minimal",
-      label: "Amber Minimal",
-      radius: "0.375rem",
-      fonts: {
-        sans: "Inter, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "JetBrains Mono, monospace"
+        "sidebar-ring": "#b91c1c",
       },
+    },
+  },
+
+  "amber-minimal": {
+    label: "Amber Minimal",
+    createdAt: "2025-04-27",
+    styles: {
       light: {
         background: "#ffffff",
         foreground: "#262626",
@@ -1853,6 +1415,9 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#92400e",
         "sidebar-border": "#e5e7eb",
         "sidebar-ring": "#f59e0b",
+        "font-sans": "Inter, sans-serif",
+        "font-serif": "Source Serif 4, serif",
+        "font-mono": "JetBrains Mono, monospace",
         radius: "0.375rem",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.1",
@@ -1861,7 +1426,7 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "shadow-offset-x": "0px",
         "shadow-offset-y": "4px",
         "letter-spacing": "0em",
-        spacing: "0.25rem"
+        spacing: "0.25rem",
       },
       dark: {
         background: "#171717",
@@ -1896,18 +1461,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#fde68a",
         "sidebar-border": "#404040",
         "sidebar-ring": "#f59e0b",
-        radius: "0.375rem"
-      }
-    },
-    supabase: {
-      name: "supabase",
-      label: "Supabase",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Inter, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "JetBrains Mono, monospace"
       },
+    },
+  },
+
+  supabase: {
+    label: "Supabase",
+    createdAt: "2025-04-27",
+    styles: {
       light: {
         background: "#fcfcfc",
         foreground: "#171717",
@@ -1941,6 +1502,10 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#202020",
         "sidebar-border": "#dfdfdf",
         "sidebar-ring": "#72e3ad",
+        "font-sans": "Outfit, sans-serif",
+        "font-serif":
+          'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
+        "font-mono": "monospace",
         radius: "0.5rem",
         "shadow-color": "#000000",
         "shadow-opacity": "0.17",
@@ -1948,7 +1513,7 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "shadow-spread": "0px",
         "shadow-offset-x": "0px",
         "shadow-offset-y": "1px",
-        "letter-spacing": "0.025em"
+        "letter-spacing": "0.025em",
       },
       dark: {
         background: "#121212",
@@ -1983,18 +1548,13 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#fafafa",
         "sidebar-border": "#292929",
         "sidebar-ring": "#4ade80",
-        radius: "0.5rem"
-      }
-    },
-    "neo-brutalism": {
-      name: "neo-brutalism",
-      label: "Neo Brutalism",
-      radius: "0px",
-      fonts: {
-        sans: "DM Sans, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "Space Mono, monospace"
       },
+    },
+  },
+
+  "neo-brutalism": {
+    label: "Neo Brutalism",
+    styles: {
       light: {
         background: "#ffffff",
         foreground: "#000000",
@@ -2029,12 +1589,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#ffffff",
         "sidebar-border": "#000000",
         "sidebar-ring": "#ff3333",
+        "font-sans": "DM Sans, sans-serif",
+        "font-mono": "Space Mono, monospace",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "1",
         "shadow-blur": "0px",
         "shadow-spread": "0px",
         "shadow-offset-x": "4px",
-        "shadow-offset-y": "4px"
+        "shadow-offset-y": "4px",
       },
       dark: {
         background: "#000000",
@@ -2069,18 +1631,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#3399ff",
         "sidebar-accent-foreground": "#000000",
         "sidebar-border": "#ffffff",
-        "sidebar-ring": "#ff6666"
-      }
-    },
-    "solar-dusk": {
-      name: "solar-dusk",
-      label: "Solar Dusk",
-      radius: "0.3rem",
-      fonts: {
-        sans: "Oxanium, sans-serif",
-        serif: "Merriweather, serif",
-        mono: "Fira Code, monospace"
+        "sidebar-ring": "#ff6666",
       },
+    },
+  },
+
+  "solar-dusk": {
+    label: "Solar Dusk",
+    createdAt: "2025-04-12",
+    styles: {
       light: {
         background: "#FDFBF7",
         foreground: "#4A3B33",
@@ -2115,12 +1674,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#FFFFFF",
         "sidebar-border": "#E4D9BC",
         "sidebar-ring": "#B45309",
+        "font-sans": "Oxanium, sans-serif",
+        "font-serif": "Merriweather, serif",
+        "font-mono": "Fira Code, monospace",
         "shadow-color": "hsl(28 18% 25%)",
         "shadow-opacity": "0.18",
         "shadow-blur": "3px",
         "shadow-spread": "0px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "2px"
+        "shadow-offset-y": "2px",
       },
       dark: {
         background: "#1C1917",
@@ -2156,18 +1718,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#0C2A4D",
         "sidebar-border": "#44403C",
         "sidebar-ring": "#F97316",
-        "shadow-color": "hsl(0 0% 5%)"
-      }
-    },
-    claymorphism: {
-      name: "claymorphism",
-      label: "Claymorphism",
-      radius: "1.25rem",
-      fonts: {
-        sans: "Plus Jakarta Sans, sans-serif",
-        serif: "Lora, serif",
-        mono: "Roboto Mono, monospace"
+        "shadow-color": "hsl(0 0% 5%)",
       },
+    },
+  },
+
+  claymorphism: {
+    label: "Claymorphism",
+    styles: {
       light: {
         background: "#e7e5e4",
         foreground: "#1e293b",
@@ -2202,12 +1760,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#374151",
         "sidebar-border": "#d6d3d1",
         "sidebar-ring": "#6366f1",
+        "font-sans": "Plus Jakarta Sans, sans-serif",
+        "font-serif": "Lora, serif",
+        "font-mono": "Roboto Mono, monospace",
         "shadow-color": "hsl(240 4% 60%)",
         "shadow-opacity": "0.18",
         "shadow-blur": "10px",
         "shadow-spread": "4px",
         "shadow-offset-x": "2px",
-        "shadow-offset-y": "2px"
+        "shadow-offset-y": "2px",
       },
       dark: {
         background: "#1e1b18",
@@ -2243,18 +1804,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#d1d5db",
         "sidebar-border": "#3a3633",
         "sidebar-ring": "#818cf8",
-        "shadow-color": "hsl(0 0% 0%)"
-      }
-    },
-    cyberpunk: {
-      name: "cyberpunk",
-      label: "Cyberpunk",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Outfit, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "Fira Code, monospace"
+        "shadow-color": "hsl(0 0% 0%)",
       },
+    },
+  },
+
+  cyberpunk: {
+    label: "Cyberpunk",
+    styles: {
       light: {
         background: "#f8f9fa",
         foreground: "#0c0c1d",
@@ -2289,12 +1846,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#0c0c1d",
         "sidebar-border": "#dfe6e9",
         "sidebar-ring": "#ff00c8",
+        "font-sans": "Outfit, sans-serif",
+        "font-mono": "Fira Code, monospace",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.1",
         "shadow-blur": "8px",
         "shadow-spread": "-2px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "4px"
+        "shadow-offset-y": "4px",
       },
       dark: {
         background: "#0c0c1d",
@@ -2329,18 +1888,13 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#00ffcc",
         "sidebar-accent-foreground": "#0c0c1d",
         "sidebar-border": "#2e2e5e",
-        "sidebar-ring": "#ff00c8"
-      }
-    },
-    "pastel-dreams": {
-      name: "pastel-dreams",
-      label: "Pastel Dreams",
-      radius: "1.5rem",
-      fonts: {
-        sans: "Open Sans, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "IBM Plex Mono, monospace"
+        "sidebar-ring": "#ff00c8",
       },
+    },
+  },
+  "pastel-dreams": {
+    label: "Pastel Dreams",
+    styles: {
       light: {
         background: "#f7f3f9",
         foreground: "#374151",
@@ -2375,12 +1929,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#374151",
         "sidebar-border": "#e9d8fd",
         "sidebar-ring": "#a78bfa",
+        "font-sans": "Open Sans, sans-serif",
+        "font-serif": "Source Serif 4, serif",
+        "font-mono": "IBM Plex Mono, monospace",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.08",
         "shadow-blur": "16px",
         "shadow-spread": "-4px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "8px"
+        "shadow-offset-y": "8px",
       },
       dark: {
         background: "#1c1917",
@@ -2415,18 +1972,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#4a3d5a",
         "sidebar-accent-foreground": "#d1d5db",
         "sidebar-border": "#3f324a",
-        "sidebar-ring": "#c0aafd"
-      }
-    },
-    "clean-slate": {
-      name: "clean-slate",
-      label: "Clean Slate",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Inter, sans-serif",
-        serif: "Merriweather, serif",
-        mono: "JetBrains Mono, monospace"
+        "sidebar-ring": "#c0aafd",
       },
+    },
+  },
+
+  "clean-slate": {
+    label: "Clean Slate",
+    styles: {
       light: {
         background: "#f8fafc",
         foreground: "#1e293b",
@@ -2461,12 +2014,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#374151",
         "sidebar-border": "#d1d5db",
         "sidebar-ring": "#6366f1",
+        "font-sans": "Inter, sans-serif",
+        "font-serif": "Merriweather, serif",
+        "font-mono": "JetBrains Mono, monospace",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.1",
         "shadow-blur": "8px",
         "shadow-spread": "-1px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "4px"
+        "shadow-offset-y": "4px",
       },
       dark: {
         background: "#0f172a",
@@ -2501,18 +2057,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#374151",
         "sidebar-accent-foreground": "#d1d5db",
         "sidebar-border": "#4b5563",
-        "sidebar-ring": "#818cf8"
-      }
-    },
-    caffeine: {
-      name: "caffeine",
-      label: "Caffeine",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Inter, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "JetBrains Mono, monospace"
+        "sidebar-ring": "#818cf8",
       },
+    },
+  },
+
+  caffeine: {
+    label: "Caffeine",
+    styles: {
       light: {
         background: "#f9f9f9",
         foreground: "#202020",
@@ -2546,7 +2098,7 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#343434",
         "sidebar-border": "#ebebeb",
         "sidebar-ring": "#b5b5b5",
-        radius: "0.5rem"
+        radius: "0.5rem",
       },
       dark: {
         background: "#111111",
@@ -2581,18 +2133,13 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#f4f4f5",
         "sidebar-border": "#27272a",
         "sidebar-ring": "#d4d4d8",
-        radius: "0.5rem"
-      }
-    },
-    "ocean-breeze": {
-      name: "ocean-breeze",
-      label: "Ocean Breeze",
-      radius: "0.5rem",
-      fonts: {
-        sans: "DM Sans, sans-serif",
-        serif: "Lora, serif",
-        mono: "IBM Plex Mono, monospace"
+        radius: "0.5rem",
       },
+    },
+  },
+  "ocean-breeze": {
+    label: "Ocean Breeze",
+    styles: {
       light: {
         background: "#f0f8ff",
         foreground: "#374151",
@@ -2627,12 +2174,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#374151",
         "sidebar-border": "#e5e7eb",
         "sidebar-ring": "#22c55e",
+        "font-sans": "DM Sans, sans-serif",
+        "font-serif": "Lora, serif",
+        "font-mono": "IBM Plex Mono, monospace",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.1",
         "shadow-blur": "8px",
         "shadow-spread": "-1px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "4px"
+        "shadow-offset-y": "4px",
       },
       dark: {
         background: "#0f172a",
@@ -2667,18 +2217,13 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#374151",
         "sidebar-accent-foreground": "#a1a1aa",
         "sidebar-border": "#4b5563",
-        "sidebar-ring": "#34d399"
-      }
-    },
-    "retro-arcade": {
-      name: "retro-arcade",
-      label: "Retro Arcade",
-      radius: "0.25rem",
-      fonts: {
-        sans: "Outfit, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "Space Mono, monospace"
+        "sidebar-ring": "#34d399",
       },
+    },
+  },
+  "retro-arcade": {
+    label: "Retro Arcade",
+    styles: {
       light: {
         background: "#fdf6e3",
         foreground: "#073642",
@@ -2713,12 +2258,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#ffffff",
         "sidebar-border": "#839496",
         "sidebar-ring": "#d33682",
+        "font-sans": "Outfit, sans-serif",
+        "font-mono": "Space Mono, monospace",
         "shadow-color": "hsl(196 83% 10%)",
         "shadow-opacity": "0.15",
         "shadow-blur": "4px",
         "shadow-spread": "0px",
         "shadow-offset-x": "2px",
-        "shadow-offset-y": "2px"
+        "shadow-offset-y": "2px",
       },
       dark: {
         background: "#002b36",
@@ -2753,18 +2300,14 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#2aa198",
         "sidebar-accent-foreground": "#ffffff",
         "sidebar-border": "#586e75",
-        "sidebar-ring": "#d33682"
-      }
-    },
-    "midnight-bloom": {
-      name: "midnight-bloom",
-      label: "Midnight Bloom",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Montserrat, sans-serif",
-        serif: "Playfair Display, serif",
-        mono: "Source Code Pro, monospace"
+        "sidebar-ring": "#d33682",
       },
+    },
+  },
+
+  "midnight-bloom": {
+    label: "Midnight Bloom",
+    styles: {
       light: {
         background: "#f9f9f9",
         foreground: "#333333",
@@ -2799,12 +2342,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#ffffff",
         "sidebar-border": "#d4d4d4",
         "sidebar-ring": "#6c5ce7",
+        "font-sans": "Montserrat, sans-serif",
+        "font-serif": "Playfair Display, serif",
+        "font-mono": "Source Code Pro, monospace",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.1",
         "shadow-blur": "10px",
         "shadow-spread": "-2px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "5px"
+        "shadow-offset-y": "5px",
       },
       dark: {
         background: "#1a1d23",
@@ -2839,18 +2385,13 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#6495ed",
         "sidebar-accent-foreground": "#e5e5e5",
         "sidebar-border": "#444444",
-        "sidebar-ring": "#6c5ce7"
-      }
-    },
-    candyland: {
-      name: "candyland",
-      label: "Candyland",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Poppins, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "Roboto Mono, monospace"
+        "sidebar-ring": "#6c5ce7",
       },
+    },
+  },
+  candyland: {
+    label: "Candyland",
+    styles: {
       light: {
         background: "#f7f9fa",
         foreground: "#333333",
@@ -2884,7 +2425,9 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#ffff00",
         "sidebar-accent-foreground": "#000000",
         "sidebar-border": "#d4d4d4",
-        "sidebar-ring": "#ffc0cb"
+        "sidebar-ring": "#ffc0cb",
+        "font-sans": "Poppins, sans-serif",
+        "font-mono": "Roboto Mono, monospace",
       },
       dark: {
         background: "#1a1d23",
@@ -2919,18 +2462,13 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#87ceeb",
         "sidebar-accent-foreground": "#000000",
         "sidebar-border": "#444444",
-        "sidebar-ring": "#ff99cc"
-      }
-    },
-    "northern-lights": {
-      name: "northern-lights",
-      label: "Northern Lights",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Plus Jakarta Sans, sans-serif",
-        serif: "Source Serif 4, serif",
-        mono: "JetBrains Mono, monospace"
+        "sidebar-ring": "#ff99cc",
       },
+    },
+  },
+  "northern-lights": {
+    label: "Northern Lights",
+    styles: {
       light: {
         background: "#f9f9fa",
         foreground: "#333333",
@@ -2964,7 +2502,10 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#66d9ef",
         "sidebar-accent-foreground": "#333333",
         "sidebar-border": "#d4d4d4",
-        "sidebar-ring": "#34a85a"
+        "sidebar-ring": "#34a85a",
+        "font-sans": "Plus Jakarta Sans, sans-serif",
+        "font-serif": "Source Serif 4, serif",
+        "font-mono": "JetBrains Mono, monospace",
       },
       dark: {
         background: "#1a1d23",
@@ -2999,18 +2540,13 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#6495ed",
         "sidebar-accent-foreground": "#e5e5e5",
         "sidebar-border": "#444444",
-        "sidebar-ring": "#34a85a"
-      }
-    },
-    "vintage-paper": {
-      name: "vintage-paper",
-      label: "Vintage Paper",
-      radius: "0.25rem",
-      fonts: {
-        sans: "Libre Baskerville, serif",
-        serif: "Lora, serif",
-        mono: "IBM Plex Mono, monospace"
+        "sidebar-ring": "#34a85a",
       },
+    },
+  },
+  "vintage-paper": {
+    label: "Vintage Paper",
+    styles: {
       light: {
         background: "#f5f1e6",
         foreground: "#4a3f35",
@@ -3045,12 +2581,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#4a3f35",
         "sidebar-border": "#dbd0ba",
         "sidebar-ring": "#a67c52",
+        "font-sans": "Libre Baskerville, serif",
+        "font-serif": "Lora, serif",
+        "font-mono": "IBM Plex Mono, monospace",
         "shadow-color": "hsl(28 13% 20%)",
         "shadow-opacity": "0.12",
         "shadow-blur": "5px",
         "shadow-spread": "0px",
         "shadow-offset-x": "2px",
-        "shadow-offset-y": "3px"
+        "shadow-offset-y": "3px",
       },
       dark: {
         background: "#2d2621",
@@ -3085,18 +2624,13 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#59493e",
         "sidebar-accent-foreground": "#ece5d8",
         "sidebar-border": "#4a4039",
-        "sidebar-ring": "#c0a080"
-      }
-    },
-    "sunset-horizon": {
-      name: "sunset-horizon",
-      label: "Sunset Horizon",
-      radius: "0.625rem",
-      fonts: {
-        sans: "Montserrat, sans-serif",
-        serif: "Merriweather, serif",
-        mono: "Ubuntu Mono, monospace"
+        "sidebar-ring": "#c0a080",
       },
+    },
+  },
+  "sunset-horizon": {
+    label: "Sunset Horizon",
+    styles: {
       light: {
         background: "#fff9f5",
         foreground: "#3d3436",
@@ -3131,12 +2665,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#3d3436",
         "sidebar-border": "#ffe0d6",
         "sidebar-ring": "#ff7e5f",
+        "font-sans": "Montserrat, sans-serif",
+        "font-serif": "Merriweather, serif",
+        "font-mono": "Ubuntu Mono, monospace",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.09",
         "shadow-blur": "12px",
         "shadow-spread": "-3px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "6px"
+        "shadow-offset-y": "6px",
       },
       dark: {
         background: "#2a2024",
@@ -3171,18 +2708,15 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent": "#feb47b",
         "sidebar-accent-foreground": "#2a2024",
         "sidebar-border": "#463a41",
-        "sidebar-ring": "#ff7e5f"
-      }
-    },
-    "starry-night": {
-      name: "starry-night",
-      label: "Starry Night",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Libre Baskerville, serif",
-        serif: "Source Serif 4, serif",
-        mono: "JetBrains Mono, monospace"
+        "sidebar-ring": "#ff7e5f",
       },
+    },
+  },
+
+  "starry-night": {
+    label: "Starry Night",
+    createdAt: "2025-04-16",
+    styles: {
       light: {
         background: "#f5f7fa",
         foreground: "#1a2238",
@@ -3216,7 +2750,8 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#1a2238",
         "sidebar-border": "#b0b8c1",
         "sidebar-ring": "#f7c873",
-        radius: "0.5rem"
+        "font-sans": "Libre Baskerville, serif",
+        radius: "0.5rem",
       },
       dark: {
         background: "#181a24",
@@ -3251,18 +2786,90 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "#23243a",
         "sidebar-border": "#2d2e3e",
         "sidebar-ring": "#ffe066",
-        radius: "0.5rem"
-      }
-    },
-    vercel: {
-      name: "vercel",
-      label: "Vercel",
-      radius: "0.5rem",
-      fonts: {
-        sans: "Geist, sans-serif",
-        serif: "Georgia, serif",
-        mono: "Geist Mono, monospace"
+        radius: "0.5rem",
       },
+    },
+  },
+
+  claude: {
+    label: "Claude",
+    styles: {
+      light: {
+        background: "#faf9f5",
+        foreground: "#3d3929",
+        card: "#faf9f5",
+        "card-foreground": "#141413",
+        popover: "#ffffff",
+        "popover-foreground": "#28261b",
+        primary: "#c96442",
+        "primary-foreground": "#ffffff",
+        secondary: "#e9e6dc",
+        "secondary-foreground": "#535146",
+        muted: "#ede9de",
+        "muted-foreground": "#83827d",
+        accent: "#e9e6dc",
+        "accent-foreground": "#28261b",
+        destructive: "#141413",
+        "destructive-foreground": "#ffffff",
+        border: "#dad9d4",
+        input: "#b4b2a7",
+        ring: "#207fde",
+        "chart-1": "#b05730",
+        "chart-2": "#9c87f5",
+        "chart-3": "#ded8c4",
+        "chart-4": "#dbd3f0",
+        "chart-5": "#b4552d",
+        sidebar: "#f5f4ee",
+        "sidebar-foreground": "#3d3d3a",
+        "sidebar-primary": "#c96442",
+        "sidebar-primary-foreground": "#fbfbfb",
+        "sidebar-accent": "#e9e6dc",
+        "sidebar-accent-foreground": "#343434",
+        "sidebar-border": "#ebebeb",
+        "sidebar-ring": "#b5b5b5",
+        radius: "0.5rem",
+      },
+      dark: {
+        background: "#262624",
+        foreground: "#c3c0b6",
+        card: "#262624",
+        "card-foreground": "#faf9f5",
+        popover: "#30302e",
+        "popover-foreground": "#e5e5e2",
+        primary: "#d97757",
+        "primary-foreground": "#ffffff",
+        secondary: "#faf9f5",
+        "secondary-foreground": "#30302e",
+        muted: "#1b1b19",
+        "muted-foreground": "#b7b5a9",
+        accent: "#1a1915",
+        "accent-foreground": "#f5f4ee",
+        destructive: "#ef4444",
+        "destructive-foreground": "#ffffff",
+        border: "#3e3e38",
+        input: "#52514a",
+        ring: "#207fde",
+        "chart-1": "#b05730",
+        "chart-2": "#9c87f5",
+        "chart-3": "#1a1915",
+        "chart-4": "#2f2b48",
+        "chart-5": "#b4552d",
+        sidebar: "#1f1e1d",
+        "sidebar-foreground": "#c3c0b6",
+        "sidebar-primary": "#343434",
+        "sidebar-primary-foreground": "#fbfbfb",
+        "sidebar-accent": "#0f0f0e",
+        "sidebar-accent-foreground": "#c3c0b6",
+        "sidebar-border": "#ebebeb",
+        "sidebar-ring": "#b5b5b5",
+      },
+    },
+  },
+
+  vercel: {
+    label: "Vercel",
+    createdAt: "2025-04-13",
+    styles: {
       light: {
         background: "oklch(0.99 0 0)",
         foreground: "oklch(0 0 0)",
@@ -3296,14 +2903,18 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "oklch(0 0 0)",
         "sidebar-border": "oklch(0.94 0 0)",
         "sidebar-ring": "oklch(0 0 0)",
+        "font-sans": "Geist, sans-serif",
+        "font-serif": "Georgia, serif",
+        "font-mono": "Geist Mono, monospace",
         radius: "0.5rem",
         "shadow-color": "hsl(0 0% 0%)",
         "shadow-opacity": "0.18",
         "shadow-blur": "2px",
         "shadow-spread": "0px",
         "shadow-offset-x": "0px",
-        "shadow-offset-y": "1px"
+        "shadow-offset-y": "1px",
       },
+
       dark: {
         background: "oklch(0 0 0)",
         foreground: "oklch(1.00 0 0)",
@@ -3337,9 +2948,96 @@ export const otherPresets: Record<OtherPresets, ThemeObject> = {
         "sidebar-accent-foreground": "oklch(1.00 0 0)",
         "sidebar-border": "oklch(0.32 0 0)",
         "sidebar-ring": "oklch(0.72 0 0)",
-        radius: "0.5rem"
-      }
+        "font-sans": "Geist, sans-serif",
+        "font-serif": "Georgia, serif",
+        "font-mono": "Geist Mono, monospace",
+      },
     },
+  },
+
+  mono: {
+    label: "Mono",
+    createdAt: "2025-04-20",
+    styles: {
+      light: {
+        background: "#ffffff",
+        foreground: "#0a0a0a",
+        card: "#ffffff",
+        "card-foreground": "#0a0a0a",
+        popover: "#ffffff",
+        "popover-foreground": "#0a0a0a",
+        primary: "#737373",
+        "primary-foreground": "#fafafa",
+        secondary: "#f5f5f5",
+        "secondary-foreground": "#171717",
+        muted: "#f5f5f5",
+        "muted-foreground": "#717171",
+        accent: "#f5f5f5",
+        "accent-foreground": "#171717",
+        destructive: "#e7000b",
+        "destructive-foreground": "#f5f5f5",
+        border: "#e5e5e5",
+        input: "#e5e5e5",
+        ring: "#a1a1a1",
+        "chart-1": "#737373",
+        "chart-2": "#737373",
+        "chart-3": "#737373",
+        "chart-4": "#737373",
+        "chart-5": "#737373",
+        sidebar: "#fafafa",
+        "sidebar-foreground": "#0a0a0a",
+        "sidebar-primary": "#171717",
+        "sidebar-primary-foreground": "#fafafa",
+        "sidebar-accent": "#f5f5f5",
+        "sidebar-accent-foreground": "#171717",
+        "sidebar-border": "#e5e5e5",
+        "sidebar-ring": "#a1a1a1",
+        "font-sans": "Geist Mono, monospace",
+        "font-serif": "Geist Mono, monospace",
+        "font-mono": "Geist Mono, monospace",
+        radius: "0rem",
+        "shadow-color": "hsl(0 0% 0%)",
+        "shadow-opacity": "0",
+        "shadow-blur": "0px",
+        "shadow-spread": "0px",
+        "shadow-offset-x": "0px",
+        "shadow-offset-y": "1px",
+      },
+      dark: {
+        background: "#0a0a0a",
+        foreground: "#fafafa",
+        card: "#191919",
+        "card-foreground": "#fafafa",
+        popover: "#262626",
+        "popover-foreground": "#fafafa",
+        primary: "#737373",
+        "primary-foreground": "#fafafa",
+        secondary: "#262626",
+        "secondary-foreground": "#fafafa",
+        muted: "#262626",
+        "muted-foreground": "#a1a1a1",
+        accent: "#404040",
+        "accent-foreground": "#fafafa",
+        destructive: "#ff6467",
+        "destructive-foreground": "#262626",
+        border: "#383838",
+        input: "#525252",
+        ring: "#737373",
+        "chart-1": "#737373",
+        "chart-2": "#737373",
+        "chart-3": "#737373",
+        "chart-4": "#737373",
+        "chart-5": "#737373",
+        sidebar: "#171717",
+        "sidebar-foreground": "#fafafa",
+        "sidebar-primary": "#fafafa",
+        "sidebar-primary-foreground": "#171717",
+        "sidebar-accent": "#262626",
+        "sidebar-accent-foreground": "#fafafa",
+        "sidebar-border": "#ffffff",
+        "sidebar-ring": "#525252",
+      },
+    },
+  },
 };
 
-export const otherPresetsArray = Object.values(otherPresets);
