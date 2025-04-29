@@ -27,3 +27,4 @@ git clone https://github.com/llanesluis/themux.git && cd themux && rm -rf .git &
 ```
 rm -rf ui && git clone https://github.com/shadcn-ui/ui.git && cd ui && rm -rf .git
 ```
+git clone https://github.com/llanesluis/themux.git themex && cd themex && rm -rf .git && cd ..
