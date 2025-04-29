@@ -6,7 +6,7 @@ Heavily inspired by shadcn/ui and Tailwind CSS website designs.
 
 ![hero](public/opengraph-image.png)
 
-## Features
+## 
 
 - ✅ Compatible with Tailwind v4 and v3
 - ✅ Generate your theme in OKLCH, HSL, RGB or HEX color formats
@@ -16,7 +16,7 @@ Heavily inspired by shadcn/ui and Tailwind CSS website designs.
 - ✅ Primary and surface presets (background, card, popover, etc.)
 - ✅ Components dump with the whole collection of shadcn components to see the results up-front
 
-## Coming Features
+## Coming 
 
 - ⌚ More presets
 - ⌚ Typography customizer and typography dump
