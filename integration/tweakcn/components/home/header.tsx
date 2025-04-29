@@ -9,6 +9,7 @@ import Logo from "@/assets/logo.svg";
 import GitHubIcon from "@/assets/github.svg";
 import { useGithubStars } from "@/hooks/use-github-stars";
 import { cn } from "@/lib/utils";
+import { formatCompactNumber } from "@/utils/format";
 
 interface HeaderProps {
   isScrolled: boolean;
@@ -49,14 +50,14 @@ export function Header({
           : "bg-transparent"
       )}
     >
-      <div className="container flex h-16 px-4 min-w-full items-center justify-between">
+      <div className="container mx-auto flex h-16 px-4 md:px-6 items-center justify-between">
         <Link href="/">
           <div className="flex items-center gap-2 font-bold">
             <Logo className="size-6" />
             <span>tweakcn</span>
           </div>
         </Link>
-        <nav className="hidden md:flex gap-8">
+        <nav className="hidden md:flex gap-4 lg:gap-8 items-center">
           {["Examples", "Features", "How It Works", "Roadmap", "FAQ"].map(
             (item, i) => (
               <motion.a
@@ -66,7 +67,7 @@ export function Header({
                 transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
                 href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
                 onClick={handleScrollToSection}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
+                className="text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
               >
                 {item}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -88,7 +89,7 @@ export function Header({
                 className="font-semibold"
               >
                 <GitHubIcon className="size-5" />
-                {stargazersCount > 0 && stargazersCount.toLocaleString()}
+                {stargazersCount > 0 && formatCompactNumber(stargazersCount)}
               </a>
             </Button>
           </motion.div>
@@ -116,7 +117,7 @@ export function Header({
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: 0.5 }}
           >
-            <Link href="/editor/theme">
+            <Link href="/editor/theme" prefetch>
               <Button className="rounded-full cursor-pointer transition-transform hover:scale-105 font-medium">
                 Try It Now
                 <ChevronRight className="ml-1 size-4" />
@@ -142,7 +143,11 @@ export function Header({
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+            {mobileMenuOpen ? (
+              <X className="size-5" />
+            ) : (
+              <Menu className="size-5" />
+            )}
             <span className="sr-only">Toggle menu</span>
           </Button>
         </div>
@@ -155,7 +160,7 @@ export function Header({
           exit={{ opacity: 0, y: -20 }}
           className="md:hidden absolute top-16 inset-x-0 bg-background/95 backdrop-blur-lg border-b"
         >
-          <div className="container py-4 flex flex-col gap-4 px-4">
+          <div className="container mx-auto py-4 flex flex-col gap-4 px-4">
             {["Examples", "Features", "How It Works", "Roadmap", "FAQ"].map(
               (item, i) => (
                 <motion.a
@@ -181,7 +186,10 @@ export function Header({
               transition={{ duration: 0.3, delay: 0.3 }}
               className="pt-2 mt-2 border-t border-border/30"
             >
-              <Link href="/editor/theme" onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                href="/editor/theme"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 <Button className="w-full rounded-full">
                   Try It Now
                   <ChevronRight className="ml-2 size-4" />

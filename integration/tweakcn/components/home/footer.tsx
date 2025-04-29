@@ -7,7 +7,7 @@ import DiscordIcon from "@/assets/discord.svg";
 export function Footer() {
   return (
     <footer className="w-full border-t bg-background/95 backdrop-blur-sm">
-      <div className="container max-w-8xl mx-auto flex flex-col gap-8 px-4 md:px-0 py-10 lg:py-16">
+      <div className="container mx-auto flex flex-col gap-8 px-4 md:px-6 py-10 lg:py-16">
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
           <div className="space-y-4 col-span-2 max-w-md">
             <Link href="/" className="flex items-center gap-2 font-bold">
@@ -15,8 +15,8 @@ export function Footer() {
               <span>tweakcn</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              A powerful visual theme editor for shadcn/ui components with Tailwind
-              CSS support. Make your components stand out.
+              A powerful visual theme editor for shadcn/ui components with
+              Tailwind CSS support. Make your components stand out.
             </p>
             <div className="flex gap-4">
               <a
@@ -105,6 +105,9 @@ export function Footer() {
         <div className="flex flex-col gap-4 sm:flex-row justify-between items-center border-t border-border/40 pt-8">
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} tweakcn. All rights reserved.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            <Link href="/privacy-policy">Privacy Policy</Link>
           </p>
         </div>
       </div>

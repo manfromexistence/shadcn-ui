@@ -1,24 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, use } from "react";
 import {
   ResizablePanelGroup,
   ResizablePanel,
   ResizableHandle,
 } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  EditorConfig,
-  BaseEditorState,
-  ThemeEditorState,
-} from "@/types/editor";
-import { ThemeStyles } from "@/types/theme";
+import { EditorConfig } from "@/types/editor";
+import { Theme, ThemeStyles } from "@/types/theme";
 import { Sliders } from "lucide-react";
 import { useEditorStore } from "@/store/editor-store";
+import { useThemePresetStore } from "@/store/theme-preset-store";
+import { authClient } from "@/lib/auth-client";
 
 interface EditorProps {
   config: EditorConfig;
-  initialState?: BaseEditorState;
+  themePromise: Promise<Theme | null>;
 }
 
 const isThemeStyles = (styles: unknown): styles is ThemeStyles => {
@@ -31,19 +29,54 @@ const isThemeStyles = (styles: unknown): styles is ThemeStyles => {
   );
 };
 
-const Editor: React.FC<EditorProps> = ({ config }) => {
-  const { themeState, setThemeState } = useEditorStore();
+const Editor: React.FC<EditorProps> = ({ config, themePromise }) => {
+  const themeState = useEditorStore((state) => state.themeState);
+  const setThemeState = useEditorStore((state) => state.setThemeState);
+  const saveThemeCheckpoint = useEditorStore(
+    (state) => state.saveThemeCheckpoint
+  );
   const Controls = config.controls;
   const Preview = config.preview;
 
-  const handleStyleChange = (newStyles: ThemeStyles) => {
-    setThemeState({ ...themeState, styles: newStyles });
-  };
+  const loadSavedPresets = useThemePresetStore(
+    (state) => state.loadSavedPresets
+  );
 
-  // Ensure we have valid theme styles
-  const styles = !isThemeStyles(themeState.styles)
-    ? (config.defaultState as ThemeEditorState).styles
-    : themeState.styles;
+  const { data: session } = authClient.useSession();
+
+  useEffect(() => {
+    if (session?.user) {
+      loadSavedPresets();
+    }
+  }, [loadSavedPresets, session?.user]);
+
+  const initialTheme = themePromise ? use(themePromise) : null;
+
+  const handleStyleChange = React.useCallback(
+    (newStyles: ThemeStyles) => {
+      const prev = useEditorStore.getState().themeState;
+      setThemeState({ ...prev, styles: newStyles });
+    },
+    [setThemeState]
+  );
+
+  useEffect(() => {
+    if (initialTheme && isThemeStyles(initialTheme.styles)) {
+      const prev = useEditorStore.getState().themeState;
+      setThemeState({ ...prev, styles: initialTheme.styles });
+      saveThemeCheckpoint();
+    }
+  }, [initialTheme, setThemeState, saveThemeCheckpoint]);
+
+  if (initialTheme && !isThemeStyles(initialTheme.styles)) {
+    return (
+      <div className="flex justify-center items-center h-full text-destructive">
+        Fetched theme data is invalid.
+      </div>
+    );
+  }
+
+  const styles = themeState.styles;
 
   return (
     <div className="h-full overflow-hidden">
@@ -56,6 +89,7 @@ const Editor: React.FC<EditorProps> = ({ config }) => {
                 styles={styles}
                 onChange={handleStyleChange}
                 currentMode={themeState.currentMode}
+                themePromise={themePromise}
               />
             </div>
           </ResizablePanel>
@@ -88,6 +122,7 @@ const Editor: React.FC<EditorProps> = ({ config }) => {
                 styles={styles}
                 onChange={handleStyleChange}
                 currentMode={themeState.currentMode}
+                themePromise={themePromise}
               />
             </div>
           </TabsContent>
