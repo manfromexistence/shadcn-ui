@@ -59,7 +59,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "rect",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'fetch',\n  value: 'https://assets.antv.antgroup.com/g2/movies.json',\n  transform: [\n    {\n      type: 'filter',\n      callback: (d - Handle this manually */,
   "encode": {
     "x": "IMDB Rating"
   },
@@ -80,11 +79,7 @@ const spec = {
     }
   },
   "style": {
-    "inset": /* TODO: Convert style value/expression: 1 */,
-    "stroke": "#F4664A",
-    "strokeOpacity": /* TODO: Convert style value/expression: 1 */,
-    "lineWidth": /* TODO: Convert style value/expression: 2 */,
-    "lineDash": /* TODO: Convert style value/expression: [4, 4] */
+    "stroke": "#F4664A"
   }
 };
 
@@ -109,7 +104,7 @@ const AnnotationLineHistogramMeanLineChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

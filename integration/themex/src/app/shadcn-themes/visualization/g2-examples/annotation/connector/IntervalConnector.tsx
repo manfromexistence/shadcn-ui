@@ -121,16 +121,10 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "insetTop": 30,
   "type": "link",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { x: 'Net Sales', value: 5085000, start: 0, end: 5085000 },\n    { x: 'Cost of Sales', value: -1250450, start: 5085000, end: 3834550 },\n    { x: 'Operating Expenses', value: -2350050, start: 3834550, end: 1484500 },\n    { x: 'Other Income', value: 750000, start: 1484500, end: 2234500 },\n    { x: 'Extraordinary Gain', value: -230050, start: 2234500, end: 2004450 },\n    { x: 'Interest Expense', value: -500000, start: 2004450, end: 1504450 },\n    { x: 'Taxes', value: 490000, start: 1504450, end: 1994450 },\n    { x: 'Net Income', isTotal: true, value: 1994450, start: 0, end: 1994450 },\n  ] */,
   "encode": {
-    "x": "x",
-    "y": /* TODO: Convert encode function/expression: ['start', 'end'] */,
-    "color": /* TODO: Convert encode function/expression: (d, idx */,
-    "size": /* TODO: Convert encode function/expression: 24 */
+    "x": "x"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    domain: ['P', 'N', 'D'],\n    range: ['#64b5f6', '#ef6c00', '#96a6a6'],\n  } */
-  },
+  "scale": {},
   "axis": {
     "x": {
       "title": false,
@@ -141,12 +135,11 @@ const spec = {
     }
   },
   "style": {
-    "stroke": "#697474",
-    "lineDash": /* TODO: Convert style value/expression: [4, 2] */
+    "stroke": "#697474"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: (d) => `${d.y2 - d.y1}`,\n    formatter: '~s',\n    fontSize: 10,\n    dy: 2,\n  } */,
-    /* TODO: Manually convert label options: {\n    text: 'value',\n    formatter: '~s',\n    position: (d) => (d.value > 0 ? 'top' : 'bottom'),\n    textBaseline: (d) => (d.value > 0 ? 'bottom' : 'top'),\n    fontSize: 10,\n    dy: (d) => (d.value > 0 ? -4 : 4),\n  } */
+    null,
+    null
   ]
 };
 
@@ -165,7 +158,7 @@ const AnnotationConnectorIntervalConnectorChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

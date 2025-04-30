@@ -45,19 +45,12 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { name: 'MODIFY', value: 138, washaway: 0.21014492753623193 },\n    { name: 'PRERELEASE', value: 109, washaway: 0.5596330275229358 },\n    { name: 'RELEASING', value: 48, washaway: 0 },\n  ] */,
   "encode": {
     "x": "name",
     "y": "value",
-    "color": "name",
-    "size": /* TODO: Convert encode function/expression: 80 */
+    "color": "name"
   },
-  "style": {
-    "radiusTopLeft": /* TODO: Convert style value/expression: 10 */,
-    "radiusTopRight": /* TODO: Convert style value/expression: 20 */,
-    "radiusBottomRight": /* TODO: Convert style value/expression: 30 */,
-    "radiusBottomLeft": /* TODO: Convert style value/expression: 40 */
-  }
+  "style": {}
 };
 
 const GeneralIntervalBarFixedCorneredChart: React.FC = () => {
@@ -75,7 +68,7 @@ const GeneralIntervalBarFixedCorneredChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

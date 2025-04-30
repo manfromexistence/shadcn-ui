@@ -106,23 +106,16 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "json",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "cx",
     "y": "cy",
-    "text": /* TODO: Convert encode function/expression: (d */,
     "color": "id",
     "shape": "hollow"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n      domain: [\n        'Bakerloo',\n        'Central',\n        'Circle',\n        'District',\n        'DLR',\n        'Hammersmith & City',\n        'Jubilee',\n        'Metropolitan',\n        'Northern',\n        'Piccadilly',\n        'Victoria',\n        'Waterloo & City',\n      ],\n      range: [\n        'rgb(137,78,36)',\n        'rgb(220,36,30)',\n        'rgb(255,206,0)',\n        'rgb(1,114,41)',\n        'rgb(0,175,173)',\n        'rgb(215,153,175)',\n        'rgb(106,114,120)',\n        'rgb(114,17,84)',\n        'rgb(0,0,0)',\n        'rgb(0,24,168)',\n        'rgb(0,160,226)',\n        'rgb(106,187,170)',\n      ],\n    } */
-  },
+  "scale": {},
   "style": {
     "fill": "lightgray",
-    "stroke": "white",
-    "lineWidth": /* TODO: Convert style value/expression: 2 */,
-    "fontSize": /* TODO: Convert style value/expression: 8 */,
-    "opacity": /* TODO: Convert style value/expression: 0.6 */
+    "stroke": "white"
   }
 };
 
@@ -139,7 +132,7 @@ const GeoGeoLondonTubeLinesChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

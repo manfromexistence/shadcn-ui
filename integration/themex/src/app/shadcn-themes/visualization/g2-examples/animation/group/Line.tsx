@@ -70,7 +70,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "line",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'fetch',\n  value: 'https://assets.antv.antgroup.com/g2/doughnut-purchases.json',\n} - Handle this manually */,
   "encode": {
     "x": "year",
     "y": "count",
@@ -100,10 +99,8 @@ const spec = {
   "style": {
     "gradient": "x",
     "gradientColor": "start",
-    "lineWidth": /* TODO: Convert style value/expression: 5 */,
     "stroke": "#fff",
-    "textAlign": "center",
-    "dy": /* TODO: Convert style value/expression: -8 */
+    "textAlign": "center"
   }
 };
 
@@ -125,7 +122,7 @@ const AnimationGroupLineChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

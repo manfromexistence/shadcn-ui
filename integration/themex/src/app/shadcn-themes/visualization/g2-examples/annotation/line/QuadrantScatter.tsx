@@ -88,7 +88,6 @@ const spec = {
     "shape": "point"
   },
   "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    range: ['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a'],\n  } */,
     "size": {
       "range": [
         4,
@@ -108,8 +107,6 @@ const spec = {
     "size": false
   },
   "style": {
-    "fill": /* TODO: Convert style value/expression: (d */,
-    "fillOpacity": /* TODO: Convert style value/expression: 0.8 */,
     "stroke": "#bbb"
   }
 };
@@ -127,7 +124,7 @@ const AnnotationLineQuadrantScatterChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

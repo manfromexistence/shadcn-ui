@@ -75,7 +75,6 @@ const spec = {
   "padding": 0,
   "inset": 50,
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "y": "value",
     "color": "name"
@@ -85,14 +84,9 @@ const spec = {
       "type": "stackY"
     }
   ],
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    palette: 'spectral',\n    offset: (t) => t * 0.8 + 0.1,\n  } */
-  },
+  "scale": {},
   "style": {
     "text": "chart",
-    "x": /* TODO: Convert style value/expression: 640 / 2 - 16 */,
-    "y": /* TODO: Convert style value/expression: 360 */,
-    "fontSize": /* TODO: Convert style value/expression: 20 */,
     "fontWeight": "bold",
     "textAlign": "center"
   },
@@ -115,7 +109,7 @@ const GeneralPiePieDonutTextChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

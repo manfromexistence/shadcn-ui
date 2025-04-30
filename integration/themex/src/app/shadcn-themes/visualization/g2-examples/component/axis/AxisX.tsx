@@ -40,10 +40,7 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "height": 80,
   "type": "axisX",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
-  "scale": {
-    "x": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    domain: [5, 10],\n    range: [0, 1],\n  } */
-  }
+  "scale": {}
 };
 
 const ComponentAxisAxisXChart: React.FC = () => {
@@ -59,7 +56,7 @@ const ComponentAxisAxisXChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

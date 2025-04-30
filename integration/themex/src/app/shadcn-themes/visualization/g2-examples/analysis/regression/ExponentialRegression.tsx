@@ -70,10 +70,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "point",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'fetch',\n  value: 'https://assets.antv.antgroup.com/g2/exponential-regression.json',\n} - Handle this manually */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
-    "y": /* TODO: Convert encode function/expression: (d */,
     "shape": "smooth"
   },
   "scale": {
@@ -96,12 +93,10 @@ const spec = {
     }
   },
   "style": {
-    "fillOpacity": /* TODO: Convert style value/expression: 0.75 */,
-    "stroke": "#30BF78",
-    "lineWidth": /* TODO: Convert style value/expression: 2 */
+    "stroke": "#30BF78"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'y = 3477.32e^(0.18x)\\nThe coefficient of determination, or R^2, is 0.998',\n    selector: 'last',\n    textAlign: 'end',\n  } */
+    null
   ]
 };
 
@@ -123,7 +118,7 @@ const AnalysisRegressionExponentialRegressionChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

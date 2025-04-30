@@ -194,26 +194,18 @@ const spec = {
   "height": 720,
   "padding": 50,
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "direction",
     "y": "value",
-    "color": "level",
-    "size": /* TODO: Convert encode function/expression: 18 */
+    "color": "level"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: { range: colors } */
-  },
-  "axis": {
-    "x": /* TODO: Manually convert axis options: {\n    line: true,\n    grid: true,\n    gridLineDash: [0, 0],\n    gridLineWidth: 1,\n  } */,
-    "y": /* TODO: Manually convert axis options: {\n    title: false,\n    line: true,\n    gridLineWidth: 1,\n  } */
-  },
+  "scale": {},
+  "axis": {},
   "coordinate": {
     "type": "polar"
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: {\n    shared: true,\n  } */
+    "type": "tooltip"
   }
 };
 
@@ -230,7 +222,7 @@ const GeneralRoseWindRoseChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

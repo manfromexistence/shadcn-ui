@@ -67,7 +67,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "range",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { x: [0, 0.5], y: [0, 0.5] },\n    { x: [0.5, 1], y: [0.5, 1] },\n  ] */,
   "encode": {
     "x": "x",
     "y": "y",
@@ -93,13 +92,10 @@ const spec = {
   },
   "style": {
     "mainStroke": "#5B8FF9",
-    "mainLineWidth": /* TODO: Convert style value/expression: 2 */,
-    "stroke": "#5B8FF9",
-    "lineWidth": /* TODO: Convert style value/expression: 1 */,
-    "fillOpacity": /* TODO: Convert style value/expression: 0.15 */
+    "stroke": "#5B8FF9"
   },
   "labels": [
-    /* TODO: Manually convert label options: { text: 'name', fontSize: 10, dy: 6 } */
+    null
   ]
 };
 
@@ -118,7 +114,7 @@ const AnnotationRangePointRangeChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

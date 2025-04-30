@@ -105,28 +105,24 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Data assigned from variable/value: data - Handle this manually */,
   "encode": {
     "x": "action",
-    "y": /* TODO: Convert encode function/expression: (d */,
     "color": "action",
     "shape": "funnel"
   },
   "scale": {
     "x": {
       "padding": 0
-    },
-    "color": /* TODO: Manually convert scale options: {\n  range: ['#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF'],\n} */
+    }
   },
   "style": {
     "stroke": "#FFF"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'visitor',\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */,
-    /* TODO: Manually convert label options: {\n    text: 'action',\n    position: 'right',\n    dx: (d) => {\n      return d.action === '完成' ? 48 : 16;\n    },\n  } */,
-    /* TODO: Manually convert label options: {\n    text: 'visitor',\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */
-  ],
-  "coordinate": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
+    null,
+    null,
+    null
+  ]
 };
 
 const GeneralFunnelMirrorFunnelChart: React.FC = () => {
@@ -144,7 +140,7 @@ const GeneralFunnelMirrorFunnelChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

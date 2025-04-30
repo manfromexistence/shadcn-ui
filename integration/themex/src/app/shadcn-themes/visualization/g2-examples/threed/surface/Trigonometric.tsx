@@ -85,9 +85,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n  container: 'container',\n  renderer,\n  width: 600,\n  height: 600,\n  depth: 400, // Define the depth of chart.\n} */,
   "type": "corelib",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "x",
     "y": "y",
@@ -108,7 +106,6 @@ const spec = {
     "x": {
       "gridLineWidth": 1
     },
-    "y": /* TODO: Manually convert axis options: { gridLineWidth: 1, titleBillboardRotation: -Math.PI / 2 } */,
     "z": {
       "gridLineWidth": 1
     }
@@ -131,7 +128,7 @@ const ThreedSurfaceTrigonometricChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

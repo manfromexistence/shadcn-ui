@@ -69,11 +69,8 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n      container: 'container',\n      autoFit: true,\n      plugins: [new Plugin()],\n    } */,
   "type": "line",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
     "y": "price",
     "color": "symbol"
   },
@@ -83,18 +80,11 @@ const spec = {
       "y": "mean"
     }
   ],
-  "axis": {
-    "x": /* TODO: Manually convert axis options: {\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n        labelFontFamily: 'Gaegu',\n      } */,
-    "y": /* TODO: Manually convert axis options: {\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n        titleFontFamily: 'Gaegu',\n        labelFontFamily: 'Gaegu',\n      } */
-  },
-  "legend": {
-    "color": /* TODO: Manually convert legend options: { itemLabelFontFamily: 'Gaegu' } */
-  },
-  "style": {
-    "roughness": /* TODO: Convert style value/expression: 2 */
-  },
+  "axis": {},
+  "legend": {},
+  "style": {},
   "labels": [
-    /* TODO: Manually convert label options: {\n        text: 'price',\n        transform: [{ type: 'overlapDodgeY' }],\n        fontSize: 10,\n        fontFamily: 'Gaegu',\n      } */
+    null
   ]
 };
 
@@ -111,7 +101,7 @@ const StyleRoughLineChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -74,9 +74,7 @@ const spec = {
   "paddingLeft": 70,
   "paddingBottom": 70,
   "type": "repeatMatrix",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
-    "position": /* TODO: Convert encode function/expression: [\n    'culmen_length_mm',\n    'culmen_depth_mm',\n    'flipper_length_mm',\n    'body_mass_g',\n  ] */,
     "color": "species"
   }
 };
@@ -94,7 +92,7 @@ const CompositionRepeatMatrixChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

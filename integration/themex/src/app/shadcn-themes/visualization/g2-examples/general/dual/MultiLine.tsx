@@ -147,7 +147,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "line",
-  "dataComment": /* TODO: Data assigned from variable/value: data - Handle this manually */,
   "encode": {
     "x": "Month",
     "y": "Precipitation",
@@ -159,14 +158,8 @@ const spec = {
       "independent": true
     }
   },
-  "axis": {
-    "y": /* TODO: Manually convert axis options: {\n    position: 'right',\n    title: 'Precipitation (ml)',\n    grid: null,\n    titleFill: '#91CC75',\n  } */
-  },
-  "style": {
-    "fillOpacity": /* TODO: Convert style value/expression: 0.8 */,
-    "lineWidth": /* TODO: Convert style value/expression: 2 */,
-    "lineDash": /* TODO: Convert style value/expression: [2, 2] */
-  }
+  "axis": {},
+  "style": {}
 };
 
 const GeneralDualMultiLineChart: React.FC = () => {
@@ -184,7 +177,7 @@ const GeneralDualMultiLineChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -388,16 +388,14 @@ const spec = {
   "encode": {
     "x": "m",
     "y": "f",
-    "size": /* TODO: Convert encode function/expression: 4 */,
     "shape": "hollow"
   },
   "style": {
-    "stroke": "#000",
-    "opacity": /* TODO: Convert style value/expression: 0.2 */
+    "stroke": "#000"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    position: 'top-right',\n    text: (v) => `${v * 100}%`,\n    dx: 4,\n    textAlign: 'start',\n    textBaseline: 'middle',\n  } */,
-    /* TODO: Manually convert label options: {\n    position: 'top-right',\n    text: (v) => `${v * 100}%`,\n    dx: 4,\n    textAlign: 'start',\n    textBaseline: 'middle',\n  } */
+    null,
+    null
   ]
 };
 
@@ -414,7 +412,7 @@ const GeneralLinkLinkAnnotationChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -63,7 +63,6 @@ const spec = {
   "width": 480,
   "height": 480,
   "type": "random",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "position": "month",
     "x": "name",
@@ -85,7 +84,7 @@ const CompositionFacetCircleChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

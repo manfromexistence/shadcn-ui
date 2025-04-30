@@ -125,18 +125,13 @@ const spec = {
   "height": 500,
   "paddingBottom": 80,
   "type": "getContext",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "name",
     "y": "country",
     "color": "#edaa53"
   },
   "style": {
-    "radius": "50%",
-    "inset": /* TODO: Convert style value/expression: 1 */,
-    "shadowBlur": /* TODO: Convert style value/expression: 10 */,
-    "shadowColor": /* TODO: Convert style value/expression: 'rgba(0,0,0,0.3 */,
-    "fill": /* TODO: Convert style value/expression: ({ value } */
+    "radius": "50%"
   }
 };
 
@@ -153,7 +148,7 @@ const ThemePatternCustomPatternWithGApiChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

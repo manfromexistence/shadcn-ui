@@ -59,14 +59,13 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "repo",
     "y": "star",
     "color": "repo"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'star',\n    render: (text, datum) => {\n      return `\n        <div style=\"left:-50%;top:-20px;position:relative;font-size:14px;\">\n          <span>${datum.repo}</span>\n          :\n          <a href=\"https://github.com/antvis/${datum.repo}\" target=\"_blank\">${datum.star}</a>\n        </div>\n      `;\n    },\n  } */
+    null
   ]
 };
 
@@ -83,7 +82,7 @@ const ComponentLabelHtmlLabelChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

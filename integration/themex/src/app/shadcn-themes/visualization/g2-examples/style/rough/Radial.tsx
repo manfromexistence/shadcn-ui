@@ -85,9 +85,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n      container: 'container',\n      height: 480,\n      plugins: [new Plugin()],\n    } */,
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "y": "value",
     "color": "name"
@@ -97,9 +95,7 @@ const spec = {
       "type": "stackY"
     }
   ],
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n        range: [\n          'hachure',\n          'solid',\n          'zigzag',\n          'cross-hatch',\n          'dots',\n          'dashed',\n          'zigzag-line',\n        ],\n      } */
-  },
+  "scale": {},
   "style": {
     "fill": "black",
     "stroke": "black",
@@ -107,8 +103,8 @@ const spec = {
     "colorAttribute": "fillStyle"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n        text: 'name',\n        radius: 0.8,\n        fontSize: 10,\n        fontWeight: 'bold',\n        fontFamily: 'Gaegu',\n        fill: 'black',\n        stroke: 'white',\n      } */,
-    /* TODO: Manually convert label options: {\n        text: (d, i, data) => (i < data.length - 3 ? d.value : ''),\n        radius: 0.8,\n        fontSize: 12,\n        fontFamily: 'Gaegu',\n        fill: 'black',\n        stroke: 'white',\n        dy: 8,\n      } */
+    null,
+    null
   ],
   "coordinate": {
     "type": "theta"
@@ -128,7 +124,7 @@ const StyleRoughRadialChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

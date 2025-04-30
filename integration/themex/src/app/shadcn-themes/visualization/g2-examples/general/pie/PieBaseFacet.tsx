@@ -86,7 +86,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "facetRect",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "type",
     "y": "percent",
@@ -105,12 +104,9 @@ const spec = {
     "fill": "#e8e8e8",
     "textAlign": "center",
     "textBaseline": "middle",
-    "fontSize": /* TODO: Convert style value/expression: 30 */,
     "color": "#000",
     "x": "50%",
-    "y": "50%",
-    "dy": /* TODO: Convert style value/expression: 20 */,
-    "fontWeight": /* TODO: Convert style value/expression: 500 */
+    "y": "50%"
   },
   "coordinate": {
     "type": "theta",
@@ -132,7 +128,7 @@ const GeneralPiePieBaseFacetChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

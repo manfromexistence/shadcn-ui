@@ -124,11 +124,9 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "paddingRight": 60,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    {\n      startX: data[0][encodeX],\n      startY: data[data.length - 1][encodeX],\n      endX: 0,\n      endY: (data[0][encodeY] - data[data.length - 1][encodeY] */,
   "encode": {
     "x": "startX",
     "y": "endX",
-    "color": /* TODO: Convert encode function/expression: encodeX */,
     "shape": "funnel",
     "x1": "startY",
     "y1": "endY"
@@ -145,20 +143,16 @@ const spec = {
     }
   },
   "style": {
-    "stroke": "#aaa",
-    "markerEnd": /* TODO: Convert style value/expression: false */,
-    "connectLength1": /* TODO: Convert style value/expression: -12 */,
-    "offset2": /* TODO: Convert style value/expression: -20 */
+    "stroke": "#aaa"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: (d) => `${d[encodeX]} ${d[encodeY]}`,\n    position: 'inside',\n    fontSize: 20,\n  } */,
-    /* TODO: Manually convert label options: {\n    text: '',\n    // Use div to mock a line.\n    render: (d, data, i) =>\n      i !== 0\n        ? `<div style=\"height:1px;width:30px;background:#aaa;margin:0 20px;\"></div>`\n        : '',\n    position: 'top-right',\n  } */,
-    /* TODO: Manually convert label options: {\n    text: (d, i) => (i !== 0 ? '转换率' : ''),\n    position: 'top-right',\n    textAlign: 'left',\n    textBaseline: 'middle',\n    fill: '#aaa',\n    dx: 60,\n  } */,
-    /* TODO: Manually convert label options: {\n    text: (d, i, data) =>\n      i !== 0 ? r(data[i - 1][encodeY], data[i][encodeY]) : '',\n    position: 'top-right',\n    textAlign: 'left',\n    textBaseline: 'middle',\n    dx: 60,\n    dy: 15,\n  } */,
-    /* TODO: Manually convert label options: {\n    text: '转换率',\n    position: 'left',\n    textAlign: 'start',\n    textBaseline: 'middle',\n    fill: '#aaa',\n    dx: 10,\n  } */,
-    /* TODO: Manually convert label options: {\n    text: r(data[0][encodeY], data[data.length - 1][encodeY]),\n    position: 'left',\n    textAlign: 'start',\n    dy: 15,\n    dx: 10,\n    fill: '#000',\n  } */
-  ],
-  "coordinate": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ]
 };
 
 const GeneralFunnelFunnelAnnotationChart: React.FC = () => {
@@ -176,7 +170,7 @@ const GeneralFunnelFunnelAnnotationChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -73,17 +73,12 @@ const spec = {
   "paddingTop": 120,
   "paddingBottom": 120,
   "type": "json",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "distance",
-    "y": /* TODO: Convert encode function/expression: (d */,
     "color": "type",
     "series": "number"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n        domain: ['N', 'L', 'B'],\n        range: ['rgb(34, 34, 34)', 'rgb(183, 116, 9)', 'rgb(192, 62, 29)'],\n      } */,
-    "y": /* TODO: Manually convert scale options: {\n        range: [0, 1],\n        tickCount: 15,\n        utc: true,\n      } */
-  }
+  "scale": {}
 };
 
 const GeneralLineLineDualAxesChart: React.FC = () => {
@@ -99,7 +94,7 @@ const GeneralLineLineDualAxesChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

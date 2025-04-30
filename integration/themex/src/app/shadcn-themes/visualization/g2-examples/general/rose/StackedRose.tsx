@@ -85,7 +85,6 @@ const spec = {
   "width": 800,
   "height": 800,
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "State",
     "y": "Population",
@@ -97,20 +96,16 @@ const spec = {
     }
   ],
   "scale": {
-    "color": /* TODO: Manually convert scale options: { range: colors } */,
     "y": {
       "type": "sqrt"
     }
   },
   "axis": {
-    "y": /* TODO: Manually convert axis options: {\n    labelFormatter: '~s',\n    tickFilter: (_, i) => i !== 0,\n    direction: 'center',\n  } */,
     "x": {
       "position": "inner"
     }
   },
-  "legend": {
-    "color": /* TODO: Manually convert legend options: { position: 'center', display: 'grid', gridCol: 1 } */
-  },
+  "legend": {},
   "coordinate": {
     "type": "polar",
     "innerRadius": 0.4
@@ -130,7 +125,7 @@ const GeneralRoseStackedRoseChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

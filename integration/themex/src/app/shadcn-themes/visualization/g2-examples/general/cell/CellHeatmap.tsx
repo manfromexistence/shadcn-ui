@@ -89,22 +89,18 @@ const spec = {
     "y": "name",
     "color": "value"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    palette: 'puRd',\n    relations: [\n      [(d) => d === null, '#eee'],\n      [0, '#fff'],\n    ],\n  } */
-  },
+  "scale": {},
   "axis": {
     "y": {
       "labelAutoRotate": false
-    },
-    "x": /* TODO: Manually convert axis options: {\n    tickFilter: (d) => d % 10 === 0,\n    position: 'top',\n  } */
+    }
   },
   "style": {
-    "inset": /* TODO: Convert style value/expression: 0.5 */,
     "stroke": "black"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: '1963',\n    position: 'bottom',\n    textBaseline: 'top',\n    fontSize: 10,\n  } */,
-    /* TODO: Manually convert label options: {\n    text: 'Measles vaccine introduced',\n    position: 'bottom',\n    textBaseline: 'top',\n    fontSize: 10,\n    fontWeight: 'bold',\n    dy: 10,\n  } */
+    null,
+    null
   ]
 };
 
@@ -121,7 +117,7 @@ const GeneralCellCellHeatmapChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

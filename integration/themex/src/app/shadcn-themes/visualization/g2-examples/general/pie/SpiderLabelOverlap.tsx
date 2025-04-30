@@ -58,7 +58,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { type: '微博', value: 93.33 },\n    { type: '其他', value: 6.67 },\n    { type: '论坛', value: 4.77 },\n    { type: '网站', value: 1.44 },\n    { type: '微信', value: 1.12 },\n    { type: '客户端', value: 1.05 },\n    { type: '新闻', value: 0.81 },\n    { type: '视频', value: 0.39 },\n    { type: '博客', value: 0.37 },\n    { type: '报刊', value: 0.17 },\n  ] */,
   "encode": {
     "y": "value",
     "color": "type"
@@ -69,7 +68,7 @@ const spec = {
     }
   ],
   "labels": [
-    /* TODO: Manually convert label options: {\n    position: 'spider',\n    text: (d) => `${d.type} (${d.value} */
+    null
   ],
   "coordinate": {
     "type": "theta"
@@ -91,7 +90,7 @@ const GeneralPieSpiderLabelOverlapChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

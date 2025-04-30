@@ -87,10 +87,8 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "width": 800,
   "type": "json",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "shape": "smooth",
-    "x": /* TODO: Convert encode function/expression: (d */,
     "y": "industry",
     "color": "industry",
     "key": "industry"
@@ -109,9 +107,7 @@ const spec = {
       "facet": false
     }
   },
-  "style": {
-    "fillOpacity": /* TODO: Convert style value/expression: 0.8 */
-  }
+  "style": {}
 };
 
 const StorytellingStorytellingFacetKeyframeChart: React.FC = () => {
@@ -127,7 +123,7 @@ const StorytellingStorytellingFacetKeyframeChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

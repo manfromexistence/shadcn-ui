@@ -63,12 +63,9 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n  container: 'container',\n  width: 900,\n  height: 1000,\n  plugins: [plugin],\n} */,
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "civilization",
-    "y": /* TODO: Convert encode function/expression: ['start', 'end'] */,
     "color": "region"
   },
   "transform": [
@@ -91,7 +88,7 @@ const spec = {
     "x": false
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'civilization',\n    position: (d) => (left(d) ? 'left' : 'right'),\n    textAlign: (d) => (left(d) ? 'end' : 'start'),\n    dx: (d) => (left(d) ? -5 : 5),\n    fontSize: 10,\n  } */
+    null
   ],
   "coordinate": {
     "transform": [
@@ -115,7 +112,7 @@ const AccessibleTextSearchingTextSearchChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

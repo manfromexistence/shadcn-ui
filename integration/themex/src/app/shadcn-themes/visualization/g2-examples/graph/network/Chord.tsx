@@ -113,14 +113,8 @@ const spec = {
   "width": 900,
   "height": 600,
   "type": "chord",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
-  "scale": {
-    "color": /* TODO: Manually convert scale options: { range: schemeTableau10 } */
-  },
-  "style": {
-    "labelFontSize": /* TODO: Convert style value/expression: 15 */,
-    "linkFillOpacity": /* TODO: Convert style value/expression: 0.6 */
-  }
+  "scale": {},
+  "style": {}
 };
 
 const GraphNetworkChordChart: React.FC = () => {
@@ -136,7 +130,7 @@ const GraphNetworkChordChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

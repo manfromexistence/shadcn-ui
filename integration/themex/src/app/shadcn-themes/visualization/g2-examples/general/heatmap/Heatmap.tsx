@@ -57,19 +57,16 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "padding": 0,
   "type": "image",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "g",
     "y": "l",
     "color": "tmp"
   },
   "style": {
-    "src": /* TODO: Convert style value/expression: 'https://gw.alipayobjects.com/zos/rmsportal/NeUTMwKtPcPxIFNTWZOZ.png', */,
     "x": "50%",
     "y": "50%",
     "width": "100%",
-    "height": "100%",
-    "opacity": /* TODO: Convert style value/expression: 0 */
+    "height": "100%"
   }
 };
 
@@ -86,7 +83,7 @@ const GeneralHeatmapHeatmapChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -73,11 +73,9 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "paddingRight": 30,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n  { x: 'Jan', tick: 9.3, value: 11.5 },\n  { x: 'Feb', tick: 10.5, value: 12 },\n  { x: 'Mar', tick: 11.2, value: 11.7 },\n  { x: 'Apr', tick: 11.2, value: 12.4 },\n  { x: 'May', tick: 12.7, value: 13.5 },\n  { x: 'Jun', tick: 13.1, value: 11.9 },\n  { x: 'Jul', tick: 12.2, value: 14.6 },\n  { x: 'Aug', tick: 12.2, value: 17.2 },\n  { x: 'Sep', tick: 10.1, value: 16.9 },\n  { x: 'Oct', tick: 14.5, value: 15.4 },\n  { x: 'Nov', tick: 14.5, value: 16.9 },\n  { x: 'Dec', tick: 15.5, value: 17.2 },\n] */,
   "encode": {
     "x": "x",
     "y": "tick",
-    "size": /* TODO: Convert encode function/expression: 15 */,
     "shape": "line"
   },
   "axis": {
@@ -86,12 +84,10 @@ const spec = {
     }
   },
   "style": {
-    "fillOpacity": /* TODO: Convert style value/expression: 0.65 */,
-    "lineWidth": /* TODO: Convert style value/expression: 1 */,
     "stroke": "red"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'value',\n    position: 'right',\n    formatter: (v) => `${v}min`,\n    dx: 4,\n    textAlign: 'start',\n  } */
+    null
   ],
   "coordinate": {
     "transform": [
@@ -117,7 +113,7 @@ const AnnotationShapeIntervalPointChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

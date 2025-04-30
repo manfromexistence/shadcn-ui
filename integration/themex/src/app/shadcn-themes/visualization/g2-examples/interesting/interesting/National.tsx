@@ -67,7 +67,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n  container: 'container',\n  width: SIZE,\n  height: SIZE,\n} */,
   "type": "image",
   "data": [
     {
@@ -77,9 +76,7 @@ const spec = {
   ],
   "encode": {
     "x": "x",
-    "y": "y",
-    "src": /* TODO: Convert encode function/expression: ( */,
-    "size": /* TODO: Convert encode function/expression: SIZE */
+    "y": "y"
   }
 };
 
@@ -96,7 +93,7 @@ const InterestingInterestingNationalChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

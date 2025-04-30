@@ -94,7 +94,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "area",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "item",
     "y": "score",
@@ -111,20 +110,13 @@ const spec = {
       "domainMax": 80
     }
   },
-  "axis": {
-    "x": /* TODO: Manually convert axis options: {\n    grid: true,\n    gridStrokeWidth: 1,\n    tick: false,\n    gridLineDash: [0, 0],\n  } */,
-    "y": /* TODO: Manually convert axis options: {\n    zIndex: 1,\n    title: false,\n    gridConnect: 'line',\n    gridStrokeWidth: 1,\n    gridLineDash: [0, 0],\n  } */
-  },
-  "style": {
-    "fillOpacity": /* TODO: Convert style value/expression: 0.5 */,
-    "lineWidth": /* TODO: Convert style value/expression: 2 */
-  },
+  "axis": {},
+  "style": {},
   "coordinate": {
     "type": "polar"
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: { crosshairsLineDash: [4, 4] } */
+    "type": "tooltip"
   }
 };
 
@@ -141,7 +133,7 @@ const InteractionDataLineElementPointMovePolarChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

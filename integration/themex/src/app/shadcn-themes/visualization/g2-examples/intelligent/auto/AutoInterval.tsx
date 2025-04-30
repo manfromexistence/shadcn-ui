@@ -38,8 +38,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "type": "render",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n  { price: 100, type: 'A' },\n  { price: 120, type: 'B' },\n  { price: 150, type: 'C' },\n] */
+  "type": "render"
 };
 
 const IntelligentAutoAutoIntervalChart: React.FC = () => {
@@ -57,7 +56,7 @@ const IntelligentAutoAutoIntervalChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

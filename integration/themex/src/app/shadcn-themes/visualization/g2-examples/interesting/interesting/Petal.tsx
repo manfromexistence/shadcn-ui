@@ -144,7 +144,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n  { type: '分类一', value: 27 },\n  { type: '分类二', value: 25 },\n  { type: '分类三', value: 18 },\n  { type: '分类四', value: 15 },\n  { type: '分类五', value: 10 },\n  { type: 'Other', value: 5 },\n] */,
   "encode": {
     "y": "value",
     "color": "type",
@@ -155,12 +154,9 @@ const spec = {
       "type": "stackY"
     }
   ],
-  "style": {
-    "offset": /* TODO: Convert style value/expression: 0.5 */,
-    "ratio": /* TODO: Convert style value/expression: 0.2 */
-  },
+  "style": {},
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: (d, i, data) => d.type + '\\n' + d.value,\n    radius: 0.9,\n    fontSize: 9,\n    dy: 12,\n  } */
+    null
   ],
   "coordinate": {
     "type": "theta"
@@ -182,7 +178,7 @@ const InterestingInterestingPetalChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

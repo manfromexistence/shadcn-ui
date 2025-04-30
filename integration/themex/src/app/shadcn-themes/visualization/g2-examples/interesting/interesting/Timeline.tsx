@@ -119,19 +119,16 @@ const spec = {
   "width": 1000,
   "height": 300,
   "type": "line",
-  "dataComment": /* TODO: Data assigned from variable/value: data - Handle this manually */,
   "encode": {
-    "x": "year",
-    "y": /* TODO: Convert encode function/expression: 1 */
+    "x": "year"
   },
   "style": {
-    "lineWidth": /* TODO: Convert style value/expression: 1.5 */,
     "stroke": "#000",
     "fill": "#fff"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'year',\n    dy: (d) => (d.year % 2 === 1 ? 8 : -4),\n    textAlign: 'center',\n    textBaseline: (d) => (d.year % 2 === 1 ? 'top' : 'bottom'),\n  } */,
-    /* TODO: Manually convert label options: {\n    text: (d) =>\n      d.composition + ` (${d.composer.slice(d.composer.lastIndexOf(' '))} */
+    null,
+    null
   ]
 };
 
@@ -150,7 +147,7 @@ const InterestingInterestingTimelineChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

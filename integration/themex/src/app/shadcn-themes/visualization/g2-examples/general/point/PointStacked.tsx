@@ -60,8 +60,6 @@ const spec = {
     0
   ],
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
-    "y": /* TODO: Convert encode function/expression: (d */,
     "color": "gender",
     "shape": "point"
   },
@@ -77,14 +75,11 @@ const spec = {
     }
   },
   "axis": {
-    "y": /* TODO: Manually convert axis options: {\n    title: '← Women · Men →',\n    labelFormatter: (d) => `${Math.abs(+d)}`,\n  } */,
     "x": {
       "title": "Age →"
     }
   },
-  "legend": {
-    "color": /* TODO: Manually convert legend options: { title: 'Gender' } */
-  },
+  "legend": {},
   "style": {
     "stroke": "black"
   }
@@ -103,7 +98,7 @@ const GeneralPointPointStackedChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

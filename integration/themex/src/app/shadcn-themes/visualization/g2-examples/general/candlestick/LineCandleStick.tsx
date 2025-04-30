@@ -84,25 +84,16 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "link",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
-    "x": "Date",
-    "y": /* TODO: Convert encode function/expression: ['Open', 'Close'] */,
-    "color": /* TODO: Convert encode function/expression: (d */
+    "x": "Date"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    domain: [1, 0, -1],\n    range: ['#4daf4a', '#999999', '#e41a1c'],\n  } */
-  },
+  "scale": {},
   "style": {
     "stroke": "black",
-    "radius": /* TODO: Convert style value/expression: 2 */,
-    "fillOpacity": /* TODO: Convert style value/expression: 1 */,
-    "lineWidth": /* TODO: Convert style value/expression: 4 */,
     "lineCap": "round"
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: { shared: true, groupName: false } */
+    "type": "tooltip"
   }
 };
 
@@ -119,7 +110,7 @@ const GeneralCandlestickLineCandleStickChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

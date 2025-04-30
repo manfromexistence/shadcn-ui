@@ -109,26 +109,16 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "flat",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "title",
     "y": "target",
-    "color": /* TODO: Convert encode function/expression: ( */,
-    "shape": "line",
-    "size": /* TODO: Convert encode function/expression: 8 */
+    "shape": "line"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    range: [colors['ranges'], colors['measures'], colors['target']].flat(),\n  } */
-  },
-  "legend": {
-    "color": /* TODO: Manually convert legend options: {\n    itemMarker: (d) => {\n      return d === '目标' ? 'line' : 'square';\n    },\n  } */
-  },
-  "style": {
-    "maxWidth": /* TODO: Convert style value/expression: 20 */,
-    "lineWidth": /* TODO: Convert style value/expression: 1 */
-  },
+  "scale": {},
+  "legend": {},
+  "style": {},
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'measures',\n    position: 'right',\n    textAlign: 'left',\n    dx: 5,\n  } */
+    null
   ],
   "coordinate": {
     "transform": [
@@ -138,8 +128,7 @@ const spec = {
     ]
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: { shared: true } */
+    "type": "tooltip"
   }
 };
 
@@ -156,7 +145,7 @@ const GeneralBulletBulletDatasChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -113,30 +113,16 @@ const spec = {
     "y": {
       "domainMin": -100,
       "domainMax": 100
-    },
-    "color": /* TODO: Manually convert scale options: {\n    domain: ['lost > 100$', 'lost <= 100$', 'gained <= 100$', 'gained > 100$'],\n    range: ['#97e3d5', '#61cdbb', '#e25c3b', '#f47560'],\n  } */
+    }
   },
-  "axis": {
-    "y": /* TODO: Manually convert axis options: {\n    position: 'right',\n    title: false,\n    labelFormatter: (v) => `${v}%`,\n  } */
-  },
-  "legend": {
-    "color": /* TODO: Manually convert legend options: { title: false } */
-  },
+  "axis": {},
+  "legend": {},
   "style": {
-    "radius": /* TODO: Convert style value/expression: 10 */,
-    "lineWidth": /* TODO: Convert style value/expression: 2 */,
     "stroke": "#e25c3b",
-    "strokeOpacity": /* TODO: Convert style value/expression: 1 */,
-    "x": /* TODO: Convert style value/expression: -10 */,
-    "y": /* TODO: Convert style value/expression: y */,
-    "text": /* TODO: Convert style value/expression: text */,
-    "fontWeight": "bold",
-    "dy": /* TODO: Convert style value/expression: -10 */,
-    "transform": /* TODO: Convert style value/expression: 'rotate(-90 */,
-    "fill": /* TODO: Convert style value/expression: fill */
+    "fontWeight": "bold"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'value',\n    position: 'inside',\n    formatter: (v) => (v ? `${v}%` : ''),\n    transform: [{ type: 'overlapDodgeY' }],\n    fill: '#000',\n    fontSize: 10,\n  } */
+    null
   ]
 };
 
@@ -153,7 +139,7 @@ const GeneralIntervalBarStackedDivergingRoundedChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

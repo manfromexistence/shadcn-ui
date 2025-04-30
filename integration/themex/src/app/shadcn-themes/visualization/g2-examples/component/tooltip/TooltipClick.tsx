@@ -132,7 +132,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "letter",
     "y": "frequency"
@@ -143,8 +142,7 @@ const spec = {
     }
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: {\n    disableNative: true, // Disable pointerover and pointerout events.\n    bounding: {\n      x: -Infinity,\n      y: -Infinity,\n      width: Infinity,\n      height: Infinity,\n    },\n    css: {\n      '.g2-tooltip': {\n        background: 'transparent',\n        'box-shadow': 'none',\n        transform: 'translate(-50%, -100%)',\n      },\n    },\n    offset: [0, -10],\n    mount: 'body',\n    render: (event, { title, items } */
+    "type": "tooltip"
   }
 };
 
@@ -161,7 +159,7 @@ const ComponentTooltipTooltipClickChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

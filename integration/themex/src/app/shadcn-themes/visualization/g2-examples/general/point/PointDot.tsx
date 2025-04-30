@@ -66,7 +66,6 @@ const spec = {
   "width": 800,
   "height": 1200,
   "type": "link",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'fetch',\n  value:\n    'https://gw.alipayobjects.com/os/bmw-prod/b6f2ff26-b232-447d-a613-0df5e30104a0.csv',\n} - Handle this manually */,
   "encode": {
     "x": "state",
     "y": "population",
@@ -99,8 +98,7 @@ const spec = {
     ]
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: { shared: true } */
+    "type": "tooltip"
   }
 };
 
@@ -123,7 +121,7 @@ const GeneralPointPointDotChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

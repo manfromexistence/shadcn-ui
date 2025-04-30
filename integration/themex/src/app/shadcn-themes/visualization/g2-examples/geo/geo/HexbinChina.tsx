@@ -67,23 +67,16 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "polygon",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "longitude",
     "y": "latitude",
     "color": "count"
   },
   "transform": [
-    {
-      "type": /* PARSE_ERROR */,
-      "comment": /* TODO: Manually convert transform options: {\n            type: 'bin.hexagon',\n            fields: ['longitude', 'latitude'],\n            binWidth: [2, 3],\n            as: ['longitude', 'latitude', 'count'],\n          } */
-    }
+    null
   ],
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    range: '#BAE7FF-#1890FF-#0050B3',\n  } */
-  },
+  "scale": {},
   "style": {
-    "lineWidth": /* TODO: Convert style value/expression: 5 */,
     "stroke": "#fff"
   },
   "interaction": {
@@ -104,7 +97,7 @@ const GeoGeoHexbinChinaChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

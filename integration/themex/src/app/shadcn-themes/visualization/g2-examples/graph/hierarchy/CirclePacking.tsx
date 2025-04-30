@@ -54,17 +54,12 @@ const spec = {
   "width": 1000,
   "height": 1000,
   "type": "pack",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "value": "value",
     "color": "depth"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    domain: [0, 5],\n    range: ['hsl(152,80%,80%)', 'hsl(228,30%,40%)'],\n    interpolate: interpolateHcl,\n  } */
-  },
-  "style": {
-    "labelText": /* TODO: Convert style value/expression: (d */
-  }
+  "scale": {},
+  "style": {}
 };
 
 const GraphHierarchyCirclePackingChart: React.FC = () => {
@@ -80,7 +75,7 @@ const GraphHierarchyCirclePackingChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

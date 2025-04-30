@@ -54,10 +54,7 @@ const spec = {
   "width": 480,
   "height": 80,
   "type": "area",
-  "dataComment": /* TODO: Data assigned from variable/value: data - Handle this manually */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (_, idx */,
-    "y": /* TODO: Convert encode function/expression: (d */,
     "shape": "smooth"
   },
   "scale": {
@@ -65,13 +62,9 @@ const spec = {
       "zero": true
     }
   },
-  "style": {
-    "fill": /* TODO: Convert style value/expression: 'linear-gradient(-90deg, white 0%, darkgreen 100% */,
-    "fillOpacity": /* TODO: Convert style value/expression: 0.6 */
-  },
+  "style": {},
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: {\n  render: (e, { title, items } */
+    "type": "tooltip"
   }
 };
 
@@ -90,7 +83,7 @@ const GeneralMiniAreaChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

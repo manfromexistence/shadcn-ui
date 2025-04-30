@@ -60,18 +60,14 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "path",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "d": "path",
     "color": "key",
     "shape": "hollow"
   },
-  "style": {
-    "opacity": /* TODO: Convert style value/expression: 0.6 */,
-    "lineWidth": /* TODO: Convert style value/expression: 8 */
-  },
+  "style": {},
   "labels": [
-    /* TODO: Manually convert label options: {\n    position: 'inside',\n    text: (d) => d.label || '',\n    fill: '#000',\n  } */
+    null
   ]
 };
 
@@ -88,7 +84,7 @@ const GeneralVennVennHollowChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

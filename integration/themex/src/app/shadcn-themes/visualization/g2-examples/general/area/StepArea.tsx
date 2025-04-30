@@ -62,7 +62,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "area",
-  "dataComment": /* TODO: Data assigned from variable/value: data - Handle this manually */,
   "encode": {
     "x": "year",
     "y": "value",
@@ -73,11 +72,9 @@ const spec = {
       "labelFormatter": "~s"
     }
   },
-  "style": {
-    "opacity": /* TODO: Convert style value/expression: 0.4 */
-  },
+  "style": {},
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'value',\n    fontSize: 10,\n    textAlign: (_, idx, arr) => {\n      if (idx === 0) return 'left';\n      if (idx === arr.length - 1) return 'right';\n      return 'center';\n    },\n  } */
+    null
   ]
 };
 
@@ -96,7 +93,7 @@ const GeneralAreaStepAreaChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -84,13 +84,11 @@ const spec = {
   "paddingBottom": 60,
   "paddingLeft": 85,
   "type": "facetRect",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "y": "sex",
     "x": "survived",
     "color": "survived",
-    "shape": "point",
-    "size": /* TODO: Convert encode function/expression: 3 */
+    "shape": "point"
   },
   "transform": [
     {
@@ -103,9 +101,7 @@ const spec = {
     },
     "x": false
   },
-  "legend": {
-    "color": /* TODO: Manually convert legend options: { labelFormatter: (d) => (d === '1' ? 'Yes' : 'No') } */
-  }
+  "legend": {}
 };
 
 const UnitUnitNestedChart: React.FC = () => {
@@ -121,7 +117,7 @@ const UnitUnitNestedChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

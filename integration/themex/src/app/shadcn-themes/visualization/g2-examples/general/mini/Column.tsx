@@ -66,21 +66,15 @@ const spec = {
   "data": [
     700
   ],
-  "encode": {
-    "x": /* TODO: Convert encode function/expression: (_, idx */,
-    "y": /* TODO: Convert encode function/expression: (d */
-  },
+  "encode": {},
   "style": {
-    "arrow": /* TODO: Convert style value/expression: true */,
-    "stroke": "red",
-    "lineDash": /* TODO: Convert style value/expression: [2, 2] */
+    "stroke": "red"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'value = 700',\n    position: 'right',\n    dx: -10,\n    textBaseline: 'bottom',\n  } */
+    null
   ],
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: {\n  render: (e, { title, items } */
+    "type": "tooltip"
   }
 };
 
@@ -97,7 +91,7 @@ const GeneralMiniColumnChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

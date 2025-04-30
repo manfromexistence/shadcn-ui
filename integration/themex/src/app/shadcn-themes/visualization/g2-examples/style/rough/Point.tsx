@@ -64,21 +64,14 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n      container: 'container',\n      autoFit: true,\n      plugins: [new Plugin()],\n    } */,
   "type": "point",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "height",
     "y": "weight",
     "color": "gender"
   },
-  "axis": {
-    "x": /* TODO: Manually convert axis options: {\n        titleFontSize: 15,\n        titleFontFamily: 'Gaegu',\n        labelFontFamily: 'Gaegu',\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n      } */,
-    "y": /* TODO: Manually convert axis options: {\n        titleFontSize: 15,\n        titleFontFamily: 'Gaegu',\n        labelFontFamily: 'Gaegu',\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n      } */
-  },
-  "legend": {
-    "color": /* TODO: Manually convert legend options: { itemLabelFontFamily: 'Gaegu' } */
-  }
+  "axis": {},
+  "legend": {}
 };
 
 const StyleRoughPointChart: React.FC = () => {
@@ -94,7 +87,7 @@ const StyleRoughPointChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

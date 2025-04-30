@@ -100,20 +100,17 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "polygon",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "x",
     "y": "y"
   },
   "style": {
     "fill": "#5B8FF9",
-    "opacity": /* TODO: Convert style value/expression: 0.2 */,
-    "lineWidth": /* TODO: Convert style value/expression: 5 */,
     "stroke": "#fff",
     "pointerEvents": "none"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'key',\n    fontSize: 16,\n    fontWeight: 500,\n    position: 'inside',\n    pointerEvents: 'none',\n  } */
+    null
   ],
   "interaction": {
     "type": "elementHighlight"
@@ -133,7 +130,7 @@ const GeoGeoHexjsonUsaChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

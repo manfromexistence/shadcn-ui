@@ -81,10 +81,8 @@ const spec = {
   "width": 640,
   "height": 480,
   "type": "text",
-  "dataComment": /* TODO: Data assigned from variable/value: paragraph - Handle this manually */,
   "encode": {
     "x": "idx",
-    "y": /* TODO: Convert encode function/expression: 1 */,
     "text": "text",
     "color": "text"
   },
@@ -100,19 +98,9 @@ const spec = {
     }
   },
   "style": {
-    "wordWrap": /* TODO: Convert style value/expression: true */,
-    "wordWrapWidth": /* TODO: Convert style value/expression: 160 */,
-    "dx": /* TODO: Convert style value/expression: -80 */,
-    "dy": /* TODO: Convert style value/expression: 25 */,
     "textAlign": "left",
     "textBaseline": "top",
-    "fontSize": /* TODO: Convert style value/expression: 10 */,
-    "background": /* TODO: Convert style value/expression: true */,
-    "backgroundFill": "#416180",
-    "backgroundFillOpacity": /* TODO: Convert style value/expression: 0.05 */,
-    "backgroundRadius": /* TODO: Convert style value/expression: 3 */,
-    "backgroundPadding": /* TODO: Convert style value/expression: [2, 4] */,
-    "lineWidth": /* TODO: Convert style value/expression: 0 */
+    "backgroundFill": "#416180"
   }
 };
 
@@ -131,7 +119,7 @@ const GeneralTextParagraphChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

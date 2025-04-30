@@ -55,7 +55,6 @@ const spec = {
   "width": 720,
   "height": 720,
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "year",
     "y": "people"
@@ -71,9 +70,7 @@ const spec = {
       "type": "sqrt"
     }
   },
-  "axis": {
-    "y": /* TODO: Manually convert axis options: {\n    titleSpacing: 28,\n    labelFormatter: '~s',\n    tickCount: 5,\n    tickFilter: (d, i) => i !== 0,\n    direction: 'right',\n  } */
-  },
+  "axis": {},
   "coordinate": {
     "type": "polar"
   }
@@ -92,7 +89,7 @@ const GeneralRoseRoseChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -56,11 +56,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "link",
-  "dataComment": /* TODO: Manually define inline data array. Original: [data] */,
-  "encode": {
-    "x": /* TODO: Convert encode function/expression: ['x1', 'x2'] */,
-    "y": /* TODO: Convert encode function/expression: ['y1', 'y2'] */
-  }
+  "encode": {}
 };
 
 const GeneralLinkLinkShapeChart: React.FC = () => {
@@ -78,7 +74,7 @@ const GeneralLinkLinkShapeChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

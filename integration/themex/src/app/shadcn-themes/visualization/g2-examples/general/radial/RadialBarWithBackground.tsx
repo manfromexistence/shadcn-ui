@@ -87,12 +87,9 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "theme": "dark",
   "type": "interval",
-  "dataComment": /* TODO: Data assigned from variable/value: data - Handle this manually */,
   "encode": {
     "x": "type",
-    "y": "value",
-    "color": /* TODO: Convert encode function/expression: [\n    (val */,
-    "src": /* TODO: Convert encode function/expression: 'https://gw.alipayobjects.com/mdn/rms_ef85c6/afts/img/A*0DYiQKP08cQAAAAAAAAAAAAAARQnAQ', */
+    "y": "value"
   },
   "scale": {
     "color": {
@@ -104,11 +101,8 @@ const spec = {
   },
   "style": {
     "fill": "#202020",
-    "radius": /* TODO: Convert style value/expression: 20 */,
     "x": "50%",
-    "y": "50%",
-    "width": /* TODO: Convert style value/expression: 100 */,
-    "height": /* TODO: Convert style value/expression: 80 */
+    "y": "50%"
   },
   "coordinate": {
     "type": "radial",
@@ -134,7 +128,7 @@ const GeneralRadialRadialBarWithBackgroundChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

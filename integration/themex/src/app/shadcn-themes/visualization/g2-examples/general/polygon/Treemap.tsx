@@ -98,13 +98,8 @@ const spec = {
   "paddingBottom": 4,
   "paddingRight": 4,
   "type": "count",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
-    "y": /* TODO: Convert encode function/expression: (d */,
-    "size": "r",
-    "color": /* TODO: Convert encode function/expression: (d */,
-    "text": /* TODO: Convert encode function/expression: name */
+    "size": "r"
   },
   "scale": {
     "x": {
@@ -128,11 +123,8 @@ const spec = {
     }
   },
   "style": {
-    "dy": /* TODO: Convert style value/expression: 15 */,
-    "dx": /* TODO: Convert style value/expression: 5 */,
     "fill": "black",
-    "textAlign": "start",
-    "fontSize": /* TODO: Convert style value/expression: 12 */
+    "textAlign": "start"
   }
 };
 
@@ -149,7 +141,7 @@ const GeneralPolygonTreemapChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

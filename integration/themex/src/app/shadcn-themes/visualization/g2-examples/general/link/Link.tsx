@@ -51,24 +51,14 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "link",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
-  "encode": {
-    "x": /* TODO: Convert encode function/expression: ['POP_1980', 'POP_2015'] */,
-    "y": /* TODO: Convert encode function/expression: ['R90_10_1980', 'R90_10_2015'] */,
-    "color": /* TODO: Convert encode function/expression: (d */
-  },
+  "encode": {},
   "scale": {
     "x": {
       "type": "log"
     }
   },
-  "axis": {
-    "x": /* TODO: Manually convert axis options: {\n    labelFormatter: '~s',\n    labelTransform: 'rotate(90)',\n  } */
-  },
-  "style": {
-    "arrow": /* TODO: Convert style value/expression: true */,
-    "arrowSize": /* TODO: Convert style value/expression: 6 */
-  }
+  "axis": {},
+  "style": {}
 };
 
 const GeneralLinkLinkChart: React.FC = () => {
@@ -84,7 +74,7 @@ const GeneralLinkLinkChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

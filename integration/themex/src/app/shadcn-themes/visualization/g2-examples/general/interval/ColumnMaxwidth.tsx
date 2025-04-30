@@ -53,10 +53,7 @@ const spec = {
       "padding": 0.5
     }
   },
-  "style": {
-    "minWidth": /* TODO: Convert style value/expression: 500 */,
-    "maxWidth": /* TODO: Convert style value/expression: 200 */
-  }
+  "style": {}
 };
 
 const GeneralIntervalColumnMaxwidthChart: React.FC = () => {
@@ -72,7 +69,7 @@ const GeneralIntervalColumnMaxwidthChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

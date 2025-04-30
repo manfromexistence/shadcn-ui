@@ -269,23 +269,12 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "getTime",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
-    "x": "time",
-    "color": /* TODO: Convert encode function/expression: (d */,
-    "y": /* TODO: Convert encode function/expression: ['start', 'end'] */
+    "x": "time"
   },
-  "scale": {
-    "x": /* TODO: Manually convert scale options: {\n    compare: (a, b) => new Date(a).getTime() - new Date(b).getTime(),\n  } */,
-    "color": /* TODO: Manually convert scale options: {\n    domain: ['下跌', '不变', '上涨'],\n    range: ['#4daf4a', '#999999', '#e41a1c'],\n  } */
-  },
-  "axis": {
-    "y": /* TODO: Manually convert axis options: {\n    title: false,\n  } */
-  },
-  "style": {
-    "fillOpacity": /* TODO: Convert style value/expression: 1 */,
-    "stroke": /* TODO: Convert style value/expression: (d */
-  }
+  "scale": {},
+  "axis": {},
+  "style": {}
 };
 
 const GeneralCandlestickBasisChart: React.FC = () => {
@@ -301,7 +290,7 @@ const GeneralCandlestickBasisChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -102,14 +102,12 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'inline',\n  value: data,\n  transform: [\n    {\n      type: 'custom',\n      // calucate accumulate and percentage fields.\n      callback: (data - Handle this manually */,
   "encode": {
     "x": "x",
     "y": "accumulate",
     "shape": "diamond"
   },
   "scale": {
-    "x": /* TODO: Manually convert scale options: { padding: 1 / 2 } */,
     "y": {
       "independent": true,
       "domainMin": 0
@@ -118,14 +116,11 @@ const spec = {
   "axis": {
     "x": {
       "title": null
-    },
-    "y": /* TODO: Manually convert axis options: {\n    position: 'right',\n    title: 'Cumulative Percentage',\n    grid: null,\n    labelFormatter: (d) => `${(d * 100).toFixed(0)}%`,\n  } */
+    }
   },
-  "style": {
-    "fill": /* TODO: Convert style value/expression: (d */
-  },
+  "style": {},
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: (d) => `${(d.percentage * 100).toFixed(1)}%`,\n    textBaseline: 'bottom',\n  } */
+    null
   ]
 };
 
@@ -151,7 +146,7 @@ const GeneralDualParetoChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

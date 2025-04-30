@@ -66,9 +66,7 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "height": 360,
   "type": "rangeX",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { year: [new Date('1933'), new Date('1945')], event: 'Nazi Rule' },\n    { year: [new Date('1948'), new Date('1989')], event: 'GDR (East Germany)' },\n  ] */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
     "color": "#333",
     "y": "population"
   },
@@ -81,10 +79,7 @@ const spec = {
       ]
     }
   },
-  "style": {
-    "fillOpacity": /* TODO: Convert style value/expression: 0.75 */,
-    "lineWidth": /* TODO: Convert style value/expression: 1.5 */
-  }
+  "style": {}
 };
 
 const AnnotationRangeLineRangeChart: React.FC = () => {
@@ -102,7 +97,7 @@ const AnnotationRangeLineRangeChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -84,21 +84,17 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "padding": 50,
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "term",
     "y": "count",
-    "size": /* TODO: Convert encode function/expression: 4 */,
     "shape": "point"
   },
   "style": {
     "text": "Music",
     "x": "50%",
     "y": "50%",
-    "textAlign": "center",
-    "fontSize": /* TODO: Convert style value/expression: 24 */
-  },
-  "coordinate": /* TODO: Manually convert coordinate options: { type: 'radial', innerRadius: 0.2, endAngle: Math.PI } */
+    "textAlign": "center"
+  }
 };
 
 const GeneralRadialRadialLineChart: React.FC = () => {
@@ -114,7 +110,7 @@ const GeneralRadialRadialLineChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

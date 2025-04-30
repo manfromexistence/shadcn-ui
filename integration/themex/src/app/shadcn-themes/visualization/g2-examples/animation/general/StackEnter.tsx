@@ -46,13 +46,11 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { type: 'Apple', year: '2001', value: 260 },\n    { type: 'Orange', year: '2001', value: 100 },\n    { type: 'Banana', year: '2001', value: 90 },\n    { type: 'Apple', year: '2002', value: 210 },\n    { type: 'Orange', year: '2002', value: 150 },\n    { type: 'Banana', year: '2002', value: 30 },\n  ] */,
   "encode": {
     "x": "year",
     "y": "value",
     "color": "type",
-    "series": "type",
-    "enterDuration": /* TODO: Convert encode function/expression: 1000 */
+    "series": "type"
   },
   "transform": [
     {
@@ -77,7 +75,7 @@ const AnimationGeneralStackEnterChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

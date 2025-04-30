@@ -54,9 +54,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "line",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
     "y": "Close",
     "color": "Symbol"
   },
@@ -73,7 +71,7 @@ const spec = {
     }
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'Symbol',\n    selector: 'last',\n    fontSize: 10,\n  } */
+    null
   ]
 };
 
@@ -90,7 +88,7 @@ const ComponentTooltipTooltipSeriesChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

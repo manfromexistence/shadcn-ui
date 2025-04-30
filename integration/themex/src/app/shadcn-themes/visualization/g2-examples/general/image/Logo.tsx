@@ -89,7 +89,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "link",
-  "dataComment": /* TODO: Data assigned from variable/value: data - Handle this manually */,
   "encode": {
     "x": "name",
     "y": "value",
@@ -108,9 +107,7 @@ const spec = {
     }
   },
   "style": {
-    "stroke": "#dfdfdf",
-    "lineDash": /* TODO: Convert style value/expression: [2, 2] */,
-    "opacity": /* TODO: Convert style value/expression: 0.5 */
+    "stroke": "#dfdfdf"
   }
 };
 
@@ -129,7 +126,7 @@ const GeneralImageLogoChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

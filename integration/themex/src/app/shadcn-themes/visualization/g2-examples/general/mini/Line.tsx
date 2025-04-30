@@ -61,18 +61,14 @@ const spec = {
   "width": 480,
   "height": 80,
   "type": "line",
-  "dataComment": /* TODO: Data assigned from variable/value: data - Handle this manually */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (_, idx */,
-    "y": /* TODO: Convert encode function/expression: (d */,
     "shape": "smooth"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    selector: 'last',\n    text: (d) => d,\n    textAlign: 'right',\n    textBaseline: 'bottom',\n    dx: -10,\n    dy: -10,\n    connector: true,\n    fontSize: 10,\n  } */
+    null
   ],
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: {\n  render: (e, { title, items } */
+    "type": "tooltip"
   }
 };
 
@@ -91,7 +87,7 @@ const GeneralMiniLineChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

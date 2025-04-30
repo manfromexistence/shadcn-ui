@@ -51,13 +51,10 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "line",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
     "y": "value",
     "shape": "hvh",
-    "color": "value",
-    "series": /* TODO: Convert encode function/expression: ( */
+    "color": "value"
   },
   "scale": {
     "x": {
@@ -77,7 +74,6 @@ const spec = {
   },
   "style": {
     "gradient": "y",
-    "lineWidth": /* TODO: Convert style value/expression: 2 */,
     "lineJoin": "round"
   }
 };
@@ -95,7 +91,7 @@ const GeneralLineLineGradientEncodingChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

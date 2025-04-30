@@ -82,7 +82,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "point",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "x",
     "y": "y",
@@ -90,10 +89,7 @@ const spec = {
     "shape": "point"
   },
   "transform": [
-    {
-      "type": /* PARSE_ERROR */,
-      "comment": /* TODO: Manually convert transform options: {\n    type: 'stackEnter',\n    groupBy: ['x', 'y'],\n    orderBy: 'color',\n    duration: 2000,\n  } */
-    }
+    null
   ],
   "scale": {
     "y": {
@@ -101,8 +97,7 @@ const spec = {
         0,
         1
       ]
-    },
-    "color": /* TODO: Manually convert scale options: {\n    type: 'sqrt',\n    range: ['hsl(152,80%,80%)', 'hsl(228,30%,40%)'],\n    interpolate: interpolateHcl,\n  } */
+    }
   },
   "legend": {
     "color": false
@@ -113,7 +108,6 @@ const spec = {
     "x": "50%",
     "y": "50%",
     "textAlign": "center",
-    "fontSize": /* TODO: Convert style value/expression: 18 */,
     "fill": "#666",
     "dy": "30"
   }
@@ -132,7 +126,7 @@ const AnimationGroupPointChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

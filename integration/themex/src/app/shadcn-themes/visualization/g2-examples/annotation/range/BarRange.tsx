@@ -81,7 +81,6 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "height": 500,
   "type": "rangeY",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { y: [0, 25], region: '1' },\n    { y: [25, 50], region: '2' },\n  ] */,
   "encode": {
     "y": "平均年收入",
     "x": "职业",
@@ -92,13 +91,8 @@ const spec = {
       "type": "dodgeX"
     }
   ],
-  "axis": {
-    "y": /* TODO: Manually convert axis options: { title: '平均年收入', labelFormatter: (d) => d + '万' } */
-  },
-  "style": {
-    "fill": /* TODO: Convert style value/expression: (d */,
-    "fillOpacity": /* TODO: Convert style value/expression: 0.4 */
-  }
+  "axis": {},
+  "style": {}
 };
 
 const AnnotationRangeBarRangeChart: React.FC = () => {
@@ -116,7 +110,7 @@ const AnnotationRangeBarRangeChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

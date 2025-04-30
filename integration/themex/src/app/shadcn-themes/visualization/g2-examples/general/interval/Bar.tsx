@@ -54,7 +54,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "letter",
     "y": "frequency"
@@ -71,7 +70,7 @@ const spec = {
     }
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'frequency',\n    formatter: '.1%',\n    textAlign: (d) => (+d.frequency > 0.008 ? 'right' : 'start'),\n    fill: (d) => (+d.frequency > 0.008 ? '#fff' : '#000'),\n    dx: (d) => (+d.frequency > 0.008 ? -5 : 5),\n  } */
+    null
   ],
   "coordinate": {
     "transform": [
@@ -95,7 +94,7 @@ const GeneralIntervalBarChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

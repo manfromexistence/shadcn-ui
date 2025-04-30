@@ -78,16 +78,11 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "getFullYear",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    {\n      task: 'task0',\n      startTime: '2023-06-28 03:30:33.900123', // micro seconds\n      endTime: '2023-06-28 03:30:33.900678', // micro seconds\n      status: '0',\n    },\n    {\n      task: 'task0',\n      startTime: '2023-06-28 03:30:33.901123',\n      endTime: '2023-06-28 03:30:33.902678',\n      status: '1',\n    },\n  ] */,
   "encode": {
     "x": "task",
-    "y": /* TODO: Convert encode function/expression: (d */,
-    "y1": /* TODO: Convert encode function/expression: (d */,
     "color": "status"
   },
-  "scale": {
-    "y": /* TODO: Manually convert scale options: {\n    type: 'time',\n    domain: [\n      new Date('2023-06-28 03:30:33.900'),\n      new Date('2023-06-28 03:30:33.903'),\n    ],\n  } */
-  },
+  "scale": {},
   "coordinate": {
     "transform": [
       {
@@ -112,7 +107,7 @@ const GeneralIntervalBarRangeMicroChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

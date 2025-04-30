@@ -89,7 +89,6 @@ const spec = {
   "width": 954,
   "height": 954,
   "type": "area",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'fetch',\n  value: 'https://assets.antv.antgroup.com/g2/seasonal-weather.json',\n  transform: [\n    {\n      type: 'map',\n      callback: (d - Handle this manually */,
   "encode": {
     "x": "date",
     "y": "avg"
@@ -99,15 +98,10 @@ const spec = {
       "utc": true
     }
   },
-  "axis": {
-    "y": /* TODO: Manually convert axis options: {\n    zIndex: 1,\n    direction: 'center',\n    title: null,\n    labelFormatter: (d, i, array) =>\n      i === array.length - 1 ? `${d}°F` : `${d}`,\n    labelStroke: '#fff',\n    labelLineWidth: 5,\n  } */,
-    "x": /* TODO: Manually convert axis options: {\n    grid: true,\n    position: 'inner',\n  } */
-  },
+  "axis": {},
   "style": {
     "fill": "steelblue",
-    "fillOpacity": /* TODO: Convert style value/expression: 0.2 */,
-    "stroke": "steelblue",
-    "lineWidth": /* TODO: Convert style value/expression: 1.5 */
+    "stroke": "steelblue"
   },
   "coordinate": {
     "type": "polar",
@@ -136,7 +130,7 @@ const GeneralRadarAreaRadialChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

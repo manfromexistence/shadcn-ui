@@ -51,7 +51,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "Month",
     "y": "Death",
@@ -70,9 +69,7 @@ const spec = {
       "duration": 2000
     }
   ],
-  "scale": {
-    "y": /* TODO: Manually convert scale options: {\n    type: 'sqrt',\n  } */
-  },
+  "scale": {},
   "axis": {
     "y": false
   },
@@ -94,7 +91,7 @@ const AnimationGroupIntervalPolarChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

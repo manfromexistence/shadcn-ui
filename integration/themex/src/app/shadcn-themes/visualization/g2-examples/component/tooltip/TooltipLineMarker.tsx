@@ -73,15 +73,13 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "line",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { month: 'Jan', city: 'Tokyo', temperature: 7 },\n    { month: 'Jan', city: 'London', temperature: 3.9 },\n    { month: 'Feb', city: 'Tokyo', temperature: 6.9 },\n    { month: 'Feb', city: 'London', temperature: 4.2 },\n    { month: 'Mar', city: 'Tokyo', temperature: 9.5 },\n    { month: 'Mar', city: 'London', temperature: 5.7 },\n    { month: 'Apr', city: 'Tokyo', temperature: 14.5 },\n    { month: 'Apr', city: 'London', temperature: 8.5 },\n    { month: 'May', city: 'Tokyo', temperature: 18.4 },\n    { month: 'May', city: 'London', temperature: 11.9 },\n    { month: 'Jun', city: 'Tokyo', temperature: 21.5 },\n    { month: 'Jun', city: 'London', temperature: 15.2 },\n    { month: 'Jul', city: 'Tokyo', temperature: 25.2 },\n    { month: 'Jul', city: 'London', temperature: 17 },\n    { month: 'Aug', city: 'Tokyo', temperature: 26.5 },\n    { month: 'Aug', city: 'London', temperature: 16.6 },\n    { month: 'Sep', city: 'Tokyo', temperature: 23.3 },\n    { month: 'Sep', city: 'London', temperature: 14.2 },\n    { month: 'Oct', city: 'Tokyo', temperature: 18.3 },\n    { month: 'Oct', city: 'London', temperature: 10.3 },\n    { month: 'Nov', city: 'Tokyo', temperature: 13.9 },\n    { month: 'Nov', city: 'London', temperature: 6.6 },\n    { month: 'Dec', city: 'Tokyo', temperature: 9.6 },\n    { month: 'Dec', city: 'London', temperature: 4.8 },\n  ] */,
   "encode": {
     "x": "month",
     "y": "temperature",
     "color": "city"
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: {\n    render: (event, { items } */
+    "type": "tooltip"
   }
 };
 
@@ -100,7 +98,7 @@ const ComponentTooltipTooltipLineMarkerChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

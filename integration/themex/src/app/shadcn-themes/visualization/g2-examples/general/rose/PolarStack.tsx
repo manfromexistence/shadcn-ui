@@ -105,7 +105,6 @@ const spec = {
   "width": 720,
   "height": 720,
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "year",
     "y": "count",
@@ -116,17 +115,13 @@ const spec = {
       "padding": 0
     }
   },
-  "axis": {
-    "x": /* TODO: Manually convert axis options: {\n    line: true,\n    grid: true,\n    gridLineDash: [0, 0],\n    gridLineWidth: 1,\n  } */,
-    "y": /* TODO: Manually convert axis options: {\n    title: false,\n    line: true,\n    gridLineWidth: 1,\n  } */
-  },
+  "axis": {},
   "coordinate": {
     "type": "polar",
     "innerRadius": 0.1
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: {\n  body: false,\n  crosshairsStroke: 'red',\n  crosshairsStrokeWidth: 4,\n} */
+    "type": "tooltip"
   }
 };
 
@@ -143,7 +138,7 @@ const GeneralRosePolarStackChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

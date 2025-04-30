@@ -50,14 +50,8 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "axisX",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
-  "scale": {
-    "x": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    domain: [5, 10],\n    range: [0, 1],\n  } */,
-    "y": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    domain: [5, 10],\n    range: [0, 1],\n  } */
-  },
+  "scale": {},
   "style": {
-    "labelFontSize": /* TODO: Convert style value/expression: 14 */,
-    "gridLineWidth": /* TODO: Convert style value/expression: 10 */,
     "gridStroke": "red"
   }
 };
@@ -75,7 +69,7 @@ const ComponentAxisAxisXyChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

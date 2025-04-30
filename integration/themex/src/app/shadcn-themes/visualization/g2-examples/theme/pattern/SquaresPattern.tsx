@@ -72,7 +72,6 @@ const spec = {
   "width": 500,
   "height": 400,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { id: 'c', value: 526 },\n    { id: 'sass', value: 220 },\n    { id: 'php', value: 325 },\n    { id: 'elixir', value: 561 },\n    { id: 'rust', value: 54 },\n  ] */,
   "encode": {
     "y": "value"
   },
@@ -82,13 +81,10 @@ const spec = {
     }
   ],
   "style": {
-    "radius": /* TODO: Convert style value/expression: 6 */,
-    "stroke": "#fff",
-    "lineWidth": /* TODO: Convert style value/expression: 4 */,
-    "fill": /* TODO: Convert style value/expression: (_, idx */
+    "stroke": "#fff"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'id',\n    position: 'outside',\n    fontWeight: 'bold',\n  } */
+    null
   ],
   "coordinate": {
     "type": "theta",
@@ -112,7 +108,7 @@ const ThemePatternSquaresPatternChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

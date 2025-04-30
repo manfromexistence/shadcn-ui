@@ -63,7 +63,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "density",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'fetch',\n  value: 'https://assets.antv.antgroup.com/g2/species.json',\n} - Handle this manually */,
   "encode": {
     "x": "x",
     "y": "y",
@@ -72,11 +71,7 @@ const spec = {
     "size": "size",
     "shape": "violin"
   },
-  "style": {
-    "opacity": /* TODO: Convert style value/expression: 0.5 */,
-    "strokeOpacity": /* TODO: Convert style value/expression: 0.5 */,
-    "point": /* TODO: Convert style value/expression: false */
-  }
+  "style": {}
 };
 
 const GeneralViolinViolinChart: React.FC = () => {
@@ -97,7 +92,7 @@ const GeneralViolinViolinChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

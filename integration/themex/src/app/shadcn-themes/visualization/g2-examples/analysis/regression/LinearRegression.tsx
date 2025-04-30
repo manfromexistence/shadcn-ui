@@ -70,10 +70,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "point",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'fetch',\n  value: 'https://assets.antv.antgroup.com/g2/linear-regression.json',\n} - Handle this manually */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
-    "y": /* TODO: Convert encode function/expression: (d */,
     "shape": "point"
   },
   "scale": {
@@ -91,12 +88,10 @@ const spec = {
     }
   },
   "style": {
-    "fillOpacity": /* TODO: Convert style value/expression: 0.75 */,
-    "stroke": "#30BF78",
-    "lineWidth": /* TODO: Convert style value/expression: 2 */
+    "stroke": "#30BF78"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'y = 1.7x+3.01',\n    selector: 'last',\n    position: 'right',\n    textAlign: 'end',\n    dy: -8,\n  } */
+    null
   ]
 };
 
@@ -118,7 +113,7 @@ const AnalysisRegressionLinearRegressionChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

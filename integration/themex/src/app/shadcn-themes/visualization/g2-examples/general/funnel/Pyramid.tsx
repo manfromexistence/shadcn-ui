@@ -75,7 +75,6 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "paddingRight": 80,
   "type": "interval",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'inline',\n  value: data,\n  transform: [\n    {\n      type: 'custom',\n      callback: (data - Handle this manually */,
   "encode": {
     "x": "action",
     "y": "pv",
@@ -92,14 +91,11 @@ const spec = {
       "padding": 0
     }
   },
-  "legend": {
-    "color": /* TODO: Manually convert legend options: { position: 'bottom' } */
-  },
+  "legend": {},
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: (d) => `${d.action} ${d.pv}`,\n    textAlign: 'left',\n  } */,
-    /* TODO: Manually convert label options: {\n    text: (d) => `${(d.rate * 100).toFixed(1)}%`,\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */
-  ],
-  "coordinate": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
+    null,
+    null
+  ]
 };
 
 const GeneralFunnelPyramidChart: React.FC = () => {
@@ -123,7 +119,7 @@ const GeneralFunnelPyramidChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

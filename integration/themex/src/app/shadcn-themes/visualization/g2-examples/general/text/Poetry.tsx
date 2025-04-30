@@ -50,24 +50,17 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "text",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: 0.5 */,
-    "y": /* TODO: Convert encode function/expression: (_, idx */,
-    "text": "text",
-    "color": /* TODO: Convert encode function/expression: (_, idx */,
-    "opacity": /* TODO: Convert encode function/expression: (_, idx */
+    "text": "text"
   },
   "scale": {
     "y": {
       "type": "point"
-    },
-    "color": /* TODO: Manually convert scale options: { offset: (t) => 1 - t } */
+    }
   },
   "style": {
     "textAlign": "center",
-    "textBaseline": "middle",
-    "fontSize": /* TODO: Convert style value/expression: 16 */
+    "textBaseline": "middle"
   }
 };
 
@@ -84,7 +77,7 @@ const GeneralTextPoetryChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

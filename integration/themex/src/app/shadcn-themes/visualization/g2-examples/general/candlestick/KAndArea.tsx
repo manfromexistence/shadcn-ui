@@ -91,29 +91,19 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "getTime",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "date",
     "y": "mean",
     "color": "trend"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    domain: ['down', 'up'],\n    range: ['#4daf4a', '#e41a1c'],\n  } */,
-    "x": /* TODO: Manually convert scale options: {\n    compare: (a, b) => new Date(a).getTime() - new Date(b).getTime(),\n  } */,
-    "y": /* TODO: Manually convert scale options: {\n    domain: [20, 35],\n  } */
-  },
-  "axis": {
-    "x": /* TODO: Manually convert axis options: {\n    labelFormatter: (d) => new Date(d).toLocaleDateString(),\n  } */,
-    "y": /* TODO: Manually convert axis options: {\n    title: false,\n  } */
-  },
+  "scale": {},
+  "axis": {},
   "style": {
-    "fillOpacity": /* TODO: Convert style value/expression: 1 */,
     "fill": "#64b5f6",
     "stroke": "#FACC14"
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: {\n  shared: true,\n} */
+    "type": "tooltip"
   }
 };
 
@@ -130,7 +120,7 @@ const GeneralCandlestickKAndAreaChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

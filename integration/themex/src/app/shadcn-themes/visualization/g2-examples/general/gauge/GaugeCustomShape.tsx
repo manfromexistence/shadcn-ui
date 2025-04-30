@@ -82,8 +82,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "type": "getCenter",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */
+  "type": "getCenter"
 };
 
 const GeneralGaugeGaugeCustomShapeChart: React.FC = () => {
@@ -99,7 +98,7 @@ const GeneralGaugeGaugeCustomShapeChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

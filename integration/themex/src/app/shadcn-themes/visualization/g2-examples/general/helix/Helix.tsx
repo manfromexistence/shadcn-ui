@@ -80,16 +80,12 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "height": 500,
   "type": "getTime",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  value: data,\n} - Handle this manually */,
   "encode": {
     "x": "time",
     "y": "value",
     "color": "value"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    range: ['#ffffff', '#1890FF'],\n  } */
-  },
-  "coordinate": /* TODO: Manually convert coordinate options: {\n  type: 'helix',\n  startAngle: 0.5 * Math.PI,\n  endAngle: 12.5 * Math.PI,\n} */
+  "scale": {}
 };
 
 const GeneralHelixHelixChart: React.FC = () => {
@@ -109,7 +105,7 @@ const GeneralHelixHelixChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

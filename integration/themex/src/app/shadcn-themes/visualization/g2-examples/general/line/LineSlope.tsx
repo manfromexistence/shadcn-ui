@@ -60,7 +60,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "line",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "year",
     "y": "receipts",
@@ -74,8 +73,8 @@ const spec = {
     }
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: (d) => `${d.country} ${d.receipts}`,\n    selector: 'first',\n    transform: [{ type: 'overlapDodgeY' }],\n    fontSize: 10,\n    dx: -3,\n    textAlign: 'end',\n  } */,
-    /* TODO: Manually convert label options: {\n    text: (d) => `${d.receipts} ${d.country}`,\n    selector: 'last',\n    transform: [{ type: 'overlapDodgeY' }],\n    fontSize: 10,\n    dx: 3,\n  } */
+    null,
+    null
   ]
 };
 
@@ -92,7 +91,7 @@ const GeneralLineLineSlopeChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

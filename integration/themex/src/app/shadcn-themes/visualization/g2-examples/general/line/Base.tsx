@@ -63,20 +63,16 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "line",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "year",
     "y": "value"
   },
-  "scale": {
-    "x": /* TODO: Manually convert scale options: {\n    range: [0, 1],\n  } */,
-    "y": /* TODO: Manually convert scale options: {\n    domainMin: 0,\n    nice: true,\n  } */
-  },
+  "scale": {},
   "style": {
     "fill": "white"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n  text: 'value',\n  style: {\n    dx: -10,\n    dy: -12,\n  },\n} */
+    null
   ]
 };
 
@@ -93,7 +89,7 @@ const GeneralLineBaseChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

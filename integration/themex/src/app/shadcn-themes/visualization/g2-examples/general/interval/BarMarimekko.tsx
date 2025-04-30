@@ -74,7 +74,6 @@ const spec = {
   "paddingLeft": 0,
   "paddingRight": 0,
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "market",
     "y": "value",
@@ -102,8 +101,8 @@ const spec = {
     "y": false
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'segment',\n    x: 5,\n    y: 5,\n    textAlign: 'start',\n    textBaseline: 'top',\n    fontSize: 10,\n    fill: '#fff',\n  } */,
-    /* TODO: Manually convert label options: {\n    text: 'value',\n    x: 5,\n    y: 5,\n    textAlign: 'start',\n    dy: 15,\n    fontSize: 10,\n    fill: '#fff',\n  } */
+    null,
+    null
   ]
 };
 
@@ -120,7 +119,7 @@ const GeneralIntervalBarMarimekkoChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

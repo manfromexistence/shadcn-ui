@@ -75,7 +75,6 @@ const spec = {
   "width": 500,
   "height": 400,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { id: 'c', value: 526 },\n    { id: 'sass', value: 220 },\n    { id: 'php', value: 325 },\n    { id: 'elixir', value: 561 },\n    { id: 'rust', value: 54 },\n  ] */,
   "encode": {
     "y": "value",
     "color": "id"
@@ -85,13 +84,10 @@ const spec = {
       "type": "stackY"
     }
   ],
-  "style": {
-    "radius": /* TODO: Convert style value/expression: 4 */,
-    "inset": /* TODO: Convert style value/expression: 1 */
-  },
+  "style": {},
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'value',\n    offset: 14,\n    fontWeight: 'bold',\n  } */,
-    /* TODO: Manually convert label options: {\n    text: 'id',\n    position: 'spider',\n    connectorDistance: 0,\n    fontWeight: 'bold',\n    textBaseline: 'bottom',\n    textAlign: (d) => (['c', 'sass'].includes(d.id) ? 'end' : 'start'),\n    dy: -4,\n  } */
+    null,
+    null
   ],
   "coordinate": {
     "type": "theta",
@@ -115,7 +111,7 @@ const StyleThemeDarkChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

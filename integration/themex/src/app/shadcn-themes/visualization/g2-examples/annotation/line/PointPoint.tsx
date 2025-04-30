@@ -66,12 +66,10 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "height": 180,
   "type": "point",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'fetch',\n  value: 'https://assets.antv.antgroup.com/g2/penguins.json',\n  transform: [\n    {\n      type: 'map',\n      callback: (d - Handle this manually */,
   "encode": {
     "x": "body_mass_g",
     "y": "species",
-    "shape": "line",
-    "size": /* TODO: Convert encode function/expression: 12 */
+    "shape": "line"
   },
   "transform": [
     {
@@ -110,7 +108,7 @@ const AnnotationLinePointPointChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

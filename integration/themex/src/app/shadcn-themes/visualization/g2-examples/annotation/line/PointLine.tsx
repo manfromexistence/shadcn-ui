@@ -99,7 +99,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "point",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { x: 95, y: 95, z: 13.8, name: 'BE', country: 'Belgium' },\n    { x: 86.5, y: 102.9, z: 14.7, name: 'DE', country: 'Germany' },\n    { x: 80.8, y: 91.5, z: 15.8, name: 'FI', country: 'Finland' },\n    { x: 80.4, y: 102.5, z: 12, name: 'NL', country: 'Netherlands' },\n    { x: 80.3, y: 86.1, z: 11.8, name: 'SE', country: 'Sweden' },\n    { x: 78.4, y: 70.1, z: 16.6, name: 'ES', country: 'Spain' },\n    { x: 74.2, y: 68.5, z: 14.5, name: 'FR', country: 'France' },\n    { x: 73.5, y: 83.1, z: 10, name: 'NO', country: 'Norway' },\n    { x: 71, y: 93.2, z: 24.7, name: 'UK', country: 'United Kingdom' },\n    { x: 69.2, y: 57.6, z: 10.4, name: 'IT', country: 'Italy' },\n    { x: 68.6, y: 20, z: 16, name: 'RU', country: 'Russia' },\n    { x: 65.5, y: 126.4, z: 35.3, name: 'US', country: 'United States' },\n    { x: 65.4, y: 50.8, z: 28.5, name: 'HU', country: 'Hungary' },\n    { x: 63.4, y: 51.8, z: 15.4, name: 'PT', country: 'Portugal' },\n    { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' },\n  ] */,
   "encode": {
     "x": "x",
     "y": "y",
@@ -127,15 +126,12 @@ const spec = {
   },
   "style": {
     "stroke": "#000",
-    "fillOpacity": /* TODO: Convert style value/expression: 0.3 */,
-    "fill": "#1890ff",
-    "strokeOpacity": /* TODO: Convert style value/expression: 0.45 */,
-    "lineDash": /* TODO: Convert style value/expression: [3, 3] */
+    "fill": "#1890ff"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'name',\n    position: 'inside',\n    fill: '#1890ff',\n    stroke: '#fff',\n  } */,
-    /* TODO: Manually convert label options: {\n    text: 'Safe sugar intake 50g/day',\n    position: 'right',\n    textBaseline: 'bottom',\n    fill: '#000',\n    fillOpacity: 0.45,\n    background: true,\n    backgroundFill: '#000',\n    backgroundOpacity: 0.15,\n  } */,
-    /* TODO: Manually convert label options: {\n    text: 'Safe fat intake 65g/day',\n    position: 'top-left',\n    textBaseline: 'bottom',\n    fill: '#000',\n    fillOpacity: 0.45,\n    background: true,\n    backgroundFill: '#000',\n    backgroundOpacity: 0.15,\n  } */
+    null,
+    null,
+    null
   ]
 };
 
@@ -154,7 +150,7 @@ const AnnotationLinePointLineChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

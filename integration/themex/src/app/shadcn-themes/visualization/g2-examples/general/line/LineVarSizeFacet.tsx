@@ -67,12 +67,9 @@ const spec = {
   "paddingLeft": 150,
   "paddingBottom": 30,
   "type": "json",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
     "y": "variety",
     "series": "variety",
-    "color": /* TODO: Convert encode function/expression: (d */,
     "size": "yield"
   },
   "scale": {
@@ -86,15 +83,12 @@ const spec = {
       "palette": "rdBu"
     }
   },
-  "legend": {
-    "color": /* TODO: Manually convert legend options: { title: 'yield delta' } */
-  },
+  "legend": {},
   "style": {
     "shape": "trail"
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: { series: false } */
+    "type": "tooltip"
   }
 };
 
@@ -111,7 +105,7 @@ const GeneralLineLineVarSizeFacetChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

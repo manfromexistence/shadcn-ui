@@ -91,28 +91,16 @@ const spec = {
   "width": 244,
   "height": 244,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array. Original: [\n    {\n      name: 'activity1',\n      percent: 0.6,\n      color: '#1ad5de',\n      icon: 'https://gw.alipayobjects.com/zos/antfincdn/ck11Y6aRrz/shangjiantou.png',\n    },\n    {\n      name: 'activity2',\n      percent: 0.2,\n      color: '#a0ff03',\n      icon: 'https://gw.alipayobjects.com/zos/antfincdn/zY2JB7hhrO/shuangjiantou.png',\n    },\n    {\n      name: 'activity3',\n      percent: 0.3,\n      color: '#e90b3a',\n      icon: 'https://gw.alipayobjects.com/zos/antfincdn/%24qBxSxdK05/jiantou.png',\n    },\n  ] */,
   "encode": {
     "x": "name",
-    "y": /* TODO: Convert encode function/expression: 0 */,
-    "size": /* TODO: Convert encode function/expression: 12 */,
-    "color": "color",
-    "src": /* TODO: Convert encode function/expression: (d */
+    "color": "color"
   },
   "scale": {
     "color": {
       "type": "identity"
     }
   },
-  "style": {
-    "fillOpacity": /* TODO: Convert style value/expression: 0.25 */,
-    "radius": /* TODO: Convert style value/expression: 26 */,
-    "shadowColor": /* TODO: Convert style value/expression: 'rgba(0,0,0,0.45 */,
-    "shadowBlur": /* TODO: Convert style value/expression: 20 */,
-    "shadowOffsetX": /* TODO: Convert style value/expression: -2 */,
-    "shadowOffsetY": /* TODO: Convert style value/expression: -5 */,
-    "transform": /* TODO: Convert style value/expression: 'translateX(10 */
-  },
+  "style": {},
   "coordinate": {
     "type": "radial",
     "innerRadius": 0.2
@@ -134,7 +122,7 @@ const GeneralRadialAppleActivityChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

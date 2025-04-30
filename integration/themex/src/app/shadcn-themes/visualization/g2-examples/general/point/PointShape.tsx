@@ -46,13 +46,11 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "point",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "x",
     "y": "y",
     "shape": "category",
-    "color": "category",
-    "size": /* TODO: Convert encode function/expression: 5 */
+    "color": "category"
   },
   "scale": {
     "shape": {
@@ -78,7 +76,7 @@ const GeneralPointPointShapeChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

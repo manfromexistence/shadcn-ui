@@ -74,7 +74,6 @@ const spec = {
   "height": 720,
   "width": 720,
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "year",
     "y": "population"
@@ -85,7 +84,7 @@ const spec = {
     }
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'year',\n    fontSize: 16,\n    fontWeight: 800,\n    position: 'inside',\n  } */
+    null
   ],
   "coordinate": {
     "type": "polar"
@@ -108,7 +107,7 @@ const GeneralRoseNightingaleRoseChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

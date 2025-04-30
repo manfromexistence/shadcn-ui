@@ -74,9 +74,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "area",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'fetch',\n  value: 'https://assets.antv.antgroup.com/g2/weather.json',\n  transform: [\n    {\n      type: 'filter',\n      callback: (d - Handle this manually */,
   "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
     "y": "precipitation",
     "shape": "smooth"
   },
@@ -96,12 +94,9 @@ const spec = {
       "independent": true
     }
   },
-  "axis": {
-    "y": /* TODO: Manually convert axis options: {\n    position: 'right',\n    grid: null,\n    title: 'Precipitation (inches)',\n    titleFill: 'steelblue',\n  } */
-  },
+  "axis": {},
   "style": {
     "fill": "#85c5A6",
-    "fillOpacity": /* TODO: Convert style value/expression: 0.3 */,
     "stroke": "steelblue"
   }
 };
@@ -127,7 +122,7 @@ const GeneralDualDualAggregatedLineAreaChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

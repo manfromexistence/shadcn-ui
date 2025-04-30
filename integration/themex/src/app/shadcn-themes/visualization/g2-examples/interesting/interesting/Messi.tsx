@@ -122,18 +122,10 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n  container: 'container',\n  width: FW + P * 2,\n  height: FH + P * 2,\n  padding: P,\n} */,
   "type": "shape",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
-  "encode": {
-    "x": /* TODO: Convert encode function/expression: (d */,
-    "y": /* TODO: Convert encode function/expression: (d */
-  },
+  "encode": {},
   "transform": [
-    {
-      "type": /* PARSE_ERROR */,
-      "comment": /* TODO: Manually convert transform options: {\n    type: 'bin',\n    opacity: 'count',\n    thresholdsX: 15,\n    thresholdsY: 15,\n  } */
-    }
+    null
   ],
   "scale": {
     "x": {
@@ -151,8 +143,7 @@ const spec = {
   },
   "style": {
     "x": "0%",
-    "y": "0%",
-    "render": /* TODO: Convert style value/expression: football */
+    "y": "0%"
   }
 };
 
@@ -169,7 +160,7 @@ const InterestingInterestingMessiChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

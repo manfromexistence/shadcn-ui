@@ -186,7 +186,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "area",
-  "dataComment": /* TODO: Data assigned from variable/value: {\n  type: 'fetch',\n  value: 'https://assets.antv.antgroup.com/g2/population-by-state.json',\n  transform: [\n    {\n      type: 'fold',\n      fields: States,\n      key: 'state',\n      value: 'population',\n    },\n    {\n      type: 'map',\n      callback: (d - Handle this manually */,
   "encode": {
     "x": "date",
     "y": "population",
@@ -194,12 +193,10 @@ const spec = {
     "series": "state"
   },
   "style": {
-    "stroke": "#000",
-    "lineWidth": /* TODO: Convert style value/expression: 0.5 */,
-    "fillOpacity": /* TODO: Convert style value/expression: 0.8 */
+    "stroke": "#000"
   },
   "labels": [
-    /* TODO: Manually convert label options: {\n    text: 'state',\n    position: 'area', // `area` type positon used here.\n    selector: 'first',\n    transform: [{ type: 'overlapHide' }],\n    fontSize: 10,\n  } */
+    null
   ]
 };
 
@@ -230,7 +227,7 @@ const GeneralAreaLabelChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -58,18 +58,13 @@ const spec = {
   "height": 900,
   "width": 1100,
   "type": "treemap",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "value": "size"
   },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: { range: schemeTableau10 } */
-  },
+  "scale": {},
   "style": {
-    "labelText": /* TODO: Convert style value/expression: (d */,
     "labelFill": "#000",
-    "labelPosition": "top-left",
-    "fillOpacity": /* TODO: Convert style value/expression: 0.5 */
+    "labelPosition": "top-left"
   }
 };
 
@@ -86,7 +81,7 @@ const GraphHierarchyTreemapChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

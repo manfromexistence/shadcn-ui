@@ -88,24 +88,14 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "line",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
-  "encode": {
-    "position": /* TODO: Convert encode function/expression: [\n    'economy (mpg */,
-    "color": /* TODO: Convert encode function/expression: 'weight (lb */
-  },
-  "scale": {
-    "color": /* TODO: Manually convert scale options: {\n    palette: 'brBG',\n    offset: (t) => 1 - t,\n  } */
-  },
-  "style": {
-    "lineWidth": /* TODO: Convert style value/expression: 1.5 */,
-    "strokeOpacity": /* TODO: Convert style value/expression: 0.4 */
-  },
+  "encode": {},
+  "scale": {},
+  "style": {},
   "coordinate": {
     "type": "parallel"
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: { series: false } */
+    "type": "tooltip"
   }
 };
 
@@ -122,7 +112,7 @@ const GeneralParallelLineParallelVerticalChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

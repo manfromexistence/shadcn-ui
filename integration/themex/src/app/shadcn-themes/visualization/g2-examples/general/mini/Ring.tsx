@@ -58,11 +58,7 @@ const spec = {
   "width": 100,
   "height": 100,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array. Original: [1, progress] */,
-  "encode": {
-    "y": /* TODO: Convert encode function/expression: (d */,
-    "color": /* TODO: Convert encode function/expression: (d, idx */
-  },
+  "encode": {},
   "scale": {
     "y": {
       "domain": [
@@ -98,7 +94,7 @@ const GeneralMiniRingChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );

@@ -77,7 +77,6 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
     "x": "state",
     "y": "population",
@@ -105,8 +104,7 @@ const spec = {
     }
   },
   "interaction": {
-    "type": "tooltip",
-    "optionsComment": /* TODO: Manually convert interaction options: {\n    shared: true,\n    css: {\n      '.g2-tooltip': {\n        background: '#eee',\n        'border-radius': ' 0.25em !important',\n      },\n      '.g2-tooltip-title': {\n        'font-size': '20px',\n        'font-weight': 'bold',\n        'padding-bottom': '0.25em',\n      },\n      '.g2-tooltip-list-item': {\n        background: '#ccc',\n        padding: '0.25em',\n        margin: '0.25em',\n        'border-radius': '0.25em',\n      },\n      '.g2-tooltip-list-item-name-label': {\n        'font-weight': 'bold',\n        'font-size': '16px',\n      },\n      'g2-tooltip-list-item-marker': {\n        'border-radius': '0.25em',\n        width: '15px',\n        height: '15px',\n      },\n      '.g2-tooltip-list-item-value': {\n        'font-weight': 'bold',\n        'font-size': '16px',\n      },\n    },\n  } */
+    "type": "tooltip"
   }
 };
 
@@ -123,7 +121,7 @@ const ComponentTooltipTooltipStyleChart: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
   );
