@@ -2,12 +2,12 @@
 
 import { useState, useRef, ChangeEvent, useEffect } from "react";
 import { ColorPicker } from "antd";
-import { Input } from "@/registry/new-york/ui/input";
-import { Button } from "@/registry/new-york/ui/button";
-import { Card, CardContent } from "@/registry/new-york/ui/card";
-import { Label } from "@/registry/new-york/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/new-york/ui/tabs";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/registry/new-york/ui/select";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   argbFromHex, 
   Hct,
@@ -41,7 +41,7 @@ const SCHEMES = [
   { id: "content", name: "Content", class: SchemeContent },
 ];
 
-export default function IndexPage() {
+export default function ThemeCustomizer() {
   const [theme, setTheme] = useState<any>(null);
   const [settings, setSettings] = useState<ThemeSettings>({
     source: "#1a73e8",

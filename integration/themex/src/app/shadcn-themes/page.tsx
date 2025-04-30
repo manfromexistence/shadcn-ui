@@ -8,6 +8,7 @@ import { MailDemo } from "@/components/demos/mail-demo";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ContainerWrapper } from "@/components/wrappers";
+import ThemeCustomizer from "@/components/theme-customizer";
 
 export const metadata: Metadata = {
   title: "Theme Customizer",
@@ -17,8 +18,9 @@ export default function ShadcnThemesPage() {
   return (
     <>
       <ContainerWrapper withCane className="@container py-4">
-        <ActionButtons className="pb-4" />
-        <QuickCustomizer />
+        <ThemeCustomizer />
+        {/* <ActionButtons className="pb-4" />
+        <QuickCustomizer /> */}
       </ContainerWrapper>
 
       <Separator />

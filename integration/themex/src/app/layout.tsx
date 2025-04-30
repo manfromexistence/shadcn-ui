@@ -10,6 +10,7 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Providers } from "./providers";
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 export const metadata: Metadata = {
   title: {
@@ -59,16 +60,18 @@ export default async function RootLayout({
       {/* <ReactScan options={{ enabled: true }} /> */}
 
       <body className={cn(`antialiased`)}>
-        <Providers>
-          <Suspense>
-            {children}
-            <ThemeSync />
-          </Suspense>
+        <AntdRegistry>
+          <Providers>
+            <Suspense>
+              {children}
+              <ThemeSync />
+            </Suspense>
 
-          <FontLoader />
-          <Toaster />
-          {/* <ScreenDevTools /> */}
-        </Providers>
+            <FontLoader />
+            <Toaster />
+            {/* <ScreenDevTools /> */}
+          </Providers>
+        </AntdRegistry>
       </body>
     </html>
   );

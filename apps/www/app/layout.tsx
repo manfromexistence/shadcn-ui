@@ -92,7 +92,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </head>
         <body
           className={cn(
-            "min-h-svh bg-background font-sans antialiased",
+            "bg-background min-h-svh font-sans antialiased",
             fontSans.variable,
             fontMono.variable
           )}
@@ -106,7 +106,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           >
 
             <div vaul-drawer-wrapper="">
-              <div className="relative flex min-h-svh flex-col bg-background">
+              <div className="bg-background relative flex min-h-svh flex-col">
                 <AntdRegistry>
                   {children}
                 </AntdRegistry>
