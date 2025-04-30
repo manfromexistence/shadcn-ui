@@ -402,16 +402,23 @@ async function generateComponentContent(example: ExampleInfo): Promise<string> {
 
   // Clean up spec for stringification (remove comments, handle functions)
   const specString = JSON.stringify(spec, (key, value) => {
-      if (typeof value === 'object' && value !== null && value.comment && Object.keys(value).length === 1) {
-          // If the object only contains our comment placeholder, just return the comment string
-          return value.comment;
+      // Remove any fields that are comments, TODOs, or parse errors
+      if (
+        (typeof value === 'string' && (value.startsWith('/* TODO:') || value.startsWith('/* PARSE_ERROR */')))
+        || (typeof value === 'object' && value !== null && value.comment)
+      ) {
+        return undefined;
       }
-      if (typeof value === 'string' && (value.startsWith('/* TODO:') || value.startsWith('/* PARSE_ERROR */'))) {
-          return value; // Keep comments as strings
+      if (
+        key.endsWith('Comment') ||
+        key === 'chartOptionsComment' ||
+        key === 'typeComment' ||
+        key === 'dataComment' ||
+        key === 'childrenComment' ||
+        key === 'optionsComment'
+      ) {
+        return undefined;
       }
-       if (key.endsWith('Comment') || key === 'chartOptionsComment' || key === 'typeComment' || key === 'dataComment' || key === 'childrenComment' || key === 'optionsComment') {
-           return undefined; // Remove helper comment keys
-       }
       return value;
   }, 2)
   .replace(/"(\/\* TODO:.*? \*\/)"/g, '$1') // Remove quotes around TODO comments
@@ -505,7 +512,7 @@ const ${componentName}: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart options={finalSpec} />}
+        {finalSpec && <G2Chart spec={finalSpec} />}
       </div>
     </div>
   );
