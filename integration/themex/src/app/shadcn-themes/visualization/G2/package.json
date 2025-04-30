@@ -51,7 +51,6 @@
     "build": "run-p build:*",
     "bundle-vis": "cross-env BUNDLE_VIS=1 run-p build:umd",
     "ci": "run-s lint test build",
-    "prepare": "husky install",
     "upload": "node scripts/upload/snapshot.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "translate": "translate -d"
@@ -166,3 +165,4 @@
     "url": "https://github.com/antvis/g2/issues"
   }
 }
+
