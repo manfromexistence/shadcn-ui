@@ -275,14 +275,14 @@ function* insertionSort(arr: number[]): Generator<SortFrame> {
     }
   };
 
-  // Reset the animation
   const resetAnimation = () => {
+    // ... (reset logic remains the same)
     if (animationRef.current) {
       clearTimeout(animationRef.current);
       animationRef.current = null;
     }
     setIsPlaying(false);
-    // Reset to initial state using the original data
+    // Reset to initial state using the original data, including index
     renderCurrentState(data.map((value, index) => ({ value, swap: false, index })));
   };
   
