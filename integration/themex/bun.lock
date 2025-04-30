@@ -4,6 +4,7 @@
     "": {
       "name": "themux",
       "dependencies": {
+        "@antv/g-plugin-a11y": "^1.1.21",
         "@antv/g2": "^5.3.2",
         "@berryv/g2-react": "^0.1.0",
         "@dnd-kit/core": "^6.3.1",
@@ -126,6 +127,8 @@
     "@antv/g-lite": ["@antv/g-lite@2.2.18", "", { "dependencies": { "@antv/g-math": "3.0.0", "@antv/util": "^3.3.5", "@antv/vendor": "^1.0.3", "@babel/runtime": "^7.25.6", "eventemitter3": "^5.0.1", "gl-matrix": "^3.4.3", "rbush": "^3.0.1", "tslib": "^2.5.3" } }, "sha512-m7Oq0cXF5rOSKYpgZwP99b4165WXLePsyG4mX7oUWqL0cEweafk+92Re7tSSnvhUBhgmM7rJ5X1AipFnpzt0Kw=="],
 
     "@antv/g-math": ["@antv/g-math@3.0.0", "", { "dependencies": { "@antv/util": "^3.3.5", "gl-matrix": "^3.4.3", "tslib": "^2.5.3" } }, "sha512-AkmiNIEL1vgqTPeGY2wtsMdBBqKFwF7SKSgs+D1iOS/rqYMsXdhp/HvtuQ5tx/HdawE/ZzTiicIYopc520ADZw=="],
+
+    "@antv/g-plugin-a11y": ["@antv/g-plugin-a11y@1.1.24", "", { "dependencies": { "@antv/g-lite": "2.2.18", "@babel/runtime": "^7.25.6", "tslib": "^2.5.3" } }, "sha512-wOtlSpc1y2N3JFGu4URQRDOOfvc40vsnmQksrKEAgyn4Y66x4iBw7bFhDO6+vCFw2nP7V1aVpGLSyLwwqcY/kg=="],
 
     "@antv/g-plugin-canvas-path-generator": ["@antv/g-plugin-canvas-path-generator@2.1.18", "", { "dependencies": { "@antv/g-lite": "2.2.18", "@antv/g-math": "3.0.0", "@antv/util": "^3.3.5", "@babel/runtime": "^7.25.6", "tslib": "^2.5.3" } }, "sha512-TOfWb13diw/yMcmYpgDYqXtPFMdw6ywcykJ8WIvW0MjJEjM/HGNmmoVbJYZWTipEm9MwAp38eomhPQS7FeohWQ=="],
 
