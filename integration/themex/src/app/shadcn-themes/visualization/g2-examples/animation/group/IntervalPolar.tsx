@@ -198,16 +198,22 @@ function* insertionSort(arr: number[]): Generator<SortFrame> {
 
       const animate = () => {
         if (step.done || !isPlaying) { // Check isPlaying flag in case stop was pressed
-          clearTimeout(animationRef.current);
-          animationRef.current = null;
+          if (animationRef.current) { // Clear timeout if it exists
+             clearTimeout(animationRef.current);
+             animationRef.current = null;
+          }
+          // Ensure isPlaying is false if animation stopped naturally or was paused
+          setIsPlaying(false);
           return;
         }
 
         renderCurrentState(step.value);
         step = generator.next();
 
-        // Schedule next frame
-        animationRef.current = setTimeout(animate, speed);
+        // Schedule next frame only if still playing
+        if (isPlaying) { // Double check isPlaying before setting timeout
+           animationRef.current = setTimeout(animate, speed);
+        }
       };
 
       animate(); // Start the animation loop
@@ -221,7 +227,8 @@ function* insertionSort(arr: number[]): Generator<SortFrame> {
       animationRef.current = null;
     }
     setIsPlaying(false);
-    renderCurrentState(data.map((value) => ({ value, swap: false })));
+    // Reset to initial state using the original data
+    renderCurrentState(data.map((value, index) => ({ value, swap: false, index })));
   };
   
   return (
@@ -258,6 +265,6 @@ function* insertionSort(arr: number[]): Generator<SortFrame> {
       <div ref={containerRef} className="h-[400px] w-full border rounded"></div>
     </div>
   );
-};
+}; // <-- Ensure this closing brace and semicolon are always present
 
 export default AnimationGroupIntervalPolarChart;

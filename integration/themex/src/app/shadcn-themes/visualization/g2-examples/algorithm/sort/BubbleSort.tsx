@@ -74,12 +74,20 @@ const AlgorithmSortBubbleSortChart: React.FC = () => {
   for (let i = 0; i < n - 1; i++) {
     for (let j = 0; j <= n - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        }
+        yield arr.map((a, i) => ({
+          value: a,
+          swap: i === j || i === j + 1,
+        }));
       }
-
-  useEffect(() => {
-    // Cleanup function to destroy chart on unmount
-    return () => {
+    }
+    return arr;
+  }
+  
+    useEffect(() => {
+      // Cleanup function to destroy chart on unmount
+      return () => {
       if (chartRef.current) {
         chartRef.current.destroy();
         chartRef.current = null;
@@ -159,21 +167,30 @@ const AlgorithmSortBubbleSortChart: React.FC = () => {
       // Start playing
       setIsPlaying(true);
       // Ensure data is reset before starting generator
-      let generator = insertionSort([...data]); // Use a copy of the original data
+      let generator = bubbleSort([...data]); // Use a copy of the original data
       let step = generator.next();
 
       const animate = () => {
-        if (step.done || !isPlaying) { // Check isPlaying flag in case stop was pressed
-          clearTimeout(animationRef.current);
-          animationRef.current = null;
+        // Check if animation should stop (done or paused)
+        if (step.done || !isPlaying) {
+          if (animationRef.current) { // Clear timeout if it exists
+             clearTimeout(animationRef.current);
+             animationRef.current = null;
+          }
+          // Ensure isPlaying is false if animation stopped naturally or was paused
+          setIsPlaying(false);
           return;
         }
 
+        // Render the current state and get the next step
         renderCurrentState(step.value);
         step = generator.next();
 
-        // Schedule next frame
-        animationRef.current = setTimeout(animate, speed);
+        // Schedule next frame only if still playing
+        // Re-check isPlaying before setting timeout, in case it was paused during render
+        if (isPlaying) {
+           animationRef.current = setTimeout(animate, speed);
+        }
       };
 
       animate(); // Start the animation loop
@@ -187,7 +204,8 @@ const AlgorithmSortBubbleSortChart: React.FC = () => {
       animationRef.current = null;
     }
     setIsPlaying(false);
-    renderCurrentState(data.map((value) => ({ value, swap: false })));
+    // Reset to initial state using the original data
+    renderCurrentState(data.map((value, index) => ({ value, swap: false, index })));
   };
   
   return (
@@ -224,6 +242,6 @@ const AlgorithmSortBubbleSortChart: React.FC = () => {
       <div ref={containerRef} className="h-[400px] w-full border rounded"></div>
     </div>
   );
-};
+}; // <-- Ensure this closing brace and semicolon are always present
 
 export default AlgorithmSortBubbleSortChart;
