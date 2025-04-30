@@ -1,0 +1,21 @@
+{
+  "npmClient": "yarn",
+  "packages": [
+    "packages/*"
+  ],
+  "version": "5.8.0",
+  "command": {
+    "bootstrap": {
+      "ci": false,
+      "npmClientArgs": [
+        "--no-package-lock"
+      ]
+    },
+    "publish": {
+      "commitHooks": false,
+      "conventionalCommits": true,
+      "message": "🤖 publish",
+      "exact": true
+    }
+  }
+}

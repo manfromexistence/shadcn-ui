@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" color-interpolation-filters="sRGB" style="background: transparent; outline: none;" tabindex="1">
+  <g>
+    <g fill="none">
+      <g fill="none" class="elements">
+        <g fill="none">
+          <g>
+            <path fill="none" stroke="rgba(153,173,209,1)" stroke-width="1" d="m59.3808 53.4642 131.2384 48.4652" class="key" opacity=".6307"/>
+            <path fill="none" stroke="transparent" stroke-width="3" d="m60 50 130 0" class="key" opacity=".6307"/>
+          </g>
+        </g>
+        <g fill="none">
+          <g>
+            <path fill="none" stroke="rgba(153,173,209,1)" stroke-width="1" d="m191.4052 110.5053-57.8104 34.383" class="key"/>
+            <path fill="none" stroke="transparent" stroke-width="3" d="m194 58-63 84" class="key"/>
+          </g>
+        </g>
+        <g fill="none">
+          <g>
+            <path fill="none" stroke="rgba(153,173,209,1)" stroke-width="1" d="m119 142-63-84" class="key" opacity=".6307"/>
+            <path fill="none" stroke="transparent" stroke-width="3" d="m119 142-63-84" class="key" opacity=".6307"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 50 50)">
+          <g>
+            <circle r="10" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key" opacity=".6307"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 200 105.3936)">
+          <g>
+            <circle r="10" fill="rgba(23,131,255,1)" stroke="rgba(0,47,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 125 150)">
+          <g>
+            <circle r="10" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 50 200)">
+          <g>
+            <circle r="10" fill="rgba(255,165,0,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key" opacity=".3693"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 75 150)">
+          <g>
+            <circle r="10" fill="rgba(128,0,128,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key" opacity=".3693"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 200 100)">
+          <g>
+            <circle r="10" fill="rgba(0,255,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key" opacity=".3693"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

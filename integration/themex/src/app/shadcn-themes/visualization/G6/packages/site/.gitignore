@@ -1,0 +1,12 @@
+/dist
+.dumi/tmp
+.dumi/tmp-production
+/support
+
+## api doc
+docs/api/.gitignore
+
+/server
+
+# Dead links report
+dead-links-report.log

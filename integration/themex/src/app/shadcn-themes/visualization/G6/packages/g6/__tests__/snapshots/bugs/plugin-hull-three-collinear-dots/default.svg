@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" color-interpolation-filters="sRGB" style="background: transparent; outline: none;" tabindex="1">
+  <g>
+    <g fill="none">
+      <g fill="none" class="elements">
+        <g fill="none" transform="matrix(1 0 0 1 250 83.3333)">
+          <g>
+            <circle r="16" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 250 250)">
+          <g>
+            <circle r="16" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 250 416.6667)">
+          <g>
+            <circle r="16" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+      </g>
+      <g fill="none">
+        <g>
+          <path fill="rgba(173,216,230,1)" fill-opacity=".2" stroke="rgba(0,0,255,1)" stroke-opacity=".2" d="m276 416.6667 0-333.3334a26 26 0 0 0-52 0l0 333.3334a26 26 0 0 0 52 0" class="key"/>
+        </g>
+        <g fill="none" class="label" transform="matrix(1 0 0 1 250 416.6667)">
+          <g>
+            <path width="0" height="0" x="0" y="0" fill="none" stroke-width="0" d="m0 0 0 0 0 0 0 0z" class="background" opacity=".75"/>
+          </g>
+          <g>
+            <text fill="rgba(0,0,0,1)" class="text" dominant-baseline="hanging" font-family="system-ui, sans-serif" font-size="12" paint-order="stroke" style="transform:translate(0px, 0px);" text-anchor="middle"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

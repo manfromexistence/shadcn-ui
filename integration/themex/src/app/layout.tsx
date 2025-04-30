@@ -56,7 +56,7 @@ export default async function RootLayout({
       <head>
         <LoadTheme />
       </head>
-      <ReactScan options={{ enabled: true }} />
+      {/* <ReactScan options={{ enabled: true }} /> */}
 
       <body className={cn(`antialiased`)}>
         <Providers>
@@ -67,7 +67,7 @@ export default async function RootLayout({
 
           <FontLoader />
           <Toaster />
-          <ScreenDevTools />
+          {/* <ScreenDevTools /> */}
         </Providers>
       </body>
     </html>

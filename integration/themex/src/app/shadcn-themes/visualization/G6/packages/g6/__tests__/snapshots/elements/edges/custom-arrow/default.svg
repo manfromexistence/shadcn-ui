@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" color-interpolation-filters="sRGB" style="background: transparent; outline: none;" tabindex="1">
+  <g>
+    <g fill="none">
+      <g fill="none" class="elements">
+        <g fill="none">
+          <g>
+            <path fill="none" stroke="rgba(246,189,22,1)" stroke-width="1" d="m141 83.3333 204 0" class="key"/>
+            <path fill="none" stroke="transparent" stroke-width="3" d="m141 83.3333 204 0" class="key"/>
+            <g transform="matrix(-1 0 0 -1 345 83.3333)">
+              <path fill="rgba(246,189,22,1)" stroke="rgba(246,189,22,1)" stroke-dasharray="0,0" stroke-linejoin="round" stroke-width="1" d="m-14 0 10-4 4-10 4 10 10 4-10 4-4 10-4-10Z"/>
+            </g>
+          </g>
+          <g fill="none" class="label" transform="matrix(1 0 0 1 254 83.3333)">
+            <g>
+              <path width="93.88" height="23" x="-46.44" y="-11.5" fill="rgba(255,255,255,1)" stroke-width="0" d="m-46.44-11.5 93.88 0 0 23-93.88 0z" class="background" opacity=".75"/>
+            </g>
+            <g>
+              <text fill="rgba(0,0,0,1)" class="text" dominant-baseline="central" dx=".5" dy="0" font-family="system-ui, sans-serif" font-size="12" font-weight="400" paint-order="stroke" style="transform:translate(0px, 0px);" text-anchor="middle">custom-arrow-1</text>
+            </g>
+          </g>
+        </g>
+        <g fill="none">
+          <g>
+            <path fill="none" stroke="rgba(246,189,22,1)" stroke-width="1" d="m141 250 198 0" class="key"/>
+            <path fill="none" stroke="transparent" stroke-width="3" d="m141 250 198 0" class="key"/>
+            <g transform="matrix(-1 0 0 -1 339 250)">
+              <path fill="rgba(246,189,22,1)" stroke="rgba(246,189,22,1)" stroke-dasharray="0,0" stroke-linejoin="round" stroke-width="1" d="m-6-5 0 10 12 5 0-20Z"/>
+            </g>
+          </g>
+          <g fill="none" class="label" transform="matrix(1 0 0 1 254 250)">
+            <g>
+              <path width="95.56" height="23" x="-47.28" y="-11.5" fill="rgba(255,255,255,1)" stroke-width="0" d="m-47.28-11.5 95.56 0 0 23-95.56 0z" class="background" opacity=".75"/>
+            </g>
+            <g>
+              <text fill="rgba(0,0,0,1)" class="text" dominant-baseline="central" dx=".5" dy="0" font-family="system-ui, sans-serif" font-size="12" font-weight="400" paint-order="stroke" style="transform:translate(0px, 0px);" text-anchor="middle">custom-arrow-2</text>
+            </g>
+          </g>
+        </g>
+        <g fill="none">
+          <g>
+            <path fill="none" stroke="rgba(246,189,22,1)" stroke-width="1" d="m141 416.6667 203 0" class="key"/>
+            <path fill="none" stroke="transparent" stroke-width="3" d="m141 416.6667 203 0" class="key"/>
+            <g transform="matrix(0 -1 1 0 344 416.6667)">
+              <image width="28" height="28" x="-14" y="-14" fill="rgba(246,189,22,1)" stroke="rgba(246,189,22,1)" stroke-dasharray="0,0" stroke-linejoin="round" stroke-width="1" href="https://gw.alipayobjects.com/mdn/rms_6ae20b/afts/img/A*N4ZMS7gHsUIAAAAAAAAAAABkARQnAQ" preserveAspectRatio="none"/>
+            </g>
+          </g>
+          <g fill="none" class="label" transform="matrix(1 0 0 1 254 416.6667)">
+            <g>
+              <path width="74.32" height="23" x="-36.66" y="-11.5" fill="rgba(255,255,255,1)" stroke-width="0" d="m-36.66-11.5 74.32 0 0 23-74.32 0z" class="background" opacity=".75"/>
+            </g>
+            <g>
+              <text fill="rgba(0,0,0,1)" class="text" dominant-baseline="central" dx=".5" dy="0" font-family="system-ui, sans-serif" font-size="12" font-weight="400" paint-order="stroke" style="transform:translate(0px, 0px);" text-anchor="middle">image-arrow</text>
+            </g>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 125 83.3333)">
+          <g>
+            <circle r="16" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 375 83.3333)">
+          <g>
+            <circle r="16" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 125 250)">
+          <g>
+            <circle r="16" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 375 250)">
+          <g>
+            <circle r="16" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 125 416.6667)">
+          <g>
+            <circle r="16" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+        <g fill="none" transform="matrix(1 0 0 1 375 416.6667)">
+          <g>
+            <circle r="16" fill="rgba(23,131,255,1)" stroke="rgba(0,0,0,1)" stroke-width="0" class="key"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
