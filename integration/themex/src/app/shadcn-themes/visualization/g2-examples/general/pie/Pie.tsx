@@ -76,20 +76,14 @@ const spec = {
     }
   ],
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    palette: 'spectral',\n    offset: (t) => t * 0.8 + 0.1,\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    palette: 'spectral',\n    offset: (t) => t * 0.8 + 0.1,\n  } */
   },
   "style": {
     "stroke": "white"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'name',\n    radius: 0.8,\n    fontSize: 10,\n    fontWeight: 'bold',\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: (d, i, data) => (i < data.length - 3 ? d.value : ''),\n    radius: 0.8,\n    fontSize: 9,\n    dy: 12,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'name',\n    radius: 0.8,\n    fontSize: 10,\n    fontWeight: 'bold',\n  } */,
+    /* TODO: Manually convert label options: {\n    text: (d, i, data) => (i < data.length - 3 ? d.value : ''),\n    radius: 0.8,\n    fontSize: 9,\n    dy: 12,\n  } */
   ],
   "coordinate": {
     "type": "theta"

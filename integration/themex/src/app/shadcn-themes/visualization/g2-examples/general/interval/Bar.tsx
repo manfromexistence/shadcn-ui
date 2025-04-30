@@ -71,9 +71,7 @@ const spec = {
     }
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'frequency',\n    formatter: '.1%',\n    textAlign: (d) => (+d.frequency > 0.008 ? 'right' : 'start'),\n    fill: (d) => (+d.frequency > 0.008 ? '#fff' : '#000'),\n    dx: (d) => (+d.frequency > 0.008 ? -5 : 5),\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'frequency',\n    formatter: '.1%',\n    textAlign: (d) => (+d.frequency > 0.008 ? 'right' : 'start'),\n    fill: (d) => (+d.frequency > 0.008 ? '#fff' : '#000'),\n    dx: (d) => (+d.frequency > 0.008 ? -5 : 5),\n  } */
   ],
   "coordinate": {
     "transform": [

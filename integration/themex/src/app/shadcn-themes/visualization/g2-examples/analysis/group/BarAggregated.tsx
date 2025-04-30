@@ -54,7 +54,7 @@ const spec = {
   "transform": [
     {
       "type": /* PARSE_ERROR */,
-      "comment": "Original: {\n    type: 'groupX',\n    y: 'max',\n  }"
+      "comment": /* TODO: Manually convert transform options: {\n    type: 'groupX',\n    y: 'max',\n  } */
     }
   ],
   "axis": {

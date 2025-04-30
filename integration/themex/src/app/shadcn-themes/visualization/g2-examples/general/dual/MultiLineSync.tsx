@@ -178,9 +178,7 @@ const spec = {
     }
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    position: 'right',\n    title: 'Precipitation (ml)',\n    grid: null,\n    titleFill: '#91CC75',\n  } */
-    }
+    "y": /* TODO: Manually convert axis options: {\n    position: 'right',\n    title: 'Precipitation (ml)',\n    grid: null,\n    titleFill: '#91CC75',\n  } */
   },
   "style": {
     "fillOpacity": /* TODO: Convert style value/expression: 0.8 */,

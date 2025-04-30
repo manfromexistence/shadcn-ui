@@ -60,28 +60,22 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { question: '问题 1', percent: 0.21 },\n    { question: '问题 2', percent: 0.4 },\n    { question: '问题 3', percent: 0.49 },\n    { question: '问题 4', percent: 0.52 },\n    { question: '问题 5', percent: 0.53 },\n    { question: '问题 6', percent: 0.84 },\n    { question: '问题 7', percent: 1.0 },\n    { question: '问题 8', percent: 1.2 },\n  ] */,
   "encode": {
     "x": "question",
     "y": "percent",
     "color": "percent"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    range: '#BAE7FF-#1890FF-#0050B3',\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    range: '#BAE7FF-#1890FF-#0050B3',\n  } */
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: { tickFilter: (d, i) => i !== 0 } */
-    }
+    "y": /* TODO: Manually convert axis options: { tickFilter: (d, i) => i !== 0 } */
   },
   "style": {
     "stroke": "white"
   },
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: { type: 'radial', innerRadius: 0.1, endAngle: Math.PI } */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: { type: 'radial', innerRadius: 0.1, endAngle: Math.PI } */
 };
 
 const GeneralRadialBarRadialChart: React.FC = () => {

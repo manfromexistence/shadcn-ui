@@ -113,9 +113,7 @@ const spec = {
     "pointerEvents": "none"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'key',\n    fontSize: 16,\n    fontWeight: 500,\n    position: 'inside',\n    pointerEvents: 'none',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'key',\n    fontSize: 16,\n    fontWeight: 500,\n    position: 'inside',\n    pointerEvents: 'none',\n  } */
   ],
   "interaction": {
     "type": "elementHighlight"

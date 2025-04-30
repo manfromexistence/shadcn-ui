@@ -129,9 +129,7 @@ const spec = {
     }
   },
   "legend": {
-    "year": {
-      "comment": /* TODO: Manually convert legend options: {\n  width: 10,\n} */
-    }
+    "year": /* TODO: Manually convert legend options: {\n  width: 10,\n} */
   },
   "style": {
     "shape": "column25d"

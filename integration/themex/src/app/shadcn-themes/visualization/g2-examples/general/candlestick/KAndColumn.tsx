@@ -144,18 +144,12 @@ const spec = {
     "y": "volumn"
   },
   "scale": {
-    "x": {
-      "comment": /* TODO: Manually convert scale options: {\n    compare: (a, b) => new Date(a).getTime() - new Date(b).getTime(),\n  } */
-    },
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    domain: ['下跌', '不变', '上涨'],\n    range: ['#4daf4a', '#999999', '#e41a1c'],\n  } */
-    }
+    "x": /* TODO: Manually convert scale options: {\n    compare: (a, b) => new Date(a).getTime() - new Date(b).getTime(),\n  } */,
+    "color": /* TODO: Manually convert scale options: {\n    domain: ['下跌', '不变', '上涨'],\n    range: ['#4daf4a', '#999999', '#e41a1c'],\n  } */
   },
   "axis": {
     "x": false,
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    title: false,\n  } */
-    }
+    "y": /* TODO: Manually convert axis options: {\n    title: false,\n  } */
   },
   "style": {
     "fillOpacity": /* TODO: Convert style value/expression: 1 */,

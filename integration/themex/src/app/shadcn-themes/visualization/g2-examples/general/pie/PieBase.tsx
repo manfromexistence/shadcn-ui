@@ -66,14 +66,10 @@ const spec = {
     }
   ],
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { position: 'bottom', layout: { justifyContent: 'center' } } */
-    }
+    "color": /* TODO: Manually convert legend options: { position: 'bottom', layout: { justifyContent: 'center' } } */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    position: 'outside',\n    text: (data) => `${data.item}: ${data.percent * 100}%`,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    position: 'outside',\n    text: (data) => `${data.item}: ${data.percent * 100}%`,\n  } */
   ],
   "coordinate": {
     "type": "theta",

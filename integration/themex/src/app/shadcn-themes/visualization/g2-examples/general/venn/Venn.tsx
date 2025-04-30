@@ -69,9 +69,7 @@ const spec = {
     "opacity": /* TODO: Convert style value/expression: (d */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    position: 'inside',\n    text: (d) => d.label || '',\n    transform: [{ type: 'contrastReverse' }],\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    position: 'inside',\n    text: (d) => d.label || '',\n    transform: [{ type: 'contrastReverse' }],\n  } */
   ],
   "interaction": {
     "type": "elementHighlight"

@@ -89,12 +89,8 @@ const spec = {
     "color": "type"
   },
   "scale": {
-    "x": {
-      "comment": /* TODO: Manually convert scale options: { domain: X } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert scale options: { domain: Y } */
-    },
+    "x": /* TODO: Manually convert scale options: { domain: X } */,
+    "y": /* TODO: Manually convert scale options: { domain: Y } */,
     "color": {
       "range": [
         "currentColor",

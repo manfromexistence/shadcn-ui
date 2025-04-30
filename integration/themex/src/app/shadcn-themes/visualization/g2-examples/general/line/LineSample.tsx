@@ -55,7 +55,7 @@ const spec = {
   "transform": [
     {
       "type": /* PARSE_ERROR */,
-      "comment": "Original: {\n    type: 'sample',\n    thresholds: 200,\n    strategy: 'max',\n  }"
+      "comment": /* TODO: Manually convert transform options: {\n    type: 'sample',\n    thresholds: 200,\n    strategy: 'max',\n  } */
     }
   ]
 };

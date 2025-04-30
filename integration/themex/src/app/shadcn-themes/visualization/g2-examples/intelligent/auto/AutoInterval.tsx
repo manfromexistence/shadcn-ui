@@ -39,7 +39,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "render",
-  "dataComment": /* TODO: Manually define inline data array */
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n  { price: 100, type: 'A' },\n  { price: 120, type: 'B' },\n  { price: 150, type: 'C' },\n] */
 };
 
 const IntelligentAutoAutoIntervalChart: React.FC = () => {

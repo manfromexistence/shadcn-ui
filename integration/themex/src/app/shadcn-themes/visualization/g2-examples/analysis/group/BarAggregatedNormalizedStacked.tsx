@@ -91,9 +91,7 @@ const spec = {
     }
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: { text: 'people', position: 'inside', fill: 'white' } */
-    }
+    /* TODO: Manually convert label options: { text: 'people', position: 'inside', fill: 'white' } */
   ],
   "coordinate": {
     "transform": [

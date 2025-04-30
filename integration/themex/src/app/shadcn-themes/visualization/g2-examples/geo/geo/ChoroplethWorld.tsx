@@ -72,14 +72,12 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "json",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [coutriesmesh] */,
   "encode": {
     "color": "hale"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n      type: 'sequential',\n      palette: 'ylGnBu',\n      unknown: '#ccc',\n    } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n      type: 'sequential',\n      palette: 'ylGnBu',\n      unknown: '#ccc',\n    } */
   },
   "style": {
     "stroke": "#000"

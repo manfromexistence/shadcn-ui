@@ -64,7 +64,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options */,
+  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n      container: 'container',\n      autoFit: true,\n      plugins: [new Plugin()],\n    } */,
   "type": "point",
   "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
@@ -73,17 +73,11 @@ const spec = {
     "color": "gender"
   },
   "axis": {
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n        titleFontSize: 15,\n        titleFontFamily: 'Gaegu',\n        labelFontFamily: 'Gaegu',\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n      } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n        titleFontSize: 15,\n        titleFontFamily: 'Gaegu',\n        labelFontFamily: 'Gaegu',\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n      } */
-    }
+    "x": /* TODO: Manually convert axis options: {\n        titleFontSize: 15,\n        titleFontFamily: 'Gaegu',\n        labelFontFamily: 'Gaegu',\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n      } */,
+    "y": /* TODO: Manually convert axis options: {\n        titleFontSize: 15,\n        titleFontFamily: 'Gaegu',\n        labelFontFamily: 'Gaegu',\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n      } */
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { itemLabelFontFamily: 'Gaegu' } */
-    }
+    "color": /* TODO: Manually convert legend options: { itemLabelFontFamily: 'Gaegu' } */
   }
 };
 

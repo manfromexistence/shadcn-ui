@@ -67,9 +67,7 @@ const spec = {
     "enterDelay": "startTime"
   },
   "scale": {
-    "enterDuration": {
-      "comment": /* TODO: Manually convert scale options: {\n    zero: true,\n    range: [0, 3000],\n  } */
-    }
+    "enterDuration": /* TODO: Manually convert scale options: {\n    zero: true,\n    range: [0, 3000],\n  } */
   },
   "coordinate": {
     "transform": [

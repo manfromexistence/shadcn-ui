@@ -118,23 +118,17 @@ const spec = {
     "size": /* TODO: Convert encode function/expression: 8 */
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    range: [colors['ranges'], colors['measures'], colors['target']].flat(),\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    range: [colors['ranges'], colors['measures'], colors['target']].flat(),\n  } */
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: {\n    itemMarker: (d) => {\n      return d === '目标' ? 'line' : 'square';\n    },\n  } */
-    }
+    "color": /* TODO: Manually convert legend options: {\n    itemMarker: (d) => {\n      return d === '目标' ? 'line' : 'square';\n    },\n  } */
   },
   "style": {
     "maxWidth": /* TODO: Convert style value/expression: 20 */,
     "lineWidth": /* TODO: Convert style value/expression: 1 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'measures',\n    position: 'right',\n    textAlign: 'left',\n    dx: 5,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'measures',\n    position: 'right',\n    textAlign: 'left',\n    dx: 5,\n  } */
   ],
   "coordinate": {
     "transform": [

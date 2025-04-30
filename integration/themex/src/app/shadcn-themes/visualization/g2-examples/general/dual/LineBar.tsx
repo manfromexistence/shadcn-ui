@@ -74,9 +74,7 @@ const spec = {
     }
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    position: 'right',\n    grid: null,\n    title: 'People',\n    titleFill: '#fdae6b',\n  } */
-    }
+    "y": /* TODO: Manually convert axis options: {\n    position: 'right',\n    grid: null,\n    title: 'People',\n    titleFill: '#fdae6b',\n  } */
   },
   "style": {
     "stroke": "#fdae6b",

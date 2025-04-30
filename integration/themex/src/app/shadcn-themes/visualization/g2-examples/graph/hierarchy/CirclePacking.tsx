@@ -60,9 +60,7 @@ const spec = {
     "color": "depth"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    domain: [0, 5],\n    range: ['hsl(152,80%,80%)', 'hsl(228,30%,40%)'],\n    interpolate: interpolateHcl,\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    domain: [0, 5],\n    range: ['hsl(152,80%,80%)', 'hsl(228,30%,40%)'],\n    interpolate: interpolateHcl,\n  } */
   },
   "style": {
     "labelText": /* TODO: Convert style value/expression: (d */

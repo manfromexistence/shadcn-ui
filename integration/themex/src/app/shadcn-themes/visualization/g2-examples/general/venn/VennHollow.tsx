@@ -71,9 +71,7 @@ const spec = {
     "lineWidth": /* TODO: Convert style value/expression: 8 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    position: 'inside',\n    text: (d) => d.label || '',\n    fill: '#000',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    position: 'inside',\n    text: (d) => d.label || '',\n    fill: '#000',\n  } */
   ]
 };
 

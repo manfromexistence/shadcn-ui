@@ -80,9 +80,7 @@ const spec = {
     "stroke": /* TODO: Convert style value/expression: color */,
     "strokeOpacity": /* TODO: Convert style value/expression: 0.3 */
   },
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: {\n    type: projection,\n    size: 'fitWidth',\n  } */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: {\n    type: projection,\n    size: 'fitWidth',\n  } */
 };
 
 const GeoGeoProjectionComparisonChart: React.FC = () => {

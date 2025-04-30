@@ -63,7 +63,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options */,
+  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n  container: 'container',\n  width: 900,\n  height: 1000,\n  plugins: [plugin],\n} */,
   "type": "interval",
   "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
@@ -91,9 +91,7 @@ const spec = {
     "x": false
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'civilization',\n    position: (d) => (left(d) ? 'left' : 'right'),\n    textAlign: (d) => (left(d) ? 'end' : 'start'),\n    dx: (d) => (left(d) ? -5 : 5),\n    fontSize: 10,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'civilization',\n    position: (d) => (left(d) ? 'left' : 'right'),\n    textAlign: (d) => (left(d) ? 'end' : 'start'),\n    dx: (d) => (left(d) ? -5 : 5),\n    fontSize: 10,\n  } */
   ],
   "coordinate": {
     "transform": [

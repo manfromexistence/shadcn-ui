@@ -87,9 +87,7 @@ const spec = {
     }
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { title: 'yield delta' } */
-    }
+    "color": /* TODO: Manually convert legend options: { title: 'yield delta' } */
   },
   "style": {
     "shape": "trail"

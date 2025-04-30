@@ -69,9 +69,7 @@ const spec = {
     "color": "rate"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n        palette: 'ylGnBu',\n        unknown: '#fff',\n      } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n        palette: 'ylGnBu',\n        unknown: '#fff',\n      } */
   },
   "coordinate": {
     "type": "albersUsa"

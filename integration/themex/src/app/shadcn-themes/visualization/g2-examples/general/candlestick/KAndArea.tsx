@@ -98,23 +98,13 @@ const spec = {
     "color": "trend"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    domain: ['down', 'up'],\n    range: ['#4daf4a', '#e41a1c'],\n  } */
-    },
-    "x": {
-      "comment": /* TODO: Manually convert scale options: {\n    compare: (a, b) => new Date(a).getTime() - new Date(b).getTime(),\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n    domain: [20, 35],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    domain: ['down', 'up'],\n    range: ['#4daf4a', '#e41a1c'],\n  } */,
+    "x": /* TODO: Manually convert scale options: {\n    compare: (a, b) => new Date(a).getTime() - new Date(b).getTime(),\n  } */,
+    "y": /* TODO: Manually convert scale options: {\n    domain: [20, 35],\n  } */
   },
   "axis": {
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n    labelFormatter: (d) => new Date(d).toLocaleDateString(),\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    title: false,\n  } */
-    }
+    "x": /* TODO: Manually convert axis options: {\n    labelFormatter: (d) => new Date(d).toLocaleDateString(),\n  } */,
+    "y": /* TODO: Manually convert axis options: {\n    title: false,\n  } */
   },
   "style": {
     "fillOpacity": /* TODO: Convert style value/expression: 1 */,

@@ -87,13 +87,9 @@ const spec = {
     "radius": /* TODO: Convert style value/expression: 20 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'star',\n    position: 'outside',\n    autoRotate: true,\n    rotateToAlignArc: true,\n    dx: 4,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'star',\n    position: 'outside',\n    autoRotate: true,\n    rotateToAlignArc: true,\n    dx: 4,\n  } */
   ],
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: { type: 'radial', endAngle: Math.PI } */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: { type: 'radial', endAngle: Math.PI } */
 };
 
 const GeneralRadialBarCorneredRadialChart: React.FC = () => {

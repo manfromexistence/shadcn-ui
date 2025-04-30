@@ -40,7 +40,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { genre: 'Sports', sold: 0 },\n    { genre: 'Strategy', sold: 115 },\n    { genre: 'Action', sold: 120 },\n    { genre: 'Shooter', sold: 350 },\n    { genre: 'Other', sold: 150 },\n  ] */,
   "encode": {
     "x": "genre",
     "y": "sold",

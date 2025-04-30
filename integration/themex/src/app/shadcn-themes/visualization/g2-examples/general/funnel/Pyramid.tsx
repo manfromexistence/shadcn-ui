@@ -93,21 +93,13 @@ const spec = {
     }
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { position: 'bottom' } */
-    }
+    "color": /* TODO: Manually convert legend options: { position: 'bottom' } */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: (d) => `${d.action} ${d.pv}`,\n    textAlign: 'left',\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: (d) => `${(d.rate * 100).toFixed(1)}%`,\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: (d) => `${d.action} ${d.pv}`,\n    textAlign: 'left',\n  } */,
+    /* TODO: Manually convert label options: {\n    text: (d) => `${(d.rate * 100).toFixed(1)}%`,\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */
   ],
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
 };
 
 const GeneralFunnelPyramidChart: React.FC = () => {

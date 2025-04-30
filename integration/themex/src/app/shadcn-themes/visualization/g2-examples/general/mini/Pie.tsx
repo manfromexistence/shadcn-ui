@@ -57,7 +57,7 @@ const spec = {
   "width": 100,
   "height": 100,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { id: 'c', value: 526 },\n    { id: 'sass', value: 220 },\n    { id: 'php', value: 325 },\n    { id: 'elixir', value: 561 },\n    { id: 'rust', value: 54 },\n  ] */,
   "encode": {
     "y": "value",
     "color": "id"

@@ -100,9 +100,7 @@ const spec = {
     "lineWidth": /* TODO: Convert style value/expression: 2 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'y = 0.881·ln(x) + 4.173\\nThe coefficient of determination, or R^22, is 0.958',\n    selector: 'last',\n    textAlign: 'end',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'y = 0.881·ln(x) + 4.173\\nThe coefficient of determination, or R^22, is 0.958',\n    selector: 'last',\n    textAlign: 'end',\n  } */
   ]
 };
 

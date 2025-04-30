@@ -56,7 +56,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "link",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [data] */,
   "encode": {
     "x": /* TODO: Convert encode function/expression: ['x1', 'x2'] */,
     "y": /* TODO: Convert encode function/expression: ['y1', 'y2'] */

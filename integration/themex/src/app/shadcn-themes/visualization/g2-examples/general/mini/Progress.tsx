@@ -59,7 +59,7 @@ const spec = {
   "width": 480,
   "height": 60,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [1, progress] */,
   "encode": {
     "y": /* TODO: Convert encode function/expression: (d */,
     "color": /* TODO: Convert encode function/expression: (d, idx */
@@ -78,9 +78,7 @@ const spec = {
       ]
     }
   },
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
 };
 
 const GeneralMiniProgressChart: React.FC = () => {

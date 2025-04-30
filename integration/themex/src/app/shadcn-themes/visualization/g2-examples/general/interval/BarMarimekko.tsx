@@ -102,12 +102,8 @@ const spec = {
     "y": false
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'segment',\n    x: 5,\n    y: 5,\n    textAlign: 'start',\n    textBaseline: 'top',\n    fontSize: 10,\n    fill: '#fff',\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'value',\n    x: 5,\n    y: 5,\n    textAlign: 'start',\n    dy: 15,\n    fontSize: 10,\n    fill: '#fff',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'segment',\n    x: 5,\n    y: 5,\n    textAlign: 'start',\n    textBaseline: 'top',\n    fontSize: 10,\n    fill: '#fff',\n  } */,
+    /* TODO: Manually convert label options: {\n    text: 'value',\n    x: 5,\n    y: 5,\n    textAlign: 'start',\n    dy: 15,\n    fontSize: 10,\n    fill: '#fff',\n  } */
   ]
 };
 

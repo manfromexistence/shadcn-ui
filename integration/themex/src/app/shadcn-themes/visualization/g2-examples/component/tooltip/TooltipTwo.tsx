@@ -111,7 +111,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "area",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n  { time: '16', north: 0, south: 0 },\n  { time: '18', north: 7, south: -8 },\n  { time: '20', north: 6, south: -7 },\n  { time: '22', north: 9, south: -8 },\n  { time: '00', north: 5, south: -7 },\n  { time: '02', north: 8, south: -5 },\n  { time: '04', north: 6, south: -7 },\n  { time: '06', north: 7, south: -8 },\n  { time: '08', north: 9, south: -9 },\n  { time: '10', north: 6, south: -9 },\n  { time: '12', north: 5, south: -9 },\n] */,
   "encode": {
     "x": /* TODO: Convert encode function/expression: (d */,
     "y": "south",

@@ -72,9 +72,7 @@ const spec = {
     }
   ],
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    palette: 'spectral',\n    offset: (t) => t * 0.8 + 0.1,\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    palette: 'spectral',\n    offset: (t) => t * 0.8 + 0.1,\n  } */
   },
   "style": {
     "stroke": "white",
@@ -82,12 +80,8 @@ const spec = {
     "radius": /* TODO: Convert style value/expression: 10 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: { text: 'name', fontSize: 10, fontWeight: 'bold' } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: (d, i, data) => (i < data.length - 3 ? d.value : ''),\n    fontSize: 9,\n    dy: 12,\n  } */
-    }
+    /* TODO: Manually convert label options: { text: 'name', fontSize: 10, fontWeight: 'bold' } */,
+    /* TODO: Manually convert label options: {\n    text: (d, i, data) => (i < data.length - 3 ? d.value : ''),\n    fontSize: 9,\n    dy: 12,\n  } */
   ],
   "coordinate": {
     "type": "theta",

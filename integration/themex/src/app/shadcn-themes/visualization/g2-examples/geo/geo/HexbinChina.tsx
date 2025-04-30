@@ -76,13 +76,11 @@ const spec = {
   "transform": [
     {
       "type": /* PARSE_ERROR */,
-      "comment": "Original: {\n            type: 'bin.hexagon',\n            fields: ['longitude', 'latitude'],\n            binWidth: [2, 3],\n            as: ['longitude', 'latitude', 'count'],\n          }"
+      "comment": /* TODO: Manually convert transform options: {\n            type: 'bin.hexagon',\n            fields: ['longitude', 'latitude'],\n            binWidth: [2, 3],\n            as: ['longitude', 'latitude', 'count'],\n          } */
     }
   ],
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    range: '#BAE7FF-#1890FF-#0050B3',\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    range: '#BAE7FF-#1890FF-#0050B3',\n  } */
   },
   "style": {
     "lineWidth": /* TODO: Convert style value/expression: 5 */,

@@ -81,9 +81,7 @@ const spec = {
     "strokeOpacity": /* TODO: Convert style value/expression: 0.5 */,
     "point": /* TODO: Convert style value/expression: false */
   },
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: {\n  type: 'polar',\n} */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: {\n  type: 'polar',\n} */
 };
 
 const GeneralViolinViolinPolarChart: React.FC = () => {

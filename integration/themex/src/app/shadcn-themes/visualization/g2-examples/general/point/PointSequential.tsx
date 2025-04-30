@@ -66,9 +66,7 @@ const spec = {
     "shape": "point"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    palette: 'rdBu',\n    offset: (t) => 1 - t,\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    palette: 'rdBu',\n    offset: (t) => 1 - t,\n  } */
   },
   "style": {
     "stroke": "#000",

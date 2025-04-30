@@ -90,29 +90,21 @@ const spec = {
     "color": "value"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    palette: 'puRd',\n    relations: [\n      [(d) => d === null, '#eee'],\n      [0, '#fff'],\n    ],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    palette: 'puRd',\n    relations: [\n      [(d) => d === null, '#eee'],\n      [0, '#fff'],\n    ],\n  } */
   },
   "axis": {
     "y": {
       "labelAutoRotate": false
     },
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n    tickFilter: (d) => d % 10 === 0,\n    position: 'top',\n  } */
-    }
+    "x": /* TODO: Manually convert axis options: {\n    tickFilter: (d) => d % 10 === 0,\n    position: 'top',\n  } */
   },
   "style": {
     "inset": /* TODO: Convert style value/expression: 0.5 */,
     "stroke": "black"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: '1963',\n    position: 'bottom',\n    textBaseline: 'top',\n    fontSize: 10,\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'Measles vaccine introduced',\n    position: 'bottom',\n    textBaseline: 'top',\n    fontSize: 10,\n    fontWeight: 'bold',\n    dy: 10,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: '1963',\n    position: 'bottom',\n    textBaseline: 'top',\n    fontSize: 10,\n  } */,
+    /* TODO: Manually convert label options: {\n    text: 'Measles vaccine introduced',\n    position: 'bottom',\n    textBaseline: 'top',\n    fontSize: 10,\n    fontWeight: 'bold',\n    dy: 10,\n  } */
   ]
 };
 

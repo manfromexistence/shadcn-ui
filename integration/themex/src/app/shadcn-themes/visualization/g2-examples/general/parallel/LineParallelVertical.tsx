@@ -94,9 +94,7 @@ const spec = {
     "color": /* TODO: Convert encode function/expression: 'weight (lb */
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    palette: 'brBG',\n    offset: (t) => 1 - t,\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    palette: 'brBG',\n    offset: (t) => 1 - t,\n  } */
   },
   "style": {
     "lineWidth": /* TODO: Convert style value/expression: 1.5 */,

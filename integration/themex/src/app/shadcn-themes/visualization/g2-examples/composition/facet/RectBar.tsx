@@ -84,9 +84,7 @@ const spec = {
     }
   ],
   "scale": {
-    "x": {
-      "comment": /* TODO: Manually convert scale options: { domain: days } */
-    }
+    "x": /* TODO: Manually convert scale options: { domain: days } */
   },
   "axis": {
     "x": {
@@ -94,9 +92,7 @@ const spec = {
     }
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { position: 'right' } */
-    }
+    "color": /* TODO: Manually convert legend options: { position: 'right' } */
   }
 };
 

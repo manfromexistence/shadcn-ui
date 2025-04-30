@@ -63,9 +63,7 @@ const spec = {
     "value": "size"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: { range: schemeTableau10 } */
-    }
+    "color": /* TODO: Manually convert scale options: { range: schemeTableau10 } */
   },
   "style": {
     "labelText": /* TODO: Convert style value/expression: (d */,

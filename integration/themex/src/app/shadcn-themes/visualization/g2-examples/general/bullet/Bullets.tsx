@@ -112,9 +112,7 @@ const spec = {
     "maxWidth": /* TODO: Convert style value/expression: 20 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'measures',\n    position: 'right',\n    textAlign: 'left',\n    dx: 5,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'measures',\n    position: 'right',\n    textAlign: 'left',\n    dx: 5,\n  } */
   ],
   "coordinate": {
     "transform": [

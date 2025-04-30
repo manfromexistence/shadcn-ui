@@ -71,9 +71,7 @@ const spec = {
     }
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: { text: 'sex', position: 'inside' } */
-    }
+    /* TODO: Manually convert label options: { text: 'sex', position: 'inside' } */
   ],
   "coordinate": {
     "transform": [

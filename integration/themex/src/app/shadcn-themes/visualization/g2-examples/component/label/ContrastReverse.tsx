@@ -59,9 +59,7 @@ const spec = {
     "color": "letter"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'frequency',\n    position: 'inside',\n    formatter: '.0%',\n    fill: '#000',\n    transform: [\n      {\n        type: 'contrastReverse',\n        threshold: 21,\n        palette: ['#000', '#fff'], // Use full color string to avoid screenshot error.\n      },\n    ],\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'frequency',\n    position: 'inside',\n    formatter: '.0%',\n    fill: '#000',\n    transform: [\n      {\n        type: 'contrastReverse',\n        threshold: 21,\n        palette: ['#000', '#fff'], // Use full color string to avoid screenshot error.\n      },\n    ],\n  } */
   ]
 };
 

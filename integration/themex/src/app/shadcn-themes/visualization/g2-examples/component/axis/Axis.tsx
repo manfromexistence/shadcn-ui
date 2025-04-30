@@ -131,19 +131,15 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "getContext",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n  {\n    pos: 1,\n    no: 1,\n    driver: 'Max Verstappen',\n    car: 'RED BULL RACING HONDA RBPT',\n    laps: 57,\n    time: '1:33:56.736',\n    pts: 25,\n  },\n  {\n    pos: 2,\n    no: 11,\n    driver: 'Sergio Perez',\n    car: 'RED BULL RACING HONDA RBPT',\n    laps: 57,\n    time: '+11.987s',\n    pts: 18,\n  },\n  {\n    pos: 3,\n    no: 14,\n    driver: 'Fernando Alonso',\n    car: 'ASTON MARTIN ARAMCO MERCEDES',\n    laps: 57,\n    time: '+38.637s',\n    pts: 15,\n  },\n  {\n    pos: 4,\n    no: 55,\n    driver: 'Carlos Sainz',\n    car: 'FERRARI',\n    laps: 57,\n    time: '+48.052s',\n    pts: 12,\n  },\n  {\n    pos: 5,\n    no: 44,\n    driver: 'Lewis Hamilton',\n    car: 'MERCEDES',\n    laps: 57,\n    time: '+50.977s',\n    pts: 10,\n  },\n] */,
   "encode": {
     "x": "pos",
     "y": "pts",
     "color": "pts"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'driver',\n    transform: [{ type: 'contrastReverse' }],\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'time',\n    transform: [{ type: 'contrastReverse' }],\n    dy: 20,\n    fontStyle: 'italic',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'driver',\n    transform: [{ type: 'contrastReverse' }],\n  } */,
+    /* TODO: Manually convert label options: {\n    text: 'time',\n    transform: [{ type: 'contrastReverse' }],\n    dy: 20,\n    fontStyle: 'italic',\n  } */
   ]
 };
 

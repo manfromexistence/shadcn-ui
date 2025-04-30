@@ -56,9 +56,7 @@ const spec = {
     }
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: { labelFormatter: (d) => (d === EPSILON ? 0 : d) } */
-    }
+    "y": /* TODO: Manually convert axis options: { labelFormatter: (d) => (d === EPSILON ? 0 : d) } */
   }
 };
 

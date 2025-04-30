@@ -79,9 +79,7 @@ const spec = {
     }
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { labelFormatter: (d) => (d === 1 ? 'Male' : 'Female') } */
-    }
+    "color": /* TODO: Manually convert legend options: { labelFormatter: (d) => (d === 1 ? 'Male' : 'Female') } */
   },
   "coordinate": {
     "transform": [

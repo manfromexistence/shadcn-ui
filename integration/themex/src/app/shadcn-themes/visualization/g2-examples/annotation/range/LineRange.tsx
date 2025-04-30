@@ -66,7 +66,7 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "height": 360,
   "type": "rangeX",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { year: [new Date('1933'), new Date('1945')], event: 'Nazi Rule' },\n    { year: [new Date('1948'), new Date('1989')], event: 'GDR (East Germany)' },\n  ] */,
   "encode": {
     "x": /* TODO: Convert encode function/expression: (d */,
     "color": "#333",

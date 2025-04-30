@@ -74,12 +74,8 @@ const spec = {
     }
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: (d) => `${d.country} ${d.receipts}`,\n    selector: 'first',\n    transform: [{ type: 'overlapDodgeY' }],\n    fontSize: 10,\n    dx: -3,\n    textAlign: 'end',\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: (d) => `${d.receipts} ${d.country}`,\n    selector: 'last',\n    transform: [{ type: 'overlapDodgeY' }],\n    fontSize: 10,\n    dx: 3,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: (d) => `${d.country} ${d.receipts}`,\n    selector: 'first',\n    transform: [{ type: 'overlapDodgeY' }],\n    fontSize: 10,\n    dx: -3,\n    textAlign: 'end',\n  } */,
+    /* TODO: Manually convert label options: {\n    text: (d) => `${d.receipts} ${d.country}`,\n    selector: 'last',\n    transform: [{ type: 'overlapDodgeY' }],\n    fontSize: 10,\n    dx: 3,\n  } */
   ]
 };
 

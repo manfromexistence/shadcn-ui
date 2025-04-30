@@ -81,17 +81,13 @@ const spec = {
     }
   ],
   "scale": {
-    "x": {
-      "comment": /* TODO: Manually convert scale options: { domain: days } */
-    },
+    "x": /* TODO: Manually convert scale options: { domain: days } */,
     "y": {
       "facet": false
     }
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { position: 'right', size: 50 } */
-    }
+    "color": /* TODO: Manually convert legend options: { position: 'right', size: 50 } */
   },
   "coordinate": {
     "type": "theta"

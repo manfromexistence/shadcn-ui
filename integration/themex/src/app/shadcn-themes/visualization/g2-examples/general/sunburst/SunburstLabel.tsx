@@ -53,9 +53,7 @@ const spec = {
     "value": "sum"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'name',\n    transform: [\n      {\n        type: 'overflowHide',\n      },\n    ],\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'name',\n    transform: [\n      {\n        type: 'overflowHide',\n      },\n    ],\n  } */
   ]
 };
 

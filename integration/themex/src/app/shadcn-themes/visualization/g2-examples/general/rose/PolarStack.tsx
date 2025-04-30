@@ -117,12 +117,8 @@ const spec = {
     }
   },
   "axis": {
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n    line: true,\n    grid: true,\n    gridLineDash: [0, 0],\n    gridLineWidth: 1,\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    title: false,\n    line: true,\n    gridLineWidth: 1,\n  } */
-    }
+    "x": /* TODO: Manually convert axis options: {\n    line: true,\n    grid: true,\n    gridLineDash: [0, 0],\n    gridLineWidth: 1,\n  } */,
+    "y": /* TODO: Manually convert axis options: {\n    title: false,\n    line: true,\n    gridLineWidth: 1,\n  } */
   },
   "coordinate": {
     "type": "polar",

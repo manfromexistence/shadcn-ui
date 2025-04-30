@@ -78,7 +78,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options */,
+  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n  container: 'container',\n  renderer,\n  depth: 400, // Define the depth of chart.\n} */,
   "type": "corelib",
   "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
@@ -103,9 +103,7 @@ const spec = {
     "x": {
       "gridLineWidth": 2
     },
-    "y": {
-      "comment": /* TODO: Manually convert axis options: { gridLineWidth: 2, titleBillboardRotation: -Math.PI / 2 } */
-    },
+    "y": /* TODO: Manually convert axis options: { gridLineWidth: 2, titleBillboardRotation: -Math.PI / 2 } */,
     "z": {
       "gridLineWidth": 2
     }

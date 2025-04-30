@@ -597,7 +597,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "area",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    ['01-08', 0.417885699969663],\n    ['01-23', 0.706678090635692],\n    ['01-31', 3.703],\n    ['03-12', 6.0515889109663],\n  ] */,
   "encode": {
     "x": /* TODO: Convert encode function/expression: (d */,
     "y": /* TODO: Convert encode function/expression: (d */,

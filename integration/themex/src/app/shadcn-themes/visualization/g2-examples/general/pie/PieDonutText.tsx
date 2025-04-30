@@ -86,9 +86,7 @@ const spec = {
     }
   ],
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    palette: 'spectral',\n    offset: (t) => t * 0.8 + 0.1,\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    palette: 'spectral',\n    offset: (t) => t * 0.8 + 0.1,\n  } */
   },
   "style": {
     "text": "chart",

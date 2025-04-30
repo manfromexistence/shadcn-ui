@@ -71,9 +71,7 @@ const spec = {
     }
   ],
   "scale": {
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n    type: 'sqrt',\n  } */
-    }
+    "y": /* TODO: Manually convert scale options: {\n    type: 'sqrt',\n  } */
   },
   "axis": {
     "y": false

@@ -122,7 +122,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options */,
+  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n  container: 'container',\n  width: FW + P * 2,\n  height: FH + P * 2,\n  padding: P,\n} */,
   "type": "shape",
   "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
@@ -132,7 +132,7 @@ const spec = {
   "transform": [
     {
       "type": /* PARSE_ERROR */,
-      "comment": "Original: {\n    type: 'bin',\n    opacity: 'count',\n    thresholdsX: 15,\n    thresholdsY: 15,\n  }"
+      "comment": /* TODO: Manually convert transform options: {\n    type: 'bin',\n    opacity: 'count',\n    thresholdsX: 15,\n    thresholdsY: 15,\n  } */
     }
   ],
   "scale": {

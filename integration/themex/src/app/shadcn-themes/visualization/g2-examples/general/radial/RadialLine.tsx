@@ -98,9 +98,7 @@ const spec = {
     "textAlign": "center",
     "fontSize": /* TODO: Convert style value/expression: 24 */
   },
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: { type: 'radial', innerRadius: 0.2, endAngle: Math.PI } */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: { type: 'radial', innerRadius: 0.2, endAngle: Math.PI } */
 };
 
 const GeneralRadialRadialLineChart: React.FC = () => {

@@ -79,9 +79,7 @@ const spec = {
     }
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'people',\n    position: 'outside',\n    formatter: '~s',\n    transform: [{ type: 'overlapDodgeY' }],\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'people',\n    position: 'outside',\n    formatter: '~s',\n    transform: [{ type: 'overlapDodgeY' }],\n  } */
   ],
   "coordinate": {
     "type": "polar",

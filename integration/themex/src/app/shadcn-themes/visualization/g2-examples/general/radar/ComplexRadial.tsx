@@ -446,9 +446,7 @@ const spec = {
     }
   },
   "axis": {
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n    grid: null,\n    line: true,\n    lineLineWidth: 1,\n  } */
-    },
+    "x": /* TODO: Manually convert axis options: {\n    grid: null,\n    line: true,\n    lineLineWidth: 1,\n  } */,
     "y": false
   },
   "style": {

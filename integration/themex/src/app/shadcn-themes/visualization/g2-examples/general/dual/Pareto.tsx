@@ -109,9 +109,7 @@ const spec = {
     "shape": "diamond"
   },
   "scale": {
-    "x": {
-      "comment": /* TODO: Manually convert scale options: { padding: 1 / 2 } */
-    },
+    "x": /* TODO: Manually convert scale options: { padding: 1 / 2 } */,
     "y": {
       "independent": true,
       "domainMin": 0
@@ -121,17 +119,13 @@ const spec = {
     "x": {
       "title": null
     },
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    position: 'right',\n    title: 'Cumulative Percentage',\n    grid: null,\n    labelFormatter: (d) => `${(d * 100).toFixed(0)}%`,\n  } */
-    }
+    "y": /* TODO: Manually convert axis options: {\n    position: 'right',\n    title: 'Cumulative Percentage',\n    grid: null,\n    labelFormatter: (d) => `${(d * 100).toFixed(0)}%`,\n  } */
   },
   "style": {
     "fill": /* TODO: Convert style value/expression: (d */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: (d) => `${(d.percentage * 100).toFixed(1)}%`,\n    textBaseline: 'bottom',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: (d) => `${(d.percentage * 100).toFixed(1)}%`,\n    textBaseline: 'bottom',\n  } */
   ]
 };
 

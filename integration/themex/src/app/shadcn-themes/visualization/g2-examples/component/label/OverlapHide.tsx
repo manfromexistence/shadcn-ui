@@ -52,9 +52,7 @@ const spec = {
     "y": "close"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'close',\n    transform: [\n      {\n        type: 'overlapHide',\n      },\n    ],\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'close',\n    transform: [\n      {\n        type: 'overlapHide',\n      },\n    ],\n  } */
   ]
 };
 

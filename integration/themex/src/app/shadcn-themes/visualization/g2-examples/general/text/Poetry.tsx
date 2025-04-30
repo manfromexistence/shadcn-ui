@@ -62,9 +62,7 @@ const spec = {
     "y": {
       "type": "point"
     },
-    "color": {
-      "comment": /* TODO: Manually convert scale options: { offset: (t) => 1 - t } */
-    }
+    "color": /* TODO: Manually convert scale options: { offset: (t) => 1 - t } */
   },
   "style": {
     "textAlign": "center",

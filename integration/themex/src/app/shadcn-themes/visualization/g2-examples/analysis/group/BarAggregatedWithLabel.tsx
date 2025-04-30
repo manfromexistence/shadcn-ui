@@ -56,7 +56,7 @@ const spec = {
   "transform": [
     {
       "type": /* PARSE_ERROR */,
-      "comment": "Original: {\n    type: 'groupX',\n    y: 'max',\n  }"
+      "comment": /* TODO: Manually convert transform options: {\n    type: 'groupX',\n    y: 'max',\n  } */
     }
   ],
   "axis": {
@@ -68,9 +68,7 @@ const spec = {
     "fill": /* TODO: Convert style value/expression: (d, i, data, { channel } */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: { text: (d, i, data, { channel } */
-    }
+    /* TODO: Manually convert label options: { text: (d, i, data, { channel } */
   ]
 };
 

@@ -115,9 +115,7 @@ const spec = {
     "shape": "hollow"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n      domain: [\n        'Bakerloo',\n        'Central',\n        'Circle',\n        'District',\n        'DLR',\n        'Hammersmith & City',\n        'Jubilee',\n        'Metropolitan',\n        'Northern',\n        'Piccadilly',\n        'Victoria',\n        'Waterloo & City',\n      ],\n      range: [\n        'rgb(137,78,36)',\n        'rgb(220,36,30)',\n        'rgb(255,206,0)',\n        'rgb(1,114,41)',\n        'rgb(0,175,173)',\n        'rgb(215,153,175)',\n        'rgb(106,114,120)',\n        'rgb(114,17,84)',\n        'rgb(0,0,0)',\n        'rgb(0,24,168)',\n        'rgb(0,160,226)',\n        'rgb(106,187,170)',\n      ],\n    } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n      domain: [\n        'Bakerloo',\n        'Central',\n        'Circle',\n        'District',\n        'DLR',\n        'Hammersmith & City',\n        'Jubilee',\n        'Metropolitan',\n        'Northern',\n        'Piccadilly',\n        'Victoria',\n        'Waterloo & City',\n      ],\n      range: [\n        'rgb(137,78,36)',\n        'rgb(220,36,30)',\n        'rgb(255,206,0)',\n        'rgb(1,114,41)',\n        'rgb(0,175,173)',\n        'rgb(215,153,175)',\n        'rgb(106,114,120)',\n        'rgb(114,17,84)',\n        'rgb(0,0,0)',\n        'rgb(0,24,168)',\n        'rgb(0,160,226)',\n        'rgb(106,187,170)',\n      ],\n    } */
   },
   "style": {
     "fill": "lightgray",

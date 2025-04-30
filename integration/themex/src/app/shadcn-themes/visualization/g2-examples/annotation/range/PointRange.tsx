@@ -67,7 +67,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "range",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { x: [0, 0.5], y: [0, 0.5] },\n    { x: [0.5, 1], y: [0.5, 1] },\n  ] */,
   "encode": {
     "x": "x",
     "y": "y",
@@ -99,9 +99,7 @@ const spec = {
     "fillOpacity": /* TODO: Convert style value/expression: 0.15 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: { text: 'name', fontSize: 10, dy: 6 } */
-    }
+    /* TODO: Manually convert label options: { text: 'name', fontSize: 10, dy: 6 } */
   ]
 };
 

@@ -63,9 +63,7 @@ const spec = {
     }
   },
   "axis": {
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n    labelFormatter: '~s',\n    labelTransform: 'rotate(90)',\n  } */
-    }
+    "x": /* TODO: Manually convert axis options: {\n    labelFormatter: '~s',\n    labelTransform: 'rotate(90)',\n  } */
   },
   "style": {
     "arrow": /* TODO: Convert style value/expression: true */,

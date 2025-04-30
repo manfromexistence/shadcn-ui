@@ -74,7 +74,7 @@ const spec = {
   "width": 500,
   "height": 400,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { id: 'c', value: 526 },\n    { id: 'sass', value: 220 },\n    { id: 'php', value: 325 },\n    { id: 'elixir', value: 561 },\n    { id: 'rust', value: 54 },\n  ] */,
   "encode": {
     "y": "value"
   },
@@ -90,9 +90,7 @@ const spec = {
     "fill": /* TODO: Convert style value/expression: (_, idx */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'id',\n    position: 'outside',\n    fontWeight: 'bold',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'id',\n    position: 'outside',\n    fontWeight: 'bold',\n  } */
   ],
   "coordinate": {
     "type": "theta",

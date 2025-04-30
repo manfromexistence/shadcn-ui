@@ -92,7 +92,7 @@ const spec = {
   "transform": [
     {
       "type": /* PARSE_ERROR */,
-      "comment": "Original: {\n    type: 'stackEnter',\n    groupBy: ['x', 'y'],\n    orderBy: 'color',\n    duration: 2000,\n  }"
+      "comment": /* TODO: Manually convert transform options: {\n    type: 'stackEnter',\n    groupBy: ['x', 'y'],\n    orderBy: 'color',\n    duration: 2000,\n  } */
     }
   ],
   "scale": {
@@ -102,9 +102,7 @@ const spec = {
         1
       ]
     },
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    type: 'sqrt',\n    range: ['hsl(152,80%,80%)', 'hsl(228,30%,40%)'],\n    interpolate: interpolateHcl,\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    type: 'sqrt',\n    range: ['hsl(152,80%,80%)', 'hsl(228,30%,40%)'],\n    interpolate: interpolateHcl,\n  } */
   },
   "legend": {
     "color": false

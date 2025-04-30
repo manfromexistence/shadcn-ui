@@ -61,9 +61,7 @@ const spec = {
     }
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'frequency',\n    position: 'inside',\n    formatter: '.0%',\n    transform: [{ type: 'overflowHide' }],\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'frequency',\n    position: 'inside',\n    formatter: '.0%',\n    transform: [{ type: 'overflowHide' }],\n  } */
   ]
 };
 

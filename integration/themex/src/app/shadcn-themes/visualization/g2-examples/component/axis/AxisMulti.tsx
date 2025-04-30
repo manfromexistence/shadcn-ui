@@ -57,9 +57,7 @@ const spec = {
     "y": "frequency"
   },
   "scale": {
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    independent: true,\n    domain: [0, 10],\n    range: [1, 0],\n  } */
-    }
+    "y": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    independent: true,\n    domain: [0, 10],\n    range: [1, 0],\n  } */
   },
   "axis": {
     "y": {

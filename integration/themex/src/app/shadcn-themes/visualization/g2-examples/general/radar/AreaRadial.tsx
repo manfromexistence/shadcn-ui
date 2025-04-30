@@ -100,12 +100,8 @@ const spec = {
     }
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    zIndex: 1,\n    direction: 'center',\n    title: null,\n    labelFormatter: (d, i, array) =>\n      i === array.length - 1 ? `${d}°F` : `${d}`,\n    labelStroke: '#fff',\n    labelLineWidth: 5,\n  } */
-    },
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n    grid: true,\n    position: 'inner',\n  } */
-    }
+    "y": /* TODO: Manually convert axis options: {\n    zIndex: 1,\n    direction: 'center',\n    title: null,\n    labelFormatter: (d, i, array) =>\n      i === array.length - 1 ? `${d}°F` : `${d}`,\n    labelStroke: '#fff',\n    labelLineWidth: 5,\n  } */,
+    "x": /* TODO: Manually convert axis options: {\n    grid: true,\n    position: 'inner',\n  } */
   },
   "style": {
     "fill": "steelblue",

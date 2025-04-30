@@ -78,9 +78,7 @@ const spec = {
     "y": {
       "nice": true
     },
-    "color": {
-      "comment": /* TODO: Manually convert scale options: { domain: types, range: colors } */
-    }
+    "color": /* TODO: Manually convert scale options: { domain: types, range: colors } */
   },
   "coordinate": {
     "transform": [

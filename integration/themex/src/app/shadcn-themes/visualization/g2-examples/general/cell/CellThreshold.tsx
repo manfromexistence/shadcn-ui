@@ -59,9 +59,7 @@ const spec = {
     "color": "salary"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    type: 'threshold',\n    domain: [10000, 100000],\n    range: ['#eee', 'pink', 'red'],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    type: 'threshold',\n    domain: [10000, 100000],\n    range: ['#eee', 'pink', 'red'],\n  } */
   },
   "style": {
     "stroke": "#000",

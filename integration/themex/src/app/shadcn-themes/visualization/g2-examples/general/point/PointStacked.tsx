@@ -77,17 +77,13 @@ const spec = {
     }
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    title: '← Women · Men →',\n    labelFormatter: (d) => `${Math.abs(+d)}`,\n  } */
-    },
+    "y": /* TODO: Manually convert axis options: {\n    title: '← Women · Men →',\n    labelFormatter: (d) => `${Math.abs(+d)}`,\n  } */,
     "x": {
       "title": "Age →"
     }
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { title: 'Gender' } */
-    }
+    "color": /* TODO: Manually convert legend options: { title: 'Gender' } */
   },
   "style": {
     "stroke": "black"

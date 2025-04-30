@@ -101,9 +101,7 @@ const spec = {
     "x": false
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'civilization',\n    position: (d) => (left(d) ? 'left' : 'right'),\n    textAlign: (d) => (left(d) ? 'end' : 'start'),\n    dx: (d) => (left(d) ? -5 : 5),\n    fontSize: 10,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'civilization',\n    position: (d) => (left(d) ? 'left' : 'right'),\n    textAlign: (d) => (left(d) ? 'end' : 'start'),\n    dx: (d) => (left(d) ? -5 : 5),\n    fontSize: 10,\n  } */
   ],
   "coordinate": {
     "transform": [

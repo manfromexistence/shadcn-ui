@@ -77,13 +77,9 @@ const spec = {
     }
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: (d) => `${d.action}\\n${d.pv}`,\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: (d) => `${d.action}\\n${d.pv}`,\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */
   ],
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
 };
 
 const GeneralFunnelFunnelChart: React.FC = () => {

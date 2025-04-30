@@ -130,12 +130,8 @@ const spec = {
     "fill": "#fff"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'year',\n    dy: (d) => (d.year % 2 === 1 ? 8 : -4),\n    textAlign: 'center',\n    textBaseline: (d) => (d.year % 2 === 1 ? 'top' : 'bottom'),\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: (d) =>\n      d.composition + ` (${d.composer.slice(d.composer.lastIndexOf(' '))} */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'year',\n    dy: (d) => (d.year % 2 === 1 ? 8 : -4),\n    textAlign: 'center',\n    textBaseline: (d) => (d.year % 2 === 1 ? 'top' : 'bottom'),\n  } */,
+    /* TODO: Manually convert label options: {\n    text: (d) =>\n      d.composition + ` (${d.composer.slice(d.composer.lastIndexOf(' '))} */
   ]
 };
 

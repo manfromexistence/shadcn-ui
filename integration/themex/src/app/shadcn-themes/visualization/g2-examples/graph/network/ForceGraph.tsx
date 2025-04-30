@@ -40,9 +40,7 @@ const spec = {
   "type": "forceGraph",
   "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: { range: schemeTableau10 } */
-    }
+    "color": /* TODO: Manually convert scale options: { range: schemeTableau10 } */
   }
 };
 

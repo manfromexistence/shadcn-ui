@@ -91,9 +91,7 @@ const spec = {
     "color": /* TODO: Convert encode function/expression: (d */
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    domain: [1, 0, -1],\n    range: ['#4daf4a', '#999999', '#e41a1c'],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    domain: [1, 0, -1],\n    range: ['#4daf4a', '#999999', '#e41a1c'],\n  } */
   },
   "style": {
     "stroke": "black",

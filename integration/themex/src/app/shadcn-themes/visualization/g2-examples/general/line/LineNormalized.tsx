@@ -74,9 +74,7 @@ const spec = {
     }
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'Symbol',\n    selector: 'last',\n    fontSize: 10,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'Symbol',\n    selector: 'last',\n    fontSize: 10,\n  } */
   ]
 };
 

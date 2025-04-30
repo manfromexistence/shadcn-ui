@@ -91,7 +91,7 @@ const spec = {
   "width": 244,
   "height": 244,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    {\n      name: 'activity1',\n      percent: 0.6,\n      color: '#1ad5de',\n      icon: 'https://gw.alipayobjects.com/zos/antfincdn/ck11Y6aRrz/shangjiantou.png',\n    },\n    {\n      name: 'activity2',\n      percent: 0.2,\n      color: '#a0ff03',\n      icon: 'https://gw.alipayobjects.com/zos/antfincdn/zY2JB7hhrO/shuangjiantou.png',\n    },\n    {\n      name: 'activity3',\n      percent: 0.3,\n      color: '#e90b3a',\n      icon: 'https://gw.alipayobjects.com/zos/antfincdn/%24qBxSxdK05/jiantou.png',\n    },\n  ] */,
   "encode": {
     "x": "name",
     "y": /* TODO: Convert encode function/expression: 0 */,

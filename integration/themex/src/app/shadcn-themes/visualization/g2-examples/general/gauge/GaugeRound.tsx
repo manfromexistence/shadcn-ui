@@ -55,9 +55,7 @@ const spec = {
   "type": "gauge",
   "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    range: ['#F4664A', '#FAAD14', 'green'],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    range: ['#F4664A', '#FAAD14', 'green'],\n  } */
   },
   "style": {
     "textContent": /* TODO: Convert style value/expression: (target, total */

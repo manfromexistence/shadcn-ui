@@ -116,27 +116,17 @@ const spec = {
     "x": {
       "padding": 0
     },
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n  range: ['#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF'],\n} */
-    }
+    "color": /* TODO: Manually convert scale options: {\n  range: ['#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF'],\n} */
   },
   "style": {
     "stroke": "#FFF"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'visitor',\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'action',\n    position: 'right',\n    dx: (d) => {\n      return d.action === '完成' ? 48 : 16;\n    },\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'visitor',\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'visitor',\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */,
+    /* TODO: Manually convert label options: {\n    text: 'action',\n    position: 'right',\n    dx: (d) => {\n      return d.action === '完成' ? 48 : 16;\n    },\n  } */,
+    /* TODO: Manually convert label options: {\n    text: 'visitor',\n    position: 'inside',\n    transform: [{ type: 'contrastReverse' }],\n  } */
   ],
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: {\n  transform: [{ type: 'transpose' }],\n} */
 };
 
 const GeneralFunnelMirrorFunnelChart: React.FC = () => {

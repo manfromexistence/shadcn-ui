@@ -74,9 +74,7 @@ const spec = {
     "x": {
       "utc": true
     },
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n        type: 'threshold',\n        domain: [medianValue],\n        range: ['black', 'red'],\n      } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n        type: 'threshold',\n        domain: [medianValue],\n        range: ['black', 'red'],\n      } */
   },
   "axis": {
     "x": {

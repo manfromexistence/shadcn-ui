@@ -63,9 +63,7 @@ const spec = {
     }
   ],
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'price',\n    transform: [{ type: 'overlapDodgeY' }],\n    fontSize: 10,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'price',\n    transform: [{ type: 'overlapDodgeY' }],\n    fontSize: 10,\n  } */
   ]
 };
 

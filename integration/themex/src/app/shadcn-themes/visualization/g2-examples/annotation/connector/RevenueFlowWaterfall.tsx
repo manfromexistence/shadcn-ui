@@ -97,7 +97,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "link",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { x: 'Start', value: 23000000, start: 0, end: 23000000 },\n    { x: 'Jan', value: 2200000, start: 23000000, end: 25200000 },\n    { x: 'Feb', value: -4600000, start: 25200000, end: 20600000 },\n    { x: 'Mar', value: -9100000, start: 20600000, end: 11500000 },\n    { x: 'Apr', value: 3700000, start: 11500000, end: 15200000 },\n    { x: 'May', value: -2100000, start: 15200000, end: 13100000 },\n    { x: 'Jun', value: 5300000, start: 13100000, end: 18400000 },\n    { x: 'Jul', value: 3100000, start: 18400000, end: 21500000 },\n    { x: 'Aug', value: -1500000, start: 21500000, end: 20000000 },\n    { x: 'Sep', value: 4200000, start: 20000000, end: 24200000 },\n    { x: 'Oct', value: 5300000, start: 24200000, end: 29500000 },\n    { x: 'Nov', value: -1500000, start: 29500000, end: 28000000 },\n    { x: 'Dec', value: 5100000, start: 28000000, end: 33100000 },\n    { x: 'End', isTotal: true, value: 33100000, start: 0, end: 33100000 },\n  ] */,
   "encode": {
     "x": "x",
     "y": /* TODO: Convert encode function/expression: ['start', 'end'] */,
@@ -105,9 +105,7 @@ const spec = {
     "size": /* TODO: Convert encode function/expression: 24 */
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    domain: ['P', 'N', 'D'],\n    range: ['#64b5f6', '#ef6c00', '#96a6a6'],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    domain: ['P', 'N', 'D'],\n    range: ['#64b5f6', '#ef6c00', '#96a6a6'],\n  } */
   },
   "axis": {
     "x": {
@@ -121,9 +119,7 @@ const spec = {
     "stroke": "#697474"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'value',\n    formatter: '~s',\n    position: (d) => (d.value > 0 ? 'top' : 'bottom'),\n    textBaseline: (d) => (d.value > 0 ? 'bottom' : 'top'),\n    fontSize: 10,\n    dy: (d) => (d.value > 0 ? -4 : 4),\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'value',\n    formatter: '~s',\n    position: (d) => (d.value > 0 ? 'top' : 'bottom'),\n    textBaseline: (d) => (d.value > 0 ? 'bottom' : 'top'),\n    fontSize: 10,\n    dy: (d) => (d.value > 0 ? -4 : 4),\n  } */
   ]
 };
 

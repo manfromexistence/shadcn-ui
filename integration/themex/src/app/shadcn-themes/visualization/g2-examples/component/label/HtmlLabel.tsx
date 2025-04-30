@@ -66,9 +66,7 @@ const spec = {
     "color": "repo"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'star',\n    render: (text, datum) => {\n      return `\n        <div style=\"left:-50%;top:-20px;position:relative;font-size:14px;\">\n          <span>${datum.repo}</span>\n          :\n          <a href=\"https://github.com/antvis/${datum.repo}\" target=\"_blank\">${datum.star}</a>\n        </div>\n      `;\n    },\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'star',\n    render: (text, datum) => {\n      return `\n        <div style=\"left:-50%;top:-20px;position:relative;font-size:14px;\">\n          <span>${datum.repo}</span>\n          :\n          <a href=\"https://github.com/antvis/${datum.repo}\" target=\"_blank\">${datum.star}</a>\n        </div>\n      `;\n    },\n  } */
   ]
 };
 

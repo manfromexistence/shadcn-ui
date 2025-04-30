@@ -68,9 +68,7 @@ const spec = {
     "shape": "smooth"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    selector: 'last',\n    text: (d) => d,\n    textAlign: 'right',\n    textBaseline: 'bottom',\n    dx: -10,\n    dy: -10,\n    connector: true,\n    fontSize: 10,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    selector: 'last',\n    text: (d) => d,\n    textAlign: 'right',\n    textBaseline: 'bottom',\n    dx: -10,\n    dy: -10,\n    connector: true,\n    fontSize: 10,\n  } */
   ],
   "interaction": {
     "type": "tooltip",

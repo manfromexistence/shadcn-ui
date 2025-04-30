@@ -87,13 +87,9 @@ const spec = {
     "color": "value"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    range: ['#ffffff', '#1890FF'],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    range: ['#ffffff', '#1890FF'],\n  } */
   },
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: {\n  type: 'helix',\n  startAngle: 0.5 * Math.PI,\n  endAngle: 12.5 * Math.PI,\n} */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: {\n  type: 'helix',\n  startAngle: 0.5 * Math.PI,\n  endAngle: 12.5 * Math.PI,\n} */
 };
 
 const GeneralHelixHelixChart: React.FC = () => {

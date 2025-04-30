@@ -77,9 +77,7 @@ const spec = {
     "opacity": /* TODO: Convert style value/expression: 0.4 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'value',\n    fontSize: 10,\n    textAlign: (_, idx, arr) => {\n      if (idx === 0) return 'left';\n      if (idx === arr.length - 1) return 'right';\n      return 'center';\n    },\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'value',\n    fontSize: 10,\n    textAlign: (_, idx, arr) => {\n      if (idx === 0) return 'left';\n      if (idx === arr.length - 1) return 'right';\n      return 'center';\n    },\n  } */
   ]
 };
 

@@ -45,7 +45,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "render",
-  "dataComment": /* TODO: Manually define inline data array */
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n  { year: '2007', sales: 28 },\n  { year: '2008', sales: 55 },\n  { year: '2009', sales: 43 },\n  { year: '2010', sales: 91 },\n  { year: '2011', sales: 81 },\n  { year: '2012', sales: 53 },\n  { year: '2013', sales: 19 },\n  { year: '2014', sales: 87 },\n  { year: '2015', sales: 52 },\n] */
 };
 
 const IntelligentAutoAutoLineChart: React.FC = () => {

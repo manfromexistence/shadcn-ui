@@ -95,9 +95,10 @@ function parseG2Code(code: string): Record<string, any> {
     // --- Chart Initialization ---
     const chartInitMatch = code.match(/new Chart\(\s*(\{[\s\S]*?\})\s*\)/);
     if (chartInitMatch) {
+        const optionsStrRaw = chartInitMatch[1];
         try {
             // Very basic attempt to parse options - might fail on complex objects/functions
-            const optionsStr = chartInitMatch[1]
+            const optionsStr = optionsStrRaw
                 .replace(/container:\s*['"][^'"]+['"]\s*,?/, '') // Remove container
                 .replace(/autoFit:\s*true\s*,?/, '') // Assume autoFit handled by wrapper
                 .replace(/([a-zA-Z0-9_]+):/g, '"$1":') // Quote keys
@@ -109,13 +110,13 @@ function parseG2Code(code: string): Record<string, any> {
 
             // Check for plugins in options
              if (options.plugins) {
-                 plugins = options.plugins; // Keep as is for now, might need adjustment
-                 spec.plugins = "/* TODO: Verify plugins array */"; // Placeholder
+                 // Plugins often involve `new Plugin()` which is not valid JSON
+                 spec.plugins = `/* TODO: Manually convert plugins array: ${JSON.stringify(options.plugins)} */`;
              }
 
         } catch (e) {
-            console.warn("Could not parse Chart options:", e);
-            spec.chartOptionsComment = "/* TODO: Manually convert Chart constructor options */";
+            // console.warn("Could not parse Chart options:", e, `Original: ${optionsStrRaw}`);
+            spec.chartOptionsComment = `/* TODO: Manually convert Chart constructor options: ${optionsStrRaw} */`;
         }
     }
 
@@ -148,14 +149,16 @@ function parseG2Code(code: string): Record<string, any> {
         fetchUrl = dataFetchMatch[1];
         spec.dataComment = `/* Data fetched from: ${fetchUrl} - Handled by useEffect */`;
     } else if (dataInlineMatch) {
+        const dataStrRaw = dataInlineMatch[1];
         try {
             // Attempt to parse inline data - very fragile
-            const dataStr = dataInlineMatch[1].replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+            const dataStr = dataStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+            // Further cleaning might be needed, but JSON.parse will catch errors
             data = JSON.parse(dataStr);
             spec.data = data;
         } catch (e) {
-            console.warn("Could not parse inline data:", e);
-            spec.dataComment = "/* TODO: Manually define inline data array */";
+            // console.warn("Could not parse inline data:", e, `Original: ${dataStrRaw}`);
+            spec.dataComment = `/* TODO: Manually define inline data array. Original: ${dataStrRaw} */`;
             data = "/* PARSE_ERROR */";
         }
     } else if (dataDirectMatch) {
@@ -192,13 +195,14 @@ function parseG2Code(code: string): Record<string, any> {
     // --- Transforms ---
      const transformMatches = code.matchAll(/\.transform\(\s*(\{[\s\S]*?\})\s*\)/g);
      for (const match of transformMatches) {
+         const transformStrRaw = match[1];
          try {
              // Basic parsing attempt
-             const transformStr = match[1].replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+             const transformStr = transformStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
              transforms.push(JSON.parse(transformStr));
          } catch (e) {
-             console.warn("Could not parse transform:", e);
-             transforms.push({ type: "/* PARSE_ERROR */", comment: `Original: ${match[1]}` });
+             // console.warn("Could not parse transform:", e, `Original: ${transformStrRaw}`);
+             transforms.push({ type: "/* PARSE_ERROR */", comment: `/* TODO: Manually convert transform options: ${transformStrRaw} */` });
          }
      }
      if (transforms.length > 0) {
@@ -209,12 +213,13 @@ function parseG2Code(code: string): Record<string, any> {
      const scaleMatches = code.matchAll(/\.scale\(\s*['"]([^'"]+)['"],\s*(\{[\s\S]*?\})\s*\)/g);
      for (const match of scaleMatches) {
          const channel = match[1];
+         const scaleStrRaw = match[2];
          try {
-             const scaleStr = match[2].replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+             const scaleStr = scaleStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
              scales[channel] = JSON.parse(scaleStr);
          } catch (e) {
-             console.warn(`Could not parse scale for ${channel}:`, e);
-             scales[channel] = { comment: `/* TODO: Manually convert scale options: ${match[2]} */` };
+             // console.warn(`Could not parse scale for ${channel}:`, e, `Original: ${scaleStrRaw}`);
+             scales[channel] = { comment: `/* TODO: Manually convert scale options: ${scaleStrRaw} */` };
          }
      }
       if (Object.keys(scales).length > 0) {
@@ -225,16 +230,16 @@ function parseG2Code(code: string): Record<string, any> {
      const axisMatches = code.matchAll(/\.axis\(\s*['"]([^'"]+)['"],\s*(\{[\s\S]*?\}|false)\s*\)/g);
      for (const match of axisMatches) {
          const channel = match[1];
-         const optionsStr = match[2].trim();
-         if (optionsStr === 'false') {
+         const optionsStrRaw = match[2].trim();
+         if (optionsStrRaw === 'false') {
              axes[channel] = false;
          } else {
              try {
-                 const axisStr = optionsStr.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+                 const axisStr = optionsStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
                  axes[channel] = JSON.parse(axisStr);
              } catch (e) {
-                 console.warn(`Could not parse axis for ${channel}:`, e);
-                 axes[channel] = { comment: `/* TODO: Manually convert axis options: ${optionsStr} */` };
+                 // console.warn(`Could not parse axis for ${channel}:`, e, `Original: ${optionsStrRaw}`);
+                 axes[channel] = { comment: `/* TODO: Manually convert axis options: ${optionsStrRaw} */` };
              }
          }
      }
@@ -246,16 +251,22 @@ function parseG2Code(code: string): Record<string, any> {
       const legendMatches = code.matchAll(/\.legend\(\s*['"]([^'"]+)['"],\s*(\{[\s\S]*?\}|false)\s*\)/g);
       for (const match of legendMatches) {
          const channel = match[1];
-         const optionsStr = match[2].trim();
-         if (optionsStr === 'false') {
+         const optionsStrRaw = match[2].trim();
+         if (optionsStrRaw === 'false') {
              legends[channel] = false;
          } else {
-             try {
-                 // Very limited parsing for legends due to potential functions
-                 legends[channel] = { comment: `/* TODO: Manually convert legend options: ${optionsStr} */` };
-             } catch (e) {
-                  legends[channel] = { comment: `/* TODO: Manually convert legend options: ${optionsStr} */` };
-             }
+             // Legends often contain functions (e.g., formatter), making JSON.parse unreliable.
+             // Always add a comment for manual review.
+             legends[channel] = { comment: `/* TODO: Manually convert legend options: ${optionsStrRaw} */` };
+             // Optional: Try to parse, but keep the comment as primary.
+             // try {
+             //     const legendStr = optionsStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+             //     legends[channel] = JSON.parse(legendStr);
+             //     legends[channel].comment = `/* TODO: Verify manually converted legend options: ${optionsStrRaw} */`;
+             // } catch (e) {
+             //     // console.warn(`Could not parse legend for ${channel}:`, e, `Original: ${optionsStrRaw}`);
+             //     legends[channel] = { comment: `/* TODO: Manually convert legend options: ${optionsStrRaw} */` };
+             // }
          }
      }
       if (Object.keys(legends).length > 0) {
@@ -281,7 +292,17 @@ function parseG2Code(code: string): Record<string, any> {
       // --- Labels ---
       const labelMatches = code.matchAll(/\.label\(\s*(\{[\s\S]*?\})\s*\)/g);
       for (const match of labelMatches) {
-          labels.push({ comment: `/* TODO: Manually convert label options: ${match[1]} */` });
+          const labelStrRaw = match[1];
+          // Labels often contain functions, always add comment.
+          labels.push({ comment: `/* TODO: Manually convert label options: ${labelStrRaw} */` });
+          // Optional: Try to parse
+          // try {
+          //     const labelStr = labelStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+          //     labels.push(JSON.parse(labelStr));
+          // } catch (e) {
+          //     // console.warn("Could not parse label:", e, `Original: ${labelStrRaw}`);
+          //     labels.push({ comment: `/* TODO: Manually convert label options: ${labelStrRaw} */` });
+          // }
       }
        if (labels.length > 0) {
           spec.labels = labels;
@@ -290,13 +311,14 @@ function parseG2Code(code: string): Record<string, any> {
       // --- Coordinate ---
       const coordinateMatch = code.match(/\.coordinate\(\s*(\{[\s\S]*?\})\s*\)/);
       if (coordinateMatch) {
+          const coordStrRaw = coordinateMatch[1];
           try {
-              const coordStr = coordinateMatch[1].replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+              const coordStr = coordStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
               coordinate = JSON.parse(coordStr);
               spec.coordinate = coordinate;
           } catch (e) {
-              console.warn("Could not parse coordinate:", e);
-              spec.coordinate = { comment: `/* TODO: Manually convert coordinate options: ${coordinateMatch[1]} */` };
+              // console.warn("Could not parse coordinate:", e, `Original: ${coordStrRaw}`);
+              spec.coordinate = { comment: `/* TODO: Manually convert coordinate options: ${coordStrRaw} */` };
           }
       }
 
@@ -304,8 +326,18 @@ function parseG2Code(code: string): Record<string, any> {
        const interactionMatch = code.match(/\.interaction\(\s*['"]([^'"]+)['"](,\s*(\{[\s\S]*?\})|,\s*true)?\s*\)/);
        if (interactionMatch) {
            interaction = { type: interactionMatch[1] };
-           if (interactionMatch[3]) {
-               interaction.optionsComment = `/* TODO: Manually convert interaction options: ${interactionMatch[3]} */`;
+           const optionsStrRaw = interactionMatch[3];
+           if (optionsStrRaw) {
+                // Interactions often have complex options, add comment.
+               interaction.optionsComment = `/* TODO: Manually convert interaction options: ${optionsStrRaw} */`;
+                // Optional: Try to parse
+               // try {
+               //     const optionsStr = optionsStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+               //     interaction.options = JSON.parse(optionsStr);
+               // } catch (e) {
+               //     // console.warn(`Could not parse interaction options for ${interaction.type}:`, e, `Original: ${optionsStrRaw}`);
+               //     interaction.optionsComment = `/* TODO: Manually convert interaction options: ${optionsStrRaw} */`;
+               // }
            } else if (interactionMatch[2]?.trim() === ', true') {
                // interaction enabled without options
            }
@@ -318,9 +350,23 @@ function parseG2Code(code: string): Record<string, any> {
             if (!spec.interaction) spec.interaction = {};
             if (!spec.interaction.scrollbar) spec.interaction.scrollbar = {};
             const channel = scrollbarMatch[1];
-            spec.interaction.scrollbar[channel] = scrollbarMatch[3]
-                ? { comment: `/* TODO: Manually convert scrollbar options: ${scrollbarMatch[3]} */` }
+            const optionsStrRaw = scrollbarMatch[3];
+            spec.interaction.scrollbar[channel] = optionsStrRaw
+                ? { comment: `/* TODO: Manually convert scrollbar options: ${optionsStrRaw} */` }
                 : true;
+             // Optional: Try to parse scrollbar options
+             // if (optionsStrRaw) {
+             //     try {
+             //         const optionsStr = optionsStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+             //         spec.interaction.scrollbar[channel] = JSON.parse(optionsStr);
+             //         spec.interaction.scrollbar[channel].comment = `/* TODO: Verify manually converted scrollbar options: ${optionsStrRaw} */`;
+             //     } catch (e) {
+             //         // console.warn(`Could not parse scrollbar options for ${channel}:`, e, `Original: ${optionsStrRaw}`);
+             //         spec.interaction.scrollbar[channel] = { comment: `/* TODO: Manually convert scrollbar options: ${optionsStrRaw} */` };
+             //     }
+             // } else {
+             //      spec.interaction.scrollbar[channel] = true;
+             // }
         }
 
 
@@ -356,12 +402,13 @@ async function generateComponentContent(example: ExampleInfo): Promise<string> {
 
   // Clean up spec for stringification (remove comments, handle functions)
   const specString = JSON.stringify(spec, (key, value) => {
-      if (typeof value === 'string' && value.startsWith('/* TODO:')) {
+      if (typeof value === 'object' && value !== null && value.comment && Object.keys(value).length === 1) {
+          // If the object only contains our comment placeholder, just return the comment string
+          return value.comment;
+      }
+      if (typeof value === 'string' && (value.startsWith('/* TODO:') || value.startsWith('/* PARSE_ERROR */'))) {
           return value; // Keep comments as strings
       }
-       if (typeof value === 'string' && value.startsWith('/* PARSE_ERROR */')) {
-           return value;
-       }
        if (key.endsWith('Comment') || key === 'chartOptionsComment' || key === 'typeComment' || key === 'dataComment' || key === 'childrenComment' || key === 'optionsComment') {
            return undefined; // Remove helper comment keys
        }

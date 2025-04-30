@@ -67,7 +67,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options */,
+  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n  container: 'container',\n  width: SIZE,\n  height: SIZE,\n} */,
   "type": "image",
   "data": [
     {

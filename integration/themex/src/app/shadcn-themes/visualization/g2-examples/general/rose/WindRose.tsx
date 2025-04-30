@@ -202,17 +202,11 @@ const spec = {
     "size": /* TODO: Convert encode function/expression: 18 */
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: { range: colors } */
-    }
+    "color": /* TODO: Manually convert scale options: { range: colors } */
   },
   "axis": {
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n    line: true,\n    grid: true,\n    gridLineDash: [0, 0],\n    gridLineWidth: 1,\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    title: false,\n    line: true,\n    gridLineWidth: 1,\n  } */
-    }
+    "x": /* TODO: Manually convert axis options: {\n    line: true,\n    grid: true,\n    gridLineDash: [0, 0],\n    gridLineWidth: 1,\n  } */,
+    "y": /* TODO: Manually convert axis options: {\n    title: false,\n    line: true,\n    gridLineWidth: 1,\n  } */
   },
   "coordinate": {
     "type": "polar"

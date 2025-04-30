@@ -93,7 +93,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { Day: 1, Value: 54.8 },\n    { Day: 2, Value: 112.1 },\n    { Day: 3, Value: 63.6 },\n    { Day: 4, Value: 37.6 },\n    { Day: 5, Value: 79.7 },\n    { Day: 6, Value: 137.9 },\n    { Day: 7, Value: 120.1 },\n    { Day: 8, Value: 103.3 },\n    { Day: 9, Value: 394.8 },\n    { Day: 10, Value: 199.5 },\n    { Day: 11, Value: 72.3 },\n    { Day: 12, Value: 51.1 },\n    { Day: 13, Value: 112.0 },\n    { Day: 14, Value: 174.5 },\n    { Day: 15, Value: 130.5 },\n  ] */,
   "encode": {
     "x": "x",
     "y": "y",
@@ -110,9 +110,7 @@ const spec = {
     "arrow": /* TODO: Convert style value/expression: true */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'hazardous',\n    position: 'right',\n    textBaseline: 'bottom',\n    fill: '#F4664A',\n    background: true,\n    backgroundFill: '#F4664A',\n    backgroundOpacity: 0.25,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'hazardous',\n    position: 'right',\n    textBaseline: 'bottom',\n    fill: '#F4664A',\n    background: true,\n    backgroundFill: '#F4664A',\n    backgroundOpacity: 0.25,\n  } */
   ]
 };
 

@@ -76,9 +76,7 @@ const spec = {
     "lineDash": /* TODO: Convert style value/expression: [2, 2] */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'value = 700',\n    position: 'right',\n    dx: -10,\n    textBaseline: 'bottom',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'value = 700',\n    position: 'right',\n    dx: -10,\n    textBaseline: 'bottom',\n  } */
   ],
   "interaction": {
     "type": "tooltip",

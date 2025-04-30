@@ -45,15 +45,13 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "line",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { date: '06-10', count: 0, type: '测试' },\n    { date: '06-11', count: 0, type: '测试' },\n    { date: '06-12', count: 0, type: '测试' },\n    { date: '06-13', count: 0, type: '测试' },\n    { date: '06-14', count: 0, type: '测试' },\n    { date: '06-15', count: 0, type: '测试' },\n    { date: '06-16', count: 0, type: '测试' },\n  ] */,
   "encode": {
     "x": "date",
     "y": "count"
   },
   "scale": {
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n    domain: [0, 1],\n  } */
-    }
+    "y": /* TODO: Manually convert scale options: {\n    domain: [0, 1],\n  } */
   }
 };
 

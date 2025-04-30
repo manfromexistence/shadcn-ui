@@ -97,25 +97,19 @@ const spec = {
     }
   ],
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: { range: colors } */
-    },
+    "color": /* TODO: Manually convert scale options: { range: colors } */,
     "y": {
       "type": "sqrt"
     }
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    labelFormatter: '~s',\n    tickFilter: (_, i) => i !== 0,\n    direction: 'center',\n  } */
-    },
+    "y": /* TODO: Manually convert axis options: {\n    labelFormatter: '~s',\n    tickFilter: (_, i) => i !== 0,\n    direction: 'center',\n  } */,
     "x": {
       "position": "inner"
     }
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { position: 'center', display: 'grid', gridCol: 1 } */
-    }
+    "color": /* TODO: Manually convert legend options: { position: 'center', display: 'grid', gridCol: 1 } */
   },
   "coordinate": {
     "type": "polar",

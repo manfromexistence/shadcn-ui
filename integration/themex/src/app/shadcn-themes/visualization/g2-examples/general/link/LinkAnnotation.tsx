@@ -396,12 +396,8 @@ const spec = {
     "opacity": /* TODO: Convert style value/expression: 0.2 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    position: 'top-right',\n    text: (v) => `${v * 100}%`,\n    dx: 4,\n    textAlign: 'start',\n    textBaseline: 'middle',\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    position: 'top-right',\n    text: (v) => `${v * 100}%`,\n    dx: 4,\n    textAlign: 'start',\n    textBaseline: 'middle',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    position: 'top-right',\n    text: (v) => `${v * 100}%`,\n    dx: 4,\n    textAlign: 'start',\n    textBaseline: 'middle',\n  } */,
+    /* TODO: Manually convert label options: {\n    position: 'top-right',\n    text: (v) => `${v * 100}%`,\n    dx: 4,\n    textAlign: 'start',\n    textBaseline: 'middle',\n  } */
   ]
 };
 

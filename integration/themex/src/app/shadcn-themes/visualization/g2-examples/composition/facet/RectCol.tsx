@@ -82,9 +82,7 @@ const spec = {
     "shape": "hollow"
   },
   "scale": {
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n        domain: groupSort(\n          data,\n          (g) => -median(g, (d) => d.yield),\n          (d) => d.variety,\n        ),\n      } */
-    },
+    "y": /* TODO: Manually convert scale options: {\n        domain: groupSort(\n          data,\n          (g) => -median(g, (d) => d.yield),\n          (d) => d.variety,\n        ),\n      } */,
     "color": {
       "type": "ordinal"
     }

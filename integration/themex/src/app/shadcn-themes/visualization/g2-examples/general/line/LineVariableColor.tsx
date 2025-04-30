@@ -71,9 +71,7 @@ const spec = {
     "y": {
       "nice": true
     },
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    domain: ['CLR', 'FEW', 'SCT', 'BKN', 'OVC', 'VV '],\n    range: [\n      'deepskyblue',\n      'lightskyblue',\n      'lightblue',\n      '#aaaaaa',\n      '#666666',\n      '#666666',\n    ],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    domain: ['CLR', 'FEW', 'SCT', 'BKN', 'OVC', 'VV '],\n    range: [\n      'deepskyblue',\n      'lightskyblue',\n      'lightblue',\n      '#aaaaaa',\n      '#666666',\n      '#666666',\n    ],\n  } */
   },
   "axis": {
     "x": {

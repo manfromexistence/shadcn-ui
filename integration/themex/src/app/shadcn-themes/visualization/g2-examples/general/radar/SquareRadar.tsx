@@ -72,30 +72,20 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "line",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { item: 'Design', type: 'a', score: 70 },\n    { item: 'Development', type: 'a', score: 60 },\n    { item: 'Marketing', type: 'a', score: 50 },\n    { item: 'Users', type: 'a', score: 40 },\n  ] */,
   "encode": {
     "x": "item",
     "y": "score"
   },
   "scale": {
-    "x": {
-      "comment": /* TODO: Manually convert scale options: {\n    padding: 0.5,\n    align: 0,\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n    domainMin: 0,\n    domainMax: 80,\n  } */
-    }
+    "x": /* TODO: Manually convert scale options: {\n    padding: 0.5,\n    align: 0,\n  } */,
+    "y": /* TODO: Manually convert scale options: {\n    domainMin: 0,\n    domainMax: 80,\n  } */
   },
   "axis": {
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n    grid: true,\n    zIndex: 1,\n    title: false,\n    gridLineWidth: 1,\n    gridLineDash: null,\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    titleOpacity: '0',\n    gridConnect: 'line',\n    gridLineWidth: 1,\n    gridLineDash: [0, 0],\n    gridAreaFill: 'rgba(0, 0, 0, 0.04)',\n  } */
-    }
+    "x": /* TODO: Manually convert axis options: {\n    grid: true,\n    zIndex: 1,\n    title: false,\n    gridLineWidth: 1,\n    gridLineDash: null,\n  } */,
+    "y": /* TODO: Manually convert axis options: {\n    titleOpacity: '0',\n    gridConnect: 'line',\n    gridLineWidth: 1,\n    gridLineDash: [0, 0],\n    gridAreaFill: 'rgba(0, 0, 0, 0.04)',\n  } */
   },
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: {\n  type: 'polar',\n  startAngle: (-Math.PI * 3) / 4,\n  endAngle: (Math.PI * 5) / 4,\n} */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: {\n  type: 'polar',\n  startAngle: (-Math.PI * 3) / 4,\n  endAngle: (Math.PI * 5) / 4,\n} */
 };
 
 const GeneralRadarSquareRadarChart: React.FC = () => {

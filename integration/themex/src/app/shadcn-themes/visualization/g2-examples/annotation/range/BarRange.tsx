@@ -81,7 +81,7 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "height": 500,
   "type": "rangeY",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { y: [0, 25], region: '1' },\n    { y: [25, 50], region: '2' },\n  ] */,
   "encode": {
     "y": "平均年收入",
     "x": "职业",
@@ -93,9 +93,7 @@ const spec = {
     }
   ],
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: { title: '平均年收入', labelFormatter: (d) => d + '万' } */
-    }
+    "y": /* TODO: Manually convert axis options: { title: '平均年收入', labelFormatter: (d) => d + '万' } */
   },
   "style": {
     "fill": /* TODO: Convert style value/expression: (d */,

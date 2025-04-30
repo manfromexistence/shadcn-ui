@@ -67,7 +67,7 @@ const spec = {
   "transform": [
     {
       "type": /* PARSE_ERROR */,
-      "comment": "Original: {\n      type: 'bin.histogram',\n      field: 'depth',\n      binWidth: 4, // 在此修改矩形的宽度，代表真实数值的大小\n      as: ['depth', 'count'],\n    }"
+      "comment": /* TODO: Manually convert transform options: {\n      type: 'bin.histogram',\n      field: 'depth',\n      binWidth: 4, // 在此修改矩形的宽度，代表真实数值的大小\n      as: ['depth', 'count'],\n    } */
     }
   ]
 };

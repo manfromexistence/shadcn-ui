@@ -61,7 +61,7 @@ const spec = {
   "transform": [
     {
       "type": /* PARSE_ERROR */,
-      "comment": "Original: {\n    type: 'binX',\n    y: 'count',\n    thresholds: 10,\n  }"
+      "comment": /* TODO: Manually convert transform options: {\n    type: 'binX',\n    y: 'count',\n    thresholds: 10,\n  } */
     }
   ]
 };

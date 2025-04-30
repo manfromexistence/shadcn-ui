@@ -96,9 +96,7 @@ const spec = {
     "lineWidth": /* TODO: Convert style value/expression: 2 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'y = 1.7x+3.01',\n    selector: 'last',\n    position: 'right',\n    textAlign: 'end',\n    dy: -8,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'y = 1.7x+3.01',\n    selector: 'last',\n    position: 'right',\n    textAlign: 'end',\n    dy: -8,\n  } */
   ]
 };
 

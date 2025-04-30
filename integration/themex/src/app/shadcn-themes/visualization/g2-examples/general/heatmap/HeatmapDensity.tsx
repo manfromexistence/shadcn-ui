@@ -83,7 +83,7 @@ const spec = {
   "transform": [
     {
       "type": /* PARSE_ERROR */,
-      "comment": "Original: {\n            type: 'kernel-smooth.density',\n            fields: ['carat', 'price'],\n            as: ['carat', 'price', 'density'],\n          }"
+      "comment": /* TODO: Manually convert transform options: {\n            type: 'kernel-smooth.density',\n            fields: ['carat', 'price'],\n            as: ['carat', 'price', 'density'],\n          } */
     }
   ],
   "scale": {

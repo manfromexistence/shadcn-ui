@@ -45,7 +45,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { name: 'MODIFY', value: 138, washaway: 0.21014492753623193 },\n    { name: 'PRERELEASE', value: 109, washaway: 0.5596330275229358 },\n    { name: 'RELEASING', value: 48, washaway: 0 },\n  ] */,
   "encode": {
     "x": "name",
     "y": "value",

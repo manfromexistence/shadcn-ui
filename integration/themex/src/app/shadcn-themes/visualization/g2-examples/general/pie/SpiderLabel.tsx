@@ -72,7 +72,7 @@ const spec = {
   "width": 500,
   "height": 400,
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { id: 'c', value: 526 },\n    { id: 'sass', value: 220 },\n    { id: 'php', value: 325 },\n    { id: 'elixir', value: 561 },\n    { id: 'rust', value: 54 },\n  ] */,
   "encode": {
     "y": "value",
     "color": "id"
@@ -83,9 +83,7 @@ const spec = {
     }
   ],
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    range: ['#e8c1a0', '#f47560', '#f1e15b', '#e8a838', '#61cdbb'],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    range: ['#e8c1a0', '#f47560', '#f1e15b', '#e8a838', '#61cdbb'],\n  } */
   },
   "style": {
     "radius": /* TODO: Convert style value/expression: 4 */,
@@ -93,12 +91,8 @@ const spec = {
     "lineWidth": /* TODO: Convert style value/expression: 2 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'value',\n    fontWeight: 'bold',\n    offset: 14,\n  } */
-    },
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'id',\n    position: 'spider',\n    connectorDistance: 0,\n    fontWeight: 'bold',\n    textBaseline: 'bottom',\n    textAlign: (d) => (['c', 'sass'].includes(d.id) ? 'end' : 'start'),\n    dy: -4,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'value',\n    fontWeight: 'bold',\n    offset: 14,\n  } */,
+    /* TODO: Manually convert label options: {\n    text: 'id',\n    position: 'spider',\n    connectorDistance: 0,\n    fontWeight: 'bold',\n    textBaseline: 'bottom',\n    textAlign: (d) => (['c', 'sass'].includes(d.id) ? 'end' : 'start'),\n    dy: -4,\n  } */
   ],
   "coordinate": {
     "type": "theta",

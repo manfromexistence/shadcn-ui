@@ -69,7 +69,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Review TODO comments for potential issues or missing configurations.
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  "chartOptionsComment": /* TODO: Manually convert Chart constructor options */,
+  "chartOptionsComment": /* TODO: Manually convert Chart constructor options: {\n      container: 'container',\n      autoFit: true,\n      plugins: [new Plugin()],\n    } */,
   "type": "line",
   "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "encode": {
@@ -84,25 +84,17 @@ const spec = {
     }
   ],
   "axis": {
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n        labelFontFamily: 'Gaegu',\n      } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n        titleFontFamily: 'Gaegu',\n        labelFontFamily: 'Gaegu',\n      } */
-    }
+    "x": /* TODO: Manually convert axis options: {\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n        labelFontFamily: 'Gaegu',\n      } */,
+    "y": /* TODO: Manually convert axis options: {\n        tickStroke: '#cdcdcd',\n        gridStroke: '#efefef',\n        titleFontFamily: 'Gaegu',\n        labelFontFamily: 'Gaegu',\n      } */
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { itemLabelFontFamily: 'Gaegu' } */
-    }
+    "color": /* TODO: Manually convert legend options: { itemLabelFontFamily: 'Gaegu' } */
   },
   "style": {
     "roughness": /* TODO: Convert style value/expression: 2 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n        text: 'price',\n        transform: [{ type: 'overlapDodgeY' }],\n        fontSize: 10,\n        fontFamily: 'Gaegu',\n      } */
-    }
+    /* TODO: Manually convert label options: {\n        text: 'price',\n        transform: [{ type: 'overlapDodgeY' }],\n        fontSize: 10,\n        fontFamily: 'Gaegu',\n      } */
   ]
 };
 

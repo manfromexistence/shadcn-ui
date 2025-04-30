@@ -114,19 +114,13 @@ const spec = {
       "domainMin": -100,
       "domainMax": 100
     },
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    domain: ['lost > 100$', 'lost <= 100$', 'gained <= 100$', 'gained > 100$'],\n    range: ['#97e3d5', '#61cdbb', '#e25c3b', '#f47560'],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    domain: ['lost > 100$', 'lost <= 100$', 'gained <= 100$', 'gained > 100$'],\n    range: ['#97e3d5', '#61cdbb', '#e25c3b', '#f47560'],\n  } */
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    position: 'right',\n    title: false,\n    labelFormatter: (v) => `${v}%`,\n  } */
-    }
+    "y": /* TODO: Manually convert axis options: {\n    position: 'right',\n    title: false,\n    labelFormatter: (v) => `${v}%`,\n  } */
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { title: false } */
-    }
+    "color": /* TODO: Manually convert legend options: { title: false } */
   },
   "style": {
     "radius": /* TODO: Convert style value/expression: 10 */,
@@ -142,9 +136,7 @@ const spec = {
     "fill": /* TODO: Convert style value/expression: fill */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'value',\n    position: 'inside',\n    formatter: (v) => (v ? `${v}%` : ''),\n    transform: [{ type: 'overlapDodgeY' }],\n    fill: '#000',\n    fontSize: 10,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'value',\n    position: 'inside',\n    formatter: (v) => (v ? `${v}%` : ''),\n    transform: [{ type: 'overlapDodgeY' }],\n    fill: '#000',\n    fontSize: 10,\n  } */
   ]
 };
 

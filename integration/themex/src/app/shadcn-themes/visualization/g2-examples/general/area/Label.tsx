@@ -199,9 +199,7 @@ const spec = {
     "fillOpacity": /* TODO: Convert style value/expression: 0.8 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'state',\n    position: 'area', // `area` type positon used here.\n    selector: 'first',\n    transform: [{ type: 'overlapHide' }],\n    fontSize: 10,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'state',\n    position: 'area', // `area` type positon used here.\n    selector: 'first',\n    transform: [{ type: 'overlapHide' }],\n    fontSize: 10,\n  } */
   ]
 };
 

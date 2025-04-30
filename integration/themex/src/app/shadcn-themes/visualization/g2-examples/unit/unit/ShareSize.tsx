@@ -76,9 +76,7 @@ const spec = {
     }
   ],
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { labelFormatter: (d) => (d === '1' ? 'Yes' : 'No') } */
-    }
+    "color": /* TODO: Manually convert legend options: { labelFormatter: (d) => (d === '1' ? 'Yes' : 'No') } */
   }
 };
 

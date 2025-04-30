@@ -81,12 +81,8 @@ const spec = {
     "series": "number"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n        domain: ['N', 'L', 'B'],\n        range: ['rgb(34, 34, 34)', 'rgb(183, 116, 9)', 'rgb(192, 62, 29)'],\n      } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n        range: [0, 1],\n        tickCount: 15,\n        utc: true,\n      } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n        domain: ['N', 'L', 'B'],\n        range: ['rgb(34, 34, 34)', 'rgb(183, 116, 9)', 'rgb(192, 62, 29)'],\n      } */,
+    "y": /* TODO: Manually convert scale options: {\n        range: [0, 1],\n        tickCount: 15,\n        utc: true,\n      } */
   }
 };
 

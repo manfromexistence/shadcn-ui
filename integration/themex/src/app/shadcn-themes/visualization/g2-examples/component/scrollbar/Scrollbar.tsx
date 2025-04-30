@@ -58,9 +58,7 @@ const spec = {
   },
   "interaction": {
     "scrollbar": {
-      "x": {
-        "comment": /* TODO: Manually convert scrollbar options: {} */
-      }
+      "x": /* TODO: Manually convert scrollbar options: {} */
     }
   }
 };

@@ -101,9 +101,7 @@ const spec = {
     "lineWidth": /* TODO: Convert style value/expression: 2 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'y = 3477.32e^(0.18x)\\nThe coefficient of determination, or R^2, is 0.998',\n    selector: 'last',\n    textAlign: 'end',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'y = 3477.32e^(0.18x)\\nThe coefficient of determination, or R^2, is 0.998',\n    selector: 'last',\n    textAlign: 'end',\n  } */
   ]
 };
 

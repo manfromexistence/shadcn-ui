@@ -64,12 +64,8 @@ const spec = {
     "shape": "hv"
   },
   "scale": {
-    "x": {
-      "comment": /* TODO: Manually convert scale options: {\n    range: [0, 1],\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n    nice: true,\n  } */
-    }
+    "x": /* TODO: Manually convert scale options: {\n    range: [0, 1],\n  } */,
+    "y": /* TODO: Manually convert scale options: {\n    nice: true,\n  } */
   }
 };
 

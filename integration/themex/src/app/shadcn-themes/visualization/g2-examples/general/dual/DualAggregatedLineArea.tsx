@@ -97,9 +97,7 @@ const spec = {
     }
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    position: 'right',\n    grid: null,\n    title: 'Precipitation (inches)',\n    titleFill: 'steelblue',\n  } */
-    }
+    "y": /* TODO: Manually convert axis options: {\n    position: 'right',\n    grid: null,\n    title: 'Precipitation (inches)',\n    titleFill: 'steelblue',\n  } */
   },
   "style": {
     "fill": "#85c5A6",

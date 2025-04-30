@@ -65,7 +65,7 @@ import G2Chart from '../../../g2-wrapper';
 const spec = {
   "insetTop": 50,
   "type": "line",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [new Date('2017-12-17'), 100] */,
   "encode": {
     "x": /* TODO: Convert encode function/expression: (d */,
     "y": "value",

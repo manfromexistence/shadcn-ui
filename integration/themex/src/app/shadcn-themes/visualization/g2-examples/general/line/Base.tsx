@@ -69,20 +69,14 @@ const spec = {
     "y": "value"
   },
   "scale": {
-    "x": {
-      "comment": /* TODO: Manually convert scale options: {\n    range: [0, 1],\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n    domainMin: 0,\n    nice: true,\n  } */
-    }
+    "x": /* TODO: Manually convert scale options: {\n    range: [0, 1],\n  } */,
+    "y": /* TODO: Manually convert scale options: {\n    domainMin: 0,\n    nice: true,\n  } */
   },
   "style": {
     "fill": "white"
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n  text: 'value',\n  style: {\n    dx: -10,\n    dy: -12,\n  },\n} */
-    }
+    /* TODO: Manually convert label options: {\n  text: 'value',\n  style: {\n    dx: -10,\n    dy: -12,\n  },\n} */
   ]
 };
 

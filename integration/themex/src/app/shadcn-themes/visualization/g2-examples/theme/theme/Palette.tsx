@@ -91,9 +91,7 @@ const spec = {
     }
   },
   "legend": {
-    "color": {
-      "comment": /* TODO: Manually convert legend options: { size: 72, autoWrap: true, maxRows: 3, cols: 6 } */
-    }
+    "color": /* TODO: Manually convert legend options: { size: 72, autoWrap: true, maxRows: 3, cols: 6 } */
   }
 };
 

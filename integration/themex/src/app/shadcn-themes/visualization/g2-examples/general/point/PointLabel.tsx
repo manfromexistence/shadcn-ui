@@ -69,9 +69,7 @@ const spec = {
     }
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'name',\n    stroke: '#fff',\n    textAlign: 'start',\n    textBaseline: 'middle',\n    dx: 10,\n    position: 'left',\n    fontSize: 10,\n    lineWidth: 2,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'name',\n    stroke: '#fff',\n    textAlign: 'start',\n    textBaseline: 'middle',\n    dx: 10,\n    position: 'left',\n    fontSize: 10,\n    lineWidth: 2,\n  } */
   ]
 };
 

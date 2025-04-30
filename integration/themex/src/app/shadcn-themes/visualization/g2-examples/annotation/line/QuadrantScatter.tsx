@@ -88,9 +88,7 @@ const spec = {
     "shape": "point"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    range: ['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a'],\n  } */
-    },
+    "color": /* TODO: Manually convert scale options: {\n    range: ['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a'],\n  } */,
     "size": {
       "range": [
         4,

@@ -115,9 +115,7 @@ const spec = {
   "type": "chord",
   "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: { range: schemeTableau10 } */
-    }
+    "color": /* TODO: Manually convert scale options: { range: schemeTableau10 } */
   },
   "style": {
     "labelFontSize": /* TODO: Convert style value/expression: 15 */,

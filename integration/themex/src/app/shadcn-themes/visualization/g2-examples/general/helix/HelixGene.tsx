@@ -100,13 +100,9 @@ const spec = {
     "color": "logFPKM"
   },
   "scale": {
-    "color": {
-      "comment": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    range: ['#fff', '#ec4839'],\n  } */
-    }
+    "color": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    range: ['#fff', '#ec4839'],\n  } */
   },
-  "coordinate": {
-    "comment": /* TODO: Manually convert coordinate options: {\n  type: 'helix',\n  startAngle: 0.2 * Math.PI,\n  endAngle: 6.5 * Math.PI,\n  innerRadius: 0.1,\n} */
-  }
+  "coordinate": /* TODO: Manually convert coordinate options: {\n  type: 'helix',\n  startAngle: 0.2 * Math.PI,\n  endAngle: 6.5 * Math.PI,\n  innerRadius: 0.1,\n} */
 };
 
 const GeneralHelixHelixGeneChart: React.FC = () => {

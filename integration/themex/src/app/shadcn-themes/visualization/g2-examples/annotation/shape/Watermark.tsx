@@ -103,7 +103,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "interval",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    { month: 'Jan.', profit: 387264, start: 0, end: 387264 },\n    { month: 'Feb.', profit: 772096, start: 387264, end: 1159360 },\n    { month: 'Mar.', profit: 638075, start: 1159360, end: 1797435 },\n    { month: 'Apr.', profit: -211386, start: 1797435, end: 1586049 },\n    { month: 'May', profit: -138135, start: 1586049, end: 1447914 },\n    { month: 'Jun', profit: -267238, start: 1447914, end: 1180676 },\n    { month: 'Jul.', profit: 431406, start: 1180676, end: 1612082 },\n    { month: 'Aug.', profit: 363018, start: 1612082, end: 1975100 },\n    { month: 'Sep.', profit: -224638, start: 1975100, end: 1750462 },\n    { month: 'Oct.', profit: -299867, start: 1750462, end: 1450595 },\n    { month: 'Nov.', profit: 607365, start: 1450595, end: 2057960 },\n    { month: 'Dec.', profit: 1106986, start: 2057960, end: 3164946 },\n    { month: 'Total', start: 0, end: 3164946 },\n  ] */,
   "encode": {
     "x": "month",
     "y": /* TODO: Convert encode function/expression: ['end', 'start'] */,

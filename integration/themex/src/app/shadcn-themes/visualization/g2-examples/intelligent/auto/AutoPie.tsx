@@ -42,7 +42,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "render",
-  "dataComment": /* TODO: Manually define inline data array */
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n  { type: '分类一', value: 27 },\n  { type: '分类二', value: 25 },\n  { type: '分类三', value: 18 },\n  { type: '分类四', value: 15 },\n  { type: '分类五', value: 10 },\n  { type: 'Other', value: 5 },\n] */
 };
 
 const IntelligentAutoAutoPieChart: React.FC = () => {

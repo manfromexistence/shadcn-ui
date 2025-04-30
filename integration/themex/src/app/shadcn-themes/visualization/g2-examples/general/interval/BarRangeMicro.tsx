@@ -78,7 +78,7 @@ import G2Chart from '../../../g2-wrapper';
 // - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
   "type": "getFullYear",
-  "dataComment": /* TODO: Manually define inline data array */,
+  "dataComment": /* TODO: Manually define inline data array. Original: [\n    {\n      task: 'task0',\n      startTime: '2023-06-28 03:30:33.900123', // micro seconds\n      endTime: '2023-06-28 03:30:33.900678', // micro seconds\n      status: '0',\n    },\n    {\n      task: 'task0',\n      startTime: '2023-06-28 03:30:33.901123',\n      endTime: '2023-06-28 03:30:33.902678',\n      status: '1',\n    },\n  ] */,
   "encode": {
     "x": "task",
     "y": /* TODO: Convert encode function/expression: (d */,
@@ -86,9 +86,7 @@ const spec = {
     "color": "status"
   },
   "scale": {
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n    type: 'time',\n    domain: [\n      new Date('2023-06-28 03:30:33.900'),\n      new Date('2023-06-28 03:30:33.903'),\n    ],\n  } */
-    }
+    "y": /* TODO: Manually convert scale options: {\n    type: 'time',\n    domain: [\n      new Date('2023-06-28 03:30:33.900'),\n      new Date('2023-06-28 03:30:33.903'),\n    ],\n  } */
   },
   "coordinate": {
     "transform": [

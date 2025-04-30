@@ -52,12 +52,8 @@ const spec = {
   "type": "axisX",
   "dataComment": /* TODO: Define chart data (inline or fetched) */,
   "scale": {
-    "x": {
-      "comment": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    domain: [5, 10],\n    range: [0, 1],\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    domain: [5, 10],\n    range: [0, 1],\n  } */
-    }
+    "x": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    domain: [5, 10],\n    range: [0, 1],\n  } */,
+    "y": /* TODO: Manually convert scale options: {\n    type: 'linear',\n    domain: [5, 10],\n    range: [0, 1],\n  } */
   },
   "style": {
     "labelFontSize": /* TODO: Convert style value/expression: 14 */,

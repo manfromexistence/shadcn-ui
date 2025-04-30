@@ -72,9 +72,7 @@ const spec = {
     }
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    titleSpacing: 28,\n    labelFormatter: '~s',\n    tickCount: 5,\n    tickFilter: (d, i) => i !== 0,\n    direction: 'right',\n  } */
-    }
+    "y": /* TODO: Manually convert axis options: {\n    titleSpacing: 28,\n    labelFormatter: '~s',\n    tickCount: 5,\n    tickFilter: (d, i) => i !== 0,\n    direction: 'right',\n  } */
   },
   "coordinate": {
     "type": "polar"

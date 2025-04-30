@@ -112,12 +112,8 @@ const spec = {
     }
   },
   "axis": {
-    "x": {
-      "comment": /* TODO: Manually convert axis options: {\n    grid: true,\n    gridStrokeWidth: 1,\n    tick: false,\n    gridLineDash: [0, 0],\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert axis options: {\n    zIndex: 1,\n    title: false,\n    gridConnect: 'line',\n    gridStrokeWidth: 1,\n    gridLineDash: [0, 0],\n  } */
-    }
+    "x": /* TODO: Manually convert axis options: {\n    grid: true,\n    gridStrokeWidth: 1,\n    tick: false,\n    gridLineDash: [0, 0],\n  } */,
+    "y": /* TODO: Manually convert axis options: {\n    zIndex: 1,\n    title: false,\n    gridConnect: 'line',\n    gridStrokeWidth: 1,\n    gridLineDash: [0, 0],\n  } */
   },
   "style": {
     "fillOpacity": /* TODO: Convert style value/expression: 0.5 */,

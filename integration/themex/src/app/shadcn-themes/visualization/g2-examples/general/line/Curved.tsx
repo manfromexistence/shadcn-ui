@@ -81,17 +81,11 @@ const spec = {
     "shape": "point"
   },
   "scale": {
-    "x": {
-      "comment": /* TODO: Manually convert scale options: {\n    range: [0, 1],\n  } */
-    },
-    "y": {
-      "comment": /* TODO: Manually convert scale options: {\n    nice: true,\n  } */
-    }
+    "x": /* TODO: Manually convert scale options: {\n    range: [0, 1],\n  } */,
+    "y": /* TODO: Manually convert scale options: {\n    nice: true,\n  } */
   },
   "axis": {
-    "y": {
-      "comment": /* TODO: Manually convert axis options: { labelFormatter: (d) => d + '°C' } */
-    }
+    "y": /* TODO: Manually convert axis options: { labelFormatter: (d) => d + '°C' } */
   }
 };
 

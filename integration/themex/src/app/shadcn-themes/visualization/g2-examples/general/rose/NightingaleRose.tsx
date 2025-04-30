@@ -85,9 +85,7 @@ const spec = {
     }
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'year',\n    fontSize: 16,\n    fontWeight: 800,\n    position: 'inside',\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'year',\n    fontSize: 16,\n    fontWeight: 800,\n    position: 'inside',\n  } */
   ],
   "coordinate": {
     "type": "polar"

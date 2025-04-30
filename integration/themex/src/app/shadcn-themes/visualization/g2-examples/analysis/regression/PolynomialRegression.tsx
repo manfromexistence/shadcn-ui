@@ -100,9 +100,7 @@ const spec = {
     "lineWidth": /* TODO: Convert style value/expression: 2 */
   },
   "labels": [
-    {
-      "comment": /* TODO: Manually convert label options: {\n    text: 'y=0.24x^3 + −3.00x^2 + 13.45x + 139.77\\nThe coefficient of determination, or R^2, is 0.92',\n    selector: 'last',\n    textAlign: 'end',\n    dx: -8,\n  } */
-    }
+    /* TODO: Manually convert label options: {\n    text: 'y=0.24x^3 + −3.00x^2 + 13.45x + 139.77\\nThe coefficient of determination, or R^2, is 0.92',\n    selector: 'last',\n    textAlign: 'end',\n    dx: -8,\n  } */
   ]
 };
 
