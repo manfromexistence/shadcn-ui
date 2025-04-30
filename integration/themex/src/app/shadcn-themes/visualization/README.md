@@ -8,7 +8,7 @@ S2	Tabular analysis	None	Manual with useEffe
 
 # Remove Dir
 ```
-rm -rf G2 G6 X2 F2 X6 L7
+rm -rf G2 G6 S2 F2 X6 L7
 ```
 
 # Create Dir
@@ -19,4 +19,9 @@ git clone https://github.com/antvis/S2.git && cd S2 && rm -rf .git && cd ..
 git clone https://github.com/antvis/F2.git && cd F2 && rm -rf .git && cd ..
 git clone https://github.com/antvis/L7.git && cd L7 && rm -rf .git && cd ..
 git clone https://github.com/antvis/X6.git && cd X6 && rm -rf .git && cd ..
+```
+
+# Push Changes
+```
+git add . && git commit -m "feat: visualizations" && git push
 ```
