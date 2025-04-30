@@ -127,38 +127,10 @@ function extractRawDataDeclaration(code: string): string | null {
 
 // Extract generator functions or algorithms
 function extractAlgorithms(code: string): string | null {
-// Extract generator functions or algorithms
-function extractAlgorithms(code: string): string | null {
-    // Look for generator functions. Use a greedy match for the body.
-    const genFuncMatch: RegExpMatchArray | null = code.match(/(function\s*\*\s*[a-zA-Z0-9_]+\s*\([^)]*\)\s*\{[\s\S]*\})/);
-    if (genFuncMatch) {
-        // Basic check for balanced braces - very naive
-        const funcCode: string = genFuncMatch[0];
-        const openBraces: number = (funcCode.match(/\{/g) || []).length;
-        const closeBraces: number = (funcCode.match(/\}/g) || []).length;
-        if (openBraces === closeBraces && openBraces > 0) {
-             return funcCode; // Return if braces seem balanced
-        } else {
-             console.warn(`Algorithm extraction produced unbalanced braces (${openBraces} open vs ${closeBraces} close) in extracted code. Falling back to default algorithm template.`);
-             // Return null to force the use of the default algorithm template in generateAnimationAlgorithmComponent
-             return null;
-        }
-    }
-    return null;
-}
-  const genFuncMatch = code.match(/(function\s*\*\s*[a-zA-Z0-9_]+\s*\([^)]*\)\s*\{[\s\S]*\})/);
+  // Look for generator functions
+  const genFuncMatch = code.match(/function\s*\*\s*([a-zA-Z0-9_]+)\s*\([^)]*\)\s*\{[\s\S]*?\}/);
   if (genFuncMatch) {
-    // Basic check for balanced braces - very naive
-    const funcCode = genFuncMatch[0];
-    const openBraces = (funcCode.match(/\{/g) || []).length;
-    const closeBraces = (funcCode.match(/\}/g) || []).length;
-    if (openBraces === closeBraces && openBraces > 0) {
-       return funcCode; // Return if braces seem balanced
-    } else {
-       console.warn(`Algorithm extraction produced unbalanced braces (${openBraces} open vs ${closeBraces} close) in extracted code. Falling back to default algorithm template.`);
-       // Return null to force the use of the default algorithm template in generateAnimationAlgorithmComponent
-       return null;
-    }
+    return genFuncMatch[0];
   }
   return null;
 }
@@ -729,16 +701,16 @@ function generateAnimationAlgorithmComponent(params: {
   const specString = JSON.stringify(spec, null, 2);
 
   // Format the raw data declaration or provide a default
+  // Add type annotation for data
   const formattedDataDecl = rawDataDeclaration
     ? rawDataDeclaration.replace('const data =', 'const data: number[] =')
     : 'const data: number[] = [43, 2, 5, 24, 53, 78, 82, 63, 49, 6];';
 
-  // Format the algorithm code - Add types for generator if possible, otherwise use extracted code
-  // Use the extracted algorithm code directly if available and seems valid
+  // Format the algorithm code - Add types for generator
   const formattedAlgorithmCode = algorithmCode
-   ? algorithmCode // Prefer the extracted code if the brace check passed
+   ? algorithmCode.replace('function* insertionSort(arr)', 'function* insertionSort(arr: number[]): Generator<Array<{ value: number; swap: boolean; index?: number }>>')
+                 .replace('yield arr.map((a, index) => ({', 'yield arr.map((a: number, index: number) => ({')
    : `
-// Default fallback algorithm (Insertion Sort)
 // Define the expected frame structure for type safety
 type SortFrame = Array<{ value: number; swap: boolean; index?: number }>;
 
@@ -753,19 +725,22 @@ function* insertionSort(arr: number[]): Generator<SortFrame> {
       preIndex--;
     }
     arr[preIndex + 1] = current;
+    // Yield a copy of the array with swap information
     yield arr.map((a: number, index: number): { value: number; swap: boolean } => ({
       value: a,
       swap: index === preIndex + 1 || index === i,
     }));
   }
+  // Optionally yield the final sorted state if needed, though the loop handles it
+  // yield arr.map((a, index) => ({ value: a, swap: false, index }));
   return arr.map((a, index) => ({ value: a, swap: false, index })); // Return final state
 }`;
 
-  // Ensure the entire component string is correctly structured and closed
   const componentCode = `${tsNoCheck}
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
+// Import G2 Chart type for better type safety
 import { Chart, type G2Spec } from '@antv/g2';
 ${potentialImports.length > 0 ? '// External libraries:' : ''}
 ${potentialImports.map(imp => imp).join('\n')}
@@ -780,22 +755,25 @@ ${originalCode.split('\n').map(line => `  // ${line}`).join('\n')}
 
 // This example contains animations/algorithms that require direct chart manipulation.
 
+// Define the expected frame structure for type safety
 type SortFrame = Array<{ value: number; swap: boolean; index?: number }>;
 
 const ${componentName}: React.FC = () => {
+  // Add types for refs
   const containerRef = useRef<HTMLDivElement | null>(null);
   const chartRef = useRef<Chart | null>(null);
+  // Add types for state
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [speed, setSpeed] = useState<number>(500);
+  const [speed, setSpeed] = useState<number>(500); // animation frame interval in ms
   const animationRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Data and algorithm definitions MUST be placed here, within the component body
+  // Data and algorithm definitions with types
   ${formattedDataDecl}
 
-  ${formattedAlgorithmCode} // Algorithm function definition inserted here
+  ${formattedAlgorithmCode}
 
   useEffect(() => {
-    // Cleanup function
+    // Cleanup function to destroy chart on unmount
     return () => {
       if (chartRef.current) {
         chartRef.current.destroy();
@@ -807,98 +785,105 @@ const ${componentName}: React.FC = () => {
     };
   }, []);
 
+  // Setup chart when component mounts or container changes
   useEffect(() => {
-    // Chart setup effect
     if (!containerRef.current) return;
 
+    // Destroy previous chart instance if it exists
     if (chartRef.current) {
       chartRef.current.destroy();
     }
 
+    // Create new chart with type safety
     chartRef.current = new Chart({
       container: containerRef.current,
       autoFit: true,
-      ...(${specString} as Partial<G2Spec>),
+      // Apply other chart options from the original example
+      // Cast the parsed spec part to G2Spec for better type checking, though it might be partial
+      ...(${JSON.stringify(spec, null, 2)} as Partial<G2Spec>),
     });
 
+    // Initial visualization setup - map data to SortFrame structure
     renderCurrentState(data.map((value, index) => ({ value, swap: false, index })));
 
-  }, []);
+  }, []); // Rerun effect if containerRef changes (though unlikely)
 
+  // Function to render chart with current data state - Add type for frameData
   const renderCurrentState = (frameData: SortFrame) => {
-    // ... (render logic remains the same)
     if (!chartRef.current) return;
+
     const chart = chartRef.current;
+
+    // Clear previous marks before rendering new frame
     chart.clear();
+
+    // Define the spec for the interval mark within the keyframe logic
+    // Note: G2's timingKeyframe API is imperative and doesn't directly use a full declarative spec here.
+    // We define the mark properties directly.
     chart
-      .interval()
-      .data(frameData.map((datum, index) => ({ index, ...datum })))
-      .encode('x', 'index')
-      .encode('y', 'value')
-      .encode('key', 'value')
-      .encode('color', 'swap')
-      .scale('color', { range: ['#4e79a7', '#e15759'] });
+      .interval() // Create an interval mark
+      .data(frameData.map((datum, index) => ({ index, ...datum }))) // Use the current frame's data
+      .encode('x', 'index') // Encode x-axis based on index
+      .encode('y', 'value') // Encode y-axis based on value
+      .encode('key', 'value') // Use value as key for animation continuity
+      .encode('color', 'swap') // Color based on swap status
+      .scale('color', { range: ['#4e79a7', '#e15759'] }); // Define color scale for swap status
+
     chart.render();
   };
 
+  // Play/pause the animation
   const togglePlay = () => {
-    // ... (play/pause logic needs to correctly reference the algorithm function name)
     if (isPlaying) {
+      // Stop playing
       if (animationRef.current) {
         clearTimeout(animationRef.current);
         animationRef.current = null;
       }
       setIsPlaying(false);
     } else {
+      // Start playing
       setIsPlaying(true);
-      // Dynamically get the algorithm function name (assuming it follows function* name(...) pattern)
-      const algoNameMatch = formattedAlgorithmCode.match(/function\*\s*([a-zA-Z0-9_]+)/);
-      const algoFunctionName = algoNameMatch ? algoNameMatch[1] : 'insertionSort'; // Default if match fails
-      
-      // Use `eval` or a more robust method if needed, but direct call assumes function is in scope
-      // WARNING: This assumes the extracted/default function name is correct and in scope.
-      // A safer approach might involve a lookup or passing the function itself.
-      let generator;
-      if (algoFunctionName === 'bubbleSort') {
-         generator = bubbleSort([...data]);
-      } else {
-         // Default or other algorithms
-         generator = insertionSort([...data]); // Assuming insertionSort is the fallback
-      }
-      
+      // Ensure data is reset before starting generator
+      let generator = insertionSort([...data]); // Use a copy of the original data
       let step = generator.next();
 
       const animate = () => {
-        if (step.done || !isPlaying) {
-          if (animationRef.current) {
+        if (step.done || !isPlaying) { // Check isPlaying flag in case stop was pressed
+          if (animationRef.current) { // Clear timeout if it exists
              clearTimeout(animationRef.current);
              animationRef.current = null;
           }
+          // Ensure isPlaying is false if animation stopped naturally or was paused
           setIsPlaying(false);
           return;
         }
+
         renderCurrentState(step.value);
         step = generator.next();
-        if (isPlaying) {
+
+        // Schedule next frame only if still playing
+        if (isPlaying) { // Double check isPlaying before setting timeout
            animationRef.current = setTimeout(animate, speed);
         }
       };
-      animate();
+
+      animate(); // Start the animation loop
     }
   };
 
+  // Reset the animation
   const resetAnimation = () => {
-    // ... (reset logic remains the same)
     if (animationRef.current) {
       clearTimeout(animationRef.current);
       animationRef.current = null;
     }
     setIsPlaying(false);
+    // Reset to initial state using the original data
     renderCurrentState(data.map((value, index) => ({ value, swap: false, index })));
   };
   
   return (
-    // ... (JSX remains the same)
     <div>
       <h2 className="text-xl font-semibold mb-2">${title}</h2>
       <div className="flex space-x-2 mb-4">
@@ -906,7 +891,7 @@ const ${componentName}: React.FC = () => {
           className="px-3 py-1 bg-blue-500 text-white rounded"
           onClick={togglePlay}
         >
-          {isPlaying ? 'Play' : 'Pause'}
+          {isPlaying ? 'Pause' : 'Play'}
         </button>
         <button 
           className="px-3 py-1 bg-gray-500 text-white rounded"
