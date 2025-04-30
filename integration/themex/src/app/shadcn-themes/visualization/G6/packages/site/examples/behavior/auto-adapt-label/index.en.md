@@ -1,3 +1,0 @@
----
-title: Intelligent tag control
----
