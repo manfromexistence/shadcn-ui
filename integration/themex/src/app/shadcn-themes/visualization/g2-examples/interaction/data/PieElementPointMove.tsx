@@ -1,92 +1,97 @@
-'use client'; // Assume client component due to G2
+'use client';
 
 import React from 'react';
 import G2Chart from '../../../g2-wrapper';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+
+
+
 
 /*
-Original Dumi Example Code from: ../../G2/site/examples/interaction/data/demo/pie-element-point-move.ts
---------------------------------------------------------------------------------
-// import { Chart } from '@antv/g2';
-
-const data = [
-  { item: '事例一', count: 40, percent: 0.4 },
-  { item: '事例二', count: 21, percent: 0.21 },
-  { item: '事例三', count: 17, percent: 0.17 },
-  { item: '事例四', count: 13, percent: 0.13 },
-  { item: '事例五', count: 9, percent: 0.09 },
-];
-
-const chart = new Chart({
-  container: 'container',
-  autoFit: true,
-});
-
-chart.coordinate({ type: 'theta', outerRadius: 0.8 });
-
-chart
-  .interval()
-  .data(data)
-  .transform({ type: 'stackY' })
-  .interaction({
-    legendFilter: false,
-    elementPointMove: {
-      pathLineDash: [2, 4],
-      pathStroke: '#fff',
-      pathLineWidth: 2,
-    },
-  })
-  .encode('y', 'count')
-  .encode('color', 'item')
-  .encode('key', 'item')
-  .tooltip((data) => ({
-    name: data.item,
-    value: `${data.percent * 100}%`,
-  }));
-
-chart.render();
-
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ../../G2/site/examples/interaction/data/demo/pie-element-point-move.ts
+  ================================================================================
+  // import { Chart } from '@antv/g2';
+  // 
+  // const data = [
+  //   { item: '事例一', count: 40, percent: 0.4 },
+  //   { item: '事例二', count: 21, percent: 0.21 },
+  //   { item: '事例三', count: 17, percent: 0.17 },
+  //   { item: '事例四', count: 13, percent: 0.13 },
+  //   { item: '事例五', count: 9, percent: 0.09 },
+  // ];
+  // 
+  // const chart = new Chart({
+  //   container: 'container',
+  //   autoFit: true,
+  // });
+  // 
+  // chart.coordinate({ type: 'theta', outerRadius: 0.8 });
+  // 
+  // chart
+  //   .interval()
+  //   .data(data)
+  //   .transform({ type: 'stackY' })
+  //   .interaction({
+  //     legendFilter: false,
+  //     elementPointMove: {
+  //       pathLineDash: [2, 4],
+  //       pathStroke: '#fff',
+  //       pathLineWidth: 2,
+  //     },
+  //   })
+  //   .encode('y', 'count')
+  //   .encode('color', 'item')
+  //   .encode('key', 'item')
+  //   .tooltip((data) => ({
+  //     name: data.item,
+  //     value: `${data.percent * 100}%`,
+  //   }));
+  // 
+  // chart.render();
+  // 
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
+  "type": "interval",
+  "dataComment": /* TODO: Define chart data (inline or fetched) */,
+  "encode": {
+    "y": "count",
+    "color": "item",
+    "key": "item"
+  },
+  "transform": [
+    {
+      "type": "stackY"
+    }
+  ],
+  "coordinate": {
+    "type": "theta",
+    "outerRadius": 0.8
+  }
 };
 
 const InteractionDataPieElementPointMoveChart: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+    
+    // Using statically defined spec
+    const finalSpec = spec;
+  
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">Pie element point move</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">N</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 

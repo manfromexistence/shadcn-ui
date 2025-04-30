@@ -1,117 +1,129 @@
-'use client'; // Assume client component due to G2
+'use client';
 
 import React from 'react';
 import G2Chart from '../../../g2-wrapper';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+
+
+
 
 /*
-Original Dumi Example Code from: ../../G2/site/examples/general/candlestick/demo/line-candle-stick.ts
---------------------------------------------------------------------------------
-// /**
- * A recreation of this demo: https://observablehq.com/@d3/candlestick-chart
- */
-import { Chart } from '@antv/g2';
-
-const chart = new Chart({
-  container: 'container',
-  autoFit: true,
-});
-
-chart
-  .data({
-    type: 'fetch',
-    value: 'https://assets.antv.antgroup.com/g2/aapl2.json',
-    transform: [
-      {
-        type: 'map',
-        callback: (d) => ({
-          ...d,
-          Date: new Date(d.Date),
-        }),
-      },
-    ],
-  })
-  .scale('color', {
-    domain: [1, 0, -1],
-    range: ['#4daf4a', '#999999', '#e41a1c'],
-  });
-
-chart
-  .link()
-  .encode('x', 'Date')
-  .encode('y', ['Low', 'High'])
-  .encode('color', (d) => Math.sign(d.Close - d.Open)) // For LegendFilter.
-  .style('stroke', 'black')
-  .tooltip({
-    title: (d) => d.Date.toLocaleString(),
-    items: [
-      { field: 'Low', name: 'low' },
-      { field: 'High', name: 'high' },
-    ],
-  });
-
-chart
-  .link()
-  .encode('x', 'Date')
-  .encode('y', ['Open', 'Close'])
-  .encode('color', (d) => Math.sign(d.Close - d.Open))
-  .style('radius', 2)
-  .style('fillOpacity', 1)
-  .style('lineWidth', 4)
-  .style('lineCap', 'round')
-  .tooltip({
-    title: '',
-    items: [
-      { field: 'Open', name: 'open' },
-      { field: 'Close', name: 'close' },
-    ],
-  });
-
-chart.interaction('tooltip', { shared: true, groupName: false });
-
-chart.render();
-
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ../../G2/site/examples/general/candlestick/demo/line-candle-stick.ts
+  ================================================================================
+  // /**
+  //  * A recreation of this demo: https://observablehq.com/@d3/candlestick-chart
+  //  */
+  // import { Chart } from '@antv/g2';
+  // 
+  // const chart = new Chart({
+  //   container: 'container',
+  //   autoFit: true,
+  // });
+  // 
+  // chart
+  //   .data({
+  //     type: 'fetch',
+  //     value: 'https://assets.antv.antgroup.com/g2/aapl2.json',
+  //     transform: [
+  //       {
+  //         type: 'map',
+  //         callback: (d) => ({
+  //           ...d,
+  //           Date: new Date(d.Date),
+  //         }),
+  //       },
+  //     ],
+  //   })
+  //   .scale('color', {
+  //     domain: [1, 0, -1],
+  //     range: ['#4daf4a', '#999999', '#e41a1c'],
+  //   });
+  // 
+  // chart
+  //   .link()
+  //   .encode('x', 'Date')
+  //   .encode('y', ['Low', 'High'])
+  //   .encode('color', (d) => Math.sign(d.Close - d.Open)) // For LegendFilter.
+  //   .style('stroke', 'black')
+  //   .tooltip({
+  //     title: (d) => d.Date.toLocaleString(),
+  //     items: [
+  //       { field: 'Low', name: 'low' },
+  //       { field: 'High', name: 'high' },
+  //     ],
+  //   });
+  // 
+  // chart
+  //   .link()
+  //   .encode('x', 'Date')
+  //   .encode('y', ['Open', 'Close'])
+  //   .encode('color', (d) => Math.sign(d.Close - d.Open))
+  //   .style('radius', 2)
+  //   .style('fillOpacity', 1)
+  //   .style('lineWidth', 4)
+  //   .style('lineCap', 'round')
+  //   .tooltip({
+  //     title: '',
+  //     items: [
+  //       { field: 'Open', name: 'open' },
+  //       { field: 'Close', name: 'close' },
+  //     ],
+  //   });
+  // 
+  // chart.interaction('tooltip', { shared: true, groupName: false });
+  // 
+  // chart.render();
+  // 
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
+  "type": "link",
+  "dataComment": /* TODO: Define chart data (inline or fetched) */,
+  "encode": {
+    "x": "Date",
+    "y": /* TODO: Convert encode function/expression: ['Open', 'Close'] */,
+    "color": /* TODO: Convert encode function/expression: (d */
+  },
+  "scale": {
+    "color": {
+      "comment": /* TODO: Manually convert scale options: {\n    domain: [1, 0, -1],\n    range: ['#4daf4a', '#999999', '#e41a1c'],\n  } */
+    }
+  },
+  "style": {
+    "stroke": "black",
+    "radius": /* TODO: Convert style value/expression: 2 */,
+    "fillOpacity": /* TODO: Convert style value/expression: 1 */,
+    "lineWidth": /* TODO: Convert style value/expression: 4 */,
+    "lineCap": "round"
+  },
+  "interaction": {
+    "type": "tooltip",
+    "optionsComment": /* TODO: Manually convert interaction options: { shared: true, groupName: false } */
+  }
 };
 
 const GeneralCandlestickLineCandleStickChart: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+    
+    // Using statically defined spec
+    const finalSpec = spec;
+  
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">Line candle stick</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">C</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 

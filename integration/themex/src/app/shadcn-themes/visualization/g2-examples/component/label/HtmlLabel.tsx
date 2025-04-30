@@ -1,92 +1,93 @@
-'use client'; // Assume client component due to G2
+'use client';
 
 import React from 'react';
 import G2Chart from '../../../g2-wrapper';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+
+
+
 
 /*
-Original Dumi Example Code from: ../../G2/site/examples/component/label/demo/htmlLabel.ts
---------------------------------------------------------------------------------
-// import { Chart } from '@antv/g2';
-
-const chart = new Chart({
-  container: 'container',
-  autoFit: true,
-});
-
-const data = [
-  { repo: 'G', star: 918 },
-  { repo: 'G2', star: 11688 },
-  { repo: 'G6', star: 10045 },
-  { repo: 'L7', star: 3125 },
-  { repo: 'F2', star: 7820 },
-  { repo: 'S2', star: 1231 },
-  { repo: 'X6', star: 4755 },
-];
-
-chart
-  .interval()
-  .data(data)
-  .encode('x', 'repo')
-  .encode('y', 'star')
-  .encode('color', 'repo')
-  .label({
-    text: 'star',
-    render: (text, datum) => {
-      return `
-        <div style="left:-50%;top:-20px;position:relative;font-size:14px;">
-          <span>${datum.repo}</span>
-          :
-          <a href="https://github.com/antvis/${datum.repo}" target="_blank">${datum.star}</a>
-        </div>
-      `;
-    },
-  })
-  .legend(false);
-
-chart.render();
-
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ../../G2/site/examples/component/label/demo/htmlLabel.ts
+  ================================================================================
+  // import { Chart } from '@antv/g2';
+  // 
+  // const chart = new Chart({
+  //   container: 'container',
+  //   autoFit: true,
+  // });
+  // 
+  // const data = [
+  //   { repo: 'G', star: 918 },
+  //   { repo: 'G2', star: 11688 },
+  //   { repo: 'G6', star: 10045 },
+  //   { repo: 'L7', star: 3125 },
+  //   { repo: 'F2', star: 7820 },
+  //   { repo: 'S2', star: 1231 },
+  //   { repo: 'X6', star: 4755 },
+  // ];
+  // 
+  // chart
+  //   .interval()
+  //   .data(data)
+  //   .encode('x', 'repo')
+  //   .encode('y', 'star')
+  //   .encode('color', 'repo')
+  //   .label({
+  //     text: 'star',
+  //     render: (text, datum) => {
+  //       return `
+  //         <div style="left:-50%;top:-20px;position:relative;font-size:14px;">
+  //           <span>${datum.repo}</span>
+  //           :
+  //           <a href="https://github.com/antvis/${datum.repo}" target="_blank">${datum.star}</a>
+  //         </div>
+  //       `;
+  //     },
+  //   })
+  //   .legend(false);
+  // 
+  // chart.render();
+  // 
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
+  "type": "interval",
+  "dataComment": /* TODO: Define chart data (inline or fetched) */,
+  "encode": {
+    "x": "repo",
+    "y": "star",
+    "color": "repo"
+  },
+  "labels": [
+    {
+      "comment": /* TODO: Manually convert label options: {\n    text: 'star',\n    render: (text, datum) => {\n      return `\n        <div style=\"left:-50%;top:-20px;position:relative;font-size:14px;\">\n          <span>${datum.repo}</span>\n          :\n          <a href=\"https://github.com/antvis/${datum.repo}\" target=\"_blank\">${datum.star}</a>\n        </div>\n      `;\n    },\n  } */
+    }
+  ]
 };
 
 const ComponentLabelHtmlLabelChart: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+    
+    // Using statically defined spec
+    const finalSpec = spec;
+  
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">HtmlLabel</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">L</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 

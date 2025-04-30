@@ -1,105 +1,121 @@
-'use client'; // Assume client component due to G2
+'use client';
 
 import React from 'react';
 import G2Chart from '../../../g2-wrapper';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+
+
+
 
 /*
-Original Dumi Example Code from: ../../G2/site/examples/general/radar/demo/square-radar.ts
---------------------------------------------------------------------------------
-// import { Chart } from '@antv/g2';
-const chart = new Chart({
-  container: 'container',
-  autoFit: true,
-});
-
-chart.coordinate({
-  type: 'polar',
-  startAngle: (-Math.PI * 3) / 4,
-  endAngle: (Math.PI * 5) / 4,
-});
-
-chart
-  .line()
-  .data([
-    { item: 'Design', type: 'a', score: 70 },
-    { item: 'Development', type: 'a', score: 60 },
-    { item: 'Marketing', type: 'a', score: 50 },
-    { item: 'Users', type: 'a', score: 40 },
-  ])
-  .encode('x', 'item')
-  .encode('y', 'score')
-  .scale('x', {
-    padding: 0.5,
-    align: 0,
-  })
-  .scale('y', {
-    domainMin: 0,
-    domainMax: 80,
-  })
-  .style({
-    zIndex: 0,
-    lineWidth: 5,
-    lineJoin: 'round',
-  })
-  .axis('x', {
-    grid: true,
-    zIndex: 1,
-    title: false,
-    gridLineWidth: 1,
-    gridLineDash: null,
-  })
-  .axis('y', {
-    titleOpacity: '0',
-    gridConnect: 'line',
-    gridLineWidth: 1,
-    gridLineDash: [0, 0],
-    gridAreaFill: 'rgba(0, 0, 0, 0.04)',
-  });
-
-chart.render();
-
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ../../G2/site/examples/general/radar/demo/square-radar.ts
+  ================================================================================
+  // import { Chart } from '@antv/g2';
+  // const chart = new Chart({
+  //   container: 'container',
+  //   autoFit: true,
+  // });
+  // 
+  // chart.coordinate({
+  //   type: 'polar',
+  //   startAngle: (-Math.PI * 3) / 4,
+  //   endAngle: (Math.PI * 5) / 4,
+  // });
+  // 
+  // chart
+  //   .line()
+  //   .data([
+  //     { item: 'Design', type: 'a', score: 70 },
+  //     { item: 'Development', type: 'a', score: 60 },
+  //     { item: 'Marketing', type: 'a', score: 50 },
+  //     { item: 'Users', type: 'a', score: 40 },
+  //   ])
+  //   .encode('x', 'item')
+  //   .encode('y', 'score')
+  //   .scale('x', {
+  //     padding: 0.5,
+  //     align: 0,
+  //   })
+  //   .scale('y', {
+  //     domainMin: 0,
+  //     domainMax: 80,
+  //   })
+  //   .style({
+  //     zIndex: 0,
+  //     lineWidth: 5,
+  //     lineJoin: 'round',
+  //   })
+  //   .axis('x', {
+  //     grid: true,
+  //     zIndex: 1,
+  //     title: false,
+  //     gridLineWidth: 1,
+  //     gridLineDash: null,
+  //   })
+  //   .axis('y', {
+  //     titleOpacity: '0',
+  //     gridConnect: 'line',
+  //     gridLineWidth: 1,
+  //     gridLineDash: [0, 0],
+  //     gridAreaFill: 'rgba(0, 0, 0, 0.04)',
+  //   });
+  // 
+  // chart.render();
+  // 
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
+  "type": "line",
+  "dataComment": /* TODO: Manually define inline data array */,
+  "encode": {
+    "x": "item",
+    "y": "score"
+  },
+  "scale": {
+    "x": {
+      "comment": /* TODO: Manually convert scale options: {\n    padding: 0.5,\n    align: 0,\n  } */
+    },
+    "y": {
+      "comment": /* TODO: Manually convert scale options: {\n    domainMin: 0,\n    domainMax: 80,\n  } */
+    }
+  },
+  "axis": {
+    "x": {
+      "comment": /* TODO: Manually convert axis options: {\n    grid: true,\n    zIndex: 1,\n    title: false,\n    gridLineWidth: 1,\n    gridLineDash: null,\n  } */
+    },
+    "y": {
+      "comment": /* TODO: Manually convert axis options: {\n    titleOpacity: '0',\n    gridConnect: 'line',\n    gridLineWidth: 1,\n    gridLineDash: [0, 0],\n    gridAreaFill: 'rgba(0, 0, 0, 0.04)',\n  } */
+    }
+  },
+  "coordinate": {
+    "comment": /* TODO: Manually convert coordinate options: {\n  type: 'polar',\n  startAngle: (-Math.PI * 3) / 4,\n  endAngle: (Math.PI * 5) / 4,\n} */
+  }
 };
 
 const GeneralRadarSquareRadarChart: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+    
+    // TODO: Define or load data for the chart. Original data was complex or failed to parse.
+    // Original data reference: /* PARSE_ERROR */
+    const chartData = []; // Placeholder: Provide actual data here
+    const finalSpec = { ...spec, data: chartData };
+  
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">Square radar</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">R</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 

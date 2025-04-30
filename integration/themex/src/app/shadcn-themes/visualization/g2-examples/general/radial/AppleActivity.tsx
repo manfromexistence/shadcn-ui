@@ -1,122 +1,142 @@
-'use client'; // Assume client component due to G2
+'use client';
 
 import React from 'react';
 import G2Chart from '../../../g2-wrapper';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+
+
+
 
 /*
-Original Dumi Example Code from: ../../G2/site/examples/general/radial/demo/apple-activity.ts
---------------------------------------------------------------------------------
-// import { Chart } from '@antv/g2';
-
-const chart = new Chart({
-  container: 'container',
-  width: 244,
-  height: 244,
-});
-
-chart
-  .data([
-    {
-      name: 'activity1',
-      percent: 0.6,
-      color: '#1ad5de',
-      icon: 'https://gw.alipayobjects.com/zos/antfincdn/ck11Y6aRrz/shangjiantou.png',
-    },
-    {
-      name: 'activity2',
-      percent: 0.2,
-      color: '#a0ff03',
-      icon: 'https://gw.alipayobjects.com/zos/antfincdn/zY2JB7hhrO/shuangjiantou.png',
-    },
-    {
-      name: 'activity3',
-      percent: 0.3,
-      color: '#e90b3a',
-      icon: 'https://gw.alipayobjects.com/zos/antfincdn/%24qBxSxdK05/jiantou.png',
-    },
-  ])
-  .coordinate({ type: 'radial', innerRadius: 0.2 });
-
-chart
-  .interval()
-  .encode('x', 'name')
-  .encode('y', 1)
-  .encode('size', 52)
-  .encode('color', 'color')
-  .scale('color', { type: 'identity' })
-  .style('fillOpacity', 0.25)
-  .animate(false);
-
-chart
-  .interval()
-  .encode('x', 'name')
-  .encode('y', 'percent')
-  .encode('color', 'color')
-  .encode('size', 52)
-  .style('radius', 26)
-  .style('shadowColor', 'rgba(0,0,0,0.45)')
-  .style('shadowBlur', 20)
-  .style('shadowOffsetX', -2)
-  .style('shadowOffsetY', -5)
-  .axis(false)
-  .animate('enter', {
-    type: 'waveIn',
-    easing: 'easing-out-bounce',
-    duration: 1000,
-  });
-
-chart
-  .image()
-  .encode('x', 'name')
-  .encode('y', 0)
-  .encode('src', (d) => d.icon)
-  .encode('size', 12)
-  .style('transform', 'translateX(10)');
-
-chart.render();
-
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ../../G2/site/examples/general/radial/demo/apple-activity.ts
+  ================================================================================
+  // import { Chart } from '@antv/g2';
+  // 
+  // const chart = new Chart({
+  //   container: 'container',
+  //   width: 244,
+  //   height: 244,
+  // });
+  // 
+  // chart
+  //   .data([
+  //     {
+  //       name: 'activity1',
+  //       percent: 0.6,
+  //       color: '#1ad5de',
+  //       icon: 'https://gw.alipayobjects.com/zos/antfincdn/ck11Y6aRrz/shangjiantou.png',
+  //     },
+  //     {
+  //       name: 'activity2',
+  //       percent: 0.2,
+  //       color: '#a0ff03',
+  //       icon: 'https://gw.alipayobjects.com/zos/antfincdn/zY2JB7hhrO/shuangjiantou.png',
+  //     },
+  //     {
+  //       name: 'activity3',
+  //       percent: 0.3,
+  //       color: '#e90b3a',
+  //       icon: 'https://gw.alipayobjects.com/zos/antfincdn/%24qBxSxdK05/jiantou.png',
+  //     },
+  //   ])
+  //   .coordinate({ type: 'radial', innerRadius: 0.2 });
+  // 
+  // chart
+  //   .interval()
+  //   .encode('x', 'name')
+  //   .encode('y', 1)
+  //   .encode('size', 52)
+  //   .encode('color', 'color')
+  //   .scale('color', { type: 'identity' })
+  //   .style('fillOpacity', 0.25)
+  //   .animate(false);
+  // 
+  // chart
+  //   .interval()
+  //   .encode('x', 'name')
+  //   .encode('y', 'percent')
+  //   .encode('color', 'color')
+  //   .encode('size', 52)
+  //   .style('radius', 26)
+  //   .style('shadowColor', 'rgba(0,0,0,0.45)')
+  //   .style('shadowBlur', 20)
+  //   .style('shadowOffsetX', -2)
+  //   .style('shadowOffsetY', -5)
+  //   .axis(false)
+  //   .animate('enter', {
+  //     type: 'waveIn',
+  //     easing: 'easing-out-bounce',
+  //     duration: 1000,
+  //   });
+  // 
+  // chart
+  //   .image()
+  //   .encode('x', 'name')
+  //   .encode('y', 0)
+  //   .encode('src', (d) => d.icon)
+  //   .encode('size', 12)
+  //   .style('transform', 'translateX(10)');
+  // 
+  // chart.render();
+  // 
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
+  "width": 244,
+  "height": 244,
+  "type": "interval",
+  "dataComment": /* TODO: Manually define inline data array */,
+  "encode": {
+    "x": "name",
+    "y": /* TODO: Convert encode function/expression: 0 */,
+    "size": /* TODO: Convert encode function/expression: 12 */,
+    "color": "color",
+    "src": /* TODO: Convert encode function/expression: (d */
+  },
+  "scale": {
+    "color": {
+      "type": "identity"
+    }
+  },
+  "style": {
+    "fillOpacity": /* TODO: Convert style value/expression: 0.25 */,
+    "radius": /* TODO: Convert style value/expression: 26 */,
+    "shadowColor": /* TODO: Convert style value/expression: 'rgba(0,0,0,0.45 */,
+    "shadowBlur": /* TODO: Convert style value/expression: 20 */,
+    "shadowOffsetX": /* TODO: Convert style value/expression: -2 */,
+    "shadowOffsetY": /* TODO: Convert style value/expression: -5 */,
+    "transform": /* TODO: Convert style value/expression: 'translateX(10 */
+  },
+  "coordinate": {
+    "type": "radial",
+    "innerRadius": 0.2
+  }
 };
 
 const GeneralRadialAppleActivityChart: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+    
+    // TODO: Define or load data for the chart. Original data was complex or failed to parse.
+    // Original data reference: /* PARSE_ERROR */
+    const chartData = []; // Placeholder: Provide actual data here
+    const finalSpec = { ...spec, data: chartData };
+  
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">Apple activity</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">R</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 

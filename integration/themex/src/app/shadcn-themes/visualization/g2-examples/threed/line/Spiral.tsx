@@ -1,116 +1,139 @@
-'use client'; // Assume client component due to G2
+'use client';
 
 import React from 'react';
 import G2Chart from '../../../g2-wrapper';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+
+
+
 
 /*
-Original Dumi Example Code from: ../../G2/site/examples/threed/line/demo/spiral.ts
---------------------------------------------------------------------------------
-// import { CameraType } from '@antv/g';
-import { Renderer as WebGLRenderer } from '@antv/g-webgl';
-import { Plugin as ThreeDPlugin } from '@antv/g-plugin-3d';
-import { Plugin as ControlPlugin } from '@antv/g-plugin-control';
-import { Runtime, corelib, extend } from '@antv/g2';
-import { threedlib } from '@antv/g2-extension-3d';
-
-// Create a WebGL renderer.
-const renderer = new WebGLRenderer();
-renderer.registerPlugin(new ThreeDPlugin());
-renderer.registerPlugin(new ControlPlugin());
-
-// Customize our own Chart with threedlib.
-const Chart = extend(Runtime, { ...corelib(), ...threedlib() });
-const chart = new Chart({
-  container: 'container',
-  renderer,
-  depth: 400, // Define the depth of chart.
-});
-
-/**
- * 3D Spiral
- * @see https://plotly.com/javascript/3d-line-plots/
- */
-const pointCount = 500;
-let r;
-const data = [];
-
-for (let i = 0; i < pointCount; i++) {
-  r = i * (pointCount - i);
-  data.push({
-    x: r * Math.cos(i / 30),
-    y: r * Math.sin(i / 30),
-    z: i,
-  });
-}
-
-chart
-  .line3D()
-  .data(data)
-  .encode('x', 'x')
-  .encode('y', 'y')
-  .encode('z', 'z')
-  .encode('size', 4)
-  .coordinate({ type: 'cartesian3D' })
-  .scale('x', { nice: true })
-  .scale('y', { nice: true })
-  .scale('z', { nice: true })
-  .legend(false)
-  .axis('x', { gridLineWidth: 2 })
-  .axis('y', { gridLineWidth: 2, titleBillboardRotation: -Math.PI / 2 })
-  .axis('z', { gridLineWidth: 2 });
-
-chart.render().then(() => {
-  const { canvas } = chart.getContext();
-  const camera = canvas.getCamera();
-  // Use perspective projection mode.
-  camera.setPerspective(0.1, 5000, 45, 640 / 480);
-  camera.rotate(30, 30, 0);
-  camera.dolly(30);
-  camera.setType(CameraType.ORBITING);
-});
-
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ../../G2/site/examples/threed/line/demo/spiral.ts
+  ================================================================================
+  // import { CameraType } from '@antv/g';
+  // import { Renderer as WebGLRenderer } from '@antv/g-webgl';
+  // import { Plugin as ThreeDPlugin } from '@antv/g-plugin-3d';
+  // import { Plugin as ControlPlugin } from '@antv/g-plugin-control';
+  // import { Runtime, corelib, extend } from '@antv/g2';
+  // import { threedlib } from '@antv/g2-extension-3d';
+  // 
+  // // Create a WebGL renderer.
+  // const renderer = new WebGLRenderer();
+  // renderer.registerPlugin(new ThreeDPlugin());
+  // renderer.registerPlugin(new ControlPlugin());
+  // 
+  // // Customize our own Chart with threedlib.
+  // const Chart = extend(Runtime, { ...corelib(), ...threedlib() });
+  // const chart = new Chart({
+  //   container: 'container',
+  //   renderer,
+  //   depth: 400, // Define the depth of chart.
+  // });
+  // 
+  // /**
+  //  * 3D Spiral
+  //  * @see https://plotly.com/javascript/3d-line-plots/
+  //  */
+  // const pointCount = 500;
+  // let r;
+  // const data = [];
+  // 
+  // for (let i = 0; i < pointCount; i++) {
+  //   r = i * (pointCount - i);
+  //   data.push({
+  //     x: r * Math.cos(i / 30),
+  //     y: r * Math.sin(i / 30),
+  //     z: i,
+  //   });
+  // }
+  // 
+  // chart
+  //   .line3D()
+  //   .data(data)
+  //   .encode('x', 'x')
+  //   .encode('y', 'y')
+  //   .encode('z', 'z')
+  //   .encode('size', 4)
+  //   .coordinate({ type: 'cartesian3D' })
+  //   .scale('x', { nice: true })
+  //   .scale('y', { nice: true })
+  //   .scale('z', { nice: true })
+  //   .legend(false)
+  //   .axis('x', { gridLineWidth: 2 })
+  //   .axis('y', { gridLineWidth: 2, titleBillboardRotation: -Math.PI / 2 })
+  //   .axis('z', { gridLineWidth: 2 });
+  // 
+  // chart.render().then(() => {
+  //   const { canvas } = chart.getContext();
+  //   const camera = canvas.getCamera();
+  //   // Use perspective projection mode.
+  //   camera.setPerspective(0.1, 5000, 45, 640 / 480);
+  //   camera.rotate(30, 30, 0);
+  //   camera.dolly(30);
+  //   camera.setType(CameraType.ORBITING);
+  // });
+  // 
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
+  "chartOptionsComment": /* TODO: Manually convert Chart constructor options */,
+  "type": "corelib",
+  "dataComment": /* TODO: Define chart data (inline or fetched) */,
+  "encode": {
+    "x": "x",
+    "y": "y",
+    "z": "z",
+    "size": /* TODO: Convert encode function/expression: 4 */
+  },
+  "scale": {
+    "x": {
+      "nice": true
+    },
+    "y": {
+      "nice": true
+    },
+    "z": {
+      "nice": true
+    }
+  },
+  "axis": {
+    "x": {
+      "gridLineWidth": 2
+    },
+    "y": {
+      "comment": /* TODO: Manually convert axis options: { gridLineWidth: 2, titleBillboardRotation: -Math.PI / 2 } */
+    },
+    "z": {
+      "gridLineWidth": 2
+    }
+  },
+  "coordinate": {
+    "type": "cartesian3D"
+  }
 };
 
 const ThreedLineSpiralChart: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+    
+    // Using statically defined spec
+    const finalSpec = spec;
+  
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">Spiral</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">3</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 

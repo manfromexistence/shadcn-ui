@@ -1,83 +1,86 @@
-'use client'; // Assume client component due to G2
+'use client';
 
 import React from 'react';
 import G2Chart from '../../../g2-wrapper';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+
+
+
 
 /*
-Original Dumi Example Code from: ../../G2/site/examples/general/histogram/demo/histogram-stacked.ts
---------------------------------------------------------------------------------
-// import { Chart } from '@antv/g2';
-
-fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/diamond.json')
-  .then((res) => res.json())
-  .then((data) => {
-    const chart = new Chart({
-      container: 'container',
-      autoFit: true,
-      height: 500,
-    });
-
-    chart
-      .interval()
-      .encode('x', 'depth')
-      .encode('y', 'count')
-      .encode('color', 'cut')
-      .data(data)
-      .transform({
-        type: 'binX',
-        y: 'count',
-        thresholds: 25,
-      })
-      .style({
-        columnWidthRatio: 1,
-        inset: 0.5,
-      });
-
-    chart.render();
-  });
-
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ../../G2/site/examples/general/histogram/demo/histogram-stacked.ts
+  ================================================================================
+  // import { Chart } from '@antv/g2';
+  // 
+  // fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/diamond.json')
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     const chart = new Chart({
+  //       container: 'container',
+  //       autoFit: true,
+  //       height: 500,
+  //     });
+  // 
+  //     chart
+  //       .interval()
+  //       .encode('x', 'depth')
+  //       .encode('y', 'count')
+  //       .encode('color', 'cut')
+  //       .data(data)
+  //       .transform({
+  //         type: 'binX',
+  //         y: 'count',
+  //         thresholds: 25,
+  //       })
+  //       .style({
+  //         columnWidthRatio: 1,
+  //         inset: 0.5,
+  //       });
+  // 
+  //     chart.render();
+  //   });
+  // 
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
+  "height": 500,
+  "type": "json",
+  "dataComment": /* TODO: Define chart data (inline or fetched) */,
+  "encode": {
+    "x": "depth",
+    "y": "count",
+    "color": "cut"
+  },
+  "transform": [
+    {
+      "type": /* PARSE_ERROR */,
+      "comment": "Original: {\n        type: 'binX',\n        y: 'count',\n        thresholds: 25,\n      }"
+    }
+  ]
 };
 
 const GeneralHistogramHistogramStackedChart: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+    
+    // Using statically defined spec
+    const finalSpec = spec;
+  
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">Histogram stacked</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">H</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 

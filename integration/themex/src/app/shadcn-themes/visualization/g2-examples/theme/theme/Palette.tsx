@@ -1,97 +1,118 @@
-'use client'; // Assume client component due to G2
+'use client';
 
 import React from 'react';
 import G2Chart from '../../../g2-wrapper';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+
+
+
 
 /*
-Original Dumi Example Code from: ../../G2/site/examples/theme/theme/demo/palette.ts
---------------------------------------------------------------------------------
-// import { Chart, register } from '@antv/g2';
-
-register('palette.customPalette', () => [
-  '#1677FF',
-  '#39C8AE',
-  '#C7B1FB',
-  '#F58773',
-  '#FEAA4A',
-  '#ED6DC6',
-  '#00875B',
-  '#765CE7',
-  '#65799B',
-  '#C4CD2A',
-]);
-
-const chart = new Chart({
-  container: 'container',
-  autoFit: true,
-});
-
-chart.theme({
-  defaultCategory10: 'customPalette',
-  defaultCategory20: 'customPalette',
-});
-
-chart
-  .area()
-  .data({
-    type: 'fetch',
-    value:
-      'https://gw.alipayobjects.com/os/bmw-prod/e58c9758-0a09-4527-aa90-fbf175b45925.json',
-  })
-  .transform({ type: 'stackY', orderBy: 'value' })
-  .encode('x', (d) => new Date(d.date))
-  .encode('y', 'unemployed')
-  .encode('color', 'industry')
-  .encode('shape', 'smooth')
-  .scale('x', { utc: true })
-  .axis('x', { title: 'Date' })
-  .axis('y', { labelFormatter: '~s' })
-  .legend('color', { size: 72, autoWrap: true, maxRows: 3, cols: 6 });
-
-chart.render();
-
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ../../G2/site/examples/theme/theme/demo/palette.ts
+  ================================================================================
+  // import { Chart, register } from '@antv/g2';
+  // 
+  // register('palette.customPalette', () => [
+  //   '#1677FF',
+  //   '#39C8AE',
+  //   '#C7B1FB',
+  //   '#F58773',
+  //   '#FEAA4A',
+  //   '#ED6DC6',
+  //   '#00875B',
+  //   '#765CE7',
+  //   '#65799B',
+  //   '#C4CD2A',
+  // ]);
+  // 
+  // const chart = new Chart({
+  //   container: 'container',
+  //   autoFit: true,
+  // });
+  // 
+  // chart.theme({
+  //   defaultCategory10: 'customPalette',
+  //   defaultCategory20: 'customPalette',
+  // });
+  // 
+  // chart
+  //   .area()
+  //   .data({
+  //     type: 'fetch',
+  //     value:
+  //       'https://gw.alipayobjects.com/os/bmw-prod/e58c9758-0a09-4527-aa90-fbf175b45925.json',
+  //   })
+  //   .transform({ type: 'stackY', orderBy: 'value' })
+  //   .encode('x', (d) => new Date(d.date))
+  //   .encode('y', 'unemployed')
+  //   .encode('color', 'industry')
+  //   .encode('shape', 'smooth')
+  //   .scale('x', { utc: true })
+  //   .axis('x', { title: 'Date' })
+  //   .axis('y', { labelFormatter: '~s' })
+  //   .legend('color', { size: 72, autoWrap: true, maxRows: 3, cols: 6 });
+  // 
+  // chart.render();
+  // 
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
+  "type": "area",
+  "dataComment": /* TODO: Define chart data (inline or fetched) */,
+  "encode": {
+    "x": /* TODO: Convert encode function/expression: (d */,
+    "y": "unemployed",
+    "color": "industry",
+    "shape": "smooth"
+  },
+  "transform": [
+    {
+      "type": "stackY",
+      "orderBy": "value"
+    }
+  ],
+  "scale": {
+    "x": {
+      "utc": true
+    }
+  },
+  "axis": {
+    "x": {
+      "title": "Date"
+    },
+    "y": {
+      "labelFormatter": "~s"
+    }
+  },
+  "legend": {
+    "color": {
+      "comment": /* TODO: Manually convert legend options: { size: 72, autoWrap: true, maxRows: 3, cols: 6 } */
+    }
+  }
 };
 
 const ThemeThemePaletteChart: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+    
+    // Using statically defined spec
+    const finalSpec = spec;
+  
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">Palette</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">palette</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 

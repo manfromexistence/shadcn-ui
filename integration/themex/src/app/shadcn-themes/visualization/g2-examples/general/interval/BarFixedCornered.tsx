@@ -1,78 +1,83 @@
-'use client'; // Assume client component due to G2
+'use client';
 
 import React from 'react';
 import G2Chart from '../../../g2-wrapper';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+
+
+
 
 /*
-Original Dumi Example Code from: ../../G2/site/examples/general/interval/demo/bar-fixed-cornered.ts
---------------------------------------------------------------------------------
-// import { Chart } from '@antv/g2';
-
-const chart = new Chart({
-  container: 'container',
-  autoFit: true,
-});
-
-chart
-  .interval()
-  .data([
-    { name: 'MODIFY', value: 138, washaway: 0.21014492753623193 },
-    { name: 'PRERELEASE', value: 109, washaway: 0.5596330275229358 },
-    { name: 'RELEASING', value: 48, washaway: 0 },
-  ])
-  .encode('x', 'name')
-  .encode('y', 'value')
-  .encode('color', 'name')
-  .encode('size', 80)
-  .style('radiusTopLeft', 10)
-  .style('radiusTopRight', 20)
-  .style('radiusBottomRight', 30)
-  .style('radiusBottomLeft', 40);
-
-chart.render();
-
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ../../G2/site/examples/general/interval/demo/bar-fixed-cornered.ts
+  ================================================================================
+  // import { Chart } from '@antv/g2';
+  // 
+  // const chart = new Chart({
+  //   container: 'container',
+  //   autoFit: true,
+  // });
+  // 
+  // chart
+  //   .interval()
+  //   .data([
+  //     { name: 'MODIFY', value: 138, washaway: 0.21014492753623193 },
+  //     { name: 'PRERELEASE', value: 109, washaway: 0.5596330275229358 },
+  //     { name: 'RELEASING', value: 48, washaway: 0 },
+  //   ])
+  //   .encode('x', 'name')
+  //   .encode('y', 'value')
+  //   .encode('color', 'name')
+  //   .encode('size', 80)
+  //   .style('radiusTopLeft', 10)
+  //   .style('radiusTopRight', 20)
+  //   .style('radiusBottomRight', 30)
+  //   .style('radiusBottomLeft', 40);
+  // 
+  // chart.render();
+  // 
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
+  "type": "interval",
+  "dataComment": /* TODO: Manually define inline data array */,
+  "encode": {
+    "x": "name",
+    "y": "value",
+    "color": "name",
+    "size": /* TODO: Convert encode function/expression: 80 */
+  },
+  "style": {
+    "radiusTopLeft": /* TODO: Convert style value/expression: 10 */,
+    "radiusTopRight": /* TODO: Convert style value/expression: 20 */,
+    "radiusBottomRight": /* TODO: Convert style value/expression: 30 */,
+    "radiusBottomLeft": /* TODO: Convert style value/expression: 40 */
+  }
 };
 
 const GeneralIntervalBarFixedCorneredChart: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+    
+    // TODO: Define or load data for the chart. Original data was complex or failed to parse.
+    // Original data reference: /* PARSE_ERROR */
+    const chartData = []; // Placeholder: Provide actual data here
+    const finalSpec = { ...spec, data: chartData };
+  
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">Bar fixed cornered</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">I</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 

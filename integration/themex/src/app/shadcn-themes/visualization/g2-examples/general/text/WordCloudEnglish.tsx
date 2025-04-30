@@ -1,278 +1,272 @@
-'use client'; // Assume client component due to G2
+'use client';
 
 import React from 'react';
 import G2Chart from '../../../g2-wrapper';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+
+
+
 
 /*
-Original Dumi Example Code from: ../../G2/site/examples/general/text/demo/wordCloud-english.ts
---------------------------------------------------------------------------------
-// /**
- * A recreation of this demo: // https://www.jasondavies.com/wordcloud/
- */
-import { Chart } from '@antv/g2';
-
-const Word = {
-  '32': 2,
-  word: 10,
-  cloud: 1,
-  generator: 1,
-  works: 1,
-  layout: 4,
-  algorithm: 4,
-  positioning: 1,
-  words: 8,
-  without: 3,
-  overlap: 1,
-  available: 1,
-  github: 1,
-  open: 1,
-  source: 1,
-  license: 1,
-  d3cloud: 1,
-  note: 1,
-  code: 1,
-  converting: 1,
-  text: 1,
-  rendering: 1,
-  final: 1,
-  output: 1,
-  requires: 1,
-  additional: 1,
-  development: 1,
-  placement: 2,
-  quite: 1,
-  slow: 1,
-  hundred: 1,
-  run: 1,
-  asynchronously: 1,
-  configurable: 1,
-  time: 2,
-  step: 3,
-  size: 1,
-  makes: 1,
-  possible: 2,
-  animate: 1,
-  placed: 5,
-  stuttering: 1,
-  recommended: 1,
-  always: 1,
-  use: 1,
-  even: 2,
-  animations: 1,
-  prevents: 1,
-  browsers: 1,
-  event: 1,
-  loop: 1,
-  blocking: 1,
-  placing: 1,
-  incredibly: 1,
-  simple: 2,
-  starting: 2,
-  important: 1,
-  attempt: 1,
-  place: 1,
-  point: 1,
-  usually: 1,
-  near: 1,
-  middle: 1,
-  somewhere: 1,
-  central: 1,
-  horizontal: 1,
-  line: 1,
-  intersects: 1,
-  previously: 2,
-  move: 2,
-  one: 1,
-  along: 1,
-  increasing: 1,
-  spiral: 1,
-  repeat: 1,
-  intersections: 1,
-  found: 1,
-  hard: 1,
-  part: 1,
-  making: 1,
-  perform: 2,
-  efficiently: 1,
-  according: 1,
-  jonathan: 1,
-  feinberg: 1,
-  wordle: 1,
-  uses: 1,
-  combination: 1,
-  hierarchical: 2,
-  bounding: 3,
-  boxes: 1,
-  quadtrees: 1,
-  achieve: 1,
-  reasonable: 1,
-  speeds: 1,
-  glyphs: 1,
-  javascript: 1,
-  isnt: 1,
-  way: 1,
-  retrieve: 3,
-  precise: 1,
-  glyph: 1,
-  shapes: 1,
-  via: 1,
-  dom: 1,
-  except: 1,
-  perhaps: 1,
-  svg: 1,
-  fonts: 1,
-  instead: 1,
-  draw: 2,
-  hidden: 1,
-  canvas: 1,
-  element: 1,
-  pixel: 2,
-  data: 2,
-  retrieving: 1,
-  separately: 2,
-  expensive: 2,
-  many: 1,
-  pixels: 2,
-  batch: 1,
-  operation: 3,
-  sprites: 1,
-  masks: 2,
-  initial: 1,
-  implementation: 2,
-  performed: 1,
-  collision: 3,
-  detection: 2,
-  using: 1,
-  sprite: 7,
-  doesnt: 1,
-  copy: 1,
-  appropriate: 1,
-  position: 1,
-  larger: 2,
-  representing: 1,
-  whole: 2,
-  area: 4,
-  advantage: 1,
-  involves: 1,
-  comparing: 2,
-  candidate: 3,
-  relevant: 1,
-  rather: 1,
-  previous: 1,
-  somewhat: 1,
-  surprisingly: 1,
-  lowlevel: 1,
-  hack: 1,
-  made: 1,
-  tremendous: 1,
-  difference: 1,
-  constructing: 1,
-  compressed: 1,
-  blocks: 1,
-  '1bit': 1,
-  '32bit': 1,
-  integers: 1,
-  thus: 1,
-  reducing: 1,
-  number: 1,
-  checks: 1,
-  memory: 1,
-  times: 1,
-  fact: 1,
-  turned: 1,
-  beat: 1,
-  box: 2,
-  quadtree: 1,
-  everything: 1,
-  tried: 1,
-  large: 2,
-  areas: 1,
-  font: 1,
-  sizes: 1,
-  think: 2,
-  primarily: 1,
-  version: 2,
-  needs: 1,
-  single: 2,
-  test: 1,
-  per: 1,
-  whereas: 1,
-  compare: 1,
-  every: 1,
-  overlaps: 1,
-  slightly: 1,
-  another: 1,
-  possibility: 1,
-  merge: 1,
-  tree: 2,
-  fairly: 1,
-  though: 1,
-  compared: 1,
-  analagous: 1,
-  mask: 1,
-  essentially: 1,
-  oring: 1,
-  block: 1,
-};
-
-const chart = new Chart({
-  container: 'container',
-  autoFit: true,
-});
-
-chart
-  .wordCloud()
-  .data(Object.entries(Word).map(([text, value]) => ({ text, value })))
-  .layout({
-    fontSize: [20, 100],
-  })
-  .encode('color', 'text')
-  .legend(false);
-
-chart.render();
-
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ../../G2/site/examples/general/text/demo/wordCloud-english.ts
+  ================================================================================
+  // /**
+  //  * A recreation of this demo: // https://www.jasondavies.com/wordcloud/
+  //  */
+  // import { Chart } from '@antv/g2';
+  // 
+  // const Word = {
+  //   '32': 2,
+  //   word: 10,
+  //   cloud: 1,
+  //   generator: 1,
+  //   works: 1,
+  //   layout: 4,
+  //   algorithm: 4,
+  //   positioning: 1,
+  //   words: 8,
+  //   without: 3,
+  //   overlap: 1,
+  //   available: 1,
+  //   github: 1,
+  //   open: 1,
+  //   source: 1,
+  //   license: 1,
+  //   d3cloud: 1,
+  //   note: 1,
+  //   code: 1,
+  //   converting: 1,
+  //   text: 1,
+  //   rendering: 1,
+  //   final: 1,
+  //   output: 1,
+  //   requires: 1,
+  //   additional: 1,
+  //   development: 1,
+  //   placement: 2,
+  //   quite: 1,
+  //   slow: 1,
+  //   hundred: 1,
+  //   run: 1,
+  //   asynchronously: 1,
+  //   configurable: 1,
+  //   time: 2,
+  //   step: 3,
+  //   size: 1,
+  //   makes: 1,
+  //   possible: 2,
+  //   animate: 1,
+  //   placed: 5,
+  //   stuttering: 1,
+  //   recommended: 1,
+  //   always: 1,
+  //   use: 1,
+  //   even: 2,
+  //   animations: 1,
+  //   prevents: 1,
+  //   browsers: 1,
+  //   event: 1,
+  //   loop: 1,
+  //   blocking: 1,
+  //   placing: 1,
+  //   incredibly: 1,
+  //   simple: 2,
+  //   starting: 2,
+  //   important: 1,
+  //   attempt: 1,
+  //   place: 1,
+  //   point: 1,
+  //   usually: 1,
+  //   near: 1,
+  //   middle: 1,
+  //   somewhere: 1,
+  //   central: 1,
+  //   horizontal: 1,
+  //   line: 1,
+  //   intersects: 1,
+  //   previously: 2,
+  //   move: 2,
+  //   one: 1,
+  //   along: 1,
+  //   increasing: 1,
+  //   spiral: 1,
+  //   repeat: 1,
+  //   intersections: 1,
+  //   found: 1,
+  //   hard: 1,
+  //   part: 1,
+  //   making: 1,
+  //   perform: 2,
+  //   efficiently: 1,
+  //   according: 1,
+  //   jonathan: 1,
+  //   feinberg: 1,
+  //   wordle: 1,
+  //   uses: 1,
+  //   combination: 1,
+  //   hierarchical: 2,
+  //   bounding: 3,
+  //   boxes: 1,
+  //   quadtrees: 1,
+  //   achieve: 1,
+  //   reasonable: 1,
+  //   speeds: 1,
+  //   glyphs: 1,
+  //   javascript: 1,
+  //   isnt: 1,
+  //   way: 1,
+  //   retrieve: 3,
+  //   precise: 1,
+  //   glyph: 1,
+  //   shapes: 1,
+  //   via: 1,
+  //   dom: 1,
+  //   except: 1,
+  //   perhaps: 1,
+  //   svg: 1,
+  //   fonts: 1,
+  //   instead: 1,
+  //   draw: 2,
+  //   hidden: 1,
+  //   canvas: 1,
+  //   element: 1,
+  //   pixel: 2,
+  //   data: 2,
+  //   retrieving: 1,
+  //   separately: 2,
+  //   expensive: 2,
+  //   many: 1,
+  //   pixels: 2,
+  //   batch: 1,
+  //   operation: 3,
+  //   sprites: 1,
+  //   masks: 2,
+  //   initial: 1,
+  //   implementation: 2,
+  //   performed: 1,
+  //   collision: 3,
+  //   detection: 2,
+  //   using: 1,
+  //   sprite: 7,
+  //   doesnt: 1,
+  //   copy: 1,
+  //   appropriate: 1,
+  //   position: 1,
+  //   larger: 2,
+  //   representing: 1,
+  //   whole: 2,
+  //   area: 4,
+  //   advantage: 1,
+  //   involves: 1,
+  //   comparing: 2,
+  //   candidate: 3,
+  //   relevant: 1,
+  //   rather: 1,
+  //   previous: 1,
+  //   somewhat: 1,
+  //   surprisingly: 1,
+  //   lowlevel: 1,
+  //   hack: 1,
+  //   made: 1,
+  //   tremendous: 1,
+  //   difference: 1,
+  //   constructing: 1,
+  //   compressed: 1,
+  //   blocks: 1,
+  //   '1bit': 1,
+  //   '32bit': 1,
+  //   integers: 1,
+  //   thus: 1,
+  //   reducing: 1,
+  //   number: 1,
+  //   checks: 1,
+  //   memory: 1,
+  //   times: 1,
+  //   fact: 1,
+  //   turned: 1,
+  //   beat: 1,
+  //   box: 2,
+  //   quadtree: 1,
+  //   everything: 1,
+  //   tried: 1,
+  //   large: 2,
+  //   areas: 1,
+  //   font: 1,
+  //   sizes: 1,
+  //   think: 2,
+  //   primarily: 1,
+  //   version: 2,
+  //   needs: 1,
+  //   single: 2,
+  //   test: 1,
+  //   per: 1,
+  //   whereas: 1,
+  //   compare: 1,
+  //   every: 1,
+  //   overlaps: 1,
+  //   slightly: 1,
+  //   another: 1,
+  //   possibility: 1,
+  //   merge: 1,
+  //   tree: 2,
+  //   fairly: 1,
+  //   though: 1,
+  //   compared: 1,
+  //   analagous: 1,
+  //   mask: 1,
+  //   essentially: 1,
+  //   oring: 1,
+  //   block: 1,
+  // };
+  // 
+  // const chart = new Chart({
+  //   container: 'container',
+  //   autoFit: true,
+  // });
+  // 
+  // chart
+  //   .wordCloud()
+  //   .data(Object.entries(Word).map(([text, value]) => ({ text, value })))
+  //   .layout({
+  //     fontSize: [20, 100],
+  //   })
+  //   .encode('color', 'text')
+  //   .legend(false);
+  // 
+  // chart.render();
+  // 
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
 const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
+  "type": "wordCloud",
+  "dataComment": /* TODO: Define chart data (inline or fetched) */,
+  "encode": {
+    "color": "text"
+  }
 };
 
 const GeneralTextWordCloudEnglishChart: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+    
+    // Using statically defined spec
+    const finalSpec = spec;
+  
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">WordCloud english</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">T</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 

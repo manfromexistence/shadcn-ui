@@ -1,4 +1,3 @@
-
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -11,6 +10,7 @@ interface ExampleInfo {
   componentName: string; // e.g., GeneralIntervalBarDodgedChart
   filePath: string; // Full path to the new component file
   originalFilePath: string; // Full path to the original Dumi example file
+  originalDemoDir: string; // Full path to the original demo directory
 }
 
 // Helper function to convert kebab-case/slash-case to PascalCase
@@ -21,81 +21,453 @@ function toPascalCase(str: string): string {
     .join('');
 }
 
+// Function to extract title from frontmatter (simple regex approach)
+async function extractTitleFromMarkdown(dirPath: string): Promise<string | null> {
+    const mdFilePath = path.join(dirPath, '../index.en.md');
+    try {
+        const mdContent = await fs.readFile(mdFilePath, 'utf-8');
+        const match = mdContent.match(/^---\s*[\s\S]*?title:\s*(.+?)\s*[\s\S]*?---/);
+        return match ? match[1].trim() : null;
+    } catch (err) {
+        // console.warn(`Could not read or parse markdown file: ${mdFilePath}`, err);
+        return null;
+    }
+}
+
+// Function to detect common imports and G2 extensions
+function detectImports(code: string): string[] {
+    const imports: string[] = [];
+    const detected = new Set<string>();
+
+    if (/\bimport\s+\*\s+as\s+d3\b/.test(code) || /\bd3\./.test(code)) {
+        if (!detected.has('d3')) {
+            imports.push("import * as d3 from 'd3';");
+            detected.add('d3');
+        }
+    }
+    if (/\bimport\s+_\s+from\s+'lodash'\b/.test(code) || /\b_\./.test(code)) {
+         if (!detected.has('lodash')) {
+            imports.push("import _ from 'lodash';");
+            detected.add('lodash');
+        }
+    }
+     if (/\bimport\s+\{[^}]*Insight[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
+         if (!detected.has('ava')) {
+            imports.push("import { Insight } from '@antv/g2-extension-ava'; // Might need other exports too");
+            detected.add('ava');
+        }
+    }
+     if (/\bimport\s+\{[^}]*Auto[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
+         if (!detected.has('ava')) {
+             imports.push("import { Auto } from '@antv/g2-extension-ava'; // Might need other exports too");
+             detected.add('ava');
+         }
+    }
+     if (/\bimport\s+\{[^}]*Plugin[^}]*\}\s+from\s+'@antv\/g-plugin-a11y'/.test(code)) {
+         if (!detected.has('a11y')) {
+            imports.push("import { Plugin as A11yPlugin } from '@antv/g-plugin-a11y'; // Renamed to avoid conflict");
+             detected.add('a11y');
+         }
+    }
+    // Add more common libraries or G2 extensions if needed
+
+    return imports;
+}
+
+// Basic parser for G2 imperative code (using Regex - limited capability)
+function parseG2Code(code: string): Record<string, any> {
+    const spec: Record<string, any> = {};
+    let data: any = null;
+    let needsFetching = false;
+    let fetchUrl = null;
+    let chartType: string | null = null;
+    const encodes: Record<string, string> = {};
+    const transforms: any[] = [];
+    const scales: Record<string, any> = {};
+    const axes: Record<string, any> = {};
+    const legends: Record<string, any> = {};
+    const styles: Record<string, any> = {};
+    const labels: any[] = [];
+    let coordinate: any = null;
+    let interaction: any = null; // Basic interaction detection
+    let plugins: any[] = [];
+
+    // --- Chart Initialization ---
+    const chartInitMatch = code.match(/new Chart\(\s*(\{[\s\S]*?\})\s*\)/);
+    if (chartInitMatch) {
+        try {
+            // Very basic attempt to parse options - might fail on complex objects/functions
+            const optionsStr = chartInitMatch[1]
+                .replace(/container:\s*['"][^'"]+['"]\s*,?/, '') // Remove container
+                .replace(/autoFit:\s*true\s*,?/, '') // Assume autoFit handled by wrapper
+                .replace(/([a-zA-Z0-9_]+):/g, '"$1":') // Quote keys
+                .replace(/'/g, '"') // Replace single quotes
+                .replace(/,\s*}/g, '}') // Remove trailing commas
+                .replace(/,\s*]/g, ']');
+            const options = JSON.parse(optionsStr);
+            Object.assign(spec, options); // Assign parsed options like width, height, padding etc.
+
+            // Check for plugins in options
+             if (options.plugins) {
+                 plugins = options.plugins; // Keep as is for now, might need adjustment
+                 spec.plugins = "/* TODO: Verify plugins array */"; // Placeholder
+             }
+
+        } catch (e) {
+            console.warn("Could not parse Chart options:", e);
+            spec.chartOptionsComment = "/* TODO: Manually convert Chart constructor options */";
+        }
+    }
+
+     // --- Chart Type (Mark) ---
+     // Try to find the first mark type call (interval, line, point, etc.)
+     const markMatch = code.match(/\.([a-zA-Z]+)\(\s*\)/); // Simple match like .interval()
+     if (markMatch) {
+         chartType = markMatch[1];
+         spec.type = chartType; // Set top-level type for simple charts
+     } else {
+         // Check for chart.options({ children: [...] }) structure
+         const optionsChildrenMatch = code.match(/chart\.options\(\s*(\{[\s\S]*?type:\s*['"]([^'"]+)['"][\s\S]*?children:\s*\[([\s\S]*?)\][\s\S]*?\})\s*\)/);
+         if (optionsChildrenMatch) {
+             spec.type = optionsChildrenMatch[2]; // e.g., spaceLayer
+             spec.childrenComment = "/* TODO: Manually convert children array from chart.options() */";
+             // A more advanced parser would recursively parse children here
+         } else {
+            spec.typeComment = "/* TODO: Determine chart type (e.g., interval, line, point) */";
+         }
+     }
+
+
+    // --- Data ---
+    const dataFetchMatch = code.match(/\.data\(\s*\{\s*type:\s*['"]fetch['"],\s*value:\s*['"]([^'"]+)['"]\s*\}\s*\)/);
+    const dataInlineMatch = code.match(/\.data\(\s*(\[[\s\S]*?\])\s*\)/); // Match inline array data
+    const dataDirectMatch = code.match(/chart\.data\(([^)]+)\)/); // Match direct variable or value
+
+    if (dataFetchMatch) {
+        needsFetching = true;
+        fetchUrl = dataFetchMatch[1];
+        spec.dataComment = `/* Data fetched from: ${fetchUrl} - Handled by useEffect */`;
+    } else if (dataInlineMatch) {
+        try {
+            // Attempt to parse inline data - very fragile
+            const dataStr = dataInlineMatch[1].replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+            data = JSON.parse(dataStr);
+            spec.data = data;
+        } catch (e) {
+            console.warn("Could not parse inline data:", e);
+            spec.dataComment = "/* TODO: Manually define inline data array */";
+            data = "/* PARSE_ERROR */";
+        }
+    } else if (dataDirectMatch) {
+         // Could be a variable name or a simple value (like for liquid chart)
+         const dataArg = dataDirectMatch[1].trim();
+         if (!isNaN(parseFloat(dataArg))) { // Check if it's a number
+             spec.data = parseFloat(dataArg);
+         } else {
+             spec.dataComment = `/* TODO: Data assigned from variable/value: ${dataArg} - Handle this manually */`;
+             data = `/* ${dataArg} */`; // Placeholder
+         }
+    } else {
+        spec.dataComment = "/* TODO: Define chart data (inline or fetched) */";
+    }
+
+    // --- Encodings ---
+    const encodeMatches = code.matchAll(/\.encode\(\s*['"]([^'"]+)['"],\s*([^)]+)\s*\)/g);
+    for (const match of encodeMatches) {
+        const channel = match[1];
+        let value = match[2].trim();
+        // Remove quotes if it's a simple string field name
+        if (value.startsWith("'") && value.endsWith("'") || value.startsWith('"') && value.endsWith('"')) {
+            value = value.slice(1, -1);
+        } else {
+             // It might be a function or complex expression, add comment
+             value = `/* TODO: Convert encode function/expression: ${value} */`;
+        }
+        encodes[channel] = value;
+    }
+     if (Object.keys(encodes).length > 0) {
+        spec.encode = encodes;
+    }
+
+    // --- Transforms ---
+     const transformMatches = code.matchAll(/\.transform\(\s*(\{[\s\S]*?\})\s*\)/g);
+     for (const match of transformMatches) {
+         try {
+             // Basic parsing attempt
+             const transformStr = match[1].replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+             transforms.push(JSON.parse(transformStr));
+         } catch (e) {
+             console.warn("Could not parse transform:", e);
+             transforms.push({ type: "/* PARSE_ERROR */", comment: `Original: ${match[1]}` });
+         }
+     }
+     if (transforms.length > 0) {
+         spec.transform = transforms;
+     }
+
+     // --- Scales ---
+     const scaleMatches = code.matchAll(/\.scale\(\s*['"]([^'"]+)['"],\s*(\{[\s\S]*?\})\s*\)/g);
+     for (const match of scaleMatches) {
+         const channel = match[1];
+         try {
+             const scaleStr = match[2].replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+             scales[channel] = JSON.parse(scaleStr);
+         } catch (e) {
+             console.warn(`Could not parse scale for ${channel}:`, e);
+             scales[channel] = { comment: `/* TODO: Manually convert scale options: ${match[2]} */` };
+         }
+     }
+      if (Object.keys(scales).length > 0) {
+         spec.scale = scales;
+     }
+
+     // --- Axes ---
+     const axisMatches = code.matchAll(/\.axis\(\s*['"]([^'"]+)['"],\s*(\{[\s\S]*?\}|false)\s*\)/g);
+     for (const match of axisMatches) {
+         const channel = match[1];
+         const optionsStr = match[2].trim();
+         if (optionsStr === 'false') {
+             axes[channel] = false;
+         } else {
+             try {
+                 const axisStr = optionsStr.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+                 axes[channel] = JSON.parse(axisStr);
+             } catch (e) {
+                 console.warn(`Could not parse axis for ${channel}:`, e);
+                 axes[channel] = { comment: `/* TODO: Manually convert axis options: ${optionsStr} */` };
+             }
+         }
+     }
+      if (Object.keys(axes).length > 0) {
+         spec.axis = axes;
+     }
+
+     // --- Legends ---
+      const legendMatches = code.matchAll(/\.legend\(\s*['"]([^'"]+)['"],\s*(\{[\s\S]*?\}|false)\s*\)/g);
+      for (const match of legendMatches) {
+         const channel = match[1];
+         const optionsStr = match[2].trim();
+         if (optionsStr === 'false') {
+             legends[channel] = false;
+         } else {
+             try {
+                 // Very limited parsing for legends due to potential functions
+                 legends[channel] = { comment: `/* TODO: Manually convert legend options: ${optionsStr} */` };
+             } catch (e) {
+                  legends[channel] = { comment: `/* TODO: Manually convert legend options: ${optionsStr} */` };
+             }
+         }
+     }
+      if (Object.keys(legends).length > 0) {
+         spec.legend = legends;
+     }
+
+     // --- Styles ---
+      const styleMatches = code.matchAll(/\.style\(\s*['"]([^'"]+)['"],\s*([^)]+)\s*\)/g);
+      for (const match of styleMatches) {
+         const key = match[1];
+         let value = match[2].trim();
+         if (value.startsWith("'") && value.endsWith("'") || value.startsWith('"') && value.endsWith('"')) {
+             value = value.slice(1, -1);
+         } else {
+              value = `/* TODO: Convert style value/expression: ${value} */`;
+         }
+         styles[key] = value;
+     }
+      if (Object.keys(styles).length > 0) {
+         spec.style = styles;
+     }
+
+      // --- Labels ---
+      const labelMatches = code.matchAll(/\.label\(\s*(\{[\s\S]*?\})\s*\)/g);
+      for (const match of labelMatches) {
+          labels.push({ comment: `/* TODO: Manually convert label options: ${match[1]} */` });
+      }
+       if (labels.length > 0) {
+          spec.labels = labels;
+      }
+
+      // --- Coordinate ---
+      const coordinateMatch = code.match(/\.coordinate\(\s*(\{[\s\S]*?\})\s*\)/);
+      if (coordinateMatch) {
+          try {
+              const coordStr = coordinateMatch[1].replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
+              coordinate = JSON.parse(coordStr);
+              spec.coordinate = coordinate;
+          } catch (e) {
+              console.warn("Could not parse coordinate:", e);
+              spec.coordinate = { comment: `/* TODO: Manually convert coordinate options: ${coordinateMatch[1]} */` };
+          }
+      }
+
+       // --- Interaction ---
+       const interactionMatch = code.match(/\.interaction\(\s*['"]([^'"]+)['"](,\s*(\{[\s\S]*?\})|,\s*true)?\s*\)/);
+       if (interactionMatch) {
+           interaction = { type: interactionMatch[1] };
+           if (interactionMatch[3]) {
+               interaction.optionsComment = `/* TODO: Manually convert interaction options: ${interactionMatch[3]} */`;
+           } else if (interactionMatch[2]?.trim() === ', true') {
+               // interaction enabled without options
+           }
+           spec.interaction = interaction;
+       }
+
+        // --- Scrollbar ---
+        const scrollbarMatch = code.match(/\.scrollbar\(\s*['"]([^'"]+)['"](,\s*(\{[\s\S]*?\})|,\s*true)?\s*\)/);
+        if (scrollbarMatch) {
+            if (!spec.interaction) spec.interaction = {};
+            if (!spec.interaction.scrollbar) spec.interaction.scrollbar = {};
+            const channel = scrollbarMatch[1];
+            spec.interaction.scrollbar[channel] = scrollbarMatch[3]
+                ? { comment: `/* TODO: Manually convert scrollbar options: ${scrollbarMatch[3]} */` }
+                : true;
+        }
+
+
+    return { spec, needsFetching, fetchUrl, originalData: data };
+}
+
+
 // Function to generate component content
 async function generateComponentContent(example: ExampleInfo): Promise<string> {
-  let originalCode = '';
+  let originalCode = '// Original file could not be read.';
+  let title = example.id.split('/').pop()?.replace(/-/g, ' ') || 'Example'; // Default title
+  let potentialImports: string[] = [];
+  let parsedResult: Record<string, any> = { spec: {}, needsFetching: false, fetchUrl: null, originalData: null };
+
   try {
     originalCode = await fs.readFile(example.originalFilePath, 'utf-8');
+    potentialImports = detectImports(originalCode);
+    parsedResult = parseG2Code(originalCode);
   } catch (err) {
-    console.warn(`Could not read original file: ${example.originalFilePath}`, err);
-    originalCode = '// Original file could not be read.';
+    console.warn(`Could not read or parse original file: ${example.originalFilePath}`, err);
   }
 
-  // Basic attempt to extract the main function name if possible
-  const funcMatch = originalCode.match(/export function (\w+)\(/);
-  const originalFuncName = funcMatch ? funcMatch[1] : 'exampleFunction';
+  // Try to read the index.en.md file for the title
+  const extractedTitle = await extractTitleFromMarkdown(example.originalDemoDir);
+  if (extractedTitle) {
+      title = extractedTitle;
+  } else {
+      console.warn(`Could not extract title for: ${example.id}. Using default.`);
+  }
 
   const componentName = example.componentName;
-  const title = example.id.split('/').pop()?.replace(/-/g, ' ') || 'Example';
+  const { spec, needsFetching, fetchUrl, originalData } = parsedResult;
+
+  // Clean up spec for stringification (remove comments, handle functions)
+  const specString = JSON.stringify(spec, (key, value) => {
+      if (typeof value === 'string' && value.startsWith('/* TODO:')) {
+          return value; // Keep comments as strings
+      }
+       if (typeof value === 'string' && value.startsWith('/* PARSE_ERROR */')) {
+           return value;
+       }
+       if (key.endsWith('Comment') || key === 'chartOptionsComment' || key === 'typeComment' || key === 'dataComment' || key === 'childrenComment' || key === 'optionsComment') {
+           return undefined; // Remove helper comment keys
+       }
+      return value;
+  }, 2)
+  .replace(/"(\/\* TODO:.*? \*\/)"/g, '$1') // Remove quotes around TODO comments
+  .replace(/"(\/\* PARSE_ERROR \*\/)"/g, '$1'); // Remove quotes around PARSE_ERROR comments
 
 
-  return `'use client'; // Assume client component due to G2
+  const dataHandlingCode = needsFetching
+    ? `
+  const [chartData, setChartData] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    setLoading(true);
+    setError(null);
+    fetch('${fetchUrl}')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(\`HTTP error! status: \${res.status}\`);
+        }
+        // Assuming JSON response, adjust if CSV or other format
+        // TODO: Add CSV parsing if needed (e.g., using d3-dsv or papaparse)
+        return res.json();
+      })
+      .then(data => {
+        setChartData(data);
+        setLoading(false);
+      })
+      .catch(e => {
+        console.error("Failed to fetch chart data:", e);
+        setError(e.message || 'Failed to load data');
+        setLoading(false);
+      });
+  }, []); // Empty dependency array means fetch once on mount
+
+  if (loading) {
+    return <div>Loading Chart Data...</div>;
+  }
+
+  if (error) {
+      return <div style={{ color: 'red' }}>Error loading data: {error}</div>;
+  }
+
+  // Combine fetched data with the rest of the spec
+  const finalSpec = { ...spec, data: chartData };
+
+`
+    : originalData === "/* PARSE_ERROR */" || (typeof originalData === 'string' && originalData.startsWith('/*'))
+    ? `
+  // TODO: Define or load data for the chart. Original data was complex or failed to parse.
+  // Original data reference: ${originalData}
+  const chartData = []; // Placeholder: Provide actual data here
+  const finalSpec = { ...spec, data: chartData };
+`
+    : `
+  // Using statically defined spec
+  const finalSpec = spec;
+`;
+
+
+  return `'use client';
 
 import React from 'react';
 import G2Chart from '${wrapperPath}';
-// TODO: Add any necessary imports (e.g., d3, lodash) if used in the original code
-// import * as d3 from 'd3';
-// import _ from 'lodash';
+${potentialImports.length > 0 ? '// Potential external libraries detected:' : ''}
+${potentialImports.map(imp => `// ${imp}`).join('\n')}
+${potentialImports.length > 0 ? '// TODO: Ensure these libraries are installed (e.g., npm install d3 @types/d3) and imported correctly.' : ''}
 
 /*
-Original Dumi Example Code from: ${path.relative(path.resolve(__dirname, '..'), example.originalFilePath)}
---------------------------------------------------------------------------------
-${originalCode.split('\\n').map(line => `// ${line}`).join('\\n')}
---------------------------------------------------------------------------------
+  Original G2 Example Code:
+  Source: ${path.relative(path.resolve(__dirname, '..'), example.originalFilePath)}
+  ================================================================================
+${originalCode.split('\n').map(line => `  // ${line}`).join('\n')}
+  ================================================================================
 */
 
-// TODO: Convert the imperative Dumi code above into a declarative G2 spec object.
-// This often involves:
-// 1. Replacing chart.interval().data(...).encode(...) with { type: 'interval', data: ..., encode: ... }
-// 2. Handling data loading (inline, fetch, or useEffect)
-// 3. Replacing global variables (like d3) with imports
-// 4. Adapting any complex logic or interactions.
-const spec = {
-  // type: 'interval', // Example type
-  // data: [...], // Example data
-  // encode: { x: '...', y: '...' }, // Example encoding
-};
+// --- Auto-Generated G2 Spec (Needs Review) ---
+// Notes:
+// - This spec is generated automatically and may require manual adjustments.
+// - Review TODO comments for potential issues or missing configurations.
+// - Complex logic (custom functions, event handlers) from the original code needs manual integration.
+const spec = ${specString};
 
 const ${componentName}: React.FC = () => {
-  // TODO: If data needs fetching or processing, use useState and useEffect here.
-  // const [data, setData] = React.useState(null);
-  // React.useEffect(() => {
-  //   fetch('...')
-  //     .then(res => res.json())
-  //     .then(setData);
-  // }, []);
-  //
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // const finalSpec = { ...spec, data }; // Combine spec with fetched data
+  ${dataHandlingCode.split('\n').map(line => `  ${line}`).join('\n')}
 
   return (
-     <div>
-        {/* TODO: Maybe use a more dynamic title */}
-        <h2 className="text-xl font-semibold mb-2">${title.charAt(0).toUpperCase() + title.slice(1)}</h2>
-        <div className="border rounded-lg p-2">
-            {/* Pass finalSpec if data is fetched */}
-            <G2Chart config={spec} height={400} />
-        </div>
-     </div>
+    <div>
+      <h2 className="text-xl font-semibold mb-2">${title}</h2>
+      {/* TODO: Add description if available */}
+      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
+      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+        {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
+        {finalSpec && <G2Chart options={finalSpec} />}
+      </div>
+    </div>
   );
 };
 
 export default ${componentName};
 `;
 }
+
 
 async function main() {
   const allExamples: ExampleInfo[] = [];
@@ -121,14 +493,18 @@ async function main() {
                   const demoName = demo.name.replace('.ts', '');
                   const id = `${category.name}/${type.name}/${demoName}`;
                   const componentName = `${toPascalCase(category.name)}${toPascalCase(type.name)}${toPascalCase(demoName)}Chart`;
+                  // Ensure component name is a valid identifier
+                  const safeComponentName = componentName.replace(/[^a-zA-Z0-9_]/g, '');
                   const targetFilePath = path.join(targetExamplesDir, category.name, type.name, `${toPascalCase(demoName)}.tsx`);
                   const originalFilePath = path.join(demosPath, demo.name);
+                  const originalDemoDir = demosPath;
 
                   allExamples.push({
                     id,
-                    componentName,
+                    componentName: safeComponentName,
                     filePath: targetFilePath,
                     originalFilePath,
+                    originalDemoDir,
                   });
                 }
               }
@@ -147,47 +523,63 @@ async function main() {
   }
 
 
-  console.log(`Found ${allExamples.length} examples. Generating placeholder components in ${targetExamplesDir}...`);
+  console.log(`Found ${allExamples.length} examples. Generating components in ${targetExamplesDir}...`);
 
   // Ensure target base directory exists
   await fs.mkdir(targetExamplesDir, { recursive: true });
 
   // Generate component files
+  let generatedCount = 0;
+  let errorCount = 0;
   for (const example of allExamples) {
     try {
       const componentDir = path.dirname(example.filePath);
       await fs.mkdir(componentDir, { recursive: true });
       const content = await generateComponentContent(example);
       await fs.writeFile(example.filePath, content);
-      console.log(`Generated: ${path.relative(targetExamplesDir, example.filePath)}`);
+      // console.log(`Generated: ${path.relative(targetExamplesDir, example.filePath)}`);
+      generatedCount++;
     } catch (err) {
       console.error(`Failed to generate component for ${example.id}:`, err);
+      errorCount++;
     }
   }
+   console.log(`Generated ${generatedCount} component files.`);
+   if (errorCount > 0) {
+       console.warn(`${errorCount} components failed to generate.`);
+   }
 
   // Generate index.ts
   const indexContent = allExamples
     .map(ex => {
         const relativePath = `./${path.relative(targetExamplesDir, ex.filePath).replace(/\\/g, '/').replace('.tsx', '')}`;
-        return `export { default as ${ex.componentName} } from '${relativePath}';`;
+        // Ensure the component name is valid before exporting
+        if (/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(ex.componentName)) {
+             return `export { default as ${ex.componentName} } from '${relativePath}';`;
+        } else {
+            console.warn(`Skipping export for invalid component name: ${ex.componentName} (from ${ex.id})`);
+            return null;
+        }
     })
-    .join('\\n');
+    .filter(line => line !== null) // Filter out skipped exports
+    .join('\n');
 
   const indexFilePath = path.join(targetExamplesDir, 'index.ts');
   try {
-    await fs.writeFile(indexFilePath, indexContent + '\\n');
+    await fs.writeFile(indexFilePath, indexContent + '\n');
     console.log(`Generated: index.ts`);
   } catch (err) {
      console.error(`Failed to generate index.ts:`, err);
   }
 
-  console.log('Script finished.');
+  console.log('\nScript finished.');
   console.log(`\nNext Steps:`);
-  console.log(`1. Manually review and convert the G2 spec in each generated file within ${targetExamplesDir}.`);
-  console.log(`2. Install any missing dependencies (like d3, lodash) in the 'integration/themex' project: cd integration/themex && npm install d3 lodash @types/d3 @types/lodash ...`);
-  console.log(`3. Implement dynamic routing in 'src/app/shadcn-themes/visualization/[...slug]/page.tsx' to load and display the selected example component.`);
+  console.log(`1. Review the generated components in '${targetExamplesDir}'. Pay close attention to TODO comments and manually adjust the G2 spec object where needed.`);
+  console.log(`2. Install any detected external dependencies (like d3, lodash, @antv/g2-extension-ava) in the 'integration/themex' project:`);
+  console.log(`   cd integration/themex && npm install d3 lodash @antv/g2-extension-ava @antv/g-plugin-a11y @types/d3 @types/lodash ...`);
+  console.log(`3. Ensure you have a G2Chart wrapper component at '${wrapperPath}' relative to the generated files.`);
+  console.log(`4. Implement dynamic routing or a display mechanism in your Next.js app to load and render these components.`);
 
 }
 
 main().catch(console.error);
-
