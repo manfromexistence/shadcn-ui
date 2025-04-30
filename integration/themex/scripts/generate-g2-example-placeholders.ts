@@ -45,37 +45,128 @@ function detectImports(code: string): string[] {
             detected.add('d3');
         }
     }
-    if (/\bimport\s+_\s+from\s+'lodash'\b/.test(code) || /\b_\./.test(code)) {
+     if (/\bimport\s+_\s+from\s+'lodash'\b/.test(code) || /\b_\./.test(code)) {
          if (!detected.has('lodash')) {
             imports.push("import _ from 'lodash';");
             detected.add('lodash');
         }
     }
-     if (/\bimport\s+\{[^}]*Insight[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
+    if (/\bimport\s+\{[^}]*Insight[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
          if (!detected.has('ava')) {
             imports.push("import { Insight } from '@antv/g2-extension-ava'; // Might need other exports too");
             detected.add('ava');
         }
     }
-     if (/\bimport\s+\{[^}]*Auto[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
+    if (/\bimport\s+\{[^}]*Auto[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
          if (!detected.has('ava')) {
              imports.push("import { Auto } from '@antv/g2-extension-ava'; // Might need other exports too");
              detected.add('ava');
          }
     }
-     if (/\bimport\s+\{[^}]*Plugin[^}]*\}\s+from\s+'@antv\/g-plugin-a11y'/.test(code)) {
+    if (/\bimport\s+\{[^}]*Plugin[^}]*\}\s+from\s+'@antv\/g-plugin-a11y'/.test(code)) {
          if (!detected.has('a11y')) {
             imports.push("import { Plugin as A11yPlugin } from '@antv/g-plugin-a11y'; // Renamed to avoid conflict");
              detected.add('a11y');
          }
     }
+    
+    // Detect animation/keyframe related imports
+    if (/\btimingKeyframe\b/.test(code) || /\bstaggeredKeyframe\b/.test(code)) {
+        if (!detected.has('g2-animations')) {
+            imports.push("// Chart animation detected - G2 animation API will be used");
+            detected.add('g2-animations');
+        }
+    }
+    
     // Add more common libraries or G2 extensions if needed
-
     return imports;
+}
+
+// Detect if the code contains generator functions, algorithms or animations
+function detectComplexLogic(code: string): {
+    hasGenerators: boolean;
+    hasAlgorithms: boolean; 
+    hasAnimations: boolean;
+    hasTimingKeyframe: boolean;
+    algorithmCode: string | null;
+    dataTransformCode: string | null;
+} {
+    const result = {
+        hasGenerators: /function\s*\*/.test(code),
+        hasAlgorithms: /sort|algorithm|compute|calculate|simulate/.test(code),
+        hasAnimations: /\.animate\(/.test(code) || /keyframe/.test(code),
+        hasTimingKeyframe: /timingKeyframe\(/.test(code),
+        algorithmCode: null as string | null,
+        dataTransformCode: null as string | null
+    };
+    
+    // Try to extract generator function if exists
+    const generatorMatch = code.match(/function\s*\*\s*([a-zA-Z0-9_]+)\s*\([^)]*\)\s*\{([\s\S]*?)\}/);
+    if (generatorMatch) {
+        result.algorithmCode = `function* ${generatorMatch[1]}${generatorMatch[0].substring(generatorMatch[0].indexOf('('))}`;
+    }
+    
+    // Try to extract data transformation code
+    const dataTransformMatch = code.match(/(?:const|let|var)\s+([a-zA-Z0-9_]+)\s*=\s*([^;]*?\.map\([^;]*?\)|[^;]*?\.filter\([^;]*?\)|[^;]*?\.reduce\([^;]*?\))/);
+    if (dataTransformMatch) {
+        result.dataTransformCode = `const ${dataTransformMatch[1]} = ${dataTransformMatch[2]};`;
+    }
+    
+    return result;
+}
+
+// Extract raw data declaration if there is one
+function extractRawDataDeclaration(code: string): string | null {
+  // Look for variable declarations that look like data arrays
+  const dataVarMatch = code.match(/const\s+data\s*=\s*(\[[\s\S]*?\]);/);
+  if (dataVarMatch) {
+    return dataVarMatch[0];
+  }
+  return null;
+}
+
+// Extract generator functions or algorithms
+function extractAlgorithms(code: string): string | null {
+  // Look for generator functions
+  const genFuncMatch = code.match(/function\s*\*\s*([a-zA-Z0-9_]+)\s*\([^)]*\)\s*\{[\s\S]*?\}/);
+  if (genFuncMatch) {
+    return genFuncMatch[0];
+  }
+  return null;
+}
+
+// Extract animation-related code sections
+function extractAnimationCode(code: string): {
+  hasAnimation: boolean;
+  keyframeDeclaration: string | null;
+  animationLoop: string | null;
+} {
+  const result = {
+    hasAnimation: /keyframe|\.animate\(/.test(code),
+    keyframeDeclaration: null as string | null,
+    animationLoop: null as string | null,
+  };
+
+  // Get keyframe declaration
+  const keyframeMatch = code.match(/const\s+keyframe\s*=\s*chart\.timingKeyframe\(\);/);
+  if (keyframeMatch) {
+    result.keyframeDeclaration = keyframeMatch[0];
+  }
+
+  // Get animation loop
+  const animLoopMatch = code.match(/for\s*\(const\s+frame\s+of\s+[^)]*\)\s*\{[\s\S]*?\}/);
+  if (animLoopMatch) {
+    result.animationLoop = animLoopMatch[0];
+  }
+
+  return result;
 }
 
 // Basic parser for G2 imperative code (using Regex - limited capability)
 function parseG2Code(code: string): Record<string, any> {
+    // First check if this is a complex example with animations/algorithms
+    const complexLogic = detectComplexLogic(code);
+    
     const spec: Record<string, any> = {};
     let data: any = null;
     let needsFetching = false;
@@ -91,6 +182,32 @@ function parseG2Code(code: string): Record<string, any> {
     let coordinate: any = null;
     let interaction: any = null; // Basic interaction detection
     let plugins: any[] = [];
+    
+    // Check for complex animations, algorithms, etc.
+    let isAnimationExample = complexLogic.hasAnimations;
+    let hasKeyframe = complexLogic.hasTimingKeyframe;
+    let isAlgorithm = complexLogic.hasGenerators;
+    
+    // Extract raw data if any
+    const rawDataDecl = extractRawDataDeclaration(code);
+    
+    // Extract any algorithms
+    const algorithmCode = extractAlgorithms(code);
+    
+    // Extract animation code
+    const animationDetails = extractAnimationCode(code);
+    
+    // If this is an animation example, handle it differently
+    if (isAnimationExample || isAlgorithm || hasKeyframe) {
+      // For animations/algorithms, we'll need more custom code in the React component
+      spec.isComplex = true;
+      spec.hasAnimation = isAnimationExample;
+      spec.hasAlgorithm = isAlgorithm;
+      spec.algorithmCode = algorithmCode;
+      spec.rawDataDeclaration = rawDataDecl;
+      spec.keyframeDeclaration = animationDetails.keyframeDeclaration;
+      spec.animationLoop = animationDetails.animationLoop;
+    }
 
     // --- Chart Initialization ---
     const chartInitMatch = code.match(/new Chart\(\s*(\{[\s\S]*?\})\s*\)/);
@@ -399,6 +516,24 @@ async function generateComponentContent(example: ExampleInfo): Promise<string> {
 
   const componentName = example.componentName;
   const { spec, needsFetching, fetchUrl, originalData } = parsedResult;
+  
+  // Check if this is a complex animation or algorithm example
+  const isComplex = spec.isComplex;
+  const hasAnimation = spec.hasAnimation;
+  const hasAlgorithm = spec.hasAlgorithm;
+  const rawDataDeclaration = spec.rawDataDeclaration;
+  const algorithmCode = spec.algorithmCode;
+  const keyframeDeclaration = spec.keyframeDeclaration;
+  const animationLoop = spec.animationLoop;
+  
+  // Remove metadata fields not needed in the final spec
+  delete spec.isComplex;
+  delete spec.hasAnimation;
+  delete spec.hasAlgorithm;
+  delete spec.rawDataDeclaration;
+  delete spec.algorithmCode;
+  delete spec.keyframeDeclaration;
+  delete spec.animationLoop;
 
   // Clean up spec for stringification (remove comments, handle functions)
   const specString = JSON.stringify(spec, (key, value) => {
@@ -420,10 +555,24 @@ async function generateComponentContent(example: ExampleInfo): Promise<string> {
         return undefined;
       }
       return value;
-  }, 2)
-  .replace(/"(\/\* TODO:.*? \*\/)"/g, '$1') // Remove quotes around TODO comments
-  .replace(/"(\/\* PARSE_ERROR \*\/)"/g, '$1'); // Remove quotes around PARSE_ERROR comments
+  }, 2);
 
+  // For complex animations or algorithms, use a specialized template
+  if (isComplex && (hasAnimation || hasAlgorithm)) {
+    return generateAnimationAlgorithmComponent({
+      componentName,
+      title,
+      originalCode,
+      example,
+      spec,
+      rawDataDeclaration,
+      algorithmCode,
+      keyframeDeclaration,
+      animationLoop,
+      potentialImports,
+      wrapperPath
+    });
+  }
 
   const dataHandlingCode = needsFetching
     ? `
@@ -512,7 +661,7 @@ const ${componentName}: React.FC = () => {
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
       <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
         {/* Ensure finalSpec is not null/undefined if data fetching occurs */}
-        {finalSpec && <G2Chart config={finalSpec} />}
+        {finalSpec && <G2Chart spec={finalSpec} />}
       </div>
     </div>
   );
@@ -522,6 +671,232 @@ export default ${componentName};
 `;
 }
 
+// Generate specialized component for animation or algorithm examples
+function generateAnimationAlgorithmComponent(params: {
+  componentName: string;
+  title: string;
+  originalCode: string;
+  example: ExampleInfo;
+  spec: Record<string, any>;
+  rawDataDeclaration?: string | null;
+  algorithmCode?: string | null;
+  keyframeDeclaration?: string | null;
+  animationLoop?: string | null;
+  potentialImports: string[];
+  wrapperPath: string;
+}): string {
+  const {
+    componentName,
+    title,
+    originalCode,
+    example,
+    spec,
+    rawDataDeclaration,
+    algorithmCode,
+    keyframeDeclaration,
+    animationLoop,
+    potentialImports,
+    wrapperPath
+  } = params;
+
+  // Create a clean spec without animation metadata
+  const specString = JSON.stringify(spec, null, 2);
+  
+  // Format the raw data declaration or provide a default
+  const formattedDataDecl = rawDataDeclaration || 'const data = [43, 2, 5, 24, 53, 78, 82, 63, 49, 6];';
+  
+  // Format the algorithm code
+  const formattedAlgorithmCode = algorithmCode || `
+function* insertionSort(arr) {
+  const len = arr.length;
+  let preIndex, current;
+  for (let i = 1; i < len; i++) {
+    preIndex = i - 1;
+    current = arr[i];
+    while (preIndex >= 0 && arr[preIndex] > current) {
+      arr[preIndex + 1] = arr[preIndex];
+      preIndex--;
+    }
+    arr[preIndex + 1] = current;
+    yield arr.map((a, index) => ({
+      value: a,
+      swap: index === preIndex + 1 || index === i,
+    }));
+  }
+  return arr;
+}`;
+
+  return `'use client';
+
+import React, { useRef, useEffect, useState } from 'react';
+import { Chart } from '@antv/g2';
+${potentialImports.length > 0 ? '// External libraries:' : ''}
+${potentialImports.map(imp => imp).join('\n')}
+
+/*
+  Original G2 Example Code:
+  Source: ${path.relative(path.resolve(__dirname, '..'), example.originalFilePath)}
+  ================================================================================
+${originalCode.split('\n').map(line => `  // ${line}`).join('\n')}
+  ================================================================================
+*/
+
+// This example contains animations/algorithms that require direct chart manipulation
+// A standard declarative G2Chart component won't work for this type of example
+
+const ${componentName}: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const chartRef = useRef<Chart | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [speed, setSpeed] = useState(500); // animation frame interval in ms
+  const animationRef = useRef<NodeJS.Timeout | null>(null);
+  
+  // Data and algorithm definitions
+  ${formattedDataDecl}
+  
+  ${formattedAlgorithmCode}
+  
+  useEffect(() => {
+    // Cleanup function to destroy chart on unmount
+    return () => {
+      if (chartRef.current) {
+        chartRef.current.destroy();
+        chartRef.current = null;
+      }
+      if (animationRef.current) {
+        clearTimeout(animationRef.current);
+      }
+    };
+  }, []);
+  
+  // Setup chart when component mounts or container changes
+  useEffect(() => {
+    if (!containerRef.current) return;
+    
+    // Destroy previous chart instance if it exists
+    if (chartRef.current) {
+      chartRef.current.destroy();
+    }
+    
+    // Create new chart
+    chartRef.current = new Chart({
+      container: containerRef.current,
+      autoFit: true,
+      // Apply other chart options from the original example
+      ${Object.entries(spec)
+        .filter(([key]) => !['data', 'type', 'encode'].includes(key))
+        .map(([key, value]) => `${key}: ${JSON.stringify(value)},`)
+        .join('\n      ')}
+    });
+    
+    // Initial visualization setup
+    renderCurrentState(data);
+  }, []);
+  
+  // Function to render chart with current data state
+  const renderCurrentState = (frameData) => {
+    if (!chartRef.current) return;
+    
+    const chart = chartRef.current;
+    
+    // Create keyframe for animation
+    const keyframe = chart.timingKeyframe();
+    
+    keyframe
+      .interval()
+      .data(frameData.map((datum, index) => ({ index, ...datum })))
+      .encode('x', 'index')
+      .encode('y', 'value')
+      .encode('key', 'value')
+      .encode('color', 'swap');
+    
+    chart.render();
+  };
+  
+  // Play/pause the animation
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+    
+    if (!isPlaying) {
+      // Start playing
+      let generator = insertionSort([...data]);
+      let step = generator.next();
+      
+      const animate = () => {
+        if (step.done) {
+          setIsPlaying(false);
+          return;
+        }
+        
+        renderCurrentState(step.value);
+        step = generator.next();
+        
+        if (!step.done) {
+          animationRef.current = setTimeout(animate, speed);
+        } else {
+          setIsPlaying(false);
+        }
+      };
+      
+      animate();
+    } else {
+      // Stop playing
+      if (animationRef.current) {
+        clearTimeout(animationRef.current);
+        animationRef.current = null;
+      }
+    }
+  };
+  
+  // Reset animation
+  const resetAnimation = () => {
+    if (animationRef.current) {
+      clearTimeout(animationRef.current);
+      animationRef.current = null;
+    }
+    setIsPlaying(false);
+    renderCurrentState(data.map((value) => ({ value, swap: false })));
+  };
+  
+  return (
+    <div>
+      <h2 className="text-xl font-semibold mb-2">${title}</h2>
+      <div className="flex space-x-2 mb-4">
+        <button 
+          className="px-3 py-1 bg-blue-500 text-white rounded"
+          onClick={togglePlay}
+        >
+          {isPlaying ? 'Pause' : 'Play'}
+        </button>
+        <button 
+          className="px-3 py-1 bg-gray-500 text-white rounded"
+          onClick={resetAnimation}
+        >
+          Reset
+        </button>
+        <div className="flex items-center space-x-2">
+          <label htmlFor="speed" className="text-sm">Speed:</label>
+          <input 
+            id="speed" 
+            type="range" 
+            min="100" 
+            max="1000" 
+            step="100" 
+            value={speed} 
+            onChange={(e) => setSpeed(Number(e.target.value))}
+            className="w-32"
+          />
+          <span className="text-sm">{speed}ms</span>
+        </div>
+      </div>
+      <div ref={containerRef} className="h-[400px] w-full border rounded"></div>
+    </div>
+  );
+};
+
+export default ${componentName};
+`;
+}
 
 async function main() {
   const allExamples: ExampleInfo[] = [];
