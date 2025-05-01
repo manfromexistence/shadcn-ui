@@ -1120,21 +1120,21 @@ function generateAnimationAlgorithmComponent(params: {
   const otherImports = potentialImports.filter(imp => !imp.includes('@antv/g-plugin-a11y')).map(imp => `// ${imp}`).join('\n');
 
   // Component structure using direct Chart manipulation
-  const componentCode = `'use client';
+const componentCode = `'use client';
 
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState, useCallback, useMemo, FC, ChangeEvent } from 'react';
 // Import G2 Chart object and types
-${g2SpecImport}
+${g2SpecImport} // Assumes this imports Chart, G2Spec, G2ViewTree
 ${a11yPluginImport ? a11yPluginImport : '// No A11yPlugin detected'}
 ${otherImports.length > 0 ? '// Other potential external libraries (ensure installed):' : ''}
 ${otherImports}
 
 /*
-  Original G2 Example Code:
-  Source: ${path.relative(path.resolve(__dirname, '..'), example.originalFilePath)}
-  ================================================================================
+Original G2 Example Code:
+Source: ${path.relative(path.resolve(__dirname, '..'), example.originalFilePath)}
+================================================================================
 ${originalCode.split('\n').map(line => `  // ${line}`).join('\n')}
-  ================================================================================
+================================================================================
 */
 
 // This example contains animations/algorithms requiring direct chart manipulation.
@@ -1149,9 +1149,9 @@ ${formattedDataDecl}
 // TODO: Verify or replace the algorithm implementation below
 // Define the expected frame structure for type safety (adjust if algorithm output differs)
 interface AlgorithmDatum {
-  // TODO: Replace 'any' with a more specific type if the data structure is known
-  value: any;
-  [key: string]: any; // Allow other properties
+// TODO: Replace 'any' with a more specific type if the data structure is known
+value: any;
+[key: string]: any; // Allow other properties
 }
 type AlgorithmFrame = AlgorithmDatum[];
 // TODO: Ensure the generator yields AlgorithmFrame and optionally returns AlgorithmFrame | void
@@ -1161,66 +1161,423 @@ type AlgorithmGenerator = (arr: any[]) => Generator<AlgorithmFrame, AlgorithmFra
 // This might not be reliable or secure. Consider defining algorithms within the component or using imports.
 ${formattedAlgorithmCode} // Algorithm function definition inserted here
 
+// Interface for the initial chart options passed to the constructor
+// Based on G2Spec but potentially a subset used for initialization
+interface InitialChartOptions {
+    width?: number;
+    height?: number;
+    autoFit?: boolean;
+    container?: HTMLElement | string;
+    scale?: G2Spec['scale'];
+    coordinate?: G2Spec['coordinate'];
+    axis?: G2Spec['axis'];
+    legend?: G2Spec['legend'];
+    style?: G2Spec['style'];
+    interaction?: G2Spec['interaction'];
+    plugins?: G2Spec['plugins'];
+    theme?: G2Spec['theme'];
+    // Add other relevant constructor options if needed
+    [key: string]: any; // Allow other properties from parsed spec
+}
+
+// Interface for the options passed to chart.options() in renderCurrentState
+// Based on G2ViewTree
+interface RenderOptions extends G2ViewTree {
+    data: AlgorithmFrame;
+    // Add other properties from G2ViewTree as needed
+}
+
 // --- React Component ---
-const ${componentName}: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const chartRef = useRef<Chart | null>(null);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [speed, setSpeed] = useState<number>(500); // Default speed
-  const animationFrameRef = useRef<number | null>(null);
-  const generatorRef = useRef<Generator<AlgorithmFrame, AlgorithmFrame | void, unknown> | null>(null);
-  const isMountedRef = useRef<boolean>(false);
-  const [errorState, setErrorState] = useState<string | null>(null);
+const ${componentName}: FC = () => {
+const containerRef = useRef<HTMLDivElement | null>(null);
+const chartRef = useRef<Chart | null>(null);
+const [isPlaying, setIsPlaying] = useState<boolean>(false);
+const [speed, setSpeed] = useState<number>(500); // Default speed
+const animationFrameRef = useRef<number | null>(null);
+const generatorRef = useRef<Generator<AlgorithmFrame, AlgorithmFrame | void, unknown> | null>(null);
+const isMountedRef = useRef<boolean>(false);
+const [errorState, setErrorState] = useState<string | null>(null);
 
-  // Memoize initial chart options derived from parsed spec
-  const initialChartOptions = useMemo(() => {
-      try {
-          const options = JSON.parse(${initialSpecString || "'{}'"});
-          // TODO: Review these options. Ensure they are valid G2Spec properties for Chart constructor.
-          return options;
-      } catch (e) {
-          console.error("Failed to parse initial chart options:", e);
-          setErrorState("Failed to parse initial chart options.");
-          return {}; // Return empty object on error
-      }
-  }, []); // Empty dependency array means this runs once
+// Memoize initial chart options derived from parsed spec
+const initialChartOptions: InitialChartOptions = useMemo(() => {
+        try {
+                const options: InitialChartOptions = JSON.parse(${initialSpecString || "'{}'"});
+                // TODO: Review these options. Ensure they are valid G2Spec properties for Chart constructor.
+                return options;
+        } catch (e: any) {
+                console.error("Failed to parse initial chart options:", e);
+                setErrorState("Failed to parse initial chart options.");
+                return {}; // Return empty object on error
+        }
+}, []); // Empty dependency array means this runs once
 
-  // Function to render chart with current data state
-  const renderCurrentState = useCallback((frameData: AlgorithmFrame): void => {
+// Function to render chart with current data state
+const renderCurrentState = useCallback((frameData: AlgorithmFrame): void => {
     if (!chartRef.current || !isMountedRef.current) return;
     const chart: Chart = chartRef.current;
 
     try {
-        // --- TODO: Adapt the rendering logic below based on the original example ---
-        // This is a generic template. You MUST modify the 'options' object
-        // to match the specific marks, encodings, scales, axes, etc., required by the visualization.
-        const options: G2ViewTree = {
-            // type: 'interval', // Example: Set mark type if needed
-            data: frameData,
-            // TODO: Define encodings based on frameData structure (e.g., x: 'category', y: 'value')
-            encode: { x: 'x', y: 'y' /* Replace with actual encoding */ },
-            // TODO: Define scales if needed (e.g., scale: { y: { domain: [0, 100] } })
-            scale: initialChartOptions.scale || {},
-            // TODO: Define axes if needed (e.g., axis: { y: { title: 'Value' } })
-            axis: initialChartOptions.axis || {},
-            // Basic animation configuration - adjust as needed
-            animate: {
-                enter: { type: 'fadeIn', duration: Math.min(300, speed / 2) },
-                update: { type: 'morph', duration: Math.min(300, speed / 2) },
-                exit: { type: 'fadeOut', duration: Math.min(300, speed / 2) },
-            },
-            // Merge other relevant initial options
-            ...(initialChartOptions.coordinate && { coordinate: initialChartOptions.coordinate }),
-            ...(initialChartOptions.legend && { legend: initialChartOptions.legend }),
-            ...(initialChartOptions.style && { style: initialChartOptions.style }),
-            // Add other necessary spec properties here
-            // --- End TODO ---
-        };
-        chart.options(options);
-        chart.render();
+            // --- TODO: Adapt the rendering logic below based on the original example ---
+            // This is a generic template. You MUST modify the 'options' object
+            // to match the specific marks, encodings, scales, axes, etc., required by the visualization.
+            const options: RenderOptions = {
+                    // type: 'interval', // Example: Set mark type if needed
+                    data: frameData,
+                    // TODO: Define encodings based on frameData structure (e.g., x: 'category', y: 'value')
+                    encode: { x: 'x', y: 'y' /* Replace with actual encoding */ },
+                    // TODO: Define scales if needed (e.g., scale: { y: { domain: [0, 100] } })
+                    scale: initialChartOptions.scale || {},
+                    // TODO: Define axes if needed (e.g., axis: { y: { title: 'Value' } })
+                    axis: initialChartOptions.axis || {},
+                    // Basic animation configuration - adjust as needed
+                    animate: {
+                            enter: { type: 'fadeIn', duration: Math.min(300, speed / 2) },
+                            update: { type: 'morph', duration: Math.min(300, speed / 2) },
+                            exit: { type: 'fadeOut', duration: Math.min(300, speed / 2) },
+                    },
+                    // Merge other relevant initial options
+                    ...(initialChartOptions.coordinate && { coordinate: initialChartOptions.coordinate }),
+                    ...(initialChartOptions.legend && { legend: initialChartOptions.legend }),
+                    ...(initialChartOptions.style && { style: initialChartOptions.style }),
+                    // Add other necessary spec properties here
+                    // --- End TODO ---
+            };
+            chart.options(options);
+            chart.render();
     } catch (e: any) {
-        console.error("Error during chart render/update:", e);
-        setErrorState(`Chart render error: \${e.message || 'Unknown error'}`); // Escaped inner template literal
+            console.error("Error during chart render/update:", e);
+            setErrorState(`Chart render error: ${e.message || 'Unknown error'}`); // Escaped inner template literal
+            setIsPlaying(false); // Stop playback on error
+    }
+}, [speed, initialChartOptions]); // Dependencies for rendering logic
+
+// Function to safely get the algorithm function
+const getAlgorithmFunction = useCallback((): AlgorithmGenerator | null => {
+        try {
+                // Priority 1: Check if defined globally (on window)
+                if (typeof window !== 'undefined' && typeof (window as any)[algorithmName] === 'function') {
+                        return (window as any)[algorithmName] as AlgorithmGenerator;
+                }
+
+                // Priority 2: Attempt to evaluate the formatted code string (Use with extreme caution!)
+                // WARNING: eval is a security risk and can execute arbitrary code.
+                // Avoid if possible. Ensure the source code is trusted.
+                console.warn(`Algorithm function ${algorithmName} not found globally. Attempting eval(). This is potentially unsafe.`); // Escaped inner template literal
+                const func: unknown = eval(`(typeof ${algorithmName} !== 'undefined' ? ${algorithmName} : undefined)`); // Escaped inner template literal
+                if (typeof func === 'function') {
+                        return func as AlgorithmGenerator;
+                }
+
+                throw new Error(`Algorithm named ${algorithmName} is not defined or not a function.`); // Escaped inner template literal
+        } catch (e: any) {
+                console.error(`Failed to get algorithm function ${algorithmName}:`, e); // Escaped inner template literal
+                setErrorState(`Failed to load algorithm: ${e.message || 'Unknown error'}`); // Escaped inner template literal
+                return null;
+        }
+}, [algorithmName]); // Depends only on algorithmName
+
+// Function to safely get the initial data
+const getInitialData = useCallback((): any[] | null => {
+        try {
+                // WARNING: This assumes 'data' is defined in the scope where this component code runs.
+                // This might rely on the 'formattedDataDecl' string being executed correctly.
+                // Declare 'data' here for type checking, assuming it's globally available or injected
+                declare const data: any[];
+                if (typeof data === 'undefined') {
+                        throw new Error("The 'data' variable is not defined in the current scope. Check rawDataDeclaration or provide data.");
+                }
+                // Return a deep copy to avoid modifying the original data during algorithm execution
+                return JSON.parse(JSON.stringify(data));
+        } catch (e: any) {
+                console.error("Failed to get initial data:", e);
+                setErrorState(`Failed to load initial data: ${e.message || 'Data variable not found'}`); // Escaped inner template literal
+                return null;
+        }
+}, []); // No dependencies, assumes 'data' is stable in the outer scope
+
+// Initialize chart and generator
+useEffect(() => {
+    isMountedRef.current = true;
+    setErrorState(null); // Clear previous errors on mount/re-init
+    if (!containerRef.current) {
+            console.error("Container ref is not available.");
+            setErrorState("Chart container element not found.");
+            return;
+    }
+
+    const algorithmFunction: AlgorithmGenerator | null = getAlgorithmFunction();
+    const initialData: any[] | null = getInitialData();
+
+    if (!algorithmFunction || !initialData) {
+            // Error state is already set by helper functions
+            // Render an empty chart or placeholder if initialization fails
+            if (chartRef.current) chartRef.current.destroy(); // Clean up previous instance if any
+            chartRef.current = new Chart({
+                    container: containerRef.current,
+                    autoFit: true,
+                    ...initialChartOptions, // Use memoized options
+                    data: [], // Ensure data is empty
+            });
+            chartRef.current.options({ /* TODO: Define placeholder view if needed */ });
+            chartRef.current.render();
+            return; // Stop initialization
+    }
+
+    try {
+            generatorRef.current = algorithmFunction(initialData); // Pass the data copy
+    } catch (e: any) {
+            console.error(`Error initializing generator for algorithm ${algorithmName}:`, e); // Escaped inner template literal
+            setErrorState(`Algorithm initialization error: ${e.message || 'Unknown error'}`); // Escaped inner template literal
+            generatorRef.current = null;
+    }
+
+    // Create new chart instance
+    if (chartRef.current) chartRef.current.destroy(); // Clean up previous instance if any
+    chartRef.current = new Chart({
+        container: containerRef.current,
+        autoFit: true,
+        ...initialChartOptions, // Apply memoized base options
+    });
+
+    // Render initial state from the generator
+    if (generatorRef.current) {
+            try {
+                    const initialStep: IteratorResult<AlgorithmFrame, AlgorithmFrame | void> = generatorRef.current.next();
+                    if (!initialStep.done && initialStep.value) {
+                        renderCurrentState(initialStep.value);
+                    } else if (initialStep.done && initialStep.value) {
+                             // Render final state if generator finishes immediately
+                             renderCurrentState(initialStep.value);
+                     } else {
+                             // Handle case where generator yields nothing initially
+                             console.warn("Algorithm generator did not yield an initial state.");
+                             // Render empty state or default view
+                             if (chartRef.current) {
+                                     chartRef.current.options({ data: [], /* TODO: Define empty view */ });
+                                     chartRef.current.render();
+                             }
+                        }
+                } catch (e: any) {
+                         console.error(`Error rendering initial state for algorithm ${algorithmName}:`, e); // Escaped inner template literal
+                         setErrorState(`Error rendering initial state: ${e.message || 'Unknown error'}`); // Escaped inner template literal
+                         // Render empty state on error
+                         if (chartRef.current) {
+                                 chartRef.current.options({ data: [], /* TODO: Define error view */ });
+                                 chartRef.current.render();
+                         }
+             }
+     } else {
+             // Render empty chart if generator failed to initialize
+             if (chartRef.current) {
+                     chartRef.current.options({ data: [], /* TODO: Define empty/error view */ });
+                     chartRef.current.render();
+             }
+     }
+
+    // Cleanup function
+    return (): void => {
+        isMountedRef.current = false;
+        if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+        if (chartRef.current) {
+                try {
+                        chartRef.current.destroy();
+                } catch (destroyError: any) {
+                        console.error("Error destroying chart:", destroyError);
+                }
+        }
+        chartRef.current = null;
+        generatorRef.current = null; // Clear generator ref
+    };
+// Dependencies: Re-initialize if algorithm name changes or initial options change.
+// getAlgorithmFunction and getInitialData are stable due to useCallback.
+}, [algorithmName, initialChartOptions, getAlgorithmFunction, getInitialData, renderCurrentState]);
+
+// Animation loop logic
+useEffect(() => {
+    let lastTime: number = 0;
+    const loop = (currentTime: number): void => {
+        // Ensure component is still mounted and playback is active
+        if (!isPlaying || !generatorRef.current || !isMountedRef.current) {
+            animationFrameRef.current = null; // Clear ref if loop stops
+            return;
+        }
+
+        // Throttle updates based on speed
+        if (currentTime - lastTime >= speed) {
+            try {
+                    const step: IteratorResult<AlgorithmFrame, AlgorithmFrame | void> = generatorRef.current.next();
+                    if (step.done) {
+                            setIsPlaying(false); // Stop playback when generator finishes
+                            if (step.value) renderCurrentState(step.value); // Render final state if provided
+                            generatorRef.current = null; // Clear generator when done
+                    } else {
+                            if (step.value) {
+                                    renderCurrentState(step.value); // Render the yielded frame
+                                    lastTime = currentTime; // Update last time only after successful render
+                            } else {
+                                    console.warn("Generator yielded undefined value.");
+                            }
+                    }
+            } catch (e: any) {
+                    console.error("Error during animation step:", e);
+                    setErrorState(`Animation error: ${e.message || 'Unknown error'}`); // Escaped inner template literal
+                    setIsPlaying(false); // Stop playback on error
+            }
+        }
+        // Request next frame if still playing
+        if (isPlaying && isMountedRef.current) {
+                animationFrameRef.current = requestAnimationFrame(loop);
+        } else {
+                animationFrameRef.current = null;
+        }
+    };
+
+    // Start or stop the animation loop based on isPlaying state
+    if (isPlaying && generatorRef.current) {
+            // Prevent multiple loops from starting
+            if (!animationFrameRef.current) {
+                    lastTime = performance.now(); // Reset timer when starting
+                    animationFrameRef.current = requestAnimationFrame(loop);
+            }
+    } else {
+        // Cancel animation frame if paused or stopped
+        if (animationFrameRef.current) {
+                cancelAnimationFrame(animationFrameRef.current);
+                animationFrameRef.current = null;
+        }
+    }
+
+    // Cleanup function for the loop effect
+    return (): void => {
+        if (animationFrameRef.current) {
+                cancelAnimationFrame(animationFrameRef.current);
+                animationFrameRef.current = null;
+        }
+    };
+}, [isPlaying, speed, renderCurrentState]); // Loop depends on play state, speed, and render function
+
+// Toggle play/pause state
+const togglePlay = (): void => {
+    // Prevent starting if there's an error or generator is finished/null
+    if (errorState || !generatorRef.current) return;
+    setIsPlaying(!isPlaying);
+};
+
+// Reset animation to the beginning
+const resetAnimation = useCallback((): void => {
+    setIsPlaying(false); // Ensure playback is stopped
+    setErrorState(null); // Clear any previous errors
+
+    // Cancel any ongoing animation frame
+    if (animationFrameRef.current) {
+            cancelAnimationFrame(animationFrameRef.current);
+            animationFrameRef.current = null;
+    }
+
+    const algorithmFunction: AlgorithmGenerator | null = getAlgorithmFunction();
+    const initialData: any[] | null = getInitialData();
+
+    if (!algorithmFunction || !initialData) {
+            // Error state already set by helpers
+            if (chartRef.current) {
+                    chartRef.current.options({ data: [], /* TODO: Define error/empty view */ });
+                    chartRef.current.render();
+            }
+            generatorRef.current = null; // Ensure generator is null
+            return;
+    }
+
+    try {
+            // Re-initialize the generator with a fresh copy of data
+            generatorRef.current = algorithmFunction(initialData);
+            const initialStep: IteratorResult<AlgorithmFrame, AlgorithmFrame | void> = generatorRef.current.next();
+
+            // Render the initial state
+            if (!initialStep.done && initialStep.value) {
+                    renderCurrentState(initialStep.value);
+            } else if (initialStep.done && initialStep.value) {
+                    // Handle case where generator finishes immediately on reset
+                    renderCurrentState(initialStep.value);
+                    generatorRef.current = null; // Generator is already done
+            } else {
+                     console.warn("Algorithm generator did not yield an initial state on reset.");
+                     if (chartRef.current) {
+                             chartRef.current.options({ data: [], /* TODO: Define empty view */ });
+                             chartRef.current.render();
+                     }
+            }
+    } catch (e: any) {
+            console.error("Failed to reset algorithm:", e);
+            setErrorState(`Failed to reset: ${e.message || 'Unknown error'}`); // Escaped inner template literal
+            generatorRef.current = null; // Ensure generator is null on error
+            if (chartRef.current) {
+                    chartRef.current.options({ data: [], /* TODO: Define error view */ });
+                    chartRef.current.render();
+            }
+    }
+}, [getAlgorithmFunction, getInitialData, renderCurrentState]); // Dependencies for reset logic
+
+// Handle speed slider change
+const handleSpeedChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setSpeed(Number(event.target.value));
+};
+
+return (
+    <div>
+        <h2 className="text-xl font-semibold mb-2">${title}</h2> {/* Escaped inner template literal */}
+        ${description ? `<p className="text-sm text-muted-foreground mb-4">${description}</p>` : '{/* TODO: Add description if available */}'} {/* Escaped inner template literals */}
+        {/* Controls */}
+        <div className="flex flex-wrap items-center space-x-2 mb-4">
+            <button
+                onClick={togglePlay}
+                disabled={!!errorState || !generatorRef.current} // Disable if error or generator finished/null
+                className="px-3 py-1 border rounded bg-secondary hover:bg-secondary/80 text-secondary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+                {isPlaying ? 'Pause' : 'Play'}
+            </button>
+            <button
+                onClick={resetAnimation}
+                disabled={!getAlgorithmFunction() || !getInitialData()} // Disable if algorithm/data cannot be loaded
+                className="px-3 py-1 border rounded bg-secondary hover:bg-secondary/80 text-secondary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+                Reset
+            </button>
+            <label htmlFor="speedControl" className="text-sm">Speed: {speed}ms</label>
+            <input
+                id="speedControl"
+                type="range"
+                min="50"  // Faster speed limit
+                max="2000" // Slower speed limit
+                step="50"
+                value={speed}
+                onChange={handleSpeedChange}
+                className="w-32 align-middle" // Use align-middle for better vertical alignment
+            />
+        </div>
+        {/* Error Display */}
+        {errorState && (
+                <div className="mb-4 p-3 text-red-700 bg-red-100 border border-red-300 rounded shadow-sm">
+                        <strong>Error:</strong> {errorState}
+                        <p className="text-xs mt-1">Playback disabled. Please check the console for details and review the component's data and algorithm logic.</p>
+                </div>
+        )}
+        {/* Chart Container */}
+        <div ref={containerRef} className="h-[600px] w-full overflow-auto border rounded p-2 bg-background relative">
+             {/* Chart is rendered here by useEffect */}
+             {/* Optional: Add a loading or placeholder state */}
+             {!chartRef.current && !errorState && (
+                     <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">Initializing Chart...</div>
+             )}
+        </div>
+    </div>
+);
+};
+
+export default ${componentName}; // Escaped inner template literal
+`;
+
+return componentCode;
+}}`); // Escaped inner template literal
         setIsPlaying(false); // Stop playback on error
     }
   }, [speed, initialChartOptions]); // Dependencies for rendering logic
