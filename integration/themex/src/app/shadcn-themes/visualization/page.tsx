@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import G2Chart from './g2-wrapper'; // Assuming g2-wrapper.tsx is in the same directory
 
