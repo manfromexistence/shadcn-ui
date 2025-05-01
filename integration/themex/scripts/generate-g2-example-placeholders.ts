@@ -36,50 +36,50 @@ async function extractTitleFromMarkdown(dirPath: string): Promise<string | null>
 
 // Function to detect common imports and G2 extensions
 function detectImports(code: string): string[] {
-    const imports: string[] = [];
-    const detected = new Set<string>();
+  const imports: string[] = [];
+  const detected = new Set<string>();
 
-    if (/\bimport\s+\*\s+as\s+d3\b/.test(code) || /\bd3\./.test(code)) {
-        if (!detected.has('d3')) {
-            imports.push("import * as d3 from 'd3';");
-            detected.add('d3');
-        }
+  if (/\bimport\s+\*\s+as\s+d3\b/.test(code) || /\bd3\./.test(code)) {
+    if (!detected.has('d3')) {
+      imports.push("import * as d3 from 'd3';");
+      detected.add('d3');
     }
-     if (/\bimport\s+_\s+from\s+'lodash'\b/.test(code) || /\b_\./.test(code)) {
-         if (!detected.has('lodash')) {
-            imports.push("import _ from 'lodash';");
-            detected.add('lodash');
-        }
+  }
+  if (/\bimport\s+_\s+from\s+'lodash'\b/.test(code) || /\b_\./.test(code)) {
+    if (!detected.has('lodash')) {
+      imports.push("import _ from 'lodash';");
+      detected.add('lodash');
     }
-    if (/\bimport\s+\{[^}]*Insight[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
-         if (!detected.has('ava')) {
-            imports.push("import { Insight } from '@antv/g2-extension-ava'; // Might need other exports too");
-            detected.add('ava');
-        }
+  }
+  if (/\bimport\s+\{[^}]*Insight[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
+    if (!detected.has('ava')) {
+      imports.push("import { Insight } from '@antv/g2-extension-ava'; // Might need other exports too");
+      detected.add('ava');
     }
-    if (/\bimport\s+\{[^}]*Auto[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
-         if (!detected.has('ava')) {
-             imports.push("import { Auto } from '@antv/g2-extension-ava'; // Might need other exports too");
-             detected.add('ava');
-         }
+  }
+  if (/\bimport\s+\{[^}]*Auto[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
+    if (!detected.has('ava')) {
+      imports.push("import { Auto } from '@antv/g2-extension-ava'; // Might need other exports too");
+      detected.add('ava');
     }
-    if (/\bimport\s+\{[^}]*Plugin[^}]*\}\s+from\s+'@antv/g-plugin-a11y'/.test(code)) {
-         if (!detected.has('a11y')) {
-            imports.push("import { Plugin as A11yPlugin } from '@antv/g-plugin-a11y'; // Renamed to avoid conflict");
-             detected.add('a11y');
-         }
+  }
+  if (/\bimport\s+\{[^}]*Plugin[^}]*\}\s+from\s+'@antv\/g-plugin-a11y'/.test(code)) {
+    if (!detected.has('a11y')) {
+      imports.push("import { Plugin as A11yPlugin } from '@antv/g-plugin-a11y'; // Renamed to avoid conflict");
+      detected.add('a11y');
     }
-    
-    // Detect animation/keyframe related imports
-    if (/\btimingKeyframe\b/.test(code) || /\bstaggeredKeyframe\b/.test(code)) {
-        if (!detected.has('g2-animations')) {
-            imports.push("// Chart animation detected - G2 animation API will be used");
-            detected.add('g2-animations');
-        }
+  }
+  
+  // Detect animation/keyframe related imports
+  if (/\btimingKeyframe\b/.test(code) || /\bstaggeredKeyframe\b/.test(code)) {
+    if (!detected.has('g2-animations')) {
+      imports.push("// Chart animation detected - G2 animation API will be used");
+      detected.add('g2-animations');
     }
-    
-    // Add more common libraries or G2 extensions if needed
-    return imports;
+  }
+  
+  // Add more common libraries or G2 extensions if needed
+  return imports;
 }
 
 // Detect if the code contains generator functions, algorithms or animations
@@ -537,7 +537,7 @@ async function generateComponentContent(example: ExampleInfo): Promise<string> {
   const hasAnimation = spec.hasAnimation;
   const hasAlgorithm = spec.hasAlgorithm;
   const rawDataDeclaration = spec.rawDataDeclaration;
-  const algorithmCode = spec.algorithmCode;
+  const algorithmCode = spec.algorithmCode || algorithmResult; // Use the extracted algorithm if available
   const keyframeDeclaration = spec.keyframeDeclaration;
   const animationLoop = spec.animationLoop;
   
@@ -705,14 +705,14 @@ function generateAnimationAlgorithmComponent(params: {
     example,
     spec,
     rawDataDeclaration,
-    // algorithmCode is now part of algorithmResult, use algorithmResult instead
-    keyframeDeclaration, // Keep for potential future use or context, though not used in current template
-    animationLoop, // Keep for potential future use or context, though not used in current template
+    algorithmCode, // Now correctly typed as an object with name and code
+    keyframeDeclaration,
+    animationLoop,
     potentialImports,
-    wrapperPath, // Note: wrapperPath is not used in this template
+    wrapperPath,
     tsNoCheck,
     g2SpecImport,
-    algorithmResult // Use this for algorithm details
+    algorithmResult
   } = params;
 
   // Create a clean spec without animation metadata
@@ -725,10 +725,16 @@ function generateAnimationAlgorithmComponent(params: {
     : 'const data: number[] = [43, 2, 5, 24, 53, 78, 82, 63, 49, 6]; // Default data, adjust type if needed';
 
   // Determine algorithm code and name based on extraction result
-  const algorithmName = algorithmResult ? algorithmResult.name : 'insertionSort'; // Default name
+  // Choose the best available source for algorithm info:
+  // 1. algorithmResult (from direct extraction)
+  // 2. algorithmCode (from spec parsing)
+  // 3. Default fallback
+  const finalAlgorithmResult = algorithmResult || algorithmCode;
+  const algorithmName = finalAlgorithmResult ? finalAlgorithmResult.name : 'insertionSort'; // Default name
+  
   // Use the extracted code if available, otherwise use the fallback
-  const formattedAlgorithmCode = algorithmResult
-   ? algorithmResult.code // Use the successfully extracted code
+  const formattedAlgorithmCode = finalAlgorithmResult
+   ? finalAlgorithmResult.code // Use the successfully extracted code
    : `
 // Default fallback algorithm (Insertion Sort) - Review and replace if needed
 // Define the expected frame structure for type safety if using this fallback
@@ -886,19 +892,18 @@ const ${componentName}: React.FC = () => {
 
       if (typeof algorithmFunction !== 'function') {
         // This error occurs if the algorithm function wasn't defined correctly or eval failed.
-        throw new Error(`Algorithm named '${algorithmName}' is not defined or not a function in this scope.`);
+        throw new Error(\`Algorithm named '\${algorithmName}' is not defined or not a function in this scope.\`);
       }
 
       // Create generator instance, cloning data to prevent mutation by the algorithm
       generatorRef.current = algorithmFunction([...data]);
 
     } catch (e: any) {
-      console.error(`Failed to initialize algorithm '${algorithmName}':`, e);
-      setErrorState(`Failed to load algorithm: ${e.message || 'Unknown error'}`);
+      console.error(\`Failed to initialize algorithm '\${algorithmName}':\`, e);
+      setErrorState(\`Failed to load algorithm: \${e.message || 'Unknown error'}\`);
       generatorRef.current = null; // Ensure generator is null on error
       // Chart initialization below might still proceed, but controls will be disabled.
     }
-
 
     // Create new chart instance
     chartRef.current = new Chart({
@@ -920,21 +925,19 @@ const ${componentName}: React.FC = () => {
             if (!initialStep.done) {
               renderCurrentState(initialStep.value);
             } else if (initialStep.value) { // Handle generators that might return final state on first call or when done
-                renderCurrentState(initialStep.value);
-            }
-        } catch (e: any) {
-             console.error(`Error rendering initial state for algorithm '${algorithmName}':`, e);
-             setErrorState(`Error rendering initial state: ${e.message || 'Unknown error'}`);
-        }
-    }
-
+                 renderCurrentState(initialStep.value);
+             }
+         } catch (e: any) {
+              console.error(\`Error rendering initial state for algorithm '\${algorithmName}':\`, e);
+              setErrorState(\`Error rendering initial state: \${e.message || 'Unknown error'}\`);
+         }
+     }
 
     // Cleanup function
     return () => {
       isMountedRef.current = false;
       if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current); // Use cancelAnimationFrame if using requestAnimationFrame
-        // clearTimeout(animationFrameRef.current); // Use clearTimeout if using setTimeout
+        cancelAnimationFrame(animationFrameRef.current);
       }
       if (chartRef.current) {
         chartRef.current.destroy();
@@ -942,8 +945,7 @@ const ${componentName}: React.FC = () => {
       }
       generatorRef.current = null; // Clear generator ref
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [algorithmName, renderCurrentState]); // Dependencies: algorithmName (should be constant), renderCurrentState. Add spec if used directly.
+  }, [algorithmName, renderCurrentState]); // Dependencies: algorithmName, renderCurrentState
 
   // Animation loop logic
   useEffect(() => {
@@ -1019,31 +1021,28 @@ const ${componentName}: React.FC = () => {
     let algorithmFunction: AlgorithmGenerator | null = null;
     try {
        // Re-fetch the algorithm function using eval (same risks as in useEffect)
-       algorithmFunction = eval(algorithmName) as AlgorithmGenerator;
+      algorithmFunction = eval(algorithmName) as AlgorithmGenerator;
 
-       if (typeof algorithmFunction !== 'function') {
-           throw new Error(`Algorithm named '${algorithmName}' is not defined or not a function in this scope (on reset).`);
-       }
+      if (typeof algorithmFunction !== 'function') {
+          throw new Error(\`Algorithm named '\${algorithmName}' is not defined or not a function in this scope (on reset).\`);
+      }
 
-       generatorRef.current = algorithmFunction([...data]); // Create new generator with fresh data copy
+      generatorRef.current = algorithmFunction([...data]); // Create new generator with fresh data copy
        const initialStep = generatorRef.current.next();
-
+       
        // Render initial state after reset
         if (!initialStep.done) {
             renderCurrentState(initialStep.value);
         } else if (initialStep.value) { // Handle generators returning final state immediately
             renderCurrentState(initialStep.value);
-        }
+         }
 
-
-    } catch (e: any) {
-        console.error(`Failed to reset algorithm '${algorithmName}':`, e);
-        setErrorState(`Failed to reset algorithm: ${e.message || 'Unknown error'}`);
-        generatorRef.current = null; // Ensure generatorRef is null on error
-    }
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [algorithmName, renderCurrentState]); // Dependencies for reset. Add data if it can change.
+     } catch (e: any) {
+         console.error(\`Failed to reset algorithm '\${algorithmName}':\`, e);
+         setErrorState(\`Failed to reset algorithm: \${e.message || 'Unknown error'}\`);
+         generatorRef.current = null; // Ensure generatorRef is null on error
+     }
+   }, [algorithmName, renderCurrentState]); // Dependencies for reset. Add data if it can change.
 
   const handleSpeedChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSpeed(Number(e.target.value));
@@ -1095,7 +1094,7 @@ const ${componentName}: React.FC = () => {
       </div>
     </div>
   );
-}; // <-- Ensure this closing brace and semicolon are always present
+};
 
 export default ${componentName};
 `;
