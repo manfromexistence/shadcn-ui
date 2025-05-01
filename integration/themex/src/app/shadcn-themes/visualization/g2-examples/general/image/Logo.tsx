@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/image/demo/logo.ts
@@ -84,15 +83,44 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "link",
-  "encode": {
-    "x": "name",
-    "y": "value",
-    "shape": "smooth",
-    "src": "url"
-  },
+  "data": [
+    {
+      "name": "Internet Explorer",
+      "value": 26,
+      "url": "https://gw.alipayobjects.com/zos/rmsportal/eOYRaLPOmkieVvjyjTzM.png"
+    },
+    {
+      "name": "Chrome",
+      "value": 40,
+      "url": "https://gw.alipayobjects.com/zos/rmsportal/dWJWRLWfpOEbwCyxmZwu.png"
+    },
+    {
+      "name": "Firefox",
+      "value": 30,
+      "url": "https://gw.alipayobjects.com/zos/rmsportal/ZEPeDluKmAoTioCABBTc.png"
+    },
+    {
+      "name": "Safari",
+      "value": 24,
+      "url": "https://gw.alipayobjects.com/zos/rmsportal/eZYhlLzqWLAYwOHQAXmc.png"
+    },
+    {
+      "name": "Opera",
+      "value": 15,
+      "url": "https://gw.alipayobjects.com/zos/rmsportal/vXiGOWCGZNKuVVpVYQAw.png"
+    },
+    {
+      "name": "Undetectable",
+      "value": 8,
+      "url": "https://gw.alipayobjects.com/zos/rmsportal/NjApYXminrnhBgOXyuaK.png"
+    }
+  ],
   "scale": {
     "x": {
       "type": "band"
@@ -106,13 +134,14 @@ const spec: G2Spec = {
   },
   "style": {
     "stroke": "#dfdfdf"
-  }
+  },
+  "tooltip": false
 };
 
 const GeneralImageLogoChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -120,7 +149,8 @@ const GeneralImageLogoChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">I</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

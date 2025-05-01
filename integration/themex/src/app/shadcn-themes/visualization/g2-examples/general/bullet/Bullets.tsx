@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/bullet/demo/bullets.ts
@@ -95,17 +94,43 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "interval",
-  "encode": {
-    "x": "title",
-    "y": "target",
-    "color": "red",
-    "shape": "line"
-  },
+  "data": [
+    {
+      "title": "5🌟",
+      "ranges": 100,
+      "measures": 40,
+      "target": 85
+    },
+    {
+      "title": "4🌟",
+      "ranges": 100,
+      "measures": 80,
+      "target": 40
+    },
+    {
+      "title": "3🌟",
+      "ranges": 100,
+      "measures": 20,
+      "target": 22
+    },
+    {
+      "title": "0-2🌟",
+      "ranges": 100,
+      "measures": 30,
+      "target": 10
+    }
+  ],
   "style": {},
   "labels": [
+    null
+  ],
+  "tooltip": [
     null
   ],
   "coordinate": {
@@ -119,8 +144,8 @@ const spec: G2Spec = {
 
 const GeneralBulletBulletsChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -128,7 +153,8 @@ const GeneralBulletBulletsChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">B</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

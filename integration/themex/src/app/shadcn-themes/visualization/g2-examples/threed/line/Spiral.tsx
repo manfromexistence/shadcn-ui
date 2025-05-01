@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/threed/line/demo/spiral.ts
@@ -78,14 +77,11 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "type": "corelib",
-  "encode": {
-    "x": "x",
-    "y": "y",
-    "z": "z"
-  },
   "scale": {
     "x": {
       "nice": true
@@ -97,14 +93,7 @@ const spec: G2Spec = {
       "nice": true
     }
   },
-  "axis": {
-    "x": {
-      "gridLineWidth": 2
-    },
-    "z": {
-      "gridLineWidth": 2
-    }
-  },
+  "legend": false,
   "coordinate": {
     "type": "cartesian3D"
   }
@@ -112,6 +101,7 @@ const spec: G2Spec = {
 
 const ThreedLineSpiralChart: React.FC = () => {
     
+    // Use the spec directly (data might be inline or handled elsewhere)
     const finalSpec: G2Spec = spec;
   
 
@@ -120,7 +110,8 @@ const ThreedLineSpiralChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">3</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

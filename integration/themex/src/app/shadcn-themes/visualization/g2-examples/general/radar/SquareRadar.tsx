@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/radar/demo/square-radar.ts
@@ -67,21 +66,42 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "line",
-  "encode": {
-    "x": "item",
-    "y": "score"
-  },
+  "data": [
+    {
+      "item": "Design",
+      "type": "a",
+      "score": 70
+    },
+    {
+      "item": "Development",
+      "type": "a",
+      "score": 60
+    },
+    {
+      "item": "Marketing",
+      "type": "a",
+      "score": 50
+    },
+    {
+      "item": "Users",
+      "type": "a",
+      "score": 40
+    }
+  ],
   "scale": {},
-  "axis": {}
+  "style": {}
 };
 
 const GeneralRadarSquareRadarChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -89,7 +109,8 @@ const GeneralRadarSquareRadarChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">R</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

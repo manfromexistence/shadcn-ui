@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/dual/demo/pareto.ts
@@ -97,34 +96,32 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "interval",
-  "encode": {
-    "x": "x",
-    "y": "accumulate",
-    "shape": "diamond"
-  },
   "scale": {
     "y": {
       "independent": true,
       "domainMin": 0
     }
   },
-  "axis": {
-    "x": {
-      "title": null
-    }
-  },
   "style": {},
   "labels": [
+    null
+  ],
+  "tooltip": [
     null
   ]
 };
 
 const GeneralDualParetoChart: React.FC = () => {
     
-    const chartData: any[] = [];
+    // Data was assigned from a variable or failed to parse.
+    // TODO: Provide data manually or ensure the variable 'PARSE_ERROR' is available.
+    const chartData: any[] = []; // Defaulting to empty array
     const finalSpec: G2Spec = { ...spec, data: chartData };
   
 
@@ -133,7 +130,8 @@ const GeneralDualParetoChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">D</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

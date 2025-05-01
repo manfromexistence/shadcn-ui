@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/analysis/group/demo/bar-aggregated-stacked.ts
@@ -43,11 +42,15 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "interval",
-  "encode": {
-    "color": "weather"
+  "data": {
+    "type": "fetch",
+    "value": "https://gw.alipayobjects.com/os/bmw-prod/3ed6f372-5362-4861-a33b-a16a9efbc922.csv"
   },
   "transform": [
     {
@@ -65,6 +68,7 @@ const spec: G2Spec = {
 
 const AnalysisGroupBarAggregatedStackedChart: React.FC = () => {
     
+    // Use the spec directly (data might be inline or handled elsewhere)
     const finalSpec: G2Spec = spec;
   
 
@@ -73,7 +77,8 @@ const AnalysisGroupBarAggregatedStackedChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">G</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

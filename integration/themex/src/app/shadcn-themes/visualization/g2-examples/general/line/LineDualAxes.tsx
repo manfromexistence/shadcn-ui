@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/line/demo/line-dual-axes.ts
@@ -63,24 +62,21 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "width": 800,
   "height": 1000,
-  "paddingLeft": 60,
-  "paddingTop": 120,
-  "paddingBottom": 120,
-  "type": "json",
-  "encode": {
-    "x": "distance",
-    "color": "type",
-    "series": "number"
-  },
-  "scale": {}
+  "type": "line",
+  "scale": {},
+  "legend": false
 };
 
 const GeneralLineLineDualAxesChart: React.FC = () => {
     
+    // Use the spec directly (data might be inline or handled elsewhere)
     const finalSpec: G2Spec = spec;
   
 
@@ -89,7 +85,8 @@ const GeneralLineLineDualAxesChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">L</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

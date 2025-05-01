@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/vector/demo/poisson.ts
@@ -135,16 +134,43 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+// --- Helper Functions Extracted from Original Example --- 
+function perlin2(x, y) {
+  const xi = Math.floor(x),
+    yi = Math.floor(y);
+  const X = xi & 255,
+    Y = yi & 255;
+  const u = fade((x -= xi)),
+    v = fade((y -= yi));
+  const A = p[X] + Y,
+    B = p[X + 1] + Y;
+  return lerp(
+    v,
+    lerp(u, grad2(p[A], x, y), grad2(p[B], x - 1, y)),
+    lerp(u, grad2(p[A + 1], x, y - 1), grad2(p[B + 1], x - 1, y - 1)),
+  );
+}
+
+function fade(t) {
+  return t * t * t * (t * (t * 6 - 15) + 10);
+}
+
+function grad2(i, x, y) {
+  const v = i & 1 ? y : x;
+  return i & 2 ? -v : v;
+}
+
+function lerp(t, a, b) {
+  return a + t * (b - a);
+}
+// --- End Helper Functions --- 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "type": "json",
-  "encode": {
-    "x": "x",
-    "y": "y",
-    "rotate": "rotate",
-    "size": "size",
-    "color": "black"
-  },
+  "type": "vector",
   "scale": {
     "size": {
       "range": [
@@ -153,18 +179,12 @@ const spec: G2Spec = {
       ]
     }
   },
-  "axis": {
-    "x": {
-      "grid": false
-    },
-    "y": {
-      "grid": false
-    }
-  }
+  "legend": false
 };
 
 const GeneralVectorPoissonChart: React.FC = () => {
     
+    // Use the spec directly (data might be inline or handled elsewhere)
     const finalSpec: G2Spec = spec;
   
 
@@ -173,7 +193,8 @@ const GeneralVectorPoissonChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">V</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

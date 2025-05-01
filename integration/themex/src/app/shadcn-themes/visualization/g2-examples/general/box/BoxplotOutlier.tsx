@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/box/demo/boxplot-outlier.ts
@@ -34,18 +33,20 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "inset": 6,
-  "type": "boxplot",
-  "encode": {
-    "x": "Expt",
-    "y": "Speed"
+  "data": {
+    "type": "fetch",
+    "value": "https://assets.antv.antgroup.com/g2/morley.json"
   }
 };
 
 const GeneralBoxBoxplotOutlierChart: React.FC = () => {
     
+    // Use the spec directly (data might be inline or handled elsewhere)
     const finalSpec: G2Spec = spec;
   
 
@@ -54,7 +55,8 @@ const GeneralBoxBoxplotOutlierChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">B</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

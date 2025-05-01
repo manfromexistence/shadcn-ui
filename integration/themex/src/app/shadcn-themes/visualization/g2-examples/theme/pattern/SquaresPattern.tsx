@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/theme/pattern/demo/squares-pattern.ts
@@ -65,19 +64,42 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "width": 500,
   "height": 400,
   "type": "interval",
-  "encode": {
-    "y": "value"
-  },
+  "data": [
+    {
+      "id": "c",
+      "value": 526
+    },
+    {
+      "id": "sass",
+      "value": 220
+    },
+    {
+      "id": "php",
+      "value": 325
+    },
+    {
+      "id": "elixir",
+      "value": 561
+    },
+    {
+      "id": "rust",
+      "value": 54
+    }
+  ],
   "transform": [
     {
       "type": "stackY"
     }
   ],
+  "legend": false,
   "style": {
     "stroke": "#fff"
   },
@@ -93,8 +115,8 @@ const spec: G2Spec = {
 
 const ThemePatternSquaresPatternChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -102,7 +124,8 @@ const ThemePatternSquaresPatternChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">squares pattern</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/component/axis/demo/axis.ts
@@ -126,24 +125,73 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "type": "getContext",
-  "encode": {
-    "x": "pos",
-    "y": "pts",
-    "color": "pts"
-  },
+  "type": "interval",
+  "data": [
+    {
+      "pos": 1,
+      "no": 1,
+      "driver": "Max Verstappen",
+      "car": "RED BULL RACING HONDA RBPT",
+      "laps": 57,
+      "time": "1:33:56.736",
+      "pts": 25
+    },
+    {
+      "pos": 2,
+      "no": 11,
+      "driver": "Sergio Perez",
+      "car": "RED BULL RACING HONDA RBPT",
+      "laps": 57,
+      "time": "+11.987s",
+      "pts": 18
+    },
+    {
+      "pos": 3,
+      "no": 14,
+      "driver": "Fernando Alonso",
+      "car": "ASTON MARTIN ARAMCO MERCEDES",
+      "laps": 57,
+      "time": "+38.637s",
+      "pts": 15
+    },
+    {
+      "pos": 4,
+      "no": 55,
+      "driver": "Carlos Sainz",
+      "car": "FERRARI",
+      "laps": 57,
+      "time": "+48.052s",
+      "pts": 12
+    },
+    {
+      "pos": 5,
+      "no": 44,
+      "driver": "Lewis Hamilton",
+      "car": "MERCEDES",
+      "laps": 57,
+      "time": "+50.977s",
+      "pts": 10
+    }
+  ],
+  "legend": false,
   "labels": [
     null,
+    null
+  ],
+  "tooltip": [
     null
   ]
 };
 
 const ComponentAxisAxisChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -151,7 +199,8 @@ const ComponentAxisAxisChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">A</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

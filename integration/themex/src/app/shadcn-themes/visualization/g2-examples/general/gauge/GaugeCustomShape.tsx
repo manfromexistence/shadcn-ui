@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/gauge/demo/gauge-custom-shape.ts
@@ -78,14 +77,28 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+// --- Helper Functions Extracted from Original Example --- 
+function getOrigin(points) {
+  if (points.length === 1) return points[0];
+  const [[x0, y0, z0 = 0], [x2, y2, z2 = 0]] = points;
+  return [(x0 + x2) / 2, (y0 + y2) / 2, (z0 + z2) / 2];
+}
+// --- End Helper Functions --- 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "type": "getCenter"
+  "type": "gauge"
 };
 
 const GeneralGaugeGaugeCustomShapeChart: React.FC = () => {
     
-    const finalSpec: G2Spec = spec;
+    // Data was assigned from a variable or failed to parse.
+    // TODO: Provide data manually or ensure the variable 'unknown' is available.
+    const chartData: any[] = []; // Defaulting to empty array
+    const finalSpec: G2Spec = { ...spec, data: chartData };
   
 
   return (
@@ -93,7 +106,8 @@ const GeneralGaugeGaugeCustomShapeChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">G</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

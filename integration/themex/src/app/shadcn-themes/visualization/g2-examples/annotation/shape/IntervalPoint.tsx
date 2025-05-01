@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/annotation/shape/demo/interval-point.ts
@@ -67,26 +66,81 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "paddingRight": 30,
   "type": "interval",
-  "encode": {
-    "x": "x",
-    "y": "tick",
-    "shape": "line"
-  },
-  "axis": {
-    "x": {
-      "title": false
+  "data": [
+    {
+      "x": "Jan",
+      "tick": 9.3,
+      "value": 11.5
+    },
+    {
+      "x": "Feb",
+      "tick": 10.5,
+      "value": 12
+    },
+    {
+      "x": "Mar",
+      "tick": 11.2,
+      "value": 11.7
+    },
+    {
+      "x": "Apr",
+      "tick": 11.2,
+      "value": 12.4
+    },
+    {
+      "x": "May",
+      "tick": 12.7,
+      "value": 13.5
+    },
+    {
+      "x": "Jun",
+      "tick": 13.1,
+      "value": 11.9
+    },
+    {
+      "x": "Jul",
+      "tick": 12.2,
+      "value": 14.6
+    },
+    {
+      "x": "Aug",
+      "tick": 12.2,
+      "value": 17.2
+    },
+    {
+      "x": "Sep",
+      "tick": 10.1,
+      "value": 16.9
+    },
+    {
+      "x": "Oct",
+      "tick": 14.5,
+      "value": 15.4
+    },
+    {
+      "x": "Nov",
+      "tick": 14.5,
+      "value": 16.9
+    },
+    {
+      "x": "Dec",
+      "tick": 15.5,
+      "value": 17.2
     }
-  },
+  ],
   "style": {
     "stroke": "red"
   },
   "labels": [
     null
   ],
+  "tooltip": false,
   "coordinate": {
     "transform": [
       {
@@ -98,8 +152,8 @@ const spec: G2Spec = {
 
 const AnnotationShapeIntervalPointChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -107,7 +161,8 @@ const AnnotationShapeIntervalPointChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">S</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

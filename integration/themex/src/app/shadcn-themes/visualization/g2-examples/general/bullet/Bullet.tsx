@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/bullet/demo/bullet.ts
@@ -77,17 +76,25 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "interval",
-  "encode": {
-    "x": "title",
-    "y": "target",
-    "color": "#3D76DD",
-    "shape": "line"
-  },
+  "data": [
+    {
+      "title": "满意度",
+      "ranges": 100,
+      "measures": 80,
+      "target": 85
+    }
+  ],
   "style": {},
   "labels": [
+    null
+  ],
+  "tooltip": [
     null
   ],
   "coordinate": {
@@ -101,8 +108,8 @@ const spec: G2Spec = {
 
 const GeneralBulletBulletChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -110,7 +117,8 @@ const GeneralBulletBulletChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">B</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

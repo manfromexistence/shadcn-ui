@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/annotation/connector/demo/interval-connector.ts
@@ -115,36 +114,78 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "insetTop": 30,
   "type": "link",
-  "encode": {
-    "x": "x"
-  },
-  "scale": {},
-  "axis": {
-    "x": {
-      "title": false,
-      "labelTransform": "rotate(-90)"
+  "data": [
+    {
+      "x": "Net Sales",
+      "value": 5085000,
+      "start": 0,
+      "end": 5085000
     },
-    "y": {
-      "labelFormatter": "~s"
+    {
+      "x": "Cost of Sales",
+      "value": -1250450,
+      "start": 5085000,
+      "end": 3834550
+    },
+    {
+      "x": "Operating Expenses",
+      "value": -2350050,
+      "start": 3834550,
+      "end": 1484500
+    },
+    {
+      "x": "Other Income",
+      "value": 750000,
+      "start": 1484500,
+      "end": 2234500
+    },
+    {
+      "x": "Extraordinary Gain",
+      "value": -230050,
+      "start": 2234500,
+      "end": 2004450
+    },
+    {
+      "x": "Interest Expense",
+      "value": -500000,
+      "start": 2004450,
+      "end": 1504450
+    },
+    {
+      "x": "Taxes",
+      "value": 490000,
+      "start": 1504450,
+      "end": 1994450
+    },
+    {
+      "x": "Net Income",
+      "isTotal": true,
+      "value": 1994450,
+      "start": 0,
+      "end": 1994450
     }
-  },
+  ],
+  "scale": {},
   "style": {
     "stroke": "#697474"
   },
   "labels": [
     null,
     null
-  ]
+  ],
+  "tooltip": false
 };
 
 const AnnotationConnectorIntervalConnectorChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -152,7 +193,8 @@ const AnnotationConnectorIntervalConnectorChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">C</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

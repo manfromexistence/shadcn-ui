@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/mini/demo/progress.ts
@@ -52,12 +51,14 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "width": 480,
   "height": 60,
   "type": "interval",
-  "encode": {},
   "scale": {
     "y": {
       "domain": [
@@ -71,12 +72,20 @@ const spec: G2Spec = {
         "#a0ff03"
       ]
     }
+  },
+  "axis": false,
+  "legend": false,
+  "style": {},
+  "interaction": {
+    "tooltip": false
   }
 };
 
 const GeneralMiniProgressChart: React.FC = () => {
     
-    const chartData: any[] = [];
+    // Data was assigned from a variable or failed to parse.
+    // TODO: Provide data manually or ensure the variable 'PARSE_ERROR' is available.
+    const chartData: any[] = []; // Defaulting to empty array
     const finalSpec: G2Spec = { ...spec, data: chartData };
   
 
@@ -85,7 +94,8 @@ const GeneralMiniProgressChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">M</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

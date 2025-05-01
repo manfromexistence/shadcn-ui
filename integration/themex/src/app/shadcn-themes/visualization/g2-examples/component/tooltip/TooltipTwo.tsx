@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/component/tooltip/demo/tooltip-two.ts
@@ -106,22 +105,88 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+// --- Helper Functions Extracted from Original Example --- 
+function css(...styles) {
+  return styles
+    .map((obj) =>
+      Object.entries(obj)
+        .map(([k, v]) => k + ':' + v)
+        .join(';'),
+    )
+    .join(';');
+}
+// --- End Helper Functions --- 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "area",
-  "encode": {
-    "y": "south",
-    "shape": "smooth"
-  },
-  "interaction": {
-    "type": "tooltip"
-  }
+  "data": [
+    {
+      "time": "16",
+      "north": 0,
+      "south": 0
+    },
+    {
+      "time": "18",
+      "north": 7,
+      "south": -8
+    },
+    {
+      "time": "20",
+      "north": 6,
+      "south": -7
+    },
+    {
+      "time": "22",
+      "north": 9,
+      "south": -8
+    },
+    {
+      "time": "00",
+      "north": 5,
+      "south": -7
+    },
+    {
+      "time": "02",
+      "north": 8,
+      "south": -5
+    },
+    {
+      "time": "04",
+      "north": 6,
+      "south": -7
+    },
+    {
+      "time": "06",
+      "north": 7,
+      "south": -8
+    },
+    {
+      "time": "08",
+      "north": 9,
+      "south": -9
+    },
+    {
+      "time": "10",
+      "north": 6,
+      "south": -9
+    },
+    {
+      "time": "12",
+      "north": 5,
+      "south": -9
+    }
+  ],
+  "interaction": {}
 };
 
 const ComponentTooltipTooltipTwoChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -129,7 +194,8 @@ const ComponentTooltipTooltipTwoChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">T</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

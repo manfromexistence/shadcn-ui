@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/interesting/interesting/demo/timeline.ts
@@ -110,16 +109,59 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "paddingLeft": 60,
-  "paddingRight": 60,
   "width": 1000,
   "height": 300,
   "type": "line",
-  "encode": {
-    "x": "year"
-  },
+  "data": [
+    {
+      "year": 1788,
+      "composition": "Symphony No. 41 \"Jupiter\"",
+      "composer": "Wolfgang Amadeus Mozart",
+      "link": "https://en.wikipedia.org/wiki/Symphony_No._41_(Mozart)"
+    },
+    {
+      "year": 1894,
+      "composition": "Prelude to the Afternoon of a Faun",
+      "composer": "Claude Debussy",
+      "link": "https://en.wikipedia.org/wiki/Pr%C3%A9lude_%C3%A0_l%27apr%C3%A8s-midi_d%27un_faune"
+    },
+    {
+      "year": 1805,
+      "composition": "Symphony No. 3 \"Eroica\"",
+      "composer": "Ludwig van Beethoven",
+      "link": "https://en.wikipedia.org/wiki/Symphony_No._3_(Beethoven)"
+    },
+    {
+      "year": 1913,
+      "composition": "Rite of Spring",
+      "composer": "Igor Stravinsky",
+      "link": "https://en.wikipedia.org/wiki/The_Rite_of_Spring"
+    },
+    {
+      "year": 1741,
+      "composition": "Goldberg Variations",
+      "composer": "Johann Sebastian Bach",
+      "link": "https://en.wikipedia.org/wiki/Goldberg_Variations"
+    },
+    {
+      "year": 1881,
+      "composition": "Piano Concerto No. 2",
+      "composer": "Johannes Brahms",
+      "link": "https://en.wikipedia.org/wiki/Piano_Concerto_No._2_(Brahms)"
+    },
+    {
+      "year": 1826,
+      "composition": "A Midsummer Night's Dream \"Overture\"",
+      "composer": "Felix Mendelssohn",
+      "link": "https://en.wikipedia.org/wiki/A_Midsummer_Night%27s_Dream_(Mendelssohn)"
+    }
+  ],
+  "axis": false,
   "style": {
     "stroke": "#000",
     "fill": "#fff"
@@ -127,13 +169,16 @@ const spec: G2Spec = {
   "labels": [
     null,
     null
-  ]
+  ],
+  "interaction": {
+    "tooltip": false
+  }
 };
 
 const InterestingInterestingTimelineChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -141,7 +186,8 @@ const InterestingInterestingTimelineChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">I</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

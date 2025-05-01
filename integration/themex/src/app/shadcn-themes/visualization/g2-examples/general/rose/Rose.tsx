@@ -2,8 +2,8 @@
 'use client';
 
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-// Import G2 Chart type for better type safety
-import { Chart, type G2Spec } from '@antv/g2';
+// Import G2 Chart object and potentially other types/functions if needed
+import { Chart, type G2Spec, type G2ViewTree } from '@antv/g2';
 
 
 
@@ -47,19 +47,19 @@ import { Chart, type G2Spec } from '@antv/g2';
   ================================================================================
 */
 
-// This example contains animations/algorithms that require direct chart manipulation.
-// Review the generated code carefully, especially the algorithm and data types.
+// This example contains animations/algorithms requiring direct chart manipulation.
+// Review the generated code carefully, especially data, algorithm, and rendering logic.
+
+
 
 // --- Data and Algorithm Definitions ---
 // TODO: Verify data type and structure
-const data: number[] = [43, 2, 5, 24, 53, 78, 82, 63, 49, 6]; // Default data, adjust type if needed
+const data: any[] = [/* TODO: Define initial data array/object */];
 
 // TODO: Verify or replace the algorithm implementation below
 // Define the expected frame structure for type safety (adjust if algorithm output differs)
 interface AlgorithmDatum {
   value: any; // Use a more specific type if known (e.g., number)
-  swap?: boolean; // Optional property for highlighting changes
-  index?: number; // Optional index property
   // Add other properties returned by your specific algorithm's generator
   [key: string]: any; // Allow other properties
 }
@@ -69,48 +69,23 @@ type AlgorithmFrame = AlgorithmDatum[];
 type AlgorithmGenerator = (arr: any[]) => Generator<AlgorithmFrame, AlgorithmFrame | void, unknown>;
 
 
-// Default fallback algorithm (Insertion Sort) - Review and replace if needed
-// Define the expected frame structure for type safety if using this fallback
-interface SortDatum { value: number; swap: boolean; index?: number; }
-type SortFrame = SortDatum[];
-type SortAlgorithm = (arr: number[]) => Generator<SortFrame, SortFrame, unknown>;
+// TODO: Define your algorithm generator function here.
+// Example structure:
+/*
+interface AlgorithmDatum { value: number; swap?: boolean; index?: number; [key: string]: any; }
+type AlgorithmFrame = AlgorithmDatum[];
+type AlgorithmGenerator = (arr: any[]) => Generator<AlgorithmFrame, AlgorithmFrame | void, unknown>;
 
-function* insertionSort(arr: number[]): Generator<SortFrame> {
-  const len = arr.length;
-  let preIndex: number, current: number;
-  const currentFrame = arr.map((value, index) => ({ value, swap: false, index })); // Initial state
-  yield currentFrame; // Yield initial state
-
-  for (let i = 1; i < len; i++) {
-    preIndex = i - 1;
-    current = currentFrame[i].value; // Use value from frame
-    let currentItem = currentFrame[i]; // Store the item being inserted
-
-    // Create a snapshot for the start of this iteration
-    const iterationStartState = currentFrame.map(d => ({ ...d, swap: false }));
-    iterationStartState[i].swap = true; // Highlight the element being considered
-    yield iterationStartState;
-
-
-    while (preIndex >= 0 && currentFrame[preIndex].value > current) {
-      currentFrame[preIndex + 1] = currentFrame[preIndex];
-      // Mark the shifted element
-      const shiftingState = currentFrame.map((d, idx) => ({ ...d, swap: idx === preIndex + 1 || idx === i }));
-      yield shiftingState;
-      preIndex--;
-    }
-    currentFrame[preIndex + 1] = currentItem; // Place the item in its sorted position
-
-    // Create a snapshot after insertion
-    const iterationEndState = currentFrame.map((d, idx) => ({ ...d, swap: idx === preIndex + 1 }));
-    yield iterationEndState;
-  }
-
-  // Final state, no elements marked as swap
-  const finalState = currentFrame.map(d => ({ ...d, swap: false }));
-  yield finalState; // Yield final sorted state
-  return finalState; // Return final state
-} // Algorithm function definition inserted here
+function* yourAlgorithm(arr: any[]): Generator<AlgorithmFrame> {
+  // Algorithm logic yielding frames...
+  const initialState = arr.map((value, index) => ({ value, index }));
+  yield initialState;
+  // ... more steps ...
+  const finalState = [...initialState]; // Modify as needed
+  yield finalState;
+  return finalState;
+}
+*/ // Algorithm function definition inserted here
 
 // --- React Component ---
 const GeneralRoseRoseChart: React.FC = () => {
@@ -118,223 +93,242 @@ const GeneralRoseRoseChart: React.FC = () => {
   const chartRef = useRef<Chart | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [speed, setSpeed] = useState<number>(500); // animation frame interval in ms
-  const animationFrameRef = useRef<number | null>(null); // Use number for requestAnimationFrame ID or NodeJS.Timeout
+  const animationFrameRef = useRef<number | null>(null);
   const generatorRef = useRef<Generator<AlgorithmFrame, AlgorithmFrame | void, unknown> | null>(null);
-  const isMountedRef = useRef<boolean>(false); // Track mount status
-  const [errorState, setErrorState] = useState<string | null>(null); // State to hold error messages
+  const isMountedRef = useRef<boolean>(false);
+  const [errorState, setErrorState] = useState<string | null>(null);
 
   // Function to render chart with current data state
+  // This function needs to be adapted based on the specific example's rendering logic
   const renderCurrentState = useCallback((frameData: AlgorithmFrame): void => {
     if (!chartRef.current || !isMountedRef.current) return;
-
     const chart: Chart = chartRef.current;
 
-    // Prepare data for G2, ensuring 'index' exists if used for encoding
-    const chartData = frameData.map((datum, idx) => ({
-        index: datum.index ?? idx, // Use provided index or fallback to array index
-        ...datum,
-    }));
+    try {
+        // --- TODO: Adapt the rendering logic below based on the original example ---
+        // This is a generic template. You'll likely need to modify the 'options'
+        // object to match the specific marks, encodings, scales, etc., used in
+        // the original G2 code for this animation/algorithm.
+        // Use the 'spec' object parsed earlier as a reference for initial settings.
 
-    // Define the spec for the interval mark dynamically
-    // Adjust mark type (interval, point, etc.) and encodings based on the example
-    const options: G2Spec = {
-        type: 'interval', // TODO: Adjust mark type if needed (e.g., 'point', 'cell')
-        data: chartData,
-        encode: {
-            x: 'index', // TODO: Adjust encoding channels as needed
-            y: 'value',
-            key: 'index', // Use index or a unique ID for animation key
-            color: 'swap', // TODO: Adjust color encoding if 'swap' is not used or has a different meaning
-        },
-        scale: {
-            color: { range: ['#4e79a7', '#e15759'] }, // TODO: Adjust color scale/range
-        },
-        animate: {
-            enter: { type: 'fadeIn', duration: 300 }, // Basic enter animation
-            update: { type: 'morph', duration: 300 }, // Morph between states
-            exit: { type: 'fadeOut', duration: 300 }, // Basic exit animation
-        },
-        // Add other necessary options like coordinate, axis, legend, style based on parsed 'spec'
-        axis: spec.axis ?? {}, // Apply parsed axis config
-        coordinate: spec.coordinate ?? {}, // Apply parsed coordinate config
-        legend: spec.legend ?? {}, // Apply parsed legend config
-        style: spec.style ?? {}, // Apply parsed style config
-    };
+        // Example: Define the view/mark structure dynamically
+        const options: G2ViewTree = { // Use G2ViewTree for chart.options
+            // type: 'interval', // Set mark type if needed, or define children
+            data: frameData, // Update data
+            // Define encodes based on frameData structure and original example
+            encode: {
+                x: 'index', // Example encoding
+                y: 'value', // Example encoding
+                key: 'id', // Example key for animation (ensure 'id' exists in frameData)
+                color: 'value', // Example encoding
+                // Add other encodings as needed...
+            },
+            // Define scales if necessary
+            scale: {
+                // x: { type: 'linear' },
+                // y: { domain: [0, Math.max(...frameData.map(d => d.value))] },
+                // color: { palette: 'spectral' },
+            },
+            // Define axes
+            axis: {
+                // x: { title: 'Index' },
+                // y: { title: 'Value' },
+            },
+            // Define animation behavior
+            animate: {
+                enter: { type: 'fadeIn', duration: Math.min(300, speed / 2) },
+                update: { type: 'morph', duration: Math.min(300, speed / 2) },
+                exit: { type: 'fadeOut', duration: Math.min(300, speed / 2) },
+            },
+            // Add other options like coordinate, legend, style based on parsed 'spec'
+            coordinate: spec.coordinate,
+            legend: spec.legend,
+            style: spec.style,
+            // --- End TODO ---
+        };
 
-    // Use chart.options() to update the spec declaratively
-    chart.options(options);
-    chart.render();
+        // Use chart.options() to update the spec declaratively
+        chart.options(options);
+        chart.render();
 
-  }, [spec]); // Include spec in dependencies if its properties are used directly
+    } catch (e: any) {
+        console.error("Error during chart render/update:", e);
+        setErrorState(`Chart render error: ${e.message}`);
+        setIsPlaying(false); // Stop animation on error
+    }
+
+  }, [spec, speed]); // Include spec and speed in dependencies
 
   // Initialize chart and generator
   useEffect(() => {
     isMountedRef.current = true;
-    setErrorState(null); // Clear previous errors
+    setErrorState(null);
     if (!containerRef.current) return;
 
     let algorithmFunction: AlgorithmGenerator | null = null;
     try {
-      // WARNING: Using eval() to get the algorithm function reference.
-      // This assumes the function defined by formattedAlgorithmCode (with name algorithmName)
-      // is correctly placed in the component's scope and accessible via eval.
-      // Eval can be a security risk and may not work in all environments (e.g., strict CSP).
-      // Consider refactoring if eval is problematic.
-      algorithmFunction = eval(algorithmName) as AlgorithmGenerator;
-
-      if (typeof algorithmFunction !== 'function') {
-        // This error occurs if the algorithm function wasn't defined correctly or eval failed.
-        throw new Error(`Algorithm named '${algorithmName}' is not defined or not a function in this scope.`);
+      // Attempt to get the algorithm function reference.
+      // Using 'new Function' is slightly safer than eval but still has limitations.
+      // It requires the algorithm code to be self-contained or rely on global scope.
+      // Best practice: Define the algorithm directly in the component scope if possible.
+      if (typeof window !== 'undefined' && (window as any)[algorithmName]) {
+          algorithmFunction = (window as any)[algorithmName] as AlgorithmGenerator;
+      } else {
+          // Fallback: Try to create function (might fail with complex closures/imports)
+          console.warn(`Algorithm '${algorithmName}' not found globally, attempting dynamic creation. Consider defining it directly in the component.`);
+          algorithmFunction = new Function(`return (${formattedAlgorithmCode})`)() as AlgorithmGenerator;
       }
 
-      // Create generator instance, cloning data to prevent mutation by the algorithm
-      generatorRef.current = algorithmFunction([...data]);
+
+      if (typeof algorithmFunction !== 'function') {
+        throw new Error(`Algorithm named '${algorithmName}' is not defined or not a function.`);
+      }
+      // Create generator instance, cloning data
+      const dataCopy = JSON.parse(JSON.stringify(data)); // Simple deep clone for arrays/objects
+      generatorRef.current = algorithmFunction(dataCopy);
 
     } catch (e: any) {
       console.error(`Failed to initialize algorithm '${algorithmName}':`, e);
       setErrorState(`Failed to load algorithm: ${e.message || 'Unknown error'}`);
-      generatorRef.current = null; // Ensure generator is null on error
-      // Chart initialization below might still proceed, but controls will be disabled.
+      generatorRef.current = null;
     }
 
-    // Create new chart instance
+    // Create new chart instance with initial options from parsed spec
     chartRef.current = new Chart({
       container: containerRef.current,
       autoFit: true,
-      // Apply initial chart options from the parsed spec (excluding data/mark type handled by renderCurrentState)
-      ...(spec as Partial<G2Spec>),
-      // Ensure data/type/encode are not set here if managed by renderCurrentState
-      data: undefined,
-      type: undefined,
-      encode: undefined,
-      children: undefined, // Avoid setting children directly if using chart.options() later
+      // Apply base options (width, height, coordinate, etc.)
+      ...initialSpecOptions, // Use the cleaned initial options
     });
 
-    // Render the initial state only if the generator was created successfully
+    // Render the initial state if generator is ready
     if (generatorRef.current) {
         try {
             const initialStep = generatorRef.current.next();
-            if (!initialStep.done) {
+            if (!initialStep.done && initialStep.value) {
               renderCurrentState(initialStep.value);
-            } else if (initialStep.value) { // Handle generators that might return final state on first call or when done
+            } else if (initialStep.done && initialStep.value) { // Handle immediate completion
                  renderCurrentState(initialStep.value);
              }
          } catch (e: any) {
               console.error(`Error rendering initial state for algorithm '${algorithmName}':`, e);
               setErrorState(`Error rendering initial state: ${e.message || 'Unknown error'}`);
          }
+     } else {
+         // If generator failed, render the chart without data or with placeholder
+         chartRef.current.options({ data: [] }); // Clear data
+         chartRef.current.render();
      }
 
-    // Cleanup function
+    // Cleanup
     return () => {
       isMountedRef.current = false;
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-      if (chartRef.current) {
-        chartRef.current.destroy();
-        chartRef.current = null;
-      }
-      generatorRef.current = null; // Clear generator ref
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      if (chartRef.current) chartRef.current.destroy();
+      chartRef.current = null;
+      generatorRef.current = null;
     };
-  }, [algorithmName, renderCurrentState]); // Dependencies: algorithmName, renderCurrentState
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [algorithmName, formattedAlgorithmCode, renderCurrentState]); // Dependencies
 
-  // Animation loop logic
+  // Animation loop logic (remains largely the same)
   useEffect(() => {
-    if (!isPlaying || !generatorRef.current) {
-      if (animationFrameRef.current) {
-         cancelAnimationFrame(animationFrameRef.current); // Or clearTimeout
-         animationFrameRef.current = null;
-      }
+    if (!isPlaying || !generatorRef.current || errorState) { // Stop if error occurs
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      animationFrameRef.current = null;
       return;
     }
 
     let lastFrameTime = performance.now();
-
     const animate = (currentTime: number) => {
-      if (!isPlaying || !generatorRef.current || !isMountedRef.current) { // Check mount status
+      if (!isPlaying || !generatorRef.current || !isMountedRef.current || errorState) {
         animationFrameRef.current = null;
-        return; // Stop if paused, generator finished, or unmounted
+        return;
       }
-
       const deltaTime = currentTime - lastFrameTime;
-
       if (deltaTime >= speed) {
-        const step = generatorRef.current.next();
-
-        if (step.done) {
-          setIsPlaying(false); // Stop playing when generator finishes
-          if (step.value) { // Render final state if returned
-             renderCurrentState(step.value);
-          }
-          animationFrameRef.current = null;
-          return;
+        try {
+            const step = generatorRef.current.next();
+            if (step.done) {
+              setIsPlaying(false);
+              if (step.value) renderCurrentState(step.value); // Render final state
+              animationFrameRef.current = null;
+              return;
+            }
+            if (step.value) renderCurrentState(step.value);
+            lastFrameTime = currentTime;
+        } catch (e: any) {
+             console.error("Error during animation step:", e);
+             setErrorState(`Animation error: ${e.message}`);
+             setIsPlaying(false); // Stop animation on error
+             animationFrameRef.current = null;
+             return;
         }
-
-        renderCurrentState(step.value);
-        lastFrameTime = currentTime; // Reset timer after rendering frame
       }
-
-      // Request next frame
       animationFrameRef.current = requestAnimationFrame(animate);
     };
-
-    // Start the animation loop
     animationFrameRef.current = requestAnimationFrame(animate);
-
-    // Cleanup this effect
     return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current); // Or clearTimeout
-        animationFrameRef.current = null;
-      }
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      animationFrameRef.current = null;
     };
-  }, [isPlaying, speed, renderCurrentState]); // Rerun effect if isPlaying or speed changes
+  }, [isPlaying, speed, renderCurrentState, errorState]);
 
-  // Play/pause the animation
+  // Play/pause handler
   const togglePlay = (): void => {
+    if (errorState) return; // Don't allow play if there's an error
     setIsPlaying(prev => !prev);
-    if (isPlaying && animationFrameRef.current) { // If stopping
-        cancelAnimationFrame(animationFrameRef.current); // Or clearTimeout
+    if (isPlaying && animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
         animationFrameRef.current = null;
     }
   };
 
-  // Reset the animation
+  // Reset handler
   const resetAnimation = useCallback((): void => {
-    setIsPlaying(false); // Stop playing
-    setErrorState(null); // Clear previous errors on reset
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current); // Or clearTimeout
-      animationFrameRef.current = null;
-    }
+    setIsPlaying(false);
+    setErrorState(null); // Clear errors on reset
+    if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+    animationFrameRef.current = null;
 
-    // Re-create the generator and render initial state
     let algorithmFunction: AlgorithmGenerator | null = null;
     try {
-       // Re-fetch the algorithm function using eval (same risks as in useEffect)
-      algorithmFunction = eval(algorithmName) as AlgorithmGenerator;
-
-      if (typeof algorithmFunction !== 'function') {
-          throw new Error(`Algorithm named '${algorithmName}' is not defined or not a function in this scope (on reset).`);
+      // Re-get the algorithm function
+       if (typeof window !== 'undefined' && (window as any)[algorithmName]) {
+          algorithmFunction = (window as any)[algorithmName] as AlgorithmGenerator;
+      } else {
+          algorithmFunction = new Function(`return (${formattedAlgorithmCode})`)() as AlgorithmGenerator;
       }
 
-      generatorRef.current = algorithmFunction([...data]); // Create new generator with fresh data copy
+      if (typeof algorithmFunction !== 'function') {
+          throw new Error(`Algorithm named '${algorithmName}' is not defined or not a function (on reset).`);
+      }
+      // Create new generator with fresh data copy
+      const dataCopy = JSON.parse(JSON.stringify(data));
+      generatorRef.current = algorithmFunction(dataCopy);
        const initialStep = generatorRef.current.next();
-       
-       // Render initial state after reset
-        if (!initialStep.done) {
-            renderCurrentState(initialStep.value);
-        } else if (initialStep.value) { // Handle generators returning final state immediately
-            renderCurrentState(initialStep.value);
-         }
+       if (!initialStep.done && initialStep.value) {
+           renderCurrentState(initialStep.value);
+       } else if (initialStep.done && initialStep.value) {
+           renderCurrentState(initialStep.value);
+       } else if (chartRef.current) {
+           // If generator finishes immediately with no value, clear chart data
+           chartRef.current.options({ data: [] });
+           chartRef.current.render();
+       }
 
      } catch (e: any) {
          console.error(`Failed to reset algorithm '${algorithmName}':`, e);
          setErrorState(`Failed to reset algorithm: ${e.message || 'Unknown error'}`);
-         generatorRef.current = null; // Ensure generatorRef is null on error
+         generatorRef.current = null;
+         // Clear chart on reset error
+         if (chartRef.current) {
+             chartRef.current.options({ data: [] });
+             chartRef.current.render();
+         }
      }
-   }, [algorithmName, renderCurrentState]); // Dependencies for reset. Add data if it can change.
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [algorithmName, formattedAlgorithmCode, renderCurrentState]); // Dependencies
 
   const handleSpeedChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSpeed(Number(e.target.value));
@@ -346,31 +340,25 @@ const GeneralRoseRoseChart: React.FC = () => {
       {/* TODO: Add description if available */}
       <div className="flex flex-wrap items-center space-x-2 mb-4">
         <button
-          className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
+          className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={togglePlay}
-          disabled={!generatorRef.current || !!errorState} // Disable if generator failed or error occurred
+          disabled={!generatorRef.current || !!errorState}
         >
           {isPlaying ? 'Pause' : 'Play'}
         </button>
         <button
-          className="px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 disabled:opacity-50"
+          className="px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={resetAnimation}
-          disabled={!!errorState} // Allow reset even if generator failed initially, to try again
+          // Allow reset even if generator failed initially, to try again
         >
           Reset
         </button>
         <div className="flex items-center space-x-2">
           <label htmlFor="speed" className="text-sm">Speed:</label>
           <input
-            id="speed"
-            type="range"
-            min="50"  // Adjusted min speed
-            max="1500" // Adjusted max speed
-            step="50"
-            value={speed}
-            onChange={handleSpeedChange}
-            className="w-32"
-            disabled={!generatorRef.current || !!errorState} // Disable if generator failed or error occurred
+            id="speed" type="range" min="50" max="1500" step="50"
+            value={speed} onChange={handleSpeedChange} className="w-32"
+            disabled={!generatorRef.current || !!errorState}
           />
           <span className="text-sm">{speed}ms</span>
         </div>
@@ -381,8 +369,7 @@ const GeneralRoseRoseChart: React.FC = () => {
           </div>
       )}
       <div ref={containerRef} className="h-[400px] w-full border rounded bg-muted/40">
-         {/* Placeholder or loading state can be added here */}
-         {/* Error message is now shown above the chart area */}
+         {/* Chart is rendered here */}
       </div>
     </div>
   );

@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/threed/scatter/demo/camera-animation.ts
@@ -159,14 +158,15 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "type": "getContainer",
-  "encode": {
-    "x": "Horsepower",
-    "y": "Miles_per_Gallon",
-    "z": "Weight_in_lbs",
-    "color": "Origin"
+  "type": "fetch",
+  "data": {
+    "type": "fetch",
+    "value": "https://gw.alipayobjects.com/os/bmw-prod/2c813e2d-2276-40b9-a9af-cf0a0fb7e942.csv"
   },
   "scale": {
     "x": {
@@ -179,14 +179,7 @@ const spec: G2Spec = {
       "nice": true
     }
   },
-  "axis": {
-    "x": {
-      "gridLineWidth": 2
-    },
-    "z": {
-      "gridLineWidth": 2
-    }
-  },
+  "legend": false,
   "coordinate": {
     "type": "cartesian3D"
   }
@@ -194,6 +187,7 @@ const spec: G2Spec = {
 
 const ThreedScatterCameraAnimationChart: React.FC = () => {
     
+    // Use the spec directly (data might be inline or handled elsewhere)
     const finalSpec: G2Spec = spec;
   
 
@@ -202,7 +196,8 @@ const ThreedScatterCameraAnimationChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">3</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

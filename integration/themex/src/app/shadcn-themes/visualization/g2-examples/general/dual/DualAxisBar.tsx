@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/dual/demo/dual-axis-bar.ts
@@ -53,31 +52,67 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "interval",
-  "encode": {
-    "x": "time",
-    "y": "people"
-  },
+  "data": [
+    {
+      "time": "10:10",
+      "call": 4,
+      "waiting": 2,
+      "people": 2
+    },
+    {
+      "time": "10:15",
+      "call": 2,
+      "waiting": 6,
+      "people": 3
+    },
+    {
+      "time": "10:20",
+      "call": 13,
+      "waiting": 2,
+      "people": 5
+    },
+    {
+      "time": "10:25",
+      "call": 9,
+      "waiting": 9,
+      "people": 1
+    },
+    {
+      "time": "10:30",
+      "call": 5,
+      "waiting": 2,
+      "people": 3
+    },
+    {
+      "time": "10:35",
+      "call": 8,
+      "waiting": 2,
+      "people": 1
+    },
+    {
+      "time": "10:40",
+      "call": 13,
+      "waiting": 1,
+      "people": 2
+    }
+  ],
   "scale": {
     "y": {
       "independent": true
-    }
-  },
-  "axis": {
-    "y": {
-      "position": "right",
-      "grid": null,
-      "title": "People"
     }
   }
 };
 
 const GeneralDualDualAxisBarChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -85,7 +120,8 @@ const GeneralDualDualAxisBarChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">D</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

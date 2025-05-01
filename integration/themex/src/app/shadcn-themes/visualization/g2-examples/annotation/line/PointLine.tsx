@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/annotation/line/demo/point-line.ts
@@ -94,15 +93,119 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "point",
-  "encode": {
-    "x": "x",
-    "y": "y",
-    "size": "z",
-    "shape": "point"
-  },
+  "data": [
+    {
+      "x": 95,
+      "y": 95,
+      "z": 13.8,
+      "name": "BE",
+      "country": "Belgium"
+    },
+    {
+      "x": 86.5,
+      "y": 102.9,
+      "z": 14.7,
+      "name": "DE",
+      "country": "Germany"
+    },
+    {
+      "x": 80.8,
+      "y": 91.5,
+      "z": 15.8,
+      "name": "FI",
+      "country": "Finland"
+    },
+    {
+      "x": 80.4,
+      "y": 102.5,
+      "z": 12,
+      "name": "NL",
+      "country": "Netherlands"
+    },
+    {
+      "x": 80.3,
+      "y": 86.1,
+      "z": 11.8,
+      "name": "SE",
+      "country": "Sweden"
+    },
+    {
+      "x": 78.4,
+      "y": 70.1,
+      "z": 16.6,
+      "name": "ES",
+      "country": "Spain"
+    },
+    {
+      "x": 74.2,
+      "y": 68.5,
+      "z": 14.5,
+      "name": "FR",
+      "country": "France"
+    },
+    {
+      "x": 73.5,
+      "y": 83.1,
+      "z": 10,
+      "name": "NO",
+      "country": "Norway"
+    },
+    {
+      "x": 71,
+      "y": 93.2,
+      "z": 24.7,
+      "name": "UK",
+      "country": "United Kingdom"
+    },
+    {
+      "x": 69.2,
+      "y": 57.6,
+      "z": 10.4,
+      "name": "IT",
+      "country": "Italy"
+    },
+    {
+      "x": 68.6,
+      "y": 20,
+      "z": 16,
+      "name": "RU",
+      "country": "Russia"
+    },
+    {
+      "x": 65.5,
+      "y": 126.4,
+      "z": 35.3,
+      "name": "US",
+      "country": "United States"
+    },
+    {
+      "x": 65.4,
+      "y": 50.8,
+      "z": 28.5,
+      "name": "HU",
+      "country": "Hungary"
+    },
+    {
+      "x": 63.4,
+      "y": 51.8,
+      "z": 15.4,
+      "name": "PT",
+      "country": "Portugal"
+    },
+    {
+      "x": 64,
+      "y": 82.9,
+      "z": 31.3,
+      "name": "NZ",
+      "country": "New Zealand"
+    }
+  ],
   "scale": {
     "x": {
       "nice": true
@@ -119,9 +222,6 @@ const spec: G2Spec = {
       ]
     }
   },
-  "legend": {
-    "size": false
-  },
   "style": {
     "stroke": "#000",
     "fill": "#1890ff"
@@ -135,8 +235,8 @@ const spec: G2Spec = {
 
 const AnnotationLinePointLineChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -144,7 +244,8 @@ const AnnotationLinePointLineChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">L</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

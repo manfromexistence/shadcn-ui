@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/annotation/connector/demo/revenue-flow-waterfall.ts
@@ -92,33 +91,113 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "link",
-  "encode": {
-    "x": "x"
-  },
-  "scale": {},
-  "axis": {
-    "x": {
-      "title": false
+  "data": [
+    {
+      "x": "Start",
+      "value": 23000000,
+      "start": 0,
+      "end": 23000000
     },
-    "y": {
-      "labelFormatter": "~s"
+    {
+      "x": "Jan",
+      "value": 2200000,
+      "start": 23000000,
+      "end": 25200000
+    },
+    {
+      "x": "Feb",
+      "value": -4600000,
+      "start": 25200000,
+      "end": 20600000
+    },
+    {
+      "x": "Mar",
+      "value": -9100000,
+      "start": 20600000,
+      "end": 11500000
+    },
+    {
+      "x": "Apr",
+      "value": 3700000,
+      "start": 11500000,
+      "end": 15200000
+    },
+    {
+      "x": "May",
+      "value": -2100000,
+      "start": 15200000,
+      "end": 13100000
+    },
+    {
+      "x": "Jun",
+      "value": 5300000,
+      "start": 13100000,
+      "end": 18400000
+    },
+    {
+      "x": "Jul",
+      "value": 3100000,
+      "start": 18400000,
+      "end": 21500000
+    },
+    {
+      "x": "Aug",
+      "value": -1500000,
+      "start": 21500000,
+      "end": 20000000
+    },
+    {
+      "x": "Sep",
+      "value": 4200000,
+      "start": 20000000,
+      "end": 24200000
+    },
+    {
+      "x": "Oct",
+      "value": 5300000,
+      "start": 24200000,
+      "end": 29500000
+    },
+    {
+      "x": "Nov",
+      "value": -1500000,
+      "start": 29500000,
+      "end": 28000000
+    },
+    {
+      "x": "Dec",
+      "value": 5100000,
+      "start": 28000000,
+      "end": 33100000
+    },
+    {
+      "x": "End",
+      "isTotal": true,
+      "value": 33100000,
+      "start": 0,
+      "end": 33100000
     }
-  },
+  ],
+  "scale": {},
   "style": {
     "stroke": "#697474"
   },
   "labels": [
     null
-  ]
+  ],
+  "tooltip": false
 };
 
 const AnnotationConnectorRevenueFlowWaterfallChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -126,7 +205,8 @@ const AnnotationConnectorRevenueFlowWaterfallChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">C</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

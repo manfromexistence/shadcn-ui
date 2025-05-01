@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/link/demo/link-annotation.ts
@@ -376,29 +375,41 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+// --- Helper Functions Extracted from Original Example --- 
+const incdomain = (() => {
+  const elements = []
+    .concat(
+      income.map((v) => v.m),
+      income.map((v) => v.f),
+    )
+    .filter((v) => typeof v === 'number');
+
+  return [Math.min(...elements), Math.max(...elements)];
+}
+// --- End Helper Functions --- 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "paddingRight": 20,
   "type": "link",
   "data": [
     1
   ],
-  "encode": {
-    "x": "m",
-    "y": "f",
-    "shape": "hollow"
-  },
   "style": {
     "stroke": "#000"
   },
   "labels": [
     null,
     null
-  ]
+  ],
+  "tooltip": false
 };
 
 const GeneralLinkLinkAnnotationChart: React.FC = () => {
     
+    // Use the spec directly (data might be inline or handled elsewhere)
     const finalSpec: G2Spec = spec;
   
 
@@ -407,7 +418,8 @@ const GeneralLinkLinkAnnotationChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">L</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

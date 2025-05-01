@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/dual/demo/multi-line-sync.ts
@@ -160,28 +159,98 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "type": "getOptions",
-  "encode": {
-    "x": "Month",
-    "y": "Precipitation",
-    "color": "#91CC75",
-    "shape": "smooth"
-  },
+  "type": "line",
+  "data": [
+    {
+      "Month": "Jan",
+      "Evaporation": 2,
+      "Precipitation": 2.6,
+      "Temperature": 2
+    },
+    {
+      "Month": "Feb",
+      "Evaporation": 4.9,
+      "Precipitation": 5.9,
+      "Temperature": 2.2
+    },
+    {
+      "Month": "Mar",
+      "Evaporation": 7,
+      "Precipitation": 9,
+      "Temperature": 3.3
+    },
+    {
+      "Month": "Apr",
+      "Evaporation": 23.2,
+      "Precipitation": 26.4,
+      "Temperature": 4.5
+    },
+    {
+      "Month": "May",
+      "Evaporation": 25.6,
+      "Precipitation": 28.7,
+      "Temperature": 6.3
+    },
+    {
+      "Month": "Jun",
+      "Evaporation": 76.7,
+      "Precipitation": 70.7,
+      "Temperature": 10.2
+    },
+    {
+      "Month": "Jul",
+      "Evaporation": 135.6,
+      "Precipitation": 175.6,
+      "Temperature": 20.3
+    },
+    {
+      "Month": "Aug",
+      "Evaporation": 162.2,
+      "Precipitation": 182.2,
+      "Temperature": 23.4
+    },
+    {
+      "Month": "Sep",
+      "Evaporation": 32.6,
+      "Precipitation": 48.7,
+      "Temperature": 23
+    },
+    {
+      "Month": "Oct",
+      "Evaporation": 20,
+      "Precipitation": 18.8,
+      "Temperature": 16.5
+    },
+    {
+      "Month": "Nov",
+      "Evaporation": 6.4,
+      "Precipitation": 6,
+      "Temperature": 12
+    },
+    {
+      "Month": "Dec",
+      "Evaporation": 3.3,
+      "Precipitation": 2.3,
+      "Temperature": 6.2
+    }
+  ],
   "scale": {
     "y": {
       "independent": true
     }
   },
-  "axis": {},
   "style": {}
 };
 
 const GeneralDualMultiLineSyncChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -189,7 +258,8 @@ const GeneralDualMultiLineSyncChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">D</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

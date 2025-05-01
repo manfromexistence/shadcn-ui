@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/radial/demo/radial-bar-with-background.ts
@@ -81,14 +80,42 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "theme": "dark",
   "type": "interval",
-  "encode": {
-    "x": "type",
-    "y": "value"
-  },
+  "data": [
+    {
+      "type": "1-3秒",
+      "value": 0.16
+    },
+    {
+      "type": "4-10秒",
+      "value": 0.125
+    },
+    {
+      "type": "11-30秒",
+      "value": 0.2
+    },
+    {
+      "type": "1-3分",
+      "value": 0.2
+    },
+    {
+      "type": "3-10分",
+      "value": 0.05
+    },
+    {
+      "type": "10-30分",
+      "value": 0.01
+    },
+    {
+      "type": "30+分",
+      "value": 0.015
+    }
+  ],
   "scale": {
     "color": {
       "range": [
@@ -97,24 +124,27 @@ const spec: G2Spec = {
       ]
     }
   },
+  "axis": false,
+  "legend": false,
   "style": {
     "fill": "#202020",
     "x": "50%",
     "y": "50%"
   },
+  "tooltip": false,
   "coordinate": {
     "type": "radial",
     "innerRadius": 0.35
   },
   "interaction": {
-    "type": "elementHighlight"
+    "elementHighlight": true
   }
 };
 
 const GeneralRadialRadialBarWithBackgroundChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -122,7 +152,8 @@ const GeneralRadialRadialBarWithBackgroundChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">R</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

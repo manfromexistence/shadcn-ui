@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/interval/demo/bar-range-micro.ts
@@ -73,14 +72,31 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
-  "type": "getFullYear",
-  "encode": {
-    "x": "task",
-    "color": "status"
-  },
+  "type": "interval",
+  "data": [
+    {
+      "task": "task0",
+      "startTime": "2023-06-28 03:30:33.900123",
+      "endTime": "2023-06-28 03:30:33.900678",
+      "status": "0"
+    },
+    {
+      "task": "task0",
+      "startTime": "2023-06-28 03:30:33.901123",
+      "endTime": "2023-06-28 03:30:33.902678",
+      "status": "1"
+    }
+  ],
   "scale": {},
+  "tooltip": [
+    null,
+    null
+  ],
   "coordinate": {
     "transform": [
       {
@@ -92,8 +108,8 @@ const spec: G2Spec = {
 
 const GeneralIntervalBarRangeMicroChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -101,7 +117,8 @@ const GeneralIntervalBarRangeMicroChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">I</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

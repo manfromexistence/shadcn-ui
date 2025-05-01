@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/interesting/interesting/demo/25d-column.ts
@@ -113,19 +112,67 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "interval",
-  "encode": {
-    "x": "year",
-    "y": "sales"
-  },
+  "data": [
+    {
+      "year": "1951 年",
+      "sales": 38
+    },
+    {
+      "year": "1952 年",
+      "sales": 52
+    },
+    {
+      "year": "1956 年",
+      "sales": 61
+    },
+    {
+      "year": "1957 年",
+      "sales": 145
+    },
+    {
+      "year": "1958 年",
+      "sales": 48
+    },
+    {
+      "year": "1959 年",
+      "sales": 38
+    },
+    {
+      "year": "1960 年",
+      "sales": 38
+    },
+    {
+      "year": "1962 年",
+      "sales": 38
+    },
+    {
+      "year": "1963 年",
+      "sales": 65
+    },
+    {
+      "year": "1964 年",
+      "sales": 122
+    },
+    {
+      "year": "1967 年",
+      "sales": 132
+    },
+    {
+      "year": "1968 年",
+      "sales": 144
+    }
+  ],
   "scale": {
     "x": {
       "padding": 0.3
     }
   },
-  "legend": {},
   "style": {
     "shape": "column25d"
   }
@@ -133,8 +180,8 @@ const spec: G2Spec = {
 
 const InterestingInteresting25dColumnChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -142,7 +189,8 @@ const InterestingInteresting25dColumnChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">I</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>

@@ -7,7 +7,6 @@ import G2Chart from '../../../g2-wrapper';
 
 
 
-
 /*
   Original G2 Example Code:
   Source: ../../G2/site/examples/general/area/demo/cascade-area.ts
@@ -54,14 +53,15 @@ import G2Chart from '../../../g2-wrapper';
   ================================================================================
 */
 
+
+
 // --- Auto-Generated G2 Spec (Needs Review) ---
+// Note: Functions, complex expressions, and some options might require manual conversion.
 const spec: G2Spec = {
   "type": "area",
-  "encode": {
-    "y": "revenue",
-    "series": "format",
-    "color": "group",
-    "shape": "smooth"
+  "data": {
+    "type": "fetch",
+    "value": "https://gw.alipayobjects.com/os/bmw-prod/f38a8ad0-6e1f-4bb3-894c-7db50781fdec.json"
   },
   "transform": [
     {
@@ -76,23 +76,19 @@ const spec: G2Spec = {
       "y": "y1"
     }
   ],
-  "axis": {
-    "y": {
-      "labelFormatter": "~s"
-    }
-  },
   "style": {
     "stroke": "white"
   },
-  "interaction": {
-    "type": "tooltip"
-  }
+  "tooltip": [
+    null
+  ],
+  "interaction": {}
 };
 
 const GeneralAreaCascadeAreaChart: React.FC = () => {
     
-    const chartData: any[] = [];
-    const finalSpec: G2Spec = { ...spec, data: chartData };
+    // Use the spec directly (data might be inline or handled elsewhere)
+    const finalSpec: G2Spec = spec;
   
 
   return (
@@ -100,7 +96,8 @@ const GeneralAreaCascadeAreaChart: React.FC = () => {
       <h2 className="text-xl font-semibold mb-2">A</h2>
       {/* TODO: Add description if available */}
       {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
+      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
+        {/* Render chart only when spec is ready (especially after fetching data) */}
         {finalSpec && <G2Chart config={finalSpec} />}
       </div>
     </div>
