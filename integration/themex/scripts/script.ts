@@ -1,16 +1,15 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { format } from 'prettier'; // Import prettier for formatting
 
-const g2SiteExamplesDir = path.resolve(__dirname, '../../../G2/site/examples');
-const targetExamplesDir = path.resolve(__dirname, '../src/app/shadcn-themes/visualization/g2-examples');
-const wrapperPath = '../../../g2-wrapper'; // Relative path from generated component to wrapper
+// ... (keep existing imports) ...
 
 interface ExampleInfo {
-  id: string; // e.g., general/interval/bar-dodged
-  componentName: string; // e.g., GeneralIntervalBarDodgedChart
-  filePath: string; // Full path to the new component file
-  originalFilePath: string; // Full path to the original Dumi example file
-  originalDemoDir: string; // Full path to the original demo directory
+  id: string;
+  componentName: string;
+  filePath: string;
+  originalFilePath: string;
+  originalDemoDir: string; // Directory containing the original demo.ts and index.en.md
 }
 
 // Helper function to convert kebab-case/slash-case to PascalCase
@@ -21,18 +20,40 @@ function toPascalCase(str: string): string {
     .join('');
 }
 
-// Function to extract title from frontmatter (simple regex approach)
-async function extractTitleFromMarkdown(dirPath: string): Promise<string | null> {
-    const mdFilePath = path.join(dirPath, '../index.en.md');
+// Function to extract title and description from frontmatter and body
+async function extractFrontmatterData(dirPath: string): Promise<{ title: string | null; description: string | null }> {
+    const mdFilePath = path.join(dirPath, '../index.en.md'); // Assuming English markdown for title/desc
+    let title: string | null = null;
+    let description: string | null = null;
     try {
         const mdContent = await fs.readFile(mdFilePath, 'utf-8');
-        const match = mdContent.match(/^---\s*[\s\S]*?title:\s*(?:['"]?)(.+?)(?:['"]?)\s*[\s\S]*?---/);
-        return match ? match[1].trim() : null;
+        // Extract frontmatter
+        const frontmatterMatch = mdContent.match(/^---\s*([\s\S]*?)\s*---/);
+        if (frontmatterMatch) {
+            const frontmatter = frontmatterMatch[1];
+            const titleMatch = frontmatter.match(/title:\s*(?:['"]?)(.+?)(?:['"]?)\s*(?:\n|$)/);
+            if (titleMatch) {
+                title = titleMatch[1].trim();
+            }
+            // Extract description from the body (content after frontmatter)
+            const bodyContent = mdContent.substring(frontmatterMatch[0].length).trim();
+            // Use the first paragraph as description, or a snippet
+            const firstParagraphMatch = bodyContent.match(/^(.+?)(\n\n|$)/);
+            if (firstParagraphMatch) {
+                description = firstParagraphMatch[1].trim().replace(/`/g, ''); // Remove backticks if any
+            } else if (bodyContent) {
+                description = bodyContent.substring(0, 150).trim() + (bodyContent.length > 150 ? '...' : ''); // Fallback to snippet
+            }
+        } else {
+            // If no frontmatter, maybe use the first line as title? Less reliable.
+            // console.warn(`No frontmatter found in: ${mdFilePath}`);
+        }
     } catch (err) {
-        // console.warn(`Could not read or parse markdown file: ${mdFilePath}`, err);
-        return null;
+        // console.warn(`Could not read or parse markdown file: ${mdFilePath}`);
     }
+    return { title, description };
 }
+
 
 // Function to detect common imports and G2 extensions
 function detectImports(code: string): string[] {
@@ -40,89 +61,58 @@ function detectImports(code: string): string[] {
   const detected = new Set<string>();
 
   if (/\bimport\s+\*\s+as\s+d3\b/.test(code) || /\bd3\./.test(code)) {
-    if (!detected.has('d3')) {
-      imports.push("import * as d3 from 'd3';");
-      detected.add('d3');
-    }
+    if (!detected.has('d3')) { imports.push("import * as d3 from 'd3';"); detected.add('d3'); }
   }
   if (/\bimport\s+_\s+from\s+'lodash'\b/.test(code) || /\b_\./.test(code)) {
-    if (!detected.has('lodash')) {
-      imports.push("import _ from 'lodash';");
-      detected.add('lodash');
-    }
+    if (!detected.has('lodash')) { imports.push("import _ from 'lodash';"); detected.add('lodash'); }
   }
   if (/\bimport\s+\{[^}]*Insight[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
-    if (!detected.has('ava')) {
-      imports.push("import { Insight } from '@antv/g2-extension-ava'; // Might need other exports too");
-      detected.add('ava');
-    }
+    if (!detected.has('ava')) { imports.push("import { Insight } from '@antv/g2-extension-ava'; // Or other exports"); detected.add('ava'); }
   }
   if (/\bimport\s+\{[^}]*Auto[^}]*\}\s+from\s+'@antv\/g2-extension-ava'/.test(code)) {
-    if (!detected.has('ava')) {
-      imports.push("import { Auto } from '@antv/g2-extension-ava'; // Might need other exports too");
-      detected.add('ava');
-    }
+    if (!detected.has('ava')) { imports.push("import { Auto } from '@antv/g2-extension-ava'; // Or other exports"); detected.add('ava'); }
   }
-  if (/\bimport\s+\{[^}]*Plugin[^}]*\}\s+from\s+'@antv\/g-plugin-a11y'/.test(code)) {
-    if (!detected.has('a11y')) {
-      imports.push("import { Plugin as A11yPlugin } from '@antv/g-plugin-a11y'; // Renamed to avoid conflict");
-      detected.add('a11y');
-    }
+  // Corrected A11yPlugin import detection and addition
+  if (/\bimport\s+\{[^}]*Plugin[^}]*\}\s+from\s+'@antv\/g-plugin-a11y'/.test(code) || /new\s+Plugin\(/.test(code)) {
+    if (!detected.has('a11y')) { imports.push("import { Plugin as A11yPlugin } from '@antv/g-plugin-a11y';"); detected.add('a11y'); }
   }
-  
   // Detect animation/keyframe related imports
   if (/\btimingKeyframe\b/.test(code) || /\bstaggeredKeyframe\b/.test(code)) {
-    if (!detected.has('g2-animations')) {
-      imports.push("// Chart animation detected - G2 animation API will be used");
-      detected.add('g2-animations');
-    }
+     if (!detected.has('g2-animations')) { imports.push("// Animation functions like timingKeyframe might need direct G2 import or definition"); detected.add('g2-animations'); }
   }
-  
   // Add more common libraries or G2 extensions if needed
   return imports;
 }
 
-// Detect if the code contains generator functions, algorithms or animations
+// Placeholder for detectComplexLogic - Implement based on actual requirements
+// Add rawDataDeclaration to the return type details
 function detectComplexLogic(code: string): {
-    hasGenerators: boolean;
-    hasAlgorithms: boolean; 
-    hasAnimations: boolean;
-    hasTimingKeyframe: boolean;
-    algorithmCode: string | null;
-    dataTransformCode: string | null;
-} {
-    const result = {
-        hasGenerators: /function\s*\*/.test(code),
-        hasAlgorithms: /function\s*\*|sort|cluster|layout|force|tree|graph|hierarchy|pack|partition|treemap|interpolate|regression|kernel|density|bin|quantile|threshold|geoPath|geoGraticule|geoCircle|geoDistance|geoContains|geoCentroid|geoBounds|geoArea|geoLength|voronoi|delaunay|convexHull|polygonContains|polygonArea|polygonCentroid|polygonHull|polygonLength|path/.test(code),
-        hasAnimations: /\.animate\(/.test(code) || /keyframe/.test(code),
-        hasTimingKeyframe: /timingKeyframe\(/.test(code),
-        algorithmCode: null as string | null,
-        dataTransformCode: null as string | null
+    isComplex: boolean;
+    details: {
+        hasAnimation: boolean;
+        hasAlgorithm: boolean;
+        algorithmCode: string | null;
+        rawDataDeclaration: string | null; // Added property
+        keyframeDeclaration: string | null;
+        animationLoop: string | null;
     };
-    
-    // Try to extract generator function if exists
-    const generatorMatch = code.match(/function\s*\*\s*([a-zA-Z0-9_]+)\s*\([^)]*\)\s*\{([\s\S]*?)\}/);
-    if (generatorMatch) {
-        // Basic brace balancing check
-        const funcBody = generatorMatch[2];
-        const openBraces = (funcBody.match(/\{/g) || []).length;
-        const closeBraces = (funcBody.match(/\}/g) || []).length;
-        if (openBraces === closeBraces) {
-            result.algorithmCode = `function* ${generatorMatch[1]}${generatorMatch[0].substring(generatorMatch[0].indexOf('('))}`;
-        } else {
-            console.warn(`Algorithm extraction produced unbalanced braces for ${generatorMatch[1]}. Code might be incomplete.`);
-            result.algorithmCode = `/* TODO: Review extracted algorithm with unbalanced braces:\nfunction* ${generatorMatch[1]}${generatorMatch[0].substring(generatorMatch[0].indexOf('('))}\n*/`;
-        }
-    }
-    
-    // Try to extract common data transformation patterns (map, filter, reduce)
-    // This is very basic and might miss complex transformations
-    const dataTransformMatch = code.match(/(?:const|let|var)\s+([a-zA-Z0-9_]+)\s*=\s*([^;]*?(\.map\(|\.filter\(|\.reduce\()[^;]*)/);
-    if (dataTransformMatch) {
-        result.dataTransformCode = `// Potential data transformation detected:\nconst ${dataTransformMatch[1]} = ${dataTransformMatch[2]};`;
-    }
-    
-    return result;
+} {
+    const hasAnimation = /\.animate\(/.test(code) || /keyframe/.test(code);
+    const hasAlgorithm = /function\s*\*/.test(code) || /yield/.test(code) || /requestAnimationFrame/.test(code);
+    const isComplex = hasAnimation || hasAlgorithm;
+    const rawDataDecl = extractRawDataDeclaration(code); // Extract data declaration here
+
+    return {
+        isComplex,
+        details: {
+            hasAnimation,
+            hasAlgorithm,
+            algorithmCode: null, // Placeholder
+            rawDataDeclaration: rawDataDecl, // Assign extracted data
+            keyframeDeclaration: null, // Placeholder
+            animationLoop: null, // Placeholder
+        },
+    };
 }
 
 // Extract raw data declaration if there is one
@@ -140,7 +130,8 @@ function extractRawDataDeclaration(code: string): string | null {
 function extractHelperFunctions(code: string): { name: string; code: string }[] {
     const functions: { name: string; code: string }[] = [];
     // Match `function funcName(...) { ... }` or `const funcName = (...) => { ... }` or `const funcName = function(...) { ... }`
-    const funcRegex = /(?:function\s+([a-zA-Z0-9_]+)\s*\([^)]*\)\s*\{[\s\S]*?\}|const\s+([a-zA-Z0-9_]+)\s*=\s*(?:\([^)]*\)\s*=>\s*\{[\s\S]*?\}|\(?function\)?\s*\([^)]*\)\s*\{[\s\S]*?\}));?/g;
+    // Improved regex to better capture arrow functions and handle spacing
+    const funcRegex = /(?:function\s+([a-zA-Z0-9_$]+)\s*\([^)]*\)\s*\{[\s\S]*?\}|const\s+([a-zA-Z0-9_$]+)\s*=\s*(?:\(?\s*\([^)]*\)\s*\)?\s*=>\s*\{[\s\S]*?\}|\(?function\)?\s*\([^)]*\)\s*\{[\s\S]*?\}));?/g;
     let match;
     while ((match = funcRegex.exec(code)) !== null) {
         const funcCode = match[0];
@@ -152,7 +143,7 @@ function extractHelperFunctions(code: string): { name: string; code: string }[] 
 
         if (funcName && openBraces === closeBraces && openBraces > 0) {
             // Avoid extracting the main chart rendering logic if it's wrapped in a function
-            if (!funcCode.includes('new Chart') && !funcCode.includes('.render()')) {
+            if (!funcCode.includes('new Chart') && !funcCode.includes('.render()') && !funcCode.includes('chart\.options')) {
                  functions.push({ name: funcName, code: funcCode });
             }
         } else if (funcName) {
@@ -162,36 +153,49 @@ function extractHelperFunctions(code: string): { name: string; code: string }[] 
     return functions;
 }
 
+// ... (keep extractAnimationCode) ...
 
-// Extract animation-related code sections
-function extractAnimationCode(code: string): {
-  hasAnimation: boolean;
-  keyframeDeclaration: string | null;
-  animationLoop: string | null;
-} {
-  const result = {
-    hasAnimation: /\.animate\(/.test(code) || /keyframe/.test(code),
-    keyframeDeclaration: null as string | null,
-    animationLoop: null as string | null,
-  };
-
-  // Get keyframe declaration (e.g., chart.timingKeyframe())
-  const keyframeMatch = code.match(/(?:const|let|var)\s+([a-zA-Z0-9_]+)\s*=\s*chart\.timingKeyframe\(\);?/);
-  if (keyframeMatch) {
-    result.keyframeDeclaration = keyframeMatch[0];
-  }
-
-  // Get animation loop (e.g., for (const frame of ...)) - very basic
-  const animLoopMatch = code.match(/for\s*\(\s*(?:const|let)\s+frame\s+of\s+[^)]*\)\s*\{[\s\S]*?\}/);
-  if (animLoopMatch) {
-    result.animationLoop = animLoopMatch[0];
-  }
-
-  return result;
+// Function to attempt parsing a string as JSON or return a placeholder
+function tryParseJson(jsonString: string, context: string): any {
+    try {
+        // Handle potential trailing commas before parsing
+        const cleanedString = jsonString.replace(/,\s*([\]}])/g, '$1');
+        return JSON.parse(cleanedString);
+    } catch (e) {
+        // If parsing fails, return a placeholder object indicating manual conversion is needed
+        return { comment: `/* TODO: Manually convert ${context} options (JSON parse failed): ${jsonString} */` };
+    }
 }
 
+// Function to convert simple JS object/array string to JSON-like string
+// Handles simple cases, may fail on complex structures or functions
+function jsToJsonLike(jsString: string): string {
+    // Add quotes around keys, handle single quotes, remove trailing commas
+    return jsString
+        .replace(/'/g, '"') // Replace single quotes with double quotes
+        .replace(/([a-zA-Z0-9_$]+)\s*:/g, '"$1":') // Add quotes around keys
+        .replace(/,\s*([\]}])/g, '$1'); // Remove trailing commas
+}
+
+// Function to represent functions/variables found in spec options
+function handleFunctionOrVariable(valueStr: string, helperFunctionNames: Set<string>): string {
+    valueStr = valueStr.trim();
+    // Check if it's a known helper function name
+    if (helperFunctionNames.has(valueStr)) {
+        return `%%HELPER_FUNCTION:${valueStr}%%`; // Placeholder for helper function
+    }
+    // Check if it looks like an inline function (arrow or traditional)
+    if ((valueStr.startsWith('(') && valueStr.includes('=>')) || valueStr.startsWith('function')) {
+        return `%%FUNCTION:${valueStr}%%`; // Placeholder for inline function
+    }
+    // Assume it's a variable or constant - keep as is for now, might need manual check
+    // Could add a placeholder like %%VARIABLE:valueStr%% if needed
+    return valueStr;
+}
+
+
 // Basic parser for G2 imperative code (using Regex - limited capability)
-// Tries to convert imperative calls to a declarative G2Spec object
+// Update return type to match detectComplexLogic details type
 function parseG2Code(code: string): {
     spec: Record<string, any>;
     needsFetching: boolean;
@@ -203,18 +207,19 @@ function parseG2Code(code: string): {
         hasAnimation: boolean;
         hasAlgorithm: boolean;
         algorithmCode: string | null;
-        rawDataDeclaration: string | null;
+        rawDataDeclaration: string | null; // Ensure property exists here
         keyframeDeclaration: string | null;
         animationLoop: string | null;
     };
 } {
-    const complexLogic = detectComplexLogic(code);
+    // Get isComplex and complexDetails (including rawDataDeclaration) from detectComplexLogic
+    const { isComplex, details: complexDetails } = detectComplexLogic(code);
     const spec: Record<string, any> = {};
     let data: any = null;
     let needsFetching = false;
     let fetchUrl = null;
     let chartType: string | null = null;
-    const encodes: Record<string, any> = {}; // Allow arrays for channels like y
+    const encodes: Record<string, any> = {};
     const transforms: any[] = [];
     const scales: Record<string, any> = {};
     const axes: Record<string, any> = {};
@@ -223,42 +228,18 @@ function parseG2Code(code: string): {
     const labels: any[] = []; // G2 v5 uses array for labels
     const tooltips: any[] = []; // G2 v5 uses array for tooltips
     let coordinate: any = null;
-    const interactions: Record<string, any> = {}; // Store multiple interactions
-    let plugins: any[] = []; // Store plugins
+    const interactions: Record<string, any> = {};
+    let plugins: any[] = [];
 
-    // Extract helper functions first
+    // Extract helper functions and raw data declaration first
     const helperFunctions = extractHelperFunctions(code);
-
-    // Check for complex animations, algorithms, etc.
-    const isAnimationExample = complexLogic.hasAnimations;
-    const hasKeyframe = complexLogic.hasTimingKeyframe;
-    const isAlgorithm = complexLogic.hasGenerators || complexLogic.hasAlgorithms; // Broaden definition
-
-    // Extract raw data if any
-    const rawDataDecl = extractRawDataDeclaration(code);
-
-    // Extract any algorithms (generator functions)
-    const algorithmCode = complexLogic.algorithmCode; // Use the one from detectComplexLogic
-
-    // Extract animation code
-    const animationDetails = extractAnimationCode(code);
-
-    const isComplex = isAnimationExample || isAlgorithm || hasKeyframe;
-
-    const complexDetails = {
-        hasAnimation: isAnimationExample,
-        hasAlgorithm: isAlgorithm,
-        algorithmCode: algorithmCode,
-        rawDataDeclaration: rawDataDecl,
-        keyframeDeclaration: animationDetails.keyframeDeclaration,
-        animationLoop: animationDetails.animationLoop,
-    };
+    const helperFunctionNames = new Set(helperFunctions.map(f => f.name));
+    // rawDataDecl is now part of complexDetails from detectComplexLogic
 
     // --- Chart Initialization ---
     const chartInitMatch = code.match(/new Chart\(\s*(\{[\s\S]*?\})\s*\)/);
     if (chartInitMatch) {
         const optionsStrRaw = chartInitMatch[1];
-        // Attempt to parse basic options, focusing on width, height, plugins
         try {
             // Extract width/height directly if possible
             const widthMatch = optionsStrRaw.match(/width:\s*(\d+)/);
@@ -266,13 +247,21 @@ function parseG2Code(code: string): {
             const heightMatch = optionsStrRaw.match(/height:\s*(\d+)/);
             if (heightMatch) spec.height = parseInt(heightMatch[1], 10);
 
-            // Extract plugins (very basic, assumes simple array)
+            // Extract plugins (very basic, assumes simple array of `new Plugin(...)`)
             const pluginsMatch = optionsStrRaw.match(/plugins:\s*(\[.*?\])/);
             if (pluginsMatch) {
-                plugins.push({ comment: `/* TODO: Manually convert plugins from Chart constructor: ${pluginsMatch[1]} */` });
+                // Try to identify known plugins like A11yPlugin
+                if (pluginsMatch[1].includes('new Plugin')) { // Assuming 'Plugin' is the A11yPlugin
+                     plugins.push({ type: 'A11yPlugin', optionsComment: `/* TODO: Verify A11yPlugin options from Chart constructor: ${pluginsMatch[1]} */` });
+                } else {
+                    plugins.push({ comment: `/* TODO: Manually convert plugins from Chart constructor: ${pluginsMatch[1]} */` });
+                }
             }
-            // Add comment for other options
-            spec.chartOptionsComment = `/* TODO: Review Chart constructor options: ${optionsStrRaw} */`;
+            // Add comment for other options if they exist beyond width/height/plugins
+            const otherOptions = optionsStrRaw.replace(/width:\s*\d+,?/, '').replace(/height:\s*\d+,?/, '').replace(/plugins:\s*\[.*?\]/, '').replace(/,\s*,/g, ',').replace(/^\s*,|,\s*$/g, '').trim();
+            if (otherOptions && otherOptions !== '{' && otherOptions !== '}') {
+                spec.chartOptionsComment = `/* TODO: Review other Chart constructor options: ${otherOptions} */`;
+            }
 
         } catch (e) {
             spec.chartOptionsComment = `/* TODO: Manually convert Chart constructor options (parse failed): ${optionsStrRaw} */`;
@@ -280,18 +269,14 @@ function parseG2Code(code: string): {
     }
 
     // --- Chart Type (Mark) ---
-    // Look for the first mark type call (interval, line, point, etc.)
-    // Improved regex to handle potential options object: .interval({...})
     const markMatch = code.match(/\.(interval|line|point|cell|area|path|polygon|image|link|vector|rect|text|box|shape|density|heatmap|liquid|wordCloud)\s*\(/);
     if (markMatch) {
         chartType = markMatch[1];
-        spec.type = chartType; // Set top-level type for simple charts
+        spec.type = chartType;
     } else {
-        // Check for chart.options({ type: '...', children: [...] }) structure
         const optionsTypeMatch = code.match(/chart\.options\(\s*(\{[\s\S]*?type:\s*['"]([^'"]+)['"][\s\S]*?\})\s*\)/);
         if (optionsTypeMatch) {
-            spec.type = optionsTypeMatch[2]; // e.g., spaceLayer, facetRect
-            // Check for children specifically
+            spec.type = optionsTypeMatch[2];
             const childrenMatch = optionsTypeMatch[1].match(/children:\s*(\[[\s\S]*?\])/);
             if (childrenMatch) {
                 spec.childrenComment = `/* TODO: Manually convert children array from chart.options(): ${childrenMatch[1]} */`;
@@ -304,19 +289,18 @@ function parseG2Code(code: string): {
     }
 
     // --- Data ---
+    // Use complexDetails.rawDataDeclaration if needed, or parse data calls
     const dataFetchMatch = code.match(/\.data\(\s*\{\s*type:\s*['"]fetch['"],\s*value:\s*['"]([^'"]+)['"]\s*\}\s*\)/);
-    const dataInlineMatch = code.match(/\.data\(\s*(\[[\s\S]*?\]|\{[\s\S]*?\})\s*\)/); // Match inline array or object data
-    const dataDirectMatch = code.match(/chart\.data\(([^)]+)\)/); // Match direct variable or value
+    const dataInlineMatch = code.match(/\.data\(\s*(\[[\s\S]*?\]|\{[\s\S]*?\})\s*\)/);
+    const dataDirectMatch = code.match(/chart\.data\(([^)]+)\)/);
 
     if (dataFetchMatch) {
         needsFetching = true;
         fetchUrl = dataFetchMatch[1];
-        spec.data = { type: 'fetch', value: fetchUrl }; // Add to spec directly
+        spec.data = { type: 'fetch', value: fetchUrl };
     } else if (dataInlineMatch) {
         const dataStrRaw = dataInlineMatch[1];
         try {
-            // Attempt to parse inline data - very fragile, use Function constructor for safety
-            // This is safer than eval but still has limitations.
             data = new Function(`return ${dataStrRaw}`)();
             spec.data = data;
         } catch (e) {
@@ -325,36 +309,30 @@ function parseG2Code(code: string): {
         }
     } else if (dataDirectMatch) {
          const dataArg = dataDirectMatch[1].trim();
-         // Check if it's a number (e.g., for liquid chart)
          if (!isNaN(parseFloat(dataArg)) && isFinite(Number(dataArg))) {
              spec.data = parseFloat(dataArg);
              data = spec.data;
-         } else if (/^['"].*['"]$/.test(dataArg)) { // Check if it's a string literal (e.g., URL)
+         } else if (/^['"].*['"]$/.test(dataArg)) {
              const url = dataArg.slice(1, -1);
-             // Assume it might be a fetch URL if it looks like one
              if (url.startsWith('http') || url.endsWith('.json') || url.endsWith('.csv')) {
                  needsFetching = true;
                  fetchUrl = url;
                  spec.data = { type: 'fetch', value: fetchUrl };
              } else {
-                 // Treat as simple string data if not URL-like
                  spec.data = url;
                  data = url;
              }
          } else {
-             // Assume it's a variable name
              spec.dataComment = `/* TODO: Data assigned from variable: ${dataArg}. Ensure this variable is defined or data is fetched/provided. */`;
-             data = `/* ${dataArg} */`; // Placeholder
-             // If we extracted a raw data declaration with this name, use it
-             if (rawDataDecl && new RegExp(`(?:const|let|var)\\s+${dataArg}\\s*=`).test(rawDataDecl)) {
-                 spec.dataComment += ` Potential source found: ${rawDataDecl}`;
-                 // Try parsing the extracted raw data
+             data = `/* ${dataArg} */`;
+             if (complexDetails.rawDataDeclaration && new RegExp(`(?:const|let|var)\\s+${dataArg}\\s*=`).test(complexDetails.rawDataDeclaration)) {
+                 spec.dataComment += ` Potential source found: ${complexDetails.rawDataDeclaration}`;
                  try {
-                     const rawDataMatch = rawDataDecl.match(/=\s*(\[[\s\S]*?\]|{[^}]*});?/);
+                     const rawDataMatch = complexDetails.rawDataDeclaration.match(/=\s*(\[[\s\S]*?\]|{[^}]*});?/);
                      if (rawDataMatch) {
                          data = new Function(`return ${rawDataMatch[1]}`)();
-                         spec.data = data; // Use parsed raw data
-                         delete spec.dataComment; // Remove TODO if successful
+                         spec.data = data;
+                         delete spec.dataComment;
                      }
                  } catch (e) {
                      spec.dataComment += ` (Parsing raw data failed)`;
@@ -362,10 +340,9 @@ function parseG2Code(code: string): {
              }
          }
     } else {
-        // Check if data was defined in chart.options()
         const optionsDataMatch = code.match(/chart\.options\(\s*(\{[\s\S]*?data:\s*([\s\S]*?)[\s\S]*?\})\s*\)/);
         if (optionsDataMatch) {
-            const dataStrRaw = optionsDataMatch[2].split(/,(?!\s*[\w]+:)/)[0].trim(); // Try to get data part
+            const dataStrRaw = optionsDataMatch[2].split(/,(?!\s*[\w]+:)/)[0].trim();
              spec.dataComment = `/* TODO: Data defined within chart.options(). Review and convert: ${dataStrRaw} */`;
              data = `/* options.data: ${dataStrRaw} */`;
         } else {
@@ -374,39 +351,47 @@ function parseG2Code(code: string): {
     }
 
     // --- Encodings ---
-    // Match .encode('channel', value) or .encode({ channel: value, ... })
     const encodeMatches = code.matchAll(/\.encode\(([^)]+)\)/g);
     for (const match of encodeMatches) {
         const argsStr = match[1].trim();
-        if (argsStr.startsWith('{')) { // Object syntax: .encode({ x: '...', y: '...' })
+        if (argsStr.startsWith('{')) {
             try {
-                // Very basic parsing, might fail on functions/complex values
-                const objStr = argsStr.replace(/([a-zA-Z0-9_]+):/g, '"$1":').replace(/'/g, '"');
-                const parsedEncodes = JSON.parse(objStr);
-                Object.assign(encodes, parsedEncodes);
+                // More robust parsing attempt for object syntax
+                const objStr = jsToJsonLike(argsStr);
+                const parsedEncodes = tryParseJson(objStr, 'encode');
+                if (parsedEncodes.comment) {
+                    encodes.comment = parsedEncodes.comment; // Propagate parse error
+                } else {
+                    Object.assign(encodes, parsedEncodes);
+                }
             } catch (e) {
-                encodes.comment = `/* TODO: Manually convert encode object: ${argsStr} */`;
-             }
-         } else { // Argument syntax: .encode('channel', value)
-             const parts = argsStr.split(/,([\s\S]*)/); // Split only on the first comma, match any char including newline
-             if (parts.length === 2) {
-                 const channel = parts[0].trim().replace(/['"]/g, '');
-                let value = parts[1].trim();
-                // Remove quotes if it's a simple string field name
+                encodes.comment = `/* TODO: Manually convert encode object (complex structure?): ${argsStr} */`;
+            }
+        } else {
+            // Split by the first comma only
+            const commaIndex = argsStr.indexOf(',');
+            if (commaIndex !== -1) {
+                const channel = argsStr.substring(0, commaIndex).trim().replace(/['"]/g, '');
+                let value = argsStr.substring(commaIndex + 1).trim();
                 if ((value.startsWith("'") && value.endsWith("'")) || (value.startsWith('"') && value.endsWith('"'))) {
                     value = value.slice(1, -1);
                 } else if (value.startsWith('[') && value.endsWith(']')) {
-                    // Handle array values like ['start', 'end']
                     try {
-                        value = JSON.parse(value.replace(/'/g, '"'));
+                        // Handle array values like ['start', 'end']
+                        const arrStr = value.replace(/'/g, '"');
+                        value = JSON.parse(arrStr);
                     } catch (e) {
                          value = `/* TODO: Convert encode array: ${value} */`;
                     }
                 } else {
-                    // It might be a function, variable, or complex expression
-                    value = `/* TODO: Convert encode function/expression: ${value} */`;
+                    // Handle potential functions or variables
+                    value = handleFunctionOrVariable(value, helperFunctionNames);
                 }
                 encodes[channel] = value;
+            } else {
+                 // Handle case with only one argument (e.g., .encode('x')) - less common
+                 const channel = argsStr.replace(/['"]/g, '');
+                 encodes[channel] = undefined; // Or handle as needed
             }
         }
     }
@@ -419,11 +404,11 @@ function parseG2Code(code: string): {
      for (const match of transformMatches) {
          const transformStrRaw = match[1];
          try {
-             // Basic parsing attempt - will fail on functions
-             const transformStr = transformStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
-             transforms.push(JSON.parse(transformStr));
+             const transformStr = jsToJsonLike(transformStrRaw);
+             const parsedTransform = tryParseJson(transformStr, 'transform');
+             transforms.push(parsedTransform);
          } catch (e) {
-             transforms.push({ type: "/* PARSE_ERROR */", comment: `/* TODO: Manually convert transform options: ${transformStrRaw} */` });
+             transforms.push({ type: "/* PARSE_ERROR */", comment: `/* TODO: Manually convert transform options (complex structure?): ${transformStrRaw} */` });
          }
      }
      if (transforms.length > 0) {
@@ -436,11 +421,17 @@ function parseG2Code(code: string): {
          const channel = match[1];
          const scaleStrRaw = match[2];
          try {
-             // Basic parsing attempt
-             const scaleStr = scaleStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
-             scales[channel] = JSON.parse(scaleStr);
+             const scaleStr = jsToJsonLike(scaleStrRaw);
+             const parsedScale = tryParseJson(scaleStr, `scale.${channel}`);
+             // Check for functions within the parsed scale options
+             for (const key in parsedScale) {
+                 if (typeof parsedScale[key] === 'string') {
+                     parsedScale[key] = handleFunctionOrVariable(parsedScale[key], helperFunctionNames);
+                 }
+             }
+             scales[channel] = parsedScale;
          } catch (e) {
-             scales[channel] = { comment: `/* TODO: Manually convert scale options (may contain functions): ${scaleStrRaw} */` };
+             scales[channel] = { comment: `/* TODO: Manually convert scale options (complex structure?): ${scaleStrRaw} */` };
          }
      }
       if (Object.keys(scales).length > 0) {
@@ -448,66 +439,123 @@ function parseG2Code(code: string): {
      }
 
      // --- Axes ---
-     // Match .axis('channel', options) or .axis(false) or .axis({ channel: options, ... })
      const axisMatches = code.matchAll(/\.axis\(([^)]+)\)/g);
      for (const match of axisMatches) {
          const argsStr = match[1].trim();
          if (argsStr === 'false') {
-             spec.axis = false; // Disable all axes
-             break; // Stop processing further axis calls if all are disabled
-         } else if (argsStr.startsWith('{')) { // Object syntax: .axis({ x: {...}, y: false })
+             spec.axis = false;
+             break;
+         } else if (argsStr.startsWith('{')) {
              try {
-                 // Basic parsing, functions will cause issues
-                 const objStr = argsStr.replace(/([a-zA-Z0-9_]+):/g, '"$1":').replace(/'/g, '"');
-                 const parsedAxes = JSON.parse(objStr);
-                 Object.assign(axes, parsedAxes); // Merge into existing axes object
+                 const objStr = jsToJsonLike(argsStr);
+                 const parsedAxes = tryParseJson(objStr, 'axis object');
+                 // Check for functions within parsed axes
+                 for (const channel in parsedAxes) {
+                     if (typeof parsedAxes[channel] === 'object' && parsedAxes[channel] !== null) {
+                         for (const key in parsedAxes[channel]) {
+                             if (typeof parsedAxes[channel][key] === 'string') {
+                                 parsedAxes[channel][key] = handleFunctionOrVariable(parsedAxes[channel][key], helperFunctionNames);
+                             }
+                         }
+                     }
+                 }
+                 Object.assign(axes, parsedAxes);
              } catch (e) {
-                 axes.comment = `/* TODO: Manually convert axis object: ${argsStr} */`;
+                 axes.comment = `/* TODO: Manually convert axis object (complex structure?): ${argsStr} */`;
              }
-         } else { // Argument syntax: .axis('channel', options | false)
-             const parts = argsStr.split(/,([\s\S]*)/);
-             if (parts.length === 2) {
-                 const channel = parts[0].trim().replace(/['"]/g, '');
-                 const optionsStrRaw = parts[1].trim();
+         } else {
+             // Split by the first comma only
+             const commaIndex = argsStr.indexOf(',');
+             if (commaIndex !== -1) {
+                 const channel = argsStr.substring(0, commaIndex).trim().replace(/['"]/g, '');
+                 const optionsStrRaw = argsStr.substring(commaIndex + 1).trim();
                  if (optionsStrRaw === 'false') {
                      axes[channel] = false;
                  } else if (optionsStrRaw.startsWith('{')) {
                      try {
-                         const axisStr = optionsStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
-                         axes[channel] = JSON.parse(axisStr);
+                         const axisStr = jsToJsonLike(optionsStrRaw);
+                         const parsedAxis = tryParseJson(axisStr, `axis.${channel}`);
+                         // Check for functions within parsed axis options
+                         for (const key in parsedAxis) {
+                             if (typeof parsedAxis[key] === 'string') {
+                                 parsedAxis[key] = handleFunctionOrVariable(parsedAxis[key], helperFunctionNames);
+                             }
+                         }
+                         axes[channel] = parsedAxis;
                      } catch (e) {
-                         axes[channel] = { comment: `/* TODO: Manually convert axis options (may contain functions): ${optionsStrRaw} */` };
+                         axes[channel] = { comment: `/* TODO: Manually convert axis options (complex structure?): ${optionsStrRaw} */` };
                      }
                  } else {
-                      axes[channel] = { comment: `/* TODO: Unknown axis options format: ${optionsStrRaw} */` };
+                      // Handle potential function/variable for the whole axis config
+                      axes[channel] = handleFunctionOrVariable(optionsStrRaw, helperFunctionNames);
+                 }
+             } else {
+                 // Handle axis(false) or axis('channel') cases if needed
+                 if (argsStr.replace(/['"]/g, '') !== 'false') {
+                     axes[argsStr.replace(/['"]/g, '')] = true; // Default to true if only channel specified
                  }
              }
          }
      }
      if (Object.keys(axes).length > 0 || spec.axis === false) {
-         if (spec.axis !== false) spec.axis = axes; // Assign object only if not globally false
+         if (spec.axis !== false) spec.axis = axes;
      }
 
 
      // --- Legends ---
-     // Match .legend('channel', options) or .legend(false) or .legend({ channel: options, ... })
      const legendMatches = code.matchAll(/\.legend\(([^)]+)\)/g);
      for (const match of legendMatches) {
          const argsStr = match[1].trim();
          if (argsStr === 'false') {
-             spec.legend = false; // Disable all legends
+             spec.legend = false;
              break;
-         } else if (argsStr.startsWith('{')) { // Object syntax
-             legends.comment = `/* TODO: Manually convert legend object: ${argsStr} */`; // Always add comment due to potential functions
-         } else { // Argument syntax
-             const parts = argsStr.split(/,([\s\S]*)/);
-             if (parts.length === 2) {
-                 const channel = parts[0].trim().replace(/['"]/g, '');
-                 const optionsStrRaw = parts[1].trim();
+         } else if (argsStr.startsWith('{')) {
+             try {
+                 const objStr = jsToJsonLike(argsStr);
+                 const parsedLegends = tryParseJson(objStr, 'legend object');
+                 // Check for functions
+                 for (const channel in parsedLegends) {
+                     if (typeof parsedLegends[channel] === 'object' && parsedLegends[channel] !== null) {
+                         for (const key in parsedLegends[channel]) {
+                             if (typeof parsedLegends[channel][key] === 'string') {
+                                 parsedLegends[channel][key] = handleFunctionOrVariable(parsedLegends[channel][key], helperFunctionNames);
+                             }
+                         }
+                     }
+                 }
+                 Object.assign(legends, parsedLegends);
+             } catch (e) {
+                 legends.comment = `/* TODO: Manually convert legend object (complex structure?): ${argsStr} */`;
+             }
+         } else {
+             // Split by the first comma only
+             const commaIndex = argsStr.indexOf(',');
+             if (commaIndex !== -1) {
+                 const channel = argsStr.substring(0, commaIndex).trim().replace(/['"]/g, '');
+                 const optionsStrRaw = argsStr.substring(commaIndex + 1).trim();
                  if (optionsStrRaw === 'false') {
                      legends[channel] = false;
+                 } else if (optionsStrRaw.startsWith('{')) {
+                     try {
+                         const legendStr = jsToJsonLike(optionsStrRaw);
+                         const parsedLegend = tryParseJson(legendStr, `legend.${channel}`);
+                         // Check for functions
+                         for (const key in parsedLegend) {
+                             if (typeof parsedLegend[key] === 'string') {
+                                 parsedLegend[key] = handleFunctionOrVariable(parsedLegend[key], helperFunctionNames);
+                             }
+                         }
+                         legends[channel] = parsedLegend;
+                     } catch (e) {
+                         legends[channel] = { comment: `/* TODO: Manually convert legend options (complex structure?): ${optionsStrRaw} */` };
+                     }
                  } else {
-                     legends[channel] = { comment: `/* TODO: Manually convert legend options (may contain functions): ${optionsStrRaw} */` };
+                     legends[channel] = handleFunctionOrVariable(optionsStrRaw, helperFunctionNames);
+                 }
+             } else {
+                 // Handle legend(false) or legend('channel') cases if needed
+                 if (argsStr.replace(/['"]/g, '') !== 'false') {
+                     legends[argsStr.replace(/['"]/g, '')] = true; // Default to true if only channel specified
                  }
              }
          }
@@ -516,24 +564,36 @@ function parseG2Code(code: string): {
          if (spec.legend !== false) spec.legend = legends;
      }
 
-     // --- Styles --- (Less common in declarative spec, often part of encode/mark)
+     // --- Styles --- (Less common, often part of encode/mark)
       const styleMatches = code.matchAll(/\.style\(\s*(\{[\s\S]*?\}|['"]([^'"]+)['"],\s*([^)]+))\s*\)/g);
       for (const match of styleMatches) {
-          if (match[1].startsWith('{')) { // Object syntax .style({...})
-              styles.objectComment = `/* TODO: Manually convert style object: ${match[1]} */`;
-          } else { // Argument syntax .style('key', value)
+          if (match[1].startsWith('{')) {
+              try {
+                  const objStr = jsToJsonLike(match[1]);
+                  const parsedStyles = tryParseJson(objStr, 'style object');
+                  // Check for functions
+                  for (const key in parsedStyles) {
+                      if (typeof parsedStyles[key] === 'string') {
+                          parsedStyles[key] = handleFunctionOrVariable(parsedStyles[key], helperFunctionNames);
+                      }
+                  }
+                  Object.assign(styles, parsedStyles);
+              } catch (e) {
+                  styles.objectComment = `/* TODO: Manually convert style object (complex structure?): ${match[1]} */`;
+              }
+          } else {
               const key = match[2];
               let value = match[3].trim();
               if (value.startsWith("'") && value.endsWith("'") || value.startsWith('"') && value.endsWith('"')) {
                   value = value.slice(1, -1);
               } else {
-                   value = `/* TODO: Convert style value/expression: ${value} */`;
+                   value = handleFunctionOrVariable(value, helperFunctionNames);
               }
               styles[key] = value;
           }
       }
       if (Object.keys(styles).length > 0) {
-         spec.style = styles; // Add styles, but might need manual integration into marks/encodes
+         spec.style = styles;
          spec.styleComment = `/* TODO: Review '.style()' calls. Styles might need to be applied to specific marks or encodes in declarative spec. */`;
       }
 
@@ -541,15 +601,25 @@ function parseG2Code(code: string): {
       const labelMatches = code.matchAll(/\.label\(\s*(\{[\s\S]*?\})\s*\)/g);
       for (const match of labelMatches) {
           const labelStrRaw = match[1];
-          // Labels often contain functions, always add comment.
-          labels.push({ comment: `/* TODO: Manually convert label options (may contain functions): ${labelStrRaw} */` });
+          try {
+              const labelStr = jsToJsonLike(labelStrRaw);
+              const parsedLabel = tryParseJson(labelStr, 'label');
+              // Check for functions within label options
+              for (const key in parsedLabel) {
+                  if (typeof parsedLabel[key] === 'string') {
+                      parsedLabel[key] = handleFunctionOrVariable(parsedLabel[key], helperFunctionNames);
+                  }
+              }
+              labels.push(parsedLabel);
+          } catch (e) {
+              labels.push({ comment: `/* TODO: Manually convert label options (complex structure?): ${labelStrRaw} */` });
+          }
       }
        if (labels.length > 0) {
           spec.labels = labels; // Use 'labels' (plural) for G2 v5
       }
 
       // --- Tooltips --- (G2 v5 uses tooltip array/object)
-      // Match .tooltip({...}) or .tooltip(false)
       const tooltipMatches = code.matchAll(/\.tooltip\(([^)]+)\)/g);
       for (const match of tooltipMatches) {
           const argsStr = match[1].trim();
@@ -557,16 +627,39 @@ function parseG2Code(code: string): {
               spec.tooltip = false;
               break;
           } else if (argsStr.startsWith('{')) {
-              // Tooltips often contain functions (formatter), always add comment.
-              tooltips.push({ comment: `/* TODO: Manually convert tooltip options (may contain functions): ${argsStr} */` });
+              try {
+                  const tooltipStr = jsToJsonLike(argsStr);
+                  const parsedTooltip = tryParseJson(tooltipStr, 'tooltip');
+                  // Check for functions (like valueFormatter)
+                  for (const key in parsedTooltip) {
+                      if (typeof parsedTooltip[key] === 'string') {
+                          parsedTooltip[key] = handleFunctionOrVariable(parsedTooltip[key], helperFunctionNames);
+                      }
+                  }
+                  // If it's an array of items, check functions within items too
+                  if (Array.isArray(parsedTooltip.items)) {
+                      parsedTooltip.items = parsedTooltip.items.map((item: any) => {
+                          if (typeof item === 'object' && item !== null) {
+                              for (const itemKey in item) {
+                                  if (typeof item[itemKey] === 'string') {
+                                      item[itemKey] = handleFunctionOrVariable(item[itemKey], helperFunctionNames);
+                                  }
+                              }
+                          }
+                          return item;
+                      });
+                  }
+                  tooltips.push(parsedTooltip);
+              } catch (e) {
+                  tooltips.push({ comment: `/* TODO: Manually convert tooltip options (complex structure?): ${argsStr} */` });
+              }
           }
       }
       if (tooltips.length > 0) {
           // If only one tooltip config, can be object. If multiple, must be array.
-          // For simplicity, always use array if we found any.
+          // Use array for consistency, similar to TextSearch.tsx
           spec.tooltip = tooltips;
       } else if (spec.tooltip === undefined && code.includes('.tooltip(')) {
-          // If .tooltip() was called but not parsed as false or object, add general comment
           spec.tooltipComment = `/* TODO: Review .tooltip() calls and convert configuration. */`;
       }
 
@@ -576,32 +669,40 @@ function parseG2Code(code: string): {
       if (coordinateMatch) {
           const coordStrRaw = coordinateMatch[1];
           try {
-              // Basic parsing
-              const coordStr = coordStrRaw.replace(/'/g, '"').replace(/([a-zA-Z0-9_]+):/g, '"$1":');
-              coordinate = JSON.parse(coordStr);
+              const coordStr = jsToJsonLike(coordStrRaw);
+              coordinate = tryParseJson(coordStr, 'coordinate');
               spec.coordinate = coordinate;
           } catch (e) {
-              spec.coordinate = { comment: `/* TODO: Manually convert coordinate options: ${coordStrRaw} */` };
+              spec.coordinate = { comment: `/* TODO: Manually convert coordinate options (complex structure?): ${coordStrRaw} */` };
           }
       }
 
        // --- Interaction ---
-       // Match .interaction('type', options | true | false)
        const interactionMatches = code.matchAll(/\.interaction\(\s*['"]([^'"]+)['"](,\s*(\{[\s\S]*?\}|true|false))?\s*\)/g);
        for (const match of interactionMatches) {
            const type = match[1];
-           const optionsPart = match[2]; // Includes comma if present
-           let options: any = true; // Default to enabled if no options specified
+           const optionsPart = match[2];
+           let options: any = true;
 
            if (optionsPart) {
-               const optionsStrRaw = optionsPart.trim().substring(1).trim(); // Remove leading comma
+               const optionsStrRaw = optionsPart.trim().substring(1).trim();
                if (optionsStrRaw === 'false') {
                    options = false;
                } else if (optionsStrRaw === 'true') {
                    options = true;
                } else if (optionsStrRaw.startsWith('{')) {
-                   // Interactions often have complex options, add comment.
-                   options = { comment: `/* TODO: Manually convert interaction options for '${type}': ${optionsStrRaw} */` };
+                   try {
+                       const interactionStr = jsToJsonLike(optionsStrRaw);
+                       options = tryParseJson(interactionStr, `interaction.${type}`);
+                       // Check for functions within options
+                       for (const key in options) {
+                           if (typeof options[key] === 'string') {
+                               options[key] = handleFunctionOrVariable(options[key], helperFunctionNames);
+                           }
+                       }
+                   } catch (e) {
+                       options = { comment: `/* TODO: Manually convert interaction options for '${type}' (complex structure?): ${optionsStrRaw} */` };
+                   }
                } else {
                    options = { comment: `/* TODO: Unknown interaction options format for '${type}': ${optionsStrRaw} */` };
                }
@@ -625,8 +726,14 @@ function parseG2Code(code: string): {
                 const optionsStrRaw = optionsPart.trim().substring(1).trim();
                 if (optionsStrRaw === 'false') options = false;
                 else if (optionsStrRaw === 'true') options = true;
-                else if (optionsStrRaw.startsWith('{')) options = { comment: `/* TODO: Manually convert scrollbar options: ${optionsStrRaw} */` };
-                else options = { comment: `/* TODO: Unknown scrollbar options format: ${optionsStrRaw} */` };
+                else if (optionsStrRaw.startsWith('{')) {
+                    try {
+                        const scrollbarStr = jsToJsonLike(optionsStrRaw);
+                        options = tryParseJson(scrollbarStr, `scrollbar.${channel}`);
+                    } catch (e) {
+                        options = { comment: `/* TODO: Manually convert scrollbar options: ${optionsStrRaw} */` };
+                    }
+                } else options = { comment: `/* TODO: Unknown scrollbar options format: ${optionsStrRaw} */` };
             }
             spec.interaction.scrollbar[channel] = options;
         }
@@ -637,110 +744,153 @@ function parseG2Code(code: string): {
             const type = match[1];
             const optionsPart = match[2];
             let optionsComment = `/* TODO: Manually convert plugin options for '${type}' */`;
+            let parsedOptions: any = {};
             if (optionsPart) {
                 const optionsStrRaw = optionsPart.trim().substring(1).trim();
                 if (optionsStrRaw.startsWith('{')) {
-                    optionsComment = `/* TODO: Manually convert plugin options for '${type}': ${optionsStrRaw} */`;
+                    try {
+                        const pluginStr = jsToJsonLike(optionsStrRaw);
+                        parsedOptions = tryParseJson(pluginStr, `plugin.${type}`);
+                        optionsComment = `/* TODO: Review plugin options for '${type}': ${optionsStrRaw} */`;
+                    } catch (e) {
+                         optionsComment = `/* TODO: Manually convert plugin options for '${type}' (complex structure?): ${optionsStrRaw} */`;
+                    }
                 }
             }
-            plugins.push({ type: type, comment: optionsComment });
+            // Try to identify known plugins
+            if (type === 'a11y') { // Assuming 'a11y' is the identifier used in .plugin()
+                 plugins.push({ type: 'A11yPlugin', options: parsedOptions, comment: optionsComment });
+            } else {
+                plugins.push({ type: type, options: parsedOptions, comment: optionsComment });
+            }
         }
         if (plugins.length > 0) {
-            spec.plugins = plugins;
+            // Merge with plugins found in constructor
+            if (spec.plugins) {
+                spec.plugins = [...spec.plugins, ...plugins];
+            } else {
+                spec.plugins = plugins;
+            }
         }
 
+    // Assign complexDetails based on parsing results if needed (e.g., find animation code)
+    complexDetails.hasAnimation = complexDetails.hasAnimation || !!spec.animate; // Update based on spec
+    // TODO: Refine complexDetails extraction based on parsed spec/code
 
+    // Return the structure matching the defined return type
     return { spec, needsFetching, fetchUrl, originalData: data, helperFunctions, isComplex, complexDetails };
 }
 
 
 // Function to generate component content
-async function generateComponentContent(example: ExampleInfo): Promise<string> {
+// ... (keep function signature)
+async function generateComponentContent(example: ExampleInfo, wrapperPath: string): Promise<string> {
   let originalCode = '// Original file could not be read.';
   let title = example.id.split('/').pop()?.replace(/-/g, ' ') || 'Example'; // Default title
+  let description: string | null = null;
   let potentialImports: string[] = [];
   let parsedResult: ReturnType<typeof parseG2Code> | null = null;
 
   try {
     originalCode = await fs.readFile(example.originalFilePath, 'utf-8');
     potentialImports = detectImports(originalCode);
+    // Call parseG2Code which now returns the correct structure
     parsedResult = parseG2Code(originalCode);
   } catch (err) {
     console.error(`Could not read or parse original file: ${example.originalFilePath}`, err);
-    // Create a fallback parsedResult
     parsedResult = {
         spec: { error: `Failed to read/parse ${example.originalFilePath}` },
-        needsFetching: false,
-        fetchUrl: null,
-        originalData: null,
-        helperFunctions: [],
-        isComplex: false,
-        complexDetails: { /* initialize complexDetails fields */ hasAnimation: false, hasAlgorithm: false, algorithmCode: null, rawDataDeclaration: null, keyframeDeclaration: null, animationLoop: null }
+        needsFetching: false, fetchUrl: null, originalData: null, helperFunctions: [], isComplex: false,
+        complexDetails: { hasAnimation: false, hasAlgorithm: false, algorithmCode: null, rawDataDeclaration: null, keyframeDeclaration: null, animationLoop: null }
     };
   }
 
-  // Try to read the index.en.md file for the title
-  const extractedTitle = await extractTitleFromMarkdown(example.originalDemoDir);
-  if (extractedTitle) {
-      title = extractedTitle;
-  } else {
-      // console.warn(`Could not extract title for: ${example.id}. Using default.`);
+  // Extract title and description from markdown
+  const frontmatter = await extractFrontmatterData(example.originalDemoDir);
+  if (frontmatter.title) {
+      title = frontmatter.title;
   }
+  description = frontmatter.description;
 
   const componentName = example.componentName;
+  // Ensure parsedResult is not null before destructuring
+  if (!parsedResult) {
+      return `// Failed to parse G2 code for ${example.id}\nexport default () => <div>Error parsing component ${example.id}</div>;`;
+  }
+  // Destructure, complexDetails now includes rawDataDeclaration
   const { spec, needsFetching, fetchUrl, originalData, helperFunctions, isComplex, complexDetails } = parsedResult;
 
   // If it's complex (animation/algorithm), use the specialized generator
   if (isComplex) {
-    // Pass necessary details to the specialized generator
     return generateAnimationAlgorithmComponent({
       componentName,
       title,
+      description,
       originalCode,
       example,
-      spec, // Pass the partially parsed spec
+      spec,
+      // Pass rawDataDeclaration from complexDetails
       rawDataDeclaration: complexDetails.rawDataDeclaration,
-      algorithmCode: complexDetails.algorithmCode ? { name: 'extractedAlgorithm', code: complexDetails.algorithmCode } : null, // Adapt structure if needed
+      algorithmCode: complexDetails.algorithmCode ? { name: 'extractedAlgorithm', code: complexDetails.algorithmCode } : null,
       keyframeDeclaration: complexDetails.keyframeDeclaration,
       animationLoop: complexDetails.animationLoop,
       potentialImports,
-      wrapperPath,
-      tsNoCheck: '// @ts-nocheck', // Add ts-nocheck here
-      g2SpecImport: "import { type G2Spec } from '@antv/g2';",
-      helperFunctions, // Pass helper functions
-      // algorithmResult might need adjustment based on how algorithms are extracted now
+      wrapperPath, // Pass wrapperPath through
+      g2SpecImport: "import { type G2Spec, type G2ViewTree, Chart } from '@antv/g2';",
+      helperFunctions,
+      // Pass algorithmCode details if available
       algorithmResult: complexDetails.algorithmCode ? { name: 'extractedAlgorithm', code: complexDetails.algorithmCode } : null,
     });
   }
 
   // --- Standard Component Generation ---
 
-  // Clean up spec for stringification (remove comments, handle functions)
-  const specString = JSON.stringify(spec, (key, value) => {
-      // Remove comment objects or specific comment keys
+  // Stringify spec, replacing placeholders for functions/helpers
+  let specString = JSON.stringify(spec, (key, value) => {
       if (
         (typeof value === 'object' && value !== null && value.comment && Object.keys(value).length === 1) ||
         key.endsWith('Comment') || key === 'comment'
       ) {
-        return undefined; // Remove the comment object/key entirely
+        return undefined;
       }
-      // Remove values that are placeholder comments
       if (typeof value === 'string' && (value.startsWith('/* TODO:') || value.startsWith('/* PARSE_ERROR */') || value.startsWith('/* options.data:'))) {
           return undefined;
       }
+      // Keep function/helper placeholders as strings for replacement step
+      if (typeof value === 'string' && (value.startsWith('%%FUNCTION:') || value.startsWith('%%HELPER_FUNCTION:'))) {
+          return value;
+      }
       return value;
-  }, 2)
-  // Add placeholders for functions extracted as comments
-  .replace(/"\/\* TODO: Convert (encode|style|axis|scale|legend|tooltip|label|coordinate|interaction|plugin) (function|expression|value|options|array): (.*?)\s*\*\/"/g, (match, type, subtype, content) => {
-      // Attempt to make the comment content more readable as a placeholder
-      // Remove excessive escaping from JSON.stringify
-      const cleanedContent = content.replace(/\\"/g, '"').replace(/\\'/g, "'").replace(/\\n/g, '\n').replace(/\\t/g, '\t');
-      return `undefined /* TODO: Manually convert ${type} ${subtype}: ${cleanedContent} */`;
+  }, 2);
+
+  // Replace placeholders with actual function code or references
+  specString = specString.replace(/"%%FUNCTION:(.*?)%%"/g, (match, funcCode) => {
+      // Unescape the function code captured from JSON string
+      const unescapedFunc = funcCode.replace(/\\\\"/g, '"').replace(/\\\\'/g, "'").replace(/\\\\n/g, '\\n').replace(/\\\\t/g, '\\t').replace(/\\\\\\\\/g, '\\\\');
+      return unescapedFunc || 'undefined /* TODO: Failed to unescape function */';
+  });
+  specString = specString.replace(/"%%HELPER_FUNCTION:(.*?)%%"/g, (match, helperName) => {
+      return helperName || 'undefined /* TODO: Failed to find helper function name */';
   });
 
+  // Format the spec string using Prettier for better readability
+  try {
+      // Await the format result before calling replace
+      const formattedSpec = await format(`const spec: G2Spec = ${specString};`, {
+          parser: 'typescript',
+          semi: true,
+          singleQuote: true,
+          trailingComma: 'es5',
+      });
+      // Remove the variable declaration part added for formatting
+      specString = formattedSpec.replace(/^const spec: G2Spec = /, '').replace(/;$/, '').trim();
+  } catch (formatError) {
+      console.warn(`Prettier formatting failed for ${example.id}, using raw stringified spec.`);
+      // Fallback to the unformatted string if prettier fails
+  }
 
-  // Add TypeScript type import and ts-nocheck to all generated files
-  const tsNoCheck = '// @ts-nocheck'; // Keep ts-nocheck for now
+
+  // Add G2Spec type import
   const g2SpecImport = "import { type G2Spec } from '@antv/g2';";
 
   const helperFunctionsCode = helperFunctions.length > 0
@@ -762,10 +912,17 @@ async function generateComponentContent(example: ExampleInfo): Promise<string> {
         if (!res.ok) {
           throw new Error(\`HTTP error! status: \${res.status}\`);
         }
-        return res.json();
+        // Attempt to parse as JSON, fall back to text if needed
+        const contentType = res.headers.get("content-type");
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+            return res.json();
+        } else {
+            return res.text(); // Handle CSV or other text formats
+        }
       })
       .then((data: any) => {
         if (isMounted) {
+          // TODO: Add data transformation/parsing here if fetched data is not directly usable (e.g., CSV)
           setChartData(data);
           setLoading(false);
         }
@@ -789,28 +946,35 @@ async function generateComponentContent(example: ExampleInfo): Promise<string> {
   }
 
   // Combine fetched data with the rest of the spec
-  const finalSpec: G2Spec = { ...spec, data: chartData };
+  // Ensure spec is defined before spreading
+  const finalSpec: G2Spec = spec ? { ...spec, data: chartData } : { type: 'invalid', data: chartData, error: 'Spec generation failed' };
 `
     : originalData === "/* PARSE_ERROR */" || (typeof originalData === 'string' && originalData.startsWith('/*'))
     ? `
   // Data was assigned from a variable or failed to parse.
   // TODO: Provide data manually or ensure the variable '${String(originalData).match(/\/\*\s*(\w+)\s*\*\//)?.[1] || 'unknown'}' is available.
   const chartData: any[] = []; // Defaulting to empty array
-  const finalSpec: G2Spec = { ...spec, data: chartData };
+  const finalSpec: G2Spec = spec ? { ...spec, data: chartData } : { type: 'invalid', data: chartData, error: 'Spec generation failed' };
 `
     : `
   // Use the spec directly (data might be inline or handled elsewhere)
-  const finalSpec: G2Spec = spec;
+  // Ensure spec is defined before assigning
+  const finalSpec: G2Spec = spec || { type: 'invalid', error: 'Spec generation failed' };
 `;
 
-  return `${tsNoCheck}
-'use client';
+  // Handle potential plugin imports (like A11yPlugin)
+  const a11yPluginImport = potentialImports.find(imp => imp.includes('@antv/g-plugin-a11y')) || '';
+  const otherImports = potentialImports.filter(imp => !imp.includes('@antv/g-plugin-a11y')).map(imp => `// ${imp}`).join('\n');
+
+  // Use wrapperPath passed as argument
+  return `'use client';
 
 import React from 'react';
 ${g2SpecImport}
 import G2Chart from '${wrapperPath}';
-${potentialImports.length > 0 ? '// Potential external libraries detected (ensure installed):' : ''}
-${potentialImports.map(imp => `// ${imp}`).join('\n')}
+${a11yPluginImport ? a11yPluginImport : '// No A11yPlugin detected'}
+${otherImports.length > 0 ? '// Other potential external libraries (ensure installed):' : ''}
+${otherImports}
 
 /*
   Original G2 Example Code:
@@ -824,6 +988,7 @@ ${helperFunctionsCode}
 
 // --- Auto-Generated G2 Spec (Needs Review) ---
 // Note: Functions, complex expressions, and some options might require manual conversion.
+// Check for '%%FUNCTION...' or '%%HELPER_FUNCTION...' placeholders and replace them manually.
 const spec: G2Spec = ${specString};
 
 const ${componentName}: React.FC = () => {
@@ -832,11 +997,15 @@ const ${componentName}: React.FC = () => {
   return (
     <div>
       <h2 className="text-xl font-semibold mb-2">${title}</h2>
-      {/* TODO: Add description if available */}
-      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full border rounded p-2 bg-muted/40"> {/* Adjust height/width as needed */}
-        {/* Render chart only when spec is ready (especially after fetching data) */}
-        {finalSpec && <G2Chart config={finalSpec} />}
+      ${description ? `<p className="text-sm text-muted-foreground mb-4">${description}</p>` : '{/* TODO: Add description if available */}'}
+      {/* Container size and overflow similar to TextSearch.tsx */}
+      <div className="h-[600px] w-full overflow-auto border rounded p-2 bg-background"> {/* Use bg-background or bg-muted/40 */}
+        {/* Render chart only when spec is valid and ready */}
+        {(finalSpec && finalSpec.type !== 'invalid') ? (
+            <G2Chart config={finalSpec} />
+        ) : (
+            <div className="p-4 text-center text-red-600">Chart specification is invalid or missing.</div>
+        )}
       </div>
     </div>
   );
@@ -850,109 +1019,115 @@ export default ${componentName};
 function generateAnimationAlgorithmComponent(params: {
   componentName: string;
   title: string;
+  description: string | null; // Add description
   originalCode: string;
   example: ExampleInfo;
-  spec: Record<string, any>; // Parsed spec (might be incomplete)
-  rawDataDeclaration?: string | null;
+  spec: Record<string, any>;
+  rawDataDeclaration: string | null;
   algorithmCode?: { name: string; code: string } | null;
   keyframeDeclaration?: string | null;
   animationLoop?: string | null;
   potentialImports: string[];
-  wrapperPath: string; // Not used here, as we need direct Chart access
-  tsNoCheck: string;
-  g2SpecImport: string; // Might need more than just G2Spec
+  wrapperPath: string;
+  g2SpecImport: string;
   helperFunctions: { name: string; code: string }[];
-  algorithmResult: { name: string; code: string } | null; // Keep for potential use
-}): string {
+  algorithmResult: { name: string; code: string } | null;
+}): any {
   const {
     componentName,
     title,
+    description, // Get description
     originalCode,
     example,
-    spec, // Use the parsed spec as a base for initial options
+    spec,
     rawDataDeclaration,
     algorithmCode,
     keyframeDeclaration,
     animationLoop,
     potentialImports,
-    // wrapperPath, // Not using the wrapper here
-    tsNoCheck,
-    // g2SpecImport, // Need full Chart import
+    g2SpecImport, // Includes Chart, G2Spec, G2ViewTree
     helperFunctions,
     algorithmResult
   } = params;
 
-  // Clean up base spec for initial chart options (remove things handled dynamically)
+  // Initialize initialSpecOptions from the spec parameter
   const initialSpecOptions = { ...spec };
+  // Remove properties not suitable for initial Chart constructor (like data, type, encode, etc.)
   delete initialSpecOptions.data;
-  delete initialSpecOptions.type; // Mark type is often set dynamically
-  delete initialSpecOptions.encode; // Encoding is often set dynamically
-  delete initialSpecOptions.labels; // Labels might depend on dynamic data
-  delete initialSpecOptions.tooltip; // Tooltip might depend on dynamic data
-  delete initialSpecOptions.animate; // Animation handled by loop/keyframe
+  delete initialSpecOptions.type;
+  delete initialSpecOptions.encode;
+  delete initialSpecOptions.transform;
+  delete initialSpecOptions.labels;
+  delete initialSpecOptions.tooltip;
+  delete initialSpecOptions.animate; // Animation handled separately
+  // Keep width, height, coordinate, scale, axis, legend, style, interaction, plugins etc.
 
-  const initialSpecString = JSON.stringify(initialSpecOptions, (key, value) => {
-       // Remove comment objects or specific comment keys
+  // Stringify and format initialSpecOptions similar to standard component
+  let initialSpecString = JSON.stringify(initialSpecOptions, (key, value) => {
+      // Remove comment properties
       if (
         (typeof value === 'object' && value !== null && value.comment && Object.keys(value).length === 1) ||
         key.endsWith('Comment') || key === 'comment'
       ) {
-        return undefined; // Remove the comment object/key entirely
+        return undefined;
       }
-      // Remove values that are placeholder comments
-      if (typeof value === 'string' && (value.startsWith('/* TODO:') || value.startsWith('/* PARSE_ERROR */'))) {
+      if (typeof value === 'string' && (value.startsWith('/* TODO:') || value.startsWith('/* PARSE_ERROR */') || value.startsWith('/* options.data:'))) {
           return undefined;
       }
+      // Keep function/helper placeholders as strings for replacement step
+      if (typeof value === 'string' && (value.startsWith('%%FUNCTION:') || value.startsWith('%%HELPER_FUNCTION:'))) {
+          return value;
+      }
       return value;
-  }, 2)
-   .replace(/"\/\* TODO: Convert (encode|style|axis|scale|legend|tooltip|label|coordinate|interaction|plugin) (function|expression|value|options|array): (.*?)\s*\*\/"/g, (match, type, subtype, content) => {
-      const cleanedContent = content.replace(/\\"/g, '"').replace(/\\'/g, "'").replace(/\\n/g, '\n').replace(/\\t/g, '\t');
-      return `undefined /* TODO: Manually convert ${type} ${subtype}: ${cleanedContent} */`;
+  }, 2);
+
+  // Replace placeholders
+  initialSpecString = initialSpecString.replace(/"%%FUNCTION:(.*?)%%"/g, (match, funcCode) => {
+      // Unescape the function code captured from JSON string
+      const unescapedFunc = funcCode.replace(/\\\\"/g, '"').replace(/\\\\'/g, "'").replace(/\\\\n/g, '\\n').replace(/\\\\t/g, '\\t').replace(/\\\\\\\\/g, '\\\\');
+      return unescapedFunc || 'undefined /* TODO: Failed to unescape function */';
+  });
+  initialSpecString = initialSpecString.replace(/"%%HELPER_FUNCTION:(.*?)%%"/g, (match, helperName) => {
+      return helperName || 'undefined /* TODO: Failed to find helper function name */';
   });
 
+  // Format the initial spec string (No await needed here as format is not called)
+  try {
+      // Format the string directly if needed, but it's already stringified
+      // initialSpecString = format(...) // If formatting is desired, await here
+  } catch (formatError) {
+      console.warn(`Prettier formatting failed for initial options of ${componentName}.`);
+  }
 
-  // Format the raw data declaration or provide a default
-  const formattedDataDecl = rawDataDeclaration
-    ? rawDataDeclaration.replace(/^(const|let|var)\s+data\s*=/, 'const data: any[] =') // Use any[] or add comment
-    : 'const data: any[] = [/* TODO: Define initial data array/object */];';
-
-  // Determine algorithm code and name
-  const finalAlgorithmResult = algorithmResult || algorithmCode; // Prefer algorithmResult if available
-  const algorithmName = finalAlgorithmResult ? finalAlgorithmResult.name : 'yourAlgorithm'; // Use extracted name or placeholder
-  const formattedAlgorithmCode = finalAlgorithmResult
-   ? finalAlgorithmResult.code
-   : `
-// TODO: Define your algorithm generator function here.
-// Example structure:
-/*
-interface AlgorithmDatum { value: number; swap?: boolean; index?: number; [key: string]: any; }
-type AlgorithmFrame = AlgorithmDatum[];
-type AlgorithmGenerator = (arr: any[]) => Generator<AlgorithmFrame, AlgorithmFrame | void, unknown>;
-
-function* ${algorithmName}(arr: any[]): Generator<AlgorithmFrame> {
-  // Algorithm logic yielding frames...
-  const initialState = arr.map((value, index) => ({ value, index }));
-  yield initialState;
-  // ... more steps ...
-  const finalState = [...initialState]; // Modify as needed
-  yield finalState;
-  return finalState;
-}
-*/`;
-
+  // Define helperFunctionsCode
   const helperFunctionsCode = helperFunctions.length > 0
     ? `\n// --- Helper Functions Extracted from Original Example --- \n${helperFunctions.map(f => f.code).join('\n\n')}\n// --- End Helper Functions --- \n`
     : '';
 
+  // Define formattedDataDecl using the passed rawDataDeclaration
+  const formattedDataDecl = rawDataDeclaration
+    ? `// Raw data declaration found in original code:\n${rawDataDeclaration}\n// TODO: Ensure 'data' variable is correctly defined and typed.`
+    : `// No raw data declaration found, assuming data is fetched or defined elsewhere.\nconst data: any[] = []; // Placeholder`;
+
+  // Define algorithmName and formattedAlgorithmCode
+  const algorithmName = algorithmResult?.name || '/* TODO: Define Algorithm Name */';
+  const formattedAlgorithmCode = algorithmResult?.code
+    ? `// Algorithm extracted from original code:\n${algorithmResult.code}`
+    : `// TODO: Define the algorithm function (e.g., ${algorithmName}) here\nfunction* ${algorithmName}(arr: any[]): Generator<AlgorithmFrame, AlgorithmFrame | void, unknown> { yield arr; }`;
+
+  // Handle potential plugin imports
+  const a11yPluginImport = potentialImports.find(imp => imp.includes('@antv/g-plugin-a11y')) || '';
+  const otherImports = potentialImports.filter(imp => !imp.includes('@antv/g-plugin-a11y')).map(imp => `// ${imp}`).join('\n');
+
   // Component structure using direct Chart manipulation
-  const componentCode = `${tsNoCheck}
-'use client';
+  const componentCode = `'use client';
 
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-// Import G2 Chart object and potentially other types/functions if needed
-import { Chart, type G2Spec, type G2ViewTree } from '@antv/g2';
-${potentialImports.length > 0 ? '// Potential external libraries (ensure installed):' : ''}
-${potentialImports.map(imp => `// ${imp}`).join('\n')}
+// Import G2 Chart object and types
+${g2SpecImport}
+${a11yPluginImport ? a11yPluginImport : '// No A11yPlugin detected'}
+${otherImports.length > 0 ? '// Other potential external libraries (ensure installed):' : ''}
+${otherImports}
 
 /*
   Original G2 Example Code:
@@ -968,21 +1143,22 @@ ${originalCode.split('\n').map(line => `  // ${line}`).join('\n')}
 ${helperFunctionsCode}
 
 // --- Data and Algorithm Definitions ---
-// TODO: Verify data type and structure
+// TODO: Verify data type and structure. Ensure 'data' is correctly defined and accessible.
 ${formattedDataDecl}
 
 // TODO: Verify or replace the algorithm implementation below
 // Define the expected frame structure for type safety (adjust if algorithm output differs)
 interface AlgorithmDatum {
-  value: any; // Use a more specific type if known (e.g., number)
-  // Add other properties returned by your specific algorithm's generator
+  // TODO: Replace 'any' with a more specific type if the data structure is known
+  value: any;
   [key: string]: any; // Allow other properties
 }
 type AlgorithmFrame = AlgorithmDatum[];
-// Define the type for the algorithm generator function
-// Adjust input (arr: any[]) and output types (AlgorithmFrame) as needed
+// TODO: Ensure the generator yields AlgorithmFrame and optionally returns AlgorithmFrame | void
 type AlgorithmGenerator = (arr: any[]) => Generator<AlgorithmFrame, AlgorithmFrame | void, unknown>;
 
+// WARNING: The following code assumes the algorithm function is available globally or can be evaluated.
+// This might not be reliable or secure. Consider defining algorithms within the component or using imports.
 ${formattedAlgorithmCode} // Algorithm function definition inserted here
 
 // --- React Component ---
@@ -990,349 +1166,440 @@ const ${componentName}: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const chartRef = useRef<Chart | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [speed, setSpeed] = useState<number>(500); // animation frame interval in ms
+  const [speed, setSpeed] = useState<number>(500); // Default speed
   const animationFrameRef = useRef<number | null>(null);
   const generatorRef = useRef<Generator<AlgorithmFrame, AlgorithmFrame | void, unknown> | null>(null);
   const isMountedRef = useRef<boolean>(false);
   const [errorState, setErrorState] = useState<string | null>(null);
 
+  // Memoize initial chart options derived from parsed spec
+  const initialChartOptions = useMemo(() => {
+      try {
+          const options = JSON.parse(${initialSpecString || "'{}'"});
+          // TODO: Review these options. Ensure they are valid G2Spec properties for Chart constructor.
+          return options;
+      } catch (e) {
+          console.error("Failed to parse initial chart options:", e);
+          setErrorState("Failed to parse initial chart options.");
+          return {}; // Return empty object on error
+      }
+  }, []); // Empty dependency array means this runs once
+
   // Function to render chart with current data state
-  // This function needs to be adapted based on the specific example's rendering logic
   const renderCurrentState = useCallback((frameData: AlgorithmFrame): void => {
     if (!chartRef.current || !isMountedRef.current) return;
     const chart: Chart = chartRef.current;
 
     try {
         // --- TODO: Adapt the rendering logic below based on the original example ---
-        // This is a generic template. You'll likely need to modify the 'options'
-        // object to match the specific marks, encodings, scales, etc., used in
-        // the original G2 code for this animation/algorithm.
-        // Use the 'spec' object parsed earlier as a reference for initial settings.
-
-        // Example: Define the view/mark structure dynamically
-        const options: G2ViewTree = { // Use G2ViewTree for chart.options
-            // type: 'interval', // Set mark type if needed, or define children
-            data: frameData, // Update data
-            // Define encodes based on frameData structure and original example
-            encode: {
-                x: 'index', // Example encoding
-                y: 'value', // Example encoding
-                key: 'id', // Example key for animation (ensure 'id' exists in frameData)
-                color: 'value', // Example encoding
-                // Add other encodings as needed...
-            },
-            // Define scales if necessary
-            scale: {
-                // x: { type: 'linear' },
-                // y: { domain: [0, Math.max(...frameData.map(d => d.value))] },
-                // color: { palette: 'spectral' },
-            },
-            // Define axes
-            axis: {
-                // x: { title: 'Index' },
-                // y: { title: 'Value' },
-            },
-            // Define animation behavior
+        // This is a generic template. You MUST modify the 'options' object
+        // to match the specific marks, encodings, scales, axes, etc., required by the visualization.
+        const options: G2ViewTree = {
+            // type: 'interval', // Example: Set mark type if needed
+            data: frameData,
+            // TODO: Define encodings based on frameData structure (e.g., x: 'category', y: 'value')
+            encode: { x: 'x', y: 'y' /* Replace with actual encoding */ },
+            // TODO: Define scales if needed (e.g., scale: { y: { domain: [0, 100] } })
+            scale: initialChartOptions.scale || {},
+            // TODO: Define axes if needed (e.g., axis: { y: { title: 'Value' } })
+            axis: initialChartOptions.axis || {},
+            // Basic animation configuration - adjust as needed
             animate: {
                 enter: { type: 'fadeIn', duration: Math.min(300, speed / 2) },
                 update: { type: 'morph', duration: Math.min(300, speed / 2) },
                 exit: { type: 'fadeOut', duration: Math.min(300, speed / 2) },
             },
-            // Add other options like coordinate, legend, style based on parsed 'spec'
-            coordinate: spec.coordinate,
-            legend: spec.legend,
-            style: spec.style,
+            // Merge other relevant initial options
+            ...(initialChartOptions.coordinate && { coordinate: initialChartOptions.coordinate }),
+            ...(initialChartOptions.legend && { legend: initialChartOptions.legend }),
+            ...(initialChartOptions.style && { style: initialChartOptions.style }),
+            // Add other necessary spec properties here
             // --- End TODO ---
         };
-
-        // Use chart.options() to update the spec declaratively
         chart.options(options);
         chart.render();
-
     } catch (e: any) {
         console.error("Error during chart render/update:", e);
-        setErrorState(\`Chart render error: \${e.message}\`);
-        setIsPlaying(false); // Stop animation on error
+        setErrorState(`Chart render error: \${e.message || 'Unknown error'}`); // Escaped inner template literal
+        setIsPlaying(false); // Stop playback on error
     }
+  }, [speed, initialChartOptions]); // Dependencies for rendering logic
 
-  }, [spec, speed]); // Include spec and speed in dependencies
+  // Function to safely get the algorithm function
+  const getAlgorithmFunction = useCallback((): AlgorithmGenerator | null => {
+      try {
+          // Priority 1: Check if defined globally (on window)
+          if (typeof window !== 'undefined' && typeof (window as any)[algorithmName] === 'function') {
+              return (window as any)[algorithmName] as AlgorithmGenerator;
+          }
+
+          // Priority 2: Attempt to evaluate the formatted code string (Use with extreme caution!)
+          // WARNING: eval is a security risk and can execute arbitrary code.
+          // Avoid if possible. Ensure the source code is trusted.
+          console.warn(`Algorithm function \${algorithmName} not found globally. Attempting eval(). This is potentially unsafe.`); // Escaped inner template literal
+          const func = eval(`(typeof \${algorithmName} !== 'undefined' ? \${algorithmName} : undefined)`); // Escaped inner template literal
+          if (typeof func === 'function') {
+              return func as AlgorithmGenerator;
+          }
+
+          throw new Error(`Algorithm named \${algorithmName} is not defined or not a function.`); // Escaped inner template literal
+      } catch (e: any) {
+          console.error(`Failed to get algorithm function \${algorithmName}:`, e); // Escaped inner template literal
+          setErrorState(`Failed to load algorithm: \${e.message || 'Unknown error'}`); // Escaped inner template literal
+          return null;
+      }
+  }, [algorithmName]); // Depends only on algorithmName
+
+  // Function to safely get the initial data
+  const getInitialData = useCallback((): any[] | null => {
+      try {
+          // WARNING: This assumes 'data' is defined in the scope where this component code runs.
+          // This might rely on the 'formattedDataDecl' string being executed correctly.
+          if (typeof data === 'undefined') {
+              throw new Error("The 'data' variable is not defined in the current scope. Check rawDataDeclaration or provide data.");
+          }
+          // Return a deep copy to avoid modifying the original data during algorithm execution
+          return JSON.parse(JSON.stringify(data));
+      } catch (e: any) {
+          console.error("Failed to get initial data:", e);
+          setErrorState(`Failed to load initial data: \${e.message || 'Data variable not found'}`); // Escaped inner template literal
+          return null;
+      }
+  }, []); // No dependencies, assumes 'data' is stable in the outer scope
 
   // Initialize chart and generator
   useEffect(() => {
     isMountedRef.current = true;
-    setErrorState(null);
-    if (!containerRef.current) return;
-
-    let algorithmFunction: AlgorithmGenerator | null = null;
-    try {
-      // Attempt to get the algorithm function reference.
-      // Using 'new Function' is slightly safer than eval but still has limitations.
-      // It requires the algorithm code to be self-contained or rely on global scope.
-      // Best practice: Define the algorithm directly in the component scope if possible.
-      if (typeof window !== 'undefined' && (window as any)[algorithmName]) {
-          algorithmFunction = (window as any)[algorithmName] as AlgorithmGenerator;
-      } else {
-          // Fallback: Try to create function (might fail with complex closures/imports)
-          console.warn(\`Algorithm '\${algorithmName}' not found globally, attempting dynamic creation. Consider defining it directly in the component.\`);
-          algorithmFunction = new Function(\`return (\${formattedAlgorithmCode})\`)() as AlgorithmGenerator;
-      }
-
-
-      if (typeof algorithmFunction !== 'function') {
-        throw new Error(\`Algorithm named '\${algorithmName}' is not defined or not a function.\`);
-      }
-      // Create generator instance, cloning data
-      const dataCopy = JSON.parse(JSON.stringify(data)); // Simple deep clone for arrays/objects
-      generatorRef.current = algorithmFunction(dataCopy);
-
-    } catch (e: any) {
-      console.error(\`Failed to initialize algorithm '\${algorithmName}':\`, e);
-      setErrorState(\`Failed to load algorithm: \${e.message || 'Unknown error'}\`);
-      generatorRef.current = null;
+    setErrorState(null); // Clear previous errors on mount/re-init
+    if (!containerRef.current) {
+        console.error("Container ref is not available.");
+        setErrorState("Chart container element not found.");
+        return;
     }
 
-    // Create new chart instance with initial options from parsed spec
+    const algorithmFunction = getAlgorithmFunction();
+    const initialData = getInitialData();
+
+    if (!algorithmFunction || !initialData) {
+        // Error state is already set by helper functions
+        // Render an empty chart or placeholder if initialization fails
+        if (chartRef.current) chartRef.current.destroy(); // Clean up previous instance if any
+        chartRef.current = new Chart({
+            container: containerRef.current,
+            autoFit: true,
+            ...initialChartOptions, // Use memoized options
+            data: [], // Ensure data is empty
+        });
+        chartRef.current.options({ /* TODO: Define placeholder view if needed */ });
+        chartRef.current.render();
+        return; // Stop initialization
+    }
+
+    try {
+        generatorRef.current = algorithmFunction(initialData); // Pass the data copy
+    } catch (e: any) {
+        console.error(`Error initializing generator for algorithm \${algorithmName}:`, e); // Escaped inner template literal
+        setErrorState(`Algorithm initialization error: \${e.message || 'Unknown error'}`); // Escaped inner template literal
+        generatorRef.current = null;
+    }
+
+    // Create new chart instance
+    if (chartRef.current) chartRef.current.destroy(); // Clean up previous instance if any
     chartRef.current = new Chart({
       container: containerRef.current,
       autoFit: true,
-      // Apply base options (width, height, coordinate, etc.)
-      ...initialSpecOptions, // Use the cleaned initial options
+      ...initialChartOptions, // Apply memoized base options
     });
 
-    // Render the initial state if generator is ready
+    // Render initial state from the generator
     if (generatorRef.current) {
         try {
             const initialStep = generatorRef.current.next();
             if (!initialStep.done && initialStep.value) {
               renderCurrentState(initialStep.value);
-            } else if (initialStep.done && initialStep.value) { // Handle immediate completion
+            } else if (initialStep.done && initialStep.value) {
+                 // Render final state if generator finishes immediately
                  renderCurrentState(initialStep.value);
-             }
-         } catch (e: any) {
-              console.error(\`Error rendering initial state for algorithm '\${algorithmName}':\`, e);
-              setErrorState(\`Error rendering initial state: \${e.message || 'Unknown error'}\`);
+             } else {
+                 // Handle case where generator yields nothing initially
+                 console.warn("Algorithm generator did not yield an initial state.");
+                 // Render empty state or default view
+                 chartRef.current.options({ data: [], /* TODO: Define empty view */ });
+                  chartRef.current.render();
+              }
+          } catch (e: any) {
+               console.error(`Error rendering initial state for algorithm \${algorithmName}:`, e); // Escaped inner template literal
+               setErrorState(`Error rendering initial state: \${e.message || 'Unknown error'}`); // Escaped inner template literal
+               // Render empty state on error
+               chartRef.current.options({ data: [], /* TODO: Define error view */ });
+              chartRef.current.render();
          }
      } else {
-         // If generator failed, render the chart without data or with placeholder
-         chartRef.current.options({ data: [] }); // Clear data
-         chartRef.current.render();
-     }
-
-    // Cleanup
-    return () => {
-      isMountedRef.current = false;
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-      if (chartRef.current) chartRef.current.destroy();
-      chartRef.current = null;
-      generatorRef.current = null;
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [algorithmName, formattedAlgorithmCode, renderCurrentState]); // Dependencies
-
-  // Animation loop logic (remains largely the same)
-  useEffect(() => {
-    if (!isPlaying || !generatorRef.current || errorState) { // Stop if error occurs
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-      animationFrameRef.current = null;
-      return;
-    }
-
-    let lastFrameTime = performance.now();
-    const animate = (currentTime: number) => {
-      if (!isPlaying || !generatorRef.current || !isMountedRef.current || errorState) {
-        animationFrameRef.current = null;
-        return;
-      }
-      const deltaTime = currentTime - lastFrameTime;
-      if (deltaTime >= speed) {
-        try {
-            const step = generatorRef.current.next();
-            if (step.done) {
-              setIsPlaying(false);
-              if (step.value) renderCurrentState(step.value); // Render final state
-              animationFrameRef.current = null;
-              return;
-            }
-            if (step.value) renderCurrentState(step.value);
-            lastFrameTime = currentTime;
-        } catch (e: any) {
-             console.error("Error during animation step:", e);
-             setErrorState(\`Animation error: \${e.message}\`);
-             setIsPlaying(false); // Stop animation on error
-             animationFrameRef.current = null;
-             return;
-        }
-      }
-      animationFrameRef.current = requestAnimationFrame(animate);
-    };
-    animationFrameRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-      animationFrameRef.current = null;
-    };
-  }, [isPlaying, speed, renderCurrentState, errorState]);
-
-  // Play/pause handler
-  const togglePlay = (): void => {
-    if (errorState) return; // Don't allow play if there's an error
-    setIsPlaying(prev => !prev);
-    if (isPlaying && animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-        animationFrameRef.current = null;
-    }
-  };
-
-  // Reset handler
-  const resetAnimation = useCallback((): void => {
-    setIsPlaying(false);
-    setErrorState(null); // Clear errors on reset
-    if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-    animationFrameRef.current = null;
-
-    let algorithmFunction: AlgorithmGenerator | null = null;
-    try {
-      // Re-get the algorithm function
-       if (typeof window !== 'undefined' && (window as any)[algorithmName]) {
-          algorithmFunction = (window as any)[algorithmName] as AlgorithmGenerator;
-      } else {
-          algorithmFunction = new Function(\`return (\${formattedAlgorithmCode})\`)() as AlgorithmGenerator;
-      }
-
-      if (typeof algorithmFunction !== 'function') {
-          throw new Error(\`Algorithm named '\${algorithmName}' is not defined or not a function (on reset).\`);
-      }
-      // Create new generator with fresh data copy
-      const dataCopy = JSON.parse(JSON.stringify(data));
-      generatorRef.current = algorithmFunction(dataCopy);
-       const initialStep = generatorRef.current.next();
-       if (!initialStep.done && initialStep.value) {
-           renderCurrentState(initialStep.value);
-       } else if (initialStep.done && initialStep.value) {
-           renderCurrentState(initialStep.value);
-       } else if (chartRef.current) {
-           // If generator finishes immediately with no value, clear chart data
-           chartRef.current.options({ data: [] });
-           chartRef.current.render();
-       }
-
-     } catch (e: any) {
-         console.error(\`Failed to reset algorithm '\${algorithmName}':\`, e);
-         setErrorState(\`Failed to reset algorithm: \${e.message || 'Unknown error'}\`);
-         generatorRef.current = null;
-         // Clear chart on reset error
+         // Render empty chart if generator failed to initialize
          if (chartRef.current) {
-             chartRef.current.options({ data: [] });
+             chartRef.current.options({ data: [], /* TODO: Define empty/error view */ });
              chartRef.current.render();
          }
      }
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [algorithmName, formattedAlgorithmCode, renderCurrentState]); // Dependencies
 
-  const handleSpeedChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setSpeed(Number(e.target.value));
+    // Cleanup function
+    return () => {
+      isMountedRef.current = false;
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+      if (chartRef.current) {
+          try {
+              chartRef.current.destroy();
+          } catch (destroyError) {
+              console.error("Error destroying chart:", destroyError);
+          }
+      }
+      chartRef.current = null;
+      generatorRef.current = null; // Clear generator ref
+    };
+  // Dependencies: Re-initialize if algorithm name changes or initial options change.
+  // getAlgorithmFunction and getInitialData are stable due to useCallback.
+  }, [algorithmName, initialChartOptions, getAlgorithmFunction, getInitialData, renderCurrentState]);
+
+  // Animation loop logic
+  useEffect(() => {
+    let lastTime = 0;
+    const loop = (currentTime: number) => {
+      // Ensure component is still mounted and playback is active
+      if (!isPlaying || !generatorRef.current || !isMountedRef.current) {
+        animationFrameRef.current = null; // Clear ref if loop stops
+        return;
+      }
+
+      // Throttle updates based on speed
+      if (currentTime - lastTime >= speed) {
+        try {
+            const step = generatorRef.current.next();
+            if (step.done) {
+                setIsPlaying(false); // Stop playback when generator finishes
+                if (step.value) renderCurrentState(step.value); // Render final state if provided
+                generatorRef.current = null; // Clear generator when done
+            } else {
+                if (step.value) {
+                    renderCurrentState(step.value); // Render the yielded frame
+                    lastTime = currentTime; // Update last time only after successful render
+                } else {
+                    console.warn("Generator yielded undefined value.");
+                }
+            }
+        } catch (e: any) {
+            console.error("Error during animation step:", e);
+            setErrorState(`Animation error: \${e.message || 'Unknown error'}`); // Escaped inner template literal
+            setIsPlaying(false); // Stop playback on error
+        }
+      }
+      // Request next frame if still playing
+      if (isPlaying && isMountedRef.current) {
+          animationFrameRef.current = requestAnimationFrame(loop);
+      } else {
+          animationFrameRef.current = null;
+      }
+    };
+
+    // Start or stop the animation loop based on isPlaying state
+    if (isPlaying && generatorRef.current) {
+        // Prevent multiple loops from starting
+        if (!animationFrameRef.current) {
+            lastTime = performance.now(); // Reset timer when starting
+            animationFrameRef.current = requestAnimationFrame(loop);
+        }
+    } else {
+      // Cancel animation frame if paused or stopped
+      if (animationFrameRef.current) {
+          cancelAnimationFrame(animationFrameRef.current);
+          animationFrameRef.current = null;
+      }
+    }
+
+    // Cleanup function for the loop effect
+    return () => {
+      if (animationFrameRef.current) {
+          cancelAnimationFrame(animationFrameRef.current);
+          animationFrameRef.current = null;
+      }
+    };
+  }, [isPlaying, speed, renderCurrentState]); // Loop depends on play state, speed, and render function
+
+  // Toggle play/pause state
+  const togglePlay = () => {
+    // Prevent starting if there's an error or generator is finished/null
+    if (errorState || !generatorRef.current) return;
+    setIsPlaying(!isPlaying);
+  };
+
+  // Reset animation to the beginning
+  const resetAnimation = useCallback(() => {
+    setIsPlaying(false); // Ensure playback is stopped
+    setErrorState(null); // Clear any previous errors
+
+    // Cancel any ongoing animation frame
+    if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+    }
+
+    const algorithmFunction = getAlgorithmFunction();
+    const initialData = getInitialData();
+
+    if (!algorithmFunction || !initialData) {
+        // Error state already set by helpers
+        if (chartRef.current) {
+            chartRef.current.options({ data: [], /* TODO: Define error/empty view */ });
+            chartRef.current.render();
+        }
+        generatorRef.current = null; // Ensure generator is null
+        return;
+    }
+
+    try {
+        // Re-initialize the generator with a fresh copy of data
+        generatorRef.current = algorithmFunction(initialData);
+        const initialStep = generatorRef.current.next();
+
+        // Render the initial state
+        if (!initialStep.done && initialStep.value) {
+            renderCurrentState(initialStep.value);
+        } else if (initialStep.done && initialStep.value) {
+            // Handle case where generator finishes immediately on reset
+            renderCurrentState(initialStep.value);
+            generatorRef.current = null; // Generator is already done
+        } else {
+             console.warn("Algorithm generator did not yield an initial state on reset.");
+             if (chartRef.current) {
+                 chartRef.current.options({ data: [], /* TODO: Define empty view */ });
+                 chartRef.current.render();
+             }
+        }
+    } catch (e: any) {
+        console.error("Failed to reset algorithm:", e);
+        setErrorState(`Failed to reset: \${e.message || 'Unknown error'}`); // Escaped inner template literal
+        generatorRef.current = null; // Ensure generator is null on error
+        if (chartRef.current) {
+            chartRef.current.options({ data: [], /* TODO: Define error view */ });
+            chartRef.current.render();
+        }
+    }
+  }, [getAlgorithmFunction, getInitialData, renderCurrentState]); // Dependencies for reset logic
+
+  // Handle speed slider change
+  const handleSpeedChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSpeed(Number(event.target.value));
   };
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-2">${title}</h2>
-      {/* TODO: Add description if available */}
+      <h2 className="text-xl font-semibold mb-2">${title}</h2> {/* Escaped inner template literal */}
+      ${description ? `<p className="text-sm text-muted-foreground mb-4">${description}</p>` : '{/* TODO: Add description if available */}'} {/* Escaped inner template literals */}
+      {/* Controls */}
       <div className="flex flex-wrap items-center space-x-2 mb-4">
         <button
-          className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={togglePlay}
-          disabled={!generatorRef.current || !!errorState}
+          disabled={!!errorState || !generatorRef.current} // Disable if error or generator finished/null
+          className="px-3 py-1 border rounded bg-secondary hover:bg-secondary/80 text-secondary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isPlaying ? 'Pause' : 'Play'}
         </button>
         <button
-          className="px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={resetAnimation}
-          // Allow reset even if generator failed initially, to try again
+          disabled={!getAlgorithmFunction() || !getInitialData()} // Disable if algorithm/data cannot be loaded
+          className="px-3 py-1 border rounded bg-secondary hover:bg-secondary/80 text-secondary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Reset
         </button>
-        <div className="flex items-center space-x-2">
-          <label htmlFor="speed" className="text-sm">Speed:</label>
-          <input
-            id="speed" type="range" min="50" max="1500" step="50"
-            value={speed} onChange={handleSpeedChange} className="w-32"
-            disabled={!generatorRef.current || !!errorState}
-          />
-          <span className="text-sm">{speed}ms</span>
-        </div>
+        <label htmlFor="speedControl" className="text-sm">Speed: {speed}ms</label>
+        <input
+          id="speedControl"
+          type="range"
+          min="50"  // Faster speed limit
+          max="2000" // Slower speed limit
+          step="50"
+          value={speed}
+          onChange={handleSpeedChange}
+          className="w-32 align-middle" // Use align-middle for better vertical alignment
+        />
       </div>
+      {/* Error Display */}
       {errorState && (
-          <div className="mb-4 p-2 text-red-700 bg-red-100 border border-red-400 rounded">
+          <div className="mb-4 p-3 text-red-700 bg-red-100 border border-red-300 rounded shadow-sm">
               <strong>Error:</strong> {errorState}
+              <p className="text-xs mt-1">Playback disabled. Please check the console for details and review the component's data and algorithm logic.</p>
           </div>
       )}
-      <div ref={containerRef} className="h-[400px] w-full border rounded bg-muted/40">
-         {/* Chart is rendered here */}
+      {/* Chart Container */}
+      <div ref={containerRef} className="h-[600px] w-full overflow-auto border rounded p-2 bg-background relative">
+         {/* Chart is rendered here by useEffect */}
+         {/* Optional: Add a loading or placeholder state */}
+         {!chartRef.current && !errorState && (
+             <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">Initializing Chart...</div>
+         )}
       </div>
     </div>
   );
 };
 
-export default ${componentName};
+export default ${componentName}; // Escaped inner template literal
 `;
 
   return componentCode;
 }
 
+// Helper function to walk directory recursively
+async function* walk(dir: string): AsyncGenerator<string> {
+    for await (const d of await fs.opendir(dir)) {
+        const entryPath = path.join(dir, d.name);
+        if (d.isDirectory()) {
+            yield* walk(entryPath);
+        } else if (d.isFile()) {
+            yield entryPath;
+        }
+    }
+}
 
 async function main() {
   const allExamples: ExampleInfo[] = [];
+  const g2SiteExamplesDir = path.resolve(__dirname, '../../../G2/site/examples');
+  const targetExamplesDir = path.resolve(__dirname, '../src/app/shadcn-themes/visualization/g2-examples');
+  const wrapperPath = '../../../g2-wrapper'; // Relative path from generated component to wrapper
 
   console.log(`Scanning ${g2SiteExamplesDir}...`);
 
-  try {
-    const categories = await fs.readdir(g2SiteExamplesDir, { withFileTypes: true });
+  // Use the walk generator function
+  for await (const originalFilePath of walk(g2SiteExamplesDir)) {
+      if (path.basename(originalFilePath) === 'demo.ts') {
+          const relativePath = path.relative(g2SiteExamplesDir, originalFilePath);
+          // Fix regex for replacing backslashes and the demo.ts suffix
+          const id = relativePath.replace(/\\/g, '/').replace(/\/demo\.ts$/, '');
+          const originalDemoDir = path.dirname(originalFilePath);
 
-    for (const category of categories) {
-      if (category.isDirectory()) {
-        const categoryPath = path.join(g2SiteExamplesDir, category.name);
-        const types = await fs.readdir(categoryPath, { withFileTypes: true });
+          // Skip if id is empty or invalid
+          if (!id) continue;
 
-        for (const type of types) {
-          if (type.isDirectory()) {
-            const typePath = path.join(categoryPath, type.name);
-            const demosPath = path.join(typePath, 'demo');
-            try {
-              const demos = await fs.readdir(demosPath, { withFileTypes: true });
-              for (const demo of demos) {
-                if (demo.isFile() && demo.name.endsWith('.ts')) {
-                  const demoName = demo.name.replace('.ts', '');
-                  const id = `${category.name}/${type.name}/${demoName}`;
-                  const componentName = `${toPascalCase(category.name)}${toPascalCase(type.name)}${toPascalCase(demoName)}Chart`;
-                  // Ensure component name is a valid identifier
-                  const safeComponentName = componentName.replace(/[^a-zA-Z0-9_]/g, '');
-                  const targetFilePath = path.join(targetExamplesDir, category.name, type.name, `${toPascalCase(demoName)}.tsx`);
-                  const originalFilePath = path.join(demosPath, demo.name);
-                  const originalDemoDir = demosPath;
+          // Construct target path
+          const targetFileName = `${toPascalCase(id)}.tsx`;
+          const targetFilePath = path.join(targetExamplesDir, id, targetFileName);
 
-                  allExamples.push({
-                    id,
-                    componentName: safeComponentName,
-                    filePath: targetFilePath,
-                    originalFilePath,
-                    originalDemoDir,
-                  });
-                }
-              }
-            } catch (err: any) {
-              if (err.code !== 'ENOENT') { // Ignore if 'demo' folder doesn't exist
-                 console.warn(`Could not read demos in ${demosPath}:`, err);
-              }
-            }
+          // Create safe component name
+          const safeComponentName = toPascalCase(id);
+
+          // Check if component name is valid
+          if (!/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(safeComponentName)) {
+              console.warn(`Skipping invalid component name generated for ID '${id}': ${safeComponentName}`);
+              continue;
           }
-        }
-      }
-    }
-  } catch (err) {
-     console.error(`Error scanning G2 examples directory: ${g2SiteExamplesDir}`, err);
-     process.exit(1);
-  }
 
+          allExamples.push({
+              id,
+              componentName: safeComponentName,
+              filePath: targetFilePath,
+              originalFilePath,
+              originalDemoDir,
+          });
+      }
+  }
 
   console.log(`Found ${allExamples.length} examples. Generating components in ${targetExamplesDir}...`);
 
@@ -1342,57 +1609,84 @@ async function main() {
   // Generate component files
   let generatedCount = 0;
   let errorCount = 0;
+  const generatedList: { name: string; path: string; description: string | null }[] = [];
+
   for (const example of allExamples) {
     try {
       const componentDir = path.dirname(example.filePath);
       await fs.mkdir(componentDir, { recursive: true });
-      const content = await generateComponentContent(example);
-      await fs.writeFile(example.filePath, content);
-      // console.log(`Generated: ${path.relative(targetExamplesDir, example.filePath)}`);
+      // Pass wrapperPath to generateComponentContent
+      const content = await generateComponentContent(example, wrapperPath);
+      // Format the generated content using Prettier
+      const formattedContent = await format(content, {
+          parser: 'typescript',
+          semi: true,
+          singleQuote: true,
+          trailingComma: 'es5',
+          jsxSingleQuote: false,
+      });
+      await fs.writeFile(example.filePath, formattedContent);
       generatedCount++;
+
+      // Add to list for JSON output, including description
+      const relativePath = path.relative(targetExamplesDir, example.filePath).replace(/\\/g, '/');
+      const { title, description } = await extractFrontmatterData(example.originalDemoDir);
+      const displayName = title || example.id.split('/').pop()?.replace(/-/g, ' ') || example.id;
+      generatedList.push({ name: displayName, path: relativePath, description });
+
     } catch (err) {
-      console.error(`Failed to generate component for ${example.id}:`, err);
+      console.error(`Failed to generate or format component for ${example.id}:`, err);
+      // Write error placeholder if generation/formatting failed
+      try {
+          const errorContent = `// Failed to generate component for ${example.id}\n// Error: ${err instanceof Error ? err.message : String(err)}\nexport default () => <div>Error generating component ${example.id}</div>;`;
+          await fs.writeFile(example.filePath, errorContent);
+      } catch (writeErr) {
+          console.error(`Failed to write error placeholder for ${example.id}:`, writeErr);
+      }
       errorCount++;
     }
   }
-   console.log(`Generated ${generatedCount} component files.`);
+   console.log(`Generated and formatted ${generatedCount} component files.`);
    if (errorCount > 0) {
-       console.warn(`${errorCount} components failed to generate.`);
+       console.warn(`${errorCount} components failed to generate/format or encountered errors.`);
    }
 
-  // Generate index.ts
-  const indexContent = allExamples
-    .map(ex => {
-        const relativePath = `./${path.relative(targetExamplesDir, ex.filePath).replace(/\\/g, '/').replace('.tsx', '')}`;
-        // Ensure the component name is valid before exporting
-        if (/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(ex.componentName)) {
-             return `export { default as ${ex.componentName} } from '${relativePath}';`;
-        } else {
-            console.warn(`Skipping export for invalid component name: ${ex.componentName} (from ${ex.id})`);
-            return null;
-        }
-    })
-    .filter(line => line !== null) // Filter out skipped exports
-    .join('\n');
+  // Sort the generated list alphabetically by name
 
-  const indexFilePath = path.join(targetExamplesDir, 'index.ts');
+  generatedList.sort((a, b) => a.name.localeCompare(b.name));
+
+  // Generate g2-generated-example-list.json
+  const listFilePath = path.resolve(__dirname, '../src/app/shadcn-themes/visualization/g2-generated-example-list.json');
   try {
-    await fs.writeFile(indexFilePath, indexContent + '\n');
-    console.log(`Generated: index.ts`);
+      await fs.writeFile(listFilePath, JSON.stringify(generatedList, null, 2));
+      console.log(`Generated example list: ${path.basename(listFilePath)}`);
   } catch (err) {
-     console.error(`Failed to generate index.ts:`, err);
+      console.error(`Failed to generate ${path.basename(listFilePath)}:`, err);
   }
+
+
+  // Remove index.ts generation as dynamic imports are preferred
+  // const indexFilePath = path.join(targetExamplesDir, 'index.ts');
+  // try {
+  //   await fs.unlink(indexFilePath); // Remove if exists
+  //   console.log(`Removed index.ts (using dynamic imports)`);
+  // } catch (err: any) {
+  //   if (err.code !== 'ENOENT') { // Ignore if file doesn't exist
+  //       console.warn(`Could not remove index.ts:`, err);
+  //   }
+  // }
 
   console.log('\nScript finished.');
   console.log(`\nNext Steps:`);
   console.log(`1. Review the generated components in '${targetExamplesDir}'.`);
-  console.log(`   - Pay close attention to 'TODO:' comments and manually adjust the G2 spec, data types, encodings, and other options where the automatic parsing might have been incomplete or incorrect.`);
-  console.log(`   - For animation/algorithm examples, carefully review the generated React component logic, especially the algorithm function definition and the use of 'eval'. Consider refactoring to avoid 'eval' if possible (e.g., by importing the algorithm).`);
+  console.log(`   - Focus on files with 'TODO:' comments.`);
+  console.log(`   - Manually convert/verify functions/expressions in specs (labels, tooltips, scales, etc.), especially those marked with '/* FUNCTION:...' or referencing helper functions.`);
+  console.log(`   - Verify data handling (fetching, inline data, variables, CSV parsing if needed).`);
+  console.log(`   - For animation/algorithm examples, carefully review the React component logic, data structures, algorithm implementation, and rendering within 'renderCurrentState'.`);
   console.log(`2. Install any detected external dependencies (like d3, lodash, @antv/g2-extension-ava, @antv/g-plugin-a11y) in the 'integration/themex' project if not already present:`);
   console.log(`   cd integration/themex && npm install d3 lodash @antv/g2-extension-ava @antv/g-plugin-a11y @types/d3 @types/lodash`);
-  console.log(`   (Add any other specific libraries mentioned in TODOs or detected imports).`);
-  console.log(`3. Ensure you have a G2Chart wrapper component (e.g., '${path.basename(wrapperPath)}.tsx') located correctly relative to the generated files (expected at '${wrapperPath}'). This wrapper should handle the basic G2 chart rendering based on the provided spec.`);
-  console.log(`4. Implement dynamic routing or a display mechanism in your Next.js app (within 'integration/themex') to import and render these generated components from '${targetExamplesDir}'.`);
+  console.log(`3. Ensure you have a G2Chart wrapper component ('${path.basename(wrapperPath)}.tsx') at '${wrapperPath}' relative to generated files for standard examples.`);
+  console.log(`4. Update your visualization page ('visualization/page.tsx') to use dynamic imports based on the generated '${path.basename(listFilePath)}'.`);
   console.log(`5. Test the generated components thoroughly.`);
 
 }
