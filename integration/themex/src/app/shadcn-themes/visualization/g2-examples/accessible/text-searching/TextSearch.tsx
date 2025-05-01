@@ -1,114 +1,75 @@
-// @ts-nocheck
 'use client';
 
 import React from 'react';
 import { type G2Spec } from '@antv/g2';
 import G2Chart from '../../../g2-wrapper';
-// Potential external libraries detected:
-// import { Plugin as A11yPlugin } from '@antv/g-plugin-a11y'; // Renamed to avoid conflict
-// TODO: Ensure these libraries are installed (e.g., npm install d3 @types/d3) and imported correctly.
+// TODO: If accessibility features (text extraction) are needed,
+// the A11yPlugin needs to be integrated. This might require
+// modifying the G2Chart wrapper or initializing the chart differently.
+// import { Plugin as A11yPlugin } from '@antv/g-plugin-a11y';
 
-/*
-  Original G2 Example Code:
-  Source: ../../G2/site/examples/accessible/text-searching/demo/text-search.ts
-  ================================================================================
-  // import { Chart } from '@antv/g2';
-  // import { Plugin } from '@antv/g-plugin-a11y';
-  // 
-  // const plugin = new Plugin({ enableExtractingText: true });
-  // 
-  // const labelFormatter = (d) => Math.abs(d) + (d < 0 ? 'BC' : d > 0 ? 'AC' : '');
-  // const left = (d) => d.end > -1500 && d.start > -3000;
-  // 
-  // const chart = new Chart({
-  //   container: 'container',
-  //   width: 900,
-  //   height: 1000,
-  //   plugins: [plugin],
-  // });
-  // 
-  // chart.coordinate({ transform: [{ type: 'transpose' }] });
-  // 
-  // chart
-  //   .interval()
-  //   .data({
-  //     type: 'fetch',
-  //     value: 'https://assets.antv.antgroup.com/g2/world-history.json',
-  //   })
-  //   .transform({ type: 'sortX', by: 'y' })
-  //   .transform({ type: 'sortColor', by: 'y', reducer: 'min' })
-  //   .axis('x', false)
-  //   .encode('x', 'civilization')
-  //   .encode('y', ['start', 'end'])
-  //   .encode('color', 'region')
-  //   .scale('color', { palette: 'set2' })
-  //   .label({
-  //     text: 'civilization',
-  //     position: (d) => (left(d) ? 'left' : 'right'),
-  //     textAlign: (d) => (left(d) ? 'end' : 'start'),
-  //     dx: (d) => (left(d) ? -5 : 5),
-  //     fontSize: 10,
-  //   })
-  //   .tooltip([
-  //     { name: 'start', field: 'start', valueFormatter: labelFormatter },
-  //     { name: 'end', field: 'end', valueFormatter: labelFormatter },
-  //   ]);
-  // 
-  // chart.render();
-  // 
-  ================================================================================
-*/
+// Helper functions from the original example
+const labelFormatter = (d: number) => Math.abs(d) + (d < 0 ? 'BC' : d > 0 ? 'AC' : '');
+const left = (d: { start: number; end: number }) => d.end > -1500 && d.start > -3000;
 
-// --- Auto-Generated G2 Spec (Needs Review) ---
+// --- Reconstructed G2 Spec based on original example ---
 const spec: G2Spec = {
-  "type": "interval",
-  "encode": {
-    "x": "civilization",
-    "color": "region"
+  type: 'interval',
+  width: 900, // Keep original dimensions for consistency, layout handled by parent
+  height: 1000,
+  coordinate: { transform: [{ type: 'transpose' }] },
+  data: {
+    type: 'fetch',
+    value: 'https://assets.antv.antgroup.com/g2/world-history.json',
   },
-  "transform": [
+  transform: [
+    { type: 'sortX', by: 'y' },
+    { type: 'sortColor', by: 'y', reducer: 'min' },
+  ],
+  axis: {
+    x: false, // Hide x-axis (which becomes the vertical axis after transpose)
+    // y axis (horizontal after transpose) will show by default
+  },
+  encode: {
+    x: 'civilization',
+    y: ['start', 'end'],
+    color: 'region',
+  },
+  scale: {
+    color: { palette: 'set2' },
+    // y scale formatting could be added here if needed, but tooltip handles it
+  },
+  labels: [ // Use labels instead of label for G2 v5+ spec
     {
-      "type": "sortX",
-      "by": "y"
+      text: 'civilization',
+      position: (d: { start: number; end: number }) => (left(d) ? 'left' : 'right'),
+      textAlign: (d: { start: number; end: number }) => (left(d) ? 'end' : 'start'),
+      dx: (d: { start: number; end: number }) => (left(d) ? -5 : 5),
+      fontSize: 10,
     },
-    {
-      "type": "sortColor",
-      "by": "y",
-      "reducer": "min"
-    }
   ],
-  "scale": {
-    "color": {
-      "palette": "set2"
-    }
-  },
-  "axis": {
-    "x": false
-  },
-  "labels": [
-    null
+  tooltip: [ // Use tooltip array format
+    { name: 'start', field: 'start', valueFormatter: labelFormatter },
+    { name: 'end', field: 'end', valueFormatter: labelFormatter },
+    { name: 'civilization', field: 'civilization' }, // Add civilization to tooltip
+    { name: 'region', field: 'region' }, // Add region to tooltip
   ],
-  "coordinate": {
-    "transform": [
-      {
-        "type": "transpose"
-      }
-    ]
-  }
+  // TODO: Integrate A11yPlugin if needed
+  // plugins: [new A11yPlugin({ enableExtractingText: true })],
 };
 
 const AccessibleTextSearchingTextSearchChart: React.FC = () => {
-    
-    const finalSpec: G2Spec = spec;
-  
+  // No need to redefine finalSpec, just use spec directly
+  // const finalSpec: G2Spec = spec;
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-2">S</h2>
+      <h2 className="text-xl font-semibold mb-2">World History Timeline by Civilization</h2>
       {/* TODO: Add description if available */}
-      {/* <p className="text-sm text-muted-foreground mb-4">Chart description here...</p> */}
-      <div className="h-[400px] w-full"> {/* Adjust height/width as needed */}
-        {finalSpec && <G2Chart config={finalSpec} />}
+      <p className="text-sm text-muted-foreground mb-4">Interval chart showing the lifespan of various world civilizations, transposed for vertical display.</p>
+      {/* Container size is controlled here, G2Chart will adapt */}
+      <div className="h-[600px] w-full overflow-auto border rounded p-2"> {/* Increased height and added overflow */}
+        {spec && <G2Chart config={spec} />}
       </div>
     </div>
   );
