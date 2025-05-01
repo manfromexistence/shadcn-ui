@@ -1,106 +1,68 @@
 "use client";
 
-import React from 'react';
-import G2Chart from './g2-wrapper'; // Assuming g2-wrapper.tsx is in the same directory
+import React, { useState, lazy, Suspense } from 'react';
+import g2GeneratedExampleList from './g2-generated-example-list.json'; // Import the generated list
+import AccessibleTextSearchingTextSearchChart from './g2-examples/accessible/text-searching/TextSearch';
 
-// Example 1: Basic Interval Chart (from G2 Quick Start)
-const basicIntervalSpec = {
-  type: 'interval',
-  data: [
-    { genre: 'Sports', sold: 275 },
-    { genre: 'Strategy', sold: 115 },
-    { genre: 'Action', sold: 120 },
-    { genre: 'Shooter', sold: 350 },
-    { genre: 'Other', sold: 150 },
-  ],
-  encode: {
-    x: 'genre',
-    y: 'sold',
-    color: 'genre', // Added color encoding for consistency
-  },
-};
-
-// Example 2: Bullet Chart (derived from G2/site/examples/general/bullet/demo/bullets.ts)
-const bulletData = [
-  { title: '5🌟', ranges: 100, measures: 40, target: 85 },
-  { title: '4🌟', ranges: 100, measures: 80, target: 40 },
-  { title: '3🌟', ranges: 100, measures: 20, target: 22 },
-  { title: '0-2🌟', ranges: 100, measures: 30, target: 10 },
-];
-
-const bulletSpec = {
-  type: 'view',
-  coordinate: { transform: [{ type: 'transpose' }] },
-  data: bulletData,
-  children: [
-    {
-      type: 'interval',
-      encode: {
-        x: 'title',
-        y: 'ranges',
-        color: () => '#f0efff', // Use a function for constant color
-      },
-      style: {
-        maxWidth: 30,
-      },
-      axis: {
-        y: { grid: true, gridLineWidth: 2 },
-        x: { title: false },
-      },
-    },
-    {
-      type: 'interval',
-      encode: {
-        x: 'title',
-        y: 'measures',
-        color: () => '#5B8FF9', // Use a function for constant color
-      },
-      style: {
-        maxWidth: 20,
-      },
-      tooltip: { channel: 'y', valueFormatter: '.0f' } // Add tooltip for measures
-    },
-    {
-      type: 'point',
-      encode: {
-        x: 'title',
-        y: 'target',
-        shape: 'line', // Use 'line' shape for the target marker
-        size: 15,      // Adjust size as needed
-        color: () => '#000000', // Use a function for constant color
-      },
-      style: {
-        lineWidth: 2,
-      },
-       tooltip: { channel: 'y', valueFormatter: '.0f' } // Add tooltip for target
-    },
-  ],
-};
-
+// // Helper function to dynamically import components
+// const loadExampleComponent = (relativePath: string) => {
+//   // Construct the import path in a way Webpack can analyze
+//   // It needs a static part (directory) and a dynamic part (filename)
+//   // Ensure the path includes the file extension if necessary for Webpack's analysis
+//   // The path in the JSON is already relative to 'g2-examples', e.g., "accessible/text-searching/TextSearch.tsx"
+//   return lazy(() => import(`./g2-examples/${relativePath}`));
+// };
 
 export default function VisualizationPage() {
+  // State to hold the path of the currently selected example
+  // const [selectedExamplePath, setSelectedExamplePath] = useState<string | null>(
+  //   g2GeneratedExampleList.length > 0 ? g2GeneratedExampleList[0].path : null
+  // );
+  // const [selectedExampleName, setSelectedExampleName] = useState<string>(
+  //    g2GeneratedExampleList.length > 0 ? g2GeneratedExampleList[0].name : 'Select an Example'
+  // );
+
+  // // Get the component for the selected path
+  // const SelectedExampleComponent = selectedExamplePath
+  //   ? loadExampleComponent(selectedExamplePath)
+  //   : null;
+
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">G2 Chart Examples</h1>
+    <div className="container mx-auto p-4 flex h-screen">
+      {/* Sidebar */}
+      <aside className="w-1/4 border-r pr-4 overflow-y-auto">
+        <h2 className="text-xl font-semibold mb-4 sticky top-0 bg-background py-2">Examples</h2>
+        <ul>
+          {/* {g2GeneratedExampleList.map((example) => (
+            <li key={example.path} className="mb-1">
+              <button
+                onClick={() => {
+                  setSelectedExamplePath(example.path);
+                  setSelectedExampleName(example.name);
+                }}
+                className={`w-full text-left p-2 rounded text-sm ${selectedExamplePath === example.path ? 'bg-muted text-foreground font-semibold' : 'hover:bg-accent'}`}
+              >
+                {example.name}
+              </button>
+            </li>
+          ))} */}
+        </ul>
+      </aside>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <h2 className="text-xl font-semibold mb-2">Basic Interval Chart</h2>
-          <div className="border rounded-lg p-2">
-            <G2Chart config={basicIntervalSpec} height={300} />
-          </div>
+      {/* Main Content Area */}
+      <main className="w-3/4 pl-4 flex flex-col">
+        {/* <h1 className="text-2xl font-bold mb-4 sticky top-0 bg-background py-2">{selectedExampleName}</h1> */}
+        <div className="flex-grow border rounded-lg p-2 overflow-auto"> {/* Changed overflow-hidden to overflow-auto */}
+          {/* <Suspense fallback={<div className="flex justify-center items-center h-full">Loading example...</div>}>
+            {SelectedExampleComponent ? (
+              <SelectedExampleComponent />
+            ) : (
+              <p>Select an example from the sidebar.</p>
+            )}
+          </Suspense> */}
+          <AccessibleTextSearchingTextSearchChart />
         </div>
-
-        <div>
-          <h2 className="text-xl font-semibold mb-2">Bullet Chart</h2>
-          <div className="border rounded-lg p-2">
-            <G2Chart config={bulletSpec} height={300} />
-          </div>
-        </div>
-
-        {/* Add more G2Chart components here for other examples */}
-
-      </div>
+      </main>
     </div>
   );
 }
