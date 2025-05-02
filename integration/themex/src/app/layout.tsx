@@ -54,13 +54,12 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      {/* <head>
         <LoadTheme />
-      </head>
+      </head> */}
       {/* <ReactScan options={{ enabled: true }} /> */}
 
-      <body className={cn(`antialiased`)}>
-        <AntdRegistry>
+      <body className={cn(`antialiased min-h-screen w-full`)}>
           <Providers>
             <Suspense>
               {children}
@@ -71,7 +70,6 @@ export default async function RootLayout({
             <Toaster />
             {/* <ScreenDevTools /> */}
           </Providers>
-        </AntdRegistry>
       </body>
     </html>
   );
