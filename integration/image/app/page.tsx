@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, ChangeEvent } from "react";
 
 export default function Home() {
-  const [imageUrl, setImageUrl] = useState<string>("https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=1600&auto=format&fit=crop");
+  const [imageUrl, setImageUrl] = useState<string>("/kenjaku.jpg");
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
