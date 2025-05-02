@@ -1,378 +1,125 @@
-import fs from 'fs/promises';
-import path from 'path';
-import { format } from 'prettier';
-import { type G2Spec, Chart } from '@antv/g2'; // Import G2 types/objects needed
-import {
-        ExampleInfo,
-        ParseResult,
-        HelperFunction,
-        AnimationAlgorithmComponentParams,
-        AlgorithmFrame,
-        AlgorithmGenerator,
-        InitialChartOptions,
-        RenderOptions
-} from './types';
-import { extractFrontmatterData } from './utils';
-import { detectImports } from './code-analysis';
-import { parseG2Code } from './g2-parser';
-
-// Function to generate component content
-export async function generateComponentContent(example: ExampleInfo, wrapperPath: string): Promise<string> {
-        let originalCode = '// Original file could not be read.';
-        let title = example.id.split('/').pop()?.replace(/-/g, ' ') || 'Example'; // Default title
-        let description: string | null = null;
-        let potentialImports: string[] = [];
-        let parsedResult: ParseResult | null = null;
-
-        try {
-                originalCode = await fs.readFile(example.originalFilePath, 'utf-8');
-                potentialImports = detectImports(originalCode);
-                parsedResult = parseG2Code(originalCode);
-        } catch (err) {
-                console.error(`Could not read or parse original file: ${example.originalFilePath}`, err);
-                parsedResult = {
-                        spec: { error: `Failed to read/parse ${example.originalFilePath}` },
-                        needsFetching: false, fetchUrl: null, originalData: null, helperFunctions: [], isComplex: false,
-                        complexDetails: { hasAnimation: false, hasAlgorithm: false, algorithmCode: null, rawDataDeclaration: null, keyframeDeclaration: null, animationLoop: null }
-                };
-        }
-
-        // Extract title and description from markdown
-        const frontmatter = await extractFrontmatterData(example.originalDemoDir);
-        if (frontmatter.title) {
-                title = frontmatter.title;
-        }
-        description = frontmatter.description;
-
-        const componentName = example.componentName;
-        // Ensure parsedResult is not null before destructuring
-        if (!parsedResult) {
-                return `// Failed to parse G2 code for ${example.id}\nexport default () => <div>Error parsing component ${example.id}</div>;`;
-        }
-        // Destructure, complexDetails now includes rawDataDeclaration
-        const { spec, needsFetching, fetchUrl, originalData, helperFunctions, isComplex, complexDetails } = parsedResult;
-
-        // If it's complex (animation/algorithm), use the specialized generator
-        if (isComplex) {
-                return generateAnimationAlgorithmComponent({
-                        componentName,
-                        title,
-                        description,
-                        originalCode,
-                        example,
-                        spec,
-                        rawDataDeclaration: complexDetails.rawDataDeclaration,
-                        algorithmCode: complexDetails.algorithmCode ? { name: 'extractedAlgorithm', code: complexDetails.algorithmCode } : null,
-                        keyframeDeclaration: complexDetails.keyframeDeclaration,
-                        animationLoop: complexDetails.animationLoop,
-                        potentialImports,
-                        wrapperPath, // Pass wrapperPath through
-                        g2SpecImport: "import { type G2Spec, type G2ViewTree, Chart } from '@antv/g2';",
-                        helperFunctions,
-                        algorithmResult: complexDetails.algorithmCode ? { name: 'extractedAlgorithm', code: complexDetails.algorithmCode } : null,
-                });
-        }
-
-        // --- Standard Component Generation ---
-
-        // Stringify spec, replacing placeholders for functions/helpers
-        let specString = JSON.stringify(spec, (key, value) => {
-                if (
-                        (typeof value === 'object' && value !== null && value.comment && Object.keys(value).length === 1) ||
-                        key.endsWith('Comment') || key === 'comment'
-                ) {
-                        return undefined;
-                }
-                if (typeof value === 'string' && (value.startsWith('/* TODO:') || value.startsWith('/* PARSE_ERROR */') || value.startsWith('/* options.data:'))) {
-                        return undefined;
-                }
-                // Keep function/helper placeholders as strings for replacement step
-                if (typeof value === 'string' && (value.startsWith('%%FUNCTION:') || value.startsWith('%%HELPER_FUNCTION:'))) {
-                        return value;
-                }
-                return value;
-        }, 2);
-
-        // Replace placeholders with actual function code or references
-        specString = specString.replace(/"%%FUNCTION:(.*?)%%"/g, (match, funcCode) => {
-                // Unescape the function code captured from JSON string
-                const unescapedFunc = funcCode.replace(/\\\\"/g, '"').replace(/\\\\'/g, "'").replace(/\\\\n/g, '\\n').replace(/\\\\t/g, '\\t').replace(/\\\\\\\\/g, '\\\\');
-                return unescapedFunc || 'undefined /* TODO: Failed to unescape function */';
-        });
-        specString = specString.replace(/"%%HELPER_FUNCTION:(.*?)%%"/g, (match, helperName) => {
-                return helperName || 'undefined /* TODO: Failed to find helper function name */';
-        });
-
-        // Format the spec string using Prettier for better readability
-        try {
-                // Await the format result before calling replace
-                const formattedSpec = await format(`const spec: G2Spec = ${specString};`, {
-                        parser: 'typescript',
-                        semi: true,
-                        singleQuote: true,
-                        trailingComma: 'es5',
-                });
-                // Remove the variable declaration part added for formatting
-                specString = formattedSpec.replace(/^const spec: G2Spec = /, '').replace(/;$/, '').trim();
-        } catch (formatError) {
-                console.warn(`Prettier formatting failed for ${example.id}, using raw stringified spec.`);
-                // Fallback to the unformatted string if prettier fails
-        }
+// Formatting or Write failed for general/candlestick. Original content below:
+// Source: /workspaces/shadcn-ui/G2/site/examples/general/candlestick/demo/k-and-area.ts
+// Error: Identifier expected. (107:44)
+[0m [90m 105 |[39m [90m// This might not be reliable or secure. Consider defining algorithms within the component or using imports.[39m
+ [90m 106 |[39m [90m// TODO: Define the algorithm function (e.g., /* TODO: Define Algorithm Name */) here[39m
+[31m[1m>[22m[39m[90m 107 |[39m [36mfunction[39m[33m*[39m [90m/* TODO: Define Algorithm Name */[39m(arr[33m:[39m any[])[33m:[39m [33mGenerator[39m[33m<[39m[33mAlgorithmFrame[39m[33m,[39m [33mAlgorithmFrame[39m [33m|[39m [36mvoid[39m[33m,[39m unknown[33m>[39m { [36myield[39m arr[33m;[39m } [90m// Algorithm function definition inserted here[39m
+ [90m     |[39m                                            [31m[1m^[22m[39m
+ [90m 108 |[39m
+ [90m 109 |[39m [90m// --- React Component ---[39m
+ [90m 110 |[39m[0m
 
 
-        // Add G2Spec type import
-        const g2SpecImport = "import { type G2Spec } from '@antv/g2';";
-
-        const helperFunctionsCode = helperFunctions.length > 0
-                ? `\n// --- Helper Functions Extracted from Original Example --- \n${helperFunctions.map(f => f.code).join('\n\n')}\n// --- End Helper Functions --- \n`
-                : '';
-
-        const dataHandlingCode = needsFetching
-                ? `
-  const [chartData, setChartData] = React.useState<any>(null);
-  const [loading, setLoading] = React.useState<boolean>(true);
-  const [error, setError] = React.useState<string | null>(null);
-
-  React.useEffect(() => {
-    let isMounted = true;
-    setLoading(true);
-    setError(null);
-    fetch('${fetchUrl}')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(\`HTTP error! status: \${res.status}\`);
-        }
-        // Attempt to parse as JSON, fall back to text if needed
-        const contentType = res.headers.get("content-type");
-        if (contentType && contentType.indexOf("application/json") !== -1) {
-            return res.json();
-        } else {
-            return res.text(); // Handle CSV or other text formats
-        }
-      })
-      .then((data: any) => {
-        if (isMounted) {
-          // TODO: Add data transformation/parsing here if fetched data is not directly usable (e.g., CSV)
-          setChartData(data);
-          setLoading(false);
-        }
-      })
-      .catch((e: Error) => {
-         if (isMounted) {
-           console.error("Failed to fetch chart data:", e);
-           setError(e.message || 'Failed to load data');
-           setLoading(false);
-         }
-      });
-      return () => { isMounted = false }; // Cleanup function
-  }, []); // Fetch only once on mount
-
-  if (loading) {
-    return <div className="p-4 text-center">Loading Chart Data...</div>;
-  }
-
-  if (error) {
-      return <div className="p-4 text-center text-red-600">Error loading data: {error}</div>;
-  }
-
-  // Combine fetched data with the rest of the spec
-  // Ensure spec is defined before spreading
-  const finalSpec: G2Spec = spec ? { ...spec, data: chartData } : { type: 'invalid', data: chartData, error: 'Spec generation failed' };
-`
-                : originalData === "/* PARSE_ERROR */" || (typeof originalData === 'string' && originalData.startsWith('/*'))
-                        ? `
-  // Data was assigned from a variable or failed to parse.
-  // TODO: Provide data manually or ensure the variable '${String(originalData).match(/\/\*\s*(\w+)\s*\*\//)?.[1] || 'unknown'}' is available.
-  const chartData: any[] = []; // Defaulting to empty array
-  const finalSpec: G2Spec = spec ? { ...spec, data: chartData } : { type: 'invalid', data: chartData, error: 'Spec generation failed' };
-`
-                        : `
-  // Use the spec directly (data might be inline or handled elsewhere)
-  // Ensure spec is defined before assigning
-  const finalSpec: G2Spec = spec || { type: 'invalid', error: 'Spec generation failed' };
-`;
-
-        // Handle potential plugin imports (like A11yPlugin)
-        const a11yPluginImport = potentialImports.find(imp => imp.includes('@antv/g-plugin-a11y')) || '';
-        const otherImports = potentialImports.filter(imp => !imp.includes('@antv/g-plugin-a11y')).map(imp => `// ${imp}`).join('\n');
-
-        // Use wrapperPath passed as argument
-        return `'use client';
-
-import React from 'react';
-${g2SpecImport}
-import G2Chart from '${wrapperPath}';
-${a11yPluginImport ? a11yPluginImport : '// No A11yPlugin detected'}
-${otherImports.length > 0 ? '// Other potential external libraries (ensure installed):' : ''}
-${otherImports}
-
-/*
-  Original G2 Example Code:
-  Source: ${path.relative(path.resolve(__dirname, '..'), example.originalFilePath)}
-  ================================================================================
-${originalCode.split('\n').map(line => `  // ${line}`).join('\n')}
-  ================================================================================
-*/
-
-${helperFunctionsCode}
-
-// --- Auto-Generated G2 Spec (Needs Review) ---
-// Note: Functions, complex expressions, and some options might require manual conversion.
-// Check for '%%FUNCTION...' or '%%HELPER_FUNCTION...' placeholders and replace them manually.
-const spec: G2Spec = ${specString};
-
-const ${componentName}: React.FC = () => {
-  ${dataHandlingCode.split('\n').map(line => `  ${line}`).join('\n')}
-
-  return (
-    <div>
-      <h2 className="text-xl font-semibold mb-2">${title}</h2>
-      ${description ? `<p className="text-sm text-muted-foreground mb-4">${description}</p>` : '{/* TODO: Add description if available */}'}
-      {/* Container size and overflow similar to TextSearch.tsx */}
-      <div className="h-[600px] w-full overflow-auto border rounded p-2 bg-background"> {/* Use bg-background or bg-muted/40 */}
-        {/* Render chart only when spec is valid and ready */}
-        {(finalSpec && finalSpec.type !== 'invalid') ? (
-            <G2Chart config={finalSpec} />
-        ) : (
-            <div className="p-4 text-center text-red-600">Chart specification is invalid or missing.</div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default ${componentName};
-`;
-}
-
-// Generate specialized component for animation or algorithm examples
-// Don't change any type here
-export function generateAnimationAlgorithmComponent(params: AnimationAlgorithmComponentParams): any {
-        const {
-                componentName,
-                title,
-                description, // Get description
-                originalCode,
-                example,
-                spec,
-                rawDataDeclaration,
-                algorithmCode,
-                keyframeDeclaration,
-                animationLoop,
-                potentialImports,
-                g2SpecImport, // Includes Chart, G2Spec, G2ViewTree
-                helperFunctions,
-                algorithmResult
-        } = params;
-
-        // Initialize initialSpecOptions from the spec parameter
-        const initialSpecOptions = { ...spec };
-        // Remove properties not suitable for initial Chart constructor (like data, type, encode, etc.)
-        delete initialSpecOptions.data;
-        delete initialSpecOptions.type;
-        delete initialSpecOptions.encode;
-        delete initialSpecOptions.transform;
-        delete initialSpecOptions.labels;
-        delete initialSpecOptions.tooltip;
-        delete initialSpecOptions.animate; // Animation handled separately
-        // Keep width, height, coordinate, scale, axis, legend, style, interaction, plugins etc.
-
-        // Stringify and format initialSpecOptions similar to standard component
-        let initialSpecString = JSON.stringify(initialSpecOptions, (key, value) => {
-                // Remove comment properties
-                if (
-                        (typeof value === 'object' && value !== null && value.comment && Object.keys(value).length === 1) ||
-                        key.endsWith('Comment') || key === 'comment'
-                ) {
-                        return undefined;
-                }
-                if (typeof value === 'string' && (value.startsWith('/* TODO:') || value.startsWith('/* PARSE_ERROR */') || value.startsWith('/* options.data:'))) {
-                        return undefined;
-                }
-                // Keep function/helper placeholders as strings for replacement step
-                if (typeof value === 'string' && (value.startsWith('%%FUNCTION:') || value.startsWith('%%HELPER_FUNCTION:'))) {
-                        return value;
-                }
-                return value;
-        }, 2);
-
-        // Replace placeholders
-        initialSpecString = initialSpecString.replace(/"%%FUNCTION:(.*?)%%"/g, (match, funcCode) => {
-                // Unescape the function code captured from JSON string
-                const unescapedFunc = funcCode.replace(/\\\\"/g, '"').replace(/\\\\'/g, "'").replace(/\\\\n/g, '\\n').replace(/\\\\t/g, '\\t').replace(/\\\\\\\\/g, '\\\\');
-                return unescapedFunc || 'undefined /* TODO: Failed to unescape function */';
-        });
-        initialSpecString = initialSpecString.replace(/"%%HELPER_FUNCTION:(.*?)%%"/g, (match, helperName) => {
-                return helperName || 'undefined /* TODO: Failed to find helper function name */';
-        });
-
-        // Format the initial spec string (No await needed here as format is not called)
-        try {
-                // Format the string directly if needed, but it's already stringified
-                // initialSpecString = format(...) // If formatting is desired, await here
-        } catch (formatError) {
-                console.warn(`Prettier formatting failed for initial options of ${componentName}.`);
-        }
-
-        // Define helperFunctionsCode
-        const helperFunctionsCode = helperFunctions.length > 0
-                ? `\n// --- Helper Functions Extracted from Original Example --- \n${helperFunctions.map(f => f.code).join('\n\n')}\n// --- End Helper Functions --- \n`
-                : '';
-
-        // Define formattedDataDecl using the passed rawDataDeclaration
-        const formattedDataDecl = rawDataDeclaration
-                ? `// Raw data declaration found in original code:\n${rawDataDeclaration}\n// TODO: Ensure 'data' variable is correctly defined and typed.`
-                : `// No raw data declaration found, assuming data is fetched or defined elsewhere.\nconst data: any[] = []; // Placeholder`;
-
-        // Define algorithmName and formattedAlgorithmCode
-        const algorithmName = algorithmResult?.name || '/* TODO: Define Algorithm Name */';
-        const formattedAlgorithmCode = algorithmResult?.code
-                ? `// Algorithm extracted from original code:\n${algorithmResult.code}`
-                : `// TODO: Define the algorithm function (e.g., ${algorithmName}) here\nfunction* ${algorithmName}(arr: any[]): Generator<AlgorithmFrame, AlgorithmFrame | void, unknown> { yield arr; }`;
-
-        // Handle potential plugin imports
-        const a11yPluginImport = potentialImports.find(imp => imp.includes('@antv/g-plugin-a11y')) || '';
-        const otherImports = potentialImports.filter(imp => !imp.includes('@antv/g-plugin-a11y')).map(imp => `// ${imp}`).join('\n');
-
-        // Component structure using direct Chart manipulation
-        // Ensure template literals within this string are properly escaped
-        const componentCode = `
 'use client';
 
 import React, { useRef, useEffect, useState, useCallback, useMemo, FC, ChangeEvent } from 'react';
 // Import G2 Chart object and types
-${g2SpecImport} // Assumes this imports Chart, G2Spec, G2ViewTree
-${a11yPluginImport ? a11yPluginImport : '// No A11yPlugin detected'}
-${otherImports.length > 0 ? '// Other potential external libraries (ensure installed):' : ''}
-${otherImports}
+import { type G2Spec, type G2ViewTree, Chart } from '@antv/g2'; // Assumes this imports Chart, G2Spec, G2ViewTree
+// No A11yPlugin detected
+
+
 // Import shared types
 // Adjust path based on component location - assumes types are one level up
 import type { AlgorithmFrame, AlgorithmGenerator, InitialChartOptions, RenderOptions } from '../types';
 
 /*
 Original G2 Example Code:
-Source: ${path.relative(path.resolve(__dirname, '..'), example.originalFilePath).replace(/\\/g, '/')}
+Source: ../../G2/site/examples/general/candlestick/demo/k-and-area.ts
 ================================================================================
-${originalCode.split('\n').map(line => `  // ${line}`).join('\n')}
+  // import { Chart } from '@antv/g2';
+  // 
+  // const chart = new Chart({
+  //   container: 'container',
+  //   autoFit: true,
+  // });
+  // 
+  // chart
+  //   .data({
+  //     type: 'fetch',
+  //     value: 'https://gw.alipayobjects.com/os/antvdemo/assets/data/stock-03.json',
+  //   })
+  //   .encode('x', 'date')
+  //   .scale('color', {
+  //     domain: ['down', 'up'],
+  //     range: ['#4daf4a', '#e41a1c'],
+  //   })
+  //   .scale('x', {
+  //     compare: (a, b) => new Date(a).getTime() - new Date(b).getTime(),
+  //   })
+  //   .scale('y', {
+  //     domain: [20, 35],
+  //   })
+  //   .axis('x', {
+  //     labelFormatter: (d) => new Date(d).toLocaleDateString(),
+  //   });
+  // 
+  // chart.interaction('tooltip', {
+  //   shared: true,
+  // });
+  // 
+  // chart
+  //   .area()
+  //   .encode('y', 'range')
+  //   .style('fillOpacity', 0.3)
+  //   .style('fill', '#64b5f6')
+  //   .animate(false);
+  // 
+  // chart
+  //   .link()
+  //   .encode('y', ['lowest', 'highest'])
+  //   .encode('color', 'trend')
+  //   .animate('enter', {
+  //     type: 'waveIn',
+  //   });
+  // 
+  // chart
+  //   .interval()
+  //   .encode('y', ['start', 'end'])
+  //   .encode('color', 'trend')
+  //   .style('fillOpacity', 1)
+  //   .axis('y', {
+  //     title: false,
+  //   })
+  //   .tooltip({
+  //     title: 'date',
+  //     items: [
+  //       { field: 'start' },
+  //       { field: 'end' },
+  //       { field: 'lowest' },
+  //       { field: 'highest' },
+  //     ],
+  //   })
+  //   .animate('enter', {
+  //     type: 'waveIn',
+  //   });
+  // 
+  // chart.line().encode('x', 'date').encode('y', 'mean').style('stroke', '#FACC14');
+  // 
+  // chart.render();
+  // 
 ================================================================================
 */
 
 // This example contains animations/algorithms requiring direct chart manipulation.
 // Review the generated code carefully, especially data, algorithm, and rendering logic.
 
-${helperFunctionsCode}
 
-// --- Data and Algorithm Definitions ---\n
+
+// --- Data and Algorithm Definitions ---
+
 // TODO: Verify data type and structure. Ensure 'data' is correctly defined and accessible.
-${formattedDataDecl}
+// No raw data declaration found, assuming data is fetched or defined elsewhere.
+const data: any[] = []; // Placeholder
 
 // TODO: Verify or replace the algorithm implementation below
 // WARNING: The following code assumes the algorithm function is available globally or can be evaluated.
 // This might not be reliable or secure. Consider defining algorithms within the component or using imports.
-${formattedAlgorithmCode} // Algorithm function definition inserted here
+// TODO: Define the algorithm function (e.g., /* TODO: Define Algorithm Name */) here
+function* /* TODO: Define Algorithm Name */(arr: any[]): Generator<AlgorithmFrame, AlgorithmFrame | void, unknown> { yield arr; } // Algorithm function definition inserted here
 
-// --- React Component ---\n
-const ${componentName}: FC = () => {
+// --- React Component ---
+
+const Candlestick: FC = () => {
 const containerRef = useRef<HTMLDivElement | null>(null);
 const chartRef = useRef<Chart | null>(null);
 const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -386,7 +133,41 @@ const [errorState, setErrorState] = useState<string | null>(null);
 const initialChartOptions: InitialChartOptions = useMemo(() => {
         try {
                 // Use template literal for JSON parsing fallback
-                const options: InitialChartOptions = JSON.parse(\`${initialSpecString || '{}'}\`);
+                const options: InitialChartOptions = JSON.parse(`{
+  "scale": {
+    "color": {
+      "domain": [
+        "down",
+        "up"
+      ],
+      "range": [
+        "#4daf4a",
+        "#e41a1c"
+      ]
+    },
+    "y": {
+      "domain": [
+        20,
+        35
+      ]
+    }
+  },
+  "axis": {
+    "y": {
+      "title": false
+    }
+  },
+  "style": {
+    "fillOpacity": "1",
+    "fill": "#64b5f6",
+    "stroke": "#FACC14"
+  },
+  "interaction": {
+    "tooltip": {
+      "shared": true
+    }
+  }
+}`);
                 // TODO: Review these options. Ensure they are valid G2Spec properties for Chart constructor.
                 return options;
         } catch (e: any) {
@@ -402,7 +183,8 @@ const renderCurrentState = useCallback((frameData: AlgorithmFrame): void => {
     const chart: Chart = chartRef.current;
 
     try {
-            // --- TODO: Adapt the rendering logic below based on the original example ---\n
+            // --- TODO: Adapt the rendering logic below based on the original example ---
+
             // This is a generic template. You MUST modify the 'options' object
             // to match the specific marks, encodings, scales, axes, etc., required by the visualization.
             const options: RenderOptions = {
@@ -410,9 +192,11 @@ const renderCurrentState = useCallback((frameData: AlgorithmFrame): void => {
                     data: frameData,
                     // TODO: Define encodings based on frameData structure (e.g., x: 'category', y: 'value')
                     encode: { x: 'x', y: 'y' /* Replace with actual encoding */ },
-                    // TODO: Define scales if needed (e.g., scale: { y: { domain: [0, 100] } })\n
+                    // TODO: Define scales if needed (e.g., scale: { y: { domain: [0, 100] } })
+
                     scale: initialChartOptions.scale || {},
-                    // TODO: Define axes if needed (e.g., axis: { y: { title: 'Value' } })\n
+                    // TODO: Define axes if needed (e.g., axis: { y: { title: 'Value' } })
+
                     axis: initialChartOptions.axis || {},
                     // Basic animation configuration - adjust as needed
                     animate: {
@@ -425,7 +209,8 @@ const renderCurrentState = useCallback((frameData: AlgorithmFrame): void => {
                     ...(initialChartOptions.legend && { legend: initialChartOptions.legend }),
                     ...(initialChartOptions.style && { style: initialChartOptions.style }),
                     // Add other necessary spec properties here
-                    // --- End TODO ---\n
+                    // --- End TODO ---
+
             };
             chart.options(options);
             chart.render();
@@ -440,8 +225,8 @@ const renderCurrentState = useCallback((frameData: AlgorithmFrame): void => {
 const getAlgorithmFunction = useCallback((): AlgorithmGenerator | null => {
         try {
                 // Priority 1: Check if defined globally (on window)
-                if (typeof window !== 'undefined' && typeof (window as any)['${algorithmName}'] === 'function') {
-                        return (window as any)['${algorithmName}'] as AlgorithmGenerator;
+                if (typeof window !== 'undefined' && typeof (window as any)['/* TODO: Define Algorithm Name */'] === 'function') {
+                        return (window as any)['/* TODO: Define Algorithm Name */'] as AlgorithmGenerator;
                 }
 
                 // Priority 2: Attempt to evaluate the formatted code string (Use with extreme caution!)
@@ -456,7 +241,7 @@ const getAlgorithmFunction = useCallback((): AlgorithmGenerator | null => {
                 // Use escaped template literal for error message
                 return null;
         }
-}, ['${algorithmName}']); // Depends only on algorithmName (as string literal)
+}, ['/* TODO: Define Algorithm Name */']); // Depends only on algorithmName (as string literal)
 
 // Function to safely get the initial data
 const getInitialData = useCallback((): any[] | null => {
@@ -571,7 +356,7 @@ useEffect(() => {
 // Dependencies: Re-initialize if algorithm name changes or initial options change.
 // getAlgorithmFunction and getInitialData are stable due to useCallback.
 // Pass algorithmName as string literal dependency
-}, ['${algorithmName}', initialChartOptions, getAlgorithmFunction, getInitialData, renderCurrentState]);
+}, ['/* TODO: Define Algorithm Name */', initialChartOptions, getAlgorithmFunction, getInitialData, renderCurrentState]);
 
 // Animation loop logic
 useEffect(() => {
@@ -706,8 +491,8 @@ const handleSpeedChange = (event: ChangeEvent<HTMLInputElement>): void => {
 return (
     <div>
         {/* Use template literals correctly for title and description */}
-        <h2 className="text-xl font-semibold mb-2">${title}</h2>
-        {${description ? '`<p className="text-sm text-muted-foreground mb-4">${description}</p>`' : '' /* Empty string if no description */}}
+        <h2 className="text-xl font-semibold mb-2">Candlestick</h2>
+        {}
         {/* Controls */}
         <div className="flex flex-wrap items-center space-x-2 mb-4">
             <button
@@ -756,8 +541,4 @@ return (
 );
 };
 
-export default ${componentName};
-`; // End of componentCode template literal
-
-        return componentCode;
-}
+export default Candlestick;

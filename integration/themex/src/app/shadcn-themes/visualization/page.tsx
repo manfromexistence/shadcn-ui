@@ -2,6 +2,7 @@
 
 import React, { useState, lazy, Suspense, Component, ErrorInfo, ReactNode } from 'react';
 import g2GeneratedExampleListRaw from './g2-generated-example-list.json';
+import AccessibleTextSearchingTextSearchChart from './g2-examples/accessible/text-searching/TextSearch';
 const g2GeneratedExampleList: { path: string; name: string }[] = g2GeneratedExampleListRaw;
 
 // Helper function to dynamically import components
@@ -71,8 +72,7 @@ export default function VisualizationPage() {
 
   return (
     <div className="container mx-auto p-4 flex h-screen">
-      {/* Sidebar */}
-      <aside className="w-1/4 border-r pr-4 overflow-y-auto">
+      {/* <aside className="w-1/4 border-r pr-4 overflow-y-auto">
         <h2 className="text-xl font-semibold mb-4 sticky top-0 bg-background py-2">Examples</h2>
         <ul>
           {g2GeneratedExampleList.map((example) => (
@@ -91,10 +91,9 @@ export default function VisualizationPage() {
         </ul>
       </aside>
 
-      {/* Main Content Area */}
       <main className="w-3/4 pl-4 flex flex-col">
         <h1 className="text-2xl font-bold mb-4 sticky top-0 bg-background py-2">{selectedExampleName}</h1>
-        <div className="flex-grow border rounded-lg p-2 overflow-auto"> {/* Changed overflow-hidden to overflow-auto */}
+        <div className="flex-grow border rounded-lg p-2 overflow-auto">
           <ErrorBoundary fallback={<div className="flex justify-center items-center h-full text-destructive">Error loading example.</div>}>
             <Suspense fallback={<div className="flex justify-center items-center h-full">Loading example...</div>}>
               {SelectedExampleComponent ? (
@@ -105,7 +104,9 @@ export default function VisualizationPage() {
             </Suspense>
           </ErrorBoundary>
         </div>
-      </main>
+      </main> */}
+      <h1>Visualization</h1>
+      <AccessibleTextSearchingTextSearchChart />
     </div>
   );
 }

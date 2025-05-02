@@ -1,1 +1,247 @@
-[]
+[
+  {
+    "name": "3D Bar Chart",
+    "path": "threed/Bar.tsx",
+    "description": null
+  },
+  {
+    "name": "3D Scatter Chart",
+    "path": "threed/Scatter.tsx",
+    "description": null
+  },
+  {
+    "name": "3D Surface Chart",
+    "path": "threed/Surface.tsx",
+    "description": null
+  },
+  {
+    "name": "Area",
+    "path": "general/Area.tsx",
+    "description": null
+  },
+  {
+    "name": "Axis",
+    "path": "component/Axis.tsx",
+    "description": null
+  },
+  {
+    "name": "Bin",
+    "path": "analysis/Bin.tsx",
+    "description": null
+  },
+  {
+    "name": "Box",
+    "path": "general/Box.tsx",
+    "description": null
+  },
+  {
+    "name": "Brush",
+    "path": "interaction/Brush.tsx",
+    "description": null
+  },
+  {
+    "name": "Bullet",
+    "path": "general/Bullet.tsx",
+    "description": null
+  },
+  {
+    "name": "Chart Layout",
+    "path": "layout/Layout.tsx",
+    "description": null
+  },
+  {
+    "name": "Chart View Style",
+    "path": "layout/Style.tsx",
+    "description": null
+  },
+  {
+    "name": "Component",
+    "path": "interaction/Component.tsx",
+    "description": null
+  },
+  {
+    "name": "Dual",
+    "path": "general/Dual.tsx",
+    "description": null
+  },
+  {
+    "name": "Element",
+    "path": "interaction/Element.tsx",
+    "description": null
+  },
+  {
+    "name": "Ema",
+    "path": "general/Ema.tsx",
+    "description": null
+  },
+  {
+    "name": "Facet",
+    "path": "composition/Facet.tsx",
+    "description": null
+  },
+  {
+    "name": "Funnel",
+    "path": "general/Funnel.tsx",
+    "description": null
+  },
+  {
+    "name": "Gauge",
+    "path": "general/Gauge.tsx",
+    "description": null
+  },
+  {
+    "name": "Geo",
+    "path": "geo/Geo.tsx",
+    "description": null
+  },
+  {
+    "name": "Graphic",
+    "path": "style/Graphic.tsx",
+    "description": null
+  },
+  {
+    "name": "Heatmap",
+    "path": "general/Heatmap.tsx",
+    "description": null
+  },
+  {
+    "name": "Hierarchy",
+    "path": "graph/Hierarchy.tsx",
+    "description": null
+  },
+  {
+    "name": "Histogram",
+    "path": "general/Histogram.tsx",
+    "description": null
+  },
+  {
+    "name": "Image",
+    "path": "general/Image.tsx",
+    "description": null
+  },
+  {
+    "name": "Label",
+    "path": "component/Label.tsx",
+    "description": null
+  },
+  {
+    "name": "Legend",
+    "path": "component/Legend.tsx",
+    "description": null
+  },
+  {
+    "name": "Line",
+    "path": "general/Line.tsx",
+    "description": null
+  },
+  {
+    "name": "Liquid",
+    "path": "general/Liquid.tsx",
+    "description": null
+  },
+  {
+    "name": "Numerical Interaction",
+    "path": "interaction/Data.tsx",
+    "description": null
+  },
+  {
+    "name": "Other",
+    "path": "interaction/Other.tsx",
+    "description": null
+  },
+  {
+    "name": "Pie",
+    "path": "general/Pie.tsx",
+    "description": null
+  },
+  {
+    "name": "Polygon",
+    "path": "general/Polygon.tsx",
+    "description": null
+  },
+  {
+    "name": "Radial",
+    "path": "general/Radial.tsx",
+    "description": null
+  },
+  {
+    "name": "Renderer",
+    "path": "renderer/Renderer.tsx",
+    "description": null
+  },
+  {
+    "name": "Rose",
+    "path": "general/Rose.tsx",
+    "description": null
+  },
+  {
+    "name": "Rough",
+    "path": "style/Rough.tsx",
+    "description": null
+  },
+  {
+    "name": "Search",
+    "path": "accessible/TextSearching.tsx",
+    "description": null
+  },
+  {
+    "name": "Shape",
+    "path": "annotation/Shape.tsx",
+    "description": null
+  },
+  {
+    "name": "Space",
+    "path": "composition/Space.tsx",
+    "description": null
+  },
+  {
+    "name": "Spec Function Expression",
+    "path": "expr/Base.tsx",
+    "description": null
+  },
+  {
+    "name": "Text",
+    "path": "annotation/Text.tsx",
+    "description": null
+  },
+  {
+    "name": "Text",
+    "path": "general/Text.tsx",
+    "description": null
+  },
+  {
+    "name": "Tooltip",
+    "path": "component/Tooltip.tsx",
+    "description": null
+  },
+  {
+    "name": "Unit Visualization",
+    "path": "unit/Unit.tsx",
+    "description": null
+  },
+  {
+    "name": "Vector",
+    "path": "general/Vector.tsx",
+    "description": null
+  },
+  {
+    "name": "Violin",
+    "path": "general/Violin.tsx",
+    "description": null
+  },
+  {
+    "name": "图",
+    "path": "graph/Network.tsx",
+    "description": null
+  },
+  {
+    "name": "图表标题",
+    "path": "component/Title.tsx",
+    "description": null
+  },
+  {
+    "name": "滚动条",
+    "path": "component/Scrollbar.tsx",
+    "description": null
+  }
+]
