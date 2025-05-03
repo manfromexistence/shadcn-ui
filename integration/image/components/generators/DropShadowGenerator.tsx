@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Clipboard } from "lucide-react";
+import { motion } from "framer-motion";
 
 // Reusing hexToRgba helper (consider moving to a shared utils file)
 const hexToRgba = (hex: string, alpha: number = 1): string => {
@@ -44,7 +45,7 @@ export function DropShadowGenerator() {
   };
 
   const previewStyle = {
-    filter: generateCss().replace('filter: ', ''),
+    filter: generateCss().replace('filter: ', '').replace(';', ''),
     // Apply to an element with content, like text or an SVG
     fontSize: '2rem',
     fontWeight: 'bold',
@@ -52,7 +53,12 @@ export function DropShadowGenerator() {
   };
 
   return (
-    <div className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8">
+    <motion.div // Added motion
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.3 }} // Stagger animation
+      className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8"
+    >
       <h2 className="text-2xl font-semibold mb-6 text-white">4. Drop Shadow Generator</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Preview */}
@@ -62,7 +68,13 @@ export function DropShadowGenerator() {
             className="w-64 h-64 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden bg-gray-200" // Neutral background
           >
             {/* Drop shadow applies to the content inside */}
-            <span style={previewStyle}>Drop Shadow</span>
+            <motion.div // Added motion
+              style={previewStyle}
+              animate={{ filter: previewStyle.filter }} // Animate filter change
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              Drop Shadow
+            </motion.div>
           </div>
         </div>
 
@@ -135,6 +147,6 @@ export function DropShadowGenerator() {
           /* className="[&>span:first-child]:h-1 [&>span:first-child]:bg-white/30 [&_[role=slider]]:bg-white [&_[role=slider]]:w-4 [&_[role=slider]]:h-4 [&_[role=slider]]:border-0" */
         }
       `}</style>
-    </div>
+    </motion.div> // Added motion
   );
 }

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Clipboard } from "lucide-react";
+import { motion } from "framer-motion";
 
 // Helper to convert hex to rgba
 const hexToRgba = (hex: string, alpha: number = 1): string => {
@@ -49,7 +50,7 @@ export function BoxShadowGenerator() {
   };
 
   const previewStyle = {
-    boxShadow: generateCss().replace('box-shadow: ', ''),
+    boxShadow: generateCss().replace('box-shadow: ', '').replace(';', ''),
     width: '100px', // Example size for preview
     height: '100px',
     backgroundColor: 'white', // So the shadow is visible
@@ -57,7 +58,12 @@ export function BoxShadowGenerator() {
   };
 
   return (
-    <div className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8">
+    <motion.div // Added motion
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }} // Stagger animation
+      className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8"
+    >
       <h2 className="text-2xl font-semibold mb-6 text-white">3. Box Shadow Generator</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Preview */}
@@ -66,7 +72,13 @@ export function BoxShadowGenerator() {
           <div
             className="w-64 h-64 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden bg-gray-200" // Neutral background
           >
-            <div style={previewStyle}></div> {/* Element to apply shadow to */}
+            <motion.div // Added motion
+              style={previewStyle}
+              animate={{ boxShadow: previewStyle.boxShadow }} // Animate shadow change
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              Shadow
+            </motion.div>
           </div>
         </div>
 
@@ -156,6 +168,6 @@ export function BoxShadowGenerator() {
           /* className="[&>span:first-child]:h-1 [&>span:first-child]:bg-white/30 [&_[role=slider]]:bg-white [&_[role=slider]]:w-4 [&_[role=slider]]:h-4 [&_[role=slider]]:border-0" */
         }
       `}</style>
-    </div>
+    </motion.div> // Added motion
   );
 }

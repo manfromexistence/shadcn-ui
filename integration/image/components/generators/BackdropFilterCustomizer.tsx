@@ -5,6 +5,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Clipboard } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function BackdropFilterCustomizer() {
   const [blur, setBlur] = useState<number>(5); // Default blur
@@ -47,8 +48,8 @@ export function BackdropFilterCustomizer() {
   };
 
   const previewStyle = {
-    backdropFilter: generateCss().split('\n')[0].replace('backdrop-filter: ', ''),
-    WebkitBackdropFilter: generateCss().split('\n')[1]?.replace('-webkit-backdrop-filter: ', ''),
+    backdropFilter: generateCss().split('\n')[0].replace('backdrop-filter: ', '').replace(';', ''),
+    WebkitBackdropFilter: generateCss().split('\n')[1]?.replace('-webkit-backdrop-filter: ', '').replace(';', ''),
     backgroundColor: 'rgba(255, 255, 255, 0.1)', // Semi-transparent background for the element itself
     padding: '2rem',
     borderRadius: '10px',
@@ -57,7 +58,12 @@ export function BackdropFilterCustomizer() {
   };
 
   return (
-    <div className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8">
+    <motion.div // Added motion
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.6 }} // Stagger animation
+      className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8"
+    >
       <h2 className="text-2xl font-semibold mb-6 text-white">7. Backdrop Filter Customizer</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Preview */}
@@ -67,9 +73,16 @@ export function BackdropFilterCustomizer() {
             className="w-64 h-64 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden bg-cover bg-center"
             style={{ backgroundImage: 'url(/kenjaku.jpg)' }} // Needs background behind the element
           >
-            <div style={previewStyle}>
+            <motion.div // Added motion
+                style={previewStyle}
+                animate={{ // Animate individual filter properties for smoother transitions if possible
+                    backdropFilter: previewStyle.backdropFilter,
+                    WebkitBackdropFilter: previewStyle.WebkitBackdropFilter
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
                 Content Here
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -157,6 +170,6 @@ export function BackdropFilterCustomizer() {
           /* className="[&>span:first-child]:h-1 [&>span:first-child]:bg-white/30 [&_[role=slider]]:bg-white [&_[role=slider]]:w-4 [&_[role=slider]]:h-4 [&_[role=slider]]:border-0" */
         }
       `}</style>
-    </div>
+    </motion.div> // Added motion
   );
 }

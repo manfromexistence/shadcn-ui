@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion"; // Added
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -52,22 +53,28 @@ border: 1px solid rgba(255, 255, 255, 0.18); /* Default border */`;
   };
 
   return (
-    <div className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8">
+    <motion.div // Added motion
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8"
+    >
       <h2 className="text-2xl font-semibold mb-6 text-white">1. Glassmorphism Generator</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Preview */}
         <div className="flex flex-col items-center justify-center p-4">
           <h3 className="text-xl font-semibold mb-4 text-white">Preview</h3>
           <div
-            className="w-64 h-64 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden bg-cover bg-center"
+            className="w-96 h-96 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden bg-cover bg-center" // Increased size
             style={{ backgroundImage: 'url(/kenjaku.jpg)' }} // Example background
           >
-            <div
-              className="w-full h-full flex items-center justify-center font-bold text-lg p-4 text-black" // Ensure text is visible
+            <motion.div // Added motion
               style={previewStyle}
+              animate={previewStyle} // Animate style changes
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               Glass Effect
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -151,6 +158,6 @@ border: 1px solid rgba(255, 255, 255, 0.18); /* Default border */`;
           </div>
         </div>
       </div>
-    </div>
+    </motion.div> // Added motion
   );
 }

@@ -6,6 +6,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Clipboard, Plus, Trash2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 type GradientType = "linear" | "radial";
 
@@ -50,13 +51,18 @@ export function GradientGenerator() {
   };
 
   const previewStyle = {
-    background: generateCss().replace('background: ', ''), // Reuse generated CSS for preview
+    background: generateCss().replace('background: ', '').replace(';', ''), // Remove semicolon
     width: '100%',
     height: '100%',
   };
 
   return (
-    <div className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8">
+    <motion.div // Added motion
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.1 }} // Stagger animation
+      className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8"
+    >
        <h2 className="text-2xl font-semibold mb-6 text-white">2. Gradient Generator</h2>
        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
          {/* Left Side: Preview */}
@@ -65,7 +71,11 @@ export function GradientGenerator() {
            <div
              className="w-64 h-64 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden"
            >
-             <div style={previewStyle}></div> {/* Simple div showing the gradient */}
+             <motion.div // Added motion
+              style={previewStyle}
+              animate={{ background: previewStyle.background }} // Animate gradient change
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            />
            </div>
          </div>
 
@@ -166,7 +176,7 @@ export function GradientGenerator() {
            </div>
          </div>
        </div>
-     </div>
+     </motion.div> // Added motion
   );
 }
 

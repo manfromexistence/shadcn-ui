@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Clipboard } from "lucide-react";
+import { motion } from "framer-motion";
 
 // Reusing hexToRgba helper
 const hexToRgba = (hex: string, alpha: number = 1): string => {
@@ -44,7 +45,7 @@ export function BlurGlowGenerator() {
   };
 
   const previewStyle = {
-    boxShadow: generateCss().replace('box-shadow: ', ''),
+    boxShadow: generateCss().replace('box-shadow: ', '').replace(';', ''),
     width: '100px',
     height: '100px',
     backgroundColor: '#1f2937', // Dark background helps see the glow
@@ -52,7 +53,12 @@ export function BlurGlowGenerator() {
   };
 
   return (
-    <div className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8">
+    <motion.div // Added motion
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.4 }} // Stagger animation
+      className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8"
+    >
       <h2 className="text-2xl font-semibold mb-6 text-white">5. Blur Glow Generator</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Preview */}
@@ -61,7 +67,13 @@ export function BlurGlowGenerator() {
           <div
             className="w-64 h-64 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden bg-gray-900" // Dark background
           >
-            <div style={previewStyle}></div>
+            <motion.div // Added motion
+              style={previewStyle}
+              animate={previewStyle} // Animate style changes
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              Glow
+            </motion.div>
           </div>
         </div>
 
@@ -126,6 +138,6 @@ export function BlurGlowGenerator() {
           /* className="[&>span:first-child]:h-1 [&>span:first-child]:bg-white/30 [&_[role=slider]]:bg-white [&_[role=slider]]:w-4 [&_[role=slider]]:h-4 [&_[role=slider]]:border-0" */
         }
       `}</style>
-    </div>
+    </motion.div> // Added motion
   );
 }

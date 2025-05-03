@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"; // Added
 import { Slider } from "@/components/ui/slider"; // Added
 import { Clipboard } from "lucide-react";
+import { motion } from "framer-motion";
 
 // TODO: Add more clip-path shapes (circle, ellipse, polygon) and mask properties
 
@@ -66,11 +67,10 @@ ${maskCss}`.trim();
   const previewStyle: React.CSSProperties = {
     width: '100%',
     height: '100%',
-    backgroundColor: '#3b82f6', // Example background color
-    backgroundImage: 'url(/kenjaku.jpg)', // Example background image to show masking
+    backgroundColor: '#3b82f6',
+    backgroundImage: 'url(/kenjaku.jpg)',
     backgroundSize: 'cover',
     clipPath: clipPathType === 'inset' ? `inset(${insetTop}% ${insetRight}% ${insetBottom}% ${insetLeft}% round ${insetRound}%)` : 'none',
-    // Apply mask properties (need -webkit- prefix for some browsers)
     maskImage: maskImage,
     WebkitMaskImage: maskImage,
     maskSize: maskSize,
@@ -82,7 +82,12 @@ ${maskCss}`.trim();
   };
 
   return (
-    <div className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8">
+    <motion.div // Added motion
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.7 }} // Stagger animation
+      className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8"
+    >
       <h2 className="text-2xl font-semibold mb-6 text-white">8. Clipping & Masking Generator</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Preview */}
@@ -91,9 +96,12 @@ ${maskCss}`.trim();
           <div
             className="w-64 h-64 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden bg-gray-500" // Neutral container background
           >
-            <div style={previewStyle}>
+            <motion.div
+                style={previewStyle}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
                 {/* Content inside the clipped/masked element if needed */}
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -199,6 +207,6 @@ ${maskCss}`.trim();
         [role="slider"] { background-color: white; border: none; width: 1rem; height: 1rem; }
         [role="slider"] ~ span { background-color: rgba(255,255,255,0.3); height: 0.25rem; }
       `}</style>
-    </div>
+    </motion.div> // Added motion
   );
 }

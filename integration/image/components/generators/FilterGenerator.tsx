@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"; // Added for drop-shadow color
 import { Label } from "@/components/ui/label";
 import { Clipboard } from "lucide-react";
+import { motion } from "framer-motion";
 
 // Reusing hexToRgba helper (consider moving to a shared utils file)
 const hexToRgba = (hex: string, alpha: number = 1): string => {
@@ -76,7 +77,7 @@ export function FilterGenerator() {
   };
 
   const previewStyle = {
-    filter: generateCss().replace('filter: ', ''),
+    filter: generateCss().replace('filter: ', '').replace(';', ''),
     width: '100px',
     height: '100px',
     backgroundColor: '#3b82f6', // Example element color
@@ -89,7 +90,12 @@ export function FilterGenerator() {
   };
 
   return (
-    <div className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8">
+    <motion.div // Added motion
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.8 }} // Stagger animation
+      className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8"
+    >
       <h2 className="text-2xl font-semibold mb-6 text-white">9. Filter Generator</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Preview */}
@@ -98,9 +104,13 @@ export function FilterGenerator() {
           <div
             className="w-64 h-64 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden bg-gray-200" // Neutral background
           >
-            <div style={previewStyle}>
+            <motion.div // Added motion
+                style={previewStyle}
+                animate={{ filter: previewStyle.filter }} // Animate filter change
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
                 Filtered
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -206,6 +216,6 @@ export function FilterGenerator() {
         [role="slider"] { background-color: white; border: none; width: 1rem; height: 1rem; }
         [role="slider"] ~ span { background-color: rgba(255,255,255,0.3); height: 0.25rem; }
       `}</style>
-    </div>
+    </motion.div> // Added motion
   );
 }
