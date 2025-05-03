@@ -1,53 +1,34 @@
 "use client";
 
-import Image from "next/image";
-import { useState, ChangeEvent } from "react";
+// Import the new generator components
+import { GlassmorphismGenerator } from "@/components/generators/GlassmorphismGenerator";
+import { GradientGenerator } from "@/components/generators/GradientGenerator";
+import { BoxShadowGenerator } from "@/components/generators/BoxShadowGenerator";
+import { DropShadowGenerator } from "@/components/generators/DropShadowGenerator";
+import { BlurGlowGenerator } from "@/components/generators/BlurGlowGenerator";
+import { NeonEffectGenerator } from "@/components/generators/NeonEffectGenerator";
+import { BackdropFilterCustomizer } from "@/components/generators/BackdropFilterCustomizer";
+import { ClippingMaskingGenerator } from "@/components/generators/ClippingMaskingGenerator"; // Added
+import { FilterGenerator } from "@/components/generators/FilterGenerator"; // Added
 
 export default function Home() {
-  const [imageUrl, setImageUrl] = useState<string>("/kenjaku.jpg");
 
-  const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const objectUrl = URL.createObjectURL(file);
-      setImageUrl(objectUrl);
-    }
-  };
+  // Removed all state and functions previously here
 
   return (
-    // Set position to relative to contain the absolute positioned Image
-    <div style={{ position: 'relative', minHeight: '100vh' }}>
-      <Image
-        alt="Background"
-        src={imageUrl}
-        quality={100}
-        fill
-        style={{ 
-          position: 'absolute', 
-          zIndex: -1,
-          objectFit: 'cover' 
-        }}
-      />
-      
-      {/* Image upload input */}
-      <div style={{ position: 'relative', zIndex: 1, padding: '20px' }}>
-        <input 
-          type="file" 
-          accept="image/*" 
-          onChange={handleImageUpload}
-          style={{ 
-            color: 'white',
-            background: 'rgba(0,0,0,0.5)',
-            padding: '10px',
-            borderRadius: '4px'
-          }} 
-        />
+    <div className="flex min-h-screen flex-col items-center justify-start p-4 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+      <div className="container mx-auto flex flex-col items-center w-full max-w-4xl">
+        {/* Render the generators sequentially */}
+        <GlassmorphismGenerator />
+        <GradientGenerator />
+        <BoxShadowGenerator />
+        <DropShadowGenerator />
+        <BlurGlowGenerator />
+        <NeonEffectGenerator />
+        <BackdropFilterCustomizer />
+        <ClippingMaskingGenerator /> {/* Added */}
+        <FilterGenerator /> {/* Added */}
       </div>
-      
-      {/* Add your foreground content here */}
-      <h1 style={{ position: 'relative', zIndex: 1, color: 'white', textAlign: 'center', paddingTop: '40vh' }}>
-        Content Goes Here
-      </h1>
     </div>
   );
 }
