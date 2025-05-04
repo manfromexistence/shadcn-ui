@@ -168,30 +168,15 @@
 }
 
 @layer utilities {
-  .glassmorphism .bg-background,
-  .glassmorphism .bg-card,
-  .glassmorphism .bg-popover,
-  .glassmorphism .bg-primary,
-  .glassmorphism .bg-secondary,
-  .glassmorphism .bg-muted,
-  .glassmorphism .bg-accent,
-  .glassmorphism .bg-destructive,
-  .glassmorphism .bg-sidebar,
-  .glassmorphism .bg-sidebar-primary,
-  .glassmorphism .bg-sidebar-accent {
-    -webkit-backdrop-filter: var(--blur-amount);
-             backdrop-filter: var(--blur-amount);
-  }
-
-  .glassmorphism .bg-background { --blur-amount: var(--background-blur); background-color: var(--background); }
-  .glassmorphism .bg-card { --blur-amount: var(--card-blur); background-color: var(--card); }
-  .glassmorphism .bg-popover { --blur-amount: var(--popover-blur); background-color: var(--popover); }
-  .glassmorphism .bg-primary { --blur-amount: var(--primary-blur); background-color: var(--primary); }
-  .glassmorphism .bg-secondary { --blur-amount: var(--secondary-blur); background-color: var(--secondary); }
-  .glassmorphism .bg-muted { --blur-amount: var(--muted-blur); background-color: var(--muted); }
-  .glassmorphism .bg-accent { --blur-amount: var(--accent-blur); background-color: var(--accent); }
-  .glassmorphism .bg-destructive { --blur-amount: var(--destructive-blur); background-color: var(--destructive); }
-  .glassmorphism .bg-sidebar { --blur-amount: var(--sidebar-blur); background-color: var(--sidebar); }
-  .glassmorphism .bg-sidebar-primary { --blur-amount: var(--sidebar-primary-blur); background-color: var(--sidebar-primary); }
-  .glassmorphism .bg-sidebar-accent { --blur-amount: var(--sidebar-accent-blur); background-color: var(--sidebar-accent); }
+  .glassmorphism .bg-background { backdrop-filter: var(--background-blur); -webkit-backdrop-filter: var(--background-blur); background-color: var(--background); }
+  .glassmorphism .bg-card { backdrop-filter: var(--card-blur); -webkit-backdrop-filter: var(--card-blur); background-color: var(--card); }
+  .glassmorphism .bg-popover { backdrop-filter: var(--popover-blur); -webkit-backdrop-filter: var(--popover-blur); background-color: var(--popover); }
+  .glassmorphism .bg-primary { backdrop-filter: var(--primary-blur); -webkit-backdrop-filter: var(--primary-blur); background-color: var(--primary); }
+  .glassmorphism .bg-secondary { backdrop-filter: var(--secondary-blur); -webkit-backdrop-filter: var(--secondary-blur); background-color: var(--secondary); }
+  .glassmorphism .bg-muted { backdrop-filter: var(--muted-blur); -webkit-backdrop-filter: var(--muted-blur); background-color: var(--muted); }
+  .glassmorphism .bg-accent { backdrop-filter: var(--accent-blur); -webkit-backdrop-filter: var(--accent-blur); background-color: var(--accent); }
+  .glassmorphism .bg-destructive { backdrop-filter: var(--destructive-blur); -webkit-backdrop-filter: var(--destructive-blur); background-color: var(--destructive); }
+  .glassmorphism .bg-sidebar { backdrop-filter: var(--sidebar-blur); -webkit-backdrop-filter: var(--sidebar-blur); background-color: var(--sidebar); }
+  .glassmorphism .bg-sidebar-primary { backdrop-filter: var(--sidebar-primary-blur); -webkit-backdrop-filter: var(--sidebar-primary-blur); background-color: var(--sidebar-primary); }
+  .glassmorphism .bg-sidebar-accent { backdrop-filter: var(--sidebar-accent-blur); -webkit-backdrop-filter: var(--sidebar-accent-blur); background-color: var(--sidebar-accent); }
 }
