@@ -50,6 +50,7 @@ border: 1px solid rgba(255, 255, 255, 0.18); /* Default border */`;
     WebkitBackdropFilter: `blur(${blur}px)`,
     borderRadius: '10px',
     border: '1px solid rgba(255, 255, 255, 0.18)',
+    padding: '2rem',
   };
 
   return (

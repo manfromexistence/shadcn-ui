@@ -88,7 +88,7 @@ ${maskCss}`.trim();
       transition={{ duration: 0.5, delay: 0.7 }} // Stagger animation
       className="w-full p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 shadow-lg mb-8"
     >
-      <h2 className="text-2xl font-semibold mb-6 text-white">8. Clipping & Masking Generator</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-white">7. Clipping & Masking Generator</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Preview */}
         <div className="flex flex-col items-center justify-center p-4">
