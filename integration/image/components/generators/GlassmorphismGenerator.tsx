@@ -51,6 +51,7 @@ border: 1px solid rgba(255, 255, 255, 0.18); /* Default border */`;
     borderRadius: '10px',
     border: '1px solid rgba(255, 255, 255, 0.18)',
     padding: '2rem',
+    color: 'white', // Text color for preview
   };
 
   return (

@@ -73,6 +73,7 @@ export function BoxShadowGenerator() {
             className="w-64 h-64 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden bg-gray-200" // Neutral background
           >
             <motion.div // Added motion
+              className="flex items-center justify-center w-full h-full rounded-lg"
               style={previewStyle}
               animate={{ boxShadow: previewStyle.boxShadow }} // Animate shadow change
               transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -123,8 +124,8 @@ export function BoxShadowGenerator() {
             <div className="space-y-2 flex-grow">
               <Label htmlFor="shadow-color" className="block text-sm font-medium text-white">Color</Label>
               <div className="flex items-center space-x-2">
-                 <Input id="shadow-color" type="color" value={color} onChange={(e) => setColor(e.target.value)} className="w-10 h-10 p-0 border-none cursor-pointer rounded" />
-                 <Input type="text" value={color} onChange={(e) => setColor(e.target.value)} className="flex-grow bg-white/20 border-white/30 text-white placeholder:text-gray-300" placeholder="#1f2687" />
+                <Input id="shadow-color" type="color" value={color} onChange={(e) => setColor(e.target.value)} className="w-10 h-10 p-0 border-none cursor-pointer rounded" />
+                <Input type="text" value={color} onChange={(e) => setColor(e.target.value)} className="flex-grow bg-white/20 border-white/30 text-white placeholder:text-gray-300" placeholder="#1f2687" />
               </div>
             </div>
             <div className="space-y-2 w-1/3">

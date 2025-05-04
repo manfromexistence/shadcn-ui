@@ -83,6 +83,7 @@ export function NeonEffectGenerator() {
             className="w-64 h-64 flex items-center justify-center border border-dashed border-gray-400 relative overflow-hidden bg-black" // Black background
           >
             <motion.div // Added motion
+              className="flex items-center justify-center w-full h-full rounded-lg text-white"
               style={previewStyle}
               animate={previewStyle} // Animate style changes
               transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -116,8 +117,8 @@ export function NeonEffectGenerator() {
           <div className="space-y-2">
             <Label htmlFor="neon-color" className="block text-sm font-medium text-white">Color</Label>
             <div className="flex items-center space-x-2">
-               <Input id="neon-color" type="color" value={color} onChange={(e) => setColor(e.target.value)} className="w-10 h-10 p-0 border-none cursor-pointer rounded" />
-               <Input type="text" value={color} onChange={(e) => setColor(e.target.value)} className="flex-grow bg-white/20 border-white/30 text-white placeholder:text-gray-300" placeholder="#00ff00" />
+              <Input id="neon-color" type="color" value={color} onChange={(e) => setColor(e.target.value)} className="w-10 h-10 p-0 border-none cursor-pointer rounded" />
+              <Input type="text" value={color} onChange={(e) => setColor(e.target.value)} className="flex-grow bg-white/20 border-white/30 text-white placeholder:text-gray-300" placeholder="#00ff00" />
             </div>
           </div>
 
@@ -141,8 +142,8 @@ export function NeonEffectGenerator() {
           </div>
         </div>
       </div>
-       {/* Add shared slider styling if needed */}
-       <style jsx>{`
+      {/* Add shared slider styling if needed */}
+      <style jsx>{`
         .slider-styling {
           /* className="[&>span:first-child]:h-1 [&>span:first-child]:bg-white/30 [&_[role=slider]]:bg-white [&_[role=slider]]:w-4 [&_[role=slider]]:h-4 [&_[role=slider]]:border-0" */
         }
