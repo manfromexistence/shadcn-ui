@@ -6,41 +6,52 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --blur-background: var(--background-blur, 0px);
+  --blur-card: var(--card-blur, 0px);
+  --blur-popover: var(--popover-blur, 0px);
+  --blur-primary: var(--primary-blur, 0px);
+  --blur-secondary: var(--secondary-blur, 0px);
+  --blur-muted: var(--muted-blur, 0px);
+  --blur-accent: var(--accent-blur, 0px);
+  --blur-destructive: var(--destructive-blur, 0px);
+  --blur-sidebar: var(--sidebar-blur, 0px);
+  --blur-sidebar-primary: var(--sidebar-primary-blur, 0px);
+  --blur-sidebar-accent: var(--sidebar-accent-blur, 0px);
 }
 
 :root {
@@ -112,6 +123,41 @@
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
+.glassmorphism {
+  --background: oklch(from var(--background) l c h / 0.05);
+  --foreground: oklch(from var(--foreground) l c h / 0.075);
+  --card: oklch(from var(--card) l c h / 0.85);
+  --card-foreground: oklch(from var(--card-foreground) l c h / 0.85);
+  --popover: oklch(from var(--popover) l c h / 0.85);
+  --popover-foreground: oklch(from var(--popover-foreground) l c h / 0.85);
+  --primary: oklch(from var(--primary) l c h / 0.85);
+  --primary-foreground: oklch(from var(--primary-foreground) l c h / 0.85);
+  --secondary: oklch(from var(--secondary) l c h / 0.85);
+  --secondary-foreground: oklch(from var(--secondary-foreground) l c h / 0.85);
+  --muted: oklch(from var(--muted) l c h / 0.85);
+  --muted-foreground: oklch(from var(--muted-foreground) l c h / 0.85);
+  --accent: oklch(from var(--accent) l c h / 0.85);
+  --accent-foreground: oklch(from var(--accent-foreground) l c h / 0.85);
+  --destructive: oklch(from var(--destructive) l c h / 0.85);
+  --sidebar: oklch(from var(--sidebar) l c h / 0.85);
+  --sidebar-foreground: oklch(from var(--sidebar-foreground) l c h / 0.85);
+  --sidebar-primary: oklch(from var(--sidebar-primary) l c h / 0.85);
+  --sidebar-primary-foreground: oklch(from var(--sidebar-primary-foreground) l c h / 0.85);
+  --sidebar-accent: oklch(from var(--sidebar-accent) l c h / 0.85);
+  --sidebar-accent-foreground: oklch(from var(--sidebar-accent-foreground) l c h / 0.85);
+  --background-blur: 5px;
+  --card-blur: 8px;
+  --popover-blur: 12px;
+  --primary-blur: 10px;
+  --secondary-blur: 9px;
+  --muted-blur: 7px;
+  --accent-blur: 9px;
+  --destructive-blur: 15px;
+  --sidebar-blur: 6px;
+  --sidebar-primary-blur: 11px;
+  --sidebar-accent-blur: 10px;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -119,4 +165,33 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer utilities {
+  .glassmorphism .bg-background,
+  .glassmorphism .bg-card,
+  .glassmorphism .bg-popover,
+  .glassmorphism .bg-primary,
+  .glassmorphism .bg-secondary,
+  .glassmorphism .bg-muted,
+  .glassmorphism .bg-accent,
+  .glassmorphism .bg-destructive,
+  .glassmorphism .bg-sidebar,
+  .glassmorphism .bg-sidebar-primary,
+  .glassmorphism .bg-sidebar-accent {
+    -webkit-backdrop-filter: var(--blur-amount);
+             backdrop-filter: var(--blur-amount);
+  }
+
+  .glassmorphism .bg-background { --blur-amount: var(--background-blur); background-color: var(--background); }
+  .glassmorphism .bg-card { --blur-amount: var(--card-blur); background-color: var(--card); }
+  .glassmorphism .bg-popover { --blur-amount: var(--popover-blur); background-color: var(--popover); }
+  .glassmorphism .bg-primary { --blur-amount: var(--primary-blur); background-color: var(--primary); }
+  .glassmorphism .bg-secondary { --blur-amount: var(--secondary-blur); background-color: var(--secondary); }
+  .glassmorphism .bg-muted { --blur-amount: var(--muted-blur); background-color: var(--muted); }
+  .glassmorphism .bg-accent { --blur-amount: var(--accent-blur); background-color: var(--accent); }
+  .glassmorphism .bg-destructive { --blur-amount: var(--destructive-blur); background-color: var(--destructive); }
+  .glassmorphism .bg-sidebar { --blur-amount: var(--sidebar-blur); background-color: var(--sidebar); }
+  .glassmorphism .bg-sidebar-primary { --blur-amount: var(--sidebar-primary-blur); background-color: var(--sidebar-primary); }
+  .glassmorphism .bg-sidebar-accent { --blur-amount: var(--sidebar-accent-blur); background-color: var(--sidebar-accent); }
 }
