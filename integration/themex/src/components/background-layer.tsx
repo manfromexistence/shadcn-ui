@@ -7,35 +7,41 @@ import React from "react";
 export function BackgroundLayer({ children }: { children: React.ReactNode }) {
   const { backgroundUrl, fileType } = useBackground();
 
-  console.log("BackgroundLayer received:", { backgroundUrl, fileType });
+  console.log("[BackgroundLayer] Received context:", { backgroundUrl, fileType });
+
+  const containerStyle: React.CSSProperties = {};
+  if (fileType === 'image' && backgroundUrl) {
+    containerStyle.backgroundImage = `url(${backgroundUrl})`;
+    console.log("[BackgroundLayer] Applying image background style:", containerStyle.backgroundImage);
+  } else {
+    containerStyle.backgroundImage = 'none';
+    console.log("[BackgroundLayer] Applying no image background style.");
+  }
 
   return (
     <div
       className={cn(
-        "relative min-h-screen w-full", // Ensure it covers the screen
-        // Apply background image classes only if it's an image
+        "relative min-h-screen w-full",
         fileType === 'image' ? "bg-cover bg-center" : ""
       )}
-      style={{
-        // Apply background image style only if it's an image
-        backgroundImage: fileType === 'image' && backgroundUrl ? `url(${backgroundUrl})` : 'none',
-      }}
+      style={containerStyle}
     >
-      {/* Render video element if fileType is video and URL exists */}
       {fileType === 'video' && backgroundUrl && (
         <video
-          key={backgroundUrl} // Force re-render if URL changes
+          key={backgroundUrl}
           src={backgroundUrl}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover -z-10" // Cover entire container, place behind content
-          onError={(e) => console.error('Video playback error:', e)}
+          // Increased z-index slightly, but still negative to be behind content
+          className="absolute inset-0 w-full h-full object-cover -z-5" 
+          onError={(e) => console.error('[BackgroundLayer] Video playback error:', e)}
+          onLoadedData={() => console.log('[BackgroundLayer] Video data loaded, src:', backgroundUrl)}
         />
       )}
-      {/* Content goes here, ensure it's above the background */}
-      <div className="relative z-0"> {/* Ensure content is above video */}
+      {/* Increased content z-index to ensure it's above the background */}
+      <div className="relative z-10"> 
         {children}
       </div>
     </div>
