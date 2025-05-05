@@ -5,12 +5,12 @@ import { FontLoader } from "@/components/font-loader";
 import { LoadTheme } from "@/components/load-theme";
 import { ThemeSync } from "@/components/theme-sync";
 import { Toaster } from "@/components/ui/sonner";
-import { cn } from "@/lib/utils";
+// Removed cn import as it's no longer used directly here
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Providers } from "./providers";
-import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { Providers } from "./providers"; // Removed useBackground import
+import { BackgroundLayer } from "@/components/background-layer"; // Import BackgroundLayer
 
 export const metadata: Metadata = {
   title: {
@@ -49,27 +49,29 @@ export const metadata: Metadata = {
   generator: "Next.js",
 };
 
+// Removed BackgroundLayer component definition
+
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* <head>
-        <LoadTheme />
-      </head> */}
-      {/* <ReactScan options={{ enabled: true }} /> */}
-
-      <body className={cn(`antialiased min-h-screen w-full`)}>
-          <Providers>
+      {/* Removed cn() and background styles from body, handled by BackgroundLayer */}
+      <body className={`antialiased min-h-screen w-full`}>
+        <Providers attribute="class" defaultTheme="system" enableSystem> {/* Pass props for NextThemesProvider */}
+          {/* Wrap content with BackgroundLayer */}
+          <BackgroundLayer>
             <Suspense>
               {children}
               <ThemeSync />
             </Suspense>
-
             <FontLoader />
             <Toaster />
+            {/* DevTools can remain outside or inside BackgroundLayer depending on needs */}
+            {/* <ReactScan /> */}
             {/* <ScreenDevTools /> */}
-          </Providers>
+          </BackgroundLayer>
+        </Providers>
       </body>
     </html>
   );

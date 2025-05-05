@@ -12,6 +12,7 @@ import {
 } from "@/components/colors";
 import { useThemeConfig } from "@/hooks/use-theme-config";
 import { ThemeObject } from "@/types/theme";
+import { useBackground } from "@/app/providers"; // Import the context hook
 
 interface ThemeSettings {
   source: string;
@@ -29,15 +30,25 @@ export default function ThemeCustomizer() {
     source: "#1a73e8",
     customColors: [],
   });
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  // Removed fileInputRef as input is now handled by context
   const [isLoading, setIsLoading] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   // State to hold the generated light and dark schemes
   const [generatedSchemes, setGeneratedSchemes] = useState<GeneratedSchemes | null>(null);
 
   const { updateThemeConfig } = useThemeConfig();
+  // Consume background context
+  const { handleFileChange, sourceColorFromBg, isLoadingBackground } = useBackground();
 
-  // Removed useEffect that generated theme on mount
+  // Effect to update source color when background image changes
+  useEffect(() => {
+    if (sourceColorFromBg) {
+      setSettings((prev) => ({ ...prev, source: sourceColorFromBg }));
+      // Optionally trigger theme generation automatically, or let user click 'Generate'
+      // handleGenerateThemeClick(sourceColorFromBg); // Example: auto-generate
+      setGeneratedSchemes(null); // Clear previous generation if source changes
+    }
+  }, [sourceColorFromBg]);
 
   const handleColorChange = (color: any) => {
     const hexColor = color.toHex();
@@ -46,46 +57,21 @@ export default function ThemeCustomizer() {
     setGeneratedSchemes(null);
   };
 
-  const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    setIsLoading(true);
-    // Clear previous generation
-    setGeneratedSchemes(null);
-    try {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = async () => {
-        const img = new Image();
-        img.src = reader.result as string;
-        await new Promise((resolve) => {
-          img.onload = resolve;
-        });
-
-        const { sourceColorFromImage } = await import("@/components/colors/utils/image_utils");
-        const sourceColor = await sourceColorFromImage(img);
-        // Update source color in settings as well
-        setSettings((prev) => ({ ...prev, source: intToHex(sourceColor) }));
-        generateSchemeFromSourceColor(sourceColor); // Generate but don't apply
-        setIsLoading(false);
-      };
-    } catch (error) {
-      console.error("Error processing image:", error);
-      setIsLoading(false);
-    }
-  };
+  // Removed handleImageUpload - now handled by context
 
   // Renamed from generateTheme to avoid conflict
-  const handleGenerateThemeClick = () => {
+  const handleGenerateThemeClick = (colorToUse?: string) => {
+    const sourceHex = colorToUse || settings.source;
+    if (!sourceHex) return; // Don't generate if no source color
+
     setIsLoading(true);
-    // Clear previous generation
     setGeneratedSchemes(null);
     try {
-      const sourceColor = argbFromHex(settings.source);
-      generateSchemeFromSourceColor(sourceColor); // Generate but don't apply
+      const sourceColor = argbFromHex(sourceHex);
+      generateSchemeFromSourceColor(sourceColor);
     } catch (error) {
       console.error("Error generating theme:", error);
+      setGeneratedSchemes(null); // Ensure reset on error
     } finally {
       setIsLoading(false);
     }
@@ -161,26 +147,13 @@ export default function ThemeCustomizer() {
     alert("Generated theme applied!"); // Optional feedback
   };
 
-
   const handleDarkModeChange = (dark: boolean) => {
     setIsDarkMode(dark);
     // No need to regenerate scheme here, preview will use the stored one
   };
 
-  // Removed duplicate generateScheme and generateThemeFromHex functions
-
-  const intToHex = (colorInt: number): string => {
-    // Handle potential non-number inputs gracefully
-    if (typeof colorInt !== 'number' || isNaN(colorInt)) {
-      console.warn("intToHex received invalid input:", colorInt);
-      return '#000000'; // Return black for invalid input
-    }
-    const hex = (colorInt >>> 0).toString(16).padStart(8, '0'); // Use unsigned right shift for safety
-    return `#${hex.substring(2)}`;
-  };
-
   const intToHsl = (colorInt: number): string => {
-     // Handle potential non-number inputs gracefully
+    // Handle potential non-number inputs gracefully
     if (typeof colorInt !== 'number' || isNaN(colorInt)) {
       console.warn("intToHsl received invalid input:", colorInt);
       return '0 0% 0%'; // Return black HSL for invalid input
@@ -189,10 +162,10 @@ export default function ThemeCustomizer() {
   };
 
   const intToHslDisplay = (colorInt: number): string => {
-     // Handle potential non-number inputs gracefully
+    // Handle potential non-number inputs gracefully
     if (typeof colorInt !== 'number' || isNaN(colorInt)) {
-       console.warn("intToHslDisplay received invalid input:", colorInt);
-       return 'hsl(0 0% 0%)'; // Return black HSL display for invalid input
+      console.warn("intToHslDisplay received invalid input:", colorInt);
+      return 'hsl(0 0% 0%)'; // Return black HSL display for invalid input
     }
     const hslValue = SchemeShadcn.toHslString(colorInt);
     return `hsl(${hslValue})`;
@@ -260,8 +233,6 @@ export default function ThemeCustomizer() {
     });
   };
 
-  // Removed getThemePreview function as it's complex to show diffs
-
   const shadcnColorRoles: { name: string, key: keyof SchemeShadcn }[] = [
     { name: "background", key: "background" },
     { name: "foreground", key: "foreground" },
@@ -290,54 +261,63 @@ export default function ThemeCustomizer() {
     : null;
 
   return (
-    <div>
+    // Add padding/margin as needed for layout
+    <div className="p-4 md:p-8">
       <h1 className="mb-6 text-3xl font-bold">Theme Generator</h1>
-      <Card> {/* Removed space-y-4 from Card */}
-        <CardContent className="space-y-4 pt-6"> {/* Added pt-6 for padding */}
+      <Card>
+        <CardContent className="space-y-6 pt-6"> {/* Increased spacing */}
+          {/* Color Picker Section */}
           <div className="space-y-2">
             <Label htmlFor="color-picker">Select Primary Color</Label>
-            <div className="flex flex-wrap items-center gap-4"> {/* Added flex-wrap */}
+            <div className="flex flex-wrap items-center gap-4">
               <ColorPicker
-                defaultValue={settings.source}
+                value={settings.source} // Use value for controlled component
                 showText
                 onChangeComplete={handleColorChange}
                 allowClear={false}
               />
-              <Button onClick={handleGenerateThemeClick} disabled={isLoading}>
+              {/* Generate Button uses internal state */}
+              <Button onClick={() => handleGenerateThemeClick()} disabled={isLoading || isLoadingBackground}>
                 {isLoading ? "Generating..." : "Generate Theme"}
               </Button>
-              {/* Add Apply Theme Button */}
+              {/* Apply Button */}
               <Button
                 onClick={applyGeneratedTheme}
-                disabled={!generatedSchemes || isLoading}
+                disabled={!generatedSchemes || isLoading || isLoadingBackground}
                 variant="secondary"
               >
                 Apply Generated Theme
               </Button>
             </div>
           </div>
+
+          {/* Background Upload Section */}
           <div className="space-y-2">
-            <Label htmlFor="image-upload">Upload Image (Extracts Primary Color)</Label>
+            <Label htmlFor="background-upload">Set Background (Image/Video)</Label>
             <div className="flex items-center gap-4">
               <Input
-                ref={fileInputRef}
-                id="image-upload"
+                id="background-upload"
                 type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                disabled={isLoading}
-                className="max-w-xs" // Limit width
+                accept="image/*,video/mp4,video/webm,video/ogg" // Accept video types
+                onChange={handleFileChange} // Use context handler
+                disabled={isLoadingBackground || isLoading} // Disable while loading bg or theme
+                className="max-w-xs"
               />
+              {isLoadingBackground && <span className="text-sm text-muted-foreground">Processing background...</span>}
             </div>
+            <p className="text-xs text-muted-foreground">
+              Select an image to extract its primary color, or a video (max 1 min) for the background.
+            </p>
           </div>
 
-          <div className="flex items-center gap-2 pt-2"> {/* Added pt-2 */}
+          {/* Dark Mode Toggle */}
+          <div className="flex items-center gap-2 pt-2">
             <Label>Preview Mode:</Label>
             <Button
               variant={!isDarkMode ? "default" : "outline"}
               size="sm"
               onClick={() => handleDarkModeChange(false)}
-              disabled={isLoading}
+              disabled={isLoading || isLoadingBackground}
               className="min-w-16"
             >
               Light
@@ -346,7 +326,7 @@ export default function ThemeCustomizer() {
               variant={isDarkMode ? "default" : "outline"}
               size="sm"
               onClick={() => handleDarkModeChange(true)}
-              disabled={isLoading}
+              disabled={isLoading || isLoadingBackground}
               className="min-w-16"
             >
               Dark
@@ -355,9 +335,10 @@ export default function ThemeCustomizer() {
         </CardContent>
       </Card>
 
-      {isLoading && (
-        <div className="mt-4 rounded-lg border p-8 text-center"> {/* Added mt-4 */}
-          Generating theme...
+      {/* Combined Loading State */}
+      {(isLoading || isLoadingBackground) && !schemeToDisplay && (
+        <div className="mt-4 rounded-lg border p-8 text-center">
+          {isLoadingBackground ? "Processing background..." : "Generating theme..."}
         </div>
       )}
 
@@ -375,14 +356,18 @@ export default function ThemeCustomizer() {
             const colorValue = schemeToDisplay[key];
             // Ensure colorValue is a number before processing
             if (typeof colorValue === 'number' && !isNaN(colorValue)) {
-              return (
-                <ColorSwatch
-                  key={name}
-                  name={name}
-                  color={intToHex(colorValue)}
-                  displayValue={intToHslDisplay(colorValue)}
-                />
-              );
+              const hexColor = intToHex(colorValue); // Store the result
+              // Only render if hexColor is a valid string
+              if (hexColor) {
+                return (
+                  <ColorSwatch
+                    key={name}
+                    name={name}
+                    color={hexColor} // Use the non-null hexColor
+                    displayValue={intToHslDisplay(colorValue)}
+                  />
+                );
+              }
             }
             return null; // Skip rendering if colorValue is invalid
           })}
@@ -426,4 +411,11 @@ function ColorSwatch({ name, color, displayValue }: { name: string, color: strin
       </span>
     </div>
   )
+}
+
+function intToHex(sourceColorInt: number): string | null {
+  if (typeof sourceColorInt !== "number" || isNaN(sourceColorInt)) return null;
+  // Clamp to 24 bits and convert to hex
+  const hex = "#" + (sourceColorInt & 0xffffff).toString(16).padStart(6, "0");
+  return hex;
 }
