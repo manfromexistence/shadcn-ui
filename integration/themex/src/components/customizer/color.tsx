@@ -16,6 +16,7 @@ import {
   ContextMenuTrigger,
 } from "../ui/context-menu";
 import { Skeleton } from "../ui/skeleton";
+import { ensureCssColorFormat } from "@/utils/colors"; // Import helper
 
 export function Color({
   color,
@@ -27,8 +28,12 @@ export function Color({
   const isMounted = useMounted();
   const { isCopied, copyToClipboard } = useCopyToClipboard();
 
+  // Ensure color is in CSS format for formatting
+  const cssColor = ensureCssColorFormat(color);
+
   const handleCopyColor = (colorFormat: ColorFormat) => {
-    const formatedColor = colorFormatter(color, colorFormat, "4");
+    // Format the CSS-formatted color
+    const formatedColor = colorFormatter(cssColor, colorFormat, "4");
     copyToClipboard(formatedColor);
     toast.success(`${formatedColor} copied to clipboard!`);
   };
@@ -59,7 +64,8 @@ export function Color({
             isActive &&
               "text-foreground border-primary/50 ring-primary/50 ring-[2px]",
           )}
-          style={{ "--primary": color }}
+          // Use the CSS-formatted color for the --primary CSS variable
+          style={{ "--primary": cssColor }}
           onClick={onClick}
           {...props}
         >

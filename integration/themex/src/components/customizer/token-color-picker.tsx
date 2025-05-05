@@ -8,7 +8,7 @@ import {
   convertToHex,
   convertToOklch,
 } from "@/utils/color-converter";
-import { getOptimalForegroundColor } from "@/utils/colors";
+import { getOptimalForegroundColor, isValidColor, ensureCssColorFormat } from "@/utils/colors";
 import { CircleAlert, Pipette } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useState } from "react";
@@ -37,29 +37,44 @@ export function TokenColorPicker({
   setColorTokens,
 }: TokenColorPickerProps) {
   const [currentColor, setCurrentColor] = useState(color);
-  const hexColor = convertToHex(color);
+
+  // Ensure color is in CSS format before converting/using
+  const cssColor = ensureCssColorFormat(color);
+
+  // Validate CSS color before converting to hex, provide fallback
+  const hexColor = isValidColor(cssColor) ? convertToHex(cssColor) : '#000000';
   const modesInSync = useModesInSync();
 
-  const resolvedModesInSync = syncModes !== undefined ? syncModes : modesInSync; // allows overriding the global sync mode
+  const resolvedModesInSync = syncModes !== undefined ? syncModes : modesInSync;
 
   useEffect(() => {
+    // Still update internal state with potentially raw color from props
     if (currentColor !== color) setCurrentColor(color);
   }, [color]);
 
   const debouncedSetColorTokens = useDebouncedCallback(setColorTokens, 100);
 
   const handleColorChange = useCallback(
-    (color: string) => {
-      const newOklchColor = convertToOklch(color);
-      setCurrentColor(newOklchColor);
+    (newHexColor: string) => { // Changed param name for clarity
+      // Convert from hex (picker output) to oklch for storage
+      const newOklchColor = convertToOklch(newHexColor);
+      setCurrentColor(newOklchColor); // Update internal state with oklch
       debouncedSetColorTokens({
-        color: newOklchColor,
+        color: newOklchColor, // Store oklch
         modesInSync: resolvedModesInSync,
         property: colorProperty,
       });
     },
-    [resolvedModesInSync, colorProperty],
+    [resolvedModesInSync, colorProperty, debouncedSetColorTokens],
   );
+
+  // Prepare color for getOptimalForegroundColor - use the CSS-formatted color
+  let validColorForOptimalForeground = cssColor;
+  if (!isValidColor(cssColor)) {
+      // Fallback if format is unknown and invalid after ensuring format
+      validColorForOptimalForeground = '#000000'; // Use black as fallback
+      console.warn(`Invalid color format encountered in TokenColorPicker for property ${colorProperty}: ${color}. Using fallback.`);
+  }
 
   return (
     <ComponentErrorBoundary
@@ -73,7 +88,8 @@ export function TokenColorPicker({
             <Pipette
               className="text-foreground fill-foreground absolute inset-0 m-auto size-4"
               style={{
-                "--foreground": getOptimalForegroundColor(currentColor),
+                // Use the validated CSS color for optimal foreground calculation
+                "--foreground": getOptimalForegroundColor(validColorForOptimalForeground),
               }}
             />
           </PopoverTrigger>

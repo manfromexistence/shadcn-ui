@@ -1,69 +1,49 @@
 "use client";
-
 import { useState, useRef, ChangeEvent, useEffect } from "react";
 import { ColorPicker } from "antd";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {
   argbFromHex,
   Hct,
-  SchemeVibrant,
-  SchemeRainbow,
-  SchemeTonalSpot,
-  SchemeNeutral,
-  SchemeMonochrome,
-  SchemeFruitSalad,
-  SchemeFidelity,
-  SchemeExpressive,
-  SchemeContent,
   SchemeShadcn
 } from "@/components/colors";
+import { useThemeConfig } from "@/hooks/use-theme-config";
+import { ThemeObject } from "@/types/theme";
 
 interface ThemeSettings {
   source: string;
   customColors: { name: string; value: number; blend: boolean }[];
 }
 
-// Define scheme types with their display names and classes
-const SCHEMES = [
-  { id: "tonal_spot", name: "Tonal Spot", class: SchemeTonalSpot },
-  { id: "vibrant", name: "Vibrant", class: SchemeVibrant },
-  { id: "rainbow", name: "Rainbow", class: SchemeRainbow },
-  { id: "expressive", name: "Expressive", class: SchemeExpressive },
-  { id: "neutral", name: "Neutral", class: SchemeNeutral },
-  { id: "monochrome", name: "Monochrome", class: SchemeMonochrome },
-  { id: "fruit_salad", name: "Fruit Salad", class: SchemeFruitSalad },
-  { id: "fidelity", name: "Fidelity", class: SchemeFidelity },
-  { id: "content", name: "Content", class: SchemeContent },
-];
+// Define the structure for storing generated schemes
+interface GeneratedSchemes {
+  light: SchemeShadcn;
+  dark: SchemeShadcn;
+}
 
 export default function ThemeCustomizer() {
-  const [theme, setTheme] = useState<any>(null);
   const [settings, setSettings] = useState<ThemeSettings>({
     source: "#1a73e8",
     customColors: [],
   });
-  const [activeTab, setActiveTab] = useState("color");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [schemeType, setSchemeType] = useState("tonal_spot");
-  const [scheme, setScheme] = useState<any>(null);
-  const [shadcnScheme, setShadcnScheme] = useState<SchemeShadcn | null>(null);
-  const [activeGenerator, setActiveGenerator] = useState<"shadcn" | "material">("shadcn");
+  // State to hold the generated light and dark schemes
+  const [generatedSchemes, setGeneratedSchemes] = useState<GeneratedSchemes | null>(null);
 
-  // Generate scheme immediately when component mounts
-  useEffect(() => {
-    generateScheme();
-  }, []);
+  const { updateThemeConfig } = useThemeConfig();
+
+  // Removed useEffect that generated theme on mount
 
   const handleColorChange = (color: any) => {
     const hexColor = color.toHex();
     setSettings((prev) => ({ ...prev, source: hexColor }));
+    // Clear generated theme when color changes, requiring regeneration
+    setGeneratedSchemes(null);
   };
 
   const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -71,6 +51,8 @@ export default function ThemeCustomizer() {
     if (!file) return;
 
     setIsLoading(true);
+    // Clear previous generation
+    setGeneratedSchemes(null);
     try {
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -81,12 +63,11 @@ export default function ThemeCustomizer() {
           img.onload = resolve;
         });
 
-        // Extract the source color from the image
         const { sourceColorFromImage } = await import("@/components/colors/utils/image_utils");
         const sourceColor = await sourceColorFromImage(img);
-
-        // Generate scheme with the current settings
-        generateSchemeFromSourceColor(sourceColor);
+        // Update source color in settings as well
+        setSettings((prev) => ({ ...prev, source: intToHex(sourceColor) }));
+        generateSchemeFromSourceColor(sourceColor); // Generate but don't apply
         setIsLoading(false);
       };
     } catch (error) {
@@ -95,12 +76,14 @@ export default function ThemeCustomizer() {
     }
   };
 
-  // Generate scheme from hex color input with immediate UI update
-  const generateTheme = () => {
+  // Renamed from generateTheme to avoid conflict
+  const handleGenerateThemeClick = () => {
     setIsLoading(true);
+    // Clear previous generation
+    setGeneratedSchemes(null);
     try {
       const sourceColor = argbFromHex(settings.source);
-      generateSchemeFromSourceColor(sourceColor);
+      generateSchemeFromSourceColor(sourceColor); // Generate but don't apply
     } catch (error) {
       console.error("Error generating theme:", error);
     } finally {
@@ -108,198 +91,166 @@ export default function ThemeCustomizer() {
     }
   };
 
-  // Generate scheme from source color using selected scheme type
   const generateSchemeFromSourceColor = (sourceColor: number) => {
     try {
       const hct = Hct.fromInt(sourceColor);
 
-      // For Shadcn theme
-      if (activeGenerator === "shadcn" || activeGenerator === "material") {
-        let generatedShadcnScheme = new SchemeShadcn(hct, isDarkMode, 0);
-        setShadcnScheme(generatedShadcnScheme);
-      }
+      const lightScheme = new SchemeShadcn(hct, false, 0);
+      const darkScheme = new SchemeShadcn(hct, true, 0);
 
-      // For Material theme
-      if (activeGenerator === "material") {
-        const selectedScheme = SCHEMES.find(s => s.id === schemeType);
+      // Store the generated schemes instead of applying them
+      setGeneratedSchemes({ light: lightScheme, dark: darkScheme });
 
-        if (!selectedScheme) {
-          console.error(`Scheme type '${schemeType}' not found`);
-          return;
-        }
-
-        // Create scheme instance with contrast level 0
-        let generatedScheme = new selectedScheme.class(hct, isDarkMode, 0);
-        setScheme(generatedScheme);
-      }
     } catch (error) {
       console.error("Error generating scheme:", error);
+      // Ensure generatedSchemes is null on error
+      setGeneratedSchemes(null);
     }
   };
 
-  // Handle scheme type change with immediate regeneration
-  const handleSchemeChange = (value: string) => {
-    setIsLoading(true);
-    setSchemeType(value);
+  // Function to apply the stored generated theme
+  const applyGeneratedTheme = () => {
+    if (!generatedSchemes) return;
 
-    try {
-      const sourceColor = argbFromHex(settings.source);
-      const hct = Hct.fromInt(sourceColor);
+    const generatedThemePart: Partial<ThemeObject> = {
+      light: {
+        background: intToHsl(generatedSchemes.light.background),
+        foreground: intToHsl(generatedSchemes.light.foreground),
+        muted: intToHsl(generatedSchemes.light.muted),
+        "muted-foreground": intToHsl(generatedSchemes.light.mutedForeground),
+        popover: intToHsl(generatedSchemes.light.popover),
+        "popover-foreground": intToHsl(generatedSchemes.light.popoverForeground),
+        card: intToHsl(generatedSchemes.light.card),
+        "card-foreground": intToHsl(generatedSchemes.light.cardForeground),
+        border: intToHsl(generatedSchemes.light.border),
+        input: intToHsl(generatedSchemes.light.input),
+        primary: intToHsl(generatedSchemes.light.primary),
+        "primary-foreground": intToHsl(generatedSchemes.light.primaryForeground),
+        secondary: intToHsl(generatedSchemes.light.secondary),
+        "secondary-foreground": intToHsl(generatedSchemes.light.secondaryForeground),
+        accent: intToHsl(generatedSchemes.light.accent),
+        "accent-foreground": intToHsl(generatedSchemes.light.accentForeground),
+        destructive: intToHsl(generatedSchemes.light.destructive),
+        "destructive-foreground": intToHsl(generatedSchemes.light.destructiveForeground),
+        ring: intToHsl(generatedSchemes.light.ring),
+      },
+      dark: {
+        background: intToHsl(generatedSchemes.dark.background),
+        foreground: intToHsl(generatedSchemes.dark.foreground),
+        muted: intToHsl(generatedSchemes.dark.muted),
+        "muted-foreground": intToHsl(generatedSchemes.dark.mutedForeground),
+        popover: intToHsl(generatedSchemes.dark.popover),
+        "popover-foreground": intToHsl(generatedSchemes.dark.popoverForeground),
+        card: intToHsl(generatedSchemes.dark.card),
+        "card-foreground": intToHsl(generatedSchemes.dark.cardForeground),
+        border: intToHsl(generatedSchemes.dark.border),
+        input: intToHsl(generatedSchemes.dark.input),
+        primary: intToHsl(generatedSchemes.dark.primary),
+        "primary-foreground": intToHsl(generatedSchemes.dark.primaryForeground),
+        secondary: intToHsl(generatedSchemes.dark.secondary),
+        "secondary-foreground": intToHsl(generatedSchemes.dark.secondaryForeground),
+        accent: intToHsl(generatedSchemes.dark.accent),
+        "accent-foreground": intToHsl(generatedSchemes.dark.accentForeground),
+        destructive: intToHsl(generatedSchemes.dark.destructive),
+        "destructive-foreground": intToHsl(generatedSchemes.dark.destructiveForeground),
+        ring: intToHsl(generatedSchemes.dark.ring),
+      },
+    };
 
-      const selectedScheme = SCHEMES.find(s => s.id === value);
-      if (selectedScheme) {
-        const generatedScheme = new selectedScheme.class(hct, isDarkMode, 0);
-        setScheme(generatedScheme);
-      }
-    } catch (error) {
-      console.error("Error generating theme after scheme change:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    updateThemeConfig(generatedThemePart as ThemeObject);
+    alert("Generated theme applied!"); // Optional feedback
   };
 
-  // Handle dark mode change with immediate regeneration - improved version without setTimeout
+
   const handleDarkModeChange = (dark: boolean) => {
-    // Start loading state
-    setIsLoading(true);
-
-    // Update dark mode state
     setIsDarkMode(dark);
-
-    try {
-      // Get the current source color
-      const sourceColor = argbFromHex(settings.source);
-      const hct = Hct.fromInt(sourceColor);
-
-      // Generate Shadcn theme directly without waiting for state update
-      const generatedShadcnScheme = new SchemeShadcn(hct, dark, 0);
-      setShadcnScheme(generatedShadcnScheme);
-
-      // Generate Material theme if needed
-      if (activeGenerator === "material") {
-        const selectedScheme = SCHEMES.find(s => s.id === schemeType);
-        if (selectedScheme) {
-          const generatedScheme = new selectedScheme.class(hct, dark, 0);
-          setScheme(generatedScheme);
-        }
-      }
-    } catch (error) {
-      console.error("Error generating theme after dark mode change:", error);
-    } finally {
-      // End loading state
-      setIsLoading(false);
-    }
+    // No need to regenerate scheme here, preview will use the stored one
   };
 
-  // Helper function for shorter name
-  const generateScheme = () => generateThemeFromHex();
+  // Removed duplicate generateScheme and generateThemeFromHex functions
 
-  // Generate a theme from the current hex color - also improved for immediate feedback
-  const generateThemeFromHex = () => {
-    setIsLoading(true);
-    try {
-      const sourceColor = argbFromHex(settings.source);
-      generateSchemeFromSourceColor(sourceColor);
-    } catch (error) {
-      console.error("Error generating theme from hex:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Helper: ARGB int to hex string
   const intToHex = (colorInt: number): string => {
-    const hex = colorInt.toString(16).padStart(8, '0');
+    // Handle potential non-number inputs gracefully
+    if (typeof colorInt !== 'number' || isNaN(colorInt)) {
+      console.warn("intToHex received invalid input:", colorInt);
+      return '#000000'; // Return black for invalid input
+    }
+    const hex = (colorInt >>> 0).toString(16).padStart(8, '0'); // Use unsigned right shift for safety
     return `#${hex.substring(2)}`;
   };
 
-  // Helper: Convert ARGB int to HSL CSS variable string
   const intToHsl = (colorInt: number): string => {
+     // Handle potential non-number inputs gracefully
+    if (typeof colorInt !== 'number' || isNaN(colorInt)) {
+      console.warn("intToHsl received invalid input:", colorInt);
+      return '0 0% 0%'; // Return black HSL for invalid input
+    }
     return SchemeShadcn.toHslString(colorInt);
   };
 
-  // Helper: Convert ARGB int to HSL display string (for UI display)
   const intToHslDisplay = (colorInt: number): string => {
+     // Handle potential non-number inputs gracefully
+    if (typeof colorInt !== 'number' || isNaN(colorInt)) {
+       console.warn("intToHslDisplay received invalid input:", colorInt);
+       return 'hsl(0 0% 0%)'; // Return black HSL display for invalid input
+    }
     const hslValue = SchemeShadcn.toHslString(colorInt);
     return `hsl(${hslValue})`;
   };
 
-  // Copy Shadcn theme CSS to clipboard with both light and dark modes
   const copyShadcnThemeCSS = () => {
-    if (!shadcnScheme) return;
+    // Use the generatedSchemes state
+    if (!generatedSchemes) return;
 
     const themeName = "theme-custom";
     let css = `.${themeName} {\n`;
+    const light = generatedSchemes.light; // Use stored light scheme
+    const dark = generatedSchemes.dark;   // Use stored dark scheme
 
-    // Add light mode variables - current scheme is already in the right mode
-    css += `  --background: ${intToHsl(shadcnScheme.background)};\n`;
-    css += `  --foreground: ${intToHsl(shadcnScheme.foreground)};\n\n`;
-
-    css += `  --muted: ${intToHsl(shadcnScheme.muted)};\n`;
-    css += `  --muted-foreground: ${intToHsl(shadcnScheme.mutedForeground)};\n\n`;
-
-    css += `  --popover: ${intToHsl(shadcnScheme.popover)};\n`;
-    css += `  --popover-foreground: ${intToHsl(shadcnScheme.popoverForeground)};\n\n`;
-
-    css += `  --card: ${intToHsl(shadcnScheme.card)};\n`;
-    css += `  --card-foreground: ${intToHsl(shadcnScheme.cardForeground)};\n\n`;
-
-    css += `  --border: ${intToHsl(shadcnScheme.border)};\n`;
-    css += `  --input: ${intToHsl(shadcnScheme.input)};\n\n`;
-
-    css += `  --primary: ${intToHsl(shadcnScheme.primary)};\n`;
-    css += `  --primary-foreground: ${intToHsl(shadcnScheme.primaryForeground)};\n\n`;
-
-    css += `  --secondary: ${intToHsl(shadcnScheme.secondary)};\n`;
-    css += `  --secondary-foreground: ${intToHsl(shadcnScheme.secondaryForeground)};\n\n`;
-
-    css += `  --accent: ${intToHsl(shadcnScheme.accent)};\n`;
-    css += `  --accent-foreground: ${intToHsl(shadcnScheme.accentForeground)};\n\n`;
-
-    css += `  --destructive: ${intToHsl(shadcnScheme.destructive)};\n`;
-    css += `  --destructive-foreground: ${intToHsl(shadcnScheme.destructiveForeground)};\n\n`;
-
-    css += `  --ring: ${intToHsl(shadcnScheme.ring)};\n\n`;
-
-    css += `  --radius: 0.5rem;\n`;
+    // Generate Light Theme CSS
+    css += `  --background: ${intToHsl(light.background)};\n`;
+    css += `  --foreground: ${intToHsl(light.foreground)};\n\n`;
+    css += `  --muted: ${intToHsl(light.muted)};\n`;
+    css += `  --muted-foreground: ${intToHsl(light.mutedForeground)};\n\n`;
+    css += `  --popover: ${intToHsl(light.popover)};\n`;
+    css += `  --popover-foreground: ${intToHsl(light.popoverForeground)};\n\n`;
+    css += `  --card: ${intToHsl(light.card)};\n`;
+    css += `  --card-foreground: ${intToHsl(light.cardForeground)};\n\n`;
+    css += `  --border: ${intToHsl(light.border)};\n`;
+    css += `  --input: ${intToHsl(light.input)};\n\n`;
+    css += `  --primary: ${intToHsl(light.primary)};\n`;
+    css += `  --primary-foreground: ${intToHsl(light.primaryForeground)};\n\n`;
+    css += `  --secondary: ${intToHsl(light.secondary)};\n`;
+    css += `  --secondary-foreground: ${intToHsl(light.secondaryForeground)};\n\n`;
+    css += `  --accent: ${intToHsl(light.accent)};\n`;
+    css += `  --accent-foreground: ${intToHsl(light.accentForeground)};\n\n`;
+    css += `  --destructive: ${intToHsl(light.destructive)};\n`;
+    css += `  --destructive-foreground: ${intToHsl(light.destructiveForeground)};\n\n`;
+    css += `  --ring: ${intToHsl(light.ring)};\n\n`;
+    css += `  --radius: 0.5rem; /* TODO: Make radius configurable */\n`;
     css += `}\n`;
 
-    // Generate opposite mode for dark section
-    const hct = Hct.fromInt(argbFromHex(settings.source));
-    const oppositeScheme = new SchemeShadcn(hct, !isDarkMode, 0);
-
-    // Add dark or light mode variables depending on current mode
+    // Generate Dark Theme CSS
     css += `\n.dark .${themeName} {\n`;
-
-    css += `  --background: ${intToHsl(oppositeScheme.background)};\n`;
-    css += `  --foreground: ${intToHsl(oppositeScheme.foreground)};\n\n`;
-
-    css += `  --muted: ${intToHsl(oppositeScheme.muted)};\n`;
-    css += `  --muted-foreground: ${intToHsl(oppositeScheme.mutedForeground)};\n\n`;
-
-    css += `  --popover: ${intToHsl(oppositeScheme.popover)};\n`;
-    css += `  --popover-foreground: ${intToHsl(oppositeScheme.popoverForeground)};\n\n`;
-
-    css += `  --card: ${intToHsl(oppositeScheme.card)};\n`;
-    css += `  --card-foreground: ${intToHsl(oppositeScheme.cardForeground)};\n\n`;
-
-    css += `  --border: ${intToHsl(oppositeScheme.border)};\n`;
-    css += `  --input: ${intToHsl(oppositeScheme.input)};\n\n`;
-
-    css += `  --primary: ${intToHsl(oppositeScheme.primary)};\n`;
-    css += `  --primary-foreground: ${intToHsl(oppositeScheme.primaryForeground)};\n\n`;
-
-    css += `  --secondary: ${intToHsl(oppositeScheme.secondary)};\n`;
-    css += `  --secondary-foreground: ${intToHsl(oppositeScheme.secondaryForeground)};\n\n`;
-
-    css += `  --accent: ${intToHsl(oppositeScheme.accent)};\n`;
-    css += `  --accent-foreground: ${intToHsl(oppositeScheme.accentForeground)};\n\n`;
-
-    css += `  --destructive: ${intToHsl(oppositeScheme.destructive)};\n`;
-    css += `  --destructive-foreground: ${intToHsl(oppositeScheme.destructiveForeground)};\n\n`;
-
-    css += `  --ring: ${intToHsl(oppositeScheme.ring)};\n`;
-
+    css += `  --background: ${intToHsl(dark.background)};\n`;
+    css += `  --foreground: ${intToHsl(dark.foreground)};\n\n`;
+    css += `  --muted: ${intToHsl(dark.muted)};\n`;
+    css += `  --muted-foreground: ${intToHsl(dark.mutedForeground)};\n\n`;
+    css += `  --popover: ${intToHsl(dark.popover)};\n`;
+    css += `  --popover-foreground: ${intToHsl(dark.popoverForeground)};\n\n`;
+    css += `  --card: ${intToHsl(dark.card)};\n`;
+    css += `  --card-foreground: ${intToHsl(dark.cardForeground)};\n\n`;
+    css += `  --border: ${intToHsl(dark.border)};\n`;
+    css += `  --input: ${intToHsl(dark.input)};\n\n`;
+    css += `  --primary: ${intToHsl(dark.primary)};\n`;
+    css += `  --primary-foreground: ${intToHsl(dark.primaryForeground)};\n\n`;
+    css += `  --secondary: ${intToHsl(dark.secondary)};\n`;
+    css += `  --secondary-foreground: ${intToHsl(dark.secondaryForeground)};\n\n`;
+    css += `  --accent: ${intToHsl(dark.accent)};\n`;
+    css += `  --accent-foreground: ${intToHsl(dark.accentForeground)};\n\n`;
+    css += `  --destructive: ${intToHsl(dark.destructive)};\n`;
+    css += `  --destructive-foreground: ${intToHsl(dark.destructiveForeground)};\n\n`;
+    css += `  --ring: ${intToHsl(dark.ring)};\n`;
     css += `}\n`;
 
     navigator.clipboard.writeText(css).then(() => {
@@ -309,61 +260,8 @@ export default function ThemeCustomizer() {
     });
   };
 
-  // Show a preview of the theme CSS that will be copied
-  const getThemePreview = () => {
-    if (!shadcnScheme) return null;
+  // Removed getThemePreview function as it's complex to show diffs
 
-    return (
-      <div className="bg-muted mt-4 max-h-60 overflow-auto rounded-md p-4">
-        <pre className="text-xs">
-          <code>
-            {`.theme-custom {
-  --background: ${intToHsl(shadcnScheme.background)};
-  --foreground: ${intToHsl(shadcnScheme.foreground)};
-  /* ...more variables... */
-}
-
-.dark .theme-custom {
-  /* Dark mode variables */
-}`}
-          </code>
-        </pre>
-      </div>
-    );
-  };
-
-  // List of Material color roles to display
-  const colorRoles: { name: string, key: keyof typeof scheme }[] = [
-    { name: "primary", key: "primary" },
-    { name: "onPrimary", key: "onPrimary" },
-    { name: "primaryContainer", key: "primaryContainer" },
-    { name: "onPrimaryContainer", key: "onPrimaryContainer" },
-    { name: "secondary", key: "secondary" },
-    { name: "onSecondary", key: "onSecondary" },
-    { name: "secondaryContainer", key: "secondaryContainer" },
-    { name: "onSecondaryContainer", key: "onSecondaryContainer" },
-    { name: "tertiary", key: "tertiary" },
-    { name: "onTertiary", key: "onTertiary" },
-    { name: "tertiaryContainer", key: "tertiaryContainer" },
-    { name: "onTertiaryContainer", key: "onTertiaryContainer" },
-    { name: "error", key: "error" },
-    { name: "onError", key: "onError" },
-    { name: "errorContainer", key: "errorContainer" },
-    { name: "onErrorContainer", key: "onErrorContainer" },
-    { name: "background", key: "background" },
-    { name: "onBackground", key: "onBackground" },
-    { name: "surface", key: "surface" },
-    { name: "onSurface", key: "onSurface" },
-    { name: "surfaceVariant", key: "surfaceVariant" },
-    { name: "onSurfaceVariant", key: "onSurfaceVariant" },
-    { name: "outline", key: "outline" },
-    { name: "outlineVariant", key: "outlineVariant" },
-    { name: "inverseSurface", key: "inverseSurface" },
-    { name: "inverseOnSurface", key: "inverseOnSurface" },
-    { name: "inversePrimary", key: "inversePrimary" },
-  ];
-
-  // List of Shadcn color roles to display
   const shadcnColorRoles: { name: string, key: keyof SchemeShadcn }[] = [
     { name: "background", key: "background" },
     { name: "foreground", key: "foreground" },
@@ -386,25 +284,40 @@ export default function ThemeCustomizer() {
     { name: "ring", key: "ring" },
   ];
 
+  // Determine the scheme to display based on dark mode toggle and generated state
+  const schemeToDisplay = generatedSchemes
+    ? (isDarkMode ? generatedSchemes.dark : generatedSchemes.light)
+    : null;
+
   return (
     <div>
       <h1 className="mb-6 text-3xl font-bold">Theme Generator</h1>
-      <Card className="space-y-4">
-        <CardContent className="space-y-4">
+      <Card> {/* Removed space-y-4 from Card */}
+        <CardContent className="space-y-4 pt-6"> {/* Added pt-6 for padding */}
           <div className="space-y-2">
             <Label htmlFor="color-picker">Select Primary Color</Label>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4"> {/* Added flex-wrap */}
               <ColorPicker
                 defaultValue={settings.source}
                 showText
                 onChangeComplete={handleColorChange}
                 allowClear={false}
               />
-              <Button onClick={generateTheme}>Generate Theme</Button>
+              <Button onClick={handleGenerateThemeClick} disabled={isLoading}>
+                {isLoading ? "Generating..." : "Generate Theme"}
+              </Button>
+              {/* Add Apply Theme Button */}
+              <Button
+                onClick={applyGeneratedTheme}
+                disabled={!generatedSchemes || isLoading}
+                variant="secondary"
+              >
+                Apply Generated Theme
+              </Button>
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="image-upload">Upload Image</Label>
+            <Label htmlFor="image-upload">Upload Image (Extracts Primary Color)</Label>
             <div className="flex items-center gap-4">
               <Input
                 ref={fileInputRef}
@@ -413,11 +326,13 @@ export default function ThemeCustomizer() {
                 accept="image/*"
                 onChange={handleImageUpload}
                 disabled={isLoading}
+                className="max-w-xs" // Limit width
               />
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 pt-2"> {/* Added pt-2 */}
+            <Label>Preview Mode:</Label>
             <Button
               variant={!isDarkMode ? "default" : "outline"}
               size="sm"
@@ -425,7 +340,7 @@ export default function ThemeCustomizer() {
               disabled={isLoading}
               className="min-w-16"
             >
-              {isLoading && !isDarkMode ? "..." : "Light"}
+              Light
             </Button>
             <Button
               variant={isDarkMode ? "default" : "outline"}
@@ -434,82 +349,78 @@ export default function ThemeCustomizer() {
               disabled={isLoading}
               className="min-w-16"
             >
-              {isLoading && isDarkMode ? "..." : "Dark"}
+              Dark
             </Button>
           </div>
         </CardContent>
       </Card>
 
       {isLoading && (
-        <div className="rounded-lg border p-8 text-center">
+        <div className="mt-4 rounded-lg border p-8 text-center"> {/* Added mt-4 */}
           Generating theme...
         </div>
       )}
 
-      {shadcnScheme && <div className="mt-12">
-        <div className="mb-4 flex items-center justify-between">
+      {/* Display generated theme preview */}
+      {schemeToDisplay && <div className="mt-12">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2"> {/* Added flex-wrap and gap */}
           <h2 className="text-xl font-bold">
-            Shadcn Theme ({isDarkMode ? "Dark" : "Light"})
+            Generated Theme Preview ({isDarkMode ? "Dark" : "Light"})
           </h2>
-          <Button onClick={copyShadcnThemeCSS}>Copy CSS</Button>
+          <Button onClick={copyShadcnThemeCSS} disabled={!generatedSchemes}>Copy CSS</Button>
         </div>
 
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {shadcnColorRoles.map(({ name, key }) => (
-            shadcnScheme[key] && (
-              <ColorSwatch
-                key={name}
-                name={name}
-                color={intToHex(shadcnScheme[key] as number)}
-                displayValue={intToHslDisplay(shadcnScheme[key] as number)}
-              />
-            )
-          ))}
+          {shadcnColorRoles.map(({ name, key }) => {
+            const colorValue = schemeToDisplay[key];
+            // Ensure colorValue is a number before processing
+            if (typeof colorValue === 'number' && !isNaN(colorValue)) {
+              return (
+                <ColorSwatch
+                  key={name}
+                  name={name}
+                  color={intToHex(colorValue)}
+                  displayValue={intToHslDisplay(colorValue)}
+                />
+              );
+            }
+            return null; // Skip rendering if colorValue is invalid
+          })}
         </div>
       </div>}
     </div>
   );
 }
 
+// ColorSwatch component remains the same
 function ColorSwatch({ name, color, displayValue }: { name: string, color: string, displayValue?: string }) {
-  // Simple luminance check for text color
   function isDark(hex: string) {
+    // Basic check, might need refinement for edge cases
+    if (!hex || hex.length < 7) return false;
     const c = hex.replace('#', '');
     const r = parseInt(c.substring(0, 2), 16);
     const g = parseInt(c.substring(2, 4), 16);
     const b = parseInt(c.substring(4, 6), 16);
-    // Perceived luminance
+    // Check for NaN values
+    if (isNaN(r) || isNaN(g) || isNaN(b)) return false;
     return (0.299 * r + 0.587 * g + 0.114 * b) < 160;
   }
   const dark = isDark(color);
 
   return (
     <div
-      className="flex h-32 flex-col items-center justify-center rounded-md border p-6"
+      className="flex h-32 flex-col items-center justify-center rounded-md border p-6 text-center" // Added text-center
       style={{ backgroundColor: color }}
     >
-      <div className="rounded px-2 py-1">
-        <p
-          className="font-bold text-transparent"
-          style={{
-            background: 'linear-gradient(to right, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0000ff, #8000ff, #ff00ff)',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            filter: dark
-              ? 'drop-shadow(0px 0px 1px rgba(255,255,255,0.7))'
-              : 'drop-shadow(0px 0px 1px rgba(0,0,0,0.7))'
-          }}
-        >
-          {name}
-        </p>
-      </div>
+      {/* Simplified text styling */}
+      <p
+        className={`font-bold ${dark ? "text-white/90" : "text-black/90"}`}
+        style={{ textShadow: dark ? '0 0 2px rgba(0,0,0,0.7)' : '0 0 2px rgba(255,255,255,0.7)' }} // Simplified shadow
+      >
+        {name}
+      </p>
       <span
-        className={`mt-2 font-mono text-xs ${dark ? "text-white" : "text-black"}`}
-        style={{
-          background: dark ? "rgba(0,0,0,0.2)" : "rgba(255,255,255,0.4)",
-          borderRadius: 4,
-          padding: "0 6px"
-        }}
+        className={`mt-2 block max-w-full truncate rounded px-1.5 py-0.5 font-mono text-xs ${dark ? "bg-black/30 text-white/80" : "bg-white/50 text-black/80"}`} // Adjusted styling
       >
         {displayValue || color}
       </span>

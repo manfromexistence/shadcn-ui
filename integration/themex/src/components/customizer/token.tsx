@@ -7,6 +7,7 @@ import { ColorProperty } from "@/types/theme";
 import { colorFormatter } from "@/utils/color-converter";
 import { Check, Clipboard } from "lucide-react";
 import { ComponentProps } from "react";
+import { isValidColor, ensureCssColorFormat } from "@/utils/colors"; // Import helpers
 
 export function Token({
   colorProperty,
@@ -27,11 +28,13 @@ export function TokenDisplay({
   color,
   className,
 }: ComponentProps<"div"> & { color: string }) {
+  // Ensure color is in CSS format for the style attribute
+  const cssColor = ensureCssColorFormat(color);
   return (
     <div
       className={cn("aspect-square size-8 rounded-lg border shadow", className)}
       style={{
-        backgroundColor: color,
+        backgroundColor: cssColor, // Use CSS-formatted color
       }}
     />
   );
@@ -47,9 +50,15 @@ export function TokenInfo({
   const { isCopied, copyToClipboard } = useCopyToClipboard();
 
   const colorFormat = useColorFormat();
-  const colorValue = colorFormatter(color, colorFormat, "4");
+
+  // Ensure the color is in a valid CSS format before formatting/displaying
+  const cssColor = ensureCssColorFormat(color);
+
+  // Use the CSS-formatted color for formatting
+  const colorValue = colorFormatter(cssColor, colorFormat, "4");
 
   const handleCopyColor = () => {
+    // Copy the formatted value
     copyToClipboard(colorValue);
   };
 
@@ -59,6 +68,7 @@ export function TokenInfo({
         <p className="font-mono text-xs font-semibold">
           {`--${colorProperty}`}
         </p>
+        {/* Display the formatted value */}
         <p className="text-muted-foreground font-mono text-xs">{colorValue}</p>
       </div>
 
