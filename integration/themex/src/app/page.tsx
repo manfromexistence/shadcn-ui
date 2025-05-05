@@ -40,7 +40,7 @@ export default function Home() {
       currentObjectUrl.current = null;
     }
 
-    console.log(`File selected: ${file.name}, Type: ${file.type}`);
+    // console.log(`File selected: ${file.name}, Type: ${file.type}`);
 
     if (file.type.startsWith("image/")) {
       const reader = new FileReader();
@@ -98,7 +98,7 @@ export default function Home() {
     }
   };
 
-  console.log(`Rendering - FileType: ${fileType}, BackgroundURL: ${backgroundUrl ? backgroundUrl.substring(0, 100) + '...' : 'null'}`);
+  // console.log(`Rendering - FileType: ${fileType}, BackgroundURL: ${backgroundUrl ? backgroundUrl.substring(0, 100) + '...' : 'null'}`);
 
   return (
     <div
