@@ -7,6 +7,8 @@ import React from "react";
 export function BackgroundLayer({ children }: { children: React.ReactNode }) {
   const { backgroundUrl, fileType } = useBackground();
 
+  console.log("BackgroundLayer received:", { backgroundUrl, fileType });
+
   return (
     <div
       className={cn(

@@ -4,6 +4,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { createContext, useState, useContext, ReactNode, ChangeEvent, useRef, useEffect } from "react";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { hexFromArgb } from "@/components/colors/utils/string_utils"; // Correct import based on previous check
 
 // 1. Define Background Context
 interface BackgroundContextProps {
@@ -44,6 +45,7 @@ export function BackgroundProvider({ children }: { children: ReactNode }) {
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
+    console.log("File selected:", file?.name, file?.type);
 
     // Reset previous state and revoke URL
     if (currentObjectUrl.current) {
@@ -61,6 +63,7 @@ export function BackgroundProvider({ children }: { children: ReactNode }) {
     }
 
     setIsLoadingBackground(true); // Start loading
+    console.log("Background loading started");
 
     try {
       if (file.type.startsWith("image/")) {
@@ -68,6 +71,7 @@ export function BackgroundProvider({ children }: { children: ReactNode }) {
         const reader = new FileReader();
         reader.onloadend = async () => {
           const result = reader.result as string;
+          console.log("Image loaded, setting background URL (Data URL)");
           setBackgroundUrl(result);
           setFileType("image");
 
@@ -81,12 +85,15 @@ export function BackgroundProvider({ children }: { children: ReactNode }) {
             });
             const { sourceColorFromImage } = await import("@/components/colors/utils/image_utils");
             const sourceColorInt = await sourceColorFromImage(img);
-            setSourceColorFromBg(intToHex(sourceColorInt)); // Store hex color
+            const hexColor = hexFromArgb(sourceColorInt); // Use correct function
+            console.log("Extracted source color:", hexColor);
+            setSourceColorFromBg(hexColor); // Store hex color
           } catch (colorError) {
             console.error("Error extracting color from image:", colorError);
             setSourceColorFromBg(null); // Reset color on error
             // Optionally alert the user about color extraction failure
           } finally {
+            console.log("Background loading finished (image)");
             setIsLoadingBackground(false); // Stop loading after color extraction attempt
           }
         };
@@ -102,16 +109,20 @@ export function BackgroundProvider({ children }: { children: ReactNode }) {
         // Use Object URL for video, check duration
         const url = URL.createObjectURL(file);
         currentObjectUrl.current = url; // Store potential URL
+        console.log("Video Object URL created:", url);
 
         const videoElement = document.createElement("video");
         videoElement.src = url;
 
         videoElement.onloadedmetadata = () => {
+          console.log("Video metadata loaded, duration:", videoElement.duration);
           if (videoElement.duration <= 60) { // Example: 60 seconds limit
+            console.log("Video duration OK, setting background URL (Object URL)");
             setBackgroundUrl(url); // Keep the object URL
             setFileType("video");
             setSourceColorFromBg(null); // Videos don't have a single source color
             setIsLoadingBackground(false); // Stop loading
+            console.log("Background loading finished (video)");
           } else {
             alert("Video duration exceeds limit (e.g., 1 minute). Please select a shorter video.");
             URL.revokeObjectURL(url);
@@ -172,11 +183,5 @@ export function Providers({ children, ...props }: any) {
       </AntdRegistry>
     </NextThemesProvider>
   );
-}
-function intToHex(sourceColorInt: number): string | null {
-  if (typeof sourceColorInt !== "number" || isNaN(sourceColorInt)) return null;
-  // Clamp to 24 bits and convert to hex
-  const hex = "#" + (sourceColorInt & 0xffffff).toString(16).padStart(6, "0");
-  return hex;
 }
 
