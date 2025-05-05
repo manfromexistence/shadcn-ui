@@ -18,9 +18,9 @@ export default function ShadcnThemesPage() {
   return (
     <>
       <ContainerWrapper withCane className="@container py-4">
+        <ActionButtons className="pb-4" />
+        <QuickCustomizer />
         <ThemeCustomizer />
-        {/* <ActionButtons className="pb-4" />
-        <QuickCustomizer /> */}
       </ContainerWrapper>
 
       <Separator />
