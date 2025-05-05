@@ -143,6 +143,9 @@ export default function ThemeCustomizer() {
       },
     };
 
+    // Log the theme being applied
+    console.log("[ThemeCustomizer] Applying generated theme:", generatedThemePart);
+
     updateThemeConfig(generatedThemePart as ThemeObject);
     alert("Generated theme applied!"); // Optional feedback
   };
@@ -262,7 +265,7 @@ export default function ThemeCustomizer() {
 
   return (
     // Add padding/margin as needed for layout
-    <div className="p-4 md:p-8">
+    <div className="p-4 md:p-8 !bg-yellow-500">
       <h1 className="mb-6 text-3xl font-bold">Theme Generator</h1>
       <Card>
         <CardContent className="space-y-6 pt-6"> {/* Increased spacing */}
