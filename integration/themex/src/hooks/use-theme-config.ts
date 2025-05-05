@@ -113,7 +113,7 @@ export function useThemeConfig() {
       ? isEqual(presetFonts, currentFonts)
       : true;
 
-    console.log(isThemeObjectEqual, isRadiusEqual, areFontsEqual);
+    // console.log(isThemeObjectEqual, isRadiusEqual, areFontsEqual);
 
     return !isThemeObjectEqual || !isRadiusEqual || !areFontsEqual;
   };
