@@ -8,11 +8,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { 
-  argbFromHex, 
+import {
+  argbFromHex,
   Hct,
   SchemeVibrant,
-  SchemeRainbow, 
+  SchemeRainbow,
   SchemeTonalSpot,
   SchemeNeutral,
   SchemeMonochrome,
@@ -80,11 +80,11 @@ export default function ThemeCustomizer() {
         await new Promise((resolve) => {
           img.onload = resolve;
         });
-        
+
         // Extract the source color from the image
         const { sourceColorFromImage } = await import("@/components/colors/utils/image_utils");
         const sourceColor = await sourceColorFromImage(img);
-        
+
         // Generate scheme with the current settings
         generateSchemeFromSourceColor(sourceColor);
         setIsLoading(false);
@@ -112,17 +112,17 @@ export default function ThemeCustomizer() {
   const generateSchemeFromSourceColor = (sourceColor: number) => {
     try {
       const hct = Hct.fromInt(sourceColor);
-      
+
       // For Shadcn theme
       if (activeGenerator === "shadcn" || activeGenerator === "material") {
         let generatedShadcnScheme = new SchemeShadcn(hct, isDarkMode, 0);
         setShadcnScheme(generatedShadcnScheme);
       }
-      
+
       // For Material theme
       if (activeGenerator === "material") {
         const selectedScheme = SCHEMES.find(s => s.id === schemeType);
-        
+
         if (!selectedScheme) {
           console.error(`Scheme type '${schemeType}' not found`);
           return;
@@ -141,11 +141,11 @@ export default function ThemeCustomizer() {
   const handleSchemeChange = (value: string) => {
     setIsLoading(true);
     setSchemeType(value);
-    
+
     try {
       const sourceColor = argbFromHex(settings.source);
       const hct = Hct.fromInt(sourceColor);
-      
+
       const selectedScheme = SCHEMES.find(s => s.id === value);
       if (selectedScheme) {
         const generatedScheme = new selectedScheme.class(hct, isDarkMode, 0);
@@ -162,19 +162,19 @@ export default function ThemeCustomizer() {
   const handleDarkModeChange = (dark: boolean) => {
     // Start loading state
     setIsLoading(true);
-    
+
     // Update dark mode state
     setIsDarkMode(dark);
-    
+
     try {
       // Get the current source color
       const sourceColor = argbFromHex(settings.source);
       const hct = Hct.fromInt(sourceColor);
-      
+
       // Generate Shadcn theme directly without waiting for state update
       const generatedShadcnScheme = new SchemeShadcn(hct, dark, 0);
       setShadcnScheme(generatedShadcnScheme);
-      
+
       // Generate Material theme if needed
       if (activeGenerator === "material") {
         const selectedScheme = SCHEMES.find(s => s.id === schemeType);
@@ -193,7 +193,7 @@ export default function ThemeCustomizer() {
 
   // Helper function for shorter name
   const generateScheme = () => generateThemeFromHex();
-  
+
   // Generate a theme from the current hex color - also improved for immediate feedback
   const generateThemeFromHex = () => {
     setIsLoading(true);
@@ -227,81 +227,81 @@ export default function ThemeCustomizer() {
   // Copy Shadcn theme CSS to clipboard with both light and dark modes
   const copyShadcnThemeCSS = () => {
     if (!shadcnScheme) return;
-    
+
     const themeName = "theme-custom";
     let css = `.${themeName} {\n`;
-    
+
     // Add light mode variables - current scheme is already in the right mode
     css += `  --background: ${intToHsl(shadcnScheme.background)};\n`;
     css += `  --foreground: ${intToHsl(shadcnScheme.foreground)};\n\n`;
-    
+
     css += `  --muted: ${intToHsl(shadcnScheme.muted)};\n`;
     css += `  --muted-foreground: ${intToHsl(shadcnScheme.mutedForeground)};\n\n`;
-    
+
     css += `  --popover: ${intToHsl(shadcnScheme.popover)};\n`;
     css += `  --popover-foreground: ${intToHsl(shadcnScheme.popoverForeground)};\n\n`;
-    
+
     css += `  --card: ${intToHsl(shadcnScheme.card)};\n`;
     css += `  --card-foreground: ${intToHsl(shadcnScheme.cardForeground)};\n\n`;
-    
+
     css += `  --border: ${intToHsl(shadcnScheme.border)};\n`;
     css += `  --input: ${intToHsl(shadcnScheme.input)};\n\n`;
-    
+
     css += `  --primary: ${intToHsl(shadcnScheme.primary)};\n`;
     css += `  --primary-foreground: ${intToHsl(shadcnScheme.primaryForeground)};\n\n`;
-    
+
     css += `  --secondary: ${intToHsl(shadcnScheme.secondary)};\n`;
     css += `  --secondary-foreground: ${intToHsl(shadcnScheme.secondaryForeground)};\n\n`;
-    
+
     css += `  --accent: ${intToHsl(shadcnScheme.accent)};\n`;
     css += `  --accent-foreground: ${intToHsl(shadcnScheme.accentForeground)};\n\n`;
-    
+
     css += `  --destructive: ${intToHsl(shadcnScheme.destructive)};\n`;
     css += `  --destructive-foreground: ${intToHsl(shadcnScheme.destructiveForeground)};\n\n`;
-    
+
     css += `  --ring: ${intToHsl(shadcnScheme.ring)};\n\n`;
-    
+
     css += `  --radius: 0.5rem;\n`;
     css += `}\n`;
-    
+
     // Generate opposite mode for dark section
     const hct = Hct.fromInt(argbFromHex(settings.source));
     const oppositeScheme = new SchemeShadcn(hct, !isDarkMode, 0);
-    
+
     // Add dark or light mode variables depending on current mode
     css += `\n.dark .${themeName} {\n`;
-    
+
     css += `  --background: ${intToHsl(oppositeScheme.background)};\n`;
     css += `  --foreground: ${intToHsl(oppositeScheme.foreground)};\n\n`;
-    
+
     css += `  --muted: ${intToHsl(oppositeScheme.muted)};\n`;
     css += `  --muted-foreground: ${intToHsl(oppositeScheme.mutedForeground)};\n\n`;
-    
+
     css += `  --popover: ${intToHsl(oppositeScheme.popover)};\n`;
     css += `  --popover-foreground: ${intToHsl(oppositeScheme.popoverForeground)};\n\n`;
-    
+
     css += `  --card: ${intToHsl(oppositeScheme.card)};\n`;
     css += `  --card-foreground: ${intToHsl(oppositeScheme.cardForeground)};\n\n`;
-    
+
     css += `  --border: ${intToHsl(oppositeScheme.border)};\n`;
     css += `  --input: ${intToHsl(oppositeScheme.input)};\n\n`;
-    
+
     css += `  --primary: ${intToHsl(oppositeScheme.primary)};\n`;
     css += `  --primary-foreground: ${intToHsl(oppositeScheme.primaryForeground)};\n\n`;
-    
+
     css += `  --secondary: ${intToHsl(oppositeScheme.secondary)};\n`;
     css += `  --secondary-foreground: ${intToHsl(oppositeScheme.secondaryForeground)};\n\n`;
-    
+
     css += `  --accent: ${intToHsl(oppositeScheme.accent)};\n`;
     css += `  --accent-foreground: ${intToHsl(oppositeScheme.accentForeground)};\n\n`;
-    
+
     css += `  --destructive: ${intToHsl(oppositeScheme.destructive)};\n`;
     css += `  --destructive-foreground: ${intToHsl(oppositeScheme.destructiveForeground)};\n\n`;
-    
+
     css += `  --ring: ${intToHsl(oppositeScheme.ring)};\n`;
-    
+
     css += `}\n`;
-    
+
     navigator.clipboard.writeText(css).then(() => {
       alert("Shadcn theme CSS copied to clipboard!");
     }).catch(err => {
@@ -312,7 +312,7 @@ export default function ThemeCustomizer() {
   // Show a preview of the theme CSS that will be copied
   const getThemePreview = () => {
     if (!shadcnScheme) return null;
-    
+
     return (
       <div className="bg-muted mt-4 max-h-60 overflow-auto rounded-md p-4">
         <pre className="text-xs">
@@ -387,79 +387,56 @@ export default function ThemeCustomizer() {
   ];
 
   return (
-    <div className="container border-x border-dashed p-8">
+    <div>
       <h1 className="mb-6 text-3xl font-bold">Theme Generator</h1>
-      
-      {/* Theme Type Switcher */}
-      <div className="mb-6">
-        <Tabs value={activeGenerator} onValueChange={(val) => setActiveGenerator(val as "shadcn" | "material")}>
-          <TabsList className="mb-4">
-            <TabsTrigger value="shadcn">Shadcn UI</TabsTrigger>
-            <TabsTrigger value="material">Material Design</TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </div>
-
-      <Card className="mb-8">
-        <CardContent className="pt-6">
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="mb-4">
-              <TabsTrigger value="color">Color Picker</TabsTrigger>
-              <TabsTrigger value="image">Image Upload</TabsTrigger>
-            </TabsList>
-            <TabsContent value="color" className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="color-picker">Select Primary Color</Label>
-                <div className="flex items-center gap-4">
-                  <ColorPicker
-                    defaultValue={settings.source}
-                    showText
-                    onChangeComplete={handleColorChange}
-                    allowClear={false}
-                  />
-                  <Button onClick={generateTheme}>Generate Theme</Button>
-                </div>
-              </div>
-            </TabsContent>
-            <TabsContent value="image" className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="image-upload">Upload Image</Label>
-                <div className="flex items-center gap-4">
-                  <Input
-                    ref={fileInputRef}
-                    id="image-upload"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    disabled={isLoading}
-                  />
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
-          
+      <Card className="space-y-4">
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="color-picker">Select Primary Color</Label>
+            <div className="flex items-center gap-4">
+              <ColorPicker
+                defaultValue={settings.source}
+                showText
+                onChangeComplete={handleColorChange}
+                allowClear={false}
+              />
+              <Button onClick={generateTheme}>Generate Theme</Button>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="image-upload">Upload Image</Label>
+            <div className="flex items-center gap-4">
+              <Input
+                ref={fileInputRef}
+                id="image-upload"
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                disabled={isLoading}
+              />
+            </div>
+          </div>
           <div className="mt-6 space-y-4">
-            {activeGenerator === "material" && (
-              <div>
-                <Label htmlFor="scheme-type">Scheme Type</Label>
-                <Select value={schemeType} onValueChange={handleSchemeChange}>
-                  <SelectTrigger className="mt-1.5 w-full" disabled={isLoading}>
-                    <SelectValue placeholder="Select Scheme" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {SCHEMES.map((scheme) => (
-                      <SelectItem key={scheme.id} value={scheme.id}>
-                        {scheme.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            )}
-            
+            <div>
+              <Label htmlFor="scheme-type">Scheme Type</Label>
+              <Select value={schemeType} onValueChange={handleSchemeChange}>
+                <SelectTrigger className="mt-1.5 w-full" disabled={isLoading}>
+                  <SelectValue placeholder="Select Scheme" />
+                </SelectTrigger>
+                <SelectContent>
+                  {SCHEMES.map((scheme) => (
+                    <SelectItem key={scheme.id} value={scheme.id}>
+                      {scheme.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+
             <div className="flex items-center gap-2">
-              <Button 
-                variant={!isDarkMode ? "default" : "outline"} 
+              <Button
+                variant={!isDarkMode ? "default" : "outline"}
                 size="sm"
                 onClick={() => handleDarkModeChange(false)}
                 disabled={isLoading}
@@ -467,8 +444,8 @@ export default function ThemeCustomizer() {
               >
                 {isLoading && !isDarkMode ? "..." : "Light"}
               </Button>
-              <Button 
-                variant={isDarkMode ? "default" : "outline"} 
+              <Button
+                variant={isDarkMode ? "default" : "outline"}
                 size="sm"
                 onClick={() => handleDarkModeChange(true)}
                 disabled={isLoading}
@@ -480,65 +457,57 @@ export default function ThemeCustomizer() {
           </div>
         </CardContent>
       </Card>
-      
+
       {isLoading && (
         <div className="rounded-lg border p-8 text-center">
           Generating theme...
         </div>
       )}
 
-      {/* Shadcn Theme Display */}
-      {activeGenerator === "shadcn" && !isLoading && shadcnScheme && (
-        <div className="mb-12">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-xl font-bold">
-              Shadcn Theme ({isDarkMode ? "Dark" : "Light"})
-            </h2>
-            <Button onClick={copyShadcnThemeCSS}>Copy CSS</Button>
-          </div>
-          
-          {/* {getThemePreview()} */}
-          
-          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {shadcnColorRoles.map(({ name, key }) => (
-              shadcnScheme[key] && (
-                <ColorSwatch
-                  key={name}
-                  name={name}
-                  color={intToHex(shadcnScheme[key] as number)}
-                  displayValue={intToHslDisplay(shadcnScheme[key] as number)}
-                />
-              )
-            ))}
-          </div>
+      {scheme && shadcnScheme ? <div>
+        <h2 className="mb-4 text-xl font-bold">
+          {SCHEMES.find(s => s.id === schemeType)?.name} Scheme ({isDarkMode ? "Dark" : "Light"})
+        </h2>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {shadcnColorRoles.map(({ name, key }) => (
+            scheme[key] && (
+              <ColorSwatch
+                key={name}
+                name={name}
+                color={intToHex(shadcnScheme[key] as number)}
+                displayValue={intToHslDisplay(shadcnScheme[key] as number)}
+              />
+            )
+          ))}
         </div>
-      )}
-      
-      {/* Material Theme Display */}
-      {activeGenerator === "material" && !isLoading && !scheme && (
-        <div className="rounded-lg border p-8 text-center">
-          Select a color or upload an image to generate a Material theme
-        </div>
-      )}
-      
-      {activeGenerator === "material" && !isLoading && scheme && (
-        <div>
-          <h2 className="mb-4 text-xl font-bold">
-            {SCHEMES.find(s => s.id === schemeType)?.name} Scheme ({isDarkMode ? "Dark" : "Light"})
+      </div> : <div>Error!</div>}
+
+      {shadcnScheme && <div className="mb-12">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-xl font-bold">
+            Shadcn Theme ({isDarkMode ? "Dark" : "Light"})
           </h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {colorRoles.map(({ name, key }) => (
-              scheme[key] && (
-                <ColorSwatch
-                  key={name}
-                  name={name}
-                  color={intToHex(scheme[key])}
-                />
-              )
-            ))}
-          </div>
+          <Button onClick={copyShadcnThemeCSS}>Copy CSS</Button>
         </div>
-      )}
+
+        {/* {getThemePreview()} */}
+
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {shadcnColorRoles.map(({ name, key }) => (
+            shadcnScheme[key] && (
+              <ColorSwatch
+                key={name}
+                name={name}
+                color={intToHex(shadcnScheme[key] as number)}
+                displayValue={intToHslDisplay(shadcnScheme[key] as number)}
+              />
+            )
+          ))}
+        </div>
+      </div>}
+
+
+
     </div>
   );
 }
@@ -548,11 +517,11 @@ function ColorSwatch({ name, color, displayValue }: { name: string, color: strin
   // Simple luminance check for text color
   function isDark(hex: string) {
     const c = hex.replace('#', '');
-    const r = parseInt(c.substring(0,2),16);
-    const g = parseInt(c.substring(2,4),16);
-    const b = parseInt(c.substring(4,6),16);
+    const r = parseInt(c.substring(0, 2), 16);
+    const g = parseInt(c.substring(2, 4), 16);
+    const b = parseInt(c.substring(4, 6), 16);
     // Perceived luminance
-    return (0.299*r + 0.587*g + 0.114*b) < 160;
+    return (0.299 * r + 0.587 * g + 0.114 * b) < 160;
   }
   const dark = isDark(color);
 
