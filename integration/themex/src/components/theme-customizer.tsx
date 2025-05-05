@@ -416,44 +416,26 @@ export default function ThemeCustomizer() {
               />
             </div>
           </div>
-          <div className="mt-6 space-y-4">
-            <div>
-              <Label htmlFor="scheme-type">Scheme Type</Label>
-              <Select value={schemeType} onValueChange={handleSchemeChange}>
-                <SelectTrigger className="mt-1.5 w-full" disabled={isLoading}>
-                  <SelectValue placeholder="Select Scheme" />
-                </SelectTrigger>
-                <SelectContent>
-                  {SCHEMES.map((scheme) => (
-                    <SelectItem key={scheme.id} value={scheme.id}>
-                      {scheme.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
 
-
-            <div className="flex items-center gap-2">
-              <Button
-                variant={!isDarkMode ? "default" : "outline"}
-                size="sm"
-                onClick={() => handleDarkModeChange(false)}
-                disabled={isLoading}
-                className="min-w-16"
-              >
-                {isLoading && !isDarkMode ? "..." : "Light"}
-              </Button>
-              <Button
-                variant={isDarkMode ? "default" : "outline"}
-                size="sm"
-                onClick={() => handleDarkModeChange(true)}
-                disabled={isLoading}
-                className="min-w-16"
-              >
-                {isLoading && isDarkMode ? "..." : "Dark"}
-              </Button>
-            </div>
+          <div className="flex items-center gap-2">
+            <Button
+              variant={!isDarkMode ? "default" : "outline"}
+              size="sm"
+              onClick={() => handleDarkModeChange(false)}
+              disabled={isLoading}
+              className="min-w-16"
+            >
+              {isLoading && !isDarkMode ? "..." : "Light"}
+            </Button>
+            <Button
+              variant={isDarkMode ? "default" : "outline"}
+              size="sm"
+              onClick={() => handleDarkModeChange(true)}
+              disabled={isLoading}
+              className="min-w-16"
+            >
+              {isLoading && isDarkMode ? "..." : "Dark"}
+            </Button>
           </div>
         </CardContent>
       </Card>
@@ -464,33 +446,13 @@ export default function ThemeCustomizer() {
         </div>
       )}
 
-      {scheme && shadcnScheme ? <div>
-        <h2 className="mb-4 text-xl font-bold">
-          {SCHEMES.find(s => s.id === schemeType)?.name} Scheme ({isDarkMode ? "Dark" : "Light"})
-        </h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {shadcnColorRoles.map(({ name, key }) => (
-            scheme[key] && (
-              <ColorSwatch
-                key={name}
-                name={name}
-                color={intToHex(shadcnScheme[key] as number)}
-                displayValue={intToHslDisplay(shadcnScheme[key] as number)}
-              />
-            )
-          ))}
-        </div>
-      </div> : <div>Error!</div>}
-
-      {shadcnScheme && <div className="mb-12">
+      {shadcnScheme && <div className="mt-12">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-xl font-bold">
             Shadcn Theme ({isDarkMode ? "Dark" : "Light"})
           </h2>
           <Button onClick={copyShadcnThemeCSS}>Copy CSS</Button>
         </div>
-
-        {/* {getThemePreview()} */}
 
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {shadcnColorRoles.map(({ name, key }) => (
@@ -505,14 +467,10 @@ export default function ThemeCustomizer() {
           ))}
         </div>
       </div>}
-
-
-
     </div>
   );
 }
 
-// Updated ColorSwatch component to support displaying HSL values
 function ColorSwatch({ name, color, displayValue }: { name: string, color: string, displayValue?: string }) {
   // Simple luminance check for text color
   function isDark(hex: string) {
@@ -558,4 +516,3 @@ function ColorSwatch({ name, color, displayValue }: { name: string, color: strin
     </div>
   )
 }
-

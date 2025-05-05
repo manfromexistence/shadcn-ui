@@ -62,6 +62,65 @@ Licensed under the MIT license.
 
 
 ```
+      {/* {scheme && shadcnScheme ? <div>
+        <h2 className="mb-4 text-xl font-bold">
+          {SCHEMES.find(s => s.id === schemeType)?.name} Scheme ({isDarkMode ? "Dark" : "Light"})
+        </h2>
+        <div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {colorRoles.map(({ name, key }) => (
+              scheme[key] && (
+                <ColorSwatch
+                  key={name}
+                  name={name}
+                  color={intToHex(scheme[key])}
+                />
+              )
+            ))}
+          </div>
+        </div>
+      </div> : <div>Error!</div>} */}
+
+          {/* <div className="mt-6 space-y-4">
+            <div>
+              <Label htmlFor="scheme-type">Scheme Type</Label>
+              <Select value={schemeType} onValueChange={handleSchemeChange}>
+                <SelectTrigger className="mt-1.5 w-full" disabled={isLoading}>
+                  <SelectValue placeholder="Select Scheme" />
+                </SelectTrigger>
+                <SelectContent>
+                  {SCHEMES.map((scheme) => (
+                    <SelectItem key={scheme.id} value={scheme.id}>
+                      {scheme.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+
+            <div className="flex items-center gap-2">
+              <Button
+                variant={!isDarkMode ? "default" : "outline"}
+                size="sm"
+                onClick={() => handleDarkModeChange(false)}
+                disabled={isLoading}
+                className="min-w-16"
+              >
+                {isLoading && !isDarkMode ? "..." : "Light"}
+              </Button>
+              <Button
+                variant={isDarkMode ? "default" : "outline"}
+                size="sm"
+                onClick={() => handleDarkModeChange(true)}
+                disabled={isLoading}
+                className="min-w-16"
+              >
+                {isLoading && isDarkMode ? "..." : "Dark"}
+              </Button>
+            </div>
+          </div> */}
+
       {/* Theme Type Switcher */}
       {/* <div className="mb-6">
         <Tabs value={activeGenerator} onValueChange={(val) => setActiveGenerator(val as "shadcn" | "material")}>
@@ -162,5 +221,5 @@ Licensed under the MIT license.
         </div>
       )} */}
 
-      
+
 ```
